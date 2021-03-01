@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Barco.Data;
 
 namespace WpfApp1
 {
@@ -24,5 +25,10 @@ namespace WpfApp1
         {
             InitializeComponent();
         }
+
+        public Barco2021Context context = new Barco2021Context();
+
+        
+
     }
 }
