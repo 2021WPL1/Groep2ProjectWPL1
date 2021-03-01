@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Barco.App", "Barco.App\Barco.App.csproj", "{33AF5BB8-B97C-412A-B33A-53D5A7513AB8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Barco.Domain", "Barco.Domain\Barco.Domain.csproj", "{1C5B5FD8-282B-45CC-B79E-D7A79D1F9399}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Barco.Data", "Barco.Data\Barco.Data.csproj", "{86072582-CA2A-485F-91BD-A9630D7C8F2F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{33AF5BB8-B97C-412A-B33A-53D5A7513AB8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{33AF5BB8-B97C-412A-B33A-53D5A7513AB8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{33AF5BB8-B97C-412A-B33A-53D5A7513AB8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C5B5FD8-282B-45CC-B79E-D7A79D1F9399}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C5B5FD8-282B-45CC-B79E-D7A79D1F9399}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C5B5FD8-282B-45CC-B79E-D7A79D1F9399}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C5B5FD8-282B-45CC-B79E-D7A79D1F9399}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86072582-CA2A-485F-91BD-A9630D7C8F2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86072582-CA2A-485F-91BD-A9630D7C8F2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86072582-CA2A-485F-91BD-A9630D7C8F2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86072582-CA2A-485F-91BD-A9630D7C8F2F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
