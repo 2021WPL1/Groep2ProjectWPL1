@@ -21,5 +21,20 @@ namespace Barco
         {
             InitializeComponent();
         }
+
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void SendButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
