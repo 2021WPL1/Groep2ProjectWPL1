@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -10,26 +8,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Barco.Data;
 
-namespace WpfApp1
+namespace Barco
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for JobRequest.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class JobRequest : Window
     {
-        public MainWindow()
+        public JobRequest()
         {
             InitializeComponent();
-            
         }
-
-        public Barco2021Context context = new Barco2021Context();
-
-        
-
     }
 }
