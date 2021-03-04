@@ -22,5 +22,29 @@ namespace Barco
             InitializeComponent();
         }
       
+private void SeeAllRequests_Click(object sender, RoutedEventArgs e)
+        {
+            OverviewJobRequest overviewJobRequest = new OverviewJobRequest();
+
+            overviewJobRequest.ShowDialog();
+        }
+
+        private void PersonalLeave_Click(object sender, RoutedEventArgs e)
+        {
+            PersonalLeave personalLeave = new PersonalLeave();
+            personalLeave.ShowDialog();
+        }
+
+        private void CollectiveLeave_Click(object sender, RoutedEventArgs e)
+        {
+            CollectiveLeave collectiveLeave = new CollectiveLeave();
+            collectiveLeave.ShowDialog();
+        }
+
+        private void CreateJobRequest_Click(object sender, RoutedEventArgs e)
+        {
+            JobRequest createJobRequest = new JobRequest();
+            createJobRequest.ShowDialog();
+        }
     }
 }

@@ -24,7 +24,7 @@ namespace Barco
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-
+            Close(); 
         }
 
         private void SendButton_Click(object sender, RoutedEventArgs e)

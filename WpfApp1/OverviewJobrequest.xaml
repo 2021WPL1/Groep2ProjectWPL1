@@ -21,6 +21,7 @@
         <Label Content="JR number" HorizontalAlignment="Left" Margin="180,174,0,0" VerticalAlignment="Top" Height="30" Width="79"/>
         <Label Content="Test group number" HorizontalAlignment="Left" Margin="303,174,0,0" VerticalAlignment="Top" Height="30" Width="132"/>
         <Label Content="-" HorizontalAlignment="Left" Margin="264,170,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="699,51,0,0" VerticalAlignment="Top" Height="33" Width="45" Click="CancelButton_Click"/>
 
     </Grid>
 </Window>

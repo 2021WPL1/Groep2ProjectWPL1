@@ -19,7 +19,7 @@
         <Button x:Name="AddEquip" Content="Add" HorizontalAlignment="Left" Margin="725,110,0,0" VerticalAlignment="Top" Width="60" Height="24" Click="AddEquip_Click"/>
         <TextBox x:Name="EquipName" HorizontalAlignment="Left" Height="24" Margin="445,110,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="100"/>
         <TextBox x:Name="OcuppancyRate" HorizontalAlignment="Left" Height="24" Margin="555,110,0,0" TextWrapping="Wrap" Text="Occupancy Rate..." VerticalAlignment="Top" Width="100"/>
-        <ComboBox x:Name="NotificationOverbooking" HorizontalAlignment="Left" Margin="665,110,0,0" VerticalAlignment="Top" Width="40" SelectionChanged="ComboBox_SelectionChanged" Height="24" SelectedIndex="1">
+        <ComboBox x:Name="NotificationOverbooking" HorizontalAlignment="Left" Margin="665,110,0,0" VerticalAlignment="Top" Width="40" Height="24" SelectedIndex="1">
             <ComboBoxItem Content="Y"/>
         </ComboBox>
         <Button x:Name="ConfirmButton" Content="Confirm" HorizontalAlignment="Left" Margin="605,21,0,0" VerticalAlignment="Top" Width="75" Height="24" Click="ConfirmButton_Click"/>
