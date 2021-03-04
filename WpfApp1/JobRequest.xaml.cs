@@ -20,8 +20,10 @@ namespace Barco
         public JobRequest()
         {
             InitializeComponent();
-            
+            BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
+            imgJobRequest.Source = photo;
         }
+      
 
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
