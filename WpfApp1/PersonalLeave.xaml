@@ -1,0 +1,46 @@
+﻿<Window x:Class="Barco.PersonalLeave"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Barco"
+        mc:Ignorable="d"
+        Title="PersonalLeave" Height="450" Width="800">
+    <Grid>
+        <Button Content="Leave application form" HorizontalAlignment="Left" Margin="213,0,0,0" VerticalAlignment="Top" Height="60" Width="378" FontSize="18" FontFamily="Copperplate Gothic Bold" BorderBrush="#FFD8A8A8" Background="#FFEAE8E8"/>
+        <Label Content="Firstname and Lastname employee" HorizontalAlignment="Left" Margin="21,112,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtFirstname" HorizontalAlignment="Left" Margin="10,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Height="37"/>
+        <Label Content="Name leader" HorizontalAlignment="Left" Margin="484,105,0,0" VerticalAlignment="Top" Width="140"/>
+        <Label Content="Department" HorizontalAlignment="Left" Margin="278,112,0,0" VerticalAlignment="Top" Width="81"/>
+        <TextBox x:Name="txtNameLeader" HorizontalAlignment="Left" Margin="448,147,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168" Height="35"/>
+        <Label Content="Absent from" HorizontalAlignment="Left" Margin="4,279,0,0" VerticalAlignment="Top" Height="35" Width="108"/>
+        <Label Content="Absent until" HorizontalAlignment="Left" Margin="151,278,0,0" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.577,-0.541"/>
+        <DatePicker x:Name="AbsentFrom" HorizontalAlignment="Left" Margin="4,324,0,0" VerticalAlignment="Top" Height="24"/>
+        <DatePicker x:Name="AbsentUntil" HorizontalAlignment="Left" Margin="143,324,0,0" VerticalAlignment="Top" Height="25" Width="102"/>
+        <TextBox x:Name="txtReasonLeave" HorizontalAlignment="Left" Margin="136,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Height="60" Visibility="Visible"/>
+        <Label Content="Date request" HorizontalAlignment="Left" Margin="492,283,0,0" VerticalAlignment="Top" Height="28"/>
+        <DatePicker x:Name="DateRequest" HorizontalAlignment="Left" Margin="487,309,0,0" VerticalAlignment="Top" Height="25" Width="111"/>
+        <Button x:Name="SendButton" Content="Send" HorizontalAlignment="Left" Margin="450,355,0,0" VerticalAlignment="Top" Height="46" Width="85" Background="#FFEAE8E8" Foreground="Black" Click="SendButton_Click"/>
+        <Label Content="Manager/ leader" HorizontalAlignment="Left" Margin="464,197,0,0" VerticalAlignment="Top"/>
+        <CheckBox Content="Agree" HorizontalAlignment="Left" Margin="459,229,0,0" VerticalAlignment="Top" IsChecked="True"/>
+        <CheckBox Content="Not agree" HorizontalAlignment="Left" Margin="526,229,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="554,355,0,0" VerticalAlignment="Top" Height="46" Width="85" Background="#FFEAE8E8" Foreground="Black" Click="CancelButton_Click"/>
+        <ComboBox x:Name="Department" HorizontalAlignment="Left" Margin="240,148,0,0" VerticalAlignment="Top" Width="162" Height="35" SelectedIndex="0">
+            <ComboBoxItem Content="Choose your department"/>
+        </ComboBox>
+        <TextBox x:Name="txtLastName" HorizontalAlignment="Left" Margin="109,144,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Height="36"/>
+        <ComboBox Name="TypeOfLeave" HorizontalAlignment="Left" Margin="7,211,0,0" VerticalAlignment="Top" Width="117" SelectedIndex="0" Height="23">
+            <ComboBoxItem Content="Type of leave:"/>
+            <ComboBoxItem Content="Holiday"/>
+            <ComboBoxItem Content="Sick"/>
+            <ComboBoxItem Content="Half Day"/>
+            <ComboBoxItem Content="Unpaid"/>
+            <ComboBoxItem Content="Paid"/>
+            <ComboBoxItem Content="Maternity"/>
+        </ComboBox>
+        <Label x:Name="lblTest" Content="" HorizontalAlignment="Left" Margin="15,361,0,0" VerticalAlignment="Top" Width="127"/>
+
+
+
+    </Grid>
+</Window>
