@@ -36,7 +36,7 @@
                 </TransformGroup>
             </ListBox.RenderTransform>
         </ListBox>
-        <ListBox Margin="666,61,41,271" RenderTransformOrigin="0.5,0.5">
+        <ListBox Margin="666,61,41,270" RenderTransformOrigin="0.5,0.5">
             <ListBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>

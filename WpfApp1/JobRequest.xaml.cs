@@ -20,6 +20,7 @@ namespace Barco
         public JobRequest()
         {
             InitializeComponent();
+            
         }
     }
 }
