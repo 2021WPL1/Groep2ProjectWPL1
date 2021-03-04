@@ -26,7 +26,19 @@ namespace Barco
 
         public Barco2021Context context = new Barco2021Context();
 
-        
+        private void ApproveButton_Click(object sender, RoutedEventArgs e)
+        {
 
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
