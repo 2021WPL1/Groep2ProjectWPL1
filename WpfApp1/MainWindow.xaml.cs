@@ -24,6 +24,7 @@ namespace WpfApp1
         public MainWindow()
         {
             InitializeComponent();
+            
         }
 
         public Barco2021Context context = new Barco2021Context();
