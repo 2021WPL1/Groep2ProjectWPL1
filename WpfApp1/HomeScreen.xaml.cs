@@ -20,6 +20,10 @@ namespace Barco
         public HomeScreen()
         {
             InitializeComponent();
+            BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
+
+            imgBarco.Source = photo;
+
         }
       
 private void SeeAllRequests_Click(object sender, RoutedEventArgs e)
