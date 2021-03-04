@@ -105,16 +105,16 @@
         <CheckBox x:Name="cmGrnCompEut5" Content="" HorizontalAlignment="Left" Margin="400,335,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="cmGrnComp" Content="" HorizontalAlignment="Left" Margin="176,335,0,0" VerticalAlignment="Top" />
         <TextBlock HorizontalAlignment="Left" Margin="50,373,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Text="EUT foreseen"/><LineBreak/><Run Text="ava"/><Run Language="nl-be" Text="ilability date:"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="204,389,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtEUT1ForseenDate" HorizontalAlignment="Left" Margin="206,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42" RenderTransformOrigin="0.505,0.498"/>
-        <TextBox x:Name="txtEUT2ForseenDate" HorizontalAlignment="Left" Margin="252,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42"/>
-        <TextBox x:Name="txtEUT3ForseenDate" HorizontalAlignment="Left" Margin="299,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42"/>
-        <TextBox x:Name="txtEUT4ForseenDate" HorizontalAlignment="Left" Margin="346,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42"/>
-        <TextBox x:Name="txtEUT5ForseenDate" HorizontalAlignment="Left" Margin="392,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42"/>
         <Button x:Name="btnSend" Content="Send" HorizontalAlignment="Left" Margin="646,397,0,0" VerticalAlignment="Top"  Height="19" Width="39" Click="btnSend_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="572,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"><Run Text="Special remarks"/><Run Language="nl-be" Text=":"/></TextBlock>
         <TextBox x:Name="txtRemark" HorizontalAlignment="Left" Margin="475,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="284" Height="91"/>
         <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="698,397,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.357,0.726" Height="19" Click="btnCancel_Click"/>
+        <TextBlock HorizontalAlignment="Left" Margin="204,382,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <DatePicker x:Name="DatePickerEUT1" HorizontalAlignment="Left" Margin="212,373,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04"/>
+        <DatePicker x:Name="DatePickerEUT2" HorizontalAlignment="Left" Margin="258,373,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04"/>
+        <DatePicker x:Name="DatePickerEUT3" HorizontalAlignment="Left" Margin="305,373,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04"/>
+        <DatePicker x:Name="DatePickerEUT4" HorizontalAlignment="Left" Margin="352,373,0,0" VerticalAlignment="Top" Width="30" Height="25" DisplayDate="2021-03-04"/>
+        <DatePicker x:Name="DatePickerEUT5" HorizontalAlignment="Left" Margin="394,373,0,0" VerticalAlignment="Top" Width="30" Height="24" DisplayDate="2021-03-04"/>
 
     </Grid>
 </Window>
