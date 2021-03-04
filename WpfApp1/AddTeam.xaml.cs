@@ -49,6 +49,9 @@ namespace Barco
 
         }
 
-       
+        private void NotificationOverbooking_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
