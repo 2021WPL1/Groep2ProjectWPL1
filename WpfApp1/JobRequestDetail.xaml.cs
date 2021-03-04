@@ -9,24 +9,24 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Barco.Data;
 
 namespace Barco
 {
     /// <summary>
-    /// Interaction logic for OverviewJobRequest.xaml
+    /// Interaction logic for JobRequestDetail.xaml
     /// </summary>
-    public partial class OverviewJobRequest : Window
+    public partial class JobRequestDetail : Window
     {
-        public OverviewJobRequest()
+        public JobRequestDetail()
         {
             InitializeComponent();
-            
         }
 
-        public Barco2021Context context = new Barco2021Context();
-
-        
+       
+        private void btnClose_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
+        }
 
     }
 }
