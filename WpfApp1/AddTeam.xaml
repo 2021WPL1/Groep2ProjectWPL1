@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="AddTeam" Height="450" Width="800">
     <Grid>
-        <Label Content="Add team" Margin="208,5,444,0" VerticalAlignment="Top" FontSize="30"/>
         <TextBox x:Name="TeamName" HorizontalAlignment="Left" Height="24" Margin="89,105,0,0" TextWrapping="Wrap" Text="Team name..." VerticalAlignment="Top" Width="120"/>
         <Label Content="Team name" HorizontalAlignment="Left" Margin="9,101,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="Member" HorizontalAlignment="Left" Height="24" Margin="90,142,0,0" TextWrapping="Wrap" Text="Member..." VerticalAlignment="Top" Width="120"/>
@@ -19,13 +18,14 @@
         <Button x:Name="AddEquip" Content="Add" HorizontalAlignment="Left" Margin="725,110,0,0" VerticalAlignment="Top" Width="60" Height="24" Click="AddEquip_Click"/>
         <TextBox x:Name="EquipName" HorizontalAlignment="Left" Height="24" Margin="445,110,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="100"/>
         <TextBox x:Name="OcuppancyRate" HorizontalAlignment="Left" Height="24" Margin="555,110,0,0" TextWrapping="Wrap" Text="Occupancy Rate..." VerticalAlignment="Top" Width="100"/>
-        <ComboBox x:Name="NotificationOverbooking" HorizontalAlignment="Left" Margin="665,110,0,0" VerticalAlignment="Top" Width="40" SelectionChanged="ComboBox_SelectionChanged" Height="24" SelectedIndex="1">
+        <ComboBox x:Name="NotificationOverbooking" HorizontalAlignment="Left" Margin="665,110,0,0" VerticalAlignment="Top" Width="40"  Height="24" SelectedIndex="1" SelectionChanged="NotificationOverbooking_SelectionChanged">
             <ComboBoxItem Content="Y"/>
         </ComboBox>
-        <Button x:Name="ConfirmButton" Content="Confirm" HorizontalAlignment="Left" Margin="605,21,0,0" VerticalAlignment="Top" Width="75" Height="24" Click="ConfirmButton_Click"/>
-        <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="696,21,0,0" VerticalAlignment="Top" Width="75" Height="24" Click="CancelButton_Click"/>
+        <Button x:Name="ConfirmButton" Content="Confirm" HorizontalAlignment="Left" Margin="599,36,0,0" VerticalAlignment="Top" Width="75" Height="24" Click="ConfirmButton_Click"/>
+        <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="690,36,0,0" VerticalAlignment="Top" Width="75" Height="24" Click="CancelButton_Click"/>
         <ListBox x:Name="listEquipment" Margin="428,155,35,25"/>
         <Button x:Name="RemoveButton" Content="Remove" HorizontalAlignment="Left" Margin="313,246,0,0" VerticalAlignment="Top" Click="RemoveButton_Click"/>
         <ListBox x:Name="listMembers" Margin="12,181,529,27"/>
+        <Button Content="Add Team " HorizontalAlignment="Left" Margin="13,10,0,0" VerticalAlignment="Top" Height="75" Width="274" FontSize="18" FontWeight="Bold" IsEnabled="False"/>
     </Grid>
 </Window>

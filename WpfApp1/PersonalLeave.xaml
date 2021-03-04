@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="PersonalLeave" Height="450" Width="800">
     <Grid>
-        <Button Content="Leave application form" HorizontalAlignment="Left" Margin="3,3,0,0" VerticalAlignment="Top" Height="60" Width="378" FontSize="18" FontFamily="Copperplate Gothic Bold" BorderBrush="#FFD8A8A8" Background="#FFEAE8E8"/>
+        <Button Content="Leave application form" HorizontalAlignment="Left" Margin="3,3,0,0" VerticalAlignment="Top" Height="60" Width="378" FontSize="18" FontFamily="Copperplate Gothic Bold" BorderBrush="#FFD8A8A8" Background="#FFEAE8E8" IsEnabled="False"/>
         <Label Content=" Lastname " HorizontalAlignment="Left" Margin="131,164,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="Firstname" HorizontalAlignment="Left" Margin="15,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Height="37"/>
         <Label Content="Name leader" HorizontalAlignment="Left" Margin="476,163,0,0" VerticalAlignment="Top" Width="140"/>

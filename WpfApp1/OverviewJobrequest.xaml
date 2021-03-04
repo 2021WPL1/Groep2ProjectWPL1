@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="OverviewJobRequest" Height="450" Width="800">
     <Grid>
-        <Button Content="Overview JobRequest " HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" Height="75" Width="274" FontSize="18" FontWeight="Bold"/>
+        <Button Content="Overview JobRequest " HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" Height="75" Width="274" FontSize="18" FontWeight="Bold" IsEnabled="False"/>
         <Button x:Name="ApproveButton" Content="Approve" HorizontalAlignment="Left" Margin="590,190,0,0" VerticalAlignment="Top" Height="34" Width="50" Click="ApproveButton_Click"/>
         <Button x:Name="EditButton" Content="Edit" HorizontalAlignment="Left" Margin="654,190,0,0" VerticalAlignment="Top" Height="34" Width="50" Click="EditButton_Click"/>
         <Button x:Name="DeleteButton" Content="Delete" HorizontalAlignment="Left" Margin="717,190,0,0" VerticalAlignment="Top" Height="34" Width="50" Click="DeleteButton_Click"/>
