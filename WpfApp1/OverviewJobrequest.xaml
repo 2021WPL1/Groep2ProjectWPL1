@@ -21,8 +21,9 @@
         <Label Content="Test group number" HorizontalAlignment="Left" Margin="303,174,0,0" VerticalAlignment="Top" Height="30" Width="132"/>
         <Label Content="-" HorizontalAlignment="Left" Margin="264,170,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="655,78,0,0" VerticalAlignment="Top" Height="33" Width="45" Click="CancelButton_Click"/>
-        <Image x:Name="imgOverview" HorizontalAlignment="Left" Height="80" Margin="21,14,0,0" VerticalAlignment="Top" Width="215"/>
+        <Image x:Name="imgOverview" HorizontalAlignment="Left" Height="80" Margin="21,14,0,0" VerticalAlignment="Top" Width="215" Source="/img/logo.png"/>
         <Label Content="Overview Jobrequest" HorizontalAlignment="Left" Margin="536,16,0,0" VerticalAlignment="Top" Height="45" Width="257" FontSize="18"/>
+        <Button x:Name="ShowDetails" Content="Show details" HorizontalAlignment="Left" Margin="630,252,0,0" VerticalAlignment="Top" Height="26" Width="84" Click="ShowDetails_Click"/>
 
     </Grid>
 </Window>

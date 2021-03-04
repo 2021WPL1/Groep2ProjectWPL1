@@ -41,12 +41,20 @@ namespace Barco
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
+            JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen();
 
+            jobRequestAanpassen.ShowDialog();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void ShowDetails_Click(object sender, RoutedEventArgs e)
+        {
+            JobRequestDetail jobRequestDetail = new JobRequestDetail();
+            jobRequestDetail.ShowDialog();
         }
     }
 }
