@@ -7,6 +7,15 @@
         mc:Ignorable="d"
         Title="CollectiveLeave" Height="450" Width="800">
     <Grid>
+        <Button Content="Collective request" HorizontalAlignment="Left" Margin="18,9,0,0" VerticalAlignment="Top" Height="60" Width="378" FontSize="18" FontFamily="Copperplate Gothic Bold" BorderBrush="#FFD8A8A8" Background="#FFEAE8E8" Click="Button_Click"/>
+        <Button x:Name="SendButton" Content="Send" HorizontalAlignment="Left" Margin="582,340,0,0" VerticalAlignment="Top" Height="37" Width="74" Background="#FFEAE8E8" Foreground="Black" Click="SendButton_Click"/>
+        <Label Content="Start Holiday" HorizontalAlignment="Left" Margin="395,199,0,0" VerticalAlignment="Top"/>
+        <Label Content="End Holiday" HorizontalAlignment="Left" Margin="512,199,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="StartHoliday" HorizontalAlignment="Left" Margin="384,235,0,0" VerticalAlignment="Top" Width="105" Height="30"/>
+        <DatePicker x:Name="EndHoliday" HorizontalAlignment="Left" Margin="505,234,0,0" VerticalAlignment="Top" Height="30" Width="105"/>
+        <TextBox x:Name="NameHoliday" HorizontalAlignment="Left" Margin="38,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" Height="73"/>
+        <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="666,340,0,0" VerticalAlignment="Top" Height="39" Width="74" Background="#FFEAE8E8" Foreground="Black" Click="CancelButton_Click"/>
+        <ComboBox x:Name="ChooseDepartment" HorizontalAlignment="Left" Margin="58,133,0,0" VerticalAlignment="Top" Width="165" SelectedIndex="0">
         <Button Content="Collective request" HorizontalAlignment="Left" Margin="213,0,0,0" VerticalAlignment="Top" Height="60" Width="378" FontSize="18" FontFamily="Copperplate Gothic Bold" BorderBrush="#FFD8A8A8" Background="#FFEAE8E8" />
         <Button x:Name="SendButton" Content="Send" HorizontalAlignment="Left" Margin="591,378,0,0" VerticalAlignment="Top" Height="37" Width="74" Background="#FFEAE8E8" Foreground="Black" Click="SendButton_Click"/>
         <Label Content="Start Holiday" HorizontalAlignment="Left" Margin="440,78,0,0" VerticalAlignment="Top"/>
@@ -29,10 +38,7 @@
             <ComboBoxItem Content="Service desk"/>
             <ComboBoxItem Content="Health Care"/>
         </ComboBox>
-        <ComboBox x:Name="ChooseEmployees" HorizontalAlignment="Left" Margin="81,165,0,0" VerticalAlignment="Top" Width="165" SelectedIndex="0">
-            <ComboBoxItem Content="Choose the employees"/>
-        </ComboBox>
-        <Label Content="Name of the holiday:" HorizontalAlignment="Left" Margin="44,209,0,0" VerticalAlignment="Top" Width="133"/>
+        <Label Content="Name of the holiday:" HorizontalAlignment="Left" Margin="39,176,0,0" VerticalAlignment="Top" Width="133"/>
 
     </Grid>
 </Window>
