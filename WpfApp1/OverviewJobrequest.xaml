@@ -22,7 +22,7 @@
         <Label Content="-" HorizontalAlignment="Left" Margin="264,170,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="699,51,0,0" VerticalAlignment="Top" Height="33" Width="45" Click="CancelButton_Click"/>
         <Image x:Name="imgOverview" HorizontalAlignment="Left" Height="80" Margin="21,14,0,0" VerticalAlignment="Top" Width="215"/>
-        <Label Content="Overview Jobrequest" HorizontalAlignment="Left" Margin="294,43,0,0" VerticalAlignment="Top"  Height="72" Width="256" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
+        <Label Content="Overview Jobrequest" HorizontalAlignment="Left" Margin="294,14,0,0" VerticalAlignment="Top"  Height="72" Width="256" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
 
     </Grid>
 </Window>

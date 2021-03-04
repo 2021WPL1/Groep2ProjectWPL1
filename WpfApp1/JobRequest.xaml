@@ -115,8 +115,8 @@
         <DatePicker x:Name="DatePickerEUT3" HorizontalAlignment="Left" Margin="297,463,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04"/>
         <DatePicker x:Name="DatePickerEUT4" HorizontalAlignment="Left" Margin="344,463,0,0" VerticalAlignment="Top" Width="30" Height="25" DisplayDate="2021-03-04"/>
         <DatePicker x:Name="DatePickerEUT5" HorizontalAlignment="Center" Margin="0,463,0,0" VerticalAlignment="Top" Width="30" Height="24" DisplayDate="2021-03-04"/>
-        <Image x:Name="imgJobRequest" HorizontalAlignment="Left" Height="71" Margin="20,7,0,0" VerticalAlignment="Top" Width="171"/>
-        <Label Content="Job Request" HorizontalAlignment="Center" Margin="0,26,0,0" VerticalAlignment="Top"  Height="72" Width="256" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
+        <Image x:Name="imgJobRequest" HorizontalAlignment="Left" Height="71" Margin="10,18,0,0" VerticalAlignment="Top" Width="171"/>
+        <Label Content="Job Request" HorizontalAlignment="Center" Margin="0,18,0,0" VerticalAlignment="Top"  Height="72" Width="256" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
 
     </Grid>
 </Window>
