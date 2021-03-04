@@ -24,7 +24,7 @@ namespace Barco
 
         private void btnSaveChanges_Click(object sender, RoutedEventArgs e)
         {
-
+             
         }
 
         private void btnRemovePart_Click(object sender, RoutedEventArgs e)
@@ -34,14 +34,10 @@ namespace Barco
 
         private void btnAddPart_Click(object sender, RoutedEventArgs e)
         {
-
+             
         }
 
-        private void btnSendRequest_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
+        
         private void btnCancelRequest_Click(object sender, RoutedEventArgs e)
         {
             Close();

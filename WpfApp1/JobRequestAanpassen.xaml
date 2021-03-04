@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Barco"
         mc:Ignorable="d"
         Title="JobRequestAanpassen" Height="450" Width="800">
-    <Grid>
+    <Grid Margin="0,0,0,-35" Cursor="">
         <TextBlock HorizontalAlignment="Left" Margin="51,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Text="Requ"/><Run Language="nl-be" Text="e"/><Run Text="ster "/><Run Text="Initials"/></TextBlock>
         <TextBox x:Name="txtRequisterInitials" HorizontalAlignment="Left" Margin="51,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
         <TextBlock HorizontalAlignment="Left" Margin="51,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="EUT Projectname"/></TextBlock>
@@ -15,7 +15,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="306,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Job Nature"/></TextBlock>
         <ComboBox x:Name="comboBoxDivision" HorizontalAlignment="Left" Margin="176,58,0,0" VerticalAlignment="Top" Width="94"/>
         <ComboBox x:Name="comboBoxJobNature" HorizontalAlignment="Left" Margin="306,58,0,0" VerticalAlignment="Top" Width="94"/>
-        <ListBox x:Name="ListBoxPartNumber" Margin="483,62,224,269" RenderTransformOrigin="0.5,0.5">
+        <ListBox x:Name="ListBoxPartNumber" Margin="483,62,224,307" RenderTransformOrigin="0.5,0.5">
             <ListBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -26,7 +26,7 @@
             </ListBox.RenderTransform>
         </ListBox>
         <TextBlock HorizontalAlignment="Left" Margin="483,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="18"><Run Language="nl-be" Text="Eut partnumber"/></TextBlock>
-        <ListBox x:Name="ListBoxPartNetWeight" Margin="575,61,133,270" RenderTransformOrigin="0.5,0.5">
+        <ListBox x:Name="ListBoxPartNetWeight" Margin="575,61,133,308" RenderTransformOrigin="0.5,0.5">
             <ListBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -36,7 +36,7 @@
                 </TransformGroup>
             </ListBox.RenderTransform>
         </ListBox>
-        <ListBox x:Name="ListBoxPartNetWeight1" Margin="666,60,41,271" RenderTransformOrigin="0.5,0.5">
+        <ListBox x:Name="ListBoxPartNetWeight1" Margin="666,60,41,309" RenderTransformOrigin="0.5,0.5">
             <ListBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -54,8 +54,8 @@
         <TextBox x:Name="txtPartNumber" HorizontalAlignment="Left" Margin="483,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="14"/>
         <TextBox x:Name="txtPartNetWeight" HorizontalAlignment="Left" Margin="578,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="14"/>
         <TextBox x:Name="txtPartGrossWeight" HorizontalAlignment="Left" Margin="669,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="14"/>
-        <Button x:Name="btnAddPart" Content="Add" HorizontalAlignment="Left" Margin="594,0,0,0" VerticalAlignment="Center" Click="btnAddPart_Click" Width="46" Height="17"/>
-        <Button x:Name="btnRemovePart" Content="Remove" HorizontalAlignment="Left" Margin="594,229,0,0" VerticalAlignment="Top" Click="btnRemovePart_Click" Height="19"/>
+        <Button x:Name="btnAddPart" Content="Add" HorizontalAlignment="Left" Margin="594,218,0,0" VerticalAlignment="Top" Click="btnAddPart_Click" Width="46" Height="17"/>
+        <Button x:Name="btnRemovePart" Content="Remove" HorizontalAlignment="Left" Margin="652,216,0,0" VerticalAlignment="Top" Click="btnRemovePart_Click" Height="19"/>
         <TextBlock HorizontalAlignment="Left" Margin="51,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Batteries included:"/></TextBlock>
         <RadioButton x:Name="RBBatteriesYes" Content="Yes" HorizontalAlignment="Left" Margin="51,168,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="RBBatteriesNo" Content="No" HorizontalAlignment="Left" Margin="51,188,0,0" VerticalAlignment="Top"/>
@@ -106,22 +106,21 @@
         <CheckBox x:Name="cbGreenCompliance" Content="" HorizontalAlignment="Left" Margin="176,335,0,0" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="50,373,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Text="EUT foreseen"/><LineBreak/><Run Text="ava"/><Run Language="nl-be" Text="ilability date:"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="204,389,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <TextBox x:Name="txtEutForSeenDateEUT1" HorizontalAlignment="Left" Margin="206,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42" RenderTransformOrigin="0.505,0.498"/>
-        <TextBox x:Name="txtEutForSeenDateEUT2" HorizontalAlignment="Left" Margin="252,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42"/>
-        <TextBox x:Name="txtEutForSeenDateEUT3" HorizontalAlignment="Left" Margin="299,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42"/>
-        <TextBox x:Name="txtEutForSeenDateEUT4" HorizontalAlignment="Left" Margin="346,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42"/>
-        <TextBox x:Name="txtEutForSeenDateEUT5" HorizontalAlignment="Left" Margin="392,380,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="42"/>
-        <Button x:Name="btnSendRequest" Content="Send" HorizontalAlignment="Left" Margin="679,397,0,0" VerticalAlignment="Top" Height="19" Width="39" Click="btnSendRequest_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="572,270,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"><Run Text="Special remarks"/><Run Language="nl-be" Text=":"/></TextBlock>
         <TextBox x:Name="txtSpecialRemarks" HorizontalAlignment="Left" Margin="522,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" Height="91"/>
         <Button x:Name="btnCancelRequest" Content="Cancel" HorizontalAlignment="Left" Margin="728,397,0,0" VerticalAlignment="Top" Click="btnCancelRequest_Click" Height="19" Width="39"/>
-        <Button x:Name="btnSaveChanges" Content="Save changes" HorizontalAlignment="Left" Margin="572,393,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.289,0.634" Height="22" Width="77" Click="btnSaveChanges_Click"/>
+        <Button x:Name="btnSaveChanges" Content="Save changes" HorizontalAlignment="Left" Margin="637,397,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.289,0.634" Height="22" Width="77" Click="btnSaveChanges_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="176,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Request date"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="306,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="JR number"/></TextBlock>
-        <TextBox HorizontalAlignment="Left" Margin="306,108,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
-        <TextBox HorizontalAlignment="Left" Margin="438,241,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="109"/>
-        <Label Content="PVG &#xA;Responsible" HorizontalAlignment="Left" Margin="438,204,0,0" VerticalAlignment="Top" Width="96"/>
-        <Label x:Name="lblRequestDate" Content="'date'" HorizontalAlignment="Left" Margin="176,106,0,0" VerticalAlignment="Top" Width="94"/>
+        <TextBox HorizontalAlignment="Left" Margin="438,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="112"/>
+        <Label Content="PVG &#xA;Responsible" HorizontalAlignment="Left" Margin="438,202,0,0" VerticalAlignment="Top" Width="96" Height="47"/>
+        <Label x:Name="lblRequestDate" Content="Date content" HorizontalAlignment="Left" Margin="176,108,0,0" VerticalAlignment="Top" Width="83"/>
+        <Label x:Name="lblJobRequestNumber" Content="JRNumberContent" HorizontalAlignment="Left" Margin="300,104,0,0" VerticalAlignment="Top" Width="110"/>
+        <DatePicker x:Name="DatePickerEUT1" HorizontalAlignment="Left" Margin="212,382,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04"/>
+        <DatePicker x:Name="DatePickerEUT2" HorizontalAlignment="Left" Margin="258,382,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04"/>
+        <DatePicker x:Name="DatePickerEUT3" HorizontalAlignment="Left" Margin="305,382,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04"/>
+        <DatePicker x:Name="DatePickerEUT4" HorizontalAlignment="Left" Margin="352,383,0,0" VerticalAlignment="Top" Width="30" Height="25" DisplayDate="2021-03-04"/>
+        <DatePicker x:Name="DatePickerEUT5" HorizontalAlignment="Left" Margin="394,384,0,0" VerticalAlignment="Top" Width="30" Height="24" DisplayDate="2021-03-04"/>
 
     </Grid>
 </Window>
