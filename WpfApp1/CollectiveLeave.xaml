@@ -8,7 +8,6 @@
         Title="CollectiveLeave" Height="450" Width="800">
     <Grid>
         <TextBox x:Name="NameHoliday" HorizontalAlignment="Left" Margin="38,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" Height="73"/>
-        <Button Content="Collective request" HorizontalAlignment="Left" Margin="213,0,0,0" VerticalAlignment="Top" Height="60" Width="378" FontSize="18" FontFamily="Copperplate Gothic Bold" BorderBrush="#FFD8A8A8" Background="#FFEAE8E8" IsEnabled="False" />
         <Button x:Name="SendButton" Content="Send" HorizontalAlignment="Left" Margin="549,237,0,0" VerticalAlignment="Top" Height="37" Width="74" Background="#FFEAE8E8" Foreground="Black" Click="SendButton_Click"/>
         <Label Content="Start Holiday" HorizontalAlignment="Left" Margin="493,99,0,0" VerticalAlignment="Top"/>
         <Label Content="End Holiday" HorizontalAlignment="Left" Margin="609,99,0,0" VerticalAlignment="Top"/>
@@ -21,6 +20,8 @@
             <ComboBoxItem Content="Health Care"/>
         </ComboBox>
         <Label Content="Name of the holiday:" HorizontalAlignment="Left" Margin="39,176,0,0" VerticalAlignment="Top" Width="133"/>
+        <Image x:Name="imgCollectiveLeave" HorizontalAlignment="Left" Height="83" Margin="10,8,0,0" VerticalAlignment="Top" Width="193"/>
+        <Label Content="Collective leave form" HorizontalAlignment="Left" Margin="287,16,0,0" VerticalAlignment="Top" Height="50" Width="199" FontSize="18"/>
 
     </Grid>
 </Window>

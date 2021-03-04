@@ -21,7 +21,10 @@ namespace Barco
         public OverviewJobRequest()
         {
             InitializeComponent();
-            
+            BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
+            imgOverview.Source = photo;
+
+
         }
 
         public Barco2021Context context = new Barco2021Context();
