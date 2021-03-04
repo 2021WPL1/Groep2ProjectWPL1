@@ -21,7 +21,7 @@
         </ComboBox>
         <Label Content="Name of the holiday:" HorizontalAlignment="Left" Margin="39,176,0,0" VerticalAlignment="Top" Width="133"/>
         <Image x:Name="imgCollectiveLeave" HorizontalAlignment="Left" Height="83" Margin="10,8,0,0" VerticalAlignment="Top" Width="193"/>
-        <Label Content="Collective leave form" HorizontalAlignment="Left" Margin="287,16,0,0" VerticalAlignment="Top" Height="50" Width="199" FontSize="18"/>
+        <Label Content="Collective leave form" HorizontalAlignment="Left" Margin="576,13,0,0" VerticalAlignment="Top" Height="50" Width="199" FontSize="18"/>
 
     </Grid>
 </Window>
