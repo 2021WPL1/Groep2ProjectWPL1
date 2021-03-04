@@ -20,14 +20,22 @@
         <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="675,378,0,0" VerticalAlignment="Top" Height="39" Width="74" Background="#FFEAE8E8" Foreground="Black" Click="CancelButton_Click"/>
         <ListBox x:Name="listEmployees" Margin="373,166,121,104"/>
         <ComboBox x:Name="ChooseDepartment" HorizontalAlignment="Left" Margin="81,121,0,0" VerticalAlignment="Top" Width="165" SelectedIndex="0">
+
+        <TextBox x:Name="NameHoliday" HorizontalAlignment="Left" Margin="38,203,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" Height="73"/>
+        <Button Content="Collective request" HorizontalAlignment="Left" Margin="213,0,0,0" VerticalAlignment="Top" Height="60" Width="378" FontSize="18" FontFamily="Copperplate Gothic Bold" BorderBrush="#FFD8A8A8" Background="#FFEAE8E8" IsEnabled="False" />
+        <Button x:Name="SendButton" Content="Send" HorizontalAlignment="Left" Margin="549,237,0,0" VerticalAlignment="Top" Height="37" Width="74" Background="#FFEAE8E8" Foreground="Black" Click="SendButton_Click"/>
+        <Label Content="Start Holiday" HorizontalAlignment="Left" Margin="504,89,0,0" VerticalAlignment="Top"/>
+        <Label Content="End Holiday" HorizontalAlignment="Left" Margin="620,89,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="dateStartHoliday" HorizontalAlignment="Left" Margin="492,125,0,0" VerticalAlignment="Top" Width="106" Height="30"/>
+        <DatePicker x:Name="dateEndHoliday" HorizontalAlignment="Left" Margin="614,124,0,0" VerticalAlignment="Top" Height="30" Width="104"/>
+     
+        <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="633,237,0,0" VerticalAlignment="Top" Height="39" Width="74" Background="#FFEAE8E8" Foreground="Black" Click="CancelButton_Click"/>
+        <ComboBox x:Name="cbxChooseDepartment" HorizontalAlignment="Left" Margin="39,88,0,0" VerticalAlignment="Top" Width="165" SelectedIndex="0">
+
             <ComboBoxItem Content="Choose your department"/>
-            <ComboBoxItem Content="Service desk"/>
-            <ComboBoxItem Content="Health Care"/>
+           
         </ComboBox>
-        <ComboBox x:Name="ChooseEmployees" HorizontalAlignment="Left" Margin="81,165,0,0" VerticalAlignment="Top" Width="165" SelectedIndex="0">
-            <ComboBoxItem Content="Choose the employees"/>
-        </ComboBox>
-        <Label Content="Name of the holiday:" HorizontalAlignment="Left" Margin="44,209,0,0" VerticalAlignment="Top" Width="133"/>
+        <Label Content="Name of the holiday:" HorizontalAlignment="Left" Margin="39,176,0,0" VerticalAlignment="Top" Width="133"/>
 
     </Grid>
 </Window>
