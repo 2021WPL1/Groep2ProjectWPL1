@@ -9,7 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Barco.Data;
+//using Barco.Data;
 
 namespace Barco 
 {
@@ -24,7 +24,7 @@ namespace Barco
             
         }
 
-        public Barco2021Context context = new Barco2021Context();
+        //public Barco2021Context context = new Barco2021Context();
 
         private void ApproveButton_Click(object sender, RoutedEventArgs e)
         {
