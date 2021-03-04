@@ -102,7 +102,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="176,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Request date"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="306,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="JR number"/></TextBlock>
         <TextBox HorizontalAlignment="Left" Margin="438,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="112" IsReadOnly="True"/>
-        <Label Content="PVG &#xA;Responsible" HorizontalAlignment="Left" Margin="438,202,0,0" VerticalAlignment="Top" Width="96" Height="47"/>
+        <Label Content="PVG &#xA;Responsible" HorizontalAlignment="Left" Margin="438,196,0,0" VerticalAlignment="Top" Width="96" Height="47"/>
         <Label x:Name="lblRequestDate" Content="Date content" HorizontalAlignment="Left" Margin="176,108,0,0" VerticalAlignment="Top" Width="83"/>
         <Label x:Name="lblJobRequestNumber" Content="JRNumberContent" HorizontalAlignment="Left" Margin="300,104,0,0" VerticalAlignment="Top" Width="110"/>
         <Label x:Name="lblExpectedEndDate" Content="end date label" HorizontalAlignment="Left" Margin="306,132,0,0" VerticalAlignment="Top" Width="104"/>

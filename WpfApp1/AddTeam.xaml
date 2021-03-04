@@ -12,13 +12,10 @@
         <Label Content="Team name" HorizontalAlignment="Left" Margin="9,101,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="Member" HorizontalAlignment="Left" Height="24" Margin="90,142,0,0" TextWrapping="Wrap" Text="Member..." VerticalAlignment="Top" Width="120"/>
         <Label Content="Members" HorizontalAlignment="Left" Margin="10,138,0,0" VerticalAlignment="Top"/>
-        <Button x:Name="AddMember" Content="Add Member" HorizontalAlignment="Left" Margin="224,142,0,0" VerticalAlignment="Top" Width="60" Height="24" Click="AddMember_Click"/>
+        <Button x:Name="AddMember" Content="Add Member" HorizontalAlignment="Left" Margin="224,142,0,0" VerticalAlignment="Top" Width="78" Height="24" Click="AddMember_Click"/>
         <TextBox HorizontalAlignment="Left" Height="24" Margin="445,110,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="100"/>
         <Label Content="Equipment" HorizontalAlignment="Center" Margin="0,106,0,0" VerticalAlignment="Top"/>
         <TextBox HorizontalAlignment="Left" Height="24" Margin="555,110,0,0" TextWrapping="Wrap" Text="Occupancy Rate..." VerticalAlignment="Top" Width="100"/>
-        <ComboBox HorizontalAlignment="Left" Margin="665,110,0,0" VerticalAlignment="Top" Width="40" SelectionChanged="ComboBox_SelectionChanged" Height="24">
-            <ComboBoxItem>Y</ComboBoxItem>
-        </ComboBox>
         <Button x:Name="AddEquip" Content="Add" HorizontalAlignment="Left" Margin="725,110,0,0" VerticalAlignment="Top" Width="60" Height="24" Click="AddEquip_Click"/>
         <TextBox x:Name="EquipName" HorizontalAlignment="Left" Height="24" Margin="445,110,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="100"/>
         <TextBox x:Name="OcuppancyRate" HorizontalAlignment="Left" Height="24" Margin="555,110,0,0" TextWrapping="Wrap" Text="Occupancy Rate..." VerticalAlignment="Top" Width="100"/>

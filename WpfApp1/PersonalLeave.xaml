@@ -7,20 +7,12 @@
         mc:Ignorable="d"
         Title="PersonalLeave" Height="450" Width="800">
     <Grid>
-        <Button Content="Leave application form" HorizontalAlignment="Left" Margin="3,3,0,0" VerticalAlignment="Top" Height="60" Width="378" FontSize="18" FontFamily="Copperplate Gothic Bold" BorderBrush="#FFD8A8A8" Background="#FFEAE8E8" IsEnabled="False"/>
-        <Label Content="Firstname and Lastname employee" HorizontalAlignment="Left" Margin="26,156,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="Firstname" HorizontalAlignment="Left" Margin="15,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Height="37"/>
-        <Label Content="Name leader" HorizontalAlignment="Left" Margin="609,165,0,0" VerticalAlignment="Top" Width="140"/>
-        <Label Content="Department" HorizontalAlignment="Left" Margin="283,156,0,0" VerticalAlignment="Top" Width="81"/>
-        <TextBox x:Name="NameLeader" HorizontalAlignment="Left" Margin="582,198,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168" Height="35"/>
-
         <Button Content="Leave application form" HorizontalAlignment="Left" Margin="3,3,0,0" VerticalAlignment="Top" Height="60" Width="378" FontSize="18" FontFamily="Copperplate Gothic Bold" BorderBrush="#FFD8A8A8" Background="#FFEAE8E8"/>
         <Label Content=" Lastname " HorizontalAlignment="Left" Margin="131,164,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="Firstname" HorizontalAlignment="Left" Margin="15,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90" Height="37"/>
         <Label Content="Name leader" HorizontalAlignment="Left" Margin="476,163,0,0" VerticalAlignment="Top" Width="140"/>
         <Label Content="Department" HorizontalAlignment="Left" Margin="283,164,0,0" VerticalAlignment="Top" Width="81"/>
         <TextBox x:Name="NameLeader" HorizontalAlignment="Left" Margin="447,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="168" Height="35"/>
-
         <Label Content="Absent from" HorizontalAlignment="Left" Margin="29,274,0,0" VerticalAlignment="Top" Height="35" Width="108"/>
         <Label Content="Absent until" HorizontalAlignment="Left" Margin="232,271,0,0" VerticalAlignment="Top" Height="28" RenderTransformOrigin="0.577,-0.541"/>
         <DatePicker x:Name="AbsentFrom" HorizontalAlignment="Left" Margin="107,273,0,0" VerticalAlignment="Top" Height="24"/>
