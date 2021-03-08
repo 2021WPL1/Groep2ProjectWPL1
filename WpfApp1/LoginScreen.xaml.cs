@@ -13,31 +13,24 @@ using System.Windows.Shapes;
 namespace Barco
 {
     /// <summary>
-    /// Interaction logic for PersonalLeave.xaml
+    /// Interaction logic for LoginScreen.xaml
     /// </summary>
-    public partial class PersonalLeave : Window
+    public partial class LoginScreen : Window
     {
-        public PersonalLeave()
+        public LoginScreen()
         {
             InitializeComponent();
             BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
-
-           PLBarco.Source = photo;
+            imgLogin.Source = photo;
         }
+
     
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        private void LoginScreen_Click(object sender, RoutedEventArgs e)
         {
-            Close(); 
-        }
-
-        private void SendButton_Click(object sender, RoutedEventArgs e)
-        {
-            string firstname = Firstname.Text;
-            string lastname = LastName.Text;
-            string nameLeader = NameLeader.Text;
-
-            
+            Form form = new Form();
+            Close();
+            form.ShowDialog();
         }
     }
 }

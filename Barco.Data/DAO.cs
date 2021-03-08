@@ -31,7 +31,6 @@ namespace Barco.Data
             context.SaveChanges();
         }
 
-      //bianca
       // add a new person in the database
        public Person AddPerson(string abb, string firstname, string lastname)
         {
@@ -46,7 +45,6 @@ namespace Barco.Data
             return person;
         } 
  
-        //bianca
         // get a person with the abbreviation
         public Person getPersonWithAbb(string abb)
         {
@@ -54,7 +52,6 @@ namespace Barco.Data
 
         }
 
-        //bianca
         // delete a person from the database
       public void removePerson(string abb)
             {
@@ -62,14 +59,12 @@ namespace Barco.Data
                 saveChanges();
             }
 
-        //bianca
         //  get the request's date
         public RqRequest getRequestDate()
         {
             return context.RqRequest.FirstOrDefault(a => a.RequestDate == DateTime.Now);
 
         }
-
 
         // add current date in the database
           public RqRequest addRequestDate()
@@ -86,13 +81,11 @@ namespace Barco.Data
           }
 
 
-
-        //bianca
+        
         //job nature
         public RqRequest getJobNature()
         {
             return context.RqRequest.FirstOrDefault(a => a.JobNature == "NULL");
-
         }
 
     }

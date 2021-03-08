@@ -28,7 +28,8 @@ namespace Barco
 
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
-        {   
+        {
+
         }
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
@@ -38,6 +39,12 @@ namespace Barco
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show(DatePickerEUT1.SelectedDate.ToString());
+            MessageBox.Show(DatePickerEUT2.SelectedDate.ToString());
+            MessageBox.Show(DatePickerEUT3.SelectedDate.ToString());
+            MessageBox.Show(DatePickerEUT4.SelectedDate.ToString());
+            MessageBox.Show(DatePickerEUT5.SelectedDate.ToString());
+
 
         }
 
@@ -46,7 +53,7 @@ namespace Barco
             Close(); 
         }
 
-
+        
 
     }
 }

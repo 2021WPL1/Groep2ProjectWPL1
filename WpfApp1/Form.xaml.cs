@@ -13,31 +13,31 @@ using System.Windows.Shapes;
 namespace Barco
 {
     /// <summary>
-    /// Interaction logic for PersonalLeave.xaml
+    /// Interaction logic for Form.xaml
     /// </summary>
-    public partial class PersonalLeave : Window
+    public partial class Form : Window
     {
-        public PersonalLeave()
+        public Form()
         {
             InitializeComponent();
             BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
-
-           PLBarco.Source = photo;
-        }
-    
-
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            Close(); 
+            imgLoginForm.Source = photo;
         }
 
-        private void SendButton_Click(object sender, RoutedEventArgs e)
+        private void LoginForm_Click(object sender, RoutedEventArgs e)
         {
-            string firstname = Firstname.Text;
-            string lastname = LastName.Text;
-            string nameLeader = NameLeader.Text;
+            string email = EmailTextBox.Text;
+            string password = PasswordTextBox.Text;
 
-            
+
+            HomeScreen homeScreen = new HomeScreen();
+            homeScreen.ShowDialog();
+
+        }
+
+        private void CancelForm_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

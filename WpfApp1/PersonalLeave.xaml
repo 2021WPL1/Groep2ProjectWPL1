@@ -29,14 +29,14 @@
         </DatePicker>
         <Button x:Name="SendButton" Content="Send" HorizontalAlignment="Left" Margin="564,312,0,0" VerticalAlignment="Top" Height="46" Width="85" Background="#FFEAE8E8" Foreground="Black" Click="SendButton_Click"/>
         <Label Content="Manager/ leader" HorizontalAlignment="Left" Margin="228,336,0,0" VerticalAlignment="Top"/>
-        <CheckBox Content="Agree" HorizontalAlignment="Left" Margin="223,368,0,0" VerticalAlignment="Top" IsChecked="True"/>
-        <CheckBox Content="Not agree" HorizontalAlignment="Left" Margin="290,368,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="Agree" Content="Agree" HorizontalAlignment="Left" Margin="223,368,0,0" VerticalAlignment="Top" IsChecked="False"/>
+        <CheckBox x:Name="NotAgree" Content="Not agree" HorizontalAlignment="Left" Margin="290,368,0,0" VerticalAlignment="Top" IsChecked="False"/>
         <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="668,312,0,0" VerticalAlignment="Top" Height="46" Width="85" Background="#FFEAE8E8" Foreground="Black" Click="CancelButton_Click"/>
         <ComboBox x:Name="Department" HorizontalAlignment="Left" Margin="245,190,0,0" VerticalAlignment="Top" Width="162" Height="32" SelectedIndex="0">
             <ComboBoxItem Content="Choose your department"/>
         </ComboBox>
         <TextBox x:Name="LastName" HorizontalAlignment="Left" Margin="114,188,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="108" Height="36"/>
-        <ComboBox Name="TypeOfLeave" HorizontalAlignment="Left" Margin="62,344,0,0" VerticalAlignment="Top" Width="117" SelectedIndex="0" Height="31">
+        <ComboBox x:Name="TypeOfLeave" HorizontalAlignment="Left" Margin="62,344,0,0" VerticalAlignment="Top" Width="117" SelectedIndex="0" Height="31">
             <ComboBoxItem Content="Type of leave:"/>
             <ComboBoxItem Content="Holiday"/>
             <ComboBoxItem Content="Sick"/>
