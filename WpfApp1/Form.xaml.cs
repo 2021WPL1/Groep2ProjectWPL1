@@ -27,8 +27,8 @@ namespace Barco
         private void LoginForm_Click(object sender, RoutedEventArgs e)
         {
             string email = EmailTextBox.Text;
-            string password = PasswordTextBox.Text;
-
+            string password = passwordBox.Password;
+            MessageBox.Show("You have successfully logged in!");
 
             HomeScreen homeScreen = new HomeScreen();
             homeScreen.ShowDialog();
@@ -37,7 +37,23 @@ namespace Barco
 
         private void CancelForm_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            const string message =
+      "Are you sure that you would like to close the form?";
+            const string caption = "Form Closing";
+            var result = MessageBox.Show(message, caption,
+                                         MessageBoxButton.YesNo,
+                                         MessageBoxImage.Question);
+
+            if (result == System.Windows.MessageBoxResult.Yes)
+            {
+                
+                LoginScreen login = new LoginScreen();
+                Close();
+                login.ShowDialog();
+            }
+          
+
+
         }
     }
 }
