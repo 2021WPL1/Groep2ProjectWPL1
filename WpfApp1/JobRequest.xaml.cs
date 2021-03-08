@@ -49,10 +49,9 @@ namespace Barco
 
         }
 
-        /*BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
-        imgJobRequest.Source = photo;*/
 
 
+        }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
@@ -144,7 +143,9 @@ namespace Barco
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            Close(); 
+            HomeScreen homeScreen = new HomeScreen();
+            Close();
+            homeScreen.ShowDialog();
         }
 
         private void refreshGUI()

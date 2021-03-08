@@ -10,7 +10,7 @@
         <Button x:Name="SendButton" Content="Send" HorizontalAlignment="Left" Margin="549,237,0,0" VerticalAlignment="Top" Height="39" Width="74"  Click="SendButton_Click"/>
         <Label Content="Start Holiday" HorizontalAlignment="Left" Margin="56,243,0,0" VerticalAlignment="Top"/>
         <Label Content="End Holiday" HorizontalAlignment="Left" Margin="172,243,0,0" VerticalAlignment="Top"/>
-        <DatePicker x:Name="dateStartHoliday" HorizontalAlignment="Left" Margin="44,279,0,0" VerticalAlignment="Top" Width="106" Height="30"/>
+        <DatePicker x:Name="dateStartHoliday" HorizontalAlignment="Left" Margin="44,279,0,0" VerticalAlignment="Top" Width="106" Height="30" DisplayDate="2021-03-08" FirstDayOfWeek="Monday" SelectedDateFormat="Long"/>
         <DatePicker x:Name="dateEndHoliday" HorizontalAlignment="Left" Margin="166,278,0,0" VerticalAlignment="Top" Height="30" Width="104"/>
         <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="633,237,0,0" VerticalAlignment="Top" Height="39" Width="74"   Click="CancelButton_Click"/>
         <ComboBox x:Name="cbxChooseDepartment" HorizontalAlignment="Left" Margin="174,141,0,0" VerticalAlignment="Top" Width="165" SelectedIndex="0"/>
@@ -20,7 +20,7 @@
         <Image x:Name="imgCollectiveLeave" HorizontalAlignment="Left" Height="83" Margin="10,10,0,0" VerticalAlignment="Top" Width="193"/>
         <Label Content="Collective leave form" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Height="72" Width="256" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
 
-        <ComboBox HorizontalAlignment="Left" Margin="174,180,0,0" VerticalAlignment="Top" Width="120">
+        <ComboBox x:Name="NationalHoliday" HorizontalAlignment="Left" Margin="174,180,0,0" VerticalAlignment="Top" Width="120">
             <ComboBoxItem Content="Nieuwjaar"/>
             <ComboBoxItem Content="Paasmaandag"/>
             <ComboBoxItem Content="Feest van de arbeid"/>

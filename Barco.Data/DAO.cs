@@ -32,8 +32,7 @@ namespace Barco.Data
             context.SaveChanges();
         }
 
-      //bianca
-      // add a new person in the database
+      // bianca- add a new person in the database
        public Person AddPerson(string abb, string firstname, string lastname)
         {
             Person person = new Person
@@ -45,10 +44,9 @@ namespace Barco.Data
             context.Person.Add(person);
             saveChanges();
             return person;
-        } 
- 
-        //bianca
-        // get a person with the abbreviation
+        }
+       
+        // bianca- get a person with the abbreviation
         public Person getPersonWithAbb(string abb)
         {
             return context.Person.FirstOrDefault(a => a.Afkorting == abb);
@@ -71,14 +69,43 @@ namespace Barco.Data
                 saveChanges();
             }
 
-        //bianca
-        //  get the request's date
+
+        
+        //  bianca- get the request's date
         public RqRequest getRequestDate()
         {
             return context.RqRequest.FirstOrDefault(a => a.RequestDate == DateTime.Now);
 
         }
+        //Jimmy
+        // get all the RqRequests 
+        public ICollection<RqRequest> getAllRqRequests()
+        {
+            return context.RqRequest.ToList();
+        }
+        //Jimmy
+        // Get RqRequest by Id
+        public RqRequest getRqRequestById(int id)
+        {
+            return context.RqRequest.FirstOrDefault(r => r.IdRequest == id);
+        }
 
+        //jimmy
+        // Get RqRequestDetails by Id
+        public RqRequestDetail getRqRequestDetailById(int id)
+        {
+            return context.RqRequestDetail.FirstOrDefault(r => r.IdRqDetail == id);
+        }
+
+       
+
+        //Jimmy
+        // Delete Selected JobRequest
+        public void deleteJobRequest(int id)
+        {
+            context.RqRequest.Remove(getRqRequestById(id));
+            saveChanges();
+        }
 
         // add current date in the database
           public RqRequest addRequestDate()
@@ -95,12 +122,15 @@ namespace Barco.Data
           }
 
 
+     
 
-        //bianca
-        //job nature
-        public RqRequest getJobNature()
-        {
-            return context.RqRequest.FirstOrDefault(a => a.JobNature == "NULL");
+        //bianca  - getDepartment
+      public List<RqBarcoDivision> getDepartment()
+        { 
+            return context.RqBarcoDivision.ToList();
+        }
+
+        //bianca - getNature
 
         }
 

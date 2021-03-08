@@ -18,15 +18,23 @@ namespace Barco
     /// </summary>
     public partial class CollectiveLeave : Window
     {
+        private DAO dao;
+
         Barco2021Context context = new Barco2021Context();
         public CollectiveLeave()
         {
             InitializeComponent();
             BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
             imgCollectiveLeave.Source = photo;
-            
+            dao = DAO.Instance();
+            cbxChooseDepartment.Items.Clear();
+            cbxChooseDepartment.ItemsSource = dao.getDepartment();
+            cbxChooseDepartment.DisplayMemberPath = "Afkorting";
+            cbxChooseDepartment.SelectedValuePath = "Afkorting";
+
+
         }
-       
+
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
 
@@ -34,12 +42,19 @@ namespace Barco
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            HomeScreen homescreen = new HomeScreen();
             Close();
+
+            homescreen.ShowDialog();
 
         }
 
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show(cbxChooseDepartment.SelectedValue.ToString() + " " 
+                + NationalHoliday.SelectionBoxItem.ToString() + " " 
+                + dateStartHoliday.SelectedDate + " " 
+                + dateEndHoliday.SelectedDate);
 
         }
     }

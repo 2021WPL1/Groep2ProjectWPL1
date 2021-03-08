@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Barco.Data;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,23 +19,56 @@ namespace Barco
     /// </summary>
     public partial class PersonalLeave : Window
     {
+        private DAO dao;
+
+        //bianca
         public PersonalLeave()
         {
             InitializeComponent();
             BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
-
            PLBarco.Source = photo;
-        }
-    
+            dao = DAO.Instance();
+            showDepartment();
 
+
+        }
+
+        //bianca
+        private void showDepartment()
+        {
+            Department.Items.Clear();
+            Department.ItemsSource = dao.getDepartment();
+            Department.DisplayMemberPath = "Afkorting";
+            Department.SelectedValuePath = "Afkorting";
+        }
+
+
+        //bianca
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            Close(); 
+            HomeScreen homeScreen = new HomeScreen();
+            Close();
+            homeScreen.ShowDialog();
         }
 
+        //bianca
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
+            string firstname = Firstname.Text;
+            string lastname = LastName.Text;
+            string nameLeader = NameLeader.Text;
 
+            
+            MessageBox.Show(DateRequest.SelectedDate.ToString() + "Firstname:" + firstname + " " + "Lastname:" + lastname);
+            MessageBox.Show("NameLeader:" + nameLeader + " "
+                + "Absent from:" + AbsentFrom.SelectedDate.ToString() +  "Absent Until:" + AbsentUntil.SelectedDate.ToString());
+            MessageBox.Show(TypeOfLeave.SelectionBoxItem.ToString());
         }
+       
+             
+           
+         
+        
+
     }
 }

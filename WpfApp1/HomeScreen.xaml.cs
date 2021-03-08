@@ -20,46 +20,46 @@ namespace Barco
     {
         private DAO dao;
 
+        //bianca
         public HomeScreen()
         {
             InitializeComponent();
             //BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "img/logo.png"));
             //imgBarco.Source = photo;
             dao = DAO.Instance();
-
-
         }
 
+        //bianca
         private void SeeAllRequests_Click(object sender, RoutedEventArgs e)
         {
             OverviewJobRequest overviewJobRequest = new OverviewJobRequest();
-
+            Close();
             overviewJobRequest.ShowDialog();
         }
 
+        //bianca
         private void PersonalLeave_Click(object sender, RoutedEventArgs e)
         {
             PersonalLeave personalLeave = new PersonalLeave();
+            Close();
+
             personalLeave.ShowDialog();
         }
-
+        //bianca
         private void CollectiveLeave_Click(object sender, RoutedEventArgs e)
         {
             CollectiveLeave collectiveLeave = new CollectiveLeave();
+            Close();
             collectiveLeave.ShowDialog();
         }
 
+        //bianca
         private void CreateJobRequest_Click(object sender, RoutedEventArgs e)
         {
             JobRequest createJobRequest = new JobRequest();
+            Close();
             createJobRequest.ShowDialog();
-            //string newPeople = dao.AddPerson("Test", "Nume", "Prenume").ToString();
-            //MessageBox.Show(newPeople);
-
-            // string newPeople = dao.addRequestDate().ToString();
-            //MessageBox.Show(newPeople);
-
-
+          
         }
 
     }
