@@ -18,9 +18,13 @@ namespace Barco
     /// </summary>
     public partial class JobRequestAanpassen : Window
     {
+        private DAO dao;
+
         public JobRequestAanpassen()
         {
             InitializeComponent();
+            dao = DAO.Instance();
+
         }
 
         private void btnSaveChanges_Click(object sender, RoutedEventArgs e)
@@ -46,8 +50,8 @@ namespace Barco
         public void ShowDialog(ref int IdJr)
         {
             int Idjr = IdJr;
-            RqRequest rqRequest = new dao.getRqRequestById(Idjr);
-            RqRequestDetail requestDetail = new dao.getRqRequestDetailById(Idjr);
+            RqRequest rqRequest =  dao.getRqRequestById(Idjr);
+            RqRequestDetail requestDetail =  dao.getRqRequestDetailById(Idjr);
             if (rqRequest.Battery == true)
             {
                 RBBatteriesYes.IsChecked = true;

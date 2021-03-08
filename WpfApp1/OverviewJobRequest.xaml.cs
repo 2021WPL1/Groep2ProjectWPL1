@@ -55,17 +55,17 @@ namespace Barco
 
         private void ApproveButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-            RqRequest rqRequest = new dao.getRqRequestById(Convert.ToInt32(listOverview.SelectedValue));
-            dao.editRequest(rqRequest, "JrStatus", true);
+            //try
+            //{
+            //RqRequest rqRequest = dao.getRqRequestById(Convert.ToInt32(listOverview.SelectedValue));
+            //dao.editRequestStatus(rqRequest, "JrStatus", true);
 
-            }
-            catch (SqlException ex)
-            {
+            //}
+            //catch (SqlException ex)
+            //{
 
-                MessageBox.Show(ex.Message);
-            }
+            //    MessageBox.Show(ex.Message);
+            //}
 
 
         }
@@ -92,7 +92,6 @@ namespace Barco
             int IdJr = Convert.ToInt32(listOverview.SelectedValue);
             jobRequestAanpassen.ShowDialog(ref IdJr);
 
-            jobRequestAanpassen.ShowDialog();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)

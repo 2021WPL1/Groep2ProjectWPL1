@@ -10,7 +10,7 @@
         <Button x:Name="ApproveButton" Content="Approve" HorizontalAlignment="Left" Margin="590,190,0,0" VerticalAlignment="Top" Height="34" Width="50" Click="ApproveButton_Click"/>
         <Button x:Name="EditButton" Content="Edit" HorizontalAlignment="Left" Margin="654,190,0,0" VerticalAlignment="Top" Height="34" Width="50" Click="EditButton_Click"/>
         <Button x:Name="DeleteButton" Content="Delete" HorizontalAlignment="Left" Margin="717,190,0,0" VerticalAlignment="Top" Height="34" Width="50" Click="DeleteButton_Click"/>
-        <ListView x:Name="listOverview" Margin="68,207,279,28" SelectionChanged="listOverview_SelectionChanged">
+        <ListView x:Name="listOverview" Margin="68,207,279,28" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
