@@ -9,8 +9,5 @@ namespace Barco.Data
         public string AfkDevision { get; set; }
         public string AfkPerson { get; set; }
         public string Pvggroup { get; set; }
-
-        public virtual RqBarcoDivision AfkDevisionNavigation { get; set; }
-        public virtual Person AfkPersonNavigation { get; set; }
     }
 }
