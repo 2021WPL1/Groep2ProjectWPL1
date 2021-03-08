@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -9,7 +10,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-//using Barco.Data;
+using System.Data;
+using Barco.Data;
 
 namespace Barco 
 {
@@ -18,6 +20,7 @@ namespace Barco
     /// </summary>
     public partial class OverviewJobRequest : Window
     {
+        private SqlConnection connection;
         public OverviewJobRequest()
         {
             InitializeComponent();
@@ -36,6 +39,22 @@ namespace Barco
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                string query = "DELETE FROM RqRequest where id = @RequestID";
+
+                SqlCommand sqlCommand = new SqlCommand(query, connection);
+
+                sqlCommand.Parameters.AddWithValue("@RequestID", listOverview.SelectedValue);
+
+                sqlCommand.ExecuteScalar();
+
+                showJobRequests();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
 
@@ -47,6 +66,35 @@ namespace Barco
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             Close();
+        }
+
+        private void showJobRequests()
+        {
+            try
+            {
+                string query = "SELECT JrNumber, BarcoDivision FROM RqRequest";
+
+                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, connection);
+
+                using (sqlDataAdapter)
+                {
+                    DataTable JobRequests = new DataTable();
+
+                    sqlDataAdapter.Fill(JobRequests);
+
+                    listOverview.DisplayMemberPath = "JrNumber \t" + " - " + "\t BarcoDivision";
+
+                    listOverview.SelectedValuePath = "Id";
+
+                    listOverview.ItemsSource = JobRequests.DefaultView;
+
+                }
+            }
+            catch (SqlException ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }
