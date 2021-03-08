@@ -47,14 +47,14 @@ namespace Barco
         {
 
         }
-
+        //bianca
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen();
 
             jobRequestAanpassen.ShowDialog();
         }
-
+        //bianca
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             HomeScreen homeScreen = new HomeScreen();
@@ -62,9 +62,11 @@ namespace Barco
             homeScreen.ShowDialog();
         }
 
+        //bianca
         private void ShowDetails_Click(object sender, RoutedEventArgs e)
         {
             JobRequestDetail jobRequestDetail = new JobRequestDetail();
+            Close();
             jobRequestDetail.ShowDialog();
         }
     }

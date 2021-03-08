@@ -84,18 +84,19 @@ namespace Barco.Data
           }
 
 
-        
-        // bianca- job nature
-        public RqRequest getJobNature()
-        {
-            return context.RqRequest.FirstOrDefault(a => a.JobNature == "NULL");
-        }
+     
 
-
-
+        //bianca  - getDepartment
       public List<RqBarcoDivision> getDepartment()
         { 
             return context.RqBarcoDivision.ToList();
+        }
+
+        //bianca - getNature
+
+        public List<RqJobNature> getNature()
+        {
+            return context.RqJobNature.ToList();
         }
 
     }

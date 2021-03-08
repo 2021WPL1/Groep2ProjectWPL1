@@ -21,21 +21,29 @@ namespace Barco
     {
         private DAO dao;
 
+        //bianca
         public PersonalLeave()
-        {// //bianca
+        {
             InitializeComponent();
             BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
            PLBarco.Source = photo;
             dao = DAO.Instance();
-            Department.Items.Clear();
-            Department.ItemsSource = dao.getDepartment();
-            Department.DisplayMemberPath = "Afkorting";
-            Department.SelectedValuePath = "Afkorting";
+            showDepartment();
 
 
         }
 
-        // //bianca
+        //bianca
+        private void showDepartment()
+        {
+            Department.Items.Clear();
+            Department.ItemsSource = dao.getDepartment();
+            Department.DisplayMemberPath = "Afkorting";
+            Department.SelectedValuePath = "Afkorting";
+        }
+
+
+        //bianca
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
             HomeScreen homeScreen = new HomeScreen();
@@ -43,12 +51,18 @@ namespace Barco
             homeScreen.ShowDialog();
         }
 
-        // //bianca
+        //bianca
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
             string firstname = Firstname.Text;
             string lastname = LastName.Text;
             string nameLeader = NameLeader.Text;
+
+            
+            MessageBox.Show(DateRequest.SelectedDate.ToString() + "Firstname:" + firstname + " " + "Lastname:" + lastname);
+            MessageBox.Show("NameLeader:" + nameLeader + " "
+                + "Absent from:" + AbsentFrom.SelectedDate.ToString() +  "Absent Until:" + AbsentUntil.SelectedDate.ToString());
+            MessageBox.Show(TypeOfLeave.SelectionBoxItem.ToString());
         }
        
              

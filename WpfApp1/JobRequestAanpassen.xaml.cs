@@ -17,9 +17,11 @@ namespace Barco
     /// </summary>
     public partial class JobRequestAanpassen : Window
     {
+
         public JobRequestAanpassen()
         {
             InitializeComponent();
+
         }
 
         private void btnSaveChanges_Click(object sender, RoutedEventArgs e)
@@ -37,7 +39,7 @@ namespace Barco
              
         }
 
-        
+        //bianca
         private void btnCancelRequest_Click(object sender, RoutedEventArgs e)
         {
             HomeScreen homeScreen = new HomeScreen();

@@ -22,12 +22,12 @@ namespace Barco
             InitializeComponent();
         }
 
-       
+       //bianca
         private void btnClose_Click(object sender, RoutedEventArgs e)
         {
-            HomeScreen homeScreen = new HomeScreen();
+            OverviewJobRequest overviewJobRequest = new OverviewJobRequest();
             Close();
-            homeScreen.ShowDialog();
+            overviewJobRequest.Show();
         }
 
     }

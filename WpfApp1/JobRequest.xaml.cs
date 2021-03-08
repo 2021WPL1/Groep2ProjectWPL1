@@ -18,15 +18,39 @@ namespace Barco
     /// </summary>
     public partial class JobRequest : Window
     {
+        private DAO dao;
         public JobRequest()
         {
             InitializeComponent();
             BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
             imgJobRequest.Source = photo;
+            dao = DAO.Instance();
+
+
+            showDepartment();
+             showJobNature();
+         
         }
-      
 
 
+        //bianca
+        private void showDepartment()
+        {
+            cmbDivision.Items.Clear();
+            cmbDivision.ItemsSource = dao.getDepartment();
+            cmbDivision.DisplayMemberPath = "Afkorting";
+            cmbDivision.SelectedValuePath = "Afkorting";
+
+        }
+
+        //bianca
+        private void showJobNature()
+        {
+            cmbJobNature.Items.Clear();
+            cmbJobNature.ItemsSource = dao.getNature();
+            cmbJobNature.DisplayMemberPath = "Nature";
+            cmbJobNature.SelectedValuePath = "Nature";
+        }
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
 

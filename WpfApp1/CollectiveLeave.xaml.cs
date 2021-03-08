@@ -51,6 +51,10 @@ namespace Barco
 
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
+            MessageBox.Show(cbxChooseDepartment.SelectedValue.ToString() + " " 
+                + NationalHoliday.SelectionBoxItem.ToString() + " " 
+                + dateStartHoliday.SelectedDate + " " 
+                + dateEndHoliday.SelectedDate);
 
         }
     }
