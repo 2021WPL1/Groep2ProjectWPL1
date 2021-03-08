@@ -24,13 +24,14 @@ namespace Barco.Data
         public virtual DbSet<RqRequest> RqRequest { get; set; }
         public virtual DbSet<RqRequestDetail> RqRequestDetail { get; set; }
         public virtual DbSet<RqTestDevision> RqTestDevision { get; set; }
+        public virtual DbSet<TestDevision> TestDevision { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB; Initial Catalog=Barco2021");
+                optionsBuilder.UseSqlServer("Server = LAPTOP-V9E3B1RE\\VIVES; Database=Barco2021;Trusted_Connection = True;");
             }
         }
 
@@ -108,18 +109,6 @@ namespace Barco.Data
                 entity.Property(e => e.Pvggroup)
                     .HasColumnName("PVGGroup")
                     .HasMaxLength(10);
-
-                entity.HasOne(d => d.AfkDevisionNavigation)
-                    .WithMany(p => p.RqBarcoDivisionPerson)
-                    .HasForeignKey(d => d.AfkDevision)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Rq_BarcoDivisionPerson_Rq_BarcoDivision_FK");
-
-                entity.HasOne(d => d.AfkPersonNavigation)
-                    .WithMany(p => p.RqBarcoDivisionPerson)
-                    .HasForeignKey(d => d.AfkPerson)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("Rq_BarcoDivisionPerson_Person_FK");
             });
 
             modelBuilder.Entity<RqJobNature>(entity =>
@@ -267,6 +256,17 @@ namespace Barco.Data
                 entity.Property(e => e.Naam)
                     .HasColumnName("naam")
                     .HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<TestDevision>(entity =>
+            {
+                entity.Property(e => e.Id)
+                    .HasColumnName("ID")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.Name)
+                    .IsRequired()
+                    .HasMaxLength(510);
             });
 
             OnModelCreatingPartial(modelBuilder);

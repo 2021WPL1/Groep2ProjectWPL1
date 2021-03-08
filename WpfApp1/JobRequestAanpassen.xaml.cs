@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Barco.Data;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,10 +18,12 @@ namespace Barco
     /// </summary>
     public partial class JobRequestAanpassen : Window
     {
+        private DAO dao;
 
         public JobRequestAanpassen()
         {
             InitializeComponent();
+            dao = DAO.Instance();
 
         }
 
@@ -45,6 +48,28 @@ namespace Barco
             HomeScreen homeScreen = new HomeScreen();
             Close();
             homeScreen.ShowDialog();
+        }
+        public void ShowDialog(ref int IdJr)
+        {
+            int Idjr = IdJr;
+            RqRequest rqRequest =  dao.getRqRequestById(Idjr);
+            RqRequestDetail requestDetail =  dao.getRqRequestDetailById(Idjr);
+            if (rqRequest.Battery == true)
+            {
+                RBBatteriesYes.IsChecked = true;
+            }
+            else
+            {
+                RBBatteriesNo.IsChecked = true;
+            }
+            txtProjectName.Text = rqRequest.EutProjectname;
+            txtRequisterInitials.Text = rqRequest.Requester;
+            comboBoxDivision.SelectedItem = rqRequest.BarcoDivision;
+            comboBoxJobNature.SelectedItem = rqRequest.JobNature;
+            lblRequestDate.Content = rqRequest.RequestDate;
+            lblJobRequestNumber.Content = rqRequest.JrNumber;
+            txtPvgRes.Text = requestDetail.Pvgresp;
+            DatePickerExpectedEndDate.SelectedDate = rqRequest.ExpectedEnddate;
         }
     }
 }

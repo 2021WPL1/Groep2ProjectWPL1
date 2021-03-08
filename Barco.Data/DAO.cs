@@ -68,8 +68,37 @@ namespace Barco.Data
             return context.RqRequest.FirstOrDefault(a => a.RequestDate == DateTime.Now);
 
         }
+        //Jimmy
+        // get all the RqRequests 
+        public ICollection<RqRequest> getAllRqRequests()
+        {
+            return context.RqRequest.ToList();
+        }
+        //Jimmy
+        // Get RqRequest by Id
+        public RqRequest getRqRequestById(int id)
+        {
+            return context.RqRequest.FirstOrDefault(r => r.IdRequest == id);
+        }
 
-        // bianca- add current date in the database
+        //jimmy
+        // Get RqRequestDetails by Id
+        public RqRequestDetail getRqRequestDetailById(int id)
+        {
+            return context.RqRequestDetail.FirstOrDefault(r => r.IdRqDetail == id);
+        }
+
+       
+
+        //Jimmy
+        // Delete Selected JobRequest
+        public void deleteJobRequest(int id)
+        {
+            context.RqRequest.Remove(getRqRequestById(id));
+            saveChanges();
+        }
+
+        // add current date in the database
           public RqRequest addRequestDate()
           { RqRequest rqRequest = new RqRequest
              { 

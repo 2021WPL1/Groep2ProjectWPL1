@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Data.SqlClient;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,8 +11,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Data;
 using Barco.Data;
-using Microsoft.EntityFrameworkCore;
+using System.Collections;
 
 namespace Barco 
 {
@@ -19,40 +21,75 @@ namespace Barco
     /// Interaction logic for OverviewJobRequest.xaml
     /// </summary>
     public partial class OverviewJobRequest : Window
-    { 
-       private static Barco2021Context context = new Barco2021Context();
-
+    {
+        private DAO dao;
 
         public OverviewJobRequest()
         {
+
             InitializeComponent();
+            dao = DAO.Instance();
+            loadJobRequests();
+
             BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
             imgOverview.Source = photo;
 
-            //  MessageBox.Show(context.Person.FirstOrDefault(a => a.Afkorting == "BAS").Afkorting.ToString());
 
-
-          //   MessageBox.Show(context.RqRequest.FirstOrDefault(a => a.RequestDate == DateTime.Now).RequestDate.ToString());
-
-           
+        }
+        private void UpdateListBox(ListBox listBox, string display, string value, IEnumerable source)
+        {
+            listBox.DisplayMemberPath = display;
+            listBox.SelectedValuePath = value;
+            listBox.ItemsSource = source;
         }
 
+        private void loadJobRequests()
+        {
+            ICollection<RqRequest> rqRequests = dao.getAllRqRequests();
+            UpdateListBox(listOverview, "JrNumber", "Id", rqRequests);
+
+            
+        }
 
         private void ApproveButton_Click(object sender, RoutedEventArgs e)
         {
+            //try
+            //{
+            //RqRequest rqRequest = dao.getRqRequestById(Convert.ToInt32(listOverview.SelectedValue));
+            //dao.editRequestStatus(rqRequest, "JrStatus", true);
+
+            //}
+            //catch (SqlException ex)
+            //{
+
+            //    MessageBox.Show(ex.Message);
+            //}
+
 
         }
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                dao.deleteJobRequest(Convert.ToInt32(listOverview.SelectedValue));
+
+
+                loadJobRequests();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
         //bianca
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
             JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen();
+            int IdJr = Convert.ToInt32(listOverview.SelectedValue);
+            jobRequestAanpassen.ShowDialog(ref IdJr);
 
-            jobRequestAanpassen.ShowDialog();
         }
         //bianca
         private void CancelButton_Click(object sender, RoutedEventArgs e)
