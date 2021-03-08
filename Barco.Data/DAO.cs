@@ -71,7 +71,7 @@ namespace Barco.Data
         }
         //Jimmy
         // get all the RqRequests 
-        public List<RqRequest> getAllRqRequests()
+        public ICollection<RqRequest> getAllRqRequests()
         {
             return context.RqRequest.ToList();
         }

@@ -45,8 +45,9 @@ namespace Barco
 
         private void loadJobRequests()
         {
-            List<RqRequest> rqRequests = dao.getAllRqRequests();
+            ICollection<RqRequest> rqRequests = dao.getAllRqRequests();
             UpdateListBox(listOverview, "JrNumber", "Id", rqRequests);
+
             
         }
 
