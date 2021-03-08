@@ -24,6 +24,8 @@ namespace Barco
             InitializeComponent();
             dao = DAO.Instance();
             load(1002); //TODO bij oproepen van constructor id mee geven
+            //er moet data in de database zijn om dit te doen werken
+            
         }
 
         //laad de gegevens in van een jobrequest op basis van het id
@@ -54,7 +56,7 @@ namespace Barco
             txtLinkToTestPlan.Text = optionel.Link;
             txtSpecialRemarks.Text = optionel.Remarks;
 
-            //do-while extra aanmaken voor partweight met de nieuwe database
+            //do-while extra aanmaken voor partweight(net- en gross-) met de nieuwe database
             string s = req.EutPartnumbers;
             do
             {
@@ -63,6 +65,7 @@ namespace Barco
 
             } while (s.Contains(";"));
             ListBoxPartNumber.Items.Add(s);
+
 
         }
 
