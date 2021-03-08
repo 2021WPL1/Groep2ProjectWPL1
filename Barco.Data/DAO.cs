@@ -144,5 +144,24 @@ namespace Barco.Data
             return context.RqJobNature.ToList();
         }
 
+        //request detail opvragen op basis van selected index
+        public RqRequest getRequest(int requestId)
+        {
+            return context.RqRequest.Where(rq => rq.IdRequest == requestId).FirstOrDefault() ;
+        }
+        //geeft een requestDetail object op basis van het juiste requestID veld
+        public RqRequestDetail getRequestDetail(int requestId)
+        {
+            return context.RqRequestDetail.Where(det => det.IdRequest == requestId).FirstOrDefault();
+        }
+        //geeft een eut object op basis van het id van RequestDetail tabel
+        public Eut getEut(int idReqDet)
+        {
+            return context.Eut.Where(eut => eut.IdRqDetail == idReqDet).FirstOrDefault() ;
+        }
+        public RqOptionel getOptionel(int idReq)
+        {
+            return context.RqOptionel.Where(opt => opt.IdRequest == idReq).FirstOrDefault();
+        }
     }
 }

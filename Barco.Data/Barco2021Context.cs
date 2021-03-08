@@ -24,7 +24,7 @@ namespace Barco.Data
         public virtual DbSet<RqRequest> RqRequest { get; set; }
         public virtual DbSet<RqRequestDetail> RqRequestDetail { get; set; }
         public virtual DbSet<RqTestDevision> RqTestDevision { get; set; }
-        public virtual DbSet<TestDevision> TestDevision { get; set; }
+        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -262,16 +262,7 @@ namespace Barco.Data
                     .HasMaxLength(50);
             });
 
-            modelBuilder.Entity<TestDevision>(entity =>
-            {
-                entity.Property(e => e.Id)
-                    .HasColumnName("ID")
-                    .ValueGeneratedNever();
-
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(510);
-            });
+            
 
             OnModelCreatingPartial(modelBuilder);
         }
