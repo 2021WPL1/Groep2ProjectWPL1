@@ -14,7 +14,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="168,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Division"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="298,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Job Nature"/></TextBlock>
         <ComboBox x:Name="cmbDivision" HorizontalAlignment="Left" Margin="168,148,0,0" VerticalAlignment="Top" Width="94"/>
-        <ComboBox x:Name="cmbJobNature" HorizontalAlignment="Left" Margin="298,148,0,0" VerticalAlignment="Top" Width="94"/>
+        <ComboBox x:Name="cmbJobNature" HorizontalAlignment="Left" Margin="298,148,0,0" VerticalAlignment="Top" Width="94" Background="Red" BorderBrush="Red"/>
         <ListBox x:Name="lstbEutPartNr" Margin="460,165,247,302" RenderTransformOrigin="0.5,0.5">
             <ListBox.RenderTransform>
                 <TransformGroup>
@@ -115,8 +115,9 @@
         <DatePicker x:Name="DatePickerEUT3" HorizontalAlignment="Left" Margin="297,463,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04"/>
         <DatePicker x:Name="DatePickerEUT4" HorizontalAlignment="Left" Margin="344,463,0,0" VerticalAlignment="Top" Width="30" Height="25" DisplayDate="2021-03-04"/>
         <DatePicker x:Name="DatePickerEUT5" HorizontalAlignment="Center" Margin="0,463,0,0" VerticalAlignment="Top" Width="30" Height="24" DisplayDate="2021-03-04"/>
-        <Image x:Name="imgJobRequest" HorizontalAlignment="Left" Height="71" Margin="10,18,0,0" VerticalAlignment="Top" Width="171"/>
+        <Image x:Name="imgJobRequest" HorizontalAlignment="Left" Height="71" Margin="10,18,0,0" VerticalAlignment="Top" Width="171" Source="/img/logo.png"/>
         <Label Content="Job Request" HorizontalAlignment="Center" Margin="0,18,0,0" VerticalAlignment="Top"  Height="72" Width="256" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
+        <Label Content="Label" HorizontalAlignment="Left" Margin="568,90,0,0" VerticalAlignment="Top" Name="test"/>
 
     </Grid>
 </Window>

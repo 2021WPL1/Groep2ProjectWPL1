@@ -20,8 +20,8 @@ namespace Barco
         public AddTeam()
         {
             InitializeComponent();
-            BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
-            imgCollectiveLeave.Source = photo;
+            /*BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "img/logo.png"));
+            imgCollectiveLeave.Source = photo;*/
         }
 
         private void AddEquip_Click(object sender, RoutedEventArgs e)
