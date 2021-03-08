@@ -7,7 +7,7 @@ using System.Text;
 namespace Barco.Data
 {
      public class DAO
-    {
+     {
         private static readonly DAO instance = new DAO();
 
         public static DAO Instance()
@@ -63,11 +63,11 @@ namespace Barco.Data
         }
         //bianca
         // delete a person from the database
-      public void removePerson(string abb)
-            {
-                context.Person.Remove(getPersonWithAbb(abb));
-                saveChanges();
-            }
+        public void removePerson(string abb)
+        {
+            context.Person.Remove(getPersonWithAbb(abb));
+            saveChanges();
+        }
 
 
         
@@ -108,31 +108,29 @@ namespace Barco.Data
         }
 
         // add current date in the database
-          public RqRequest addRequestDate()
-          { RqRequest rqRequest = new RqRequest
-             { 
-              RequestDate = DateTime.Now
+        public RqRequest addRequestDate()
+        { RqRequest rqRequest = new RqRequest
+           { 
+            RequestDate = DateTime.Now
 
-                };
-              context.RqRequest.Add(rqRequest);
+              };
+            context.RqRequest.Add(rqRequest);
 
-              saveChanges();
+            saveChanges();
 
-              return rqRequest;
-          }
+            return rqRequest;
+        }
 
 
      
 
         //bianca  - getDepartment
-      public List<RqBarcoDivision> getDepartment()
+        public List<RqBarcoDivision> getDepartment()
         { 
             return context.RqBarcoDivision.ToList();
         }
 
         //bianca - getNature
-
-        }
 
         public List<RqBarcoDivision> getDivisions()
         {
@@ -163,5 +161,6 @@ namespace Barco.Data
         {
             return context.RqOptionel.Where(opt => opt.IdRequest == idReq).FirstOrDefault();
         }
-    }
+     }
 }
+
