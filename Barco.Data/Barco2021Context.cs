@@ -30,7 +30,7 @@ namespace Barco.Data
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Barco2021");
+                optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB; Initial Catalog=Barco2021");
             }
         }
 
@@ -103,6 +103,10 @@ namespace Barco.Data
                 entity.Property(e => e.AfkPerson)
                     .IsRequired()
                     .HasColumnName("afkPerson")
+                    .HasMaxLength(10);
+
+                entity.Property(e => e.Pvggroup)
+                    .HasColumnName("PVGGroup")
                     .HasMaxLength(10);
 
                 entity.HasOne(d => d.AfkDevisionNavigation)

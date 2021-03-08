@@ -21,7 +21,6 @@ namespace Barco
         {
             InitializeComponent();
             BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
-
             imgBarco.Source = photo;
 
         }
@@ -41,8 +40,8 @@ private void SeeAllRequests_Click(object sender, RoutedEventArgs e)
 
         private void CollectiveLeave_Click(object sender, RoutedEventArgs e)
         {
-            CollectiveLeave collectiveLeave = new CollectiveLeave();
-            collectiveLeave.ShowDialog();
+            /*CollectiveLeave collectiveLeave = new CollectiveLeave();
+            collectiveLeave.ShowDialog();*/
         }
 
         private void CreateJobRequest_Click(object sender, RoutedEventArgs e)

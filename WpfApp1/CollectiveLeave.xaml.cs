@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Barco.Data;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows;
@@ -17,11 +18,13 @@ namespace Barco
     /// </summary>
     public partial class CollectiveLeave : Window
     {
+        Barco2021Context context = new Barco2021Context();
         public CollectiveLeave()
         {
             InitializeComponent();
             BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
             imgCollectiveLeave.Source = photo;
+            
         }
        
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
