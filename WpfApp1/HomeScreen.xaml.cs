@@ -23,8 +23,8 @@ namespace Barco
         public HomeScreen()
         {
             InitializeComponent();
-            BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
-            imgBarco.Source = photo;
+            //BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "img/logo.png"));
+            //imgBarco.Source = photo;
             dao = DAO.Instance();
 
 

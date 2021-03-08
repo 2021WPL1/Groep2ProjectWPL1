@@ -23,8 +23,8 @@ namespace Barco.Data
         public string HydraProjectNr { get; set; }
         public DateTime? ExpectedEnddate { get; set; }
         public bool? InternRequest { get; set; }
-        public short? GrossWeight { get; set; }
-        public short? NetWeight { get; set; }
+        public string GrossWeight { get; set; }
+        public string NetWeight { get; set; }
         public bool? Battery { get; set; }
 
         public virtual ICollection<RqOptionel> RqOptionel { get; set; }

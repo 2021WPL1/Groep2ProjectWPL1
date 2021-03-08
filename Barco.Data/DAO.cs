@@ -17,6 +17,7 @@ namespace Barco.Data
 
         // Private constructor!
         private DAO()
+
         {
             this.context= new Barco2021Context();
         }
@@ -51,9 +52,17 @@ namespace Barco.Data
         public Person getPersonWithAbb(string abb)
         {
             return context.Person.FirstOrDefault(a => a.Afkorting == abb);
-
         }
 
+        public bool IfPersonExists(string abb)
+        {
+            bool result = false;
+            if (context.Person.Any(a => a.Afkorting == abb))
+            {
+                result = true;
+            }
+            return result;
+        }
         //bianca
         // delete a person from the database
       public void removePerson(string abb)
@@ -77,7 +86,7 @@ namespace Barco.Data
              { 
               RequestDate = DateTime.Now
 
-          };
+                };
               context.RqRequest.Add(rqRequest);
 
               saveChanges();
@@ -93,6 +102,16 @@ namespace Barco.Data
         {
             return context.RqRequest.FirstOrDefault(a => a.JobNature == "NULL");
 
+        }
+
+        public List<RqBarcoDivision> getDivisions()
+        {
+            return context.RqBarcoDivision.ToList();
+        }
+
+        public List<RqJobNature> getJobNatures()
+        {
+            return context.RqJobNature.ToList();
         }
 
     }

@@ -14,40 +14,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="168,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Division"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="298,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Job Nature"/></TextBlock>
         <ComboBox x:Name="cmbDivision" HorizontalAlignment="Left" Margin="168,148,0,0" VerticalAlignment="Top" Width="94"/>
-        <ComboBox x:Name="cmbJobNature" HorizontalAlignment="Left" Margin="298,148,0,0" VerticalAlignment="Top" Width="94" Background="Red" BorderBrush="Red"/>
-        <ListBox x:Name="lstbEutPartNr" Margin="460,165,247,302" RenderTransformOrigin="0.5,0.5">
-            <ListBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleY="-0.396"/>
-                    <RotateTransform/>
-                    <TranslateTransform Y="-0.392"/>
-                </TransformGroup>
-            </ListBox.RenderTransform>
-        </ListBox>
-        <TextBlock HorizontalAlignment="Left" Margin="457,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="18" RenderTransformOrigin="0.18,0.536"><Run Language="nl-be" Text="Eut partnumber"/></TextBlock>
-        <ListBox x:Name="lstbNetWeight" Margin="561,165,147,300" RenderTransformOrigin="0.5,0.5">
-            <ListBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleY="-0.396"/>
-                    <RotateTransform/>
-                    <TranslateTransform Y="-0.392"/>
-                </TransformGroup>
-            </ListBox.RenderTransform>
-        </ListBox>
-        <ListBox x:Name="lstbGrossWeight" Margin="662,165,45,300" RenderTransformOrigin="0.5,0.5">
-            <ListBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleY="-0.396"/>
-                    <RotateTransform/>
-                    <TranslateTransform Y="-0.392"/>
-                </TransformGroup>
-            </ListBox.RenderTransform>
-        </ListBox>
-        <TextBlock HorizontalAlignment="Left" Margin="564,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="18"><Run Language="nl-be" Text="Net weight (KG)"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="663,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" Height="18"><Run Language="nl-be" Text="Gross"/><Run Text=" weight (KG)"/></TextBlock>
+        <ComboBox x:Name="cmbJobNature" HorizontalAlignment="Left" Margin="298,148,0,0" VerticalAlignment="Top" Width="94"/>
         <TextBlock HorizontalAlignment="Left" Margin="454,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="15"><Run Language="nl-be" Text="Eut partnumber"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="562,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="15"><Run Language="nl-be" Text="Net weight (KG)"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="671,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" Height="15"><Run Language="nl-be" Text="Gross"/><Run Text=" weight (KG)"/></TextBlock>
@@ -105,10 +72,10 @@
         <CheckBox x:Name="cmGrnCompEut5" Content="" HorizontalAlignment="Left" Margin="392,425,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="cmGrnComp" Content="" HorizontalAlignment="Left" Margin="168,425,0,0" VerticalAlignment="Top" />
         <TextBlock HorizontalAlignment="Left" Margin="42,463,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Text="EUT foreseen"/><LineBreak/><Run Text="ava"/><Run Language="nl-be" Text="ilability date:"/></TextBlock>
-        <Button x:Name="btnSend" Content="Send" HorizontalAlignment="Left" Margin="593,70,0,0" VerticalAlignment="Top"  Height="19" Width="39" Click="btnSend_Click"/>
+        <Button x:Name="btnSend" Content="Send" HorizontalAlignment="Left" Margin="579,44,0,0" VerticalAlignment="Top"  Height="19" Width="39" Click="btnSend_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="596,388,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"><Run Text="Special remarks"/><Run Language="nl-be" Text=":"/></TextBlock>
         <TextBox x:Name="txtRemark" HorizontalAlignment="Left" Margin="479,403,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="284" Height="91"/>
-        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="646,70,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.357,0.726" Height="19" Click="btnCancel_Click"/>
+        <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="632,44,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.357,0.726" Height="19" Click="btnCancel_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="196,472,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <DatePicker x:Name="DatePickerEUT1" HorizontalAlignment="Left" Margin="204,463,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04"/>
         <DatePicker x:Name="DatePickerEUT2" HorizontalAlignment="Left" Margin="250,463,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04"/>
@@ -118,6 +85,21 @@
         <Image x:Name="imgJobRequest" HorizontalAlignment="Left" Height="71" Margin="10,18,0,0" VerticalAlignment="Top" Width="171" Source="/img/logo.png"/>
         <Label Content="Job Request" HorizontalAlignment="Center" Margin="0,18,0,0" VerticalAlignment="Top"  Height="72" Width="256" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
         <Label Content="Label" HorizontalAlignment="Left" Margin="568,90,0,0" VerticalAlignment="Top" Name="test"/>
+        <ListView x:Name="lstParts" Margin="418,147,22,313" Width="360" SelectedValuePath="{Binding PartNo}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Part number" Width="120" x:Name="lstPartNo" DisplayMemberBinding="{ Binding partNo}">
+
+                    </GridViewColumn>
+                    <GridViewColumn Header="Net Weight" Width="120" x:Name="lstNetWeight" DisplayMemberBinding="{ Binding NetWeight}">
+                        
+                    </GridViewColumn>
+                    <GridViewColumn Header="Gross weight" Width="120" x:Name="lstGrossWeight" DisplayMemberBinding="{ Binding GrossWeight }">
+                        
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
 
     </Grid>
 </Window>

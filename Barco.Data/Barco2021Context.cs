@@ -30,6 +30,7 @@ namespace Barco.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
                 optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Barco2021");
             }
         }
@@ -164,7 +165,7 @@ namespace Barco.Data
 
                 entity.Property(e => e.EutPartnumbers)
                     .HasColumnName("EUT_Partnumbers")
-                    .HasMaxLength(50);
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.EutProjectname)
                     .HasColumnName("EUT_Projectname")
@@ -174,7 +175,9 @@ namespace Barco.Data
                     .HasColumnName("expectedEnddate")
                     .HasColumnType("datetime");
 
-                entity.Property(e => e.GrossWeight).HasColumnName("grossWeight");
+                entity.Property(e => e.GrossWeight)
+                    .HasColumnName("grossWeight")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.HydraProjectNr)
                     .HasColumnName("hydraProjectNr")
@@ -195,7 +198,9 @@ namespace Barco.Data
                     .HasColumnName("JR_Status")
                     .HasMaxLength(30);
 
-                entity.Property(e => e.NetWeight).HasColumnName("netWeight");
+                entity.Property(e => e.NetWeight)
+                    .HasColumnName("netWeight")
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.RequestDate)
                     .HasColumnName("request_date")
