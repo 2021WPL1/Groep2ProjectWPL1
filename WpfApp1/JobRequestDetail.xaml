@@ -13,8 +13,6 @@
         <TextBox x:Name="txtProjectName" HorizontalAlignment="Left" Margin="51,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsReadOnly="True"/>
         <TextBlock HorizontalAlignment="Left" Margin="176,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Division"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="306,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Job Nature"/></TextBlock>
-        <ComboBox x:Name="comboBoxDivision" HorizontalAlignment="Left" Margin="176,58,0,0" VerticalAlignment="Top" Width="94" IsEnabled="False"/>
-        <ComboBox x:Name="comboBoxJobNature" HorizontalAlignment="Left" Margin="306,58,0,0" VerticalAlignment="Top" Width="94" IsEnabled="False"/>
         <ListBox x:Name="ListBoxPartNumber" Margin="483,62,224,307" RenderTransformOrigin="0.5,0.5">
             <ListBox.RenderTransform>
                 <TransformGroup>
@@ -112,6 +110,8 @@
         <Label x:Name="lblDateEUT2" Content="date label" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" Height="22" Padding="5,0,5,0" Margin="241,392,0,0"/>
         <Label x:Name="lblDateEUT3" Content="date label" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" Height="22" Padding="5,0,5,0" Margin="289,367,0,0"/>
         <Label x:Name="lblDateEUT5" Content="date label" HorizontalAlignment="Left" Margin="378,365,0,0" VerticalAlignment="Top" Width="64" Height="22" Padding="5,0,5,0"/>
+        <TextBox x:Name="txtDevision" HorizontalAlignment="Left" Margin="176,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsReadOnly="True"/>
+        <TextBox x:Name="txtJobNature" HorizontalAlignment="Left" Margin="306,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsReadOnly="True"/>
 
     </Grid>
 </Window>
