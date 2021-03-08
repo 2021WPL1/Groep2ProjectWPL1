@@ -9,7 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-//using Barco.Data;
+using Barco.Data;
 
 
 
@@ -29,10 +29,10 @@ namespace Barco
             
             
         }
-            BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
-            imgJobRequest.Source = photo;
-        }
-      
+
+        /*BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
+        imgJobRequest.Source = photo;*/
+
 
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
