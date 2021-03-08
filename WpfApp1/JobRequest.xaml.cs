@@ -104,7 +104,7 @@ namespace Barco
 
                 string input_Abbreviation = txtReqInitials.Text.ToString();
                 string input_ProjectName = txtEutProjectname.Text.ToString();
-                bool input_Battery;
+                bool input_Battery = false;
 
                 //check if radio buttons are checked
 
