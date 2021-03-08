@@ -12,6 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using System.Data;
 using Barco.Data;
+using System.Collections;
 
 namespace Barco 
 {
@@ -20,20 +21,46 @@ namespace Barco
     /// </summary>
     public partial class OverviewJobRequest : Window
     {
-        private SqlConnection connection;
+        private DAO dao;
+
         public OverviewJobRequest()
         {
+
             InitializeComponent();
+            dao = DAO.Instance();
+
             BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
             imgOverview.Source = photo;
 
 
         }
+        private void UpdateListBox(ListBox listBox, string display, string value, IEnumerable source)
+        {
+            listBox.DisplayMemberPath = display;
+            listBox.SelectedValuePath = value;
+            listBox.ItemsSource = source;
+        }
 
-        //public Barco2021Context context = new Barco2021Context();
+        private void loadJobRequests()
+        {
+            List<RqRequest> rqRequests = dao.getAllRqRequests();
+            UpdateListBox(listOverview, "JrNumber\t -\t BarcoDivision", "IdRequest", rqRequests);
+        }
 
         private void ApproveButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+            RqRequest rqRequest = new dao.getRqRequestById(Convert.ToInt32(listOverview.SelectedValue));
+            dao.editRequest(rqRequest, "JrStatus", true);
+
+            }
+            catch (SqlException ex)
+            {
+
+                MessageBox.Show(ex.Message);
+            }
+
 
         }
 
@@ -41,15 +68,10 @@ namespace Barco
         {
             try
             {
-                string query = "DELETE FROM RqRequest where id = @RequestID";
+                dao.deleteJobRequest(Convert.ToInt32(listOverview.SelectedValue));
 
-                SqlCommand sqlCommand = new SqlCommand(query, connection);
 
-                sqlCommand.Parameters.AddWithValue("@RequestID", listOverview.SelectedValue);
-
-                sqlCommand.ExecuteScalar();
-
-                showJobRequests();
+                loadJobRequests();
             }
             catch (SqlException ex)
             {
@@ -60,6 +82,9 @@ namespace Barco
 
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
+            JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen();
+            int IdJr = Convert.ToInt32(listOverview.SelectedValue);
+            jobRequestAanpassen.ShowDialog(ref IdJr);
 
         }
 
@@ -68,33 +93,12 @@ namespace Barco
             Close();
         }
 
-        private void showJobRequests()
+
+        private void OpenButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                string query = "SELECT JrNumber, BarcoDivision FROM RqRequest";
-
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(query, connection);
-
-                using (sqlDataAdapter)
-                {
-                    DataTable JobRequests = new DataTable();
-
-                    sqlDataAdapter.Fill(JobRequests);
-
-                    listOverview.DisplayMemberPath = "JrNumber \t" + " - " + "\t BarcoDivision";
-
-                    listOverview.SelectedValuePath = "Id";
-
-                    listOverview.ItemsSource = JobRequests.DefaultView;
-
-                }
-            }
-            catch (SqlException ex)
-            {
-
-                MessageBox.Show(ex.Message);
-            }
+            JobRequestDetail jobRequestDetail = new JobRequestDetail();
+            int IdJR = Convert.ToInt32(listOverview.SelectedValue);
+            jobRequestDetail.ShowDialog(ref IdJR);
         }
     }
 }

@@ -101,7 +101,7 @@
         <Button x:Name="BtnClose" Content="Close" HorizontalAlignment="Left" Margin="728,397,0,0" VerticalAlignment="Top" Click="btnClose_Click" Height="19" Width="39"/>
         <TextBlock HorizontalAlignment="Left" Margin="176,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Request date"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="306,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="JR number"/></TextBlock>
-        <TextBox HorizontalAlignment="Left" Margin="438,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="112" IsReadOnly="True"/>
+        <TextBox x:Name="txtPvgRes" HorizontalAlignment="Left" Margin="438,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="112" IsReadOnly="True"/>
         <Label Content="PVG &#xA;Responsible" HorizontalAlignment="Left" Margin="438,196,0,0" VerticalAlignment="Top" Width="96" Height="47"/>
         <Label x:Name="lblRequestDate" Content="Date content" HorizontalAlignment="Left" Margin="176,108,0,0" VerticalAlignment="Top" Width="83"/>
         <Label x:Name="lblJobRequestNumber" Content="JRNumberContent" HorizontalAlignment="Left" Margin="300,104,0,0" VerticalAlignment="Top" Width="110"/>
