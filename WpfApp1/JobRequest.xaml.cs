@@ -21,7 +21,7 @@ namespace Barco
     public partial class JobRequest : Window
     {
 
-        //private static Barco2021Context context = new Barco2021Context();
+        private static Barco2021Context context = new Barco2021Context();
         public JobRequest()
         {
             InitializeComponent();
@@ -29,6 +29,10 @@ namespace Barco
             
             
         }
+            BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
+            imgJobRequest.Source = photo;
+        }
+      
 
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)

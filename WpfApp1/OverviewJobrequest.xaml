@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="OverviewJobRequest" Height="450" Width="800">
     <Grid>
-        <Button Content="Overview JobRequest " HorizontalAlignment="Center" Margin="0,30,0,0" VerticalAlignment="Top" Height="75" Width="274" FontSize="18" FontWeight="Bold" IsEnabled="False"/>
         <Button x:Name="ApproveButton" Content="Approve" HorizontalAlignment="Left" Margin="590,190,0,0" VerticalAlignment="Top" Height="34" Width="50" Click="ApproveButton_Click"/>
         <Button x:Name="EditButton" Content="Edit" HorizontalAlignment="Left" Margin="654,190,0,0" VerticalAlignment="Top" Height="34" Width="50" Click="EditButton_Click"/>
         <Button x:Name="DeleteButton" Content="Delete" HorizontalAlignment="Left" Margin="717,190,0,0" VerticalAlignment="Top" Height="34" Width="50" Click="DeleteButton_Click"/>
@@ -22,6 +21,8 @@
         <Label Content="Test group number" HorizontalAlignment="Left" Margin="303,174,0,0" VerticalAlignment="Top" Height="30" Width="132"/>
         <Label Content="-" HorizontalAlignment="Left" Margin="264,170,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="699,51,0,0" VerticalAlignment="Top" Height="33" Width="45" Click="CancelButton_Click"/>
+        <Image x:Name="imgOverview" HorizontalAlignment="Left" Height="80" Margin="21,14,0,0" VerticalAlignment="Top" Width="215"/>
+        <Label Content="Overview Jobrequest" HorizontalAlignment="Left" Margin="294,14,0,0" VerticalAlignment="Top"  Height="72" Width="256" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
 
     </Grid>
 </Window>

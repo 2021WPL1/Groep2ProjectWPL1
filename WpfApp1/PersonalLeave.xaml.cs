@@ -20,7 +20,11 @@ namespace Barco
         public PersonalLeave()
         {
             InitializeComponent();
+            BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
+
+           PLBarco.Source = photo;
         }
+    
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
