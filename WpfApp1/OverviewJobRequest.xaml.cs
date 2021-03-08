@@ -57,7 +57,9 @@ namespace Barco
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
+            HomeScreen homeScreen = new HomeScreen();
             Close();
+            homeScreen.ShowDialog();
         }
 
         private void ShowDetails_Click(object sender, RoutedEventArgs e)

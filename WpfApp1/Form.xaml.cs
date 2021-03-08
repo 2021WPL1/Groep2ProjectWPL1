@@ -24,6 +24,8 @@ namespace Barco
             imgLoginForm.Source = photo;
         }
 
+
+        //bianca
         private void LoginForm_Click(object sender, RoutedEventArgs e)
         {
             string email = EmailTextBox.Text;
@@ -31,10 +33,12 @@ namespace Barco
             MessageBox.Show("You have successfully logged in!");
 
             HomeScreen homeScreen = new HomeScreen();
+            Close();
             homeScreen.ShowDialog();
 
         }
 
+        //bianca
         private void CancelForm_Click(object sender, RoutedEventArgs e)
         {
             const string message =

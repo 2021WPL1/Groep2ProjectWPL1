@@ -39,18 +39,16 @@ namespace Barco
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(DatePickerEUT1.SelectedDate.ToString());
-            MessageBox.Show(DatePickerEUT2.SelectedDate.ToString());
-            MessageBox.Show(DatePickerEUT3.SelectedDate.ToString());
-            MessageBox.Show(DatePickerEUT4.SelectedDate.ToString());
-            MessageBox.Show(DatePickerEUT5.SelectedDate.ToString());
+            
 
 
         }
-
+        //bianca
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            Close(); 
+            HomeScreen homeScreen = new HomeScreen();
+            Close();
+            homeScreen.ShowDialog();
         }
 
         

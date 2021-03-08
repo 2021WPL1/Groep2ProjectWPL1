@@ -24,8 +24,8 @@ namespace Barco
             imgLogin.Source = photo;
         }
 
-    
 
+        //bianca
         private void LoginScreen_Click(object sender, RoutedEventArgs e)
         {
             Form form = new Form();

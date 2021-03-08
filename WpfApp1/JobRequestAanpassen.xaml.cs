@@ -40,7 +40,9 @@ namespace Barco
         
         private void btnCancelRequest_Click(object sender, RoutedEventArgs e)
         {
+            HomeScreen homeScreen = new HomeScreen();
             Close();
+            homeScreen.ShowDialog();
         }
     }
 }

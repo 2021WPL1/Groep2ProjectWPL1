@@ -63,58 +63,58 @@
         <DatePicker x:Name="dateExpectedEnd" HorizontalAlignment="Left" Margin="276,227,0,0" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="168,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Link to testplan"/></TextBlock>
         <TextBox x:Name="txtLinkTestplan" HorizontalAlignment="Left" Margin="276,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102"/>
-        <TextBlock HorizontalAlignment="Left" Margin="43,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Text="Nature of test"/><Run Language="en-be" Text=":"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="208,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32" Height="13"><Run Language="nl-be" Text="EUT1"/><LineBreak/><Run Language="nl-be"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="253,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32" Height="13"><Run Text="EUT"/><Run Language="nl-be" Text="2"/><LineBreak/><Run/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="298,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32" Height="13"><Run Text="EUT"/><Run Language="nl-be" Text="3"/><LineBreak/><Run/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="346,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32" Height="13"><Run Text="EUT"/><Run Language="nl-be" Text="4"/><LineBreak/><Run/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="386,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32" Height="13"><Run Text="EUT"/><Run Language="nl-be" Text="5"/><LineBreak/><Run/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="43,331,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="EMC"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="42,355,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Envorimental"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="43,378,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Reliability"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="42,402,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Product Safety"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="42,424,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Green Compliance"/></TextBlock>
-        <CheckBox x:Name="cbEmcEut1"  Content="" HorizontalAlignment="Left" Margin="212,330,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cbEmcEut2" Content="" HorizontalAlignment="Left" Margin="255,330,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cbEmcEut3" Content="" HorizontalAlignment="Left" Margin="302,330,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cbEmcEut4" Content="" HorizontalAlignment="Left" Margin="349,330,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cbEmcEut5" Content="" HorizontalAlignment="Left" Margin="392,330,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cbEmc" Content="" HorizontalAlignment="Left" Margin="168,330,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmEnvorimentalEut1" Content="" HorizontalAlignment="Left" Margin="212,355,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmEnvorimentalEut2" Content="" HorizontalAlignment="Left" Margin="255,355,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmEnvorimentalEut3" Content="" HorizontalAlignment="Left" Margin="302,355,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmEnvorimentalEut4" Content="" HorizontalAlignment="Left" Margin="349,355,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmEnvorimentalEut5" Content="" HorizontalAlignment="Left" Margin="392,355,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmEnvorimental" Content="" HorizontalAlignment="Left" Margin="168,355,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmRelEut1" Content="" HorizontalAlignment="Left" Margin="212,379,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmRelEut2" Content="" HorizontalAlignment="Left" Margin="255,379,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmRelEut3" Content="" HorizontalAlignment="Left" Margin="302,379,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmRelEut4" Content="" HorizontalAlignment="Left" Margin="349,379,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmRelEut5" Content="" HorizontalAlignment="Left" Margin="392,379,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmRel" Content="" HorizontalAlignment="Left" Margin="168,379,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmProdSafetyEut1" Content="" HorizontalAlignment="Left" Margin="212,403,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmProdSafetyEut2" Content="" HorizontalAlignment="Left" Margin="255,403,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmProdSafetyEut3" Content="" HorizontalAlignment="Left" Margin="302,403,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmProdSafetyEut4" Content="" HorizontalAlignment="Left" Margin="349,403,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmProdSafetyEut5" Content="" HorizontalAlignment="Left" Margin="392,403,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmProdSafety" Content="" HorizontalAlignment="Left" Margin="168,403,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmGrnCompEut1" Content="" HorizontalAlignment="Left" Margin="212,425,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmGrnCompEut2" Content="" HorizontalAlignment="Left" Margin="255,425,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmGrnCompEut3" Content="" HorizontalAlignment="Left" Margin="302,425,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmGrnCompEut4" Content="" HorizontalAlignment="Left" Margin="349,425,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmGrnCompEut5" Content="" HorizontalAlignment="Left" Margin="392,425,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="cmGrnComp" Content="" HorizontalAlignment="Left" Margin="168,425,0,0" VerticalAlignment="Top" />
-        <TextBlock HorizontalAlignment="Left" Margin="42,463,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Text="EUT foreseen"/><LineBreak/><Run Text="ava"/><Run Language="nl-be" Text="ilability date:"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="27,345,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Text="Nature of test"/><Run Language="en-be" Text=":"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="211,342,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32" Height="13"><Run Language="nl-be" Text="EUT1"/><LineBreak/><Run Language="nl-be"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="256,342,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32" Height="13"><Run Text="EUT"/><Run Language="nl-be" Text="2"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="301,342,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32" Height="13"><Run Text="EUT"/><Run Language="nl-be" Text="3"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="349,342,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32" Height="13"><Run Text="EUT"/><Run Language="nl-be" Text="4"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="389,342,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32" Height="13"><Run Text="EUT"/><Run Language="nl-be" Text="5"/><LineBreak/><Run/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="49,369,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="EMC"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="48,393,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Envorimental"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="49,416,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Reliability"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="48,440,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Product Safety"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="48,462,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Green Compliance"/></TextBlock>
+        <CheckBox x:Name="cbEmcEut1"  Content="" HorizontalAlignment="Left" Margin="218,368,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cbEmcEut2" Content="" HorizontalAlignment="Left" Margin="261,368,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cbEmcEut3" Content="" HorizontalAlignment="Left" Margin="303,368,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cbEmcEut4" Content="" HorizontalAlignment="Left" Margin="350,368,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cbEmcEut5" Content="" HorizontalAlignment="Left" Margin="393,368,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cbEmc" Content="" HorizontalAlignment="Left" Margin="18,367,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmEnvorimentalEut1" Content="" HorizontalAlignment="Left" Margin="218,393,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmEnvorimentalEut2" Content="" HorizontalAlignment="Left" Margin="261,393,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmEnvorimentalEut3" Content="" HorizontalAlignment="Left" Margin="303,393,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmEnvorimentalEut4" Content="" HorizontalAlignment="Left" Margin="350,393,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmEnvorimentalEut5" Content="" HorizontalAlignment="Left" Margin="393,393,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmEnvorimental" Content="" HorizontalAlignment="Left" Margin="18,392,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmRelEut1" Content="" HorizontalAlignment="Left" Margin="218,417,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmRelEut2" Content="" HorizontalAlignment="Left" Margin="261,417,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmRelEut3" Content="" HorizontalAlignment="Left" Margin="303,417,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmRelEut4" Content="" HorizontalAlignment="Left" Margin="350,417,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmRelEut5" Content="" HorizontalAlignment="Left" Margin="393,417,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmRel" Content="" HorizontalAlignment="Left" Margin="18,416,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmProdSafetyEut1" Content="" HorizontalAlignment="Left" Margin="218,441,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmProdSafetyEut2" Content="" HorizontalAlignment="Left" Margin="261,441,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmProdSafetyEut3" Content="" HorizontalAlignment="Left" Margin="303,441,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmProdSafetyEut4" Content="" HorizontalAlignment="Left" Margin="350,441,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmProdSafetyEut5" Content="" HorizontalAlignment="Left" Margin="393,441,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmProdSafety" Content="" HorizontalAlignment="Left" Margin="18,440,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmGrnCompEut1" Content="" HorizontalAlignment="Left" Margin="218,463,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmGrnCompEut2" Content="" HorizontalAlignment="Left" Margin="261,463,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmGrnCompEut3" Content="" HorizontalAlignment="Left" Margin="303,463,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmGrnCompEut4" Content="" HorizontalAlignment="Left" Margin="350,463,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmGrnCompEut5" Content="" HorizontalAlignment="Left" Margin="393,463,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="cmGrnComp" Content="" HorizontalAlignment="Left" Margin="18,462,0,0" VerticalAlignment="Top" />
+        <TextBlock HorizontalAlignment="Left" Margin="26,521,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Text="EUT foreseen"/><LineBreak/><Run Text="ava"/><Run Language="nl-be" Text="ilability date:"/></TextBlock>
         <Button x:Name="btnSend" Content="Send" HorizontalAlignment="Left" Margin="593,70,0,0" VerticalAlignment="Top"  Height="19" Width="39" Click="btnSend_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="596,388,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"><Run Text="Special remarks"/><Run Language="nl-be" Text=":"/></TextBlock>
         <TextBox x:Name="txtRemark" HorizontalAlignment="Left" Margin="479,403,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="284" Height="91"/>
         <Button x:Name="btnCancel" Content="Cancel" HorizontalAlignment="Left" Margin="646,70,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.357,0.726" Height="19" Click="btnCancel_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="196,472,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <DatePicker x:Name="DatePickerEUT1" HorizontalAlignment="Left" Margin="204,463,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04"/>
-        <DatePicker x:Name="DatePickerEUT2" HorizontalAlignment="Left" Margin="250,463,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04"/>
-        <DatePicker x:Name="DatePickerEUT3" HorizontalAlignment="Left" Margin="297,463,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04"/>
-        <DatePicker x:Name="DatePickerEUT4" HorizontalAlignment="Left" Margin="344,463,0,0" VerticalAlignment="Top" Width="30" Height="25" DisplayDate="2021-03-04"/>
-        <DatePicker x:Name="DatePickerEUT5" HorizontalAlignment="Center" Margin="0,463,0,0" VerticalAlignment="Top" Width="30" Height="24" DisplayDate="2021-03-04"/>
+        <TextBlock HorizontalAlignment="Left" Margin="180,530,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <DatePicker x:Name="DatePickerEUT1" HorizontalAlignment="Left" Margin="188,521,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04"/>
+        <DatePicker x:Name="DatePickerEUT2" HorizontalAlignment="Left" Margin="234,521,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04"/>
+        <DatePicker x:Name="DatePickerEUT3" HorizontalAlignment="Left" Margin="281,521,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04"/>
+        <DatePicker x:Name="DatePickerEUT4" HorizontalAlignment="Left" Margin="328,521,0,0" VerticalAlignment="Top" Width="30" Height="25" DisplayDate="2021-03-04"/>
+        <DatePicker x:Name="DatePickerEUT5" HorizontalAlignment="Left" Margin="369,521,0,0" VerticalAlignment="Top" Width="30" Height="24" DisplayDate="2021-03-04"/>
         <Image x:Name="imgJobRequest" HorizontalAlignment="Left" Height="71" Margin="10,18,0,0" VerticalAlignment="Top" Width="171"/>
         <Label Content="Job Request" HorizontalAlignment="Center" Margin="0,18,0,0" VerticalAlignment="Top"  Height="72" Width="256" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
 
