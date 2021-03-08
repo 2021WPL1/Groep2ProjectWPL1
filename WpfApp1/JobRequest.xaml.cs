@@ -49,10 +49,6 @@ namespace Barco
 
         }
 
-
-
-        }
-
         private void btnAdd_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -60,8 +56,8 @@ namespace Barco
                 string sPartNo = txtPartNr.Text;
                 string sNetWeight = txtNetWeight.Text;
                 string sGrossWeight = txtGrossWeight.Text;
-                
-                if(sPartNo == "" || sNetWeight == "" || sGrossWeight == "")
+
+                if (sPartNo == "" || sNetWeight == "" || sGrossWeight == "")
                 {
                     MessageBox.Show("please fill in all values");
                 }
@@ -82,18 +78,18 @@ namespace Barco
                     request.GrossWeight += sGrossWeight + " ; ";
                     request.NetWeight += sNetWeight + " ; ";
                 }
-                
+
             }
-            catch(NullReferenceException)
+            catch (NullReferenceException)
             {
                 MessageBox.Show("please fill in all fields");
             }
-         
+
         }
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
         {
-            if(lstParts.SelectedValue.ToString() != null)
+            if (lstParts.SelectedValue.ToString() != null)
             {
                 lstParts.Items.Remove(lstParts.SelectedValue);
                 parts.Remove((Part)lstParts.SelectedValue);
@@ -116,7 +112,7 @@ namespace Barco
                 {
                     input_Battery = true;
                 }
-                else if((bool)rbtnBatNo.IsChecked && (bool)rbtnBatYes.IsChecked)
+                else if ((bool)rbtnBatNo.IsChecked && (bool)rbtnBatYes.IsChecked)
                 {
                     errors.Add("please check if batteries are needed");
                 }
@@ -124,15 +120,15 @@ namespace Barco
                 {
                     input_Battery = false;
                 }
-                
-                if(!dao.IfPersonExists(input_Abbreviation))
+
+                if (!dao.IfPersonExists(input_Abbreviation))
                 {
                     errors.Add("the requester inititals do not match any employee");
                 }
 
                 DateTime input_EndDate = (DateTime)dateExpectedEnd.SelectedDate;
 
-                
+
             }
             catch (FormatException ex)
             {
@@ -151,22 +147,23 @@ namespace Barco
         private void refreshGUI()
         {
             lstParts.Items.Clear();
-            foreach(Part part in parts)
+            foreach (Part part in parts)
             {
                 lstParts.Items.Add(part);
             }
             //lstParts.SelectedValuePath = "PartNo";
         }
-    
 
-    
+
+
 
         public class Part
         {
             public string partNo { get; set; }
-            public string NetWeight { get; set; } 
+            public string NetWeight { get; set; }
             public string GrossWeight { get; set; }
         }
 
     }
+
 }
