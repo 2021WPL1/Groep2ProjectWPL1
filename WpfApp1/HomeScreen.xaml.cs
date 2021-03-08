@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Barco.Data;
 
 namespace Barco
 {
@@ -17,15 +18,19 @@ namespace Barco
     /// </summary>
     public partial class HomeScreen : Window
     {
+        private DAO dao;
+
         public HomeScreen()
         {
             InitializeComponent();
             BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
             imgBarco.Source = photo;
+            dao = DAO.Instance();
+
 
         }
-      
-private void SeeAllRequests_Click(object sender, RoutedEventArgs e)
+
+        private void SeeAllRequests_Click(object sender, RoutedEventArgs e)
         {
             OverviewJobRequest overviewJobRequest = new OverviewJobRequest();
 
@@ -49,5 +54,6 @@ private void SeeAllRequests_Click(object sender, RoutedEventArgs e)
             JobRequest createJobRequest = new JobRequest();
             createJobRequest.ShowDialog();
         }
+       
     }
 }

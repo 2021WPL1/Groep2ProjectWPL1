@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Barco.Data;
 
 namespace Barco
 {
@@ -27,8 +28,7 @@ namespace Barco
 
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
-        {
-
+        {   
         }
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
