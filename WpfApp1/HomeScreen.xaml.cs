@@ -45,15 +45,22 @@ namespace Barco
 
         private void CollectiveLeave_Click(object sender, RoutedEventArgs e)
         {
-            /*CollectiveLeave collectiveLeave = new CollectiveLeave();
-            collectiveLeave.ShowDialog();*/
+            CollectiveLeave collectiveLeave = new CollectiveLeave();
+            collectiveLeave.ShowDialog();
         }
 
         private void CreateJobRequest_Click(object sender, RoutedEventArgs e)
         {
             JobRequest createJobRequest = new JobRequest();
             createJobRequest.ShowDialog();
+            //string newPeople = dao.AddPerson("Test", "Nume", "Prenume").ToString();
+            //MessageBox.Show(newPeople);
+
+            // string newPeople = dao.addRequestDate().ToString();
+            //MessageBox.Show(newPeople);
+
+
         }
-       
+
     }
 }

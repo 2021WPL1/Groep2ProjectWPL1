@@ -29,12 +29,14 @@ namespace Barco
             BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
             imgOverview.Source = photo;
 
-         //MessageBox.Show(context.Person.SingleOrDefault(a => a.Afkorting == "BAS").ToString());
+            //  MessageBox.Show(context.Person.FirstOrDefault(a => a.Afkorting == "BAS").Afkorting.ToString());
 
 
+          //   MessageBox.Show(context.RqRequest.FirstOrDefault(a => a.RequestDate == DateTime.Now).RequestDate.ToString());
+
+           
         }
 
-        //public Barco2021Context context = new Barco2021Context();
 
         private void ApproveButton_Click(object sender, RoutedEventArgs e)
         {

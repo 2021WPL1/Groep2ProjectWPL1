@@ -31,8 +31,9 @@ namespace Barco.Data
             context.SaveChanges();
         }
 
-       
-     /*  public Person AddPerson(string abb, string firstname, string lastname)
+      //bianca
+      // add a new person in the database
+       public Person AddPerson(string abb, string firstname, string lastname)
         {
             Person person = new Person
             {
@@ -43,24 +44,56 @@ namespace Barco.Data
             context.Person.Add(person);
             saveChanges();
             return person;
-        }
-   */  
-
-        public Person getPersonWithAbb()
+        } 
+ 
+        //bianca
+        // get a person with the abbreviation
+        public Person getPersonWithAbb(string abb)
         {
-            return context.Person.FirstOrDefault(a => a.Afkorting == "BAS");
+            return context.Person.FirstOrDefault(a => a.Afkorting == abb);
+
+        }
+
+        //bianca
+        // delete a person from the database
+      public void removePerson(string abb)
+            {
+                context.Person.Remove(getPersonWithAbb(abb));
+                saveChanges();
+            }
+
+        //bianca
+        //  get the request's date
+        public RqRequest getRequestDate()
+        {
+            return context.RqRequest.FirstOrDefault(a => a.RequestDate == DateTime.Now);
 
         }
 
 
-    /*   public void removePerson(string abb)
+        // add current date in the database
+          public RqRequest addRequestDate()
+          { RqRequest rqRequest = new RqRequest
+             { 
+              RequestDate = DateTime.Now
+
+          };
+              context.RqRequest.Add(rqRequest);
+
+              saveChanges();
+
+              return rqRequest;
+          }
+
+
+
+        //bianca
+        //job nature
+        public RqRequest getJobNature()
         {
-            context.Person.Remove(getPersonWithId(abb));
-            saveChanges();
-        }*/
+            return context.RqRequest.FirstOrDefault(a => a.JobNature == "NULL");
 
-
-
+        }
 
     }
 }
