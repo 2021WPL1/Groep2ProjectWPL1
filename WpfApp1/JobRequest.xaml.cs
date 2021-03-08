@@ -20,14 +20,11 @@ namespace Barco
     /// </summary>
     public partial class JobRequest : Window
     {
-
-        private static Barco2021Context context = new Barco2021Context();
         public JobRequest()
         {
             InitializeComponent();
-
-            
-            
+            BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
+            imgJobRequest.Source = photo;
         }
 
         /*BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
@@ -36,8 +33,7 @@ namespace Barco
 
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
-        {
-
+        {   
         }
 
         private void btnRemove_Click(object sender, RoutedEventArgs e)
@@ -54,5 +50,8 @@ namespace Barco
         {
             Close(); 
         }
+
+
+
     }
 }

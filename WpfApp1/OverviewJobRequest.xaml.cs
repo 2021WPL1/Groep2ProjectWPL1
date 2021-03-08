@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -32,7 +33,12 @@ namespace Barco
             BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
             imgOverview.Source = photo;
 
+            //  MessageBox.Show(context.Person.FirstOrDefault(a => a.Afkorting == "BAS").Afkorting.ToString());
 
+
+          //   MessageBox.Show(context.RqRequest.FirstOrDefault(a => a.RequestDate == DateTime.Now).RequestDate.ToString());
+
+           
         }
         private void UpdateListBox(ListBox listBox, string display, string value, IEnumerable source)
         {
@@ -86,6 +92,7 @@ namespace Barco
             int IdJr = Convert.ToInt32(listOverview.SelectedValue);
             jobRequestAanpassen.ShowDialog(ref IdJr);
 
+            jobRequestAanpassen.ShowDialog();
         }
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
