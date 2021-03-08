@@ -29,16 +29,12 @@ namespace Barco
 
             InitializeComponent();
             dao = DAO.Instance();
+            loadJobRequests();
 
             BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
             imgOverview.Source = photo;
 
-            //  MessageBox.Show(context.Person.FirstOrDefault(a => a.Afkorting == "BAS").Afkorting.ToString());
 
-
-          //   MessageBox.Show(context.RqRequest.FirstOrDefault(a => a.RequestDate == DateTime.Now).RequestDate.ToString());
-
-           
         }
         private void UpdateListBox(ListBox listBox, string display, string value, IEnumerable source)
         {
@@ -50,7 +46,8 @@ namespace Barco
         private void loadJobRequests()
         {
             List<RqRequest> rqRequests = dao.getAllRqRequests();
-            UpdateListBox(listOverview, "JrNumber\t -\t BarcoDivision", "IdRequest", rqRequests);
+            UpdateListBox(listOverview, "JrNumber", "Id", rqRequests);
+            
         }
 
         private void ApproveButton_Click(object sender, RoutedEventArgs e)
