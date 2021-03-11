@@ -12,7 +12,9 @@
         <Label Content="End Holiday" HorizontalAlignment="Left" Margin="172,243,0,0" VerticalAlignment="Top"/>
         <DatePicker x:Name="dateStartHoliday" HorizontalAlignment="Left" Margin="44,279,0,0" VerticalAlignment="Top" Width="106" Height="30" DisplayDate="2021-03-08" FirstDayOfWeek="Monday" SelectedDateFormat="Long"/>
         <DatePicker x:Name="dateEndHoliday" HorizontalAlignment="Left" Margin="166,278,0,0" VerticalAlignment="Top" Height="30" Width="104"/>
-        <Button x:Name="CancelButton" Content="Cancel" HorizontalAlignment="Left" Margin="633,237,0,0" VerticalAlignment="Top" Height="39" Width="74"   Click="CancelButton_Click"/>
+        <Button x:Name="CancelButton" 
+               Command="{Binding CancelCommand}" 
+                Content="Cancel" HorizontalAlignment="Left" Margin="633,237,0,0" VerticalAlignment="Top" Height="39" Width="74" />
         <ComboBox x:Name="cbxChooseDepartment" HorizontalAlignment="Left" Margin="174,141,0,0" VerticalAlignment="Top" Width="165" SelectedIndex="0"/>
 
 

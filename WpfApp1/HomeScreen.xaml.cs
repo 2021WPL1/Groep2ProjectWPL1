@@ -18,7 +18,7 @@ namespace Barco
     /// </summary>
     public partial class HomeScreen : Window
     {
-        private DAO dao;
+        private HomeScreenViewModel homeScreenViewModel;
 
         //bianca
         public HomeScreen()
@@ -26,41 +26,58 @@ namespace Barco
             InitializeComponent();
             //BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "img/logo.png"));
             //imgBarco.Source = photo;
-            dao = DAO.Instance();
+          //  dao = DAO.Instance();
+            homeScreenViewModel = new HomeScreenViewModel(this);
+            DataContext = homeScreenViewModel;
+
+
         }
 
-        //bianca
-        private void SeeAllRequests_Click(object sender, RoutedEventArgs e)
-        {
-            OverviewJobRequest overviewJobRequest = new OverviewJobRequest();
-            Close();
-            overviewJobRequest.ShowDialog();
-        }
 
-        //bianca
-        private void PersonalLeave_Click(object sender, RoutedEventArgs e)
-        {
-            PersonalLeave personalLeave = new PersonalLeave();
-            Close();
+        //private void CreateJobRequest_Click(object sender, RoutedEventArgs e)
+        //{
 
-            personalLeave.ShowDialog();
-        }
-        //bianca
-        private void CollectiveLeave_Click(object sender, RoutedEventArgs e)
-        {
-            CollectiveLeave collectiveLeave = new CollectiveLeave();
-            Close();
-            collectiveLeave.ShowDialog();
-        }
+            //    JobRequest createJobRequest = new JobRequest();
+            //    Close();
+            //    createJobRequest.ShowDialog();
 
-        //bianca
-        private void CreateJobRequest_Click(object sender, RoutedEventArgs e)
-        {
-            JobRequest createJobRequest = new JobRequest();
-            Close();
-            createJobRequest.ShowDialog();
-          
-        }
+
+            //this.Hide();
+            // homeScreenViewModel.CreateRequest();
+
+
+        //}
+
+        //private void SeeAllRequests_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //OverviewJobRequest overviewJobRequest = new OverviewJobRequest();
+        //   //Close();
+        //    //overviewJobRequest.ShowDialog();
+        //   this.Hide();
+        //    homeScreenViewModel.Overview();
+           
+        //}
+
+        //private void PersonalLeave_Click(object sender, RoutedEventArgs e)
+        //{
+        //    this.Hide();
+        //    //    PersonalLeave personalLeave = new PersonalLeave();
+        //    //    Close();
+        //    //    personalLeave.ShowDialog();
+        //    homeScreenViewModel.PersonalLeave();
+            
+        //}
+        //private void CollectiveLeave_Click(object sender, RoutedEventArgs e)
+        //{
+        //    this.Hide();
+        //    //CollectiveLeave collectiveLeave = new CollectiveLeave();
+        //    //Close();
+        //    //collectiveLeave.ShowDialog();
+        //    homeScreenViewModel.CollectiveLeave();
+           
+        //}
+
+   
 
     }
 }

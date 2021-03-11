@@ -21,6 +21,7 @@ namespace Barco
     /// </summary>
     public partial class JobRequest : Window
     {
+        private JobRequestViewModel jobRequestViewModel;
         //remove this line if working with DAO static class
         //private static Barco2021Context DAO = new Barco2021Context();
 
@@ -36,6 +37,9 @@ namespace Barco
         {
             InitializeComponent();
             dao = DAO.Instance();
+            jobRequestViewModel = new JobRequestViewModel(this);
+            DataContext = jobRequestViewModel;
+
 
 
             cmbDivision.ItemsSource = dao.getDivisions();
@@ -137,13 +141,7 @@ namespace Barco
             }
         }
 
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            HomeScreen homeScreen = new HomeScreen();
-            Close();
-            homeScreen.ShowDialog();
-        }
-
+    
         private void refreshGUI()
         {
             lstParts.Items.Clear();
@@ -151,7 +149,6 @@ namespace Barco
             {
                 lstParts.Items.Add(part);
             }
-            //lstParts.SelectedValuePath = "PartNo";
         }
 
 
@@ -164,6 +161,13 @@ namespace Barco
             public string GrossWeight { get; set; }
         }
 
+        //private void btnCancel_Click(object sender, RoutedEventArgs e)
+        //{
+        //       HomeScreen homeScreen = new HomeScreen();
+        //       Close();
+        //      // homeScreen.Show();
+        //      //homeScreen.ShowDialog();
+        //}
     }
 
 }
