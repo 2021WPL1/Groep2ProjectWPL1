@@ -48,7 +48,7 @@ namespace Barco
         {
             HomeScreen homeScreen = new HomeScreen();
             Close();
-            homeScreen.ShowDialog();
+           // homeScreen.Show();
         }
 
         //bianca
