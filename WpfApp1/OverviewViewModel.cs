@@ -106,51 +106,13 @@ namespace Barco
 
         public void ShowDetails()
         {
-
-            JobRequestDetail jobRequestDetail = new JobRequestDetail();
+            int selectedRequestId = _selectedRequest.IdRequest;
+            JobRequestDetail jobRequestDetail = new JobRequestDetail(selectedRequestId);
             overview.Close();
             jobRequestDetail.ShowDialog();
 
         }
 
-        public void Edit()
-        {
-            //JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen();
-            //int IdJr = Convert.ToInt32(listOverview.SelectedValue);
-            //jobRequestAanpassen.ShowDialog(ref IdJr);
 
-        }
-
-        public void Delete()
-        {
-           // try
-        //    {
-        //        dao.deleteJobRequest(Convert.ToInt32(listOverview.SelectedValue));
-
-
-            //        loadJobRequests();
-            //    }
-            //    catch (SqlException ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
-            }
-
-        public void Approve()
-        {
-            //try
-            //    //{
-            //    //    RqRequest rqRequest = dao.getRqRequestById(Convert.ToInt32(listOverview.SelectedValue));
-            //    //    dao.editRequestStatus(rqRequest, "JrStatus", true);
-
-            //    //}
-            //    //catch (SqlException ex)
-            //    //{
-
-            //    //    MessageBox.Show(ex.Message);
-            //    //}
-
-            //}
-        }
     }
 }
