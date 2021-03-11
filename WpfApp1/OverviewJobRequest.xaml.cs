@@ -99,10 +99,11 @@ namespace Barco
             homeScreen.ShowDialog();
         }
 
-        //bianca
-        private void ShowDetails_Click(object sender, RoutedEventArgs e)
+
+        private void OpenButton_Click(object sender, RoutedEventArgs e)
         {
-            JobRequestDetail jobRequestDetail = new JobRequestDetail();
+            int SelectedId = Convert.ToInt32(listOverview.SelectedValue);
+            JobRequestDetail jobRequestDetail = new JobRequestDetail(SelectedId);
             Close();
             jobRequestDetail.ShowDialog();
         }
