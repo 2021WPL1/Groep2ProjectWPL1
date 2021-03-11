@@ -25,13 +25,12 @@ namespace Barco
         //remove this line if working with DAO static class
         //private static Barco2021Context DAO = new Barco2021Context();
 
-        private Barco.Data.DAO dao;
+        private DAO dao;
 
         //private static Barco2021Context context = new Barco2021Context();
 
-        private RqRequest request = new RqRequest();
-
-        private List<Part> parts = new List<Part>();
+       //private RqRequest request = new RqRequest();
+        //private List<Part> parts = new List<Part>();
 
         public JobRequest()
         {
@@ -53,52 +52,56 @@ namespace Barco
 
         }
 
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                string sPartNo = txtPartNr.Text;
-                string sNetWeight = txtNetWeight.Text;
-                string sGrossWeight = txtGrossWeight.Text;
+        //private void btnAdd_Click(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        string sPartNo = txtPartNr.Text;
+        //        string sNetWeight = txtNetWeight.Text;
+        //        string sGrossWeight = txtGrossWeight.Text;
 
-                if (sPartNo == "" || sNetWeight == "" || sGrossWeight == "")
-                {
-                    MessageBox.Show("please fill in all values");
-                }
-                else
-                {
-                    parts.Add(new Part()
-                    {
-                        NetWeight = txtNetWeight.Text,
-                        GrossWeight = txtGrossWeight.Text,
-                        partNo = txtPartNr.Text
-                    });
-                    refreshGUI();
+        //        if (sPartNo == "" || sNetWeight == "" || sGrossWeight == "")
+        //        {
+        //            MessageBox.Show("please fill in all values");
+        //        }
+        //        else
+        //        {
+        //            parts.Add(new Part()
+        //            {
+        //                NetWeight = txtNetWeight.Text,
+        //                GrossWeight = txtGrossWeight.Text,
+        //                partNo = txtPartNr.Text
+        //            });
+        //            refreshGUI();
 
-                    //lstbNetWeight.Items.Add(sNetWeight);
-                    //lstbGrossWeight.Items.Add(sGrossWeight);
+        //            //lstbNetWeight.Items.Add(sNetWeight);
+        //            //lstbGrossWeight.Items.Add(sGrossWeight);
 
-                    request.EutPartnumbers += sPartNo + " ; ";
-                    request.GrossWeight += sGrossWeight + " ; ";
-                    request.NetWeight += sNetWeight + " ; ";
-                }
+        //            request.EutPartnumbers += sPartNo + " ; ";
+        //            request.GrossWeight += sGrossWeight + " ; ";
+        //            request.NetWeight += sNetWeight + " ; ";
+        //        }
 
-            }
-            catch (NullReferenceException)
-            {
-                MessageBox.Show("please fill in all fields");
-            }
+        //    }
+        //    catch (NullReferenceException)
+        //    {
+        //        MessageBox.Show("please fill in all fields");
+        //    }
 
-        }
+        //}
 
-        private void btnRemove_Click(object sender, RoutedEventArgs e)
-        {
-            if (lstParts.SelectedValue.ToString() != null)
-            {
-                lstParts.Items.Remove(lstParts.SelectedValue);
-                parts.Remove((Part)lstParts.SelectedValue);
-            }
-        }
+
+
+
+
+        //private void btnRemove_Click(object sender, RoutedEventArgs e)
+        //{
+        //    if (lstParts.SelectedValue.ToString() != null)
+        //    {
+        //        lstParts.Items.Remove(lstParts.SelectedValue);
+        //        parts.Remove((Part)lstParts.SelectedValue);
+        //    }
+        //}
 
         private void btnSend_Click(object sender, RoutedEventArgs e)
         {
@@ -141,32 +144,33 @@ namespace Barco
             }
         }
 
-    
-        private void refreshGUI()
-        {
-            lstParts.Items.Clear();
-            foreach (Part part in parts)
-            {
-                lstParts.Items.Add(part);
-            }
-        }
+
+
+        //private void refreshGUI()
+        //{
+        //    lstParts.Items.Clear();
+        //    foreach (Part part in parts)
+        //    {
+        //        lstParts.Items.Add(part);
+        //    }
+        //}
 
 
 
 
-        public class Part
-        {
-            public string partNo { get; set; }
-            public string NetWeight { get; set; }
-            public string GrossWeight { get; set; }
-        }
+        //public class Part
+        //{
+        //    public string partNo { get; set; }
+        //    public string NetWeight { get; set; }
+        //    public string GrossWeight { get; set; }
+        //}
 
         //private void btnCancel_Click(object sender, RoutedEventArgs e)
         //{
-        //       HomeScreen homeScreen = new HomeScreen();
-        //       Close();
-        //      // homeScreen.Show();
-        //      //homeScreen.ShowDialog();
+        //    HomeScreen homeScreen = new HomeScreen();
+        //    Close();
+        //    // homeScreen.Show();
+        //    //homeScreen.ShowDialog();
         //}
     }
 

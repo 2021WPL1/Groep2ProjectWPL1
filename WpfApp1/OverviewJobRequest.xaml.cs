@@ -55,46 +55,46 @@ namespace Barco
             
         }
 
-        private void ApproveButton_Click(object sender, RoutedEventArgs e)
-        {
-            //try
-            //{
-            //RqRequest rqRequest = dao.getRqRequestById(Convert.ToInt32(listOverview.SelectedValue));
-            //dao.editRequestStatus(rqRequest, "JrStatus", true);
+        //private void ApproveButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    //try
+        //    //{
+        //    //    RqRequest rqRequest = dao.getRqRequestById(Convert.ToInt32(listOverview.SelectedValue));
+        //    //    dao.editRequestStatus(rqRequest, "JrStatus", true);
 
-            //}
-            //catch (SqlException ex)
-            //{
+        //    //}
+        //    //catch (SqlException ex)
+        //    //{
 
-            //    MessageBox.Show(ex.Message);
-            //}
+        //    //    MessageBox.Show(ex.Message);
+        //    //}
+
+        //}
+
+        //private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    try
+        //    {
+        //        dao.deleteJobRequest(Convert.ToInt32(listOverview.SelectedValue));
 
 
-        }
+        //        loadJobRequests();
+        //    }
+        //    catch (SqlException ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
 
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                dao.deleteJobRequest(Convert.ToInt32(listOverview.SelectedValue));
+        //}
+        ////bianca
+        //private void EditButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen();
+        //    int IdJr = Convert.ToInt32(listOverview.SelectedValue);
+        //    jobRequestAanpassen.ShowDialog(ref IdJr);
 
 
-                loadJobRequests();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-        }
-        //bianca
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen();
-            int IdJr = Convert.ToInt32(listOverview.SelectedValue);
-            jobRequestAanpassen.ShowDialog(ref IdJr);
-
-        }
+        //}
         ////bianca
         //private void CancelButton_Click(object sender, RoutedEventArgs e)
         //{
@@ -105,12 +105,12 @@ namespace Barco
 
         //}
 
-        //bianca
-        private void ShowDetails_Click(object sender, RoutedEventArgs e)
-        {
-            JobRequestDetail jobRequestDetail = new JobRequestDetail();
-            Close();
-            jobRequestDetail.ShowDialog();
-        }
+        ////bianca
+        //private void ShowDetails_Click(object sender, RoutedEventArgs e)
+        //{
+        //    JobRequestDetail jobRequestDetail = new JobRequestDetail();
+        //    Close();
+        //    jobRequestDetail.ShowDialog();
+        //}
     }
 }

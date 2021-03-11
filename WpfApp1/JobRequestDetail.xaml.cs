@@ -73,10 +73,10 @@ namespace Barco
         }
 
        
-        private void btnClose_Click(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
+        //private void btnClose_Click(object sender, RoutedEventArgs e)
+        //{
+        //    Close();
+        //}
 
     }
 }

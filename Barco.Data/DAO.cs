@@ -71,7 +71,7 @@ namespace Barco.Data
 
 
         
-        //  bianca- get the request's date
+        //  bianca
         public RqRequest getRequestDate()
         {
             return context.RqRequest.FirstOrDefault(a => a.RequestDate == DateTime.Now);
@@ -107,7 +107,7 @@ namespace Barco.Data
             saveChanges();
         }
 
-        // add current date in the database
+        // bianca
         public RqRequest addRequestDate()
         { RqRequest rqRequest = new RqRequest
            { 
@@ -124,13 +124,13 @@ namespace Barco.Data
 
      
 
-        //bianca  - getDepartment
+        //bianca  
         public List<RqBarcoDivision> getDepartment()
         { 
             return context.RqBarcoDivision.ToList();
         }
 
-        //bianca - getNature
+        //bianca 
 
         public List<RqBarcoDivision> getDivisions()
         {

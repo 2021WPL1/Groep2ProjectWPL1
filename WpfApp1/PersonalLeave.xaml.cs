@@ -59,15 +59,15 @@ namespace Barco
         //bianca
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
-            string firstname = Firstname.Text;
-            string lastname = LastName.Text;
-            string nameLeader = NameLeader.Text;
+            //string firstname = Firstname.Text;
+            //string lastname = LastName.Text;
+            //string nameLeader = NameLeader.Text;
 
             
-            MessageBox.Show(DateRequest.SelectedDate.ToString() + "Firstname:" + firstname + " " + "Lastname:" + lastname);
-            MessageBox.Show("NameLeader:" + nameLeader + " "
-                + "Absent from:" + AbsentFrom.SelectedDate.ToString() +  "Absent Until:" + AbsentUntil.SelectedDate.ToString());
-            MessageBox.Show(TypeOfLeave.SelectionBoxItem.ToString());
+            //MessageBox.Show(DateRequest.SelectedDate.ToString() + "Firstname:" + firstname + " " + "Lastname:" + lastname);
+            //MessageBox.Show("NameLeader:" + nameLeader + " "
+            //    + "Absent from:" + AbsentFrom.SelectedDate.ToString() +  "Absent Until:" + AbsentUntil.SelectedDate.ToString());
+            //MessageBox.Show(TypeOfLeave.SelectionBoxItem.ToString());
         }
        
              
