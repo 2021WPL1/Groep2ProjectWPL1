@@ -24,14 +24,13 @@ namespace Barco.Data
         public virtual DbSet<RqRequest> RqRequest { get; set; }
         public virtual DbSet<RqRequestDetail> RqRequestDetail { get; set; }
         public virtual DbSet<RqTestDevision> RqTestDevision { get; set; }
-        
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server = LAPTOP-V9E3B1RE\\VIVES; Database=Barco2021;Trusted_Connection = True;");
+                optionsBuilder.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=Barco2021");
             }
         }
 
@@ -107,6 +106,7 @@ namespace Barco.Data
                     .HasMaxLength(10);
 
                 entity.Property(e => e.Pvggroup)
+                    .IsRequired()
                     .HasColumnName("PVGGroup")
                     .HasMaxLength(10);
             });
@@ -164,10 +164,12 @@ namespace Barco.Data
                 entity.Property(e => e.Battery).HasColumnName("battery");
 
                 entity.Property(e => e.EutPartnumbers)
+                    .IsRequired()
                     .HasColumnName("EUT_Partnumbers")
                     .HasMaxLength(500);
 
                 entity.Property(e => e.EutProjectname)
+                    .IsRequired()
                     .HasColumnName("EUT_Projectname")
                     .HasMaxLength(100);
 
@@ -176,21 +178,21 @@ namespace Barco.Data
                     .HasColumnType("datetime");
 
                 entity.Property(e => e.GrossWeight)
+                    .IsRequired()
                     .HasColumnName("grossWeight")
-                    .HasMaxLength(500);
+                    .HasMaxLength(200);
 
                 entity.Property(e => e.HydraProjectNr)
+                    .IsRequired()
                     .HasColumnName("hydraProjectNr")
                     .HasMaxLength(15);
 
-                entity.Property(e => e.InternRequest).HasColumnName("InternRequest????????");
-
                 entity.Property(e => e.JobNature)
+                    .IsRequired()
                     .HasColumnName("jobNature")
                     .HasMaxLength(30);
 
                 entity.Property(e => e.JrNumber)
-                    .IsRequired()
                     .HasColumnName("JR_Number")
                     .HasMaxLength(10);
 
@@ -199,14 +201,16 @@ namespace Barco.Data
                     .HasMaxLength(30);
 
                 entity.Property(e => e.NetWeight)
+                    .IsRequired()
                     .HasColumnName("netWeight")
-                    .HasMaxLength(500);
+                    .HasMaxLength(200);
 
                 entity.Property(e => e.RequestDate)
                     .HasColumnName("request_date")
                     .HasColumnType("datetime");
 
                 entity.Property(e => e.Requester)
+                    .IsRequired()
                     .HasColumnName("requester")
                     .HasMaxLength(10)
                     .HasComment("initialen");
@@ -224,9 +228,8 @@ namespace Barco.Data
                 entity.Property(e => e.IdRequest).HasColumnName("id_request");
 
                 entity.Property(e => e.Pvgresp)
-                    .IsRequired()
                     .HasColumnName("PVGresp")
-                    .HasMaxLength(1);
+                    .HasMaxLength(30);
 
                 entity.Property(e => e.Testdivisie)
                     .IsRequired()
@@ -261,8 +264,6 @@ namespace Barco.Data
                     .HasColumnName("naam")
                     .HasMaxLength(50);
             });
-
-            
 
             OnModelCreatingPartial(modelBuilder);
         }
