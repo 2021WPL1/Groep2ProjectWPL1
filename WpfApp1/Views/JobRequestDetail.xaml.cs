@@ -21,12 +21,13 @@ namespace Barco
     public partial class JobRequestDetail : Window
     {
         private DAO dao;
-
-        public JobRequestDetail()
+        private int SelectedId;
+        public JobRequestDetail(int selectedId): base ()
         {
             InitializeComponent();
             dao = DAO.Instance();
-            load(1002); //TODO bij oproepen van constructor id mee geven
+            SelectedId = selectedId;
+            load(SelectedId); //TODO bij oproepen van constructor id mee geven
             //er moet data in de database zijn om dit te doen werken
             
         }
