@@ -40,14 +40,14 @@ namespace Barco
             DataContext = jobRequestViewModel;
 
 
-
+            
             cmbDivision.ItemsSource = dao.getDivisions();
-            cmbDivision.DisplayMemberPath = "Afkorting";
-            cmbDivision.SelectedValuePath = "Afkorting";
+            cmbDivision.DisplayMemberPath = "afkorting";
+            cmbDivision.SelectedValuePath = "afkorting";
 
             cmbJobNature.ItemsSource = dao.getJobNatures();
-            cmbJobNature.DisplayMemberPath = "Nature";
-            cmbJobNature.SelectedValuePath = "Nature";
+            cmbJobNature.DisplayMemberPath = "nature";
+            cmbJobNature.SelectedValuePath = "nature";
 
 
         }
