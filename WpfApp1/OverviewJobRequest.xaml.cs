@@ -51,14 +51,24 @@ namespace Barco
 
             
         }
-
+        //Jimmy
+        // changes JrStatus to "Approved".
         private void ApproveButton_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+
             RqRequest rqRequest = dao.getRqRequestById(Convert.ToInt32(listOverview.SelectedValue)+2);
             dao.approveRqRequest(rqRequest);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
         }
-
+        //Jimmy
+        // Deletes a Job Request and reloads the list.
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
             try
@@ -104,8 +114,8 @@ namespace Barco
         }
 
         //jimmy
-        //opent de job Request detail pagina en stuurd de selectedId mee naar de nieuwe window.
-        //Eerste record id is 2?
+        //Opens the job Request detail Page and sends the selectedId to the new window.
+        //First recordId is 2?
         private void OpenButton_Click(object sender, RoutedEventArgs e)
         {
             try

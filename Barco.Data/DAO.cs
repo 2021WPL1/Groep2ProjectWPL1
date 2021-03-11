@@ -107,6 +107,8 @@ namespace Barco.Data
             context.RqRequest.Remove(getRqRequestById(id));
             saveChanges();
         }
+        //Jimmy
+        // Change JrStatus to Approved
         public void approveRqRequest(RqRequest rqRequest)
         {
             rqRequest.JrStatus = "Approved";
