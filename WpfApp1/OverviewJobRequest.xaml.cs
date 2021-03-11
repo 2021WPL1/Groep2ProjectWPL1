@@ -30,7 +30,6 @@ namespace Barco
 
             InitializeComponent();
             dao = DAO.Instance();
-            //loadJobRequests();
 
            overviewModel = new OverviewViewModel(this);
             DataContext = overviewModel;
@@ -41,71 +40,6 @@ namespace Barco
 
 
         }
-        //private void UpdateListBox(ListBox listBox, string display, string value, IEnumerable source)
-        //{
-        //    listBox.DisplayMemberPath = display;
-        //    listBox.SelectedValuePath = value;
-        //    listBox.ItemsSource = source;
-        //}
-
-        //private void loadJobRequests()
-        //{
-
-        //    ICollection<RqRequest> rqRequests = dao.getAllRqRequests();
-        //    UpdateListBox(listOverview, "JrNumber", "Id", rqRequests);
-
-            
-        //}
-        //Jimmy
-        // changes JrStatus to "Approved".
-        private void ApproveButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-
-            RqRequest rqRequest = dao.getRqRequestById(Convert.ToInt32(listOverview.SelectedValue)+2);
-            dao.approveRqRequest(rqRequest);
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-        }
-        //Jimmy
-        // Deletes a Job Request and reloads the list.
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                dao.deleteJobRequest(Convert.ToInt32(listOverview.SelectedValue)+2);
-
-
-                overviewModel.Load();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-        }
-        //bianca
-        private void EditButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                int selectedId = Convert.ToInt32(listOverview.SelectedValue)+2;
-                JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen(selectedId);
-                jobRequestAanpassen.ShowDialog();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-
-
 
     }
 }

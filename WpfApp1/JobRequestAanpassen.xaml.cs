@@ -19,18 +19,39 @@ namespace Barco
     public partial class JobRequestAanpassen : Window
     {
         private DAO dao;
-        private int SelectedId;
+        private RqRequest RqRequest;
 
 
-        public JobRequestAanpassen(int selectedId): base()
+        public JobRequestAanpassen(RqRequest rqRequest): base()
         {
             InitializeComponent();
             dao = DAO.Instance();
-            SelectedId = selectedId;
+            RqRequest = rqRequest;
+            load(rqRequest.IdRequest);
 
         }
+        private void load(int selectedId)
+        {
+            RqRequest req = dao.getRequest(selectedId);
+            RqRequestDetail reqdet = dao.getRequestDetail(selectedId);
 
-        private void btnSaveChanges_Click(object sender, RoutedEventArgs e)
+
+            txtRequisterInitials.Text = req.Requester;
+            txtProjectName.Text = req.EutProjectname;
+            lblRequestDate.Content = req.RequestDate;
+            DatePickerExpectedEndDate.SelectedDate = req.ExpectedEnddate;
+            lblJobRequestNumber.Content = req.JrNumber;
+            if (req.Battery == true)
+            {
+                RBBatteriesYes.IsChecked = true;
+            }
+            else
+            {
+                RBBatteriesNo.IsChecked = true;
+            }
+        }
+
+            private void btnSaveChanges_Click(object sender, RoutedEventArgs e)
         {
              
         }
@@ -52,27 +73,6 @@ namespace Barco
             Close();
             homeScreen.ShowDialog();
         }
-        public void ShowDialog(ref int IdJr)
-        {
-            int Idjr = IdJr;
-            RqRequest rqRequest =  dao.getRqRequestById(Idjr);
-            RqRequestDetail requestDetail =  dao.getRqRequestDetailById(Idjr);
-            if (rqRequest.Battery == true)
-            {
-                RBBatteriesYes.IsChecked = true;
-            }
-            else
-            {
-                RBBatteriesNo.IsChecked = true;
-            }
-            txtProjectName.Text = rqRequest.EutProjectname;
-            txtRequisterInitials.Text = rqRequest.Requester;
-            comboBoxDivision.SelectedItem = rqRequest.BarcoDivision;
-            comboBoxJobNature.SelectedItem = rqRequest.JobNature;
-            lblRequestDate.Content = rqRequest.RequestDate;
-            lblJobRequestNumber.Content = rqRequest.JrNumber;
-            txtPvgRes.Text = requestDetail.Pvgresp;
-            DatePickerExpectedEndDate.SelectedDate = rqRequest.ExpectedEnddate;
-        }
+
     }
 }
