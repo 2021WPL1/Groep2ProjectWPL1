@@ -37,7 +37,7 @@ namespace Barco
         {
             InitializeComponent();
             dao = DAO.Instance();
-            jobRequestViewModel = new JobRequestViewModel();
+            jobRequestViewModel = new JobRequestViewModel(this);
             DataContext = jobRequestViewModel;
 
 
@@ -161,13 +161,13 @@ namespace Barco
             public string GrossWeight { get; set; }
         }
 
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-               HomeScreen homeScreen = new HomeScreen();
-               Close();
-              // homeScreen.Show();
-              //homeScreen.ShowDialog();
-        }
+        //private void btnCancel_Click(object sender, RoutedEventArgs e)
+        //{
+        //       HomeScreen homeScreen = new HomeScreen();
+        //       Close();
+        //      // homeScreen.Show();
+        //      //homeScreen.ShowDialog();
+        //}
     }
 
 }

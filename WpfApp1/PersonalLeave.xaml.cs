@@ -19,6 +19,8 @@ namespace Barco
     /// </summary>
     public partial class PersonalLeave : Window
     {
+        private PersonalLeaveViewModel personalLeaveViewModel;
+
         private DAO dao;
 
         //bianca
@@ -29,6 +31,9 @@ namespace Barco
            PLBarco.Source = photo;
             dao = DAO.Instance();
             showDepartment();
+            personalLeaveViewModel = new PersonalLeaveViewModel(this);
+            DataContext = personalLeaveViewModel;
+         
 
 
         }
@@ -43,13 +48,13 @@ namespace Barco
         }
 
 
-        //bianca
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            HomeScreen homeScreen = new HomeScreen();
-            Close();
-           // homeScreen.Show();
-        }
+        ////bianca
+        //private void CancelButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    HomeScreen homeScreen = new HomeScreen();
+        //    Close();
+        //   // homeScreen.Show();
+        //}
 
         //bianca
         private void SendButton_Click(object sender, RoutedEventArgs e)

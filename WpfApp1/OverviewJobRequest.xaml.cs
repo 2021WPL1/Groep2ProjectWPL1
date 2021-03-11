@@ -22,6 +22,7 @@ namespace Barco
     /// </summary>
     public partial class OverviewJobRequest : Window
     {
+        private OverviewViewModel overviewModel;
         private DAO dao;
 
         public OverviewJobRequest()
@@ -30,6 +31,9 @@ namespace Barco
             InitializeComponent();
             dao = DAO.Instance();
             loadJobRequests();
+
+           overviewModel = new OverviewViewModel(this);
+            DataContext = overviewModel;
 
             BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
             imgOverview.Source = photo;
@@ -91,15 +95,15 @@ namespace Barco
             jobRequestAanpassen.ShowDialog(ref IdJr);
 
         }
-        //bianca
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            HomeScreen homeScreen = new HomeScreen();
-             Close();
-          // homeScreen.Show();
-            //homeScreen.ShowDialog();
+        ////bianca
+        //private void CancelButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    HomeScreen homeScreen = new HomeScreen();
+        //     Close();
+        //  // homeScreen.Show();
+        //    //homeScreen.ShowDialog();
 
-        }
+        //}
 
         //bianca
         private void ShowDetails_Click(object sender, RoutedEventArgs e)

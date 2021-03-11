@@ -2,32 +2,29 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Windows;
 using System.Windows.Input;
 
 namespace Barco
 {
-  public class JobRequestViewModel: ViewModelBase
+   public class OverviewViewModel: ViewModelBase
     {
-        private JobRequest screen;
+        private OverviewJobRequest overview;
         public ICommand CancelCommand { get; set; }
 
-        public JobRequestViewModel(JobRequest screen)
+
+        public OverviewViewModel(OverviewJobRequest overview)
         {
             CancelCommand = new DelegateCommand(CancelButton);
-            this.screen = screen;
-
+            this.overview = overview;
         }
 
         public void CancelButton()
-        {           
-            HomeScreen home= new HomeScreen();
-            screen.Close();
+        {
+            HomeScreen home = new HomeScreen();
+            overview.Close();
             home.ShowDialog();
-          
 
         }
-
 
     }
 }

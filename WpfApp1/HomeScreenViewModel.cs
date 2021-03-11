@@ -9,6 +9,7 @@ namespace Barco
 {
     class HomeScreenViewModel : ViewModelBase
     {
+        private HomeScreen home;
 
         public ICommand HomeScreenCommand { get; set; }
         public ICommand JobRequestCommand { get; set; }
@@ -16,13 +17,14 @@ namespace Barco
         public ICommand PersonalLeaveCommand { get; set; }
         public ICommand CollectiveLeaveCommand { get; set; }
 
-        public HomeScreenViewModel()
+        public HomeScreenViewModel(HomeScreen home)
         {
             JobRequestCommand = new DelegateCommand(CreateRequest);
             OverviewCommand = new DelegateCommand(Overview);
             PersonalLeaveCommand = new DelegateCommand(PersonalLeave);
             CollectiveLeaveCommand = new DelegateCommand(CollectiveLeave);
             HomeScreenCommand = new DelegateCommand(HomeScreen);
+            this.home = home;
 
 
         }
@@ -37,6 +39,7 @@ namespace Barco
         public void CreateRequest()
         {
             JobRequest createJobRequest = new JobRequest();
+            home.Close();
             createJobRequest.ShowDialog();
      
         }
@@ -44,19 +47,21 @@ namespace Barco
         public void Overview()
         {
             OverviewJobRequest overviewJobRequest = new OverviewJobRequest();
+            home.Close();
             overviewJobRequest.ShowDialog();
         }
 
         public void PersonalLeave()
         {
             PersonalLeave personalLeave = new PersonalLeave();
-
+            home.Close();
             personalLeave.ShowDialog();
         }
 
         public void CollectiveLeave()
         {
             CollectiveLeave collectiveLeave = new CollectiveLeave();
+            home.Close();
             collectiveLeave.ShowDialog();
         }
 
