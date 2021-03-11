@@ -29,5 +29,6 @@ namespace Barco.Data
 
         public virtual ICollection<RqOptionel> RqOptionel { get; set; }
         public virtual ICollection<RqRequestDetail> RqRequestDetail { get; set; }
+
     }
 }

@@ -30,31 +30,32 @@ namespace Barco
 
             InitializeComponent();
             dao = DAO.Instance();
-            loadJobRequests();
+            //loadJobRequests();
 
            overviewModel = new OverviewViewModel(this);
             DataContext = overviewModel;
+            overviewModel.Load();
 
             BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
             imgOverview.Source = photo;
 
 
         }
-        private void UpdateListBox(ListBox listBox, string display, string value, IEnumerable source)
-        {
-            listBox.DisplayMemberPath = display;
-            listBox.SelectedValuePath = value;
-            listBox.ItemsSource = source;
-        }
+        //private void UpdateListBox(ListBox listBox, string display, string value, IEnumerable source)
+        //{
+        //    listBox.DisplayMemberPath = display;
+        //    listBox.SelectedValuePath = value;
+        //    listBox.ItemsSource = source;
+        //}
 
-        private void loadJobRequests()
-        {
+        //private void loadJobRequests()
+        //{
 
-            ICollection<RqRequest> rqRequests = dao.getAllRqRequests();
-            UpdateListBox(listOverview, "JrNumber", "Id", rqRequests);
+        //    ICollection<RqRequest> rqRequests = dao.getAllRqRequests();
+        //    UpdateListBox(listOverview, "JrNumber", "Id", rqRequests);
 
             
-        }
+        //}
         //Jimmy
         // changes JrStatus to "Approved".
         private void ApproveButton_Click(object sender, RoutedEventArgs e)
@@ -80,7 +81,7 @@ namespace Barco
                 dao.deleteJobRequest(Convert.ToInt32(listOverview.SelectedValue)+2);
 
 
-                loadJobRequests();
+                overviewModel.Load();
             }
             catch (SqlException ex)
             {
@@ -102,37 +103,9 @@ namespace Barco
                 MessageBox.Show(ex.Message);
             }
         }
-        //bianca
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                HomeScreen homeScreen = new HomeScreen();
-                Close();
-                homeScreen.ShowDialog();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
 
-        //jimmy
-        //Opens the job Request detail Page and sends the selectedId to the new window.
-        //First recordId is 2?
-        private void OpenButton_Click(object sender, RoutedEventArgs e)
-        {
-            try
-            {
-                int SelectedId = Convert.ToInt32(listOverview.SelectedValue)+2;
-                JobRequestDetail jobRequestDetail = new JobRequestDetail(SelectedId);
-                Close();
-                jobRequestDetail.ShowDialog();
-            }
-            catch (SqlException ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
+
+
+
     }
 }

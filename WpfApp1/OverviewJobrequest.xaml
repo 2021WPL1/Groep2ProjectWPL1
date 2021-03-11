@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="OverviewJobRequest" Height="450" Width="800">
     <Grid>
-        <Button x:Name="ApproveButton" Content="Approve" HorizontalAlignment="Left" Margin="590,190,0,0" VerticalAlignment="Top" Height="34" Width="50" Click="ApproveButton_Click"/>
+        <Button x:Name="ApproveButton" Command="{Binding ApproveCommand}"
+                Content="Approve" HorizontalAlignment="Left" Margin="590,190,0,0" VerticalAlignment="Top" Height="34" Width="50" Click="ApproveButton_Click"/>
         <Button x:Name="EditButton" Content="Edit" HorizontalAlignment="Left" Margin="654,190,0,0" VerticalAlignment="Top" Height="34" Width="50" Click="EditButton_Click"/>
         <Button x:Name="DeleteButton" Content="Delete" HorizontalAlignment="Left" Margin="717,190,0,0" VerticalAlignment="Top" Height="34" Width="50" Click="DeleteButton_Click"/>
       
@@ -19,8 +20,11 @@
                 Content="Cancel" HorizontalAlignment="Left" Margin="722,246,0,0" VerticalAlignment="Top" Height="33" Width="45" />
         <Image x:Name="imgOverview" HorizontalAlignment="Left" Height="80" Margin="21,14,0,0" VerticalAlignment="Top" Width="215"/>
         <Label Content="Overview Jobrequest" HorizontalAlignment="Left" Margin="294,14,0,0" VerticalAlignment="Top"  Height="72" Width="256" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
-        <Button x:Name="OpenButton" Content="Open" HorizontalAlignment="Left" Margin="654,245,0,0" VerticalAlignment="Top" Height="34" Width="50" Click="OpenButton_Click"  />
-        <ListBox x:Name="listOverview" Margin="68,212,279,33"/>
+        <Button x:Name="OpenButton" Content="Open" HorizontalAlignment="Left" Command="{Binding OpenDetailsCommand}"
+                Margin="654,245,0,0" VerticalAlignment="Top" Height="34" Width="50"   />
+        <ListBox x:Name="listOverview" ItemsSource="{Binding rqRequests}"
+                 SelectedItem="{Binding SelectedRqRequest, Mode=TwoWay}"
+                 DisplayMemberPath="JrNumber" Margin="68,212,279,33"/>
 
     </Grid>
 </Window>
