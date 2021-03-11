@@ -99,7 +99,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView Margin="227,499,224,0" BorderBrush="{x:Null}" Foreground="Red" Name="err_output" SelectionChanged="err_output_SelectionChanged">
+        <ListView Margin="227,499,224,0" BorderBrush="{x:Null}" Foreground="Red" Name="err_output" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
