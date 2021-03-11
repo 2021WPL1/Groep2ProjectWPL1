@@ -223,6 +223,11 @@ namespace Barco.Data
             return rqBarcoDivisionPerson;
         }
 
+        //public RqRequest editRequestStatus( )
+        //{
+            
+        //}
+
     }
 }
 
