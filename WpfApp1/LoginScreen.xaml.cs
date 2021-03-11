@@ -20,8 +20,8 @@ namespace Barco
         public LoginScreen()
         {
             InitializeComponent();
-            BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
-            imgLogin.Source = photo;
+            //BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
+            //imgLogin.Source = photo;
         }
 
 

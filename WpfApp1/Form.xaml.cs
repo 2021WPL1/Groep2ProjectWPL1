@@ -20,8 +20,8 @@ namespace Barco
         public Form()
         {
             InitializeComponent();
-            BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
-            imgLoginForm.Source = photo;
+            //BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
+            //imgLoginForm.Source = photo;
         }
 
 
