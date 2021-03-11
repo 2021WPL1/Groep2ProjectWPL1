@@ -45,6 +45,7 @@ namespace Barco
 
         private void loadJobRequests()
         {
+
             ICollection<RqRequest> rqRequests = dao.getAllRqRequests();
             UpdateListBox(listOverview, "JrNumber", "Id", rqRequests);
 
@@ -53,18 +54,8 @@ namespace Barco
 
         private void ApproveButton_Click(object sender, RoutedEventArgs e)
         {
-            //try
-            //{
-            //RqRequest rqRequest = dao.getRqRequestById(Convert.ToInt32(listOverview.SelectedValue));
-            //dao.editRequestStatus(rqRequest, "JrStatus", true);
-
-            //}
-            //catch (SqlException ex)
-            //{
-
-            //    MessageBox.Show(ex.Message);
-            //}
-
+            RqRequest rqRequest = dao.getRqRequestById(Convert.ToInt32(listOverview.SelectedValue)+2);
+            dao.approveRqRequest(rqRequest);
 
         }
 
@@ -72,7 +63,7 @@ namespace Barco
         {
             try
             {
-                dao.deleteJobRequest(Convert.ToInt32(listOverview.SelectedValue));
+                dao.deleteJobRequest(Convert.ToInt32(listOverview.SelectedValue)+2);
 
 
                 loadJobRequests();
@@ -86,26 +77,48 @@ namespace Barco
         //bianca
         private void EditButton_Click(object sender, RoutedEventArgs e)
         {
-            JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen();
-            int IdJr = Convert.ToInt32(listOverview.SelectedValue);
-            jobRequestAanpassen.ShowDialog(ref IdJr);
-
+            try
+            {
+                int selectedId = Convert.ToInt32(listOverview.SelectedValue)+2;
+                JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen(selectedId);
+                jobRequestAanpassen.ShowDialog();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         //bianca
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            HomeScreen homeScreen = new HomeScreen();
-            Close();
-            homeScreen.ShowDialog();
+            try
+            {
+                HomeScreen homeScreen = new HomeScreen();
+                Close();
+                homeScreen.ShowDialog();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
-
+        //jimmy
+        //opent de job Request detail pagina en stuurd de selectedId mee naar de nieuwe window.
+        //Eerste record id is 2?
         private void OpenButton_Click(object sender, RoutedEventArgs e)
         {
-            int SelectedId = Convert.ToInt32(listOverview.SelectedValue);
-            JobRequestDetail jobRequestDetail = new JobRequestDetail(SelectedId);
-            Close();
-            jobRequestDetail.ShowDialog();
+            try
+            {
+                int SelectedId = Convert.ToInt32(listOverview.SelectedValue)+2;
+                JobRequestDetail jobRequestDetail = new JobRequestDetail(SelectedId);
+                Close();
+                jobRequestDetail.ShowDialog();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

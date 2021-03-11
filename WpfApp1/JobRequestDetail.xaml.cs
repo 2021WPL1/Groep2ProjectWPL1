@@ -37,7 +37,7 @@ namespace Barco
         {
             RqRequest req = dao.getRequest(selectedId);
             RqRequestDetail reqdet = dao.getRequestDetail(selectedId);
-            //Eut eut = dao.getEut(reqdet.IdRqDetail);
+            Eut eut = dao.getEut(reqdet.IdRqDetail);
             RqOptionel optionel = dao.getOptionel(selectedId);
 
 
@@ -57,18 +57,18 @@ namespace Barco
                 RBBatteriesNo.IsChecked = true;
             }
 
-            //txtLinkToTestPlan.Text = optionel.Link;
-            //txtSpecialRemarks.Text = optionel.Remarks;
+            txtLinkToTestPlan.Text = optionel.Link;
+            txtSpecialRemarks.Text = optionel.Remarks;
 
-            ////do-while extra aanmaken voor partweight(net- en gross-) met de nieuwe database
-            //string s = req.EutPartnumbers;
-            //do
-            //{
-            //    ListBoxPartNumber.Items.Add(s.Substring(0, s.IndexOf(";")));
-            //    s = s.Substring(s.IndexOf(";") + 1);
+            //do-while extra aanmaken voor partweight(net- en gross-) met de nieuwe database
+            string s = req.EutPartnumbers;
+            do
+            {
+                ListBoxPartNumber.Items.Add(s.Substring(0, s.IndexOf(";")));
+                s = s.Substring(s.IndexOf(";") + 1);
 
-            //} while (s.Contains(";"));
-            //ListBoxPartNumber.Items.Add(s);
+            } while (s.Contains(";"));
+            ListBoxPartNumber.Items.Add(s);
 
 
         }

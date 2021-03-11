@@ -19,11 +19,14 @@ namespace Barco
     public partial class JobRequestAanpassen : Window
     {
         private DAO dao;
+        private int SelectedId;
 
-        public JobRequestAanpassen()
+
+        public JobRequestAanpassen(int selectedId): base()
         {
             InitializeComponent();
             dao = DAO.Instance();
+            SelectedId = selectedId;
 
         }
 
