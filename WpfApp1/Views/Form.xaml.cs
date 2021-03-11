@@ -17,14 +17,18 @@ namespace Barco
     /// </summary>
     public partial class Form : Window
     {
+        private FormViewModel formVM;
         public Form()
         {
             InitializeComponent();
-            BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
-            imgLoginForm.Source = photo;
+            //BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
+            //imgLoginForm.Source = photo;
+
+            formVM = new FormViewModel();
+            DataContext = formVM;
         }
 
-
+        /*
         //bianca
         private void LoginForm_Click(object sender, RoutedEventArgs e)
         {
@@ -55,9 +59,9 @@ namespace Barco
                 Close();
                 login.ShowDialog();
             }
-          
+          }
+        */
 
-
-        }
+        
     }
 }
