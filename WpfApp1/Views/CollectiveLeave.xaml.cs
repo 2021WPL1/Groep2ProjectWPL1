@@ -18,6 +18,8 @@ namespace Barco
     /// </summary>
     public partial class CollectiveLeave : Window
     {
+        private CollectiveLeaveViewModel collectiveLeaveViewModel;
+
         private DAO dao;
 
         Barco2021Context context = new Barco2021Context();
@@ -27,6 +29,9 @@ namespace Barco
             BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
             imgCollectiveLeave.Source = photo;
             dao = DAO.Instance();
+            collectiveLeaveViewModel = new CollectiveLeaveViewModel(this);
+            DataContext = collectiveLeaveViewModel;
+
             cbxChooseDepartment.Items.Clear();
             cbxChooseDepartment.ItemsSource = dao.getDepartment();
             cbxChooseDepartment.DisplayMemberPath = "Afkorting";
@@ -40,14 +45,14 @@ namespace Barco
 
         }
 
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            HomeScreen homescreen = new HomeScreen();
-            Close();
+        //private void CancelButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    HomeScreen homeScreen = new HomeScreen();
+        //   Close();
+        //   // homeScreen.Show();
+          
 
-            homescreen.ShowDialog();
-
-        }
+        //}
 
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {

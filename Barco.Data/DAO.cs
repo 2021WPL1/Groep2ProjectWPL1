@@ -45,6 +45,8 @@ namespace Barco.Data
             saveChanges();
             return person;
         }
+
+        
        
         // bianca- get a person with the abbreviation
         public Person getPersonWithAbb(string abb)
@@ -71,7 +73,7 @@ namespace Barco.Data
 
 
         
-        //  bianca- get the request's date
+        //  bianca
         public RqRequest getRequestDate()
         {
             return context.RqRequest.FirstOrDefault(a => a.RequestDate == DateTime.Now);
@@ -107,7 +109,7 @@ namespace Barco.Data
             saveChanges();
         }
 
-        // add current date in the database
+        // bianca
         public RqRequest addRequestDate()
         { RqRequest rqRequest = new RqRequest
            { 
@@ -124,19 +126,19 @@ namespace Barco.Data
 
      
 
-        //bianca  - getDepartment
+        //bianca  
         public List<RqBarcoDivision> getDepartment()
         { 
             return context.RqBarcoDivision.ToList();
         }
 
-        //bianca - getNature
+        //bianca 
 
         public List<RqBarcoDivision> getDivisions()
         {
             return context.RqBarcoDivision.ToList();
         }
-
+        
         public List<RqJobNature> getJobNatures()
         {
             return context.RqJobNature.ToList();
@@ -161,6 +163,73 @@ namespace Barco.Data
         {
             return context.RqOptionel.Where(opt => opt.IdRequest == idReq).FirstOrDefault();
         }
-     }
+
+        //Stach - geeft division op basis van de afkotring
+        public RqBarcoDivision GetDivisionByAbb(string abb)
+        {
+            return context.RqBarcoDivision.FirstOrDefault(a => a.Afkorting == abb);
+        }
+
+        public bool ifDivisionExists(string abb)
+        {
+            bool result = false;
+            if (context.RqBarcoDivision.Any(a => a.Afkorting == abb))
+            {
+                result = true;
+            }
+            return result;
+        }
+        // remove division
+        public void RemoveDivisionByAbb(string abb)
+        {
+            context.RqBarcoDivision.Remove(GetDivisionByAbb(abb));
+            saveChanges();
+        }
+
+        // Geeft devision
+        public List<RqTestDevision> getTestDevisions()
+        {
+            return context.RqTestDevision.ToList();
+        }
+        //Geeft devision op basis van de afkorting
+        public RqTestDevision GetRqTestDevByAbb(string abb)
+        {
+            return context.RqTestDevision.FirstOrDefault(a => a.Afkorting == abb);
+        }
+
+        //voegt een division toe aan de database(?)
+        public RqBarcoDivision AddDivision(string abb, string alias, bool active)
+        {
+            RqBarcoDivision rqBarcoDivision = new RqBarcoDivision
+            {
+                Afkorting = abb,
+                Alias = alias,
+                Actief = active
+            };
+            context.RqBarcoDivision.Add(rqBarcoDivision);
+            saveChanges();
+            return rqBarcoDivision;
+        }
+
+        //voegt een persoon toe aan een division(?)
+        public RqBarcoDivisionPerson AddDivPer(string AbbDevision, string AbbPerson, string PvgGroup)
+        {
+            RqBarcoDivisionPerson rqBarcoDivisionPerson = new RqBarcoDivisionPerson
+            {
+                AfkDevision = AbbDevision,
+                AfkPerson = AbbPerson,
+                Pvggroup = PvgGroup
+            };
+            context.RqBarcoDivisionPerson.Add(rqBarcoDivisionPerson);
+            saveChanges();
+            return rqBarcoDivisionPerson;
+        }
+
+        //public RqRequest editRequestStatus( )
+        //{
+            
+        //}
+
+    }
 }
 

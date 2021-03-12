@@ -54,8 +54,12 @@
         <TextBox x:Name="txtPartNumber" HorizontalAlignment="Left" Margin="483,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="14"/>
         <TextBox x:Name="txtPartNetWeight" HorizontalAlignment="Left" Margin="578,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="14"/>
         <TextBox x:Name="txtPartGrossWeight" HorizontalAlignment="Left" Margin="669,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="14"/>
-        <Button x:Name="btnAddPart" Content="Add" HorizontalAlignment="Left" Margin="590,0,0,0" VerticalAlignment="Center" Click="btnAddPart_Click" Width="48" Height="21" RenderTransformOrigin="0.539,1.332"/>
-        <Button x:Name="btnRemovePart" Content="Remove" HorizontalAlignment="Left" Margin="653,224,0,0" VerticalAlignment="Top" Click="btnRemovePart_Click" Height="19"/>
+        <Button x:Name="btnAddPart" 
+                Command="{Binding AddCommand}"
+                Content="Add" HorizontalAlignment="Left" Margin="590,0,0,0" VerticalAlignment="Center"  Width="48" Height="21" RenderTransformOrigin="0.539,1.332"/>
+        <Button x:Name="btnRemovePart"
+                Command="{Binding RemoveCommand}"
+                Content="Remove" HorizontalAlignment="Left" Margin="653,224,0,0" VerticalAlignment="Top" Height="19"/>
         <TextBlock HorizontalAlignment="Left" Margin="51,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Batteries included:"/></TextBlock>
         <RadioButton x:Name="RBBatteriesYes" Content="Yes" HorizontalAlignment="Left" Margin="51,168,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="RBBatteriesNo" Content="No" HorizontalAlignment="Left" Margin="51,188,0,0" VerticalAlignment="Top"/>
@@ -108,8 +112,12 @@
         <TextBlock HorizontalAlignment="Left" Margin="204,389,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="585,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"><Run Text="Special remarks"/><Run Language="nl-be" Text=":"/></TextBlock>
         <TextBox x:Name="txtSpecialRemarks" HorizontalAlignment="Left" Margin="535,274,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" Height="91"/>
-        <Button x:Name="btnCancelRequest" Content="Cancel" HorizontalAlignment="Left" Margin="741,382,0,0" VerticalAlignment="Top" Click="btnCancelRequest_Click" Height="20" Width="45"/>
-        <Button x:Name="btnSaveChanges" Content="Save changes" HorizontalAlignment="Left" Margin="650,382,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.289,0.634" Height="22" Width="77" Click="btnSaveChanges_Click"/>
+        <Button x:Name="btnCancelRequest"
+                      Command="{Binding CancelCommand}" 
+                Content="Cancel" HorizontalAlignment="Left" Margin="741,382,0,0" VerticalAlignment="Top"  Height="20" Width="45"/>
+        <Button x:Name="btnSaveChanges" 
+                 Command="{Binding SaveChangesCommand}"
+                Content="Save changes" HorizontalAlignment="Left" Margin="650,382,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.289,0.634" Height="22" Width="77" />
         <TextBlock HorizontalAlignment="Left" Margin="176,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Request date"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="306,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="JR number"/></TextBlock>
         <TextBox x:Name="txtPvgRes" HorizontalAlignment="Left" Margin="438,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="112"/>

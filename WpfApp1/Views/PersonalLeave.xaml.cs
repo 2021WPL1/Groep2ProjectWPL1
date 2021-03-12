@@ -19,6 +19,8 @@ namespace Barco
     /// </summary>
     public partial class PersonalLeave : Window
     {
+        private PersonalLeaveViewModel personalLeaveViewModel;
+
         private DAO dao;
 
         //bianca
@@ -29,6 +31,9 @@ namespace Barco
            PLBarco.Source = photo;
             dao = DAO.Instance();
             showDepartment();
+            personalLeaveViewModel = new PersonalLeaveViewModel(this);
+            DataContext = personalLeaveViewModel;
+         
 
 
         }
@@ -43,26 +48,26 @@ namespace Barco
         }
 
 
-        //bianca
-        private void CancelButton_Click(object sender, RoutedEventArgs e)
-        {
-            HomeScreen homeScreen = new HomeScreen();
-            Close();
-            homeScreen.ShowDialog();
-        }
+        ////bianca
+        //private void CancelButton_Click(object sender, RoutedEventArgs e)
+        //{
+        //    HomeScreen homeScreen = new HomeScreen();
+        //    Close();
+        //   // homeScreen.Show();
+        //}
 
         //bianca
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
-            string firstname = Firstname.Text;
-            string lastname = LastName.Text;
-            string nameLeader = NameLeader.Text;
+            //string firstname = Firstname.Text;
+            //string lastname = LastName.Text;
+            //string nameLeader = NameLeader.Text;
 
             
-            MessageBox.Show(DateRequest.SelectedDate.ToString() + "Firstname:" + firstname + " " + "Lastname:" + lastname);
-            MessageBox.Show("NameLeader:" + nameLeader + " "
-                + "Absent from:" + AbsentFrom.SelectedDate.ToString() +  "Absent Until:" + AbsentUntil.SelectedDate.ToString());
-            MessageBox.Show(TypeOfLeave.SelectionBoxItem.ToString());
+            //MessageBox.Show(DateRequest.SelectedDate.ToString() + "Firstname:" + firstname + " " + "Lastname:" + lastname);
+            //MessageBox.Show("NameLeader:" + nameLeader + " "
+            //    + "Absent from:" + AbsentFrom.SelectedDate.ToString() +  "Absent Until:" + AbsentUntil.SelectedDate.ToString());
+            //MessageBox.Show(TypeOfLeave.SelectionBoxItem.ToString());
         }
        
              

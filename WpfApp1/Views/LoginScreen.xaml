@@ -8,7 +8,7 @@
         Title="LoginScreen" Height="450" Width="800">
     <Grid>
         <Image x:Name="imgLogin" HorizontalAlignment="Left" Height="79" Margin="21,12,0,0" VerticalAlignment="Top" Width="224"/>
-        <Button x:Name="Login" Content="LOGIN" HorizontalAlignment="Left" Margin="19,99,0,0" VerticalAlignment="Top" Height="40" Width="180" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Bold" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"  FontSize="16" Click="LoginScreen_Click"/>
+        <Button x:Name="Login" Content="LOGIN" Command="{Binding LoginCommand}" HorizontalAlignment="Left" Margin="19,99,0,0" VerticalAlignment="Top" Height="40" Width="180" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Bold" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"  FontSize="16"/>
         <Label Content="Welcome to BARCO" HorizontalAlignment="Left" Margin="432,222,0,0" VerticalAlignment="Top" Height="80" Width="306" FontSize="30" Foreground="#FFED0303" FontWeight="Bold"/>
         <Label Content="Have a nice day!" HorizontalAlignment="Left" Margin="549,271,0,0" VerticalAlignment="Top" Height="49" Width="190" FontSize="20" Foreground="#FFED0303"/>
 
