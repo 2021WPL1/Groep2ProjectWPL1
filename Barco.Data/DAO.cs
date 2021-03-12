@@ -78,6 +78,7 @@ namespace Barco.Data
         {
             return context.RqRequest.FirstOrDefault(a => a.RequestDate == DateTime.Now);
 
+
         }
         //Jimmy
         // get all the RqRequests 
@@ -106,6 +107,13 @@ namespace Barco.Data
         public void deleteJobRequest(int id)
         {
             context.RqRequest.Remove(getRqRequestById(id));
+            saveChanges();
+        }
+        //Jimmy
+        // Change JrStatus to Approved
+        public void approveRqRequest(RqRequest rqRequest)
+        {
+            rqRequest.JrStatus = "Approved";
             saveChanges();
         }
 
