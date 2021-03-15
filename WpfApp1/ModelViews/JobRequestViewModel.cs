@@ -7,7 +7,6 @@ using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using static Barco.JobRequest;
 
 namespace Barco
 { //bianca
@@ -15,28 +14,54 @@ namespace Barco
   {
         private JobRequest screen;
 
+
+        private RqRequest request = new RqRequest();
+
+
+        // buttons : Add/Remove, Send/Cancel
         public ICommand CancelCommand { get; set; }
         public ICommand SendCommand { get; set; }
         public ICommand AddCommand { get; set; }
         public ICommand RemoveCommand { get; set; }
 
-        private string textPartNr { get; set; }
-        private string textNetWeight { get; set; }
-        private string textGrossWeight { get; set; }
+        private string txtPartNr { get; set; }             // EUT Partnumber
+        private string txtNetWeight { get; set; }          //net weight
+        private string txtGrossWeight { get; set; }       //gross weight
+        private string txtLinkTestplan { get; set; }      // link to testplan
+        private string txtReqInitials { get; set; }       // requester initials 
+        private string txtEutProjectname { get; set; }   //EUT Project name
+        private string txtRemark { get; set; }           // special remarks
+        private DatePicker dateExpectedEnd { get; set; }
 
-        private List<Part> parts = new List<Part>();
-        private RqRequest request = new RqRequest();
-        public ObservableCollection<Part> ListParts { get; set; }
+
+        // EUT foreseen availability date
+        private DatePicker DatePickerEUT1 { get; set; }
+        private DatePicker DatePickerEUT2 { get; set; }
+        private DatePicker DatePickerEUT3 { get; set; }
+        private DatePicker DatePickerEUT4 { get; set; }
+        private DatePicker DatePickerEUT5 { get; set; }
+
+        public ObservableCollection<Part> lstParts { get; set; } // for partnumber+ net/gross weight
+        private List<ListView> err_output { get; set; } // listview for errors
+       
+
         //remove this line if working with DAO static class
         //private static Barco2021Context DAO = new Barco2021Context();
 
         private Barco.Data.DAO dao;
         private JobRequestViewModel jobRequestViewModel;
-
-        //private static Barco2021Context context = new Barco2021Context();
         private RqOptionel optional = new RqOptionel();
         private List<Eut> eutList = new List<Eut>();
         private RqRequestDetail Detail = new RqRequestDetail();
+
+
+        List<CheckBox> emcBoxes = new List<CheckBox>();
+        List<CheckBox> envBoxes = new List<CheckBox>();
+        List<CheckBox> relBoxes = new List<CheckBox>();
+        List<CheckBox> prodBoxes = new List<CheckBox>();
+        List<CheckBox> greenBoxes = new List<CheckBox>();
+        List<CheckBox> selectionBoxes = new List<CheckBox>();
+
 
 
         public JobRequestViewModel(JobRequest screen)
@@ -102,11 +127,149 @@ namespace Barco
             //    ListParts.Items.Remove(ListParts.SelectedValue);
             //    parts.Remove((Part)ListParts.SelectedValue);
             //}
+
+            //=========================================
+            /*var selectedPart = (Part)lstParts.SelectedItem;
+
+          if (parts.Contains(selectedPart)) ;
+          {
+              parts.Remove(selectedPart);
+              lstParts.Items.Remove(selectedPart);
+              refreshGUI();
+          }*/
         }
 
-        public void SendButton() { 
+        public void SendButton()
+        {
+
+
+            /*try
+           {
+               //create error sequence
+               List<string> errors = new List<string>();
+
+               //declare vars for object
+               string input_Abbreviation = txtReqInitials.Text.ToString();
+               string input_ProjectName = txtEutProjectname.Text.ToString();
+
+               bool input_Battery = false;
+
+               if (dateExpectedEnd.SelectedDate != null)
+               {
+                   DateTime input_EndDate = (DateTime)dateExpectedEnd.SelectedDate;
+
+               }
+               else
+               {
+                   errors.Add("please specify a end date");
+               }
+
+               string specialRemarks = txtRemark.Text.ToString();
+
+               string netWeights = "";
+               string grossWeights = "";
+               string partNums = "";
+
+               //parts section
+               if (parts.Count > 0)
+               {
+                   foreach (Part part in parts)
+                   {
+                       netWeights += part.NetWeight + "; ";
+                       grossWeights += part.GrossWeight + "; ";
+                       partNums += part.partNo + "; ";
+                   }
+               }
+               else
+               {
+                   errors.Add("Please add parts to test");
+               }
+
+
+               //check if radio buttons are checked
+
+               if ((bool)rbtnBatNo.IsChecked)
+               {
+                   input_Battery = true;
+               }
+               else if ((bool)rbtnBatNo.IsChecked && (bool)rbtnBatYes.IsChecked)
+               {
+                   errors.Add("please check if batteries are needed");
+               }
+               else
+               {
+                   input_Battery = false;
+               }
+
+               //check if requester exists
+
+               if (!dao.IfPersonExists(input_Abbreviation))
+               {
+                   errors.Add("the requester inititals do not match any employee");
+               }
+
+               //check if the job nature is selected
+               //checkbox area
+               if (!(bool)cbEmc.IsChecked && !(bool)cmEnvorimental.IsChecked && !(bool)cmRel.IsChecked && !(bool)cmProdSafety.IsChecked && !(bool)cmGrnComp.IsChecked)
+               {
+                   errors.Add("Please select a job nature");
+               }
+               else
+               {
+                   List<string> validation = ValidateCheckboxes();
+                   errors.AddRange(validation);
+               }
+
+               //check if the dates are set
+               List<string> valiDate = checkDates();
+               errors.AddRange(valiDate);
+
+               //check if other fields are empty
+
+               if (txtEutProjectname.Text is null)
+               {
+                   errors.Add("please fill in a project name");
+               }
+               //error handling
+               if (errors.Count > 0)
+               {
+                   err_output.ItemsSource = errors;
+               }
+               else
+               {
+                   //request object 
+                   request.Requester = input_Abbreviation;
+                   request.BarcoDivision = cmbDivision.SelectedValue.ToString();
+                   request.JobNature = cmbJobNature.SelectedValue.ToString();
+                   request.RequestDate = DateTime.Now;
+                   request.EutProjectname = txtEutProjectname.Text;
+                   request.Battery = input_Battery;
+                   request.ExpectedEnddate = (DateTime)dateExpectedEnd.SelectedDate;
+                   request.NetWeight = netWeights;
+                   request.GrossWeight = grossWeights;
+                   request.EutPartnumbers = partNums;
+
+                   //optional object
+                   optional.Link = txtLinkTestplan.Text;
+                   optional.IdRequest = request.IdRequest;
+
+                   //eut objects
+                   eutList = getEutData();
+
+
+               }
+
+
+           }
+           catch (FormatException ex)
+           {
+               MessageBox.Show(ex.Message.ToString());
+               //MessageBox.Show("Please fill in all fields"):
+           }
+           */
         }
 
+        // to show in the listview
         public class Part
         {
             public string partNo { get; set; }
@@ -114,175 +277,6 @@ namespace Barco
             public string GrossWeight { get; set; }
         }
 
-
-        List<CheckBox> emcBoxes = new List<CheckBox>();
-        List<CheckBox> envBoxes = new List<CheckBox>();
-        List<CheckBox> relBoxes = new List<CheckBox>();
-        List<CheckBox> prodBoxes = new List<CheckBox>();
-        List<CheckBox> greenBoxes = new List<CheckBox>();
-        List<CheckBox> selectionBoxes = new List<CheckBox>();
-
-        private void btnAdd_Click(object sender, RoutedEventArgs e)
-        {
-  
-
-           
-
-        }
-
-        private void btnRemove_Click(object sender, RoutedEventArgs e)
-        {
-            /*var selectedPart = (Part)lstParts.SelectedItem;
-
-            if (parts.Contains(selectedPart)) ;
-            {
-                parts.Remove(selectedPart);
-                lstParts.Items.Remove(selectedPart);
-                refreshGUI();
-            }*/
-        }
-
-        private void btnSend_Click(object sender, RoutedEventArgs e)
-        {
-            /*try
-            {
-                //create error sequence
-                List<string> errors = new List<string>();
-
-                //declare vars for object
-                string input_Abbreviation = txtReqInitials.Text.ToString();
-                string input_ProjectName = txtEutProjectname.Text.ToString();
-
-                bool input_Battery = false;
-
-                if (dateExpectedEnd.SelectedDate != null)
-                {
-                    DateTime input_EndDate = (DateTime)dateExpectedEnd.SelectedDate;
-
-                }
-                else
-                {
-                    errors.Add("please specify a end date");
-                }
-
-                string specialRemarks = txtRemark.Text.ToString();
-
-                string netWeights = "";
-                string grossWeights = "";
-                string partNums = "";
-
-                //parts section
-                if (parts.Count > 0)
-                {
-                    foreach (Part part in parts)
-                    {
-                        netWeights += part.NetWeight + "; ";
-                        grossWeights += part.GrossWeight + "; ";
-                        partNums += part.partNo + "; ";
-                    }
-                }
-                else
-                {
-                    errors.Add("Please add parts to test");
-                }
-
-
-                //check if radio buttons are checked
-
-                if ((bool)rbtnBatNo.IsChecked)
-                {
-                    input_Battery = true;
-                }
-                else if ((bool)rbtnBatNo.IsChecked && (bool)rbtnBatYes.IsChecked)
-                {
-                    errors.Add("please check if batteries are needed");
-                }
-                else
-                {
-                    input_Battery = false;
-                }
-
-                //check if requester exists
-
-                if (!dao.IfPersonExists(input_Abbreviation))
-                {
-                    errors.Add("the requester inititals do not match any employee");
-                }
-
-                //check if the job nature is selected
-                //checkbox area
-                if (!(bool)cbEmc.IsChecked && !(bool)cmEnvorimental.IsChecked && !(bool)cmRel.IsChecked && !(bool)cmProdSafety.IsChecked && !(bool)cmGrnComp.IsChecked)
-                {
-                    errors.Add("Please select a job nature");
-                }
-                else
-                {
-                    List<string> validation = ValidateCheckboxes();
-                    errors.AddRange(validation);
-                }
-
-                //check if the dates are set
-                List<string> valiDate = checkDates();
-                errors.AddRange(valiDate);
-
-                //check if other fields are empty
-
-                if (txtEutProjectname.Text is null)
-                {
-                    errors.Add("please fill in a project name");
-                }
-                //error handling
-                if (errors.Count > 0)
-                {
-                    err_output.ItemsSource = errors;
-                }
-                else
-                {
-                    //request object 
-                    request.Requester = input_Abbreviation;
-                    request.BarcoDivision = cmbDivision.SelectedValue.ToString();
-                    request.JobNature = cmbJobNature.SelectedValue.ToString();
-                    request.RequestDate = DateTime.Now;
-                    request.EutProjectname = txtEutProjectname.Text;
-                    request.Battery = input_Battery;
-                    request.ExpectedEnddate = (DateTime)dateExpectedEnd.SelectedDate;
-                    request.NetWeight = netWeights;
-                    request.GrossWeight = grossWeights;
-                    request.EutPartnumbers = partNums;
-
-                    //optional object
-                    optional.Link = txtLinkTestplan.Text;
-                    optional.IdRequest = request.IdRequest;
-
-                    //eut objects
-                    eutList = getEutData();
-
-
-                }
-
-
-            }
-            catch (FormatException ex)
-            {
-                MessageBox.Show(ex.Message.ToString());
-                //MessageBox.Show("Please fill in all fields"):
-            }
-
-            */
-
-
-
-
-
-        }
-
-
-
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            HomeScreen homeScreen = new HomeScreen();
-            homeScreen.ShowDialog();
-        }
 
         /*public void createBoxLists()
         {

@@ -11,8 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Barco.Data;
 using System.Linq;
-
-
+using static Barco.JobRequestViewModel;
 
 namespace Barco
 {
