@@ -26,7 +26,7 @@
         <Image x:Name="imgOverview" HorizontalAlignment="Left" Height="80" Margin="21,14,0,0" VerticalAlignment="Top" Width="215"/>
         <Label Content="Overview Jobrequest" HorizontalAlignment="Left" Margin="294,14,0,0" VerticalAlignment="Top"  Height="72" Width="256" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
         <Button x:Name="OpenButton"
-                Command="{Binding OpenCommand}"
+                Command="{Binding OpenDetailsCommand}"
                 Content="Open" HorizontalAlignment="Left" Margin="654,245,0,0" VerticalAlignment="Top" Height="34" Width="50" />
         <ListBox x:Name="listOverview" ItemsSource="{Binding RqRequests}"
                  SelectedItem="{Binding SelectedRqRequest, Mode=TwoWay}" Margin="68,212,279,33"/>

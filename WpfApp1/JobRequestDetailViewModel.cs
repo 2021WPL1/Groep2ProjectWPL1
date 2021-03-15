@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace Barco
 {//bianca
-   public class JobRequestDetailViewModel
+   public class JobRequestDetailViewModel : ViewModelBase
     {
         private JobRequestDetail screen;
         public ICommand CancelCommand { get; set; }
@@ -17,7 +17,9 @@ namespace Barco
         public JobRequestDetailViewModel(JobRequestDetail screen, int selectedId)
         {
             CancelCommand = new DelegateCommand(CloseButton);
-            this.Request = dao.getRqRequestById(selectedId);
+            dao = DAO.Instance();
+
+            this.Request = dao.getRequest(selectedId);
             this.screen = screen;
             //load(selectedId);
 

@@ -65,20 +65,13 @@ namespace Barco
 
         public void OpenDetails()
         {
-            try
-            {
-
+      
                 int SelectedId = _selectedRequest.IdRequest;
                 JobRequestDetail jobRequestDetail = new JobRequestDetail(SelectedId);
                 overview.Close();
                 jobRequestDetail.ShowDialog();
 
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
+           
         }
 
         public void DeleteRequest()
