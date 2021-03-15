@@ -20,22 +20,64 @@ namespace Barco
     {
         private JobRequestAanpassenViewModel jobRequestAanpassenViewModel;
 
+        private int SelectedId;
         private DAO dao;
 
-        public JobRequestAanpassen()
+        public JobRequestAanpassen(int selectedId) : base()
         {
             InitializeComponent();
             dao = DAO.Instance();
-            jobRequestAanpassenViewModel = new JobRequestAanpassenViewModel(this);
+            SelectedId = selectedId;
             DataContext = jobRequestAanpassenViewModel;
+            load(SelectedId); 
 
+
+
+        }
+
+        //laad de gegevens in van een jobrequest op basis van het id
+        private void load(int selectedId)
+        {
+            RqRequest req = dao.getRequest(selectedId);
+            RqRequestDetail reqdet = dao.getRequestDetail(selectedId);
+            Eut eut = dao.getEut(reqdet.IdRqDetail);
+            RqOptionel optionel = dao.getOptionel(selectedId);
+
+
+            txtRequisterInitials.Text = req.Requester;
+            comboBoxJobNature.Text = req.JobNature;
+            comboBoxDivision.Text = req.BarcoDivision;
+            txtProjectName.Text = req.EutProjectname;
+            lblRequestDate.Content = req.RequestDate;
+            DatePickerExpectedEndDate.SelectedDate = req.ExpectedEnddate;
+            lblJobRequestNumber.Content = req.JrNumber;
+            if (req.Battery == true)
+            {
+                RBBatteriesYes.IsChecked = true;
+            }
+            else
+            {
+                RBBatteriesNo.IsChecked = true;
+            }
+
+            txtLinkToTestPlan.Text = optionel.Link;
+            txtSpecialRemarks.Text = optionel.Remarks;
+
+            string s = req.EutPartnumbers;
+            do
+            {
+                ListBoxPartNumber.Items.Add(s.Substring(0, s.IndexOf(";")));
+                s = s.Substring(s.IndexOf(";") + 1);
+
+            } while (s.Contains(";"));
+            ListBoxPartNumber.Items.Add(s);
 
 
         }
 
         //private void btnSaveChanges_Click(object sender, RoutedEventArgs e)
         //{
-             
+
         //}
 
         //private void btnRemovePart_Click(object sender, RoutedEventArgs e)
@@ -45,7 +87,7 @@ namespace Barco
 
         //private void btnAddPart_Click(object sender, RoutedEventArgs e)
         //{
-             
+
         //}
 
         ////bianca

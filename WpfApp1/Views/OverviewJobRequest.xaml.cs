@@ -23,13 +23,11 @@ namespace Barco
     public partial class OverviewJobRequest : Window
     {
         private OverviewViewModel overviewModel;
-        private DAO dao;
 
         public OverviewJobRequest()
         {
 
             InitializeComponent();
-            dao = DAO.Instance();
 
            overviewModel = new OverviewViewModel(this);
             DataContext = overviewModel;

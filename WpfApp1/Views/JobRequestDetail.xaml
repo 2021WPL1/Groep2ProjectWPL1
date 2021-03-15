@@ -8,9 +8,9 @@
         Title="JobRequestDetail" Height="450" Width="800">
     <Grid x:Name="Grid" Margin="0,0,0,-35" Cursor="">
         <TextBlock HorizontalAlignment="Left" Margin="51,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Text="Requ"/><Run Language="nl-be" Text="e"/><Run Text="ster "/><Run Text="Initials"/></TextBlock>
-        <TextBox x:Name="txtRequisterInitials" HorizontalAlignment="Left" Margin="51,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsReadOnly="True"/>
+        <TextBox x:Name="txtRequisterInitials" Text="{Binding Request.Requester , Mode=OneWay }" HorizontalAlignment="Left" Margin="51,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsReadOnly="True"/>
         <TextBlock HorizontalAlignment="Left" Margin="51,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="EUT Projectname"/></TextBlock>
-        <TextBox x:Name="txtProjectName" HorizontalAlignment="Left" Margin="51,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsReadOnly="True"/>
+        <TextBox x:Name="txtProjectName" Text="{Binding Request.EutProjectname , Mode=OneWay }" HorizontalAlignment="Left" Margin="51,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsReadOnly="True"/>
         <TextBlock HorizontalAlignment="Left" Margin="176,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Division"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="306,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Job Nature"/></TextBlock>
         <ListBox x:Name="ListBoxPartNumber" Margin="483,62,224,307" RenderTransformOrigin="0.5,0.5">
@@ -103,7 +103,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="306,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="JR number"/></TextBlock>
         <TextBox x:Name="txtPvgRes" HorizontalAlignment="Left" Margin="438,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="112" IsReadOnly="True"/>
         <Label Content="PVG &#xA;Responsible" HorizontalAlignment="Left" Margin="438,196,0,0" VerticalAlignment="Top" Width="96" Height="47"/>
-        <Label x:Name="lblRequestDate" Content="Date content" HorizontalAlignment="Left" Margin="176,108,0,0" VerticalAlignment="Top" Width="83"/>
+        <Label x:Name="lblRequestDate" Content="{Binding Request.RequestDate , Mode=OneWay }" HorizontalAlignment="Left" Margin="176,108,0,0" VerticalAlignment="Top" Width="83"/>
         <Label x:Name="lblJobRequestNumber" Content="JRNumberContent" HorizontalAlignment="Left" Margin="300,104,0,0" VerticalAlignment="Top" Width="110"/>
         <Label x:Name="lblExpectedEndDate" Content="end date label" HorizontalAlignment="Left" Margin="306,132,0,0" VerticalAlignment="Top" Width="104"/>
         <Label x:Name="lblDateEUT1" Content="date label" HorizontalAlignment="Left" Margin="195,367,0,0" VerticalAlignment="Top" Width="65" Height="22" Padding="5,0,5,0"/>
@@ -112,8 +112,8 @@
         <Label x:Name="lblDateEUT2" Content="date label" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" Height="22" Padding="5,0,5,0" Margin="241,392,0,0"/>
         <Label x:Name="lblDateEUT3" Content="date label" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" Height="22" Padding="5,0,5,0" Margin="289,367,0,0"/>
         <Label x:Name="lblDateEUT5" Content="date label" HorizontalAlignment="Left" Margin="378,365,0,0" VerticalAlignment="Top" Width="64" Height="22" Padding="5,0,5,0"/>
-        <TextBox x:Name="txtDevision" HorizontalAlignment="Left" Margin="176,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsReadOnly="True"/>
-        <TextBox x:Name="txtJobNature" HorizontalAlignment="Left" Margin="306,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsReadOnly="True"/>
+        <TextBox x:Name="txtDevision" Text="{Binding Request.BarcoDivision , Mode=OneWay }" HorizontalAlignment="Left" Margin="176,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsReadOnly="True"/>
+        <TextBox x:Name="txtJobNature" Text="{Binding Request.JobNature , Mode=OneWay }" HorizontalAlignment="Left" Margin="306,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsReadOnly="True"/>
 
     </Grid>
 </Window>

@@ -47,6 +47,7 @@ namespace Barco
                 RqRequests.Add(rqRequest);
             }
 
+
         }
 
         public void CancelButton()
@@ -65,20 +66,20 @@ namespace Barco
 
         public void OpenDetails()
         {
-            try
-            {
+            //try
+            //{
 
             int SelectedId = _selectedRequest.IdRequest;
             JobRequestDetail jobRequestDetail = new JobRequestDetail(SelectedId);
             overview.Close();
             jobRequestDetail.ShowDialog();
 
-            }
-            catch (Exception)
-            {
+            //}
+            //catch (Exception)
+            //{
 
-                throw;
-            }
+            //    throw;
+            //}
         }
 
         public void DeleteRequest()
@@ -89,8 +90,9 @@ namespace Barco
 
         public void EditRequest()
         {
-            
-            JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen(_selectedRequest);
+            int SelectedId = _selectedRequest.IdRequest;
+
+            JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen(SelectedId);
 
             jobRequestAanpassen.ShowDialog();
         }

@@ -20,64 +20,21 @@ namespace Barco
 
     public partial class JobRequestDetail : Window
     {
-        private DAO dao;
+        private JobRequestDetailViewModel DetailsviewModel;
+
         private int SelectedId;
         public JobRequestDetail(int selectedId): base ()
         {
             InitializeComponent();
-            dao = DAO.Instance();
-            SelectedId = selectedId;
-            load(SelectedId); //TODO bij oproepen van constructor id mee geven
-            //er moet data in de database zijn om dit te doen werken
+            DetailsviewModel = new JobRequestDetailViewModel(this, SelectedId);
+            DataContext = DetailsviewModel;
+            //DetailsviewModel.Load(selectedId);
+
             
         }
 
         //laad de gegevens in van een jobrequest op basis van het id
-        private void load(int selectedId)
-        {
-            RqRequest req = dao.getRequest(selectedId);
-            RqRequestDetail reqdet = dao.getRequestDetail(selectedId);
-            Eut eut = dao.getEut(reqdet.IdRqDetail);
-            RqOptionel optionel = dao.getOptionel(selectedId);
-
-
-            txtRequisterInitials.Text = req.Requester;
-            txtJobNature.Text = req.JobNature;
-            txtDevision.Text = req.BarcoDivision;
-            txtProjectName.Text = req.EutProjectname;
-            lblRequestDate.Content = req.RequestDate;
-            lblExpectedEndDate.Content = req.ExpectedEnddate;
-            lblJobRequestNumber.Content = req.JrNumber;
-            if (req.Battery == true)
-            {
-                RBBatteriesYes.IsChecked = true;
-            }
-            else
-            {
-                RBBatteriesNo.IsChecked = true;
-            }
-
-            txtLinkToTestPlan.Text = optionel.Link;
-            txtSpecialRemarks.Text = optionel.Remarks;
-
-            //do-while extra aanmaken voor partweight(net- en gross-) met de nieuwe database
-            string s = req.EutPartnumbers;
-            do
-            {
-                ListBoxPartNumber.Items.Add(s.Substring(0, s.IndexOf(";")));
-                s = s.Substring(s.IndexOf(";") + 1);
-
-            } while (s.Contains(";"));
-            ListBoxPartNumber.Items.Add(s);
-
-
-        }
-
-       
-        //private void btnClose_Click(object sender, RoutedEventArgs e)
-        //{
-        //    Close();
-        //}
+ 
 
     }
 }
