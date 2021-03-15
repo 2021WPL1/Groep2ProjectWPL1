@@ -65,20 +65,20 @@ namespace Barco
 
         public void OpenDetails()
         {
-            //try
-            //{
+            try
+            {
 
-            int SelectedId = _selectedRequest.IdRequest;
-            JobRequestDetail jobRequestDetail = new JobRequestDetail(SelectedId);
-            overview.Close();
-            jobRequestDetail.ShowDialog();
+                int SelectedId = _selectedRequest.IdRequest;
+                JobRequestDetail jobRequestDetail = new JobRequestDetail(SelectedId);
+                overview.Close();
+                jobRequestDetail.ShowDialog();
 
-            //}
-            //catch (Exception)
-            //{
+            }
+            catch (Exception)
+            {
 
-            //    throw;
-            //}
+                throw;
+            }
         }
 
         public void DeleteRequest()
@@ -105,13 +105,6 @@ namespace Barco
             }
         }
 
-        public void ShowDetails()
-        {
-            int selectedRequestId = _selectedRequest.IdRequest;
-            JobRequestDetail jobRequestDetail = new JobRequestDetail(selectedRequestId);
-            overview.Close();
-            jobRequestDetail.ShowDialog();
 
-        }
     }
 }

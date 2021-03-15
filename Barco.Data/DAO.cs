@@ -108,6 +108,12 @@ namespace Barco.Data
             context.RqRequest.Remove(getRqRequestById(id));
             saveChanges();
         }
+        // jimmy
+        public void approveRqRequest(RqRequest rqRequest)
+        {
+            rqRequest.JrStatus = "Approved";
+            saveChanges();
+        }
 
         // bianca
         public RqRequest addRequestDate()
