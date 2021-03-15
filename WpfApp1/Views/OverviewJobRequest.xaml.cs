@@ -35,8 +35,8 @@ namespace Barco
            overviewModel = new OverviewViewModel(this);
             DataContext = overviewModel;
 
-            BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
-            imgOverview.Source = photo;
+            //BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "img/logo.png"));
+            //imgOverview.Source = photo;
 
 
         }

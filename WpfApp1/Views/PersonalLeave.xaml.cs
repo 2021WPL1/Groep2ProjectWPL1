@@ -26,9 +26,9 @@ namespace Barco
         //bianca
         public PersonalLeave()
         {
-            InitializeComponent();
-            BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
-           PLBarco.Source = photo;
+            //InitializeComponent();
+            //BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
+            //Barco.Source = photo;
             dao = DAO.Instance();
             showDepartment();
             personalLeaveViewModel = new PersonalLeaveViewModel(this);
