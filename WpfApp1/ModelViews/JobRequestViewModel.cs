@@ -43,17 +43,25 @@ namespace Barco
 
         public ObservableCollection<Part> lstParts { get; set; } // for partnumber+ net/gross weight
         private List<ListView> err_output { get; set; } // listview for errors
-       
+
+
+        private Part selectedPart { get; set; }
+
+        private RadioButton rbtnBatYes { get; set; }
+        private RadioButton rbtnBatNo { get; set; }
+
 
         //remove this line if working with DAO static class
         //private static Barco2021Context DAO = new Barco2021Context();
 
         private Barco.Data.DAO dao;
         private JobRequestViewModel jobRequestViewModel;
+
+
         private RqOptionel optional = new RqOptionel();
         private List<Eut> eutList = new List<Eut>();
         private RqRequestDetail Detail = new RqRequestDetail();
-
+        List<Part> parts = new List<Part>();
 
         List<CheckBox> emcBoxes = new List<CheckBox>();
         List<CheckBox> envBoxes = new List<CheckBox>();
@@ -61,6 +69,19 @@ namespace Barco
         List<CheckBox> prodBoxes = new List<CheckBox>();
         List<CheckBox> greenBoxes = new List<CheckBox>();
         List<CheckBox> selectionBoxes = new List<CheckBox>();
+
+
+        // comboboxes for division + job nature
+        private ComboBox cmbDivision { get; set; }
+        private ComboBox cmbJobNature { get; set; }
+
+         // checkboxes for the type of test
+        private CheckBox cbEmc { get; set; }
+        private CheckBox cmEnvironmental { get; set; }
+        private CheckBox cmRel { get; set; }
+        private CheckBox cmProdSafety { get; set; }
+        private CheckBox cmGrnComp{ get; set; }
+
 
 
 
@@ -73,7 +94,14 @@ namespace Barco
 
 
             this.screen = screen;
+        }
 
+
+
+        public Part SelectedPart
+        {
+            get { return selectedPart; }
+            set { selectedPart = value; }
         }
 
         public void CancelButton()
@@ -120,37 +148,26 @@ namespace Barco
             }*/
         }
 
+
+        //bianca
         public void RemoveButton()
-        {
-            //if (ListParts.SelectedValue.ToString() != null)
-            //{
-            //    ListParts.Items.Remove(ListParts.SelectedValue);
-            //    parts.Remove((Part)ListParts.SelectedValue);
-            //}
-
-            //=========================================
-            /*var selectedPart = (Part)lstParts.SelectedItem;
-
-          if (parts.Contains(selectedPart)) ;
-          {
-              parts.Remove(selectedPart);
-              lstParts.Items.Remove(selectedPart);
-              refreshGUI();
-          }*/
+      {
+            if (lstParts.Contains(selectedPart))
+            {
+                // parts.Remove(selectedPart);
+                lstParts.Remove(selectedPart);
+            }
         }
 
         public void SendButton()
-        {
-
-
-            /*try
+        {try
            {
                //create error sequence
                List<string> errors = new List<string>();
 
                //declare vars for object
-               string input_Abbreviation = txtReqInitials.Text.ToString();
-               string input_ProjectName = txtEutProjectname.Text.ToString();
+               string input_Abbreviation = txtReqInitials;
+               string input_ProjectName = txtEutProjectname;
 
                bool input_Battery = false;
 
@@ -164,7 +181,7 @@ namespace Barco
                    errors.Add("please specify a end date");
                }
 
-               string specialRemarks = txtRemark.Text.ToString();
+               string specialRemarks = txtRemark;
 
                string netWeights = "";
                string grossWeights = "";
@@ -210,30 +227,35 @@ namespace Barco
 
                //check if the job nature is selected
                //checkbox area
-               if (!(bool)cbEmc.IsChecked && !(bool)cmEnvorimental.IsChecked && !(bool)cmRel.IsChecked && !(bool)cmProdSafety.IsChecked && !(bool)cmGrnComp.IsChecked)
+               if (!(bool)cbEmc.IsChecked && !(bool)cmEnvironmental.IsChecked && !(bool)cmRel.IsChecked && 
+                    !(bool)cmProdSafety.IsChecked && !(bool)cmGrnComp.IsChecked)
                {
                    errors.Add("Please select a job nature");
                }
                else
                {
-                   List<string> validation = ValidateCheckboxes();
-                   errors.AddRange(validation);
+                   //List<string> validation = ValidateCheckboxes();
+                   //errors.AddRange(validation);
                }
 
                //check if the dates are set
-               List<string> valiDate = checkDates();
-               errors.AddRange(valiDate);
+             //  List<string> valiDate = checkDates();
+            //   errors.AddRange(valiDate);
+
+
+
+
 
                //check if other fields are empty
 
-               if (txtEutProjectname.Text is null)
+               if (txtEutProjectname is null)
                {
                    errors.Add("please fill in a project name");
                }
                //error handling
                if (errors.Count > 0)
                {
-                   err_output.ItemsSource = errors;
+                  // err_output.ItemsSource = errors;
                }
                else
                {
@@ -242,7 +264,7 @@ namespace Barco
                    request.BarcoDivision = cmbDivision.SelectedValue.ToString();
                    request.JobNature = cmbJobNature.SelectedValue.ToString();
                    request.RequestDate = DateTime.Now;
-                   request.EutProjectname = txtEutProjectname.Text;
+                   request.EutProjectname = txtEutProjectname;
                    request.Battery = input_Battery;
                    request.ExpectedEnddate = (DateTime)dateExpectedEnd.SelectedDate;
                    request.NetWeight = netWeights;
@@ -250,11 +272,11 @@ namespace Barco
                    request.EutPartnumbers = partNums;
 
                    //optional object
-                   optional.Link = txtLinkTestplan.Text;
+                   optional.Link = txtLinkTestplan;
                    optional.IdRequest = request.IdRequest;
 
                    //eut objects
-                   eutList = getEutData();
+                 //  eutList = getEutData();
 
 
                }
@@ -266,7 +288,7 @@ namespace Barco
                MessageBox.Show(ex.Message.ToString());
                //MessageBox.Show("Please fill in all fields"):
            }
-           */
+          
         }
 
         // to show in the listview
@@ -278,8 +300,9 @@ namespace Barco
         }
 
 
-        /*public void createBoxLists()
+       /* public void createBoxLists()
         {
+       
             emcBoxes.Add(cbEmcEut1);
             emcBoxes.Add(cbEmcEut2);
             emcBoxes.Add(cbEmcEut3);
@@ -315,67 +338,42 @@ namespace Barco
             selectionBoxes.Add(cmRel);
             selectionBoxes.Add(cmProdSafety);
             selectionBoxes.Add(cmGrnComp);
-        }*/
-
-        /*private void cbEmc_Checked(object sender, RoutedEventArgs e)
-        {
-            enableBoxes(cbEmc);
         }
 
-        private void cmEnvorimental_Checked(object sender, RoutedEventArgs e)
-        {
-            enableBoxes(cmEnvorimental);
 
-        }
 
-        private void cmRel_Checked(object sender, RoutedEventArgs e)
-        {
-            enableBoxes(cmRel);
+        //private void enableBoxes(CheckBox selected)
+        //{
+        //    List<CheckBox> targets = new List<CheckBox>();
+        //    if (selected == cbEmc)
+        //    {
+        //        targets = emcBoxes;
+        //    }
+        //    else if (selected == cmEnvironmental)
+        //    {
+        //        targets = envBoxes;
+        //    }
+        //    else if (selected == cmRel)
+        //    {
+        //        targets = relBoxes;
+        //    }
+        //    else if (selected == cmProdSafety)
+        //    {
+        //        targets = prodBoxes;
+        //    }
+        //    else if (selected == cmGrnComp)
+        //    {
+        //        targets = greenBoxes;
+        //    }
 
-        }
+        //    foreach (CheckBox box in targets)
+        //    {
+        //        box.IsEnabled = true;
+        //    }
+        //}
 
-        private void cmProdSafety_Checked(object sender, RoutedEventArgs e)
-        {
-            enableBoxes(cmProdSafety);
 
-        }
 
-        private void cmGrnComp_Checked(object sender, RoutedEventArgs e)
-        {
-            enableBoxes(cmGrnComp);
-
-        }*/
-
-        /*private void enableBoxes(CheckBox selected)
-        {
-            List<CheckBox> targets = new List<CheckBox>();
-            if (selected == cbEmc)
-            {
-                targets = emcBoxes;
-            }
-            else if (selected == cmEnvorimental)
-            {
-                targets = envBoxes;
-            }
-            else if (selected == cmRel)
-            {
-                targets = relBoxes;
-            }
-            else if (selected == cmProdSafety)
-            {
-                targets = prodBoxes;
-            }
-            else if (selected == cmGrnComp)
-            {
-                targets = greenBoxes;
-            }
-
-            foreach (CheckBox box in targets)
-            {
-                box.IsEnabled = true;
-            }
-        }*/
-        /*
         private List<string> ValidateCheckboxes()
         {
             List<string> outcome = new List<string>();
@@ -394,7 +392,7 @@ namespace Barco
                     outcome.Add("please check emc data");
                 }
             }
-            if ((bool)cmEnvorimental.IsChecked)
+            if ((bool)cmEnvironmental.IsChecked)
             {
                 int counter = 0;
                 foreach (CheckBox box in envBoxes)
@@ -456,7 +454,10 @@ namespace Barco
             }
             return outcome;
         }
-        */
+        
+
+
+
 
         /*private List<string> checkDates()
         {

@@ -90,7 +90,7 @@ namespace Barco
         public void EditRequest()
         {
             
-            JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen(_selectedRequest);
+           JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen();
 
             jobRequestAanpassen.ShowDialog();
         }
