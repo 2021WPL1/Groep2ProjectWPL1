@@ -230,6 +230,45 @@ namespace Barco.Data
             
         //}
 
+ 
+        public RqRequest AddRequest(RqRequest request, RqRequestDetail detail, RqOptionel optional)
+        {
+            context.RqRequest.Add(request);
+            context.SaveChanges();
+            AddOptional(optional);
+            AddDetail(detail);
+            return request;
+        }
+
+        public RqRequestDetail AddDetail(RqRequestDetail detail)
+        {
+            detail.IdRequest =
+                int.Parse(
+                    context
+                    .RqRequest
+                    .OrderByDescending(p => p.IdRequest)
+                    .Select(p => p.IdRequest)
+                    .First().ToString()
+                    );
+            context.RqRequestDetail.Add(detail);
+            context.SaveChanges();
+            return detail;
+        }
+        public RqOptionel AddOptional(RqOptionel optional)
+        {
+            optional.IdRequest =
+              int.Parse(
+                  context
+                  .RqRequest
+                  .OrderByDescending(p => p.IdRequest)
+                  .Select(p => p.IdRequest)
+                  .First().ToString()
+                  );
+            context.RqOptionel.Add(optional);
+            context.SaveChanges();
+            return optional;
+        }
+
     }
 }
 

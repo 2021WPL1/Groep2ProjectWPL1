@@ -27,10 +27,10 @@ namespace Barco
 
         //private static Barco2021Context context = new Barco2021Context();
 
-        private RqRequest request = new RqRequest();
-        private RqOptionel optional = new RqOptionel();
-        private List<Eut> eutList = new List<Eut>();
-        private RqRequestDetail Detail = new RqRequestDetail();
+        //public RqRequest request = new RqRequest();
+        //private RqOptionel optional = new RqOptionel();
+        //private List<Eut> eutList = new List<Eut>();
+        //private RqRequestDetail Detail = new RqRequestDetail();
 
 
         private List<Part> parts = new List<Part>();
@@ -60,6 +60,7 @@ namespace Barco
             cmbJobNature.SelectedValuePath = "Nature";
 
             createBoxLists();
+
         }
 
         private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -87,9 +88,7 @@ namespace Barco
                     //lstbNetWeight.Items.Add(sNetWeight);
                     //lstbGrossWeight.Items.Add(sGrossWeight);
 
-                    request.EutPartnumbers += sPartNo + " ; ";
-                    request.GrossWeight += sGrossWeight + " ; ";
-                    request.NetWeight += sNetWeight + " ; ";
+                   
                 }
 
             }
@@ -119,6 +118,11 @@ namespace Barco
                 //create error sequence
                 List<string> errors = new List<string>();
 
+                RqRequest request = new RqRequest();
+                RqOptionel optional = new RqOptionel();
+                List<Eut> eutList = new List<Eut>();
+                RqRequestDetail Detail = new RqRequestDetail();
+
                 //declare vars for object
                 string input_Abbreviation = txtReqInitials.Text.ToString();
                 string input_ProjectName = txtEutProjectname.Text.ToString();
@@ -133,6 +137,20 @@ namespace Barco
                 else
                 {
                     errors.Add("please specify a end date");
+                }
+
+                if(parts.Count > 0)
+                {
+                    foreach(Part part in parts)
+                    {
+                        request.EutPartnumbers += part.partNo + " ; ";
+                        request.GrossWeight += part.GrossWeight + " ; ";
+                        request.NetWeight += part.NetWeight + " ; ";
+                    }
+                }
+                else
+                {
+                    errors.Add("please enter parts");
                 }
 
                 string specialRemarks = txtRemark.Text.ToString();
@@ -219,15 +237,19 @@ namespace Barco
                     request.NetWeight = netWeights;
                     request.GrossWeight = grossWeights;
                     request.EutPartnumbers = partNums;
+                    request.HydraProjectNr = 1.ToString();
+
+                    Detail.Testdivisie = "ECO";
+                    Detail.Pvgresp = "resp";
+                    //Detail.IdRequest = request.IdRequest;
 
                     //optional object
                     optional.Link = txtLinkTestplan.Text;
-                    optional.IdRequest = request.IdRequest;
 
                     //eut objects
-                    eutList = getEutData();
+                    eutList = getEutData(Detail);
 
-
+                    dao.AddRequest(request, Detail, optional);
                 }
 
 
@@ -237,13 +259,6 @@ namespace Barco
                 MessageBox.Show(ex.Message.ToString());
                 //MessageBox.Show("Please fill in all fields"):
             }
-
-
-
-
-
-
-
         }
 
 
@@ -493,7 +508,7 @@ namespace Barco
             return result;
         }
 
-        private List<Eut> getEutData()
+        private List<Eut> getEutData(RqRequestDetail Detail)
         {
             List<Eut> result = new List<Eut>();
 
