@@ -12,7 +12,7 @@ namespace Barco
         private JobRequestDetail screen;
         public ICommand CancelCommand { get; set; }
         private DAO dao;
-        private RqRequest Request;
+        private RqRequest Request = new RqRequest();
 
         public JobRequestDetailViewModel(JobRequestDetail screen, int selectedId)
         {
