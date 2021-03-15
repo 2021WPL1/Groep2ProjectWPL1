@@ -15,7 +15,6 @@ namespace Barco
         public RqRequest Request { get; set; }
         public RqOptionel rqOptionel { get; set; }
         public RqRequestDetail rqRequestDetail { get; set; }
-       
 
         public JobRequestDetailViewModel(JobRequestDetail screen, int selectedId)
         {
