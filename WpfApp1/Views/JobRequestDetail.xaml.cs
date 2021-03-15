@@ -25,6 +25,11 @@ namespace Barco
         public JobRequestDetail()
         {
             InitializeComponent();
+
+            JobRequestDetailViewModel jobRequestDetailVM = new JobRequestDetailViewModel(this);
+            DataContext = jobRequestDetailVM;
+
+
             dao = DAO.Instance();
             load(1002); //TODO bij oproepen van constructor id mee geven
             //er moet data in de database zijn om dit te doen werken
