@@ -13,6 +13,8 @@ namespace Barco
         public ICommand CancelCommand { get; set; }
         private DAO dao;
         public RqRequest Request { get; set; }
+        public RqOptionel rqOptionel { get; set; }
+        public RqRequestDetail rqRequestDetail { get; set; }
        
 
         public JobRequestDetailViewModel(JobRequestDetail screen, int selectedId)
@@ -21,6 +23,9 @@ namespace Barco
             dao = DAO.Instance();
 
             this.Request = dao.getRequest(selectedId);
+            this.rqOptionel = dao.getOptionel(selectedId);
+            this.rqRequestDetail = dao.getRequestDetail(selectedId);
+
             this.screen = screen;
             //load(selectedId);
 
