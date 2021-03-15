@@ -1,4 +1,5 @@
-﻿using Prism.Commands;
+﻿using Barco.Data;
+using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,11 +11,15 @@ namespace Barco
     {
         private JobRequestDetail screen;
         public ICommand CancelCommand { get; set; }
+        private DAO dao;
+        private RqRequest Request;
 
-        public JobRequestDetailViewModel(JobRequestDetail screen)
+        public JobRequestDetailViewModel(JobRequestDetail screen, int selectedId)
         {
             CancelCommand = new DelegateCommand(CloseButton);
+            this.Request = dao.getRqRequestById(selectedId);
             this.screen = screen;
+            //load(selectedId);
 
         }
 
