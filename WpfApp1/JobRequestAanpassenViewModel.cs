@@ -15,7 +15,7 @@ namespace Barco
         public ICommand SaveChangesCommand { get; set; }
         public ICommand AddCommand { get; set; }
         public ICommand RemoveCommand { get; set; }
-        public RqRequest Request;
+        public RqRequest Request = new RqRequest();
 
 
         public JobRequestAanpassenViewModel(JobRequestAanpassen screen, int selectedId)
