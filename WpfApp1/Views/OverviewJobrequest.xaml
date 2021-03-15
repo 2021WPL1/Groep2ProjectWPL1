@@ -28,7 +28,8 @@
         <Button x:Name="OpenButton"
                 Command="{Binding OpenCommand}"
                 Content="Open" HorizontalAlignment="Left" Margin="654,245,0,0" VerticalAlignment="Top" Height="34" Width="50" />
-        <ListBox x:Name="listOverview" Margin="68,212,279,33"/>
+        <ListBox x:Name="listOverview" ItemsSource="{Binding RqRequests}"
+                 SelectedItem="{Binding SelectedRqRequest, Mode=TwoWay}" Margin="68,212,279,33"/>
 
     </Grid>
 </Window>
