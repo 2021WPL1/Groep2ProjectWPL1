@@ -20,8 +20,7 @@ namespace Barco
 
     public partial class JobRequestDetail : Window
     {
-        private DAO dao;
-
+ 
         public JobRequestDetail()
         {
             InitializeComponent();
@@ -30,12 +29,12 @@ namespace Barco
             DataContext = jobRequestDetailVM;
 
 
-            dao = DAO.Instance();
-            load(1002); //TODO bij oproepen van constructor id mee geven
+            
+            //load(1002); //TODO bij oproepen van constructor id mee geven
             //er moet data in de database zijn om dit te doen werken
             
         }
-
+        /*
         //laad de gegevens in van een jobrequest op basis van het id
         private void load(int selectedId)
         {
@@ -81,7 +80,7 @@ namespace Barco
         //private void btnClose_Click(object sender, RoutedEventArgs e)
         //{
         //    Close();
-        //}
+        //}*/
 
     }
 }
