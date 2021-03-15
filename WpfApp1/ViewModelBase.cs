@@ -8,17 +8,9 @@ namespace Barco
 {//bianca
     public class ViewModelBase : INotifyPropertyChanged
     {
-        public class ViewModelBase : INotifyPropertyChanged
-        {
-            public event PropertyChangedEventHandler PropertyChanged;
-            protected virtual void OnPropertyChanged([CallerMemberName]
+        public event PropertyChangedEventHandler PropertyChanged;
+        protected virtual void OnPropertyChanged([CallerMemberName]
         string property = null)
-            { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property)); }
-
-            protected virtual void OnPropertyChanged([CallerMemberName] string property = null)
-            {
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property));
-            }
-        }
+        { PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(property)); }       
     }
 }
