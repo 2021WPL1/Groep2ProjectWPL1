@@ -27,9 +27,16 @@ namespace Barco
         private Barco.Data.DAO dao;
         private JobRequestViewModel jobRequestViewModel;
 
+        public JobRequest()
+        {
+            InitializeComponent();
+            jobRequestViewModel = new JobRequestViewModel(this);
+            DataContext = jobRequestViewModel;
+        }
+
         //private static Barco2021Context context = new Barco2021Context();
 
-        private RqRequest request = new RqRequest();
+        /*private RqRequest request = new RqRequest();
         private RqOptionel optional = new RqOptionel();
         private List<Eut> eutList = new List<Eut>();
         private RqRequestDetail Detail = new RqRequestDetail();
@@ -43,7 +50,7 @@ namespace Barco
         List<CheckBox> prodBoxes = new List<CheckBox>();
         List<CheckBox> greenBoxes = new List<CheckBox>();
         List<CheckBox> selectionBoxes = new List<CheckBox>();
-
+        */
 
         /*
 
