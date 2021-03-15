@@ -10,13 +10,15 @@ using System.Windows.Input;
 
 namespace Barco
 { //bianca
-  public class JobRequestViewModel: ViewModelBase
-  {
-        private JobRequest screen;
+    public class JobRequestViewModel : ViewModelBase
+    {
+        public JobRequest screen;
 
 
-        private RqRequest request = new RqRequest();
+        public RqRequest request = new RqRequest();
 
+
+        public Part selectedPart { get; set; }
 
         // buttons : Add/Remove, Send/Cancel
         public ICommand CancelCommand { get; set; }
@@ -24,66 +26,63 @@ namespace Barco
         public ICommand AddCommand { get; set; }
         public ICommand RemoveCommand { get; set; }
 
-        private string txtPartNr { get; set; }             // EUT Partnumber
-        private string txtNetWeight { get; set; }          //net weight
-        private string txtGrossWeight { get; set; }       //gross weight
-        private string txtLinkTestplan { get; set; }      // link to testplan
-        private string txtReqInitials { get; set; }       // requester initials 
-        private string txtEutProjectname { get; set; }   //EUT Project name
-        private string txtRemark { get; set; }           // special remarks
-        private DatePicker dateExpectedEnd { get; set; }
+        public string txtPartNr { get; set; }             // EUT Partnumber
+        public string txtNetWeight { get; set; }          //net weight
+        public string txtGrossWeight { get; set; }       //gross weight
+        public string txtLinkTestplan { get; set; }      // link to testplan
+        public string txtReqInitials { get; set; }       // requester initials 
+        public string txtEutProjectname { get; set; }   //EUT Project name
+        public string txtRemark { get; set; }           // special remarks
+        public DateTime dateExpectedEnd { get; set; }
 
 
         // EUT foreseen availability date
-        private DatePicker DatePickerEUT1 { get; set; }
-        private DatePicker DatePickerEUT2 { get; set; }
-        private DatePicker DatePickerEUT3 { get; set; }
-        private DatePicker DatePickerEUT4 { get; set; }
-        private DatePicker DatePickerEUT5 { get; set; }
+        public DateTime DatePickerEUT1 { get; set; }
+        public DateTime DatePickerEUT2 { get; set; }
+        public DateTime DatePickerEUT3 { get; set; }
+        public DateTime DatePickerEUT4 { get; set; }
+        public DateTime DatePickerEUT5 { get; set; }
 
-        public ObservableCollection<Part> lstParts { get; set; } // for partnumber+ net/gross weight
-        private List<ListView> err_output { get; set; } // listview for errors
+        private ObservableCollection<Part> lstParts = new ObservableCollection<Part>();// for partnumber+ net/gross weight
+        
+        public ObservableCollection<Part> listParts { get { return lstParts; } }
 
-
-        private Part selectedPart { get; set; }
-
-        private RadioButton rbtnBatYes { get; set; }
-        private RadioButton rbtnBatNo { get; set; }
+        public List<ListView> err_output { get; set; } // listview for errors
 
 
         //remove this line if working with DAO static class
         //private static Barco2021Context DAO = new Barco2021Context();
 
-        private Barco.Data.DAO dao;
-        private JobRequestViewModel jobRequestViewModel;
+        public Barco.Data.DAO dao;
+        public JobRequestViewModel jobRequestViewModel;
+        public RqOptionel optional = new RqOptionel();
+        public List<Eut> eutList = new List<Eut>();
+        public RqRequestDetail Detail = new RqRequestDetail();
+        public List<Part> parts = new List<Part>();
 
 
-        private RqOptionel optional = new RqOptionel();
-        private List<Eut> eutList = new List<Eut>();
-        private RqRequestDetail Detail = new RqRequestDetail();
-        List<Part> parts = new List<Part>();
-
-        List<CheckBox> emcBoxes = new List<CheckBox>();
-        List<CheckBox> envBoxes = new List<CheckBox>();
-        List<CheckBox> relBoxes = new List<CheckBox>();
-        List<CheckBox> prodBoxes = new List<CheckBox>();
-        List<CheckBox> greenBoxes = new List<CheckBox>();
-        List<CheckBox> selectionBoxes = new List<CheckBox>();
-
-
-        // comboboxes for division + job nature
-        private ComboBox cmbDivision { get; set; }
-        private ComboBox cmbJobNature { get; set; }
-
-         // checkboxes for the type of test
-        private CheckBox cbEmc { get; set; }
-        private CheckBox cmEnvironmental { get; set; }
-        private CheckBox cmRel { get; set; }
-        private CheckBox cmProdSafety { get; set; }
-        private CheckBox cmGrnComp{ get; set; }
+         List<CheckBox> emcBoxes = new List<CheckBox>();
+         List<CheckBox> envBoxes = new List<CheckBox>();
+         List<CheckBox> relBoxes = new List<CheckBox>();
+         List<CheckBox> prodBoxes = new List<CheckBox>();
+         List<CheckBox> greenBoxes = new List<CheckBox>();
+         List<CheckBox> selectionBoxes = new List<CheckBox>();
 
 
 
+        public bool cbEmc { get; set; }
+        public bool cmEnvironmental { get; set; }
+        public bool cmRel { get; set; }
+        public bool cmProdSafety { get; set; }
+        public bool cmGrnComp { get; set; }
+
+        public ComboBox cmbDivision { get; set; }
+        public ComboBox cmbJobNature { get; set; }
+
+
+
+        public bool rbtnBatNo { get; set; }
+        public bool rbtnBatYes { get; set; }
 
         public JobRequestViewModel(JobRequest screen)
         {
@@ -94,9 +93,11 @@ namespace Barco
 
 
             this.screen = screen;
+
         }
 
 
+    
 
         public Part SelectedPart
         {
@@ -105,23 +106,19 @@ namespace Barco
         }
 
         public void CancelButton()
-        {           
-            HomeScreen home= new HomeScreen();
+        {
+            HomeScreen home = new HomeScreen();
             screen.Close();
             home.ShowDialog();
         }
-   
-     
+
+
 
         public void AddButton()
-        {
-            /*try
+        { 
+            try
             {
-                string sPartNo = txtPartNr.Text;
-                string sNetWeight = txtNetWeight.Text;
-                string sGrossWeight = txtGrossWeight.Text;
-
-                if (sPartNo == "" || sNetWeight == "" || sGrossWeight == "")
+                if (txtPartNr == "" || txtNetWeight == "" || txtGrossWeight == "")
                 {
                     MessageBox.Show("please fill in all values");
                 }
@@ -129,166 +126,166 @@ namespace Barco
                 {
                     parts.Add(new Part()
                     {
-                        NetWeight = txtNetWeight.Text,
-                        GrossWeight = txtGrossWeight.Text,
-                        partNo = txtPartNr.Text
+                        NetWeight = txtNetWeight,
+                        GrossWeight = txtGrossWeight,
+                        partNo = txtPartNr
+                        
                     });
 
-                    //lstbNetWeight.Items.Add(sNetWeight);
-                    //lstbGrossWeight.Items.Add(sGrossWeight);
+                    request.EutPartnumbers += txtPartNr + " ; ";
+                    request.GrossWeight += txtNetWeight + " ; ";
+                    request.NetWeight += txtGrossWeight + " ; ";
 
-                    request.EutPartnumbers += sPartNo + " ; ";
-                    request.GrossWeight += sGrossWeight + " ; ";
-                    request.NetWeight += sNetWeight + " ; ";
+
                 }
             }
             catch (NullReferenceException)
             {
                 MessageBox.Show("please fill in all fields");
-            }*/
+            }
         }
 
 
         //bianca
         public void RemoveButton()
-      {
+        {
             if (lstParts.Contains(selectedPart))
             {
-                // parts.Remove(selectedPart);
                 lstParts.Remove(selectedPart);
             }
         }
 
         public void SendButton()
-        {try
-           {
-               //create error sequence
-               List<string> errors = new List<string>();
+        {
+            try
+            {
+                //create error sequence
+                List<string> errors = new List<string>();
 
-               //declare vars for object
-               string input_Abbreviation = txtReqInitials;
-               string input_ProjectName = txtEutProjectname;
+                //declare vars for object
+                string input_Abbreviation = txtReqInitials;
+                string input_ProjectName = txtEutProjectname;
 
-               bool input_Battery = false;
+                bool input_Battery = false;
 
-               if (dateExpectedEnd.SelectedDate != null)
-               {
-                   DateTime input_EndDate = (DateTime)dateExpectedEnd.SelectedDate;
+                if (dateExpectedEnd.Date != null)
+                {
+                    DateTime input_EndDate = (DateTime)dateExpectedEnd.Date;
 
-               }
-               else
-               {
-                   errors.Add("please specify a end date");
-               }
+                }
+                else
+                {
+                    errors.Add("please specify a end date");
+                }
 
-               string specialRemarks = txtRemark;
+                string specialRemarks = txtRemark;
 
-               string netWeights = "";
-               string grossWeights = "";
-               string partNums = "";
+                string netWeights = "";
+                string grossWeights = "";
+                string partNums = "";
 
-               //parts section
-               if (parts.Count > 0)
-               {
-                   foreach (Part part in parts)
-                   {
-                       netWeights += part.NetWeight + "; ";
-                       grossWeights += part.GrossWeight + "; ";
-                       partNums += part.partNo + "; ";
-                   }
-               }
-               else
-               {
-                   errors.Add("Please add parts to test");
-               }
-
-
-               //check if radio buttons are checked
-
-               if ((bool)rbtnBatNo.IsChecked)
-               {
-                   input_Battery = true;
-               }
-               else if ((bool)rbtnBatNo.IsChecked && (bool)rbtnBatYes.IsChecked)
-               {
-                   errors.Add("please check if batteries are needed");
-               }
-               else
-               {
-                   input_Battery = false;
-               }
-
-               //check if requester exists
-
-               if (!dao.IfPersonExists(input_Abbreviation))
-               {
-                   errors.Add("the requester inititals do not match any employee");
-               }
-
-               //check if the job nature is selected
-               //checkbox area
-               if (!(bool)cbEmc.IsChecked && !(bool)cmEnvironmental.IsChecked && !(bool)cmRel.IsChecked && 
-                    !(bool)cmProdSafety.IsChecked && !(bool)cmGrnComp.IsChecked)
-               {
-                   errors.Add("Please select a job nature");
-               }
-               else
-               {
-                   //List<string> validation = ValidateCheckboxes();
-                   //errors.AddRange(validation);
-               }
-
-               //check if the dates are set
-             //  List<string> valiDate = checkDates();
-            //   errors.AddRange(valiDate);
+                //parts section
+                if (parts.Count > 0)
+                {
+                    foreach (Part part in parts)
+                    {
+                        netWeights += part.NetWeight + "; ";
+                        grossWeights += part.GrossWeight + "; ";
+                        partNums += part.partNo + "; ";
+                    }
+                }
+                else
+                {
+                    errors.Add("Please add parts to test");
+                }
 
 
+                //check if radio buttons are checked
+
+                if ((bool)rbtnBatNo)
+                {
+                    input_Battery = true;
+                }
+                else if ((bool)rbtnBatNo && (bool)rbtnBatYes)
+                {
+                    errors.Add("please check if batteries are needed");
+                }
+                else
+                {
+                    input_Battery = false;
+                }
+
+                //check if requester exists
+
+                if (!dao.IfPersonExists(input_Abbreviation))
+                {
+                    errors.Add("the requester initials do not match any employee");
+                }
+
+                //check if the job nature is selected
+                //checkbox area
+                if (!(bool)cbEmc && !(bool)cmEnvironmental && !(bool)cmRel &&
+                     !(bool)cmProdSafety&& !(bool)cmGrnComp)
+                {
+                    errors.Add("Please select a job nature");
+                }
+                else
+                {
+                    List<string> validation = ValidateCheckboxes();
+                    errors.AddRange(validation);
+                }
+
+                //check if the dates are set
+                List<string> valiDate = checkDates();
+                    errors.AddRange(valiDate);
 
 
 
-               //check if other fields are empty
-
-               if (txtEutProjectname is null)
-               {
-                   errors.Add("please fill in a project name");
-               }
-               //error handling
-               if (errors.Count > 0)
-               {
-                  // err_output.ItemsSource = errors;
-               }
-               else
-               {
-                   //request object 
-                   request.Requester = input_Abbreviation;
-                   request.BarcoDivision = cmbDivision.SelectedValue.ToString();
-                   request.JobNature = cmbJobNature.SelectedValue.ToString();
-                   request.RequestDate = DateTime.Now;
-                   request.EutProjectname = txtEutProjectname;
-                   request.Battery = input_Battery;
-                   request.ExpectedEnddate = (DateTime)dateExpectedEnd.SelectedDate;
-                   request.NetWeight = netWeights;
-                   request.GrossWeight = grossWeights;
-                   request.EutPartnumbers = partNums;
-
-                   //optional object
-                   optional.Link = txtLinkTestplan;
-                   optional.IdRequest = request.IdRequest;
-
-                   //eut objects
-                 //  eutList = getEutData();
 
 
-               }
+                //check if other fields are empty
+
+                if (txtEutProjectname is null)
+                {
+                    errors.Add("please fill in a project name");
+                }
+                //error handling
+                if (errors.Count > 0)
+                {
+                    // err_output.ItemsSource = errors;
+                }
+                else
+                {
+                    //request object 
+                    request.Requester = input_Abbreviation;
+                    request.BarcoDivision = cmbDivision.SelectedValue.ToString();
+                    request.JobNature = cmbJobNature.SelectedValue.ToString();
+                    request.RequestDate = DateTime.Now;
+                    request.EutProjectname = txtEutProjectname;
+                    request.Battery = input_Battery;
+                    request.ExpectedEnddate = (DateTime)dateExpectedEnd.Date;
+                    request.NetWeight = netWeights;
+                    request.GrossWeight = grossWeights;
+                    request.EutPartnumbers = partNums;
+
+                    //optional object
+                    optional.Link = txtLinkTestplan;
+                    optional.IdRequest = request.IdRequest;
+
+                    //eut objects
+                    //  eutList = getEutData();
 
 
-           }
-           catch (FormatException ex)
-           {
-               MessageBox.Show(ex.Message.ToString());
-               //MessageBox.Show("Please fill in all fields"):
-           }
-          
+                }
+
+
+            }
+            catch (FormatException ex)
+            {
+                MessageBox.Show(ex.Message.ToString());
+                //MessageBox.Show("Please fill in all fields"):
+            }
+
         }
 
         // to show in the listview
@@ -300,232 +297,268 @@ namespace Barco
         }
 
 
-       /* public void createBoxLists()
+        /*
+        public void createBoxLists()
+         {
+
+             emcBoxes.Add(cbEmcEut1);
+             emcBoxes.Add(cbEmcEut2);
+             emcBoxes.Add(cbEmcEut3);
+             emcBoxes.Add(cbEmcEut4);
+             emcBoxes.Add(cbEmcEut5);
+
+             envBoxes.Add(cmEnvorimentalEut1);
+             envBoxes.Add(cmEnvorimentalEut2);
+             envBoxes.Add(cmEnvorimentalEut3);
+             envBoxes.Add(cmEnvorimentalEut4);
+             envBoxes.Add(cmEnvorimentalEut5);
+
+             relBoxes.Add(cmRelEut1);
+             relBoxes.Add(cmRelEut2);
+             relBoxes.Add(cmRelEut3);
+             relBoxes.Add(cmRelEut4);
+             relBoxes.Add(cmRelEut5);
+
+             prodBoxes.Add(cmProdSafetyEut1);
+             prodBoxes.Add(cmProdSafetyEut2);
+             prodBoxes.Add(cmProdSafetyEut3);
+             prodBoxes.Add(cmProdSafetyEut4);
+             prodBoxes.Add(cmProdSafetyEut5);
+
+             greenBoxes.Add(cmGrnCompEut1);
+             greenBoxes.Add(cmGrnCompEut2);
+             greenBoxes.Add(cmGrnCompEut3);
+             greenBoxes.Add(cmGrnCompEut4);
+             greenBoxes.Add(cmGrnCompEut5);
+
+             selectionBoxes.Add(cmEnvorimental);
+             selectionBoxes.Add(cbEmc);
+             selectionBoxes.Add(cmRel);
+             selectionBoxes.Add(cmProdSafety);
+             selectionBoxes.Add(cmGrnComp);
+         }
+*/
+
+
+        private void enableBoxes(CheckBox selected)
         {
-       
-            emcBoxes.Add(cbEmcEut1);
-            emcBoxes.Add(cbEmcEut2);
-            emcBoxes.Add(cbEmcEut3);
-            emcBoxes.Add(cbEmcEut4);
-            emcBoxes.Add(cbEmcEut5);
+            List<CheckBox> targets = new List<CheckBox>();
+            if (cbEmc)
+            {
+                targets = emcBoxes;
+            }
+            else if (cmEnvironmental)
+            {
+                targets = envBoxes;
+            }
+            else if ( cmRel)
+            {
+                targets = relBoxes;
+            }
+            else if (cmProdSafety)
+            {
+                targets = prodBoxes;
+            }
+            else if (cmGrnComp)
+            {
+                targets = greenBoxes;
+            }
 
-            envBoxes.Add(cmEnvorimentalEut1);
-            envBoxes.Add(cmEnvorimentalEut2);
-            envBoxes.Add(cmEnvorimentalEut3);
-            envBoxes.Add(cmEnvorimentalEut4);
-            envBoxes.Add(cmEnvorimentalEut5);
-
-            relBoxes.Add(cmRelEut1);
-            relBoxes.Add(cmRelEut2);
-            relBoxes.Add(cmRelEut3);
-            relBoxes.Add(cmRelEut4);
-            relBoxes.Add(cmRelEut5);
-
-            prodBoxes.Add(cmProdSafetyEut1);
-            prodBoxes.Add(cmProdSafetyEut2);
-            prodBoxes.Add(cmProdSafetyEut3);
-            prodBoxes.Add(cmProdSafetyEut4);
-            prodBoxes.Add(cmProdSafetyEut5);
-
-            greenBoxes.Add(cmGrnCompEut1);
-            greenBoxes.Add(cmGrnCompEut2);
-            greenBoxes.Add(cmGrnCompEut3);
-            greenBoxes.Add(cmGrnCompEut4);
-            greenBoxes.Add(cmGrnCompEut5);
-
-            selectionBoxes.Add(cmEnvorimental);
-            selectionBoxes.Add(cbEmc);
-            selectionBoxes.Add(cmRel);
-            selectionBoxes.Add(cmProdSafety);
-            selectionBoxes.Add(cmGrnComp);
+            foreach (CheckBox box in targets)
+            {
+                box.IsEnabled = true;
+            }
         }
 
-
-
-        //private void enableBoxes(CheckBox selected)
-        //{
-        //    List<CheckBox> targets = new List<CheckBox>();
-        //    if (selected == cbEmc)
-        //    {
-        //        targets = emcBoxes;
-        //    }
-        //    else if (selected == cmEnvironmental)
-        //    {
-        //        targets = envBoxes;
-        //    }
-        //    else if (selected == cmRel)
-        //    {
-        //        targets = relBoxes;
-        //    }
-        //    else if (selected == cmProdSafety)
-        //    {
-        //        targets = prodBoxes;
-        //    }
-        //    else if (selected == cmGrnComp)
-        //    {
-        //        targets = greenBoxes;
-        //    }
-
-        //    foreach (CheckBox box in targets)
-        //    {
-        //        box.IsEnabled = true;
-        //    }
-        //}
 
 
 
         private List<string> ValidateCheckboxes()
-        {
-            List<string> outcome = new List<string>();
-            if ((bool)cbEmc.IsChecked)
-            {
-                int counter = 0;
-                foreach (CheckBox box in emcBoxes)
-                {
-                    if ((bool)box.IsChecked)
-                    {
-                        counter++;
-                    }
-                }
-                if (counter != 1)
-                {
-                    outcome.Add("please check emc data");
-                }
-            }
-            if ((bool)cmEnvironmental.IsChecked)
-            {
-                int counter = 0;
-                foreach (CheckBox box in envBoxes)
-                {
-                    if ((bool)box.IsChecked)
-                    {
-                        counter++;
-                    }
-                }
-                if (counter != 1)
-                {
-                    outcome.Add("please check environmental data");
-                }
-            }
-            if ((bool)cmRel.IsChecked)
-            {
-                int counter = 0;
-                foreach (CheckBox box in relBoxes)
-                {
-                    if ((bool)box.IsChecked)
-                    {
-                        counter++;
-                    }
-                }
-                if (counter != 1)
-                {
-                    outcome.Add("please check reliability data");
-                }
-            }
-            if ((bool)cmProdSafety.IsChecked)
-            {
-                int counter = 0;
-                foreach (CheckBox box in prodBoxes)
-                {
-                    if ((bool)box.IsChecked)
-                    {
-                        counter++;
-                    }
-                }
-                if (counter != 1)
-                {
-                    outcome.Add("please check product safety data");
-                }
-            }
-            if ((bool)cmGrnComp.IsChecked)
-            {
-                int counter = 0;
-                foreach (CheckBox box in greenBoxes)
-                {
-                    if ((bool)box.IsChecked)
-                    {
-                        counter++;
-                    }
-                }
-                if (counter != 1)
-                {
-                    outcome.Add("please check green compliance data");
-                }
-            }
-            return outcome;
-        }
-        
+         {
+             List<string> outcome = new List<string>();
+             if ((bool)cbEmc)
+             {
+                 int counter = 0;
+                 foreach (CheckBox box in emcBoxes)
+                 {
+                     if ((bool)box.IsChecked)
+                     {
+                         counter++;
+                     }
+                 }
+                 if (counter != 1)
+                 {
+                     outcome.Add("please check emc data");
+                 }
+             }
+             if ((bool)cmEnvironmental)
+             {
+                 int counter = 0;
+                 foreach (CheckBox box in envBoxes)
+                 {
+                     if ((bool)box.IsChecked)
+                     {
+                         counter++;
+                     }
+                 }
+                 if (counter != 1)
+                 {
+                     outcome.Add("please check environmental data");
+                 }
+             }
+             if ((bool)cmRel)
+             {
+                 int counter = 0;
+                 foreach (CheckBox box in relBoxes)
+                 {
+                     if ((bool)box.IsChecked)
+                     {
+                         counter++;
+                     }
+                 }
+                 if (counter != 1)
+                 {
+                     outcome.Add("please check reliability data");
+                 }
+             }
+             if ((bool)cmProdSafety)
+             {
+                 int counter = 0;
+                 foreach (CheckBox box in prodBoxes)
+                 {
+                     if ((bool)box.IsChecked)
+                     {
+                         counter++;
+                     }
+                 }
+                 if (counter != 1)
+                 {
+                     outcome.Add("please check product safety data");
+                 }
+             }
+             if ((bool)cmGrnComp)
+             {
+                 int counter = 0;
+                 foreach (CheckBox box in greenBoxes)
+                 {
+                     if ((bool)box.IsChecked)
+                     {
+                         counter++;
+                     }
+                 }
+                 if (counter != 1)
+                 {
+                     outcome.Add("please check green compliance data");
+                 }
+             }
+             return outcome;
+         }
+
+
+        public bool cbEmcEut1 { get; set; }
+        public bool cbEmcEut2 { get; set; }
+        public bool cbEmcEut3 { get; set; }
+        public bool cbEmcEut4 { get; set; }
+        public bool cbEmcEut5 { get; set; }
+
+
+        public bool cmEnvorimentalEut1 { get; set; }
+        public bool cmEnvorimentalEut2 { get; set; }
+        public bool cmEnvorimentalEut3 { get; set; }
+        public bool cmEnvorimentalEut4 { get; set; }
+        public bool cmEnvorimentalEut5 { get; set; }
+
+
+
+        public bool cmGrnCompEut1 { get; set; }
+        public bool cmGrnCompEut2 { get; set; }
+        public bool cmGrnCompEut3 { get; set; }
+        public bool cmGrnCompEut4 { get; set; }
+        public bool cmGrnCompEut5 { get; set; }
+
+        public bool cmProdSafetyEut1 { get; set; }
+        public bool cmProdSafetyEut2 { get; set; }
+        public bool cmProdSafetyEut3 { get; set; }
+        public bool cmProdSafetyEut4 { get; set; }
+        public bool cmProdSafetyEut5 { get; set; }
+
+
+        public bool cmRelEut1 { get; set; }
+        public bool cmRelEut2 { get; set; }
+        public bool cmRelEut3 { get; set; }
+        public bool cmRelEut4 { get; set; }
+        public bool cmRelEut5 { get; set; }
 
 
 
 
-        /*private List<string> checkDates()
-        {
-            List<string> result = new List<string>();
-            if ((bool)cbEmcEut1.IsChecked || (bool)cmEnvorimentalEut1.IsChecked || (bool)cmGrnCompEut1.IsChecked || (bool)cmProdSafetyEut1.IsChecked || (bool)cmGrnCompEut1.IsChecked)
-            {
-                if (DatePickerEUT1.SelectedDate == null)
-                {
-                    result.Add("please provide a date for EUT 1");
-                }
-            }
-            if ((bool)cbEmcEut2.IsChecked || (bool)cmEnvorimentalEut2.IsChecked || (bool)cmGrnCompEut2.IsChecked || (bool)cmProdSafetyEut2.IsChecked || (bool)cmGrnCompEut2.IsChecked)
-            {
-                if (DatePickerEUT2.SelectedDate == null)
-                {
-                    result.Add("please provide a date for EUT 2");
-                }
-            }
-            if ((bool)cbEmcEut3.IsChecked || (bool)cmEnvorimentalEut3.IsChecked || (bool)cmGrnCompEut3.IsChecked || (bool)cmProdSafetyEut3.IsChecked || (bool)cmGrnCompEut3.IsChecked)
-            {
-                if (DatePickerEUT3.SelectedDate == null)
-                {
-                    result.Add("please provide a date for EUT 3");
-                }
-            }
-            if ((bool)cbEmcEut4.IsChecked || (bool)cmEnvorimentalEut4.IsChecked || (bool)cmGrnCompEut4.IsChecked || (bool)cmProdSafetyEut4.IsChecked || (bool)cmGrnCompEut4.IsChecked)
-            {
-                if (DatePickerEUT4.SelectedDate == null)
-                {
-                    result.Add("please provide a date for EUT 4");
-                }
-            }
-            if ((bool)cbEmcEut5.IsChecked || (bool)cmEnvorimentalEut5.IsChecked || (bool)cmGrnCompEut5.IsChecked || (bool)cmProdSafetyEut5.IsChecked || (bool)cmGrnCompEut5.IsChecked)
-            {
-                if (DatePickerEUT5.SelectedDate == null)
-                {
-                    result.Add("please provide a date for EUT 5");
-                }
-            }
-            return result;
-        }*/
+        private List<string> checkDates()
+         {
+             List<string> result = new List<string>();
+             if ((bool)cbEmcEut1|| (bool)cmEnvorimentalEut1 || (bool)cmGrnCompEut1 || (bool)cmProdSafetyEut1|| (bool)cmGrnCompEut1)
+             {
+                 if (DatePickerEUT1.Date == null)
+                 {
+                     result.Add("please provide a date for EUT 1");
+                 }
+             }
+             if ((bool)cbEmcEut2 || (bool)cmEnvorimentalEut2 || (bool)cmGrnCompEut2 || (bool)cmProdSafetyEut2 || (bool)cmGrnCompEut2)
+             {
+                 if (DatePickerEUT2.Date == null)
+                 {
+                     result.Add("please provide a date for EUT 2");
+                 }
+             }
+             if ((bool)cbEmcEut3 || (bool)cmEnvorimentalEut3 || (bool)cmGrnCompEut3 || (bool)cmProdSafetyEut3 || (bool)cmGrnCompEut3)
+             {
+                 if (DatePickerEUT3.Date == null)
+                 {
+                     result.Add("please provide a date for EUT 3");
+                 }
+             }
+             if ((bool)cbEmcEut4 || (bool)cmEnvorimentalEut4 || (bool)cmGrnCompEut4 || (bool)cmProdSafetyEut4 || (bool)cmGrnCompEut4)
+             {
+                 if (DatePickerEUT4.Date == null)
+                 {
+                     result.Add("please provide a date for EUT 4");
+                 }
+             }
+             if ((bool)cbEmcEut5 || (bool)cmEnvorimentalEut5 || (bool)cmGrnCompEut5|| (bool)cmProdSafetyEut5 || (bool)cmGrnCompEut5)
+             {
+                 if (DatePickerEUT5.Date == null)
+                 {
+                     result.Add("please provide a date for EUT 5");
+                 }
+             }
+             return result;
+         }
 
-        /*private List<Eut> getEutData()
+        private List<Eut> getEutData()
         {
             List<Eut> result = new List<Eut>();
 
             //get first eut and date
-            if (DatePickerEUT1.SelectedDate != null)
+            if (DatePickerEUT1.Date != null)
             {
-                DateTime date = (DateTime)dateExpectedEnd.SelectedDate;
+                DateTime date = (DateTime)dateExpectedEnd.Date;
                 string description = "";
-                if ((bool)cbEmcEut1.IsChecked)
+                if ((bool)cbEmcEut1)
                 {
                     description = "EMC - EUT 1";
                 }
-                if ((bool)cmEnvorimentalEut1.IsChecked)
+                if ((bool)cmEnvorimentalEut1)
                 {
                     description = "Environmental - EUT 1";
                 }
-                if ((bool)cmGrnCompEut1.IsChecked)
+                if ((bool)cmGrnCompEut1)
                 {
                     description = "Green Compliance - EUT 1";
                 }
-                if ((bool)cmRelEut1.IsChecked)
+                if ((bool)cmRelEut1)
                 {
                     description = "Reliability - EUT 1";
                 }
-                if ((bool)cmProdSafetyEut1.IsChecked)
+                if ((bool)cmProdSafetyEut1)
                 {
                     description = "Product Safety - EUT 1";
                 }
@@ -538,27 +571,27 @@ namespace Barco
             }
 
             //get second eut and date
-            if (DatePickerEUT2.SelectedDate != null)
+            if (DatePickerEUT2.Date != null)
             {
-                DateTime date = (DateTime)dateExpectedEnd.SelectedDate;
+                DateTime date = (DateTime)dateExpectedEnd.Date;
                 string description = "";
-                if ((bool)cbEmcEut2.IsChecked)
+                if ((bool)cbEmcEut2)
                 {
                     description = "EMC - EUT 2";
                 }
-                if ((bool)cmEnvorimentalEut2.IsChecked)
+                if ((bool)cmEnvorimentalEut2)
                 {
                     description = "Environmental - EUT 2";
                 }
-                if ((bool)cmGrnCompEut2.IsChecked)
+                if ((bool)cmGrnCompEut2)
                 {
                     description = "Green Compliance - EUT 2";
                 }
-                if ((bool)cmRelEut2.IsChecked)
+                if ((bool)cmRelEut2)
                 {
                     description = "Reliability - EUT 2";
                 }
-                if ((bool)cmProdSafetyEut2.IsChecked)
+                if ((bool)cmProdSafetyEut2)
                 {
                     description = "Product Safety - EUT 2";
                 }
@@ -571,27 +604,27 @@ namespace Barco
             }
 
             //get third eut and date
-            if (DatePickerEUT3.SelectedDate != null)
+            if (DatePickerEUT3.Date != null)
             {
-                DateTime date = (DateTime)dateExpectedEnd.SelectedDate;
+                DateTime date = (DateTime)dateExpectedEnd.Date;
                 string description = "";
-                if ((bool)cbEmcEut3.IsChecked)
+                if ((bool)cbEmcEut3)
                 {
                     description = "EMC - EUT 3";
                 }
-                if ((bool)cmEnvorimentalEut3.IsChecked)
+                if ((bool)cmEnvorimentalEut3)
                 {
                     description = "Environmental - EUT 3";
                 }
-                if ((bool)cmGrnCompEut3.IsChecked)
+                if ((bool)cmGrnCompEut3)
                 {
                     description = "Green Compliance - EUT 3";
                 }
-                if ((bool)cmRelEut3.IsChecked)
+                if ((bool)cmRelEut3)
                 {
                     description = "Reliability - EUT 3";
                 }
-                if ((bool)cmProdSafetyEut3.IsChecked)
+                if ((bool)cmProdSafetyEut3)
                 {
                     description = "Product Safety - EUT 3";
                 }
@@ -603,27 +636,27 @@ namespace Barco
                 });
             }
             //get fourth eut and date
-            if (DatePickerEUT4.SelectedDate != null)
+            if (DatePickerEUT4.Date != null)
             {
-                DateTime date = (DateTime)dateExpectedEnd.SelectedDate;
+                DateTime date = (DateTime)dateExpectedEnd.Date;
                 string description = "";
-                if ((bool)cbEmcEut4.IsChecked)
+                if ((bool)cbEmcEut4)
                 {
                     description = "EMC - EUT 4";
                 }
-                if ((bool)cmEnvorimentalEut4.IsChecked)
+                if ((bool)cmEnvorimentalEut4)
                 {
                     description = "Environmental - EUT 4";
                 }
-                if ((bool)cmGrnCompEut4.IsChecked)
+                if ((bool)cmGrnCompEut4)
                 {
                     description = "Green Compliance - EUT 4";
                 }
-                if ((bool)cmRelEut4.IsChecked)
+                if ((bool)cmRelEut4)
                 {
                     description = "Reliability - EUT 4";
                 }
-                if ((bool)cmProdSafetyEut4.IsChecked)
+                if ((bool)cmProdSafetyEut4)
                 {
                     description = "Product Safety - EUT 4";
                 }
@@ -636,27 +669,27 @@ namespace Barco
             }
 
             //get fifth eut and date
-            if (DatePickerEUT5.SelectedDate != null)
+            if (DatePickerEUT5.Date!= null)
             {
-                DateTime date = (DateTime)dateExpectedEnd.SelectedDate;
+                DateTime date = (DateTime)dateExpectedEnd.Date;
                 string description = "";
-                if ((bool)cbEmcEut5.IsChecked)
+                if ((bool)cbEmcEut5)
                 {
                     description = "EMC - EUT 5";
                 }
-                if ((bool)cmEnvorimentalEut5.IsChecked)
+                if ((bool)cmEnvorimentalEut5)
                 {
                     description = "Environmental - EUT 5";
                 }
-                if ((bool)cmGrnCompEut5.IsChecked)
+                if ((bool)cmGrnCompEut5)
                 {
                     description = "Green Compliance - EUT 5";
                 }
-                if ((bool)cmRelEut5.IsChecked)
+                if ((bool)cmRelEut5)
                 {
                     description = "Reliability - EUT 5";
                 }
-                if ((bool)cmProdSafetyEut5.IsChecked)
+                if ((bool)cmProdSafetyEut5)
                 {
                     description = "Product Safety - EUT 5";
                 }
@@ -668,7 +701,8 @@ namespace Barco
                 });
             }
             return result;
-
-        }*/
-  }
+        }
+        
+    }
 }
+

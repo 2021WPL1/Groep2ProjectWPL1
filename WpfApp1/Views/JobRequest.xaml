@@ -14,13 +14,13 @@
         <TextBlock HorizontalAlignment="Left" Margin="168,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Division"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="298,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Job Nature"/></TextBlock>
         <ComboBox x:Name="cmbDivision" HorizontalAlignment="Left" Margin="168,148,0,0" VerticalAlignment="Top" Width="94"/>
-        <ComboBox x:Name="cmbJobNature" HorizontalAlignment="Left" Margin="298,148,0,0" VerticalAlignment="Top" Width="94"/>
+        <ComboBox x:Name="cmbJobNature" HorizontalAlignment="Left" Margin="298,148,0,0" VerticalAlignment="Top" Width="94" ItemsSource="{Binding cmbDivision}" />
         <TextBlock HorizontalAlignment="Left" Margin="454,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="15"><Run Language="nl-be" Text="Eut partnumber"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="562,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="15"><Run Language="nl-be" Text="Net weight (KG)"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="671,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" Height="15"><Run Language="nl-be" Text="Gross"/><Run Text=" weight (KG)"/></TextBlock>
-        <TextBox x:Name="txtPartNr" HorizontalAlignment="Left" Margin="461,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="14" Text="{Binding txtPartNr}"/>
-        <TextBox x:Name="txtNetWeight" HorizontalAlignment="Left" Margin="568,311,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="14" Text="{Binding txtNetWeight}"/>
-        <TextBox x:Name="txtGrossWeight" HorizontalAlignment="Left" Margin="680,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="14" Text="{Binding txtGrossWeight}"/>
+        <TextBox x:Name="txtPartNr" HorizontalAlignment="Left" Margin="461,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="14" Text="{Binding txtPartNr , UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtNetWeight" HorizontalAlignment="Left" Margin="568,311,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="14" Text="{Binding txtNetWeight, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtGrossWeight" HorizontalAlignment="Left" Margin="680,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="14" Text="{Binding txtGrossWeight, UpdateSourceTrigger=PropertyChanged}"/>
         <Button x:Name="btnAdd"
                 Command="{Binding AddCommand}"
                 Content="Add" HorizontalAlignment="Left" Margin="556,345,0,0" VerticalAlignment="Top"  Width="46" Height="17" />
@@ -92,10 +92,10 @@
         <DatePicker x:Name="DatePickerEUT5" HorizontalAlignment="Center" Margin="0,463,0,0" VerticalAlignment="Top" Width="30" Height="24" DisplayDate="2021-03-04" SelectedDate="{Binding DatePickerEUT5}"/>
         <Image x:Name="imgJobRequest" HorizontalAlignment="Left" Height="71" Margin="10,18,0,0" VerticalAlignment="Top" Width="171" Source="/img/logo.png"/>
         <Label Content="Job Request" HorizontalAlignment="Center" Margin="0,18,0,0" VerticalAlignment="Top"  Height="72" Width="256" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
-        <ListView x:Name="lstParts" Margin="418,147,22,313" Width="360" SelectedValuePath="{Binding PartNo}">
+        <ListView x:Name="lstParts"  Margin="418,147,22,313" Width="360"  SelectedValuePath="{Binding Path=SelectedPart, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding listParts}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Part number" Width="100" x:Name="lstPartNo" DisplayMemberBinding="{ Binding partNo}">
+                    <GridViewColumn Header="Part number" Width="100" x:Name="lstPartNo" DisplayMemberBinding="{ Binding lstParts.partNo}">
 
                     </GridViewColumn>
                     <GridViewColumn Header="Net Weight" Width="100" x:Name="lstNetWeight" DisplayMemberBinding="{ Binding NetWeight}">
