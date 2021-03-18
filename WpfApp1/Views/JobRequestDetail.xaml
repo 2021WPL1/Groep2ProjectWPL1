@@ -8,23 +8,16 @@
         Title="JobRequestDetail" Height="450" Width="800">
     <Grid x:Name="Grid" Margin="0,0,0,-35" Cursor="">
         <TextBlock HorizontalAlignment="Left" Margin="51,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Text="Requ"/><Run Language="nl-be" Text="e"/><Run Text="ster "/><Run Text="Initials"/></TextBlock>
-        <TextBox x:Name="txtRequisterInitials" HorizontalAlignment="Left" Margin="51,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsReadOnly="True"/>
-        <TextBlock HorizontalAlignment="Left" Margin="51,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="EUT Projectname"/></TextBlock>
-        <TextBox x:Name="txtProjectName" HorizontalAlignment="Left" Margin="51,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsReadOnly="True"/>
+        <TextBox x:Name="txtRequisterInitials" Text="{Binding Request.Requester, Mode=TwoWay}" HorizontalAlignment="Left" Margin="51,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsReadOnly="True"/>
+        <TextBlock HorizontalAlignment="Left"  Margin="51,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="EUT Projectname"/></TextBlock>
+        <TextBox x:Name="txtProjectName" Text="{Binding Request.EutProjectname, Mode=OneWay }" HorizontalAlignment="Left" Margin="51,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsReadOnly="True"/>
         <TextBlock HorizontalAlignment="Left" Margin="176,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Division"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="306,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Job Nature"/></TextBlock>
-        <ListBox x:Name="ListBoxPartNumber" Margin="483,62,224,307" RenderTransformOrigin="0.5,0.5">
-            <ListBox.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform AngleY="-0.396"/>
-                    <RotateTransform/>
-                    <TranslateTransform Y="-0.392"/>
-                </TransformGroup>
-            </ListBox.RenderTransform>
+        <ListBox x:Name="ListBoxPartNumber" ItemsSource="{Binding ListPartsnumbers}"  Margin="483,62,224,307" RenderTransformOrigin="0.5,0.5">
+
         </ListBox>
         <TextBlock HorizontalAlignment="Left" Margin="483,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="18"><Run Language="nl-be" Text="Eut partnumber"/></TextBlock>
-        <ListBox x:Name="ListBoxPartNetWeight" Margin="575,61,133,308" RenderTransformOrigin="0.5,0.5">
+        <ListBox x:Name="ListBoxPartNetWeight" ItemsSource="{Binding ListPartNet}" Margin="575,63,133,306" RenderTransformOrigin="0.5,0.5">
             <ListBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -34,7 +27,7 @@
                 </TransformGroup>
             </ListBox.RenderTransform>
         </ListBox>
-        <ListBox x:Name="ListBoxPartNetWeight1" Margin="666,60,41,309" RenderTransformOrigin="0.5,0.5">
+        <ListBox x:Name="ListBoxPartNetWeight1" ItemsSource="{Binding ListPartGross}" Margin="666,62,41,307" RenderTransformOrigin="0.5,0.5">
             <ListBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -51,7 +44,7 @@
         <RadioButton x:Name="RBBatteriesNo" Content="No" HorizontalAlignment="Left" Margin="51,188,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <TextBlock HorizontalAlignment="Left" Margin="176,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Expected end date"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="176,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103" Text="Link to testplan"/>
-        <TextBox x:Name="txtLinkToTestPlan" HorizontalAlignment="Left" Margin="284,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" IsReadOnly="True"/>
+        <TextBox x:Name="txtLinkToTestPlan" Text="{Binding rqOptionel.Link, Mode=OneWay }"  HorizontalAlignment="Left" Margin="284,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" IsReadOnly="True"/>
         <TextBlock HorizontalAlignment="Left" Margin="51,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Nature of test"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="216,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32" Height="13"><Run Language="nl-be" Text="EUT1"/><LineBreak/><Run Language="nl-be"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="261,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32" Height="13"><Run Text="EUT"/><Run Language="nl-be" Text="2"/><LineBreak/><Run/></TextBlock>
@@ -95,25 +88,25 @@
         <CheckBox x:Name="cbGreenCompliance" Content="" HorizontalAlignment="Left" Margin="176,335,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <TextBlock HorizontalAlignment="Left" Margin="50,373,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Text="EUT foreseen"/><LineBreak/><Run Text="ava"/><Run Language="nl-be" Text="ilability date:"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="583,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"><Run Text="Special remarks"/><Run Language="nl-be" Text=":"/></TextBlock>
-        <TextBox x:Name="txtSpecialRemarks" HorizontalAlignment="Left" Margin="533,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" Height="91" IsReadOnly="True"/>
+        <TextBox x:Name="txtSpecialRemarks" Text="{Binding rqOptionel.Remarks, Mode=OneWay }" HorizontalAlignment="Left" Margin="533,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" Height="91" IsReadOnly="True"/>
         <Button x:Name="BtnClose" 
-                Command="{Binding CloseButton}"
+                Command="{Binding CancelCommand}"
                 Content="Close" HorizontalAlignment="Left" Margin="695,335,0,0" VerticalAlignment="Top"  Height="19" Width="39"/>
         <TextBlock HorizontalAlignment="Left" Margin="176,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Request date"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="306,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="JR number"/></TextBlock>
-        <TextBox x:Name="txtPvgRes" HorizontalAlignment="Left" Margin="438,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="112" IsReadOnly="True"/>
+        <TextBox x:Name="txtPvgRes" Text="{Binding rqRequestDetail.Pvgresp, Mode=OneWay }" HorizontalAlignment="Left" Margin="438,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="112" IsReadOnly="True"/>
         <Label Content="PVG &#xA;Responsible" HorizontalAlignment="Left" Margin="438,196,0,0" VerticalAlignment="Top" Width="96" Height="47"/>
-        <Label x:Name="lblRequestDate" Content="Date content" HorizontalAlignment="Left" Margin="176,108,0,0" VerticalAlignment="Top" Width="83"/>
-        <Label x:Name="lblJobRequestNumber" Content="JRNumberContent" HorizontalAlignment="Left" Margin="300,104,0,0" VerticalAlignment="Top" Width="110"/>
-        <Label x:Name="lblExpectedEndDate" Content="end date label" HorizontalAlignment="Left" Margin="306,132,0,0" VerticalAlignment="Top" Width="104"/>
+        <Label x:Name="lblRequestDate" Content="{Binding Request.RequestDate, Mode=TwoWay}" HorizontalAlignment="Left" Margin="176,108,0,0" VerticalAlignment="Top" Width="83"/>
+        <Label x:Name="lblJobRequestNumber" Content="{Binding Request.JrNumber, Mode=TwoWay}" HorizontalAlignment="Left" Margin="300,108,0,0" VerticalAlignment="Top" Width="110"/>
+        <Label x:Name="lblExpectedEndDate" Content="{Binding Request.ExpectedEnddate, Mode=TwoWay}" HorizontalAlignment="Left" Margin="289,140,0,0" VerticalAlignment="Top" Width="97" Height="13"/>
         <Label x:Name="lblDateEUT1" Content="date label" HorizontalAlignment="Left" Margin="195,367,0,0" VerticalAlignment="Top" Width="65" Height="22" Padding="5,0,5,0"/>
         <Label HorizontalAlignment="Left" Margin="335,367,0,0" VerticalAlignment="Top" Width="65" Height="22" Padding="5,0,5,0"/>
         <Label x:Name="lblDateEUT4" Content="date label" HorizontalAlignment="Left" Margin="335,390,0,0" VerticalAlignment="Top" Width="65" Height="22" Padding="5,0,5,0"/>
         <Label x:Name="lblDateEUT2" Content="date label" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" Height="22" Padding="5,0,5,0" Margin="241,392,0,0"/>
         <Label x:Name="lblDateEUT3" Content="date label" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" Height="22" Padding="5,0,5,0" Margin="289,367,0,0"/>
         <Label x:Name="lblDateEUT5" Content="date label" HorizontalAlignment="Left" Margin="378,365,0,0" VerticalAlignment="Top" Width="64" Height="22" Padding="5,0,5,0"/>
-        <TextBox x:Name="txtDevision" HorizontalAlignment="Left" Margin="176,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsReadOnly="True"/>
-        <TextBox x:Name="txtJobNature" HorizontalAlignment="Left" Margin="306,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsReadOnly="True"/>
+        <TextBox x:Name="txtDevision" Text="{Binding Request.BarcoDivision, Mode=TwoWay}" HorizontalAlignment="Left" Margin="176,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsReadOnly="True"/>
+        <TextBox x:Name="txtJobNature" Text="{Binding Request.JobNature, Mode=TwoWay}" HorizontalAlignment="Left" Margin="306,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsReadOnly="True"/>
 
     </Grid>
 </Window>

@@ -23,23 +23,21 @@ namespace Barco
     public partial class OverviewJobRequest : Window
     {
         private OverviewViewModel overviewModel;
-        private DAO dao;
 
         public OverviewJobRequest()
         {
 
             InitializeComponent();
-            dao = DAO.Instance();
+            loadJobRequests();
 
-           overviewModel = new OverviewViewModel(this);
+
+
+
+            overviewModel = new OverviewViewModel(this);
             DataContext = overviewModel;
             overviewModel.Load();
 
             BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
-            imgOverview.Source = photo;
-
-
-        }
-
+        
     }
 }

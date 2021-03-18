@@ -21,6 +21,7 @@ namespace Barco
     /// </summary>
     public partial class JobRequest : Window
     {
+        private JobRequestViewModel jobRequestViewModel;
         //remove this line if working with DAO static class
         //private static Barco2021Context DAO = new Barco2021Context();
 
@@ -51,6 +52,8 @@ namespace Barco
         {
             InitializeComponent();
             dao = DAO.Instance();
+            jobRequestViewModel = new JobRequestViewModel(this);
+            DataContext = jobRequestViewModel;
 
 
             cmbDivision.ItemsSource = dao.getDivisions();
