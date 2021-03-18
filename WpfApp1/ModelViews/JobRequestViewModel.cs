@@ -47,7 +47,7 @@ namespace Barco
         
         public ObservableCollection<Part> listParts { get { return lstParts; } }
 
-        private ObservableCollection<String> _err_output { get; set; } // listview for errors
+        private ObservableCollection<string> _err_output { get; set; } // listview for errors
 
 
         //remove this line if working with DAO static class
@@ -83,8 +83,6 @@ namespace Barco
         public bool cmEnvorimentalEut4 { get; set; }
         public bool cmEnvorimentalEut5 { get; set; }
 
-
-
         public bool cmGrnCompEut1 { get; set; }
         public bool cmGrnCompEut2 { get; set; }
         public bool cmGrnCompEut3 { get; set; }
@@ -105,9 +103,6 @@ namespace Barco
         public bool cmRelEut5 { get; set; }
 
 
-
-
-
         public bool cbEmc { get; set; }
         public bool cmEnvironmental { get; set; }
         public bool cmRel { get; set; }
@@ -118,7 +113,7 @@ namespace Barco
         public ComboBox cmbJobNature { get; set; }
 
 
-
+        //radio button
         public bool rbtnBatNo { get; set; }
         public bool rbtnBatYes { get; set; }
 
@@ -139,12 +134,13 @@ namespace Barco
             DatePickerEUT5 = DateTime.Now;
 
             _err_output = new ObservableCollection<string>();
+            createBoxLists();
 
         }
 
 
     
-        //intern werken met de binding 
+        //working internally with the binding 
         public Part SelectedPart
         {
             get { return selectedPart; }
@@ -226,7 +222,7 @@ namespace Barco
 
         public void SendButton()
         {
-            try
+             try
             {
                 //create error sequence
                 List<string> errors = new List<string>();
@@ -237,10 +233,12 @@ namespace Barco
 
                 bool input_Battery = false;
 
+
+                DateTime input_EndDate = DateTime.Now;
+
                 if (dateExpectedEnd.Date != null)
                 {
-                    DateTime input_EndDate = (DateTime)dateExpectedEnd.Date;
-
+                        input_EndDate = dateExpectedEnd.Date;
                 }
                 else
                 {
@@ -252,6 +250,9 @@ namespace Barco
                 string netWeights = "";
                 string grossWeights = "";
                 string partNums = "";
+
+
+
 
                 //parts section
              
@@ -353,6 +354,7 @@ namespace Barco
                      eutList = getEutData();
 
                 }
+                dao.AddRequest(request, Detail, optional);
 
 
             }
@@ -455,9 +457,9 @@ namespace Barco
              if ((bool)cbEmc)
              {
                  int counter = 0;
-                 foreach (CheckBox box in emcBoxes)
+                 foreach (bool b in emcBoxes)
                  {
-                     if ((bool)box.IsChecked)
+                     if ((bool)b)
                      {
                          counter++;
                      }
@@ -470,9 +472,9 @@ namespace Barco
              if ((bool)cmEnvironmental)
              {
                  int counter = 0;
-                 foreach (CheckBox box in envBoxes)
+                 foreach (bool b in envBoxes)
                  {
-                     if ((bool)box.IsChecked)
+                     if ((bool)b)
                      {
                          counter++;
                      }
@@ -485,9 +487,9 @@ namespace Barco
              if ((bool)cmRel)
              {
                  int counter = 0;
-                 foreach (CheckBox box in relBoxes)
+                 foreach (bool b in relBoxes)
                  {
-                     if ((bool)box.IsChecked)
+                     if ((bool)b)
                      {
                          counter++;
                      }
@@ -500,9 +502,9 @@ namespace Barco
              if ((bool)cmProdSafety)
              {
                  int counter = 0;
-                 foreach (CheckBox box in prodBoxes)
+                 foreach (bool b in prodBoxes)
                  {
-                     if ((bool)box.IsChecked)
+                     if ((bool)b)
                      {
                          counter++;
                      }
@@ -515,9 +517,9 @@ namespace Barco
              if ((bool)cmGrnComp)
              {
                  int counter = 0;
-                 foreach (CheckBox box in greenBoxes)
+                 foreach (bool b in greenBoxes)
                  {
-                     if ((bool)box.IsChecked)
+                     if ((bool)b)
                      {
                          counter++;
                      }
@@ -743,7 +745,7 @@ namespace Barco
             return result;
         }
 
-        public ObservableCollection<String> err_output
+        public ObservableCollection<string> err_output
         {
             get { return _err_output; }
             set { _err_output = value;}

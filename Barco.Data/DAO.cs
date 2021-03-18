@@ -117,20 +117,7 @@ namespace Barco.Data
             saveChanges();
         }
 
-        // bianca
-        public RqRequest addRequestDate()
-        { RqRequest rqRequest = new RqRequest
-           { 
-            RequestDate = DateTime.Now
-
-              };
-            context.RqRequest.Add(rqRequest);
-
-            saveChanges();
-
-            return rqRequest;
-        }
-
+       
 
      
 
@@ -233,10 +220,44 @@ namespace Barco.Data
             return rqBarcoDivisionPerson;
         }
 
-        //public RqRequest editRequestStatus( )
-        //{
+
+        //Bianca
+        // Add request/ detail / optional
+
+     public RqRequest AddRequest(RqRequest request, RqRequestDetail detail, RqOptionel optional)
+        { try
+            {
+                context.RqRequest.Add(request);
+                context.SaveChanges();
+                AddOptional(optional);
+                AddDetail(detail);
+            }
             
-        //}
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return request;
+          
+
+        }
+
+        public RqRequestDetail AddDetail(RqRequestDetail detail)
+        {
+            detail.IdRequest = int.Parse(context.RqRequest.OrderByDescending(p => p.IdRequest).Select(p => p.IdRequest).First().ToString());
+            context.RqRequestDetail.Add(detail);
+            context.SaveChanges();
+            return detail;
+        }
+
+        public RqOptionel AddOptional(RqOptionel optional)
+        {
+            optional.IdRequest =
+              int.Parse(context.RqRequest.OrderByDescending(p => p.IdRequest).Select(p => p.IdRequest).First().ToString() );
+            context.RqOptionel.Add(optional);
+            context.SaveChanges();
+            return optional;
+        }
 
     }
 }
