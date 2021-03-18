@@ -20,72 +20,15 @@ namespace Barco
     {
         private JobRequestAanpassenViewModel jobRequestAanpassenViewModel;
 
-        private DAO dao;
 
-        public JobRequestAanpassen()
+        public JobRequestAanpassen(int selectedId)
         {
             InitializeComponent();
-            dao = DAO.Instance();
-            jobRequestAanpassenViewModel = new JobRequestAanpassenViewModel(this);
+            jobRequestAanpassenViewModel = new JobRequestAanpassenViewModel(this, selectedId);
             DataContext = jobRequestAanpassenViewModel;
 
 
 
-        }
-
-        //private void btnSaveChanges_Click(object sender, RoutedEventArgs e)
-        //{
-             
-        //}
-
-        //private void btnRemovePart_Click(object sender, RoutedEventArgs e)
-        //{
-
-        //}
-
-        //private void btnAddPart_Click(object sender, RoutedEventArgs e)
-        //{
-             
-        //}
-
-        ////bianca
-        //private void btnCancelRequest_Click(object sender, RoutedEventArgs e)
-        //{
-        //    HomeScreen homeScreen = new HomeScreen();
-        //    Close();
-        //    homeScreen.ShowDialog();
-        //}
-
-
-        public void ShowDialog(ref int IdJr)
-        { 
-                int Idjr = IdJr;
-                RqRequest rqRequest = dao.getRqRequestById(Idjr);
-                RqRequestDetail requestDetail = dao.getRqRequestDetailById(Idjr);
-            try
-            {
-                if (rqRequest.Battery == true)
-                {
-                    RBBatteriesYes.IsChecked = true;
-                }
-                else
-                {
-                    RBBatteriesNo.IsChecked = true;
-                }
-                txtProjectName.Text = rqRequest.EutProjectname;
-                txtRequisterInitials.Text = rqRequest.Requester;
-                comboBoxDivision.SelectedItem = rqRequest.BarcoDivision;
-                comboBoxJobNature.SelectedItem = rqRequest.JobNature;
-                lblRequestDate.Content = rqRequest.RequestDate;
-                lblJobRequestNumber.Content = rqRequest.JrNumber;
-                txtPvgRes.Text = requestDetail.Pvgresp;
-                DatePickerExpectedEndDate.SelectedDate = rqRequest.ExpectedEnddate;
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-           
         }
     }
 }

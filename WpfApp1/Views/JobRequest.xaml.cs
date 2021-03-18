@@ -20,11 +20,10 @@ namespace Barco
     /// </summary>
     public partial class JobRequest : Window
     {
+        private JobRequestViewModel jobRequestViewModel;
         //remove this line if working with DAO static class
         //private static Barco2021Context DAO = new Barco2021Context();
 
-        private Barco.Data.DAO dao;
-        private JobRequestViewModel jobRequestViewModel;
 
         public JobRequest()
         {
@@ -62,7 +61,6 @@ namespace Barco
         private RqRequestDetail Detail = new RqRequestDetail();
 
 
-        private List<Part> parts = new List<Part>();
 
         List<CheckBox> emcBoxes = new List<CheckBox>();
         List<CheckBox> envBoxes = new List<CheckBox>();
@@ -78,6 +76,8 @@ namespace Barco
         {
             InitializeComponent();
             dao = DAO.Instance();
+            jobRequestViewModel = new JobRequestViewModel(this);
+            DataContext = jobRequestViewModel;
 
 
             cmbDivision.ItemsSource = dao.getDivisions();

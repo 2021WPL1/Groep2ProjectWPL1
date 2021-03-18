@@ -15,7 +15,7 @@ using System.Data;
 using Barco.Data;
 using System.Collections;
 
-namespace Barco 
+namespace Barco
 {
     /// <summary>
     /// Interaction logic for OverviewJobRequest.xaml
@@ -23,23 +23,18 @@ namespace Barco
     public partial class OverviewJobRequest : Window
     {
         private OverviewViewModel overviewModel;
-        private DAO dao;
 
         public OverviewJobRequest()
         {
 
             InitializeComponent();
-            dao = DAO.Instance();
 
-           overviewModel = new OverviewViewModel(this);
+            overviewModel = new OverviewViewModel(this);
             DataContext = overviewModel;
             overviewModel.Load();
 
             BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
             imgOverview.Source = photo;
-
-
         }
-
     }
 }

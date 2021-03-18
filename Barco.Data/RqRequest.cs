@@ -29,11 +29,9 @@ namespace Barco.Data
 
         public virtual ICollection<RqOptionel> RqOptionel { get; set; }
         public virtual ICollection<RqRequestDetail> RqRequestDetail { get; set; }
-
         public override string ToString()
         {
-            return JrNumber + "\t \t \t-\t \t \t" + BarcoDivision;
+            return JrNumber + "\t\t\t-\t\t\t" + BarcoDivision;
         }
-
     }
 }
