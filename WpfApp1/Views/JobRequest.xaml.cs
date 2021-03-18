@@ -25,8 +25,6 @@ namespace Barco
         //remove this line if working with DAO static class
         //private static Barco2021Context DAO = new Barco2021Context();
 
-        private Barco.Data.DAO dao;
-        private JobRequestViewModel jobRequestViewModel;
 
         //private static Barco2021Context context = new Barco2021Context();
 
