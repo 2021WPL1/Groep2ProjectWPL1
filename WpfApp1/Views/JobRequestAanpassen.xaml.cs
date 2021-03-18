@@ -20,15 +20,14 @@ namespace Barco
     {
         private JobRequestAanpassenViewModel jobRequestAanpassenViewModel;
 
-        private DAO dao;
-
-        public JobRequestAanpassen()
+        
+        public JobRequestAanpassen(int requestId)
         {
             InitializeComponent();
-            dao = DAO.Instance();
+            
             jobRequestAanpassenViewModel = new JobRequestAanpassenViewModel(this);
             DataContext = jobRequestAanpassenViewModel;
-
+            jobRequestAanpassenViewModel.load(requestId);
 
 
         }
@@ -56,7 +55,7 @@ namespace Barco
         //    homeScreen.ShowDialog();
         //}
 
-
+        /*
         public void ShowDialog(ref int IdJr)
         { 
                 int Idjr = IdJr;
@@ -85,7 +84,7 @@ namespace Barco
             {
                 MessageBox.Show(ex.ToString());
             }
-           
+           */
         }
     }
-}
+

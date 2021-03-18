@@ -35,37 +35,37 @@
         <CheckBox x:Name="cbEmcEut3" Content="" HorizontalAlignment="Left" Margin="302,330,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cbEmcEut4" Content="" HorizontalAlignment="Left" Margin="349,330,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cbEmcEut5" Content="" HorizontalAlignment="Left" Margin="392,330,0,0" VerticalAlignment="Top" IsEnabled="False"/>
-        <CheckBox x:Name="cbEmc" Content="" HorizontalAlignment="Left" Margin="168,330,0,0" VerticalAlignment="Top" Checked="cbEmc_Checked"/>
+        <CheckBox x:Name="cbEmc" Content="" HorizontalAlignment="Left" Margin="168,330,0,0" VerticalAlignment="Top" />
         <CheckBox x:Name="cmEnvorimentalEut1" Content="" HorizontalAlignment="Left" Margin="212,355,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cmEnvorimentalEut2" Content="" HorizontalAlignment="Left" Margin="255,355,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cmEnvorimentalEut3" Content="" HorizontalAlignment="Left" Margin="302,355,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cmEnvorimentalEut4" Content="" HorizontalAlignment="Left" Margin="349,355,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cmEnvorimentalEut5" Content="" HorizontalAlignment="Left" Margin="392,355,0,0" VerticalAlignment="Top" IsEnabled="False"/>
-        <CheckBox x:Name="cmEnvorimental" Content="" HorizontalAlignment="Left" Margin="168,355,0,0" VerticalAlignment="Top" Checked="cmEnvorimental_Checked"/>
+        <CheckBox x:Name="cmEnvorimental" Content="" HorizontalAlignment="Left" Margin="168,355,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="cmRelEut1" Content="" HorizontalAlignment="Left" Margin="212,379,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cmRelEut2" Content="" HorizontalAlignment="Left" Margin="255,379,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cmRelEut3" Content="" HorizontalAlignment="Left" Margin="302,379,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cmRelEut4" Content="" HorizontalAlignment="Left" Margin="349,379,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cmRelEut5" Content="" HorizontalAlignment="Left" Margin="392,379,0,0" VerticalAlignment="Top" IsEnabled="False"/>
-        <CheckBox x:Name="cmRel" Content="" HorizontalAlignment="Left" Margin="168,379,0,0" VerticalAlignment="Top" Checked="cmRel_Checked"/>
+        <CheckBox x:Name="cmRel" Content="" HorizontalAlignment="Left" Margin="168,379,0,0" VerticalAlignment="Top" />
         <CheckBox x:Name="cmProdSafetyEut1" Content="" HorizontalAlignment="Left" Margin="212,403,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cmProdSafetyEut2" Content="" HorizontalAlignment="Left" Margin="255,403,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cmProdSafetyEut3" Content="" HorizontalAlignment="Left" Margin="302,403,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cmProdSafetyEut4" Content="" HorizontalAlignment="Left" Margin="349,403,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cmProdSafetyEut5" Content="" HorizontalAlignment="Left" Margin="392,403,0,0" VerticalAlignment="Top" IsEnabled="False"/>
-        <CheckBox x:Name="cmProdSafety" Content="" HorizontalAlignment="Left" Margin="168,403,0,0" VerticalAlignment="Top" Checked="cmProdSafety_Checked"/>
+        <CheckBox x:Name="cmProdSafety" Content="" HorizontalAlignment="Left" Margin="168,403,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="cmGrnCompEut1" Content="" HorizontalAlignment="Left" Margin="212,425,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cmGrnCompEut2" Content="" HorizontalAlignment="Left" Margin="255,425,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cmGrnCompEut3" Content="" HorizontalAlignment="Left" Margin="302,425,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cmGrnCompEut4" Content="" HorizontalAlignment="Left" Margin="349,425,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cmGrnCompEut5" Content="" HorizontalAlignment="Left" Margin="392,425,0,0" VerticalAlignment="Top" IsEnabled="False"/>
-        <CheckBox x:Name="cmGrnComp" Content="" HorizontalAlignment="Left" Margin="168,425,0,0" VerticalAlignment="Top" Checked="cmGrnComp_Checked" />
+        <CheckBox x:Name="cmGrnComp" Content="" HorizontalAlignment="Left" Margin="168,425,0,0" VerticalAlignment="Top" />
         <TextBlock HorizontalAlignment="Left" Margin="42,463,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Text="EUT foreseen"/><LineBreak/><Run Text="ava"/><Run Language="nl-be" Text="ilability date:"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="596,388,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"><Run Text="Special remarks"/><Run Language="nl-be" Text=":"/></TextBlock>
         <TextBox x:Name="txtRemark" Text="{Binding optionel.Remarks}" HorizontalAlignment="Left" Margin="579,403,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" Height="91"/>
         <Button x:Name="btnClose" 
                  Command="{Binding CloseCommand}" 
-                Content="Close" HorizontalAlignment="Left" Margin="619,44,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.357,0.726" Height="27" Click="btnCancel_Click_1" Width="46"  />
+                Content="Close" HorizontalAlignment="Left" Margin="619,44,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.357,0.726" Height="27" Width="46"  />
         <Image x:Name="imgJobRequest" HorizontalAlignment="Left" Height="71" Margin="10,18,0,0" VerticalAlignment="Top" Width="171" Source="/img/logo.png"/>
         <Label Content="Job Request Detail" HorizontalAlignment="Center" Margin="0,18,0,0" VerticalAlignment="Top"  Height="72" Width="256" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
         <ListView x:Name="lstParts" Margin="418,147,22,313" Width="360" SelectedValuePath="{Binding PartNo}">
@@ -102,7 +102,7 @@
         <TextBox x:Name="txtAvailabilityDateEUT3" Text="{Binding Eut.AvailableDate3}" HorizontalAlignment="Left" Margin="269,448,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="75"/>
         <TextBox x:Name="txtAvailabilityDateEUT4" Text="{Binding Eut.AvailableDate4}" HorizontalAlignment="Left" Margin="327,477,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="69"/>
         <TextBox x:Name="txtAvailabilityDateEUT5" Text="{Binding Eut.AvailableDate5}" HorizontalAlignment="Left" Margin="368,447,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68"/>
-        <TextBox x:Name="txtEMCResp" Text="{Binding requestDetail.}" HorizontalAlignment="Left" Margin="441,328,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68"/>
+        <TextBox x:Name="txtEMCResp" Text="{Binding requestDetail}" HorizontalAlignment="Left" Margin="441,328,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68"/>
         <TextBox x:Name="txtEnvorimentResp" Text="{Binding RqRequest.Pvgresp}" HorizontalAlignment="Left" Margin="441,354,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68"/>
         <TextBox x:Name="txtRelResp" Text="{Binding RqRequest.Pvgresp}" HorizontalAlignment="Left" Margin="441,378,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68"/>
         <TextBox x:Name="txtSafResp" Text="{Binding RqRequest.Pvgresp}" HorizontalAlignment="Left" Margin="441,402,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="68"/>
