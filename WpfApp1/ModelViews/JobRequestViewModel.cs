@@ -17,7 +17,7 @@ namespace Barco
 
         public RqRequest request = new RqRequest();
 
-
+        //binding value
         public Part selectedPart { get; set; }
 
         // buttons : Add/Remove, Send/Cancel
@@ -53,7 +53,7 @@ namespace Barco
         //remove this line if working with DAO static class
         //private static Barco2021Context DAO = new Barco2021Context();
 
-        public Barco.Data.DAO dao;
+        private DAO dao;
         public JobRequestViewModel jobRequestViewModel;
         public RqOptionel optional = new RqOptionel();
         public List<Eut> eutList = new List<Eut>();
@@ -91,18 +91,28 @@ namespace Barco
             AddCommand = new DelegateCommand(AddButton);
             RemoveCommand = new DelegateCommand(RemoveButton);
 
-
+            dao = DAO.Instance();
             this.screen = screen;
+            dateExpectedEnd = DateTime.Now;
+            DatePickerEUT1 = DateTime.Now;
+            DatePickerEUT2 = DateTime.Now;
+            DatePickerEUT3 = DateTime.Now;
+            DatePickerEUT4 = DateTime.Now;
+            DatePickerEUT5 = DateTime.Now;
 
         }
 
 
     
-
+        //intern werken met de binding 
         public Part SelectedPart
         {
             get { return selectedPart; }
-            set { selectedPart = value; }
+            set 
+            {
+                selectedPart = value;
+                OnPropertyChanged();
+            }
         }
 
         public void CancelButton()
@@ -135,7 +145,7 @@ namespace Barco
                     request.EutPartnumbers += txtPartNr + " ; ";
                     request.GrossWeight += txtNetWeight + " ; ";
                     request.NetWeight += txtGrossWeight + " ; ";
-
+                    refreshGUI();
 
                 }
             }
@@ -146,12 +156,31 @@ namespace Barco
         }
 
 
-        //bianca
+
+        private void refreshGUI()
+        {
+            lstParts.Clear();
+            foreach (Part part in parts)
+            {
+                lstParts.Add(part);
+            }
+        }
+
+
+
+
+
+     
         public void RemoveButton()
         {
+           
+
             if (lstParts.Contains(selectedPart))
             {
+                parts.Remove(selectedPart);
                 lstParts.Remove(selectedPart);
+                refreshGUI();
+                OnPropertyChanged();
             }
         }
 
@@ -162,7 +191,7 @@ namespace Barco
                 //create error sequence
                 List<string> errors = new List<string>();
 
-                //declare vars for object
+                //declare var for object
                 string input_Abbreviation = txtReqInitials;
                 string input_ProjectName = txtEutProjectname;
 
@@ -185,6 +214,7 @@ namespace Barco
                 string partNums = "";
 
                 //parts section
+             
                 if (parts.Count > 0)
                 {
                     foreach (Part part in parts)
@@ -199,7 +229,7 @@ namespace Barco
                     errors.Add("Please add parts to test");
                 }
 
-
+                
                 //check if radio buttons are checked
 
                 if ((bool)rbtnBatNo)
@@ -263,7 +293,7 @@ namespace Barco
                     request.RequestDate = DateTime.Now;
                     request.EutProjectname = txtEutProjectname;
                     request.Battery = input_Battery;
-                    request.ExpectedEnddate = (DateTime)dateExpectedEnd.Date;
+                    request.ExpectedEnddate = dateExpectedEnd.Date;
                     request.NetWeight = netWeights;
                     request.GrossWeight = grossWeights;
                     request.EutPartnumbers = partNums;
@@ -273,8 +303,7 @@ namespace Barco
                     optional.IdRequest = request.IdRequest;
 
                     //eut objects
-                    //  eutList = getEutData();
-
+                     eutList = getEutData();
 
                 }
 

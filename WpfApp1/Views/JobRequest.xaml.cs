@@ -28,11 +28,32 @@ namespace Barco
 
         public JobRequest()
         {
+            dao = DAO.Instance();
             InitializeComponent();
             jobRequestViewModel = new JobRequestViewModel(this);
             DataContext = jobRequestViewModel;
+            
+            showDepartments();
+            showJobNature();
         }
 
+
+        public void showDepartments()
+        {
+            cmbDivision.ItemsSource = dao.getDivisions();
+            cmbDivision.DisplayMemberPath = "Afkorting";
+            cmbDivision.SelectedValuePath = "Afkorting";
+        }
+        
+
+        public void showJobNature()
+        {
+            cmbJobNature.ItemsSource = dao.getJobNatures();
+            cmbJobNature.DisplayMemberPath = "Nature";
+            cmbJobNature.SelectedValuePath = "Nature";
+        }
+
+        
         //private static Barco2021Context context = new Barco2021Context();
 
         /*private RqRequest request = new RqRequest();

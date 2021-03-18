@@ -14,7 +14,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="168,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Division"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="298,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Job Nature"/></TextBlock>
         <ComboBox x:Name="cmbDivision" HorizontalAlignment="Left" Margin="168,148,0,0" VerticalAlignment="Top" Width="94"/>
-        <ComboBox x:Name="cmbJobNature" HorizontalAlignment="Left" Margin="298,148,0,0" VerticalAlignment="Top" Width="94" ItemsSource="{Binding cmbDivision}" />
+        <ComboBox x:Name="cmbJobNature" HorizontalAlignment="Left" Margin="298,148,0,0" VerticalAlignment="Top" Width="94" />
         <TextBlock HorizontalAlignment="Left" Margin="454,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="15"><Run Language="nl-be" Text="Eut partnumber"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="562,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="15"><Run Language="nl-be" Text="Net weight (KG)"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="671,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" Height="15"><Run Language="nl-be" Text="Gross"/><Run Text=" weight (KG)"/></TextBlock>
@@ -31,7 +31,7 @@
         <RadioButton x:Name="rbtnBatYes" Content="Yes" HorizontalAlignment="Left" Margin="43,258,0,0" VerticalAlignment="Top" IsChecked="{Binding rbtnBatYes}"/>
         <RadioButton x:Name="rbtnBatNo" Content="No" HorizontalAlignment="Left" Margin="43,278,0,0" VerticalAlignment="Top" IsChecked="{Binding rbtnBatNo}"/>
         <TextBlock HorizontalAlignment="Left" Margin="168,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Expected end date"/></TextBlock>
-        <DatePicker x:Name="dateExpectedEnd" HorizontalAlignment="Left" Margin="276,227,0,0" VerticalAlignment="Top" SelectedDate="{Binding dateExpectedEnd}"/>
+        <DatePicker x:Name="dateExpectedEnd" HorizontalAlignment="Left" Margin="276,227,0,0" VerticalAlignment="Top" SelectedDate="{Binding dateExpectedEnd}" IsTodayHighlighted="True"/>
         <TextBlock HorizontalAlignment="Left" Margin="168,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Link to testplan"/></TextBlock>
         <TextBox x:Name="txtLinkTestplan" HorizontalAlignment="Left" Margin="276,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" Text="{Binding txtLinkTestplan}"/>
         <TextBlock HorizontalAlignment="Left" Margin="43,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Text="Nature of test"/><Run Language="en-be" Text=":"/></TextBlock>
@@ -89,13 +89,13 @@
         <DatePicker x:Name="DatePickerEUT2" HorizontalAlignment="Left" Margin="250,463,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04" SelectedDate="{Binding DatePickerEUT2}"/>
         <DatePicker x:Name="DatePickerEUT3" HorizontalAlignment="Left" Margin="297,463,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04" SelectedDate="{Binding DatePickerEUT3}"/>
         <DatePicker x:Name="DatePickerEUT4" HorizontalAlignment="Left" Margin="344,463,0,0" VerticalAlignment="Top" Width="30" Height="25" DisplayDate="2021-03-04" SelectedDate="{Binding DatePickerEUT4}"/>
-        <DatePicker x:Name="DatePickerEUT5" HorizontalAlignment="Center" Margin="0,463,0,0" VerticalAlignment="Top" Width="30" Height="24" DisplayDate="2021-03-04" SelectedDate="{Binding DatePickerEUT5}"/>
+        <DatePicker x:Name="DatePickerEUT5" HorizontalAlignment="Left" Margin="393,463,0,0" VerticalAlignment="Top" Width="30" Height="24" DisplayDate="2021-03-04" SelectedDate="{Binding DatePickerEUT5}" RenderTransformOrigin="-0.307,0.556"/>
         <Image x:Name="imgJobRequest" HorizontalAlignment="Left" Height="71" Margin="10,18,0,0" VerticalAlignment="Top" Width="171" Source="/img/logo.png"/>
         <Label Content="Job Request" HorizontalAlignment="Center" Margin="0,18,0,0" VerticalAlignment="Top"  Height="72" Width="256" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
-        <ListView x:Name="lstParts"  Margin="418,147,22,313" Width="360"  SelectedValuePath="{Binding Path=SelectedPart, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding listParts}">
+        <ListView x:Name="lstParts"  Margin="418,147,22,313" Width="360"  SelectedValuePath="{Binding Path=selectedPart.partNo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding listParts}" HorizontalAlignment="Center">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Part number" Width="100" x:Name="lstPartNo" DisplayMemberBinding="{ Binding lstParts.partNo}">
+                    <GridViewColumn Header="Part number" Width="100" x:Name="lstPartNo" DisplayMemberBinding="{ Binding partNo}">
 
                     </GridViewColumn>
                     <GridViewColumn Header="Net Weight" Width="100" x:Name="lstNetWeight" DisplayMemberBinding="{ Binding NetWeight}">
