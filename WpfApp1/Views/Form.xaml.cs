@@ -25,6 +25,7 @@ namespace Barco
         }
 
 
+
         //bianca
         private void LoginForm_Click(object sender, RoutedEventArgs e)
         {
@@ -42,7 +43,7 @@ namespace Barco
         private void CancelForm_Click(object sender, RoutedEventArgs e)
         {
             const string message =
-      "Are you sure that you would like to close the form?";
+            "Are you sure that you would like to close the form?";
             const string caption = "Form Closing";
             var result = MessageBox.Show(message, caption,
                                          MessageBoxButton.YesNo,
@@ -59,5 +60,11 @@ namespace Barco
 
 
         }
+
+        private void CancelForm_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
+

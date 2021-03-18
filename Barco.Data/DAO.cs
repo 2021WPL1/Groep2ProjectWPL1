@@ -225,10 +225,11 @@ namespace Barco.Data
             return rqBarcoDivisionPerson;
         }
 
-        //public RqRequest editRequestStatus( )
-        //{
-            
-        //}
+        public void approveRqRequest(RqRequest rqRequest)
+        {
+            rqRequest.JrStatus = "Approved";
+            saveChanges();
+        }
 
     }
 }

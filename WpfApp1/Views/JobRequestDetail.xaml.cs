@@ -26,7 +26,7 @@ namespace Barco
         {
             InitializeComponent();
             dao = DAO.Instance();
-            load(1002); //TODO bij oproepen van constructor id mee geven
+            load(6); //TODO bij oproepen van constructor id mee geven
             //er moet data in de database zijn om dit te doen werken
             
         }
@@ -61,6 +61,7 @@ namespace Barco
 
             //do-while extra aanmaken voor partweight(net- en gross-) met de nieuwe database
             string s = req.EutPartnumbers;
+
             do
             {
                 ListBoxPartNumber.Items.Add(s.Substring(0, s.IndexOf(";")));

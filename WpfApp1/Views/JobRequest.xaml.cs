@@ -104,7 +104,7 @@ namespace Barco
         {
             var selectedPart = (Part)lstParts.SelectedItem;
 
-            if (parts.Contains(selectedPart)) ;
+            if (parts.Contains(selectedPart));
             {
                 parts.Remove(selectedPart);
                 lstParts.Items.Remove(selectedPart);
@@ -237,13 +237,6 @@ namespace Barco
                 MessageBox.Show(ex.Message.ToString());
                 //MessageBox.Show("Please fill in all fields"):
             }
-
-
-
-
-
-
-
         }
 
 

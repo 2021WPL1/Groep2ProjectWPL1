@@ -10,8 +10,8 @@
         <Label Content="E-mail address" HorizontalAlignment="Left" Margin="123,109,0,0" VerticalAlignment="Top" Height="33" Width="119" FontSize="16" Foreground="#FFE70707"/>
         <Label Content="Password" HorizontalAlignment="Left" Margin="124,164,0,0" VerticalAlignment="Top" Height="34" Width="115" FontSize="16" Foreground="#FFE70707"/>
         <TextBox x:Name="EmailTextBox" HorizontalAlignment="Left" Margin="259,109,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="219" Height="33" BorderBrush="#FFE70707" SelectionTextBrush="#FFCA1C1C"/>
-        <Button x:Name="CancelForm" Command="{Binding CancelCommand}" Content="Cancel" HorizontalAlignment="Left" Margin="399,226,0,0" VerticalAlignment="Top" Height="39" Width="62" Background="White" BorderBrush="#FFE70707" Foreground="#FFE70707" FontWeight="Bold"/>
-        <Button x:Name="LoginForm" Command="{Binding LoginCommand}" Content="Login" HorizontalAlignment="Left" Margin="288,226,0,0" VerticalAlignment="Top" Height="39" Width="64" BorderBrush="#FFE70707" Background="White" Foreground="#FFE70707" FontWeight="Bold"/>
+        <Button x:Name="CancelForm"  Content="Cancel" HorizontalAlignment="Left" Margin="399,226,0,0" VerticalAlignment="Top" Height="39" Width="62" Background="White" BorderBrush="#FFE70707" Foreground="#FFE70707" FontWeight="Bold" Click="CancelForm_Click"/>
+        <Button x:Name="LoginForm" Content="Login" HorizontalAlignment="Left" Margin="288,226,0,0" VerticalAlignment="Top" Height="39" Width="64" BorderBrush="#FFE70707" Background="White" Foreground="#FFE70707" FontWeight="Bold" Click="LoginForm_Click"/>
         <Image x:Name="imgLoginForm" HorizontalAlignment="Left" Height="68" Margin="13,7,0,0" VerticalAlignment="Top" Width="185"/>
         <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="259,169,0,0" VerticalAlignment="Top" Width="219" Height="32" BorderBrush="#FFE70707"/>
 

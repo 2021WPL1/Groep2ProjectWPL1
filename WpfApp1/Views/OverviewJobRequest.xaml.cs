@@ -22,7 +22,7 @@ namespace Barco
     /// </summary>
     public partial class OverviewJobRequest : Window
     {
-        private OverviewViewModel overviewModel;
+        //private OverviewViewModel overviewModel;
         private DAO dao;
 
         public OverviewJobRequest()
@@ -32,8 +32,8 @@ namespace Barco
             dao = DAO.Instance();
             loadJobRequests();
 
-           overviewModel = new OverviewViewModel(this);
-            DataContext = overviewModel;
+            //overviewModel = new OverviewViewModel(this);
+            //DataContext = overviewModel;
 
             //BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "img/logo.png"));
             //imgOverview.Source = photo;
@@ -50,67 +50,65 @@ namespace Barco
         private void loadJobRequests()
         {
             ICollection<RqRequest> rqRequests = dao.getAllRqRequests();
-            UpdateListBox(listOverview, "JrNumber", "Id", rqRequests);
-
-            
+            UpdateListBox(listOverview, "JrNumber", "IdRequest", rqRequests);
         }
 
-        //private void ApproveButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    //try
-        //    //{
-        //    //    RqRequest rqRequest = dao.getRqRequestById(Convert.ToInt32(listOverview.SelectedValue));
-        //    //    dao.editRequestStatus(rqRequest, "JrStatus", true);
+        //zorgt ervoor dat de status van de aangeduide jobrequest naar goedgekeurd gaat
+        private void ApproveButton_Click(object sender, RoutedEventArgs e)
+        {
+           try
+            {
+                RqRequest rqRequest = dao.getRqRequestById(Convert.ToInt32(listOverview.SelectedValue));
+                dao.approveRqRequest(rqRequest);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
-        //    //}
-        //    //catch (SqlException ex)
-        //    //{
+        }
 
-        //    //    MessageBox.Show(ex.Message);
-        //    //}
+        //zorgt ervoor dat je de geselecteerde job request kan verwijderen
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                dao.deleteJobRequest(Convert.ToInt32(listOverview.SelectedValue));
+                loadJobRequests();
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
-        //}
-
-        //private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    try
-        //    {
-        //        dao.deleteJobRequest(Convert.ToInt32(listOverview.SelectedValue));
-
-
-        //        loadJobRequests();
-        //    }
-        //    catch (SqlException ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-
-        //}
-        ////bianca
-        //private void EditButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen();
-        //    int IdJr = Convert.ToInt32(listOverview.SelectedValue);
-        //    jobRequestAanpassen.ShowDialog(ref IdJr);
+        }
+        //bianca
+        //brengt je naar een scherm waar je de aangeduide jobrequest kan aanpassen
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen();
+            int IdJr = Convert.ToInt32(listOverview.SelectedValue);
+            jobRequestAanpassen.ShowDialog(ref IdJr);
 
 
-        //}
-        ////bianca
-        //private void CancelButton_Click(object sender, RoutedEventArgs e)
-        //{
-        //    HomeScreen homeScreen = new HomeScreen();
-        //     Close();
-        //  // homeScreen.Show();
-        //    //homeScreen.ShowDialog();
+        }
+        //bianca
+        //brengt je terug naar het home screen
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            HomeScreen homeScreen = new HomeScreen();
+            Close();
+            homeScreen.Show();
+            //homeScreen.ShowDialog();
 
-        //}
+        }
 
-        ////bianca
-        //private void ShowDetails_Click(object sender, RoutedEventArgs e)
-        //{
-        //    JobRequestDetail jobRequestDetail = new JobRequestDetail();
-        //    Close();
-        //    jobRequestDetail.ShowDialog();
-        //}
+        //opent de geselecteerde job request
+        private void OpenButton_Click(object sender, RoutedEventArgs e)
+        {
+            JobRequestDetail jobRequestDetail = new JobRequestDetail();
+            Close();
+            jobRequestDetail.ShowDialog();
+        }
     }
 }

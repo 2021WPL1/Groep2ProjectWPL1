@@ -27,13 +27,13 @@ namespace Barco
             DataContext = loginVM;
         }
 
-        /*
+        
         //bianca
         private void LoginScreen_Click(object sender, RoutedEventArgs e)
         {
             Form form = new Form();
             Close();
             form.ShowDialog();
-        }*/
+        }
     }
 }
