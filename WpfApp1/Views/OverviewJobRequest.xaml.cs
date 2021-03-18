@@ -60,7 +60,7 @@ namespace Barco
             {
                 RqRequest rqRequest = dao.getRqRequestById(Convert.ToInt32(listOverview.SelectedValue));
                 dao.approveRqRequest(rqRequest);
-                MessageBox.Show("Succesfully deleted jobrequest");
+                MessageBox.Show("Succesfully approved jobrequest");
             }
             catch (SqlException ex)
             {
@@ -77,6 +77,7 @@ namespace Barco
                 dao.deleteOptinel(Convert.ToInt32(listOverview.SelectedValue));
                 dao.deleteDetail(Convert.ToInt32(listOverview.SelectedValue));
                 dao.deleteJobRequest(Convert.ToInt32(listOverview.SelectedValue));
+                MessageBox.Show("Succesfully deleted jobrequest");
                 loadJobRequests();
             }
             catch (SqlException ex)
