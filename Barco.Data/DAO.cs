@@ -105,8 +105,26 @@ namespace Barco.Data
         // Delete Selected JobRequest
         public void deleteJobRequest(int id)
         {
+            //1st optinel dan detail
+
             context.RqRequest.Remove(getRqRequestById(id));
+
             saveChanges();
+        }
+
+        //Stach 
+        //Delete selected optionel request
+        public void deleteOptinel(int id)
+        {
+            context.RqOptionel.Remove(getOptionel(id));
+            saveChanges();
+        }
+
+        //Stach
+        //Delete selected detail request
+        public void deleteDetail(int id)
+        {
+            context.RqRequestDetail.Remove(getRequestDetail(id));
         }
 
         // bianca
@@ -225,10 +243,11 @@ namespace Barco.Data
             return rqBarcoDivisionPerson;
         }
 
-        //public RqRequest editRequestStatus( )
-        //{
-            
-        //}
+        public void approveRqRequest(RqRequest rqRequest)
+        {
+            rqRequest.JrStatus = "Approved";
+            saveChanges();
+        }
 
  
         public RqRequest AddRequest(RqRequest request, RqRequestDetail detail, RqOptionel optional)
