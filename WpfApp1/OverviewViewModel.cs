@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Barco
@@ -36,7 +37,8 @@ namespace Barco
             EditRequestCommand = new DelegateCommand(EditRequest);
             this.overview = overview;
         }
-
+        //jimmy
+        // laad alle requests in een ObservableCollection om zo in de GUI weer te geven
         public void Load()
         {
             var rqRequests = dao.getAllRqRequests();
@@ -48,7 +50,8 @@ namespace Barco
 
 
         }
-
+        //biance
+        //Sluit de overview en opent home
         public void CancelButton()
         {
             HomeScreen home = new HomeScreen();
@@ -56,38 +59,79 @@ namespace Barco
             home.ShowDialog();
 
         }
+        //jimmy
+        //Verranderd de Jr status van het geselecteerde request
         public void Approve()
         {
+            try
+            {
 
-            dao.approveRqRequest(_selectedRequest);
+                dao.approveRqRequest(_selectedRequest);
+            }
+            catch (NullReferenceException ex)
+            {
+
+                MessageBox.Show(ex.Message + "Select a JobReques");
+            }
+
 
         }
-
+        //jimmy
+        //opent de Details van de geselecteerde request en geeft het geselecteerde id mee
         public void OpenDetails()
         {
-      
+            try
+            {
                 int SelectedId = _selectedRequest.IdRequest;
                 JobRequestDetail jobRequestDetail = new JobRequestDetail(SelectedId);
                 overview.Close();
                 jobRequestDetail.ShowDialog();
 
+            }
+            catch (NullReferenceException ex)
+            {
+                MessageBox.Show(ex.Message + "Select a JobReques");
+            }
+
            
         }
-
+        //jimmy
+        //verwijderd de geselecteerd request
         public void DeleteRequest()
         {
-            dao.deleteJobRequest(_selectedRequest.IdRequest);
-            Load();
-        }
+            try
+            {
+                dao.deleteJobRequest(_selectedRequest.IdRequest);
+                Load();
 
+            }
+            catch (NullReferenceException ex)
+            {
+
+                MessageBox.Show(ex.Message + "Select a JobReques");
+            }
+        }
+        //jimmy
+        //opent de request aanpassen window en geeft de geselecteerde id mee
         public void EditRequest()
         {
-            int SelectedId = _selectedRequest.IdRequest;
+            try
+            {
 
-            JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen(SelectedId);
+                int SelectedId = _selectedRequest.IdRequest;
 
-            jobRequestAanpassen.ShowDialog();
+                JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen(SelectedId);
+
+                jobRequestAanpassen.ShowDialog();
+            }
+            catch (NullReferenceException ex)
+            {
+
+                MessageBox.Show(ex.Message + "Select a JobReques");
+            }
         }
+        //jimmy
+        //geeft de geselecteerde request terug
         public RqRequest SelectedRqRequest
         {
             get { return _selectedRequest; }

@@ -27,7 +27,6 @@ namespace Barco
             InitializeComponent();
             DetailsviewModel = new JobRequestDetailViewModel(this, selectedId);
             DataContext = DetailsviewModel;
-            //DetailsviewModel.Load(selectedId);
 
 
         }

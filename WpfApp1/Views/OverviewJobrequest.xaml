@@ -11,10 +11,10 @@
                 Command="{Binding ApproveCommand}"
                 Content="Approve" HorizontalAlignment="Left" Margin="590,190,0,0" VerticalAlignment="Top" Height="34" Width="50"/>
         <Button x:Name="EditButton" 
-                Command="{Binding EditCommand}"
+                Command="{Binding EditRequestCommand}"
                 Content="Edit" HorizontalAlignment="Left" Margin="654,190,0,0" VerticalAlignment="Top" Height="34" Width="50" />
         <Button x:Name="DeleteButton" 
-                Command="{Binding DeleteCommand}"
+                Command="{Binding DeleteRequestCommand}"
                 Content="Delete" HorizontalAlignment="Left" Margin="717,190,0,0" VerticalAlignment="Top" Height="34" Width="50" />
       
         <Label Content="JR number" HorizontalAlignment="Left" Margin="180,174,0,0" VerticalAlignment="Top" Height="30" Width="79"/>
