@@ -34,7 +34,6 @@ namespace Barco
         private RqRequestDetail Detail = new RqRequestDetail();
 
 
-        private List<Part> parts = new List<Part>();
 
         List<CheckBox> emcBoxes = new List<CheckBox>();
         List<CheckBox> envBoxes = new List<CheckBox>();

@@ -53,8 +53,7 @@ namespace Barco
         //Laden van Jobrequest Partnumbers in een list
         public void LoadPartsNumbers()
         {
-            string Partnumbers = Request.EutPartnumbers;
-            Partnumbers = Partnumbers.Replace(" ", String.Empty);
+            string Partnumbers = Request.EutPartnumbers.Replace(" ", String.Empty);
             string Partnumber;
 
             do
@@ -79,8 +78,7 @@ namespace Barco
         //Laden van Jobrequest net weights in een list
         public void LoadPartNetWeight()
         {
-            string Partnets = Request.NetWeight;
-            Partnets = Partnets.Replace(" ", String.Empty);
+            string Partnets = Request.NetWeight.Replace(" ", String.Empty);
             string Partnet;
 
             do
@@ -105,8 +103,7 @@ namespace Barco
         //Laden van Jobrequest Grossweight in een list
         public void LoadPartGrossWeight()
         {
-            string PartGross = Request.GrossWeight;
-            PartGross = PartGross.Replace(" ", String.Empty);
+            string PartGross = Request.GrossWeight.Replace(" ", String.Empty);
             string GetPartGross;
 
             do
