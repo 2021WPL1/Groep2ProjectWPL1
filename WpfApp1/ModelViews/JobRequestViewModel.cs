@@ -47,7 +47,7 @@ namespace Barco
         
         public ObservableCollection<Part> listParts { get { return lstParts; } }
 
-        public List<ListView> err_output { get; set; } // listview for errors
+        private ObservableCollection<String> _err_output { get; set; } // listview for errors
 
 
         //remove this line if working with DAO static class
@@ -61,12 +61,50 @@ namespace Barco
         public List<Part> parts = new List<Part>();
 
 
-         List<CheckBox> emcBoxes = new List<CheckBox>();
-         List<CheckBox> envBoxes = new List<CheckBox>();
-         List<CheckBox> relBoxes = new List<CheckBox>();
-         List<CheckBox> prodBoxes = new List<CheckBox>();
-         List<CheckBox> greenBoxes = new List<CheckBox>();
-         List<CheckBox> selectionBoxes = new List<CheckBox>();
+         List<bool> emcBoxes = new List<bool>();
+         List<bool> envBoxes = new List<bool>();
+         List<bool> relBoxes = new List<bool>();
+         List<bool> prodBoxes = new List<bool>();
+         List<bool> greenBoxes = new List<bool>();
+         List<bool> selectionBoxes = new List<bool>();
+
+
+
+        public bool cbEmcEut1 { get; set; }
+        public bool cbEmcEut2 { get; set; }
+        public bool cbEmcEut3 { get; set; }
+        public bool cbEmcEut4 { get; set; }
+        public bool cbEmcEut5 { get; set; }
+
+
+        public bool cmEnvorimentalEut1 { get; set; }
+        public bool cmEnvorimentalEut2 { get; set; }
+        public bool cmEnvorimentalEut3 { get; set; }
+        public bool cmEnvorimentalEut4 { get; set; }
+        public bool cmEnvorimentalEut5 { get; set; }
+
+
+
+        public bool cmGrnCompEut1 { get; set; }
+        public bool cmGrnCompEut2 { get; set; }
+        public bool cmGrnCompEut3 { get; set; }
+        public bool cmGrnCompEut4 { get; set; }
+        public bool cmGrnCompEut5 { get; set; }
+
+        public bool cmProdSafetyEut1 { get; set; }
+        public bool cmProdSafetyEut2 { get; set; }
+        public bool cmProdSafetyEut3 { get; set; }
+        public bool cmProdSafetyEut4 { get; set; }
+        public bool cmProdSafetyEut5 { get; set; }
+
+
+        public bool cmRelEut1 { get; set; }
+        public bool cmRelEut2 { get; set; }
+        public bool cmRelEut3 { get; set; }
+        public bool cmRelEut4 { get; set; }
+        public bool cmRelEut5 { get; set; }
+
+
 
 
 
@@ -99,6 +137,8 @@ namespace Barco
             DatePickerEUT3 = DateTime.Now;
             DatePickerEUT4 = DateTime.Now;
             DatePickerEUT5 = DateTime.Now;
+
+            _err_output = new ObservableCollection<string>();
 
         }
 
@@ -175,7 +215,7 @@ namespace Barco
         {
            
 
-            if (lstParts.Contains(selectedPart))
+            if (parts.Contains(selectedPart))
             {
                 parts.Remove(selectedPart);
                 lstParts.Remove(selectedPart);
@@ -247,7 +287,7 @@ namespace Barco
 
                 //check if requester exists
 
-                if (!dao.IfPersonExists(input_Abbreviation))
+                if (dao.IfPersonExists(input_Abbreviation))
                 {
                     errors.Add("the requester initials do not match any employee");
                 }
@@ -279,10 +319,17 @@ namespace Barco
                 {
                     errors.Add("please fill in a project name");
                 }
+                else
+                {
+
+                }
                 //error handling
                 if (errors.Count > 0)
                 {
-                    // err_output.ItemsSource = errors;
+                     foreach(string s in errors)
+                     {
+                        _err_output.Add(s);
+                     }
                 }
                 else
                 {
@@ -326,7 +373,7 @@ namespace Barco
         }
 
 
-        /*
+       
         public void createBoxLists()
          {
 
@@ -360,18 +407,18 @@ namespace Barco
              greenBoxes.Add(cmGrnCompEut4);
              greenBoxes.Add(cmGrnCompEut5);
 
-             selectionBoxes.Add(cmEnvorimental);
+             selectionBoxes.Add(cmEnvironmental);
              selectionBoxes.Add(cbEmc);
              selectionBoxes.Add(cmRel);
              selectionBoxes.Add(cmProdSafety);
              selectionBoxes.Add(cmGrnComp);
          }
-*/
 
 
-        private void enableBoxes(CheckBox selected)
+
+        private void enableBoxes(bool selected)
         {
-            List<CheckBox> targets = new List<CheckBox>();
+            List<bool> targets = new List<bool>();
             if (cbEmc)
             {
                 targets = emcBoxes;
@@ -393,10 +440,10 @@ namespace Barco
                 targets = greenBoxes;
             }
 
-            foreach (CheckBox box in targets)
+            /*foreach (bool b in targets)
             {
-                box.IsEnabled = true;
-            }
+                b  = true;
+            }*/
         }
 
 
@@ -482,42 +529,6 @@ namespace Barco
              }
              return outcome;
          }
-
-
-        public bool cbEmcEut1 { get; set; }
-        public bool cbEmcEut2 { get; set; }
-        public bool cbEmcEut3 { get; set; }
-        public bool cbEmcEut4 { get; set; }
-        public bool cbEmcEut5 { get; set; }
-
-
-        public bool cmEnvorimentalEut1 { get; set; }
-        public bool cmEnvorimentalEut2 { get; set; }
-        public bool cmEnvorimentalEut3 { get; set; }
-        public bool cmEnvorimentalEut4 { get; set; }
-        public bool cmEnvorimentalEut5 { get; set; }
-
-
-
-        public bool cmGrnCompEut1 { get; set; }
-        public bool cmGrnCompEut2 { get; set; }
-        public bool cmGrnCompEut3 { get; set; }
-        public bool cmGrnCompEut4 { get; set; }
-        public bool cmGrnCompEut5 { get; set; }
-
-        public bool cmProdSafetyEut1 { get; set; }
-        public bool cmProdSafetyEut2 { get; set; }
-        public bool cmProdSafetyEut3 { get; set; }
-        public bool cmProdSafetyEut4 { get; set; }
-        public bool cmProdSafetyEut5 { get; set; }
-
-
-        public bool cmRelEut1 { get; set; }
-        public bool cmRelEut2 { get; set; }
-        public bool cmRelEut3 { get; set; }
-        public bool cmRelEut4 { get; set; }
-        public bool cmRelEut5 { get; set; }
-
 
 
 
@@ -731,7 +742,16 @@ namespace Barco
             }
             return result;
         }
+
+        public ObservableCollection<String> err_output
+        {
+            get { return _err_output; }
+            set { _err_output = value;}
+        }
         
     }
+
+    
+
 }
 
