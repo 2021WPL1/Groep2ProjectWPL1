@@ -50,7 +50,7 @@ namespace Barco
         private void loadJobRequests()
         {
             ICollection<RqRequest> rqRequests = dao.getAllRqRequests();
-            UpdateListBox(listOverview, "JrNumber", "IdRequest", rqRequests);
+            UpdateListBox(listOverview, "IdRequest", "IdRequest", rqRequests);
         }
 
         //zorgt ervoor dat de status van de aangeduide jobrequest naar goedgekeurd gaat
@@ -60,6 +60,7 @@ namespace Barco
             {
                 RqRequest rqRequest = dao.getRqRequestById(Convert.ToInt32(listOverview.SelectedValue));
                 dao.approveRqRequest(rqRequest);
+                MessageBox.Show("Succesfully deleted jobrequest");
             }
             catch (SqlException ex)
             {
@@ -73,6 +74,8 @@ namespace Barco
         {
             try
             {
+                dao.deleteOptinel(Convert.ToInt32(listOverview.SelectedValue));
+                dao.deleteDetail(Convert.ToInt32(listOverview.SelectedValue));
                 dao.deleteJobRequest(Convert.ToInt32(listOverview.SelectedValue));
                 loadJobRequests();
             }
@@ -89,6 +92,8 @@ namespace Barco
             JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen();
             int IdJr = Convert.ToInt32(listOverview.SelectedValue);
             jobRequestAanpassen.ShowDialog(ref IdJr);
+            Close();
+            jobRequestAanpassen.Show();
 
 
         }
@@ -107,6 +112,7 @@ namespace Barco
         private void OpenButton_Click(object sender, RoutedEventArgs e)
         {
             JobRequestDetail jobRequestDetail = new JobRequestDetail();
+            int IdJr = Convert.ToInt32(listOverview.SelectedValue);
             Close();
             jobRequestDetail.ShowDialog();
         }

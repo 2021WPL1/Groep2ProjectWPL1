@@ -98,7 +98,7 @@
         <TextBox x:Name="txtSpecialRemarks" HorizontalAlignment="Left" Margin="533,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" Height="91" IsReadOnly="True"/>
         <Button x:Name="BtnClose" 
                 Command="{Binding CloseButton}"
-                Content="Close" HorizontalAlignment="Left" Margin="695,335,0,0" VerticalAlignment="Top"  Height="19" Width="39"/>
+                Content="Close" HorizontalAlignment="Left" Margin="695,335,0,0" VerticalAlignment="Top"  Height="19" Width="39" Click="btnClose_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="176,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Request date"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="306,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="JR number"/></TextBlock>
         <TextBox x:Name="txtPvgRes" HorizontalAlignment="Left" Margin="438,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="112" IsReadOnly="True"/>

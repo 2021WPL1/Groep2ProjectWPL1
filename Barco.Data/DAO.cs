@@ -105,8 +105,26 @@ namespace Barco.Data
         // Delete Selected JobRequest
         public void deleteJobRequest(int id)
         {
+            //1st optinel dan detail
+
             context.RqRequest.Remove(getRqRequestById(id));
+
             saveChanges();
+        }
+
+        //Stach 
+        //Delete selected optionel request
+        public void deleteOptinel(int id)
+        {
+            context.RqOptionel.Remove(getOptionel(id));
+            saveChanges();
+        }
+
+        //Stach
+        //Delete selected detail request
+        public void deleteDetail(int id)
+        {
+            context.RqRequestDetail.Remove(getRequestDetail(id));
         }
 
         // bianca

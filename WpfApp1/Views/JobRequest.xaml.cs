@@ -240,7 +240,8 @@ namespace Barco
                     request.HydraProjectNr = 1.ToString();
 
                     Detail.Testdivisie = "ECO";
-                    Detail.Pvgresp = "resp";
+                    Detail.Pvgresp = "PHIRO";
+
                     //Detail.IdRequest = request.IdRequest;
 
                     //optional object
