@@ -28,17 +28,13 @@ namespace Barco
         {
 
             InitializeComponent();
-            loadJobRequests();
-
-
-
 
             overviewModel = new OverviewViewModel(this);
             DataContext = overviewModel;
             overviewModel.Load();
 
             BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
-
+            imgOverview.Source = photo;
         }
     }
 }
