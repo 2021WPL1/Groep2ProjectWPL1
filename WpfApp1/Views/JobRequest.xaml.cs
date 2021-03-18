@@ -19,7 +19,7 @@ namespace Barco
     /// <summary>
     /// Interaction logic for JobRequest.xaml
     /// </summary>
-    public partial class JobRequest : Window
+    public partial class JobRequest : Window    
     {
         //remove this line if working with DAO static class
         //private static Barco2021Context DAO = new Barco2021Context();
@@ -103,7 +103,7 @@ namespace Barco
         {
             var selectedPart = (Part)lstParts.SelectedItem;
 
-            if (parts.Contains(selectedPart)) ;
+            if (parts.Contains(selectedPart))
             {
                 parts.Remove(selectedPart);
                 lstParts.Items.Remove(selectedPart);
