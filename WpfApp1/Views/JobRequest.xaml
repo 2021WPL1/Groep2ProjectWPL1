@@ -83,7 +83,7 @@
         <TextBox x:Name="txtRemark" HorizontalAlignment="Left" Margin="479,403,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="284" Height="91" Text="{Binding txtRemark}"/>
         <Button x:Name="btnCancel" 
                  Command="{Binding CancelCommand}" 
-                Content="Cancel" HorizontalAlignment="Left" Margin="632,44,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.357,0.726" Height="19" Click="btnCancel_Click_1"  />
+                Content="Cancel" HorizontalAlignment="Left" Margin="632,44,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.357,0.726" Height="19"/>
         <TextBlock HorizontalAlignment="Left" Margin="196,472,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <DatePicker x:Name="DatePickerEUT1" HorizontalAlignment="Left" Margin="204,463,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04" SelectedDate="{Binding DatePickerEUT1}"/>
         <DatePicker x:Name="DatePickerEUT2" HorizontalAlignment="Left" Margin="250,463,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04" SelectedDate="{Binding DatePickerEUT2}"/>
