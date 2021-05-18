@@ -136,8 +136,10 @@ namespace Barco
             _err_output = new ObservableCollection<string>();
             createBoxLists();
 
-        }
+            txtReqInitials = getInitialsFromReg();
 
+
+        }
 
     
         //working internally with the binding 
@@ -190,9 +192,6 @@ namespace Barco
                 MessageBox.Show("please fill in all fields");
             }
         }
-
-
-
         private void refreshGUI()
         {
             lstParts.Clear();
@@ -745,10 +744,26 @@ namespace Barco
             get { return _err_output; }
             set { _err_output = value;}
         }
-        
+
+        public string getInitialsFromReg()
+        {
+            string fullName = getValues("NAME");
+            string FirstName = fullName.Split(" ")[0];
+            string LastName = fullName.Split(" ")[1];
+
+            return (FirstName.Substring(0, 2) + LastName.Substring(0, 1)).ToUpper();
+
+        }
+
+        static string getValues(string Name)
+        {
+            string userRoot = "HKEY_CURRENT_USER";
+            string subkey = "Barco2021";
+            string keyName = userRoot + "\\" + subkey;
+
+
+            return Microsoft.Win32.Registry.GetValue(keyName, Name, "default").ToString();
+        }
     }
-
-    
-
 }
 
