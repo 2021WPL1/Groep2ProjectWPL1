@@ -37,27 +37,39 @@ namespace Barco
             jobRequestViewModel = new JobRequestViewModel(this);
             DataContext = jobRequestViewModel;
             
-            showDepartments();
-            showJobNature();
+            showDivision();
+            getJobNatures();
         }
 
 
-        public void showDepartments()
+       
+
+        public void showDivision()
         {
-            cmbDivision.ItemsSource = dao.getDivisions();
-            cmbDivision.DisplayMemberPath = "Afkorting";
-            cmbDivision.SelectedValuePath = "Afkorting";
-        }
-        
+            //cmbDivision.ItemsSource = dao.getDivisions();
+            cmbDivision.Items.Add(getValues("DIVISION"));
+            cmbDivision.SelectedIndex = 0;
 
-        public void showJobNature()
+        }
+        public void getJobNatures()
         {
             cmbJobNature.ItemsSource = dao.getJobNatures();
             cmbJobNature.DisplayMemberPath = "Nature";
             cmbJobNature.SelectedValuePath = "Nature";
         }
 
-        
+
+        static string getValues(string Name)
+        {
+            string userRoot = "HKEY_CURRENT_USER";
+            string subkey = "Barco2021";
+            string keyName = userRoot + "\\" + subkey;
+
+
+            return Microsoft.Win32.Registry.GetValue(keyName, Name, "default").ToString();
+        }
+
+
         //private static Barco2021Context context = new Barco2021Context();
 
         /*private RqRequest request = new RqRequest();
