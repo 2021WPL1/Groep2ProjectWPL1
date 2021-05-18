@@ -30,10 +30,10 @@
         <TextBlock HorizontalAlignment="Left" Margin="43,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Batteries included:"/></TextBlock>
         <RadioButton x:Name="rbtnBatYes" Content="Yes" HorizontalAlignment="Left" Margin="43,258,0,0" VerticalAlignment="Top" IsChecked="{Binding rbtnBatYes}"/>
         <RadioButton x:Name="rbtnBatNo" Content="No" HorizontalAlignment="Left" Margin="43,278,0,0" VerticalAlignment="Top" IsChecked="{Binding rbtnBatNo}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="168,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Expected end date"/></TextBlock>
-        <DatePicker x:Name="dateExpectedEnd" HorizontalAlignment="Left" Margin="276,227,0,0" VerticalAlignment="Top" SelectedDate="{Binding dateExpectedEnd}" IsTodayHighlighted="True"/>
-        <TextBlock HorizontalAlignment="Left" Margin="168,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Link to testplan"/></TextBlock>
-        <TextBox x:Name="txtLinkTestplan" HorizontalAlignment="Left" Margin="276,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" Text="{Binding txtLinkTestplan}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="189,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Expected end date"/></TextBlock>
+        <DatePicker x:Name="dateExpectedEnd" HorizontalAlignment="Left" Margin="297,240,0,0" VerticalAlignment="Top" SelectedDate="{Binding dateExpectedEnd}" IsTodayHighlighted="True"/>
+        <TextBlock HorizontalAlignment="Left" Margin="189,274,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Link to testplan"/></TextBlock>
+        <TextBox x:Name="txtLinkTestplan" HorizontalAlignment="Left" Margin="297,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" Text="{Binding txtLinkTestplan}"/>
         <TextBlock HorizontalAlignment="Left" Margin="43,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Text="Nature of test"/><Run Language="en-be" Text=":"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="208,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32" Height="13"><Run Language="nl-be" Text="EUT1"/><LineBreak/><Run Language="nl-be"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="253,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32" Height="13"><Run Text="EUT"/><Run Language="nl-be" Text="2"/><LineBreak/><Run/></TextBlock>
@@ -114,6 +114,8 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <TextBlock HorizontalAlignment="Left" Margin="173,183,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" Text="Function"/>
+        <TextBox x:Name="txtFunction" Text="{Binding txtFunction, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="168,204,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsEnabled="False"/>
 
     </Grid>
 </Window>
