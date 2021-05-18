@@ -15,7 +15,7 @@ using System.Data;
 using Barco.Data;
 using System.Collections;
 
-namespace Barco 
+namespace Barco
 {
     /// <summary>
     /// Interaction logic for OverviewJobRequest.xaml
@@ -35,8 +35,6 @@ namespace Barco
 
             BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
             imgOverview.Source = photo;
-
-
         }
     }
 }

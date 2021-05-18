@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace Barco
 {//bianca
-   public class OverviewViewModel: ViewModelBase
+    public class OverviewViewModel : ViewModelBase
     {
         private OverviewJobRequest overview;
         public ICommand CancelCommand { get; set; }
@@ -71,7 +71,7 @@ namespace Barco
             catch (NullReferenceException ex)
             {
 
-                MessageBox.Show(ex.Message + "Select a JobReques");
+                MessageBox.Show(ex.Message + "Select a JobRequest");
             }
 
 
@@ -90,10 +90,10 @@ namespace Barco
             }
             catch (NullReferenceException ex)
             {
-                MessageBox.Show(ex.Message + "Select a JobReques");
+                MessageBox.Show(ex.Message + "Select a JobRequest");
             }
 
-           
+
         }
         //jimmy
         //verwijderd de geselecteerd request
@@ -108,7 +108,7 @@ namespace Barco
             catch (NullReferenceException ex)
             {
 
-                MessageBox.Show(ex.Message + "Select a JobReques");
+                MessageBox.Show(ex.Message + "Select a JobRequest");
             }
         }
         //jimmy
@@ -127,7 +127,7 @@ namespace Barco
             catch (NullReferenceException ex)
             {
 
-                MessageBox.Show(ex.Message + "Select a JobReques");
+                MessageBox.Show(ex.Message + "Select a JobRequest");
             }
         }
         //jimmy

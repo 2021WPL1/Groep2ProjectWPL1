@@ -30,7 +30,7 @@ namespace Barco.Data
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=LAPTOP-V9E3B1RE\\VIVES;Database=Barco2021;Trusted_Connection=True;");
+                optionsBuilder.UseSqlServer("server=(localdb)\\MSSQLLocalDB;database=Barco2021;trusted_connection=true;");
             }
         }
 
