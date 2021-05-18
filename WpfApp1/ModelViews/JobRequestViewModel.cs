@@ -37,6 +37,7 @@ namespace Barco
         public string txtReqInitials { get; set; } // requester initials 
         public string txtEutProjectname { get; set; } //EUT Project name
         public string txtRemark { get; set; } // special remarks
+        public string txtFunction { get; set; } //function
         public DateTime dateExpectedEnd { get; set; }
 
 
@@ -143,10 +144,26 @@ namespace Barco
 
             _err_output = new ObservableCollection<string>();
             createBoxLists();
+            
+            txtFunction = getValues("FUNCTION");
+            
+            
+           // txtReqInitials = getValues("NAME");
+
 
         }
 
 
+
+        static string getValues(string Name)
+        {
+            string userRoot = "HKEY_CURRENT_USER";
+            string subkey = "Barco2021";
+            string keyName = userRoot + "\\" + subkey;
+
+
+            return Microsoft.Win32.Registry.GetValue(keyName, Name, "default").ToString();
+        }
 
         //working internally with the binding 
         public Part SelectedPart
@@ -807,39 +824,6 @@ namespace Barco
             get { return _err_output; }
             set { _err_output = value; }
         }
-
-
-
-        static void PrintKeys(RegistryKey rkey)
-        {
-
-            // Retrieve all the subkeys for the specified key.
-            String[] names = rkey.GetSubKeyNames();
-
-            int icount = 0;
-
-            Console.WriteLine("Subkeys of " + rkey.Name);
-            Console.WriteLine("-----------------------------------------------");
-
-            // Print the contents of the array to the console.
-            foreach (String s in names)
-            {
-                Console.WriteLine(s);
-
-                // The following code puts a limit on the number
-                // of keys displayed.  Comment it out to print the
-                // complete list.
-                icount++;
-                if (icount >= 10)
-                    break;
-            }
-
-            RegistryKey rk = Registry.CurrentUser;
-            // Print out the keys.
-            PrintKeys(rk);
-
-
-        }
+   
     }
 }
-
