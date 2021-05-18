@@ -146,10 +146,19 @@ namespace Barco
             createBoxLists();
             
             txtFunction = getValues("FUNCTION");
-            
-            
-           // txtReqInitials = getValues("NAME");
 
+
+            txtReqInitials = getInitialsFromReg();
+
+
+        }
+        public string getInitialsFromReg()
+        {
+            string fullName = getValues("NAME");
+            string FirstName = fullName.Split(" ")[0];
+            string LastName = fullName.Split(" ")[1];
+
+            return (FirstName.Substring(0, 2) + LastName.Substring(0, 1)).ToUpper();
 
         }
 
