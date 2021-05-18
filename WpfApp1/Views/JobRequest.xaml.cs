@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 using Barco.Data;
 using System.Linq;
 using static Barco.JobRequestViewModel;
+using Barco.Data;
 
 namespace Barco
 {
@@ -36,25 +37,27 @@ namespace Barco
             jobRequestViewModel = new JobRequestViewModel(this);
             DataContext = jobRequestViewModel;
             
-            showDepartments();
-            showJobNature();
+            showDivision();
+            getJobNatures();
         }
 
 
-        public void showDepartments()
+       
+
+        public void showDivision()
         {
             //cmbDivision.ItemsSource = dao.getDivisions();
             cmbDivision.Items.Add(getValues("DIVISION"));
             cmbDivision.SelectedIndex = 0;
-        }
-        
 
-        public void showJobNature()
+        }
+        public void getJobNatures()
         {
             cmbJobNature.ItemsSource = dao.getJobNatures();
             cmbJobNature.DisplayMemberPath = "Nature";
             cmbJobNature.SelectedValuePath = "Nature";
         }
+
 
         static string getValues(string Name)
         {
