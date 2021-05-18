@@ -202,11 +202,6 @@ namespace Barco
             }
         }
 
-
-
-
-
-     
         public void RemoveButton()
         {
            

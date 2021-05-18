@@ -12,6 +12,7 @@ using System.Windows.Shapes;
 using Barco.Data;
 using System.Linq;
 using static Barco.JobRequestViewModel;
+using Barco.Data;
 
 namespace Barco
 {
@@ -21,13 +22,17 @@ namespace Barco
     public partial class JobRequest : Window
     {
         private JobRequestViewModel jobRequestViewModel;
+
         //remove this line if working with DAO static class
         //private static Barco2021Context DAO = new Barco2021Context();
+
+        private static DAO dao;
 
 
         public JobRequest()
         {
             dao = DAO.Instance();
+
             InitializeComponent();
             jobRequestViewModel = new JobRequestViewModel(this);
             DataContext = jobRequestViewModel;
