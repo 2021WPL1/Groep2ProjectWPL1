@@ -7,7 +7,8 @@ using System.Windows.Input;
 namespace Barco
 {
     class FormViewModel : ViewModelBase
-    {
+    { 
+
         public ICommand LoginCommand { get; set; }
         public ICommand CancelCommand { get; set; }
 
@@ -21,12 +22,12 @@ namespace Barco
         {
             HomeScreen home = new HomeScreen();
             home.Show();
+            
         }
 
         public void Cancel()
         {
-            LoginScreen login = new LoginScreen();
-            login.Show();
+                              
         }
     }
 }

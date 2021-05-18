@@ -30,7 +30,7 @@ namespace Barco
             //BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
             //Barco.Source = photo;
             dao = DAO.Instance();
-            showDepartment();
+            //showDepartment();
             personalLeaveViewModel = new PersonalLeaveViewModel(this);
             DataContext = personalLeaveViewModel;
          
@@ -39,13 +39,13 @@ namespace Barco
         }
 
         //bianca
-        private void showDepartment()
-        {
-            Department.Items.Clear();
-            Department.ItemsSource = dao.getDepartment();
-            Department.DisplayMemberPath = "Afkorting";
-            Department.SelectedValuePath = "Afkorting";
-        }
+        //private void showDepartment()
+        //{
+        //    Department.Items.Clear();
+        //    Department.ItemsSource = dao.getDepartment();
+        //    Department.DisplayMemberPath = "Afkorting";
+        //    Department.SelectedValuePath = "Afkorting";
+        //}
 
 
         ////bianca

@@ -11,8 +11,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Barco.Data;
 using System.Linq;
-
-
+using static Barco.JobRequestViewModel;
 
 namespace Barco
 {
@@ -21,19 +20,47 @@ namespace Barco
     /// </summary>
     public partial class JobRequest : Window
     {
+        private JobRequestViewModel jobRequestViewModel;
         //remove this line if working with DAO static class
         //private static Barco2021Context DAO = new Barco2021Context();
 
 
+        public JobRequest()
+        {
+            dao = DAO.Instance();
+            InitializeComponent();
+            jobRequestViewModel = new JobRequestViewModel(this);
+            DataContext = jobRequestViewModel;
+            
+            showDepartments();
+            showJobNature();
+        }
+
+
+        public void showDepartments()
+        {
+            cmbDivision.ItemsSource = dao.getDivisions();
+            cmbDivision.DisplayMemberPath = "Afkorting";
+            cmbDivision.SelectedValuePath = "Afkorting";
+        }
+        
+
+        public void showJobNature()
+        {
+            cmbJobNature.ItemsSource = dao.getJobNatures();
+            cmbJobNature.DisplayMemberPath = "Nature";
+            cmbJobNature.SelectedValuePath = "Nature";
+        }
+
+        
         //private static Barco2021Context context = new Barco2021Context();
 
-        private RqRequest request = new RqRequest();
+        /*private RqRequest request = new RqRequest();
         private RqOptionel optional = new RqOptionel();
         private List<Eut> eutList = new List<Eut>();
         private RqRequestDetail Detail = new RqRequestDetail();
 
 
-        private List<Part> parts = new List<Part>();
 
         List<CheckBox> emcBoxes = new List<CheckBox>();
         List<CheckBox> envBoxes = new List<CheckBox>();
@@ -41,14 +68,16 @@ namespace Barco
         List<CheckBox> prodBoxes = new List<CheckBox>();
         List<CheckBox> greenBoxes = new List<CheckBox>();
         List<CheckBox> selectionBoxes = new List<CheckBox>();
+        */
 
+        /*
 
-
-        private static DAO dao;
         public JobRequest()
         {
             InitializeComponent();
             dao = DAO.Instance();
+            jobRequestViewModel = new JobRequestViewModel(this);
+            DataContext = jobRequestViewModel;
 
 
             cmbDivision.ItemsSource = dao.getDivisions();
@@ -104,7 +133,7 @@ namespace Barco
         {
             var selectedPart = (Part)lstParts.SelectedItem;
 
-            if (parts.Contains(selectedPart)) ;
+            if (parts.Contains(selectedPart)) 
             {
                 parts.Remove(selectedPart);
                 lstParts.Items.Remove(selectedPart);
@@ -664,11 +693,6 @@ namespace Barco
 
         }
 
-        private void btnCancel_Click_1(object sender, RoutedEventArgs e)
-        {
-            HomeScreen login = new HomeScreen();
-            Close();
-            login.ShowDialog();
-        }
+        */
     }
 }

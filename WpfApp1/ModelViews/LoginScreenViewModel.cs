@@ -8,6 +8,7 @@ namespace Barco
 {
     class LoginScreenViewModel : ViewModelBase
     {
+
         public ICommand LoginCommand { get; set; }
 
         public LoginScreenViewModel()
@@ -20,5 +21,7 @@ namespace Barco
             Form f = new Form();
                 f.Show();
         }
+
+      
     }
 }

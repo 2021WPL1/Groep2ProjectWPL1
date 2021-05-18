@@ -20,12 +20,11 @@ namespace Barco
     {
         private JobRequestAanpassenViewModel jobRequestAanpassenViewModel;
 
-        
-        public JobRequestAanpassen(int requestId)
+
+        public JobRequestAanpassen(int selectedId)
         {
             InitializeComponent();
-            
-            jobRequestAanpassenViewModel = new JobRequestAanpassenViewModel(this);
+            jobRequestAanpassenViewModel = new JobRequestAanpassenViewModel(this, selectedId);
             DataContext = jobRequestAanpassenViewModel;
             jobRequestAanpassenViewModel.load(requestId);
 
