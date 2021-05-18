@@ -215,9 +215,6 @@ namespace Barco
                 MessageBox.Show("please fill in all fields");
             }
         }
-
-
-
         private void refreshGUI()
         {
             lstParts.Clear();
@@ -226,11 +223,6 @@ namespace Barco
                 lstParts.Add(part);
             }
         }
-
-
-
-
-
 
         public void RemoveButton()
         {

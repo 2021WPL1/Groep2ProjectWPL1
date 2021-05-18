@@ -13,6 +13,7 @@ using Barco.Data;
 using System.Linq;
 using Microsoft.Win32;
 using static Barco.JobRequestViewModel;
+using Barco.Data;
 
 namespace Barco
 {
@@ -21,59 +22,56 @@ namespace Barco
     /// </summary>
     public partial class JobRequest : Window
     {
+        private JobRequestViewModel jobRequestViewModel;
+
         //remove this line if working with DAO static class
         //private static Barco2021Context DAO = new Barco2021Context();
 
-        private Barco.Data.DAO dao;
-        private JobRequestViewModel jobRequestViewModel;
+        private static DAO dao;
+
 
         public JobRequest()
         {
             dao = DAO.Instance();
+
             InitializeComponent();
             jobRequestViewModel = new JobRequestViewModel(this);
             DataContext = jobRequestViewModel;
-
-            showDepartments();
-            showJobNature();
+            
+            showDivision();
+            getJobNatures();
         }
 
 
+       
 
-        void showDepartments()
-            {
-                //cmbDivision.ItemsSource = dao.getDivisions();
-                cmbDivision.Items.Add(getValues("DIVISION"));
-                cmbDivision.SelectedIndex = 0;
-            }
+        public void showDivision()
+        {
+            //cmbDivision.ItemsSource = dao.getDivisions();
+            cmbDivision.Items.Add(getValues("DIVISION"));
+            cmbDivision.SelectedIndex = 0;
 
-
-            void showJobNature()
-            {
-                cmbJobNature.ItemsSource = dao.getJobNatures();
-                cmbJobNature.DisplayMemberPath = "Nature";
-                cmbJobNature.SelectedValuePath = "Nature";
-
-
-            }
-
-      
+        }
+        public void getJobNatures()
+        {
+            cmbJobNature.ItemsSource = dao.getJobNatures();
+            cmbJobNature.DisplayMemberPath = "Nature";
+            cmbJobNature.SelectedValuePath = "Nature";
+        }
 
 
-
-            static string getValues(string Name)
-            {
-                string userRoot = "HKEY_CURRENT_USER";
-                string subkey = "Barco2021";
-                string keyName = userRoot + "\\" + subkey;
-
-
-                return Microsoft.Win32.Registry.GetValue(keyName, Name, "default").ToString();
-            }
+        static string getValues(string Name)
+        {
+            string userRoot = "HKEY_CURRENT_USER";
+            string subkey = "Barco2021";
+            string keyName = userRoot + "\\" + subkey;
 
 
+            return Microsoft.Win32.Registry.GetValue(keyName, Name, "default").ToString();
+        }
 
-            //private static Barco2021Context context = new Barco2021Context();
+
+        //private static Barco2021Context context = new Barco2021Context();
 
             /*private RqRequest request = new RqRequest();
             private RqOptionel optional = new RqOptionel();
