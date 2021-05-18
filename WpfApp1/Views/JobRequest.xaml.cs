@@ -36,25 +36,11 @@ namespace Barco
             jobRequestViewModel = new JobRequestViewModel(this);
             DataContext = jobRequestViewModel;
             
-            showDepartments();
-            showJobNature();
+            
         }
 
 
-        public void showDepartments()
-        {
-            //cmbDivision.ItemsSource = dao.getDivisions();
-            cmbDivision.Items.Add(getValues("DIVISION"));
-            cmbDivision.SelectedIndex = 0;
-        }
-        
-
-        public void showJobNature()
-        {
-            cmbJobNature.ItemsSource = dao.getJobNatures();
-            cmbJobNature.DisplayMemberPath = "Nature";
-            cmbJobNature.SelectedValuePath = "Nature";
-        }
+       
 
         static string getValues(string Name)
         {

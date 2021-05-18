@@ -138,9 +138,27 @@ namespace Barco
 
             txtReqInitials = getInitialsFromReg();
 
+            showDepartments();
+            showJobNature();
         }
 
-    
+        public void showDepartments()
+        {
+            //cmbDivision.ItemsSource = dao.getDivisions();
+            cmbDivision = new ComboBox();
+            cmbDivision.Items.Add(getValues("DIVISION"));
+            cmbDivision.SelectedIndex = 0;
+        }
+
+
+        public void showJobNature()
+        {
+            cmbJobNature = new ComboBox();
+            cmbJobNature.ItemsSource = dao.getJobNatures();
+            cmbJobNature.DisplayMemberPath = "Nature";
+            cmbJobNature.SelectedValuePath = "Nature";
+        }
+
         //working internally with the binding 
         public Part SelectedPart
         {
@@ -766,11 +784,6 @@ namespace Barco
 
             return Microsoft.Win32.Registry.GetValue(keyName, Name, "default").ToString();
         }
-
-
     }
-
-    
-
 }
 
