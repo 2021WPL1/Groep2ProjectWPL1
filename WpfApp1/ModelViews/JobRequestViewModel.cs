@@ -252,7 +252,6 @@ namespace Barco
         {
             try
             {
-                createBoxLists();
                 //create error sequence
                 List<string> errors = new List<string>();
                 
@@ -372,16 +371,19 @@ namespace Barco
                     request.NetWeight = netWeights;
                     request.GrossWeight = grossWeights;
                     request.EutPartnumbers = partNums;
+                    request.HydraProjectNr = "0";
 
                     //optional object
                     optional.Link = txtLinkTestplan;
                     optional.IdRequest = request.IdRequest;
 
                     //eut objects
-                    eutList = getEutData();
+                    Detail.Eut = getEutData();
                 }
 
                 dao.AddRequest(request, Detail, optional);
+                MessageBox.Show("Data has been inserted");
+                
 
             }
             catch (FormatException ex)
