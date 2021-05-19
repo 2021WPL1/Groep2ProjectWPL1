@@ -224,12 +224,14 @@ namespace Barco.Data
         // Add request/ detail / optional
 
      public RqRequest AddRequest(RqRequest request, RqRequestDetail detail, RqOptionel optional)
-        { try
+        { 
+            try
             {
                 context.RqRequest.Add(request);
                 context.SaveChanges();
                 AddOptional(optional);
                 AddDetail(detail);
+
             }
             
             catch(Exception ex)
