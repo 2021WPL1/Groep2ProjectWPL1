@@ -221,7 +221,7 @@ namespace Barco.Data
 
 
         //Bianca
-        // Add request/ detail / optional
+        // Add request/ detail
 
      public RqRequest AddRequest(RqRequest request, RqRequestDetail detail, RqOptionel optional)
         { try
@@ -249,6 +249,7 @@ namespace Barco.Data
             return detail;
         }
 
+        //thibaut
         public RqOptionel AddOptional(RqOptionel optional)
         {
             optional.IdRequest =
@@ -256,6 +257,15 @@ namespace Barco.Data
             context.RqOptionel.Add(optional);
             context.SaveChanges();
             return optional;
+        }
+
+        //thibaut
+        public Eut AddEUT(Eut eut)
+        {
+            eut.Id = int.Parse(context.Eut.OrderByDescending(p => p.Id).Select(p => p.Id).First().ToString());
+            context.Eut.Add(eut);
+            context.SaveChanges();
+            return eut;
         }
 
     }
