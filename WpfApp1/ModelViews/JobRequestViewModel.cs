@@ -39,7 +39,8 @@ namespace Barco
         public string txtRemark { get; set; } // special remarks
         public string txtFunction { get; set; } //function
         public DateTime dateExpectedEnd { get; set; }
-
+        public string SelectedJobNature { get; set; }//selected jobnature
+        public string SelectedDivision { get; set; }//selected division
 
         // EUT foreseen availability date
         public DateTime DatePickerEUT1 { get; set; }
@@ -318,11 +319,21 @@ namespace Barco
                 }
 
                 //check if the job nature is selected
+                if(SelectedJobNature == null)
+                {
+                    errors.Add("select a jobnature");
+                }
+
+                if(SelectedDivision == null)
+                {
+                    errors.Add("select a division");
+                }
+
                 //checkbox area
                 if (!(bool) cbEmc && !(bool) cmEnvironmental && !(bool) cmRel &&
                     !(bool) cmProdSafety && !(bool) cmGrnComp)
                 {
-                    errors.Add("Please select a job nature");
+                    errors.Add("Please select a test nature");
                 }
                 else
                 {
@@ -353,8 +364,8 @@ namespace Barco
                 {
                     //request object 
                     request.Requester = input_Abbreviation;
-                    request.BarcoDivision = cmbDivision.SelectedItem.ToString();//to do division null reference
-                    request.JobNature = cmbJobNature.SelectedItem.ToString();// to do jobnature null reference
+                    request.BarcoDivision = SelectedDivision;
+                    request.JobNature = SelectedJobNature; 
                     request.RequestDate = DateTime.Now;
                     request.EutProjectname = txtEutProjectname;
                     request.Battery = input_Battery;
