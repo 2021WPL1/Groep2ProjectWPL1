@@ -50,9 +50,9 @@ namespace Barco
             SaveChangesCommand = new DelegateCommand(SaveChanges);
             AddCommand = new DelegateCommand(AddPart);
             RemoveCommand = new DelegateCommand(RemovePart);
-            this.Request = dao.getRequest(selectedId);
-            this.rqOptionel = dao.getOptionel(selectedId);
-            this.rqRequestDetail = dao.getRequestDetail(selectedId);
+            this.Request = dao.GetRequest(selectedId);
+            this.rqOptionel = dao.GetOptionel(selectedId);
+            this.rqRequestDetail = dao.GetRequestDetail(selectedId);
 
             LoadPartGrossWeight();
             LoadPartNetWeight();
@@ -85,7 +85,7 @@ namespace Barco
             {
                 parts.Remove(selectedPart);
                 lstParts.Remove(selectedPart);
-                refreshGUI();
+                RefreshGUI();
                 OnPropertyChanged();
             }
 
@@ -114,7 +114,7 @@ namespace Barco
                     Request.NetWeight += txtPartGrossWeight + " ; ";
 
 
-                    refreshGUI();
+                    RefreshGUI();
 
                 }
             }
@@ -225,7 +225,7 @@ namespace Barco
         /// <summary>
         /// jimmy
         /// </summary>
-        private void refreshGUI()
+        private void RefreshGUI()
         {
             lstParts.Clear();
             foreach (Part part in parts)

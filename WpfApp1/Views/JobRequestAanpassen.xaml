@@ -59,7 +59,7 @@
                 Content="Add" HorizontalAlignment="Left" Margin="590,0,0,0" VerticalAlignment="Center"  Width="48" Height="21" RenderTransformOrigin="0.539,1.332"/>
         <Button x:Name="btnRemovePart"
                 Command="{Binding RemoveCommand}"
-                Content="Remove" HorizontalAlignment="Left" Margin="653,224,0,0" VerticalAlignment="Top" Height="19"/>
+                Content="Remove" HorizontalAlignment="Left" Margin="653,224,0,0" VerticalAlignment="Top" Height="21"/>
         <TextBlock HorizontalAlignment="Left" Margin="51,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Batteries included:"/></TextBlock>
         <RadioButton x:Name="RBBatteriesYes" Content="Yes" HorizontalAlignment="Left" Margin="51,168,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="RBBatteriesNo" Content="No" HorizontalAlignment="Left" Margin="51,188,0,0" VerticalAlignment="Top"/>

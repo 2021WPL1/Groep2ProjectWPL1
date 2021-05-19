@@ -49,7 +49,7 @@ namespace Barco.Data
         
        
         // bianca- get a person with the abbreviation
-        public Person getPersonWithAbb(string abb)
+        public Person GetPersonWithAbb(string abb)
         {
             return context.Person.FirstOrDefault(a => a.Afkorting == abb);
         }
@@ -65,16 +65,16 @@ namespace Barco.Data
         }
         //bianca
         // delete a person from the database
-        public void removePerson(string abb)
+        public void RemovePerson(string abb)
         {
-            context.Person.Remove(getPersonWithAbb(abb));
+            context.Person.Remove(GetPersonWithAbb(abb));
             saveChanges();
         }
 
 
         
         //  bianca
-        public RqRequest getRequestDate()
+        public RqRequest GetRequestDate()
         {
             return context.RqRequest.FirstOrDefault(a => a.RequestDate == DateTime.Now);
             
@@ -82,20 +82,20 @@ namespace Barco.Data
         }
         //Jimmy
         // get all the RqRequests 
-        public ICollection<RqRequest> getAllRqRequests()
+        public ICollection<RqRequest> GetAllRqRequests()
         {
             return context.RqRequest.ToList();
         }
         //Jimmy
         // Get RqRequest by Id
-        public RqRequest getRqRequestById(int id)
+        public RqRequest GetRqRequestById(int id)
         {
             return context.RqRequest.FirstOrDefault(r => r.IdRequest == id);
         }
 
         //jimmy
         // Get RqRequestDetails by Id
-        public RqRequestDetail getRqRequestDetailById(int id)
+        public RqRequestDetail GetRqRequestDetailById(int id)
         {
             return context.RqRequestDetail.FirstOrDefault(r => r.IdRqDetail == id);
         }
@@ -104,13 +104,13 @@ namespace Barco.Data
 
         //Jimmy
         // Delete Selected JobRequest
-        public void deleteJobRequest(int id)
+        public void DeleteJobRequest(int id)
         {
-            context.RqRequest.Remove(getRqRequestById(id));
+            context.RqRequest.Remove(GetRqRequestById(id));
             saveChanges();
         }
         // jimmy
-        public void approveRqRequest(RqRequest rqRequest)
+        public void ApproveRqRequest(RqRequest rqRequest)
         {
             rqRequest.JrStatus = "Approved";
             saveChanges();
@@ -121,39 +121,39 @@ namespace Barco.Data
      
 
         //bianca  
-        public List<RqBarcoDivision> getDepartment()
+        public List<RqBarcoDivision> GetDepartment()
         { 
             return context.RqBarcoDivision.ToList();
         }
 
         //bianca 
 
-        public List<RqBarcoDivision> getDivisions()
+        public List<RqBarcoDivision> GetDivisions()
         {
             return context.RqBarcoDivision.ToList();
         }
         
-        public List<RqJobNature> getJobNatures()
+        public List<RqJobNature> GetJobNatures()
         {
             return context.RqJobNature.ToList();
         }
 
         //request detail opvragen op basis van selected index
-        public RqRequest getRequest(int requestId)
+        public RqRequest GetRequest(int requestId)
         {
             return context.RqRequest.Where(rq => rq.IdRequest == requestId).FirstOrDefault() ;
         }
         //geeft een requestDetail object op basis van het juiste requestID veld
-        public RqRequestDetail getRequestDetail(int requestId)
+        public RqRequestDetail GetRequestDetail(int requestId)
         {
             return context.RqRequestDetail.Where(det => det.IdRequest == requestId).FirstOrDefault();
         }
         //geeft een eut object op basis van het id van RequestDetail tabel
-        public Eut getEut(int idReqDet)
+        public Eut GetEut(int idReqDet)
         {
             return context.Eut.Where(eut => eut.IdRqDetail == idReqDet).FirstOrDefault() ;
         }
-        public RqOptionel getOptionel(int idReq)
+        public RqOptionel GetOptionel(int idReq)
         {
             return context.RqOptionel.Where(opt => opt.IdRequest == idReq).FirstOrDefault();
         }
@@ -164,7 +164,7 @@ namespace Barco.Data
             return context.RqBarcoDivision.FirstOrDefault(a => a.Afkorting == abb);
         }
 
-        public bool ifDivisionExists(string abb)
+        public bool IfDivisionExists(string abb)
         {
             bool result = false;
             if (context.RqBarcoDivision.Any(a => a.Afkorting == abb))
@@ -181,7 +181,7 @@ namespace Barco.Data
         }
 
         // Geeft devision
-        public List<RqTestDevision> getTestDevisions()
+        public List<RqTestDevision> GetTestDevisions()
         {
             return context.RqTestDevision.ToList();
         }

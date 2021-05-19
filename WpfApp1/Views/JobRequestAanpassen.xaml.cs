@@ -57,8 +57,8 @@ namespace Barco
         public void ShowDialog(ref int IdJr)
         { 
                 int Idjr = IdJr;
-                RqRequest rqRequest = dao.getRqRequestById(Idjr);
-                RqRequestDetail requestDetail = dao.getRqRequestDetailById(Idjr);
+                RqRequest rqRequest = dao.GetRqRequestById(Idjr);
+                RqRequestDetail requestDetail = dao.GetRqRequestDetailById(Idjr);
             try
             {
                 if (rqRequest.Battery == true)
