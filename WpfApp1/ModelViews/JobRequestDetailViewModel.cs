@@ -18,7 +18,7 @@ namespace Barco
         public List<String> ListPartsnumbers { get; set; }
         public List<String> ListPartNet { get; set; }
         public List<String> ListPartGross { get; set; }
-
+        
 
         public JobRequestDetailViewModel(JobRequestDetail screen, int selectedId)
         {
