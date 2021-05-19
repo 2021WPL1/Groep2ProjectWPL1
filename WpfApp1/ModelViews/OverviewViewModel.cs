@@ -51,7 +51,7 @@ namespace Barco
 
 
         }
-        //biance
+        //bianca
         //Sluit de overview en opent home
         public void CancelButton()
         {

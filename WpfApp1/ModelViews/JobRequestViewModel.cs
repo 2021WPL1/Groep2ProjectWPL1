@@ -39,7 +39,8 @@ namespace Barco
         public string txtRemark { get; set; } // special remarks
         public string txtFunction { get; set; } //function
         public DateTime dateExpectedEnd { get; set; }
-
+        public string SelectedJobNature { get; set; }//selected jobnature
+        public string SelectedDivision { get; set; }//selected division
 
         // EUT foreseen availability date
         public DateTime DatePickerEUT1 { get; set; }
@@ -86,11 +87,11 @@ namespace Barco
         public bool cbEmcEut5 { get; set; }
 
 
-        public bool cmEnvorimentalEut1 { get; set; }
-        public bool cmEnvorimentalEut2 { get; set; }
-        public bool cmEnvorimentalEut3 { get; set; }
-        public bool cmEnvorimentalEut4 { get; set; }
-        public bool cmEnvorimentalEut5 { get; set; }
+        public bool cmEnvironmentalEut1 { get; set; }
+        public bool cmEnvironmentalEut2 { get; set; }
+        public bool cmEnvironmentalEut3 { get; set; }
+        public bool cmEnvironmentalEut4 { get; set; }
+        public bool cmEnvironmentalEut5 { get; set; }
 
         public bool cmGrnCompEut1 { get; set; }
         public bool cmGrnCompEut2 { get; set; }
@@ -217,9 +218,7 @@ namespace Barco
                     request.EutPartnumbers += txtPartNr + " ; ";
                     request.GrossWeight += txtNetWeight + " ; ";
                     request.NetWeight += txtGrossWeight + " ; ";
-                    txtPartNr = "";
-                    txtNetWeight = "";
-                    txtGrossWeight = "";
+                    
                     refreshGUI();
 
                 }
@@ -253,6 +252,7 @@ namespace Barco
         {
             try
             {
+                createBoxLists();
                 //create error sequence
                 List<string> errors = new List<string>();
                 createBoxLists();
@@ -318,11 +318,21 @@ namespace Barco
                 }
 
                 //check if the job nature is selected
+                if(SelectedJobNature == null)
+                {
+                    errors.Add("select a jobnature");
+                }
+
+                if(SelectedDivision == null)
+                {
+                    errors.Add("select a division");
+                }
+
                 //checkbox area
                 if (!(bool) cbEmc && !(bool) cmEnvironmental && !(bool) cmRel &&
                     !(bool) cmProdSafety && !(bool) cmGrnComp)
                 {
-                    errors.Add("Please select a job nature");
+                    errors.Add("Please select a test nature");
                 }
                 else
                 {
@@ -353,8 +363,8 @@ namespace Barco
                 {
                     //request object 
                     request.Requester = input_Abbreviation;
-                    request.BarcoDivision = cmbDivision.SelectedItem.ToString();//to do division null reference
-                    request.JobNature = cmbJobNature.SelectedItem.ToString();// to do jobnature null reference
+                    request.BarcoDivision = SelectedDivision;
+                    request.JobNature = SelectedJobNature; 
                     request.RequestDate = DateTime.Now;
                     request.EutProjectname = txtEutProjectname;
                     request.Battery = input_Battery;
@@ -399,11 +409,11 @@ namespace Barco
             emcBoxes.Add(cbEmcEut4);
             emcBoxes.Add(cbEmcEut5);
 
-            envBoxes.Add(cmEnvorimentalEut1);
-            envBoxes.Add(cmEnvorimentalEut2);
-            envBoxes.Add(cmEnvorimentalEut3);
-            envBoxes.Add(cmEnvorimentalEut4);
-            envBoxes.Add(cmEnvorimentalEut5);
+            envBoxes.Add(cmEnvironmentalEut1);
+            envBoxes.Add(cmEnvironmentalEut2);
+            envBoxes.Add(cmEnvironmentalEut3);
+            envBoxes.Add(cmEnvironmentalEut4);
+            envBoxes.Add(cmEnvironmentalEut5);
 
             relBoxes.Add(cmRelEut1);
             relBoxes.Add(cmRelEut2);
@@ -554,7 +564,7 @@ namespace Barco
         private List<string> checkDates()
         {
             List<string> result = new List<string>();
-            if ((bool) cbEmcEut1 || (bool) cmEnvorimentalEut1 || (bool) cmGrnCompEut1 || (bool) cmProdSafetyEut1 ||
+            if ((bool) cbEmcEut1 || (bool)cmEnvironmentalEut1 || (bool) cmGrnCompEut1 || (bool) cmProdSafetyEut1 ||
                 (bool) cmGrnCompEut1)
             {
                 if (DatePickerEUT1.Date == null)
@@ -563,7 +573,7 @@ namespace Barco
                 }
             }
 
-            if ((bool) cbEmcEut2 || (bool) cmEnvorimentalEut2 || (bool) cmGrnCompEut2 || (bool) cmProdSafetyEut2 ||
+            if ((bool) cbEmcEut2 || (bool)cmEnvironmentalEut2 || (bool) cmGrnCompEut2 || (bool) cmProdSafetyEut2 ||
                 (bool) cmGrnCompEut2)
             {
                 if (DatePickerEUT2.Date == null)
@@ -572,7 +582,7 @@ namespace Barco
                 }
             }
 
-            if ((bool) cbEmcEut3 || (bool) cmEnvorimentalEut3 || (bool) cmGrnCompEut3 || (bool) cmProdSafetyEut3 ||
+            if ((bool) cbEmcEut3 || (bool)cmEnvironmentalEut3 || (bool) cmGrnCompEut3 || (bool) cmProdSafetyEut3 ||
                 (bool) cmGrnCompEut3)
             {
                 if (DatePickerEUT3.Date == null)
@@ -581,7 +591,7 @@ namespace Barco
                 }
             }
 
-            if ((bool) cbEmcEut4 || (bool) cmEnvorimentalEut4 || (bool) cmGrnCompEut4 || (bool) cmProdSafetyEut4 ||
+            if ((bool) cbEmcEut4 || (bool)cmEnvironmentalEut4 || (bool) cmGrnCompEut4 || (bool) cmProdSafetyEut4 ||
                 (bool) cmGrnCompEut4)
             {
                 if (DatePickerEUT4.Date == null)
@@ -590,7 +600,7 @@ namespace Barco
                 }
             }
 
-            if ((bool) cbEmcEut5 || (bool) cmEnvorimentalEut5 || (bool) cmGrnCompEut5 || (bool) cmProdSafetyEut5 ||
+            if ((bool) cbEmcEut5 || (bool)cmEnvironmentalEut5 || (bool) cmGrnCompEut5 || (bool) cmProdSafetyEut5 ||
                 (bool) cmGrnCompEut5)
             {
                 if (DatePickerEUT5.Date == null)
@@ -615,7 +625,7 @@ namespace Barco
                     description = "EMC - EUT 1";
                 }
 
-                if ((bool) cmEnvorimentalEut1)
+                if ((bool)cmEnvironmentalEut1)
                 {
                     description = "Environmental - EUT 1";
                 }
@@ -653,7 +663,7 @@ namespace Barco
                     description = "EMC - EUT 2";
                 }
 
-                if ((bool) cmEnvorimentalEut2)
+                if ((bool)cmEnvironmentalEut2)
                 {
                     description = "Environmental - EUT 2";
                 }
@@ -691,7 +701,7 @@ namespace Barco
                     description = "EMC - EUT 3";
                 }
 
-                if ((bool) cmEnvorimentalEut3)
+                if ((bool)cmEnvironmentalEut3)
                 {
                     description = "Environmental - EUT 3";
                 }
@@ -729,7 +739,7 @@ namespace Barco
                     description = "EMC - EUT 4";
                 }
 
-                if ((bool) cmEnvorimentalEut4)
+                if ((bool)cmEnvironmentalEut4)
                 {
                     description = "Environmental - EUT 4";
                 }
@@ -767,7 +777,7 @@ namespace Barco
                     description = "EMC - EUT 5";
                 }
 
-                if ((bool) cmEnvorimentalEut5)
+                if ((bool)cmEnvironmentalEut5)
                 {
                     description = "Environmental - EUT 5";
                 }
