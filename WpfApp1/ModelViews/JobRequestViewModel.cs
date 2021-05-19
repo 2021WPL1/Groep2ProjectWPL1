@@ -10,6 +10,14 @@ using System.Windows.Input;
 using System.Windows.Media.Animation;
 using Microsoft.Win32;
 
+/// <summary>
+/// 
+///     (╭ ゜-゜)╮ ┬─┬
+///     
+///     (╯°□°)╯︵ ┻━┻
+///     
+/// </summary>
+
 namespace Barco
 { //bianca
     public class JobRequestViewModel : ViewModelBase
