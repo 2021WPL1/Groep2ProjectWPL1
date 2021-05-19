@@ -124,9 +124,9 @@ namespace Barco
                 int SelectedId = _selectedRequest.IdRequest;
 
                 JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen(SelectedId);
-
+                overview.Close();
                 jobRequestAanpassen.ShowDialog();
-
+                
             }
             else
             {
