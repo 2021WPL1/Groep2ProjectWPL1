@@ -46,14 +46,14 @@ namespace Barco
 
         public void showDivision()
         {
-            //cmbDivision.ItemsSource = dao.getDivisions();
+            //cmbDivision.ItemsSource = dao.GetDivisions();
             cmbDivision.Items.Add(getValues("DIVISION"));
            // cmbDivision.SelectedIndex = 0;
 
         }
         public void getJobNatures()
         {
-            cmbJobNature.ItemsSource = dao.getJobNatures();
+            cmbJobNature.ItemsSource = dao.GetJobNatures();
             cmbJobNature.DisplayMemberPath = "Nature";
             cmbJobNature.SelectedValuePath = "Nature";
         }
@@ -98,11 +98,11 @@ namespace Barco
                 dao = DAO.Instance();
     
     
-                cmbDivision.ItemsSource = dao.getDivisions();
+                cmbDivision.ItemsSource = dao.GetDivisions();
                 cmbDivision.DisplayMemberPath = "Afkorting";
                 cmbDivision.SelectedValuePath = "Afkorting";
     
-                cmbJobNature.ItemsSource = dao.getJobNatures();
+                cmbJobNature.ItemsSource = dao.GetJobNatures();
                 cmbJobNature.DisplayMemberPath = "Nature";
                 cmbJobNature.SelectedValuePath = "Nature";
     
@@ -129,7 +129,7 @@ namespace Barco
                             GrossWeight = txtGrossWeight.Text,
                             partNo = txtPartNr.Text
                         });
-                        refreshGUI();
+                        RefreshGUI();
     
                         //lstbNetWeight.Items.Add(sNetWeight);
                         //lstbGrossWeight.Items.Add(sGrossWeight);
@@ -155,7 +155,7 @@ namespace Barco
                 {
                     parts.Remove(selectedPart);
                     lstParts.Items.Remove(selectedPart);
-                    refreshGUI();
+                    RefreshGUI();
                 }
             }
     
@@ -302,7 +302,7 @@ namespace Barco
                 homeScreen.ShowDialog();
             }
     
-            private void refreshGUI()
+            private void RefreshGUI()
             {
                 lstParts.Items.Clear();
                 foreach (Part part in parts)

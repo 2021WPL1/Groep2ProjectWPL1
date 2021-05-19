@@ -35,13 +35,14 @@ namespace Barco
             OpenDetailsCommand = new DelegateCommand(OpenDetails);
             DeleteRequestCommand = new DelegateCommand(DeleteRequest);
             EditRequestCommand = new DelegateCommand(EditRequest);
+            Load();
             this.overview = overview;
         }
         //jimmy
         // laad alle requests in een ObservableCollection om zo in de GUI weer te geven
         public void Load()
         {
-            var rqRequests = dao.getAllRqRequests();
+            var rqRequests = dao.GetAllRqRequests();
             RqRequests.Clear();
             foreach (var rqRequest in rqRequests)
             {
@@ -66,7 +67,7 @@ namespace Barco
 
             if (_selectedRequest != null)
             {
-                dao.approveRqRequest(_selectedRequest);
+                dao.ApproveRqRequest(_selectedRequest);
             }
             else
             {
@@ -103,7 +104,7 @@ namespace Barco
         {
             if (_selectedRequest != null)
             {
-                dao.deleteJobRequest(_selectedRequest.IdRequest);
+                dao.DeleteJobRequest(_selectedRequest.IdRequest);
                 Load();
 
             }

@@ -28,9 +28,9 @@ namespace Barco
             this.ListPartsnumbers = new List<string>();
             this.ListPartGross = new List<string>();
             this.ListPartNet = new List<string>();
-            this.Request = dao.getRequest(selectedId);
-            this.rqOptionel = dao.getOptionel(selectedId);
-            this.rqRequestDetail = dao.getRequestDetail(selectedId);
+            this.Request = dao.GetRequest(selectedId);
+            this.rqOptionel = dao.GetOptionel(selectedId);
+            this.rqRequestDetail = dao.GetRequestDetail(selectedId);
             LoadPartsNumbers();
             LoadPartGrossWeight();
             LoadPartNetWeight();

@@ -40,7 +40,8 @@ namespace Barco
         public string txtRemark { get; set; } // special remarks
         public string txtFunction { get; set; } //function
         public DateTime dateExpectedEnd { get; set; }
-
+        public string SelectedJobNature { get; set; }//selected jobnature
+        public string SelectedDivision { get; set; }//selected division
 
         // EUT foreseen availability date
         public DateTime DatePickerEUT1 { get; set; }
@@ -220,7 +221,7 @@ namespace Barco
                     request.EutPartnumbers += txtPartNr + " ; ";
                     request.GrossWeight += txtNetWeight + " ; ";
                     request.NetWeight += txtGrossWeight + " ; ";
-               
+                    
                     refreshGUI();
 
                 }
@@ -254,7 +255,6 @@ namespace Barco
         {
             try
             {
-                createBoxLists();
                 //create error sequence
                 List<string> errors = new List<string>();
                 //declare var for object
@@ -319,11 +319,21 @@ namespace Barco
                 }
 
                 //check if the job nature is selected
+                if(SelectedJobNature == null)
+                {
+                    errors.Add("select a jobnature");
+                }
+
+                if(SelectedDivision == null)
+                {
+                    errors.Add("select a division");
+                }
+
                 //checkbox area
                 if (!(bool) cbEmc && !(bool) cmEnvironmental && !(bool) cmRel &&
                     !(bool) cmProdSafety && !(bool) cmGrnComp)
                 {
-                    errors.Add("Please select a job nature");
+                    errors.Add("Please select a test nature");
                 }
                 else
                 {
@@ -356,7 +366,7 @@ namespace Barco
                     //request object 
                     request.Requester = input_Abbreviation;
                     request.BarcoDivision = SelectedDivision;
-                    request.JobNature = SelectedJobNature;
+                    request.JobNature = SelectedJobNature; 
                     request.RequestDate = DateTime.Now;
                     request.EutProjectname = txtEutProjectname;
                     request.Battery = input_Battery;
@@ -364,18 +374,19 @@ namespace Barco
                     request.NetWeight = netWeights;
                     request.GrossWeight = grossWeights;
                     request.EutPartnumbers = partNums;
-                    request.InternRequest = checkInternal(input_Abbreviation);
-
+                    request.HydraProjectNr = "0";
 
                     //optional object
                     optional.Link = txtLinkTestplan;
                     optional.IdRequest = request.IdRequest;
 
                     //eut objects
-                    eutList = getEutData();
+                    Detail.Eut = getEutData();
                 }
 
                 dao.AddRequest(request, Detail, optional);
+                MessageBox.Show("Data has been inserted");
+                
 
             }
             catch (FormatException ex)

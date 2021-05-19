@@ -78,7 +78,7 @@ namespace Barco
         //private void showDepartment()
         //{
         //    Department.Items.Clear();
-        //    Department.ItemsSource = dao.getDepartment();
+        //    Department.ItemsSource = dao.GetDepartment();
         //    Department.DisplayMemberPath = "Afkorting";
         //    Department.SelectedValuePath = "Afkorting";
         //}
