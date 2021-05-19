@@ -90,7 +90,9 @@ namespace Barco
             }
 
         }
-
+        /// <summary>
+        /// jimmy
+        /// </summary>
         public void AddPart()
         {
             try
