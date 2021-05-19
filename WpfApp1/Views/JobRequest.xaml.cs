@@ -12,7 +12,6 @@ using System.Windows.Shapes;
 using Barco.Data;
 using System.Linq;
 using static Barco.JobRequestViewModel;
-using Barco.Data;
 
 namespace Barco
 {

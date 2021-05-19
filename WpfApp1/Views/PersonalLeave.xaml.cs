@@ -26,17 +26,53 @@ namespace Barco
         //bianca
         public PersonalLeave()
         {
-            //InitializeComponent();
+            InitializeComponent();
             //BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
             //Barco.Source = photo;
             dao = DAO.Instance();
             //showDepartment();
             personalLeaveViewModel = new PersonalLeaveViewModel(this);
             DataContext = personalLeaveViewModel;
-         
+            DateRequest.SelectedDate = DateTime.Today;
+
+            showDivision();
+            getFullName();
 
 
         }
+
+        public void showDivision()
+        {
+            Department.Items.Add(getValues("DIVISION"));
+            Department.SelectedItem = 0;
+
+        }
+
+        public void showName()
+        {
+            
+        }
+
+        static string getValues(string Name)
+        {
+            string userRoot = "HKEY_CURRENT_USER";
+            string subkey = "Barco2021";
+            string keyName = userRoot + "\\" + subkey;
+
+
+            return Microsoft.Win32.Registry.GetValue(keyName, Name, "default").ToString();
+        }
+
+        public void getFullName()
+        {
+            string fullName = getValues("NAME");
+            string sFirstName = fullName.Split(" ")[0];
+            string sLastName = fullName.Split(" ")[1];
+
+            Firstname.Text = sFirstName;
+            LastName.Text = sLastName;
+        }
+
 
         //bianca
         //private void showDepartment()
