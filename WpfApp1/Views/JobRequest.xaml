@@ -114,7 +114,7 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <TextBlock HorizontalAlignment="Left" Margin="171,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" Text="Function"/>
+        <TextBlock HorizontalAlignment="Left" Margin="168,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" Text="Function"/>
         <TextBox x:Name="txtFunction" Text="{Binding txtFunction, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="168,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsEnabled="False"/>
 
     </Grid>

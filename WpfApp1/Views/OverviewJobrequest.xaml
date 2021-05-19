@@ -17,7 +17,7 @@
                 Command="{Binding DeleteRequestCommand}"
                 Content="Delete" HorizontalAlignment="Left" Margin="717,190,0,0" VerticalAlignment="Top" Height="34" Width="50" />
       
-        <Label Content="JR number" HorizontalAlignment="Left" Margin="180,174,0,0" VerticalAlignment="Top" Height="30" Width="79"/>
+        <Label Content="Requester" HorizontalAlignment="Left" Margin="180,174,0,0" VerticalAlignment="Top" Height="30" Width="79"/>
         <Label Content="Division" HorizontalAlignment="Left" Margin="303,174,0,0" VerticalAlignment="Top" Height="30" Width="132"/>
         <Label Content="-" HorizontalAlignment="Left" Margin="264,170,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Button x:Name="CancelButton"
