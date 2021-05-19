@@ -148,16 +148,16 @@ namespace Barco
             _err_output = new ObservableCollection<string>();
             
             
-            txtFunction = getValues("FUNCTION");
+            txtFunction = GetValues("FUNCTION");
 
 
-            txtReqInitials = getInitialsFromReg();
+            txtReqInitials = GetInitialsFromReg();
 
 
         }
-        public string getInitialsFromReg()
+        public string GetInitialsFromReg()
         {
-            string fullName = getValues("NAME");
+            string fullName = GetValues("NAME");
             string FirstName = fullName.Split(" ")[0];
             string LastName = fullName.Split(" ")[1];
 
@@ -167,7 +167,7 @@ namespace Barco
 
 
 
-        static string getValues(string Name)
+        static string GetValues(string Name)
         {
             string userRoot = "HKEY_CURRENT_USER";
             string subkey = "Barco2021";
@@ -219,7 +219,7 @@ namespace Barco
                     request.GrossWeight += txtNetWeight + " ; ";
                     request.NetWeight += txtGrossWeight + " ; ";
                     
-                    refreshGUI();
+                    RefreshGUI();
 
                 }
             }
@@ -228,7 +228,7 @@ namespace Barco
                 MessageBox.Show("please fill in all fields");
             }
         }
-        private void refreshGUI()
+        private void RefreshGUI()
         {
             lstParts.Clear();
             foreach (Part part in parts)
@@ -243,7 +243,7 @@ namespace Barco
             {
                 parts.Remove(selectedPart);
                 lstParts.Remove(selectedPart);
-                refreshGUI();
+                RefreshGUI();
                 OnPropertyChanged();
             }
         }
@@ -252,9 +252,10 @@ namespace Barco
         {
             try
             {
+                CreateBoxLists();
                 //create error sequence
                 List<string> errors = new List<string>();
-                createBoxLists();
+                CreateBoxLists();
                 //declare var for object
                 string input_Abbreviation = txtReqInitials;
                 string input_ProjectName = txtEutProjectname;
@@ -340,7 +341,7 @@ namespace Barco
                 }
 
                 //check if the dates are set
-                List<string> valiDate = checkDates();
+                List<string> valiDate = CheckDates();
                 errors.AddRange(valiDate);
 
                 //check if other fields are empty
@@ -378,7 +379,7 @@ namespace Barco
                     optional.IdRequest = request.IdRequest;
 
                     //eut objects
-                    Detail.Eut = getEutData();
+                    eutList = GetEutData();
                 }
 
                 dao.AddRequest(request, Detail, optional);
@@ -402,7 +403,7 @@ namespace Barco
             public string GrossWeight { get; set; }
         }
 
-        public void createBoxLists()
+        public void CreateBoxLists()
         {
 
             emcBoxes.Add(cbEmcEut1);
@@ -442,7 +443,7 @@ namespace Barco
             selectionBoxes.Add(cmGrnComp);
         }
 
-        private void enableBoxes(bool selected)
+        private void EnableBoxes(bool selected)
         {
             List<bool> targets = new List<bool>();
             if (cbEmc)
@@ -563,7 +564,7 @@ namespace Barco
             return outcome;
         }
 
-        private List<string> checkDates()
+        private List<string> CheckDates()
         {
             List<string> result = new List<string>();
             if ((bool) cbEmcEut1 || (bool)cmEnvironmentalEut1 || (bool) cmGrnCompEut1 || (bool) cmProdSafetyEut1 ||
@@ -613,7 +614,7 @@ namespace Barco
             return result;
         }
 
-        private List<Eut> getEutData()
+        private List<Eut> GetEutData()
         {
             List<Eut> result = new List<Eut>();
 
