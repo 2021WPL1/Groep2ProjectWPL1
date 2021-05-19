@@ -95,13 +95,13 @@
         <ListView x:Name="lstParts"  Margin="418,147,22,313" Width="360"  SelectedValue="{Binding Path=selectedPart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding listParts}" HorizontalAlignment="Center">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Part number" Width="117" x:Name="lstPartNo" DisplayMemberBinding="{ Binding partNo, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                    <GridViewColumn Header="Part number" Width="117" x:Name="lstPartNo" DisplayMemberBinding="{ Binding partNo}">
 
                     </GridViewColumn>
-                    <GridViewColumn Header="Net Weight" Width="117" x:Name="lstNetWeight" DisplayMemberBinding="{ Binding NetWeight, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                    <GridViewColumn Header="Net Weight" Width="117" x:Name="lstNetWeight" DisplayMemberBinding="{ Binding NetWeight}">
 
                     </GridViewColumn>
-                    <GridViewColumn Header="Gross weight" Width="117" x:Name="lstGrossWeight" DisplayMemberBinding="{ Binding GrossWeight,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                    <GridViewColumn Header="Gross weight" Width="117" x:Name="lstGrossWeight" DisplayMemberBinding="{ Binding GrossWeight}">
 
                     </GridViewColumn>
                 </GridView>

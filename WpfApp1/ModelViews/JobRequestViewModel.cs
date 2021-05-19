@@ -218,9 +218,7 @@ namespace Barco
                     request.EutPartnumbers += txtPartNr + " ; ";
                     request.GrossWeight += txtNetWeight + " ; ";
                     request.NetWeight += txtGrossWeight + " ; ";
-                    txtPartNr = "";
-                    txtNetWeight = "";
-                    txtGrossWeight = "";
+                    
                     refreshGUI();
 
                 }
