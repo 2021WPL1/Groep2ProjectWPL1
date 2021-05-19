@@ -35,6 +35,7 @@ namespace Barco
             OpenDetailsCommand = new DelegateCommand(OpenDetails);
             DeleteRequestCommand = new DelegateCommand(DeleteRequest);
             EditRequestCommand = new DelegateCommand(EditRequest);
+            Load();
             this.overview = overview;
         }
         //jimmy
