@@ -77,7 +77,7 @@ namespace Barco.Data
         public RqRequest getRequestDate()
         {
             return context.RqRequest.FirstOrDefault(a => a.RequestDate == DateTime.Now);
-
+            
 
         }
         //Jimmy
