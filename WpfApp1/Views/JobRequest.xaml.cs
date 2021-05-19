@@ -13,7 +13,6 @@ using Barco.Data;
 using System.Linq;
 using Microsoft.Win32;
 using static Barco.JobRequestViewModel;
-using Barco.Data;
 
 namespace Barco
 {

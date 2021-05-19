@@ -37,6 +37,7 @@ namespace Barco
             cbxChooseDepartment.DisplayMemberPath = "Afkorting";
             cbxChooseDepartment.SelectedValuePath = "Afkorting";
 
+            
 
         }
 
@@ -62,5 +63,7 @@ namespace Barco
                 + dateEndHoliday.SelectedDate);
 
         }
+
+        
     }
 }
