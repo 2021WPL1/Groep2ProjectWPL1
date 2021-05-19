@@ -25,8 +25,8 @@ namespace Barco
             HomeScreen home = new HomeScreen();
             personalLeave.Close();
             home.ShowDialog();
-
-
         }
+
+       
     }
 }

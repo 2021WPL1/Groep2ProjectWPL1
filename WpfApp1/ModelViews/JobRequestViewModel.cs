@@ -121,6 +121,8 @@ namespace Barco
         public ComboBox cmbDivision { get; set; }
         public ComboBox cmbJobNature { get; set; }
 
+        
+
 
         //radio button
         public bool rbtnBatNo { get; set; }
@@ -143,7 +145,7 @@ namespace Barco
             DatePickerEUT5 = DateTime.Now;
 
             _err_output = new ObservableCollection<string>();
-           
+            
             
             txtFunction = getValues("FUNCTION");
 
@@ -215,6 +217,9 @@ namespace Barco
                     request.EutPartnumbers += txtPartNr + " ; ";
                     request.GrossWeight += txtNetWeight + " ; ";
                     request.NetWeight += txtGrossWeight + " ; ";
+                    txtPartNr = "";
+                    txtNetWeight = "";
+                    txtGrossWeight = "";
                     refreshGUI();
 
                 }
@@ -235,8 +240,6 @@ namespace Barco
 
         public void RemoveButton()
         {
-
-
             if (parts.Contains(selectedPart))
             {
                 parts.Remove(selectedPart);
@@ -253,13 +256,12 @@ namespace Barco
                 createBoxLists();
                 //create error sequence
                 List<string> errors = new List<string>();
-
+                createBoxLists();
                 //declare var for object
                 string input_Abbreviation = txtReqInitials;
                 string input_ProjectName = txtEutProjectname;
 
                 bool input_Battery = false;
-
 
                 DateTime input_EndDate = DateTime.Now;
 
@@ -278,11 +280,7 @@ namespace Barco
                 string grossWeights = "";
                 string partNums = "";
 
-
-
-
                 //parts section
-
                 if (parts.Count > 0)
                 {
                     foreach (Part part in parts)
@@ -337,19 +335,11 @@ namespace Barco
                 List<string> valiDate = checkDates();
                 errors.AddRange(valiDate);
 
-
-
-
-
                 //check if other fields are empty
 
                 if (txtEutProjectname is null)
                 {
                     errors.Add("please fill in a project name");
-                }
-                else
-                {
-
                 }
 
                 //error handling
@@ -364,8 +354,8 @@ namespace Barco
                 {
                     //request object 
                     request.Requester = input_Abbreviation;
-                 request.BarcoDivision = cmbDivision.SelectedValue.ToString();
-                  request.JobNature = cmbJobNature.SelectedValue.ToString();
+                    request.BarcoDivision = cmbDivision.SelectedItem.ToString();//to do division null reference
+                    request.JobNature = cmbJobNature.SelectedItem.ToString();// to do jobnature null reference
                     request.RequestDate = DateTime.Now;
                     request.EutProjectname = txtEutProjectname;
                     request.Battery = input_Battery;
@@ -380,11 +370,9 @@ namespace Barco
 
                     //eut objects
                     eutList = getEutData();
-
                 }
 
                 dao.AddRequest(request, Detail, optional);
-
 
             }
             catch (FormatException ex)
@@ -402,8 +390,6 @@ namespace Barco
             public string NetWeight { get; set; }
             public string GrossWeight { get; set; }
         }
-
-
 
         public void createBoxLists()
         {
@@ -445,8 +431,6 @@ namespace Barco
             selectionBoxes.Add(cmGrnComp);
         }
 
-
-
         private void enableBoxes(bool selected)
         {
             List<bool> targets = new List<bool>();
@@ -476,9 +460,6 @@ namespace Barco
             //    b = true;
             //}
         }
-
-
-
 
         private List<string> ValidateCheckboxes()
         {
@@ -571,8 +552,6 @@ namespace Barco
             return outcome;
         }
 
-
-
         private List<string> checkDates()
         {
             List<string> result = new List<string>();
@@ -620,7 +599,6 @@ namespace Barco
                     result.Add("please provide a date for EUT 5");
                 }
             }
-
             return result;
         }
 
@@ -825,7 +803,6 @@ namespace Barco
         {
             get { return _err_output; }
             set { _err_output = value; }
-        }
-   
+        }   
     }
 }

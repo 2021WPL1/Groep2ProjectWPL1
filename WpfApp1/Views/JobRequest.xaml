@@ -13,14 +13,14 @@
         <TextBox x:Name="txtEutProjectname" Text="{Binding txtEutProjectname, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="43,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
         <TextBlock HorizontalAlignment="Left" Margin="168,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Division"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="298,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Job Nature"/></TextBlock>
-        <ComboBox x:Name="cmbDivision" HorizontalAlignment="Left" Margin="168,148,0,0" VerticalAlignment="Top" Width="94"/>
-        <ComboBox x:Name="cmbJobNature" HorizontalAlignment="Left" Margin="298,148,0,0" VerticalAlignment="Top" Width="94" />
+        <ComboBox x:Name="cmbDivision" HorizontalAlignment="Left" Margin="168,148,0,0" VerticalAlignment="Top" Width="94" />
+        <ComboBox x:Name="cmbJobNature" HorizontalAlignment="Left" Margin="298,148,0,0" VerticalAlignment="Top" Width="94"/>
         <TextBlock HorizontalAlignment="Left" Margin="454,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="15"><Run Language="nl-be" Text="Eut partnumber"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="562,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="15"><Run Language="nl-be" Text="Net weight (KG)"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="671,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" Height="15"><Run Language="nl-be" Text="Gross"/><Run Text=" weight (KG)"/></TextBlock>
-        <TextBox x:Name="txtPartNr" HorizontalAlignment="Left" Margin="461,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="14" Text="{Binding txtPartNr , UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBox x:Name="txtNetWeight" HorizontalAlignment="Left" Margin="568,311,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="14" Text="{Binding txtNetWeight, UpdateSourceTrigger=PropertyChanged}"/>
-        <TextBox x:Name="txtGrossWeight" HorizontalAlignment="Left" Margin="680,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="14" Text="{Binding txtGrossWeight, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtPartNr" HorizontalAlignment="Left" Margin="461,311,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="17" Text="{Binding txtPartNr , UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtNetWeight" HorizontalAlignment="Left" Margin="568,311,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="17" Text="{Binding txtNetWeight, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtGrossWeight" HorizontalAlignment="Left" Margin="680,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="18" Text="{Binding txtGrossWeight, UpdateSourceTrigger=PropertyChanged}"/>
         <Button x:Name="btnAdd"
                 Command="{Binding AddCommand}"
                 Content="Add" HorizontalAlignment="Left" Margin="556,345,0,0" VerticalAlignment="Top"  Width="46" Height="17" />
@@ -51,11 +51,11 @@
         <CheckBox x:Name="cbEmcEut4" Content="" HorizontalAlignment="Left" Margin="349,330,0,0" VerticalAlignment="Top" IsChecked="{Binding cbEmcEut4}"/>
         <CheckBox x:Name="cbEmcEut5" Content="" HorizontalAlignment="Left" Margin="392,330,0,0" VerticalAlignment="Top"  IsChecked="{Binding cbEmcEut5}"/>
         <CheckBox x:Name="cbEmc" Content="" HorizontalAlignment="Left" Margin="168,330,0,0" VerticalAlignment="Top"  IsChecked="{Binding cbEmc}"/>
-        <CheckBox x:Name="cmEnvironmentalEut1" Content="" HorizontalAlignment="Left" Margin="212,355,0,0" VerticalAlignment="Top" IsChecked="{Binding cmEnvorimentalEut1}"/>
-        <CheckBox x:Name="cmEnvironmentalEut2" Content="" HorizontalAlignment="Left" Margin="255,355,0,0" VerticalAlignment="Top" IsChecked="{Binding cmEnvorimentalEut2}"/>
-        <CheckBox x:Name="cmEnvironmentalEut3" Content="" HorizontalAlignment="Left" Margin="302,355,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmEnvorimentalEut3}"/>
-        <CheckBox x:Name="cmEnvironmentalEut4" Content="" HorizontalAlignment="Left" Margin="349,355,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmEnvorimentalEut4}"/>
-        <CheckBox x:Name="cmEnvironmentalEut5" Content="" HorizontalAlignment="Left" Margin="392,355,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmEnvorimentalEut5}"/>
+        <CheckBox x:Name="cmEnvironmentalEut1" Content="" HorizontalAlignment="Left" Margin="212,355,0,0" VerticalAlignment="Top" IsChecked="{Binding cmEnvironmentalEut1}"/>
+        <CheckBox x:Name="cmEnvironmentalEut2" Content="" HorizontalAlignment="Left" Margin="255,355,0,0" VerticalAlignment="Top" IsChecked="{Binding cmEnvironmentalEut2}"/>
+        <CheckBox x:Name="cmEnvironmentalEut3" Content="" HorizontalAlignment="Left" Margin="302,355,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmEnvironmentalEut3}"/>
+        <CheckBox x:Name="cmEnvironmentalEut4" Content="" HorizontalAlignment="Left" Margin="349,355,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmEnvironmentalEut4}"/>
+        <CheckBox x:Name="cmEnvironmentalEut5" Content="" HorizontalAlignment="Left" Margin="392,355,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmEnvironmentalEut5}"/>
         <CheckBox x:Name="cmEnvironmental" Content="" HorizontalAlignment="Left" Margin="168,355,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmEnvironmental}"/>
         <CheckBox x:Name="cmRelEut1" Content="" HorizontalAlignment="Left" Margin="212,379,0,0" VerticalAlignment="Top" IsChecked="{Binding cmRelEut1}"/>
         <CheckBox x:Name="cmRelEut2" Content="" HorizontalAlignment="Left" Margin="255,379,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmRelEut2}"/>
@@ -95,13 +95,13 @@
         <ListView x:Name="lstParts"  Margin="418,147,22,313" Width="360"  SelectedValue="{Binding Path=selectedPart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding listParts}" HorizontalAlignment="Center">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Part number" Width="100" x:Name="lstPartNo" DisplayMemberBinding="{ Binding partNo}">
+                    <GridViewColumn Header="Part number" Width="117" x:Name="lstPartNo" DisplayMemberBinding="{ Binding partNo}">
 
                     </GridViewColumn>
-                    <GridViewColumn Header="Net Weight" Width="100" x:Name="lstNetWeight" DisplayMemberBinding="{ Binding NetWeight}">
+                    <GridViewColumn Header="Net Weight" Width="117" x:Name="lstNetWeight" DisplayMemberBinding="{ Binding NetWeight}">
 
                     </GridViewColumn>
-                    <GridViewColumn Header="Gross weight" Width="100" x:Name="lstGrossWeight" DisplayMemberBinding="{ Binding GrossWeight }">
+                    <GridViewColumn Header="Gross weight" Width="117" x:Name="lstGrossWeight" DisplayMemberBinding="{ Binding GrossWeight }">
 
                     </GridViewColumn>
                 </GridView>

@@ -63,35 +63,37 @@ namespace Barco
         //Verranderd de Jr status van het geselecteerde request
         public void Approve()
         {
-            try
-            {
 
+            if (_selectedRequest != null)
+            {
                 dao.approveRqRequest(_selectedRequest);
             }
-            catch (NullReferenceException ex)
+            else
             {
 
-                MessageBox.Show(ex.Message + "Select a JobRequest");
+                MessageBox.Show("Select a JobRequest");
+                
             }
-
 
         }
         //jimmy
         //opent de Details van de geselecteerde request en geeft het geselecteerde id mee
         public void OpenDetails()
         {
-            try
+            if (_selectedRequest != null)
             {
                 int SelectedId = _selectedRequest.IdRequest;
                 JobRequestDetail jobRequestDetail = new JobRequestDetail(SelectedId);
                 overview.Close();
                 jobRequestDetail.ShowDialog();
 
+
             }
-            catch (NullReferenceException ex)
+            else
             {
-                MessageBox.Show(ex.Message + "Select a JobRequest");
+                MessageBox.Show("Select a JobRequest");
             }
+            
 
 
         }
@@ -99,36 +101,39 @@ namespace Barco
         //verwijderd de geselecteerd request
         public void DeleteRequest()
         {
-            try
+            if (_selectedRequest != null)
             {
                 dao.deleteJobRequest(_selectedRequest.IdRequest);
                 Load();
 
             }
-            catch (NullReferenceException ex)
+            else
             {
+                MessageBox.Show("Select a JobRequest");
 
-                MessageBox.Show(ex.Message + "Select a JobRequest");
             }
+            
         }
         //jimmy
         //opent de request aanpassen window en geeft de geselecteerde id mee
         public void EditRequest()
         {
-            try
-            {
 
+            if (_selectedRequest != null)
+            {
                 int SelectedId = _selectedRequest.IdRequest;
 
                 JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen(SelectedId);
-
+                overview.Close();
                 jobRequestAanpassen.ShowDialog();
+                
             }
-            catch (NullReferenceException ex)
+            else
             {
+                MessageBox.Show("Select a JobRequest");
 
-                MessageBox.Show(ex.Message + "Select a JobRequest");
             }
+            
         }
         //jimmy
         //geeft de geselecteerde request terug
