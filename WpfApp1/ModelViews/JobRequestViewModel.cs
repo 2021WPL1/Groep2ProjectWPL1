@@ -3,6 +3,7 @@ using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Resources;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -47,8 +48,9 @@ namespace Barco
         public string txtRemark { get; set; } // special remarks
         public string txtFunction { get; set; } //function
         public DateTime dateExpectedEnd { get; set; }
-        public string SelectedJobNature { get; set; }//selected jobnature
-        public string SelectedDivision { get; set; }//selected division
+        public string SelectedDivision { get; set; }
+        public string SelectedJobNature { get; set; }
+
 
         // EUT foreseen availability date
         public DateTime DatePickerEUT1 { get; set; }
@@ -77,6 +79,7 @@ namespace Barco
         public List<Eut> eutList = new List<Eut>();
         public RqRequestDetail Detail = new RqRequestDetail();
         public List<Part> parts = new List<Part>();
+       
 
 
         List<bool> emcBoxes = new List<bool>();
@@ -260,9 +263,10 @@ namespace Barco
         {
             try
             {
+
                 //create error sequence
-                List<string> errors = new List<string>();
                 createBoxLists();
+                List<string> errors = new List<string>();
                 //declare var for object
                 string input_Abbreviation = txtReqInitials;
                 string input_ProjectName = txtEutProjectname;
@@ -365,6 +369,7 @@ namespace Barco
                     {
                         _err_output.Add(s);
                     }
+
                 }
                 else
                 {
@@ -822,6 +827,24 @@ namespace Barco
         {
             get { return _err_output; }
             set { _err_output = value; }
-        }   
+        }
+
+        //Bianca
+        //check if the person is an internal of external based on the initials
+        //later find a solution for the hard-code
+        private bool checkInternal(string Name)
+        {
+            if (Name == "BIC")
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+
+            }
+        }
+
     }
 }
