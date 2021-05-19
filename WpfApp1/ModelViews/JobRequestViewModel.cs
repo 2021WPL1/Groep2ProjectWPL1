@@ -121,6 +121,8 @@ namespace Barco
         public ComboBox cmbDivision { get; set; }
         public ComboBox cmbJobNature { get; set; }
 
+        
+
 
         //radio button
         public bool rbtnBatNo { get; set; }
@@ -143,7 +145,7 @@ namespace Barco
             DatePickerEUT5 = DateTime.Now;
 
             _err_output = new ObservableCollection<string>();
-            createBoxLists();
+            
             
             txtFunction = getValues("FUNCTION");
 
@@ -253,7 +255,7 @@ namespace Barco
             {
                 //create error sequence
                 List<string> errors = new List<string>();
-
+                createBoxLists();
                 //declare var for object
                 string input_Abbreviation = txtReqInitials;
                 string input_ProjectName = txtEutProjectname;
@@ -351,8 +353,8 @@ namespace Barco
                 {
                     //request object 
                     request.Requester = input_Abbreviation;
-                    request.BarcoDivision = cmbDivision.SelectedValue.ToString();
-                    request.JobNature = cmbJobNature.SelectedValue.ToString();
+                    request.BarcoDivision = cmbDivision.SelectedItem.ToString();//to do division null reference
+                    request.JobNature = cmbJobNature.SelectedItem.ToString();// to do jobnature null reference
                     request.RequestDate = DateTime.Now;
                     request.EutProjectname = txtEutProjectname;
                     request.Battery = input_Battery;
