@@ -48,8 +48,8 @@ namespace Barco
 
             CancelCommand = new DelegateCommand(CancelButton);
             SaveChangesCommand = new DelegateCommand(SaveChanges);
-            AddCommand = new DelegateCommand(RemovePart);
-            RemoveCommand = new DelegateCommand(AddPart);
+            AddCommand = new DelegateCommand(AddPart);
+            RemoveCommand = new DelegateCommand(RemovePart);
             this.Request = dao.getRequest(selectedId);
             this.rqOptionel = dao.getOptionel(selectedId);
             this.rqRequestDetail = dao.getRequestDetail(selectedId);
