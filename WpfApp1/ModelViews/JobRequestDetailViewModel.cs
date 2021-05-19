@@ -56,22 +56,28 @@ namespace Barco
             string Partnumbers = Request.EutPartnumbers.Replace(" ", String.Empty);
             string Partnumber;
 
-            do
-            {
-                int splitIndex = Partnumbers.IndexOf(";");
-                Partnumber = Partnumbers.Substring(0, splitIndex);
-                ListPartsnumbers.Add(Partnumber);
-                int length = Partnumbers.Length;
-
-
-                if (splitIndex != length)
+                if (Partnumbers.Contains(";"))
                 {
-                Partnumbers = Partnumbers.Substring((splitIndex+1) , (Partnumbers.Length - 1 - splitIndex));
+                    int splitIndex = Partnumbers.IndexOf(";");
+                    Partnumber = Partnumbers.Substring(0, splitIndex); 
+                    ListPartsnumbers.Add(Partnumber);
+                    int length = Partnumbers.Length;
+
+
+                    if (splitIndex != length)
+                    {
+                    Partnumbers = Partnumbers.Substring((splitIndex+1) , (Partnumbers.Length - 1 - splitIndex));
+
+                    }
 
                 }
+            else
+            {
+                ListPartsnumbers.Add(Partnumbers);
+            }
                 
 
-            } while (Partnumbers.Contains(";"));
+
             
         }
         //Jimmy
@@ -81,7 +87,7 @@ namespace Barco
             string Partnets = Request.NetWeight.Replace(" ", String.Empty);
             string Partnet;
 
-            do
+            if (Partnets.Contains(";"))
             {
                 int splitIndex = Partnets.IndexOf(";");
                 Partnet = Partnets.Substring(0, splitIndex);
@@ -95,33 +101,41 @@ namespace Barco
 
                 }
 
+            }
+            else
+            {
+                ListPartNet.Add(Partnets);
+            }
 
-            } while (Partnets.Contains(";"));
 
         }
         //Jimmy
         //Laden van Jobrequest Grossweight in een list
         public void LoadPartGrossWeight()
         {
-            string PartGross = Request.GrossWeight.Replace(" ", String.Empty);
-            string GetPartGross;
+            string partGross = Request.GrossWeight.Replace(" ", String.Empty);
+            string getPartGross;
 
-            do
+            if (partGross.Contains(";"))
             {
-                int splitIndex = PartGross.IndexOf(";");
-                GetPartGross = PartGross.Substring(0, splitIndex);
-                ListPartGross.Add(GetPartGross);
-                int length = PartGross.Length;
+
+                int splitIndex = partGross.IndexOf(";");
+                getPartGross = partGross.Substring(0, splitIndex);
+                ListPartGross.Add(getPartGross);
+                int length = partGross.Length;
 
 
                 if (splitIndex != length)
                 {
-                    PartGross = PartGross.Substring((splitIndex + 1), (PartGross.Length - 1 - splitIndex));
+                 partGross = partGross.Substring((splitIndex + 1), (partGross.Length - 1 - splitIndex));
 
                 }
 
-
-            } while (PartGross.Contains(";"));
+            }
+            else
+            {
+                ListPartGross.Add(partGross);
+            }
 
         }
 

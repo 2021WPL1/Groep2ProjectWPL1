@@ -86,7 +86,7 @@
         <CheckBox x:Name="cbGreenComplianceEUT4" Content="" HorizontalAlignment="Left" Margin="357,335,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cbGreenComplianceEUT5" Content="" HorizontalAlignment="Left" Margin="400,335,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cbGreenCompliance" Content="" HorizontalAlignment="Left" Margin="176,335,0,0" VerticalAlignment="Top" IsEnabled="False"/>
-        <TextBlock HorizontalAlignment="Left" Margin="50,373,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Text="EUT foreseen"/><LineBreak/><Run Text="ava"/><Run Language="nl-be" Text="ilability date:"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left"  Margin="50,373,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Text="EUT foreseen"/><LineBreak/><Run Text="ava"/><Run Language="nl-be" Text="ilability date:"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="583,191,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"><Run Text="Special remarks"/><Run Language="nl-be" Text=":"/></TextBlock>
         <TextBox x:Name="txtSpecialRemarks" Text="{Binding rqOptionel.Remarks, Mode=OneWay }" HorizontalAlignment="Left" Margin="533,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" Height="91" IsReadOnly="True"/>
         <Button x:Name="BtnClose" 
