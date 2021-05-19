@@ -254,7 +254,7 @@ namespace Barco
             {
                 //create error sequence
                 List<string> errors = new List<string>();
-                
+                createBoxLists();
                 //declare var for object
                 string input_Abbreviation = txtReqInitials;
                 string input_ProjectName = txtEutProjectname;
