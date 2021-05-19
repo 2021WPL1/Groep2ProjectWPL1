@@ -3,6 +3,7 @@ using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Resources;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -68,6 +69,8 @@ namespace Barco
         public List<Eut> eutList = new List<Eut>();
         public RqRequestDetail Detail = new RqRequestDetail();
         public List<Part> parts = new List<Part>();
+        public string SelectedDivision { get; set; }
+        public string SelectedJobNature { get; set; }
 
 
         List<bool> emcBoxes = new List<bool>();
@@ -217,9 +220,7 @@ namespace Barco
                     request.EutPartnumbers += txtPartNr + " ; ";
                     request.GrossWeight += txtNetWeight + " ; ";
                     request.NetWeight += txtGrossWeight + " ; ";
-                    txtPartNr = "";
-                    txtNetWeight = "";
-                    txtGrossWeight = "";
+               
                     refreshGUI();
 
                 }
@@ -256,7 +257,6 @@ namespace Barco
                 createBoxLists();
                 //create error sequence
                 List<string> errors = new List<string>();
-                createBoxLists();
                 //declare var for object
                 string input_Abbreviation = txtReqInitials;
                 string input_ProjectName = txtEutProjectname;
@@ -349,13 +349,14 @@ namespace Barco
                     {
                         _err_output.Add(s);
                     }
+
                 }
                 else
                 {
                     //request object 
                     request.Requester = input_Abbreviation;
-                    request.BarcoDivision = cmbDivision.SelectedItem.ToString();//to do division null reference
-                    request.JobNature = cmbJobNature.SelectedItem.ToString();// to do jobnature null reference
+                    request.BarcoDivision = SelectedDivision;
+                    request.JobNature = SelectedJobNature;
                     request.RequestDate = DateTime.Now;
                     request.EutProjectname = txtEutProjectname;
                     request.Battery = input_Battery;
@@ -363,6 +364,8 @@ namespace Barco
                     request.NetWeight = netWeights;
                     request.GrossWeight = grossWeights;
                     request.EutPartnumbers = partNums;
+                    request.InternRequest = checkInternal(input_Abbreviation);
+
 
                     //optional object
                     optional.Link = txtLinkTestplan;
@@ -803,6 +806,24 @@ namespace Barco
         {
             get { return _err_output; }
             set { _err_output = value; }
-        }   
+        }
+
+        //Bianca
+        //check if the person is an internal of external based on the initials
+        //later find a solution for the hard-code
+        private bool checkInternal(string Name)
+        {
+            if (Name == "BIC")
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+
+            }
+        }
+
     }
 }
