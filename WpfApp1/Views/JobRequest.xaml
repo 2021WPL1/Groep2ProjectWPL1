@@ -51,11 +51,11 @@
         <CheckBox x:Name="cbEmcEut4" Content="" HorizontalAlignment="Left" Margin="349,330,0,0" VerticalAlignment="Top" IsChecked="{Binding cbEmcEut4}"/>
         <CheckBox x:Name="cbEmcEut5" Content="" HorizontalAlignment="Left" Margin="392,330,0,0" VerticalAlignment="Top"  IsChecked="{Binding cbEmcEut5}"/>
         <CheckBox x:Name="cbEmc" Content="" HorizontalAlignment="Left" Margin="168,330,0,0" VerticalAlignment="Top"  IsChecked="{Binding cbEmc}"/>
-        <CheckBox x:Name="cmEnvorimentalEut1" Content="" HorizontalAlignment="Left" Margin="212,355,0,0" VerticalAlignment="Top" IsChecked="{Binding cmEnvorimentalEut1}"/>
-        <CheckBox x:Name="cmEnvorimentalEut2" Content="" HorizontalAlignment="Left" Margin="255,355,0,0" VerticalAlignment="Top" IsChecked="{Binding cmEnvorimentalEut2}"/>
-        <CheckBox x:Name="cmEnvorimentalEut3" Content="" HorizontalAlignment="Left" Margin="302,355,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmEnvorimentalEut3}"/>
-        <CheckBox x:Name="cmEnvorimentalEut4" Content="" HorizontalAlignment="Left" Margin="349,355,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmEnvorimentalEut4}"/>
-        <CheckBox x:Name="cmEnvorimentalEut5" Content="" HorizontalAlignment="Left" Margin="392,355,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmEnvorimentalEut5}"/>
+        <CheckBox x:Name="cmEnvironmentalEut1" Content="" HorizontalAlignment="Left" Margin="212,355,0,0" VerticalAlignment="Top" IsChecked="{Binding cmEnvorimentalEut1}"/>
+        <CheckBox x:Name="cmEnvironmentalEut2" Content="" HorizontalAlignment="Left" Margin="255,355,0,0" VerticalAlignment="Top" IsChecked="{Binding cmEnvorimentalEut2}"/>
+        <CheckBox x:Name="cmEnvironmentalEut3" Content="" HorizontalAlignment="Left" Margin="302,355,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmEnvorimentalEut3}"/>
+        <CheckBox x:Name="cmEnvironmentalEut4" Content="" HorizontalAlignment="Left" Margin="349,355,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmEnvorimentalEut4}"/>
+        <CheckBox x:Name="cmEnvironmentalEut5" Content="" HorizontalAlignment="Left" Margin="392,355,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmEnvorimentalEut5}"/>
         <CheckBox x:Name="cmEnvironmental" Content="" HorizontalAlignment="Left" Margin="168,355,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmEnvironmental}"/>
         <CheckBox x:Name="cmRelEut1" Content="" HorizontalAlignment="Left" Margin="212,379,0,0" VerticalAlignment="Top" IsChecked="{Binding cmRelEut1}"/>
         <CheckBox x:Name="cmRelEut2" Content="" HorizontalAlignment="Left" Margin="255,379,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmRelEut2}"/>
