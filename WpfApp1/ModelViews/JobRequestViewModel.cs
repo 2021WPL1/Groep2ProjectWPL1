@@ -11,6 +11,14 @@ using System.Windows.Input;
 using System.Windows.Media.Animation;
 using Microsoft.Win32;
 
+/// <summary>
+/// 
+///     (╭ ゜-゜)╮ ┬─┬
+///     
+///     (╯°□°)╯︵ ┻━┻
+///     
+/// </summary>
+
 namespace Barco
 { //bianca
     public class JobRequestViewModel : ViewModelBase
@@ -245,7 +253,7 @@ namespace Barco
                 OnPropertyChanged();
             }
         }
-
+        
         public void SendButton()
         {
             try
@@ -475,7 +483,7 @@ namespace Barco
             //    b = true;
             //}
         }
-
+        //laurent - edit thibaut
         private List<string> ValidateCheckboxes()
         {
             List<string> outcome = new List<string>();
@@ -490,7 +498,7 @@ namespace Barco
                     }
                 }
 
-                if (counter != 1)
+                if (counter < 1)
                 {
                     outcome.Add("please check emc data");
                 }
@@ -507,7 +515,7 @@ namespace Barco
                     }
                 }
 
-                if (counter != 1)
+                if (counter < 1)
                 {
                     outcome.Add("please check environmental data");
                 }
@@ -524,7 +532,7 @@ namespace Barco
                     }
                 }
 
-                if (counter != 1)
+                if (counter < 1)
                 {
                     outcome.Add("please check reliability data");
                 }
@@ -541,7 +549,7 @@ namespace Barco
                     }
                 }
 
-                if (counter != 1)
+                if (counter < 1)
                 {
                     outcome.Add("please check product safety data");
                 }
@@ -558,7 +566,7 @@ namespace Barco
                     }
                 }
 
-                if (counter != 1)
+                if (counter < 1)
                 {
                     outcome.Add("please check green compliance data");
                 }
@@ -617,7 +625,7 @@ namespace Barco
             return result;
         }
 
-        private List<Eut> GetEutData()
+        private List<Eut> getEutData()
         {
             List<Eut> result = new List<Eut>();
 
@@ -629,34 +637,33 @@ namespace Barco
                 if ((bool)cbEmcEut1)
                 {
                     description = "EMC - EUT 1";
+                    result.Add(createEut(description, date));
                 }
 
                 if ((bool)cmEnvironmentalEut1)
                 {
                     description = "Environmental - EUT 1";
+                    result.Add(createEut(description, date));
                 }
 
                 if ((bool)cmGrnCompEut1)
                 {
                     description = "Green Compliance - EUT 1";
+                    result.Add(createEut(description, date));
                 }
 
                 if ((bool)cmRelEut1)
                 {
                     description = "Reliability - EUT 1";
+                    result.Add(createEut(description, date));
                 }
 
                 if ((bool)cmProdSafetyEut1)
                 {
                     description = "Product Safety - EUT 1";
+                    result.Add(createEut(description, date));
                 }
 
-                result.Add(new Eut()
-                {
-                    IdRqDetail = Detail.IdRqDetail,
-                    AvailableDate = date,
-                    OmschrijvingEut = description
-                });
             }
 
             //get second eut and date
@@ -667,34 +674,33 @@ namespace Barco
                 if ((bool)cbEmcEut2)
                 {
                     description = "EMC - EUT 2";
+                    result.Add(createEut(description, date));
                 }
 
                 if ((bool)cmEnvironmentalEut2)
                 {
                     description = "Environmental - EUT 2";
+                    result.Add(createEut(description, date));
                 }
 
                 if ((bool)cmGrnCompEut2)
                 {
                     description = "Green Compliance - EUT 2";
+                    result.Add(createEut(description, date));
                 }
 
                 if ((bool)cmRelEut2)
                 {
                     description = "Reliability - EUT 2";
+                    result.Add(createEut(description, date));
                 }
 
                 if ((bool)cmProdSafetyEut2)
                 {
                     description = "Product Safety - EUT 2";
+                    result.Add(createEut(description, date));
                 }
 
-                result.Add(new Eut()
-                {
-                    IdRqDetail = Detail.IdRqDetail,
-                    AvailableDate = date,
-                    OmschrijvingEut = description
-                });
             }
 
             //get third eut and date
@@ -705,34 +711,34 @@ namespace Barco
                 if ((bool)cbEmcEut3)
                 {
                     description = "EMC - EUT 3";
+                    result.Add(createEut(description, date));
                 }
 
                 if ((bool)cmEnvironmentalEut3)
                 {
                     description = "Environmental - EUT 3";
+                    result.Add(createEut(description, date));
                 }
 
                 if ((bool)cmGrnCompEut3)
                 {
                     description = "Green Compliance - EUT 3";
+                    result.Add(createEut(description, date));
                 }
 
                 if ((bool)cmRelEut3)
                 {
                     description = "Reliability - EUT 3";
+                    result.Add(createEut(description, date));
                 }
 
                 if ((bool)cmProdSafetyEut3)
                 {
                     description = "Product Safety - EUT 3";
+                    result.Add(createEut(description, date));
                 }
 
-                result.Add(new Eut()
-                {
-                    IdRqDetail = Detail.IdRqDetail,
-                    AvailableDate = date,
-                    OmschrijvingEut = description
-                });
+                
             }
 
             //get fourth eut and date
@@ -743,34 +749,32 @@ namespace Barco
                 if ((bool)cbEmcEut4)
                 {
                     description = "EMC - EUT 4";
+                    result.Add(createEut(description, date));
                 }
 
                 if ((bool)cmEnvironmentalEut4)
                 {
                     description = "Environmental - EUT 4";
+                    result.Add(createEut(description, date));
                 }
 
                 if ((bool)cmGrnCompEut4)
                 {
                     description = "Green Compliance - EUT 4";
+                    result.Add(createEut(description, date));
                 }
 
                 if ((bool)cmRelEut4)
                 {
                     description = "Reliability - EUT 4";
+                    result.Add(createEut(description, date));
                 }
 
                 if ((bool)cmProdSafetyEut4)
                 {
                     description = "Product Safety - EUT 4";
+                    result.Add(createEut(description, date));
                 }
-
-                result.Add(new Eut()
-                {
-                    IdRqDetail = Detail.IdRqDetail,
-                    AvailableDate = date,
-                    OmschrijvingEut = description
-                });
             }
 
             //get fifth eut and date
@@ -781,37 +785,48 @@ namespace Barco
                 if ((bool)cbEmcEut5)
                 {
                     description = "EMC - EUT 5";
+                    result.Add(createEut(description, date));
                 }
 
                 if ((bool)cmEnvironmentalEut5)
                 {
+                
                     description = "Environmental - EUT 5";
+                    result.Add(createEut(description, date));
                 }
 
-                if ((bool)cmGrnCompEut5)
+                if ((bool) cmGrnCompEut5)
                 {
                     description = "Green Compliance - EUT 5";
+                    result.Add(createEut(description, date));
                 }
 
                 if ((bool)cmRelEut5)
                 {
                     description = "Reliability - EUT 5";
+                    result.Add(createEut(description, date));
                 }
 
                 if ((bool)cmProdSafetyEut5)
                 {
                     description = "Product Safety - EUT 5";
+                    result.Add(createEut(description, date));
                 }
 
-                result.Add(new Eut()
-                {
-                    IdRqDetail = Detail.IdRqDetail,
-                    AvailableDate = date,
-                    OmschrijvingEut = description
-                });
+                
             }
 
             return result;
+        }
+        //thibaut
+        private Eut createEut(string description, DateTime date)
+        {
+            return new Eut()
+            {
+                IdRqDetail = Detail.IdRqDetail,
+                AvailableDate = date,
+                OmschrijvingEut = description
+            };
         }
 
         public ObservableCollection<string> err_output
