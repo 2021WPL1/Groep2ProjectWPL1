@@ -60,8 +60,7 @@ namespace Barco
         }
 
         private ObservableCollection<string> _err_output { get; set; } // listview for errors
-
-
+        
         //remove this line if working with DAO static class
         //private static Barco2021Context DAO = new Barco2021Context();
 
@@ -71,18 +70,13 @@ namespace Barco
         public List<Eut> eutList = new List<Eut>();
         public RqRequestDetail Detail = new RqRequestDetail();
         public List<Part> parts = new List<Part>();
-       
-
-
+        
         List<bool> emcBoxes = new List<bool>();
         List<bool> envBoxes = new List<bool>();
         List<bool> relBoxes = new List<bool>();
         List<bool> prodBoxes = new List<bool>();
         List<bool> greenBoxes = new List<bool>();
         List<bool> selectionBoxes = new List<bool>();
-
-
-
         public bool cbEmcEut1 { get; set; }
         public bool cbEmcEut2 { get; set; }
         public bool cbEmcEut3 { get; set; }
@@ -302,7 +296,7 @@ namespace Barco
 
                 if ((bool) rbtnBatNo)
                 {
-                    input_Battery = true;
+                    input_Battery = false;
                 }
                 else if ((bool) rbtnBatNo && (bool) rbtnBatYes)
                 {
@@ -310,7 +304,7 @@ namespace Barco
                 }
                 else
                 {
-                    input_Battery = false;
+                    input_Battery = true;
                 }
 
                 //check if requester exists
@@ -381,22 +375,19 @@ namespace Barco
                     //optional object
                     optional.Link = txtLinkTestplan;
                     optional.IdRequest = request.IdRequest;
+                    
 
-
-
-                    // Thibaut,Bianca
-                    //adding eut's in the list  + database
-
-                    List<Eut> listEut = getEutData();
-
-                    dao.AddRequest(request, Detail, optional, listEut);
-
+                    //eut objects
+                    eutList = getEutData();
+                    
+                    //detail object
+                    Detail.Testdivisie = "ECO";
+                    
+                    
+                    
+                    dao.AddRequest(request, Detail, optional, eutList);
+                    MessageBox.Show("Data has been inserted");
                 }
-
-               
-                MessageBox.Show("Data has been inserted");
-                
-
             }
             catch (FormatException ex)
             {
@@ -630,9 +621,9 @@ namespace Barco
             List<Eut> result = new List<Eut>();
 
             //get first eut and date
-            if (DatePickerEUT1.Date != null)
+            if (DatePickerEUT1.Date != DateTime.Now)
             {
-                DateTime date = (DateTime) dateExpectedEnd.Date;
+                DateTime date = (DateTime) DatePickerEUT1.Date;
                 string description = "";
                 if ((bool) cbEmcEut1)
                 {
@@ -668,9 +659,9 @@ namespace Barco
             }
 
             //get second eut and date
-            if (DatePickerEUT2.Date != null)
+            if (DatePickerEUT2.Date != DateTime.Now)
             {
-                DateTime date = (DateTime) dateExpectedEnd.Date;
+                DateTime date = (DateTime) DatePickerEUT2.Date;
                 string description = "";
                 if ((bool) cbEmcEut2)
                 {
@@ -706,9 +697,9 @@ namespace Barco
             }
 
             //get third eut and date
-            if (DatePickerEUT3.Date != null)
+            if (DatePickerEUT3.Date != DateTime.Now)
             {
-                DateTime date = (DateTime) dateExpectedEnd.Date;
+                DateTime date = (DateTime) DatePickerEUT3.Date;
                 string description = "";
                 if ((bool) cbEmcEut3)
                 {
@@ -744,9 +735,9 @@ namespace Barco
             }
 
             //get fourth eut and date
-            if (DatePickerEUT4.Date != null)
+            if (DatePickerEUT4.Date != DateTime.Now)
             {
-                DateTime date = (DateTime) dateExpectedEnd.Date;
+                DateTime date = (DateTime) DatePickerEUT4.Date;
                 string description = "";
                 if ((bool) cbEmcEut4)
                 {
@@ -782,9 +773,9 @@ namespace Barco
             }
 
             //get fifth eut and date
-            if (DatePickerEUT5.Date != null)
+            if (DatePickerEUT5.Date != DateTime.Now)
             {
-                DateTime date = (DateTime) dateExpectedEnd.Date;
+                DateTime date = (DateTime) DatePickerEUT5.Date;
                 string description = "";
                 if ((bool) cbEmcEut5)
                 {

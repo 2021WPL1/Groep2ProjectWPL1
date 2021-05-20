@@ -30,7 +30,7 @@
                 Content="Add" HorizontalAlignment="Left" Margin="587,322,0,0" VerticalAlignment="Top"  Width="46" Height="17" />
         <Button x:Name="btnRemove" 
                 Command="{Binding RemoveCommand}"
-                Content="Remove" HorizontalAlignment="Left" Margin="656,322,0,0" VerticalAlignment="Top" Height="17" />
+                Content="Remove" HorizontalAlignment="Left" Margin="667,322,0,0" VerticalAlignment="Top" Height="17" />
         <TextBlock HorizontalAlignment="Left" Margin="43,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Batteries included:"/></TextBlock>
         <RadioButton x:Name="rbtnBatYes" Content="Yes" HorizontalAlignment="Left" Margin="43,258,0,0" VerticalAlignment="Top" IsChecked="{Binding rbtnBatYes}"/>
         <RadioButton x:Name="rbtnBatNo" Content="No" HorizontalAlignment="Left" Margin="43,278,0,0" VerticalAlignment="Top" IsChecked="{Binding rbtnBatNo}"/>
