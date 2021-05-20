@@ -296,7 +296,7 @@ namespace Barco
 
                 if ((bool) rbtnBatNo)
                 {
-                    input_Battery = true;
+                    input_Battery = false;
                 }
                 else if ((bool) rbtnBatNo && (bool) rbtnBatYes)
                 {
@@ -304,7 +304,7 @@ namespace Barco
                 }
                 else
                 {
-                    input_Battery = false;
+                    input_Battery = true;
                 }
 
                 //check if requester exists
