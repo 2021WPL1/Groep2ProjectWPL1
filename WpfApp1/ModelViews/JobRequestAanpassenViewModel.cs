@@ -123,6 +123,7 @@ namespace Barco
                     dao.saveChanges();
 
 
+
                     RefreshGUI();
                 }
             }
