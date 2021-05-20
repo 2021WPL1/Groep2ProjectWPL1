@@ -47,7 +47,7 @@ namespace Barco.Data
             return person;
         }
 
-        
+       
        
         // bianca- get a person with the abbreviation
         public Person GetPersonWithAbb(string abb)
@@ -289,6 +289,13 @@ namespace Barco.Data
                 context.Eut.Add(e);
             }
             context.SaveChanges();
+        }
+        
+        //thibaut
+        public List<Eut> GetEutWithDetailId(int id)
+        {
+
+            return context.Eut.Where(e => e.IdRqDetail == id).ToList();
         }
 
     }
