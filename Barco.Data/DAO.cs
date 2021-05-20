@@ -244,6 +244,7 @@ namespace Barco.Data
 
         }
 
+
         public RqRequestDetail AddDetail(RqRequestDetail detail)
         {
             detail.IdRequest = int.Parse(context.RqRequest.OrderByDescending(p => p.IdRequest).Select(p => p.IdRequest).First().ToString());

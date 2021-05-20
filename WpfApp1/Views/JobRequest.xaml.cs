@@ -70,8 +70,6 @@ namespace Barco
         }
 
 
-        
-
         //private static Barco2021Context context = new Barco2021Context();
 
             /*private RqRequest request = new RqRequest();
@@ -106,7 +104,7 @@ namespace Barco
                 cmbJobNature.DisplayMemberPath = "Nature";
                 cmbJobNature.SelectedValuePath = "Nature";
     
-                createBoxLists();
+                CreateBoxLists();
             }
     
             private void btnAdd_Click(object sender, RoutedEventArgs e)
@@ -239,7 +237,7 @@ namespace Barco
                     }
     
                     //check if the dates are set
-                    List<string> valiDate = checkDates();
+                    List<string> valiDate = CheckDates();
                     errors.AddRange(valiDate);
     
                     //check if other fields are empty
@@ -272,7 +270,7 @@ namespace Barco
                         optional.IdRequest = request.IdRequest;
     
                         //eut objects
-                        eutList = getEutData();
+                        eutList = GetEutData();
     
     
                     }
@@ -321,7 +319,7 @@ namespace Barco
                 public string GrossWeight { get; set; }
             }
     
-            public void createBoxLists()
+            public void CreateBoxLists()
             {
                 emcBoxes.Add(cbEmcEut1);
                 emcBoxes.Add(cbEmcEut2);
@@ -362,34 +360,34 @@ namespace Barco
     
             private void cbEmc_Checked(object sender, RoutedEventArgs e)
             {
-                enableBoxes(cbEmc);
+                EnableBoxes(cbEmc);
             }
     
             private void cmEnvorimental_Checked(object sender, RoutedEventArgs e)
             {
-                enableBoxes(cmEnvorimental);
+                EnableBoxes(cmEnvorimental);
     
             }
     
             private void cmRel_Checked(object sender, RoutedEventArgs e)
             {
-                enableBoxes(cmRel);
+                EnableBoxes(cmRel);
     
             }
     
             private void cmProdSafety_Checked(object sender, RoutedEventArgs e)
             {
-                enableBoxes(cmProdSafety);
+                EnableBoxes(cmProdSafety);
     
             }
     
             private void cmGrnComp_Checked(object sender, RoutedEventArgs e)
             {
-                enableBoxes(cmGrnComp);
+                EnableBoxes(cmGrnComp);
     
             }
     
-            private void enableBoxes(CheckBox selected)
+            private void EnableBoxes(CheckBox selected)
             {
                 List<CheckBox> targets = new List<CheckBox>();
                 if (selected == cbEmc)
@@ -499,7 +497,7 @@ namespace Barco
                 return outcome;
             }
     
-            private List<string> checkDates()
+            private List<string> CheckDates()
             {
                 List<string> result = new List<string>();
                 if ((bool)cbEmcEut1.IsChecked || (bool)cmEnvorimentalEut1.IsChecked || (bool)cmGrnCompEut1.IsChecked || (bool)cmProdSafetyEut1.IsChecked || (bool)cmGrnCompEut1.IsChecked)
@@ -540,7 +538,7 @@ namespace Barco
                 return result;
             }
     
-            private List<Eut> getEutData()
+            private List<Eut> GetEutData()
             {
                 List<Eut> result = new List<Eut>();
     
