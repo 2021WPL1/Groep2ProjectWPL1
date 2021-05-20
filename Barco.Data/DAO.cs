@@ -249,6 +249,7 @@ namespace Barco.Data
             try
             {
                 context.RqRequest.Add(request);
+                context.SaveChanges();
                 AddOptional(optional);
                 AddDetail(detail);
                 AddEut(eut);
@@ -287,12 +288,15 @@ namespace Barco.Data
         }
 
         public void AddEut(List<Eut> eutlist)
-        {
+        { 
             foreach (Eut e in eutlist)
             {
-                e.IdRqDetail =
-                    int.Parse(context.RqRequestDetail.OrderByDescending(p => p.IdRqDetail).First().IdRqDetail.ToString());
-                context.Eut.Add(e);
+                if (!string.IsNullOrWhiteSpace(e.OmschrijvingEut))
+                {
+                    e.IdRqDetail =
+                        int.Parse(context.RqRequestDetail.OrderByDescending(p => p.IdRqDetail).First().IdRqDetail.ToString());
+                    context.Eut.Add(e);
+                }
             }
             context.SaveChanges();
         }
