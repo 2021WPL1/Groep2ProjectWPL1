@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace Barco.Data
 {
@@ -223,7 +224,7 @@ namespace Barco.Data
         //Bianca
         // Add request/ detail
 
-     public RqRequest AddRequest(RqRequest request, RqRequestDetail detail, RqOptionel optional)
+     public RqRequest AddRequest(RqRequest request, RqRequestDetail detail, RqOptionel optional, List<Eut> eut)
         { 
             try
             {
@@ -231,7 +232,7 @@ namespace Barco.Data
                 context.SaveChanges();
                 AddOptional(optional);
                 AddDetail(detail);
-
+                AddEut(eut);
             }
             
             catch(Exception ex)
@@ -261,13 +262,15 @@ namespace Barco.Data
             return optional;
         }
 
-        //thibaut
-        public Eut AddEUT(Eut eut)
+        public void AddEut(List<Eut> eutlist)
         {
-            eut.Id = int.Parse(context.Eut.OrderByDescending(p => p.Id).Select(p => p.Id).First().ToString());
-            context.Eut.Add(eut);
+            foreach (Eut e in eutlist)
+            {
+                e.IdRqDetail =
+                    int.Parse(context.RqRequestDetail.OrderByDescending(p => p.IdRqDetail).First().IdRqDetail.ToString());
+                context.Eut.Add(e);
+            }
             context.SaveChanges();
-            return eut;
         }
 
     }
