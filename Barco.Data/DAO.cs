@@ -7,8 +7,8 @@ using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace Barco.Data
 {
-     public class DAO
-     {
+    public class DAO
+    {
         private static readonly DAO instance = new DAO();
 
         public static DAO Instance()
@@ -20,10 +20,10 @@ namespace Barco.Data
         private DAO()
 
         {
-            this.context= new Barco2021Context();
+            this.context = new Barco2021Context();
         }
 
-       
+
         // DBContext
         private Barco2021Context context;
 
@@ -33,8 +33,8 @@ namespace Barco.Data
             context.SaveChanges();
         }
 
-      // bianca- add a new person in the database
-       public Person AddPerson(string abb, string firstname, string lastname)
+        // bianca- add a new person in the database
+        public Person AddPerson(string abb, string firstname, string lastname)
         {
             Person person = new Person
             {
@@ -47,8 +47,8 @@ namespace Barco.Data
             return person;
         }
 
-       
-       
+
+
         // bianca- get a person with the abbreviation
         public Person GetPersonWithAbb(string abb)
         {
@@ -73,12 +73,12 @@ namespace Barco.Data
         }
 
 
-        
+
         //  bianca
         public RqRequest GetRequestDate()
         {
             return context.RqRequest.FirstOrDefault(a => a.RequestDate == DateTime.Now);
-            
+
 
         }
         //Jimmy
@@ -128,29 +128,6 @@ namespace Barco.Data
         {
             return context.RqRequestDetail.FirstOrDefault(r => r.IdRequest == id);
         }
-         //get an optional id from requestId
-        public RqOptionel GetOptionalByRequestId(int id)
-        {
-            return context.RqOptionel.FirstOrDefault(r => r.IdRequest == id);
-        }
-
-
-        // get a detail id from requestId
-        public RqRequestDetail GetRqRequestDetailByRequestId(int id)
-        {
-            return context.RqRequestDetail.FirstOrDefault(r => r.IdRequest == id);
-        }
-
-        //geeft een eut object op basis van het id van RequestDetail tabel
-        public Eut GetEut(int idReqDet)
-        {
-            return context.Eut.Where(eut => eut.IdRqDetail == idReqDet).FirstOrDefault();
-        }
-        public RqOptionel GetOptionel(int idReq)
-        {
-            return context.RqOptionel.Where(opt => opt.IdRequest == idReq).FirstOrDefault();
-        }
-
         // jimmy
         public void ApproveRqRequest(RqRequest rqRequest)
         {
@@ -158,13 +135,13 @@ namespace Barco.Data
             saveChanges();
         }
 
-       
 
-     
+
+
 
         //bianca  
         public List<RqBarcoDivision> GetDepartment()
-        { 
+        {
             return context.RqBarcoDivision.ToList();
         }
 
@@ -174,7 +151,7 @@ namespace Barco.Data
         {
             return context.RqBarcoDivision.ToList();
         }
-        
+
         public List<RqJobNature> GetJobNatures()
         {
             return context.RqJobNature.ToList();
@@ -183,14 +160,22 @@ namespace Barco.Data
         //request detail opvragen op basis van selected index
         public RqRequest GetRequest(int requestId)
         {
-            return context.RqRequest.Where(rq => rq.IdRequest == requestId).FirstOrDefault() ;
+            return context.RqRequest.Where(rq => rq.IdRequest == requestId).FirstOrDefault();
         }
         //geeft een requestDetail object op basis van het juiste requestID veld
         public RqRequestDetail GetRequestDetail(int requestId)
         {
             return context.RqRequestDetail.Where(det => det.IdRequest == requestId).FirstOrDefault();
         }
-       
+        //geeft een eut object op basis van het id van RequestDetail tabel
+        public Eut GetEut(int idReqDet)
+        {
+            return context.Eut.Where(eut => eut.IdRqDetail == idReqDet).FirstOrDefault();
+        }
+        public RqOptionel GetOptionel(int idReq)
+        {
+            return context.RqOptionel.Where(opt => opt.IdRequest == idReq).FirstOrDefault();
+        }
 
         //Stach - geeft division op basis van de afkotring
         public RqBarcoDivision GetDivisionByAbb(string abb)
@@ -257,8 +242,8 @@ namespace Barco.Data
         //Bianca
         // Add request/ detail
 
-     public RqRequest AddRequest(RqRequest request, RqRequestDetail detail, RqOptionel optional, List<Eut> eut)
-        { 
+        public RqRequest AddRequest(RqRequest request, RqRequestDetail detail, RqOptionel optional, List<Eut> eut)
+        {
             try
             {
                 context.RqRequest.Add(request);
@@ -273,64 +258,40 @@ namespace Barco.Data
                 Console.WriteLine(ex.ToString());
             }
             return request;
-          
+
 
         }
 
 
         public RqRequestDetail AddDetail(RqRequestDetail detail)
         {
-            detail.IdRequest = int.Parse(context.RqRequest.OrderByDescending
-                               (p => p.IdRequest).Select
-                               (p => p.IdRequest).First().ToString());
-
-
+            detail.IdRequest = int.Parse(context.RqRequest.OrderByDescending(p => p.IdRequest).Select(p => p.IdRequest).First().ToString());
             context.RqRequestDetail.Add(detail);
             context.SaveChanges();
             return detail;
-        }          
+        }
 
         //thibaut
         public RqOptionel AddOptional(RqOptionel optional)
         {
             optional.IdRequest =
-              int.Parse(context.RqRequest.OrderByDescending
-                  (p => p.IdRequest).Select
-                  (p => p.IdRequest).First().ToString());
+              int.Parse(context.RqRequest.OrderByDescending(p => p.IdRequest).Select(p => p.IdRequest).First().ToString());
             context.RqOptionel.Add(optional);
             context.SaveChanges();
             return optional;
         }
 
         public void AddEut(List<Eut> eutlist)
-        { 
+        {
             foreach (Eut e in eutlist)
             {
-                if (!string.IsNullOrWhiteSpace(e.OmschrijvingEut))
-                {
-                    e.IdRqDetail =
-                        int.Parse(context.RqRequestDetail.OrderByDescending(p => p.IdRqDetail).First().IdRqDetail.ToString());
-                    context.Eut.Add(e);
-                }
+                e.IdRqDetail =
+                    int.Parse(context.RqRequestDetail.OrderByDescending(p => p.IdRqDetail).First().IdRqDetail.ToString());
+                context.Eut.Add(e);
             }
             context.SaveChanges();
         }
 
-        public List<Eut> GetEutList(int id)
-        {
-            List<Eut> selectedList = new List<Eut>();
-            foreach( Eut e in  context.Eut.ToList())
-            {
-                if (e.IdRqDetail == id)
-                {
-                    selectedList.Add(e);
-                }
-            }
-
-            return selectedList;
-        }
-
-        
         //thibaut
         public List<Eut> GetEutWithDetailId(int id)
         {

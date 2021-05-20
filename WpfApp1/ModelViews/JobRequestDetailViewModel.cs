@@ -2,25 +2,23 @@
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Windows.Input;
 
 namespace Barco
 {//jimmy
-   public class JobRequestDetailViewModel : ViewModelBase
+    public class JobRequestDetailViewModel : ViewModelBase
     {
         private JobRequestDetail screen;
         public ICommand CancelCommand { get; set; }
         private DAO dao;
         public RqRequest Request { get; set; }
         public RqOptionel rqOptionel { get; set; }
-        public List<Eut> lstEut { get; set; }
         public RqRequestDetail rqRequestDetail { get; set; }
         public List<String> ListPartsnumbers { get; set; }
         public List<String> ListPartNet { get; set; }
         public List<String> ListPartGross { get; set; }
-        
+
         private List<Eut> euts;
         public bool cbEmcEut1 { get; set; }
         public bool cbEmcEut2 { get; set; }
@@ -61,12 +59,6 @@ namespace Barco
         public bool cmProdSafety { get; set; }
         public bool cmGrnComp { get; set; }
 
-        public DateTime DatePickerEUT1 { get; set; }
-        public DateTime DatePickerEUT2 { get; set; }
-        public DateTime DatePickerEUT3 { get; set; }
-        public DateTime DatePickerEUT4 { get; set; }
-        public DateTime DatePickerEUT5 { get; set; }
-
 
 
         public JobRequestDetailViewModel(JobRequestDetail screen, int selectedId)
@@ -85,11 +77,10 @@ namespace Barco
             LoadPartNetWeight();
             euts = dao.GetEutWithDetailId(rqRequestDetail.IdRqDetail);
             this.screen = screen;
-   
-            this.lstEut = dao.GetEutList(rqRequestDetail.IdRqDetail);
+
 
         }
-        
+        //Biance
         //Sluit Details en open de overview
         public void CloseButton()
         {
@@ -121,11 +112,11 @@ namespace Barco
                 }
 
             } while (Partnumbers.Contains(";"));
-            
-                
 
 
-            
+
+
+
         }
         //Jimmy
         //Laden van Jobrequest net weights in een list
@@ -186,18 +177,18 @@ namespace Barco
         //        if(e.Equals("EMC - EUT 1"))
         //        {
 
-                }
-            }
-            //get first eut and date
-            if (DatePickerEUT1.Date != DateTime.Now)
-            {
-                DateTime date = (DateTime)DatePickerEUT1.Date;
-                string description = "";
-                if ((bool)cbEmcEut1)
-                {
-                    description = 
-                   result.Add(createEut(description, date));
-                }
+        //        }
+        //    }
+        //    //get first eut and date
+        //    if (DatePickerEUT1.Date != DateTime.Now)
+        //    {
+        //        DateTime date = (DateTime)DatePickerEUT1.Date;
+        //        string description = "";
+        //        if ((bool)cbEmcEut1)
+        //        {
+        //            description = 
+        //            result.Add(createEut(description, date));
+        //        }
 
         //        if ((bool)cmEnvironmentalEut1)
         //        {
@@ -374,15 +365,9 @@ namespace Barco
         //        }
 
 
-         //       }
+        //       }
 
-      //  }
-
-        private void FillData()
-        {
-            DatePickerEUT1 = lstEut.FirstOrDefault(p => p.OmschrijvingEut.Contains("EUT 1")).AvailableDate.Value;
-
-        }
+        //  }
 
 
     }

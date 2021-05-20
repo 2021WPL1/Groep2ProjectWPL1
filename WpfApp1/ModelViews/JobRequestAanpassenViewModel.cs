@@ -39,6 +39,9 @@ namespace Barco
         public List<String> ListPartsnumbers { get; set; }
         public List<String> ListPartNet { get; set; }
         public List<String> ListPartGross { get; set; }
+        public string SelectedDivision { get; set; }
+        public string SelectedJobNature { get; set; }
+
 
 
         private ObservableCollection<Part> lstParts = new ObservableCollection<Part>(); // for partnumber+ net/gross weight
@@ -257,9 +260,12 @@ namespace Barco
             dateExpectedEnd = CurrentRequest.ExpectedEnddate;
             txtRemark = CurrentOptionel.Remarks;
             txtLinkTestplan = CurrentOptionel.Link;
-            
+            SelectedDivision = CurrentRequest.BarcoDivision;
+            SelectedJobNature = CurrentRequest.JobNature;
 
         }
+
+
 
     }
 }
