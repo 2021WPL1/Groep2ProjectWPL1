@@ -15,7 +15,6 @@ namespace Barco
     public class JobRequestViewModel : ViewModelBase
     {
 
-
         public JobRequest screen;
 
 
@@ -39,8 +38,9 @@ namespace Barco
         public string txtRemark { get; set; } // special remarks
         public string txtFunction { get; set; } //function
         public DateTime dateExpectedEnd { get; set; }
-        public string SelectedJobNature { get; set; }//selected jobnature
-        public string SelectedDivision { get; set; }//selected division
+        public string SelectedDivision { get; set; }
+        public string SelectedJobNature { get; set; }
+
 
         // EUT foreseen availability date
         public DateTime DatePickerEUT1 { get; set; }
@@ -69,6 +69,7 @@ namespace Barco
         public List<Eut> eutList = new List<Eut>();
         public RqRequestDetail Detail = new RqRequestDetail();
         public List<Part> parts = new List<Part>();
+
 
 
         List<bool> emcBoxes = new List<bool>();
@@ -122,7 +123,9 @@ namespace Barco
         public ComboBox cmbDivision { get; set; }
         public ComboBox cmbJobNature { get; set; }
 
-        
+
+
+
 
 
         //radio button
@@ -146,18 +149,18 @@ namespace Barco
             DatePickerEUT5 = DateTime.Now;
 
             _err_output = new ObservableCollection<string>();
-            
-            
-            txtFunction = GetValues("FUNCTION");
 
 
-            txtReqInitials = GetInitialsFromReg();
+            txtFunction = getValues("FUNCTION");
+
+
+            txtReqInitials = getInitialsFromReg();
 
 
         }
-        public string GetInitialsFromReg()
+        public string getInitialsFromReg()
         {
-            string fullName = GetValues("NAME");
+            string fullName = getValues("NAME");
             string FirstName = fullName.Split(" ")[0];
             string LastName = fullName.Split(" ")[1];
 
@@ -167,7 +170,7 @@ namespace Barco
 
 
 
-        static string GetValues(string Name)
+        static string getValues(string Name)
         {
             string userRoot = "HKEY_CURRENT_USER";
             string subkey = "Barco2021";
@@ -218,8 +221,8 @@ namespace Barco
                     request.EutPartnumbers += txtPartNr + " ; ";
                     request.GrossWeight += txtNetWeight + " ; ";
                     request.NetWeight += txtGrossWeight + " ; ";
-                    
-                    RefreshGUI();
+
+                    refreshGUI();
 
                 }
             }
@@ -228,7 +231,7 @@ namespace Barco
                 MessageBox.Show("please fill in all fields");
             }
         }
-        private void RefreshGUI()
+        private void refreshGUI()
         {
             lstParts.Clear();
             foreach (Part part in parts)
@@ -243,7 +246,7 @@ namespace Barco
             {
                 parts.Remove(selectedPart);
                 lstParts.Remove(selectedPart);
-                RefreshGUI();
+                refreshGUI();
                 OnPropertyChanged();
             }
         }
@@ -252,10 +255,10 @@ namespace Barco
         {
             try
             {
-                CreateBoxLists();
+
                 //create error sequence
+                createBoxLists();
                 List<string> errors = new List<string>();
-                CreateBoxLists();
                 //declare var for object
                 string input_Abbreviation = txtReqInitials;
                 string input_ProjectName = txtEutProjectname;
@@ -297,11 +300,11 @@ namespace Barco
 
                 //check if radio buttons are checked
 
-                if ((bool) rbtnBatNo)
+                if ((bool)rbtnBatNo)
                 {
                     input_Battery = true;
                 }
-                else if ((bool) rbtnBatNo && (bool) rbtnBatYes)
+                else if ((bool)rbtnBatNo && (bool)rbtnBatYes)
                 {
                     errors.Add("please check if batteries are needed");
                 }
@@ -318,19 +321,19 @@ namespace Barco
                 }
 
                 //check if the job nature is selected
-                if(SelectedJobNature == null)
+                if (SelectedJobNature == null)
                 {
                     errors.Add("select a jobnature");
                 }
 
-                if(SelectedDivision == null)
+                if (SelectedDivision == null)
                 {
                     errors.Add("select a division");
                 }
 
                 //checkbox area
-                if (!(bool) cbEmc && !(bool) cmEnvironmental && !(bool) cmRel &&
-                    !(bool) cmProdSafety && !(bool) cmGrnComp)
+                if (!(bool)cbEmc && !(bool)cmEnvironmental && !(bool)cmRel &&
+                    !(bool)cmProdSafety && !(bool)cmGrnComp)
                 {
                     errors.Add("Please select a test nature");
                 }
@@ -341,7 +344,7 @@ namespace Barco
                 }
 
                 //check if the dates are set
-                List<string> valiDate = CheckDates();
+                List<string> valiDate = checkDates();
                 errors.AddRange(valiDate);
 
                 //check if other fields are empty
@@ -358,13 +361,14 @@ namespace Barco
                     {
                         _err_output.Add(s);
                     }
+
                 }
                 else
                 {
                     //request object 
                     request.Requester = input_Abbreviation;
                     request.BarcoDivision = SelectedDivision;
-                    request.JobNature = SelectedJobNature; 
+                    request.JobNature = SelectedJobNature;
                     request.RequestDate = DateTime.Now;
                     request.EutProjectname = txtEutProjectname;
                     request.Battery = input_Battery;
@@ -379,12 +383,12 @@ namespace Barco
                     optional.IdRequest = request.IdRequest;
 
                     //eut objects
-                    eutList = GetEutData();
+                    Detail.Eut = getEutData();
                 }
 
                 dao.AddRequest(request, Detail, optional);
                 MessageBox.Show("Data has been inserted");
-                
+
 
             }
             catch (FormatException ex)
@@ -403,7 +407,7 @@ namespace Barco
             public string GrossWeight { get; set; }
         }
 
-        public void CreateBoxLists()
+        public void createBoxLists()
         {
 
             emcBoxes.Add(cbEmcEut1);
@@ -443,7 +447,7 @@ namespace Barco
             selectionBoxes.Add(cmGrnComp);
         }
 
-        private void EnableBoxes(bool selected)
+        private void enableBoxes(bool selected)
         {
             List<bool> targets = new List<bool>();
             if (cbEmc)
@@ -476,12 +480,12 @@ namespace Barco
         private List<string> ValidateCheckboxes()
         {
             List<string> outcome = new List<string>();
-            if ((bool) cbEmc)
+            if ((bool)cbEmc)
             {
                 int counter = 0;
                 foreach (bool b in emcBoxes)
                 {
-                    if ((bool) b)
+                    if ((bool)b)
                     {
                         counter++;
                     }
@@ -493,12 +497,12 @@ namespace Barco
                 }
             }
 
-            if ((bool) cmEnvironmental)
+            if ((bool)cmEnvironmental)
             {
                 int counter = 0;
                 foreach (bool b in envBoxes)
                 {
-                    if ((bool) b)
+                    if ((bool)b)
                     {
                         counter++;
                     }
@@ -510,12 +514,12 @@ namespace Barco
                 }
             }
 
-            if ((bool) cmRel)
+            if ((bool)cmRel)
             {
                 int counter = 0;
                 foreach (bool b in relBoxes)
                 {
-                    if ((bool) b)
+                    if ((bool)b)
                     {
                         counter++;
                     }
@@ -527,12 +531,12 @@ namespace Barco
                 }
             }
 
-            if ((bool) cmProdSafety)
+            if ((bool)cmProdSafety)
             {
                 int counter = 0;
                 foreach (bool b in prodBoxes)
                 {
-                    if ((bool) b)
+                    if ((bool)b)
                     {
                         counter++;
                     }
@@ -544,12 +548,12 @@ namespace Barco
                 }
             }
 
-            if ((bool) cmGrnComp)
+            if ((bool)cmGrnComp)
             {
                 int counter = 0;
                 foreach (bool b in greenBoxes)
                 {
-                    if ((bool) b)
+                    if ((bool)b)
                     {
                         counter++;
                     }
@@ -564,11 +568,11 @@ namespace Barco
             return outcome;
         }
 
-        private List<string> CheckDates()
+        private List<string> checkDates()
         {
             List<string> result = new List<string>();
-            if ((bool) cbEmcEut1 || (bool)cmEnvironmentalEut1 || (bool) cmGrnCompEut1 || (bool) cmProdSafetyEut1 ||
-                (bool) cmGrnCompEut1)
+            if ((bool)cbEmcEut1 || (bool)cmEnvironmentalEut1 || (bool)cmGrnCompEut1 || (bool)cmProdSafetyEut1 ||
+                (bool)cmGrnCompEut1)
             {
                 if (DatePickerEUT1.Date == null)
                 {
@@ -576,8 +580,8 @@ namespace Barco
                 }
             }
 
-            if ((bool) cbEmcEut2 || (bool)cmEnvironmentalEut2 || (bool) cmGrnCompEut2 || (bool) cmProdSafetyEut2 ||
-                (bool) cmGrnCompEut2)
+            if ((bool)cbEmcEut2 || (bool)cmEnvironmentalEut2 || (bool)cmGrnCompEut2 || (bool)cmProdSafetyEut2 ||
+                (bool)cmGrnCompEut2)
             {
                 if (DatePickerEUT2.Date == null)
                 {
@@ -585,8 +589,8 @@ namespace Barco
                 }
             }
 
-            if ((bool) cbEmcEut3 || (bool)cmEnvironmentalEut3 || (bool) cmGrnCompEut3 || (bool) cmProdSafetyEut3 ||
-                (bool) cmGrnCompEut3)
+            if ((bool)cbEmcEut3 || (bool)cmEnvironmentalEut3 || (bool)cmGrnCompEut3 || (bool)cmProdSafetyEut3 ||
+                (bool)cmGrnCompEut3)
             {
                 if (DatePickerEUT3.Date == null)
                 {
@@ -594,8 +598,8 @@ namespace Barco
                 }
             }
 
-            if ((bool) cbEmcEut4 || (bool)cmEnvironmentalEut4 || (bool) cmGrnCompEut4 || (bool) cmProdSafetyEut4 ||
-                (bool) cmGrnCompEut4)
+            if ((bool)cbEmcEut4 || (bool)cmEnvironmentalEut4 || (bool)cmGrnCompEut4 || (bool)cmProdSafetyEut4 ||
+                (bool)cmGrnCompEut4)
             {
                 if (DatePickerEUT4.Date == null)
                 {
@@ -603,8 +607,8 @@ namespace Barco
                 }
             }
 
-            if ((bool) cbEmcEut5 || (bool)cmEnvironmentalEut5 || (bool) cmGrnCompEut5 || (bool) cmProdSafetyEut5 ||
-                (bool) cmGrnCompEut5)
+            if ((bool)cbEmcEut5 || (bool)cmEnvironmentalEut5 || (bool)cmGrnCompEut5 || (bool)cmProdSafetyEut5 ||
+                (bool)cmGrnCompEut5)
             {
                 if (DatePickerEUT5.Date == null)
                 {
@@ -614,16 +618,16 @@ namespace Barco
             return result;
         }
 
-        private List<Eut> GetEutData()
+        private List<Eut> getEutData()
         {
             List<Eut> result = new List<Eut>();
 
             //get first eut and date
             if (DatePickerEUT1.Date != null)
             {
-                DateTime date = (DateTime) dateExpectedEnd.Date;
+                DateTime date = (DateTime)dateExpectedEnd.Date;
                 string description = "";
-                if ((bool) cbEmcEut1)
+                if ((bool)cbEmcEut1)
                 {
                     description = "EMC - EUT 1";
                 }
@@ -633,17 +637,17 @@ namespace Barco
                     description = "Environmental - EUT 1";
                 }
 
-                if ((bool) cmGrnCompEut1)
+                if ((bool)cmGrnCompEut1)
                 {
                     description = "Green Compliance - EUT 1";
                 }
 
-                if ((bool) cmRelEut1)
+                if ((bool)cmRelEut1)
                 {
                     description = "Reliability - EUT 1";
                 }
 
-                if ((bool) cmProdSafetyEut1)
+                if ((bool)cmProdSafetyEut1)
                 {
                     description = "Product Safety - EUT 1";
                 }
@@ -659,9 +663,9 @@ namespace Barco
             //get second eut and date
             if (DatePickerEUT2.Date != null)
             {
-                DateTime date = (DateTime) dateExpectedEnd.Date;
+                DateTime date = (DateTime)dateExpectedEnd.Date;
                 string description = "";
-                if ((bool) cbEmcEut2)
+                if ((bool)cbEmcEut2)
                 {
                     description = "EMC - EUT 2";
                 }
@@ -671,17 +675,17 @@ namespace Barco
                     description = "Environmental - EUT 2";
                 }
 
-                if ((bool) cmGrnCompEut2)
+                if ((bool)cmGrnCompEut2)
                 {
                     description = "Green Compliance - EUT 2";
                 }
 
-                if ((bool) cmRelEut2)
+                if ((bool)cmRelEut2)
                 {
                     description = "Reliability - EUT 2";
                 }
 
-                if ((bool) cmProdSafetyEut2)
+                if ((bool)cmProdSafetyEut2)
                 {
                     description = "Product Safety - EUT 2";
                 }
@@ -697,9 +701,9 @@ namespace Barco
             //get third eut and date
             if (DatePickerEUT3.Date != null)
             {
-                DateTime date = (DateTime) dateExpectedEnd.Date;
+                DateTime date = (DateTime)dateExpectedEnd.Date;
                 string description = "";
-                if ((bool) cbEmcEut3)
+                if ((bool)cbEmcEut3)
                 {
                     description = "EMC - EUT 3";
                 }
@@ -709,17 +713,17 @@ namespace Barco
                     description = "Environmental - EUT 3";
                 }
 
-                if ((bool) cmGrnCompEut3)
+                if ((bool)cmGrnCompEut3)
                 {
                     description = "Green Compliance - EUT 3";
                 }
 
-                if ((bool) cmRelEut3)
+                if ((bool)cmRelEut3)
                 {
                     description = "Reliability - EUT 3";
                 }
 
-                if ((bool) cmProdSafetyEut3)
+                if ((bool)cmProdSafetyEut3)
                 {
                     description = "Product Safety - EUT 3";
                 }
@@ -735,9 +739,9 @@ namespace Barco
             //get fourth eut and date
             if (DatePickerEUT4.Date != null)
             {
-                DateTime date = (DateTime) dateExpectedEnd.Date;
+                DateTime date = (DateTime)dateExpectedEnd.Date;
                 string description = "";
-                if ((bool) cbEmcEut4)
+                if ((bool)cbEmcEut4)
                 {
                     description = "EMC - EUT 4";
                 }
@@ -747,17 +751,17 @@ namespace Barco
                     description = "Environmental - EUT 4";
                 }
 
-                if ((bool) cmGrnCompEut4)
+                if ((bool)cmGrnCompEut4)
                 {
                     description = "Green Compliance - EUT 4";
                 }
 
-                if ((bool) cmRelEut4)
+                if ((bool)cmRelEut4)
                 {
                     description = "Reliability - EUT 4";
                 }
 
-                if ((bool) cmProdSafetyEut4)
+                if ((bool)cmProdSafetyEut4)
                 {
                     description = "Product Safety - EUT 4";
                 }
@@ -773,9 +777,9 @@ namespace Barco
             //get fifth eut and date
             if (DatePickerEUT5.Date != null)
             {
-                DateTime date = (DateTime) dateExpectedEnd.Date;
+                DateTime date = (DateTime)dateExpectedEnd.Date;
                 string description = "";
-                if ((bool) cbEmcEut5)
+                if ((bool)cbEmcEut5)
                 {
                     description = "EMC - EUT 5";
                 }
@@ -785,17 +789,17 @@ namespace Barco
                     description = "Environmental - EUT 5";
                 }
 
-                if ((bool) cmGrnCompEut5)
+                if ((bool)cmGrnCompEut5)
                 {
                     description = "Green Compliance - EUT 5";
                 }
 
-                if ((bool) cmRelEut5)
+                if ((bool)cmRelEut5)
                 {
                     description = "Reliability - EUT 5";
                 }
 
-                if ((bool) cmProdSafetyEut5)
+                if ((bool)cmProdSafetyEut5)
                 {
                     description = "Product Safety - EUT 5";
                 }
@@ -815,6 +819,24 @@ namespace Barco
         {
             get { return _err_output; }
             set { _err_output = value; }
-        }   
+        }
+
+        //Bianca
+        //check if the person is an internal of external based on the initials
+        //later find a solution for the hard-code
+        private bool checkInternal(string Name)
+        {
+            if (Name == "BIC")
+            {
+                return true;
+            }
+
+            else
+            {
+                return false;
+
+            }
+        }
+
     }
 }
