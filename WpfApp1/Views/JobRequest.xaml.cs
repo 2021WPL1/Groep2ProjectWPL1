@@ -48,7 +48,7 @@ namespace Barco
         {
             //cmbDivision.ItemsSource = dao.GetDivisions();
             cmbDivision.Items.Add(getValues("DIVISION"));
-            cmbDivision.SelectedIndex = 0;
+           // cmbDivision.SelectedIndex = 0;
 
         }
         public void getJobNatures()
@@ -69,6 +69,8 @@ namespace Barco
             return Microsoft.Win32.Registry.GetValue(keyName, Name, "default").ToString();
         }
 
+
+        
 
         //private static Barco2021Context context = new Barco2021Context();
 
