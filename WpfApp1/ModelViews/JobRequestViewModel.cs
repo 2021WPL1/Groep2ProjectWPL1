@@ -258,7 +258,7 @@ namespace Barco
             {
 
                 //create error sequence
-                createBoxLists();
+                CreateBoxLists();
                 List<string> errors = new List<string>();
                 //declare var for object
                 string input_Abbreviation = txtReqInitials;
@@ -382,6 +382,7 @@ namespace Barco
                     //optional object
                     optional.Link = txtLinkTestplan;
                     optional.IdRequest = request.IdRequest;
+                    optional.Remarks = specialRemarks;
 
                     //eut objects
                     Detail.Eut = GetEutData();
