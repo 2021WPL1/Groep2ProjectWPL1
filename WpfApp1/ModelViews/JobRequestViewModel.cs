@@ -3,6 +3,7 @@ using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Resources;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -69,7 +70,7 @@ namespace Barco
         public List<Eut> eutList = new List<Eut>();
         public RqRequestDetail Detail = new RqRequestDetail();
         public List<Part> parts = new List<Part>();
-
+       
 
 
         List<bool> emcBoxes = new List<bool>();
@@ -257,8 +258,8 @@ namespace Barco
             {
 
                 //create error sequence
+                createBoxLists();
                 List<string> errors = new List<string>();
-                CreateBoxLists();
                 //declare var for object
                 string input_Abbreviation = txtReqInitials;
                 string input_ProjectName = txtEutProjectname;
