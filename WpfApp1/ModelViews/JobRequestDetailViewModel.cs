@@ -169,12 +169,12 @@ namespace Barco
 
         }
 
-        private void fillEuts()
-        {
-            foreach(Eut e in euts)
-            {
-                if(e.Equals("EMC - EUT 1"))
-                {
+        //private void fillEuts()
+        //{
+        //    foreach(Eut e in euts)
+        //    {
+        //        if(e.Equals("EMC - EUT 1"))
+        //        {
 
                 }
             }
@@ -189,184 +189,184 @@ namespace Barco
                    result.Add(createEut(description, date));
                 }
 
-                if ((bool)cmEnvironmentalEut1)
-                {
-                    description = "Environmental - EUT 1";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmEnvironmentalEut1)
+        //        {
+        //            description = "Environmental - EUT 1";
+        //            result.Add(createEut(description, date));
+        //        }
 
-                if ((bool)cmGrnCompEut1)
-                {
-                    description = "Green Compliance - EUT 1";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmGrnCompEut1)
+        //        {
+        //            description = "Green Compliance - EUT 1";
+        //            result.Add(createEut(description, date));
+        //        }
 
-                if ((bool)cmRelEut1)
-                {
-                    description = "Reliability - EUT 1";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmRelEut1)
+        //        {
+        //            description = "Reliability - EUT 1";
+        //            result.Add(createEut(description, date));
+        //        }
 
-                if ((bool)cmProdSafetyEut1)
-                {
-                    description = "Product Safety - EUT 1";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmProdSafetyEut1)
+        //        {
+        //            description = "Product Safety - EUT 1";
+        //            result.Add(createEut(description, date));
+        //        }
 
-            }
+        //    }
 
-            //get second eut and date
-            if (DatePickerEUT2.Date != DateTime.Now)
-            {
-                DateTime date = (DateTime)DatePickerEUT2.Date;
-                string description = "";
-                if ((bool)cbEmcEut2)
-                {
-                    description = "EMC - EUT 2";
-                    result.Add(createEut(description, date));
-                }
+        //    //get second eut and date
+        //    if (DatePickerEUT2.Date != DateTime.Now)
+        //    {
+        //        DateTime date = (DateTime)DatePickerEUT2.Date;
+        //        string description = "";
+        //        if ((bool)cbEmcEut2)
+        //        {
+        //            description = "EMC - EUT 2";
+        //            result.Add(createEut(description, date));
+        //        }
 
-                if ((bool)cmEnvironmentalEut2)
-                {
-                    description = "Environmental - EUT 2";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmEnvironmentalEut2)
+        //        {
+        //            description = "Environmental - EUT 2";
+        //            result.Add(createEut(description, date));
+        //        }
 
-                if ((bool)cmGrnCompEut2)
-                {
-                    description = "Green Compliance - EUT 2";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmGrnCompEut2)
+        //        {
+        //            description = "Green Compliance - EUT 2";
+        //            result.Add(createEut(description, date));
+        //        }
 
-                if ((bool)cmRelEut2)
-                {
-                    description = "Reliability - EUT 2";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmRelEut2)
+        //        {
+        //            description = "Reliability - EUT 2";
+        //            result.Add(createEut(description, date));
+        //        }
 
-                if ((bool)cmProdSafetyEut2)
-                {
-                    description = "Product Safety - EUT 2";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmProdSafetyEut2)
+        //        {
+        //            description = "Product Safety - EUT 2";
+        //            result.Add(createEut(description, date));
+        //        }
 
-            }
+        //    }
 
-            //get third eut and date
-            if (DatePickerEUT3.Date != DateTime.Now)
-            {
-                DateTime date = (DateTime)DatePickerEUT3.Date;
-                string description = "";
-                if ((bool)cbEmcEut3)
-                {
-                    description = "EMC - EUT 3";
-                    result.Add(createEut(description, date));
-                }
+        //    //get third eut and date
+        //    if (DatePickerEUT3.Date != DateTime.Now)
+        //    {
+        //        DateTime date = (DateTime)DatePickerEUT3.Date;
+        //        string description = "";
+        //        if ((bool)cbEmcEut3)
+        //        {
+        //            description = "EMC - EUT 3";
+        //            result.Add(createEut(description, date));
+        //        }
 
-                if ((bool)cmEnvironmentalEut3)
-                {
-                    description = "Environmental - EUT 3";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmEnvironmentalEut3)
+        //        {
+        //            description = "Environmental - EUT 3";
+        //            result.Add(createEut(description, date));
+        //        }
 
-                if ((bool)cmGrnCompEut3)
-                {
-                    description = "Green Compliance - EUT 3";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmGrnCompEut3)
+        //        {
+        //            description = "Green Compliance - EUT 3";
+        //            result.Add(createEut(description, date));
+        //        }
 
-                if ((bool)cmRelEut3)
-                {
-                    description = "Reliability - EUT 3";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmRelEut3)
+        //        {
+        //            description = "Reliability - EUT 3";
+        //            result.Add(createEut(description, date));
+        //        }
 
-                if ((bool)cmProdSafetyEut3)
-                {
-                    description = "Product Safety - EUT 3";
-                    result.Add(createEut(description, date));
-                }
-
-
-            }
-
-            //get fourth eut and date
-            if (DatePickerEUT4.Date != DateTime.Now)
-            {
-                DateTime date = (DateTime)DatePickerEUT4.Date;
-                string description = "";
-                if ((bool)cbEmcEut4)
-                {
-                    description = "EMC - EUT 4";
-                    result.Add(createEut(description, date));
-                }
-
-                if ((bool)cmEnvironmentalEut4)
-                {
-                    description = "Environmental - EUT 4";
-                    result.Add(createEut(description, date));
-                }
-
-                if ((bool)cmGrnCompEut4)
-                {
-                    description = "Green Compliance - EUT 4";
-                    result.Add(createEut(description, date));
-                }
-
-                if ((bool)cmRelEut4)
-                {
-                    description = "Reliability - EUT 4";
-                    result.Add(createEut(description, date));
-                }
-
-                if ((bool)cmProdSafetyEut4)
-                {
-                    description = "Product Safety - EUT 4";
-                    result.Add(createEut(description, date));
-                }
-            }
-
-            //get fifth eut and date
-            if (DatePickerEUT5.Date != DateTime.Now)
-            {
-                DateTime date = (DateTime)DatePickerEUT5.Date;
-                string description = "";
-                if ((bool)cbEmcEut5)
-                {
-                    description = "EMC - EUT 5";
-                    result.Add(createEut(description, date));
-                }
-
-                if ((bool)cmEnvironmentalEut5)
-                {
-
-                    description = "Environmental - EUT 5";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmProdSafetyEut3)
+        //        {
+        //            description = "Product Safety - EUT 3";
+        //            result.Add(createEut(description, date));
+        //        }
 
 
-                if ((bool)cmGrnCompEut5)
-                {
-                    description = "Green Compliance - EUT 5";
-                    result.Add(createEut(description, date));
-                }
+        //    }
 
-                if ((bool)cmRelEut5)
-                {
-                    description = "Reliability - EUT 5";
-                    result.Add(createEut(description, date));
-                }
+        //    //get fourth eut and date
+        //    if (DatePickerEUT4.Date != DateTime.Now)
+        //    {
+        //        DateTime date = (DateTime)DatePickerEUT4.Date;
+        //        string description = "";
+        //        if ((bool)cbEmcEut4)
+        //        {
+        //            description = "EMC - EUT 4";
+        //            result.Add(createEut(description, date));
+        //        }
 
-                if ((bool)cmProdSafetyEut5)
-                {
-                    description = "Product Safety - EUT 5";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmEnvironmentalEut4)
+        //        {
+        //            description = "Environmental - EUT 4";
+        //            result.Add(createEut(description, date));
+        //        }
+
+        //        if ((bool)cmGrnCompEut4)
+        //        {
+        //            description = "Green Compliance - EUT 4";
+        //            result.Add(createEut(description, date));
+        //        }
+
+        //        if ((bool)cmRelEut4)
+        //        {
+        //            description = "Reliability - EUT 4";
+        //            result.Add(createEut(description, date));
+        //        }
+
+        //        if ((bool)cmProdSafetyEut4)
+        //        {
+        //            description = "Product Safety - EUT 4";
+        //            result.Add(createEut(description, date));
+        //        }
+        //    }
+
+        //    //get fifth eut and date
+        //    if (DatePickerEUT5.Date != DateTime.Now)
+        //    {
+        //        DateTime date = (DateTime)DatePickerEUT5.Date;
+        //        string description = "";
+        //        if ((bool)cbEmcEut5)
+        //        {
+        //            description = "EMC - EUT 5";
+        //            result.Add(createEut(description, date));
+        //        }
+
+        //        if ((bool)cmEnvironmentalEut5)
+        //        {
+
+        //            description = "Environmental - EUT 5";
+        //            result.Add(createEut(description, date));
+        //        }
 
 
-            }
+        //        if ((bool)cmGrnCompEut5)
+        //        {
+        //            description = "Green Compliance - EUT 5";
+        //            result.Add(createEut(description, date));
+        //        }
 
-        }
+        //        if ((bool)cmRelEut5)
+        //        {
+        //            description = "Reliability - EUT 5";
+        //            result.Add(createEut(description, date));
+        //        }
+
+        //        if ((bool)cmProdSafetyEut5)
+        //        {
+        //            description = "Product Safety - EUT 5";
+        //            result.Add(createEut(description, date));
+        //        }
+
+
+         //       }
+
+      //  }
 
 
     }
