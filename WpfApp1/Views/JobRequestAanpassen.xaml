@@ -51,12 +51,12 @@
         <TextBlock HorizontalAlignment="Left" Margin="483,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="15"><Run Language="nl-be" Text="Eut partnumber"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="578,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="15"><Run Language="nl-be" Text="Net weight (KG)"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="669,166,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" Height="15"><Run Language="nl-be" Text="Gross"/><Run Text=" weight (KG)"/></TextBlock>
-        <TextBox x:Name="txtPartNumber" HorizontalAlignment="Left" Margin="483,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="14"/>
-        <TextBox x:Name="txtPartNetWeight" HorizontalAlignment="Left" Margin="578,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="14"/>
-        <TextBox x:Name="txtPartGrossWeight" HorizontalAlignment="Left" Margin="669,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="14"/>
+        <TextBox x:Name="txtPartNumber" HorizontalAlignment="Left" Margin="483,185,0,0" TextWrapping="Wrap" Text="{Binding txtPartNumber , UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="78" Height="14" />
+        <TextBox x:Name="txtPartNetWeight" HorizontalAlignment="Left" Margin="578,185,0,0" TextWrapping="Wrap" Text="{Binding txtPartNetWeight , UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="78" Height="14"/>
+        <TextBox x:Name="txtPartGrossWeight" HorizontalAlignment="Left" Margin="669,185,0,0" TextWrapping="Wrap" Text="{Binding txtPartGrossWeight , UpdateSourceTrigger=PropertyChanged}" VerticalAlignment="Top" Width="78" Height="14"/>
         <Button x:Name="btnAddPart" 
                 Command="{Binding AddCommand}"
-                Content="Add" HorizontalAlignment="Left" Margin="590,0,0,0" VerticalAlignment="Center"  Width="48" Height="21" RenderTransformOrigin="0.539,1.332"/>
+                Content="Add" HorizontalAlignment="Left" Margin="590,0,0,0" VerticalAlignment="Center"  Width="48" Height="21"/>
         <Button x:Name="btnRemovePart"
                 Command="{Binding RemoveCommand}"
                 Content="Remove" HorizontalAlignment="Left" Margin="653,224,0,0" VerticalAlignment="Top" Height="21"/>

@@ -1,12 +1,10 @@
 ﻿using Prism.Commands;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
-using Barco.Data;
-using static Barco.JobRequestViewModel;
 using System.Collections.ObjectModel;
 using System.Windows;
+using Barco.Data;
 
 namespace Barco
 {//jimmy
@@ -41,6 +39,7 @@ namespace Barco
         public List<String> ListPartsnumbers { get; set; }
         public List<String> ListPartNet { get; set; }
         public List<String> ListPartGross { get; set; }
+
 
         private ObservableCollection<Part> lstParts = new ObservableCollection<Part>(); // for partnumber+ net/gross weight
 
@@ -87,9 +86,16 @@ namespace Barco
             screen.Close();
            overview.ShowDialog();
         }
+        public class Part
+        {
+            public string partNo { get; set; }
+            public string NetWeight { get; set; }
+            public string GrossWeight { get; set; }
+        }
 
         public void SaveChanges()
         {
+            
            
         }
         /// <summary>
@@ -107,7 +113,9 @@ namespace Barco
             }
 
         }
-
+        /// <summary>
+        /// jimmy
+        /// </summary>
         public void AddPart()
         {
             try
@@ -129,10 +137,11 @@ namespace Barco
                     Request.EutPartnumbers += txtPartNumber + " ; ";
                     Request.GrossWeight += txtPartNetWeight + " ; ";
                     Request.NetWeight += txtPartGrossWeight + " ; ";
+                    dao.saveChanges();
+
 
 
                     RefreshGUI();
-
                 }
             }
             catch (NullReferenceException)
@@ -148,7 +157,7 @@ namespace Barco
             string Partnumbers = Request.EutPartnumbers.Replace(" ", String.Empty);
             string Partnumber;
 
-            if (Partnumbers.Contains(";"))
+            do
             {
 
                 int splitIndex = Partnumbers.IndexOf(";");
@@ -162,12 +171,9 @@ namespace Barco
                     Partnumbers = Partnumbers.Substring((splitIndex + 1), (Partnumbers.Length - 1 - splitIndex));
 
                 }
-            }
-            else
-            {
-                ListPartsnumbers.Add(Partnumbers);
+            } while (Partnumbers.Contains(";"));
 
-            }
+
 
         }
         //Jimmy
@@ -177,7 +183,7 @@ namespace Barco
             string Partnets = Request.NetWeight.Replace(" ", String.Empty);
             string Partnet;
 
-            if (Partnets.Contains(";"))
+            do
             {
                 int splitIndex = Partnets.IndexOf(";");
                 Partnet = Partnets.Substring(0, splitIndex);
@@ -191,12 +197,7 @@ namespace Barco
 
                 }
 
-            }
-            else
-            {
-                ListPartNet.Add(Partnets);
-    
-            } 
+            } while (Partnets.Contains(";"));
 
         }
         //Jimmy
@@ -206,7 +207,7 @@ namespace Barco
             string PartGross = Request.GrossWeight.Replace(" ", String.Empty);
             string GetPartGross;
 
-            if (PartGross.Contains(";"))
+            do
             {
                 int splitIndex = PartGross.IndexOf(";");
                 GetPartGross = PartGross.Substring(0, splitIndex);
@@ -220,11 +221,7 @@ namespace Barco
 
                 }
 
-            }
-            else
-            {
-                ListPartGross.Add(PartGross);
-            }
+            } while (PartGross.Contains(";"));
 
         }
         /// <summary>
@@ -250,6 +247,7 @@ namespace Barco
                 lstParts.Add(part);
             }
         }
+        
 
 
         private void FillData()

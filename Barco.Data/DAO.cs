@@ -47,7 +47,7 @@ namespace Barco.Data
             return person;
         }
 
-        
+       
        
         // bianca- get a person with the abbreviation
         public Person GetPersonWithAbb(string abb)
@@ -111,9 +111,22 @@ namespace Barco.Data
         {
             context.Eut.Remove(GetEut(GetRqRequestDetailByRequestId(id).IdRqDetail));
             context.RqRequestDetail.Remove(GetRqRequestDetailByRequestId(id));
-           context.RqOptionel.Remove(GetOptionel(GetOptionalByRequestId(id).IdRequest));
+            context.RqOptionel.Remove(GetOptionel(GetOptionalByRequestId(id).IdRequest));
             context.RqRequest.Remove(GetRqRequestById(id));
             saveChanges();
+        }
+        //thibaut, bianca
+        //get an optional id from requestId
+        public RqOptionel GetOptionalByRequestId(int id)
+        {
+            return context.RqOptionel.FirstOrDefault(r => r.IdRequest == id);
+        }
+
+        //thibaut, bianca
+        // get a detail id from requestId
+        public RqRequestDetail GetRqRequestDetailByRequestId(int id)
+        {
+            return context.RqRequestDetail.FirstOrDefault(r => r.IdRequest == id);
         }
          //get an optional id from requestId
         public RqOptionel GetOptionalByRequestId(int id)
@@ -242,7 +255,7 @@ namespace Barco.Data
 
 
         //Bianca
-        // Add request/ detail / optional
+        // Add request/ detail
 
      public RqRequest AddRequest(RqRequest request, RqRequestDetail detail, RqOptionel optional, List<Eut> eut)
         { 
@@ -264,6 +277,7 @@ namespace Barco.Data
 
         }
 
+
         public RqRequestDetail AddDetail(RqRequestDetail detail)
         {
             detail.IdRequest = int.Parse(context.RqRequest.OrderByDescending
@@ -276,6 +290,7 @@ namespace Barco.Data
             return detail;
         }          
 
+        //thibaut
         public RqOptionel AddOptional(RqOptionel optional)
         {
             optional.IdRequest =
@@ -313,6 +328,14 @@ namespace Barco.Data
             }
 
             return selectedList;
+        }
+
+        
+        //thibaut
+        public List<Eut> GetEutWithDetailId(int id)
+        {
+
+            return context.Eut.Where(e => e.IdRqDetail == id).ToList();
         }
 
     }
