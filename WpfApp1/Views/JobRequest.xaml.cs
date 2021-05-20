@@ -48,7 +48,7 @@ namespace Barco
         {
             //cmbDivision.ItemsSource = dao.GetDivisions();
             cmbDivision.Items.Add(getValues("DIVISION"));
-            
+            cmbDivision.SelectedValue = 0;
 
         }
         public void getJobNatures()
