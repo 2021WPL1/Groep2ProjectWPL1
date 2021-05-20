@@ -16,10 +16,10 @@
         <Button x:Name="DeleteButton" 
                 Command="{Binding DeleteRequestCommand}"
                 Content="Delete" HorizontalAlignment="Left" Margin="717,190,0,0" VerticalAlignment="Top" Height="34" Width="50" />
-      
-        <Label Content="Requester" HorizontalAlignment="Left" Margin="180,174,0,0" VerticalAlignment="Top" Height="30" Width="79"/>
-        <Label Content="Division" HorizontalAlignment="Left" Margin="303,174,0,0" VerticalAlignment="Top" Height="30" Width="132"/>
-        <Label Content="-" HorizontalAlignment="Left" Margin="264,170,0,0" VerticalAlignment="Top" FontSize="18"/>
+
+        <Label Content="Requester" HorizontalAlignment="Left" Margin="65,182,0,0" VerticalAlignment="Top" Height="30" Width="66"/>
+        <Label Content="Division" HorizontalAlignment="Left" Margin="166,182,0,0" VerticalAlignment="Top" Height="30" Width="54"/>
+        <Label Content="-" HorizontalAlignment="Left" Margin="136,176,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Button x:Name="CancelButton"
                 Command="{Binding CancelCommand}" 
                 Content="Cancel" HorizontalAlignment="Left" Margin="722,246,0,0" VerticalAlignment="Top" Height="33" Width="45" />
@@ -29,7 +29,20 @@
                 Command="{Binding OpenDetailsCommand}"
                 Content="Open" HorizontalAlignment="Left" Margin="654,245,0,0" VerticalAlignment="Top" Height="34" Width="50" />
         <ListBox x:Name="listOverview" ItemsSource="{Binding RqRequests}"
-                 SelectedItem="{Binding SelectedRqRequest, Mode=TwoWay}" Margin="68,212,279,33"/>
+                 SelectedItem="{Binding SelectedRqRequest, Mode=TwoWay}" Margin="26,212,243,33"/>
+        <Label Content="Project Name" HorizontalAlignment="Left" Margin="268,181,0,0" VerticalAlignment="Top" Height="30" Width="120"/>
+        <Label Content="Date" HorizontalAlignment="Left" Margin="430,181,0,0" VerticalAlignment="Top" Height="30" Width="59"/>
+        <Label Content="-" HorizontalAlignment="Left" Margin="381,176,0,0" VerticalAlignment="Top" FontSize="18" Height="28" RenderTransformOrigin="0.5,0.5" Width="19">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="-" HorizontalAlignment="Left" Margin="228,178,0,0" VerticalAlignment="Top" FontSize="18" RenderTransformOrigin="7.03,0.649" Height="34"/>
 
     </Grid>
 </Window>
