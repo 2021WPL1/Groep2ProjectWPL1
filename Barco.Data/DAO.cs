@@ -301,6 +301,20 @@ namespace Barco.Data
             context.SaveChanges();
         }
 
+        public List<Eut> GetEutList(int id)
+        {
+            List<Eut> selectedList = new List<Eut>();
+            foreach( Eut e in  context.Eut.ToList())
+            {
+                if (e.IdRqDetail == id)
+                {
+                    selectedList.Add(e);
+                }
+            }
+
+            return selectedList;
+        }
+
     }
 }
 

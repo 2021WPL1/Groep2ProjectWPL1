@@ -2,6 +2,7 @@
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows.Input;
 
@@ -14,10 +15,18 @@ namespace Barco
         private DAO dao;
         public RqRequest Request { get; set; }
         public RqOptionel rqOptionel { get; set; }
+        public List<Eut> lstEut { get; set; }
         public RqRequestDetail rqRequestDetail { get; set; }
         public List<String> ListPartsnumbers { get; set; }
         public List<String> ListPartNet { get; set; }
         public List<String> ListPartGross { get; set; }
+
+        public DateTime DatePickerEUT1 { get; set; }
+        public DateTime DatePickerEUT2 { get; set; }
+        public DateTime DatePickerEUT3 { get; set; }
+        public DateTime DatePickerEUT4 { get; set; }
+        public DateTime DatePickerEUT5 { get; set; }
+
 
 
         public JobRequestDetailViewModel(JobRequestDetail screen, int selectedId)
@@ -36,7 +45,8 @@ namespace Barco
             LoadPartNetWeight();
 
             this.screen = screen;
-
+   
+            this.lstEut = dao.GetEutList(rqRequestDetail.IdRqDetail);
 
         }
         
@@ -136,6 +146,12 @@ namespace Barco
             {
                 ListPartGross.Add(partGross);
             }
+
+        }
+
+        private void FillData()
+        {
+            DatePickerEUT1 = lstEut.FirstOrDefault(p => p.OmschrijvingEut.Contains("EUT 1")).AvailableDate.Value;
 
         }
 

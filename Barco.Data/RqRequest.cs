@@ -30,11 +30,11 @@ namespace Barco.Data
 
         public virtual ICollection<RqOptionel> RqOptionel { get; set; }
         public virtual ICollection<RqRequestDetail> RqRequestDetail { get; set; }
-        public override string ToString()
-        {
-            return Requester + "\t-\t" + BarcoDivision 
-                   + "\t-\t" + EutProjectname + "\t\t-\t" + RequestDate;
-        }
+        //public override string ToString()
+        //{
+        //    return Requester + "\t-\t" + BarcoDivision 
+        //           + "\t-\t" + EutProjectname + "\t-\t" + RequestDate;
+        //}
 
 
     }

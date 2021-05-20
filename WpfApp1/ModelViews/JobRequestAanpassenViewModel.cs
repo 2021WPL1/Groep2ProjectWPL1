@@ -19,6 +19,18 @@ namespace Barco
         public string txtPartNumber { get; set; } // EUT Partnumber
         public string txtPartNetWeight { get; set; } //net weight
         public string txtPartGrossWeight { get; set; } //gross weight
+
+        public string txtLinkTestplan { get; set; } // link to testplan
+        public string txtReqInitials { get; set; } // requester initials 
+        public string txtEutProjectname { get; set; } //EUT Project name
+        public string txtRemark { get; set; } // special remarks
+        public string txtFunction { get; set; } //function
+        public RqRequest CurrentRequest { get; set; }
+        public RqOptionel CurrentOptionel { get; set; }
+        public RqRequestDetail CurrentRequestDetail { get; set; }
+        public DateTime dateExpectedEnd { get; set; }
+
+
         public ICommand CancelCommand { get; set; }
         public ICommand SaveChangesCommand { get; set; }
         public ICommand AddCommand { get; set; }
@@ -60,6 +72,11 @@ namespace Barco
 
 
             this.screen = screen;
+            CurrentRequest = dao.GetRequest(selectedId);
+            CurrentOptionel = dao.GetOptionel(selectedId);
+            CurrentRequestDetail = dao.GetRequestDetail(selectedId);
+            FillData();
+
 
         }
         //biance
@@ -232,6 +249,18 @@ namespace Barco
             {
                 lstParts.Add(part);
             }
+        }
+
+
+        private void FillData()
+        {
+            txtReqInitials = CurrentRequest.Requester;
+            txtEutProjectname = CurrentRequest.EutProjectname;
+            dateExpectedEnd = CurrentRequest.ExpectedEnddate;
+            txtRemark = CurrentOptionel.Remarks;
+            txtLinkTestplan = CurrentOptionel.Link;
+            
+
         }
 
     }

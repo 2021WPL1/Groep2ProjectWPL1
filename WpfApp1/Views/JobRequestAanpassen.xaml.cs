@@ -21,18 +21,21 @@ namespace Barco
         private JobRequestAanpassenViewModel jobRequestAanpassenViewModel;
 
 
+
         public JobRequestAanpassen(int selectedId)
         {
             InitializeComponent();
             jobRequestAanpassenViewModel = new JobRequestAanpassenViewModel(this, selectedId);
             DataContext = jobRequestAanpassenViewModel;
 
-
+            
         }
+
+     
 
         //private void btnSaveChanges_Click(object sender, RoutedEventArgs e)
         //{
-             
+
         //}
 
         //private void btnRemovePart_Click(object sender, RoutedEventArgs e)
@@ -42,7 +45,7 @@ namespace Barco
 
         //private void btnAddPart_Click(object sender, RoutedEventArgs e)
         //{
-             
+
         //}
 
         ////bianca
@@ -83,6 +86,7 @@ namespace Barco
                 MessageBox.Show(ex.ToString());
             }
            */
-        }
     }
+
+}
 
