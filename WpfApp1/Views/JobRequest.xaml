@@ -8,7 +8,9 @@
         Title="JobRequest" Height="600" Width="850">
     <Grid>
         <TextBlock HorizontalAlignment="Left" Margin="43,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Text="Requester "/><Run Language="nl-be" Text="Initials"/></TextBlock>
-        <TextBox x:Name="txtReqInitials" Text="{Binding txtReqInitials}" HorizontalAlignment="Left" Margin="42,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsEnabled="False" FontWeight="Bold"/>
+
+        <TextBox x:Name="txtReqInitials" Text="{Binding txtReqInitials, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="42,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsEnabled="False" FontWeight="Bold"/>
+
         <TextBlock HorizontalAlignment="Left" Margin="43,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="EUT Projectname"/></TextBlock>
         <TextBox x:Name="txtEutProjectname" Text="{Binding txtEutProjectname, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="43,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
         <TextBlock HorizontalAlignment="Left" Margin="168,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Division"/></TextBlock>

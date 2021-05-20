@@ -383,7 +383,7 @@ namespace Barco
                     optional.IdRequest = request.IdRequest;
 
                     //eut objects
-                    Detail.Eut = getEutData();
+                    Detail.Eut = GetEutData();
                 }
 
                 dao.AddRequest(request, Detail, optional);
