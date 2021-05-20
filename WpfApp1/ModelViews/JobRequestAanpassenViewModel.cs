@@ -223,6 +223,12 @@ namespace Barco
                 lstParts.Add(part);
             }
         }
+        public class Part
+        {
+            public string partNo { get; set; }
+            public string NetWeight { get; set; }
+            public string GrossWeight { get; set; }
+        }
 
     }
 }

@@ -56,7 +56,7 @@
         <TextBox x:Name="txtPartGrossWeight" HorizontalAlignment="Left" Margin="669,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="14"/>
         <Button x:Name="btnAddPart" 
                 Command="{Binding AddCommand}"
-                Content="Add" HorizontalAlignment="Left" Margin="590,0,0,0" VerticalAlignment="Center"  Width="48" Height="21" RenderTransformOrigin="0.539,1.332"/>
+                Content="Add" HorizontalAlignment="Left" Margin="590,0,0,0" VerticalAlignment="Center"  Width="48" Height="21"/>
         <Button x:Name="btnRemovePart"
                 Command="{Binding RemoveCommand}"
                 Content="Remove" HorizontalAlignment="Left" Margin="653,224,0,0" VerticalAlignment="Top" Height="21"/>
