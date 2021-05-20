@@ -69,10 +69,10 @@
         <CheckBox x:Name="cbEnvironmentEUT5" IsChecked="{Binding cmEnvironmentalEut5}" Content="" HorizontalAlignment="Left" Margin="400,265,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cbEnvironmental" Content="" IsChecked="{Binding cmEnvironmental}" HorizontalAlignment="Left" Margin="176,265,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cbReliabilityEUT1" IsChecked="{Binding cmRelEut1}"  Content="" HorizontalAlignment="Left" Margin="220,289,0,0" VerticalAlignment="Top" IsEnabled="False"/>
-        <CheckBox x:Name="cbReliabilityEUT2" IsChecked="{Binding cmRelEut1}" Content="" HorizontalAlignment="Left" Margin="263,289,0,0" VerticalAlignment="Top" IsEnabled="False"/>
-        <CheckBox x:Name="cbReliabilityEUT3" IsChecked="{Binding cmRelEut1}" Content="" HorizontalAlignment="Left" Margin="310,289,0,0" VerticalAlignment="Top" IsEnabled="False"/>
-        <CheckBox x:Name="cbReliabilityEUT4" IsChecked="{Binding cmRelEut1}" Content="" HorizontalAlignment="Left" Margin="357,289,0,0" VerticalAlignment="Top" IsEnabled="False"/>
-        <CheckBox x:Name="cbReliabilityEUT5" IsChecked="{Binding cmRelEut1}" Content="" HorizontalAlignment="Left" Margin="400,289,0,0" VerticalAlignment="Top" IsEnabled="False"/>
+        <CheckBox x:Name="cbReliabilityEUT2" IsChecked="{Binding cmRelEut2}" Content="" HorizontalAlignment="Left" Margin="263,289,0,0" VerticalAlignment="Top" IsEnabled="False"/>
+        <CheckBox x:Name="cbReliabilityEUT3" IsChecked="{Binding cmRelEut3}" Content="" HorizontalAlignment="Left" Margin="310,289,0,0" VerticalAlignment="Top" IsEnabled="False"/>
+        <CheckBox x:Name="cbReliabilityEUT4" IsChecked="{Binding cmRelEut4}" Content="" HorizontalAlignment="Left" Margin="357,289,0,0" VerticalAlignment="Top" IsEnabled="False"/>
+        <CheckBox x:Name="cbReliabilityEUT5" IsChecked="{Binding cmRelEut5}" Content="" HorizontalAlignment="Left" Margin="400,289,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cbRiliability" Content="" IsChecked="{Binding cmRel}" HorizontalAlignment="Left" Margin="176,289,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cbProductivityEUT1" Content="" IsChecked="{Binding cmProdSafetyEut1}" HorizontalAlignment="Left" Margin="220,313,0,0" VerticalAlignment="Top" IsEnabled="False"/>
         <CheckBox x:Name="cbProductivityEUT2" Content="" IsChecked="{Binding cmProdSafetyEut2}" HorizontalAlignment="Left" Margin="263,313,0,0" VerticalAlignment="Top" IsEnabled="False"/>
@@ -99,12 +99,12 @@
         <Label x:Name="lblRequestDate" Content="{Binding Request.RequestDate, Mode=TwoWay}" HorizontalAlignment="Left" Margin="176,108,0,0" VerticalAlignment="Top" Width="83"/>
         <Label x:Name="lblJobRequestNumber" Content="{Binding Request.JrNumber, Mode=TwoWay}" HorizontalAlignment="Left" Margin="300,108,0,0" VerticalAlignment="Top" Width="110"/>
         <Label x:Name="lblExpectedEndDate" Content="{Binding Request.ExpectedEnddate, Mode=TwoWay}" HorizontalAlignment="Left" Margin="289,140,0,0" VerticalAlignment="Top" Width="97" Height="13"/>
-        <Label x:Name="lblDateEUT1" Content="date label" HorizontalAlignment="Left" Margin="195,367,0,0" VerticalAlignment="Top" Width="65" Height="22" Padding="5,0,5,0"/>
+        <Label x:Name="lblDateEUT1" Content="{Binding dateEut1}" HorizontalAlignment="Left" Margin="195,367,0,0" VerticalAlignment="Top" Width="65" Height="22" Padding="5,0,5,0"/>
         <Label HorizontalAlignment="Left" Margin="335,367,0,0" VerticalAlignment="Top" Width="65" Height="22" Padding="5,0,5,0"/>
-        <Label x:Name="lblDateEUT4" Content="date label" HorizontalAlignment="Left" Margin="335,390,0,0" VerticalAlignment="Top" Width="65" Height="22" Padding="5,0,5,0"/>
-        <Label x:Name="lblDateEUT2" Content="date label" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" Height="22" Padding="5,0,5,0" Margin="241,392,0,0"/>
-        <Label x:Name="lblDateEUT3" Content="date label" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" Height="22" Padding="5,0,5,0" Margin="289,367,0,0"/>
-        <Label x:Name="lblDateEUT5" Content="date label" HorizontalAlignment="Left" Margin="378,365,0,0" VerticalAlignment="Top" Width="64" Height="22" Padding="5,0,5,0"/>
+        <Label x:Name="lblDateEUT4" Content="{Binding dateEut4}" HorizontalAlignment="Left" Margin="335,390,0,0" VerticalAlignment="Top" Width="65" Height="22" Padding="5,0,5,0"/>
+        <Label x:Name="lblDateEUT2" Content="{Binding dateEut2}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" Height="22" Padding="5,0,5,0" Margin="241,392,0,0"/>
+        <Label x:Name="lblDateEUT3" Content="{Binding dateEut3}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="64" Height="22" Padding="5,0,5,0" Margin="289,367,0,0"/>
+        <Label x:Name="lblDateEUT5" Content="{Binding dateEut5}" HorizontalAlignment="Left" Margin="378,365,0,0" VerticalAlignment="Top" Width="64" Height="22" Padding="5,0,5,0"/>
         <TextBox x:Name="txtDevision" Text="{Binding Request.BarcoDivision, Mode=TwoWay}" HorizontalAlignment="Left" Margin="176,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsReadOnly="True"/>
         <TextBox x:Name="txtJobNature" Text="{Binding Request.JobNature, Mode=TwoWay}" HorizontalAlignment="Left" Margin="306,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsReadOnly="True"/>
 
