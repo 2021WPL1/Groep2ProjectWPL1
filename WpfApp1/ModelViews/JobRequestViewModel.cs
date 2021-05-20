@@ -382,11 +382,18 @@ namespace Barco
                     optional.Link = txtLinkTestplan;
                     optional.IdRequest = request.IdRequest;
 
-                    //eut objects
-                    Detail.Eut = getEutData();
+
+
+                    // Thibaut,Bianca
+                    //adding eut's in the list  + database
+
+                    List<Eut> listEut = getEutData();
+
+                    dao.AddRequest(request, Detail, optional, listEut);
+
                 }
 
-                dao.AddRequest(request, Detail, optional);
+               
                 MessageBox.Show("Data has been inserted");
                 
 
