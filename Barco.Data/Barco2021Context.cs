@@ -1,4 +1,5 @@
 ﻿using System;
+using Barco.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -183,7 +184,6 @@ namespace Barco.Data
                     .HasMaxLength(200);
 
                 entity.Property(e => e.HydraProjectNr)
-                    .IsRequired()
                     .HasColumnName("hydraProjectNr")
                     .HasMaxLength(15);
 

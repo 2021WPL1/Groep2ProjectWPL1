@@ -39,7 +39,7 @@ namespace Barco
 
 
         }
-        //Biance
+        
         //Sluit Details en open de overview
         public void CloseButton()
         {

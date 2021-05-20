@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Barco.Data;
+using System;
 using System.Collections.Generic;
 
 namespace Barco.Data
@@ -33,5 +34,7 @@ namespace Barco.Data
         {
             return Requester + "\t\t\t-\t\t\t" + BarcoDivision;
         }
+
+
     }
 }
