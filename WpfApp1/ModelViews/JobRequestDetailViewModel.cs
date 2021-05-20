@@ -186,7 +186,7 @@ namespace Barco
                 if ((bool)cbEmcEut1)
                 {
                     description = 
-                    result.Add(createEut(description, date));
+                   result.Add(createEut(description, date));
                 }
 
                 if ((bool)cmEnvironmentalEut1)
