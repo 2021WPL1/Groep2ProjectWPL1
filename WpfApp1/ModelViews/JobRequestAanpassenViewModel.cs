@@ -1,12 +1,10 @@
 ﻿using Prism.Commands;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
-using Barco.Data;
-using static Barco.JobRequestViewModel;
 using System.Collections.ObjectModel;
 using System.Windows;
+using Barco.Data;
 
 namespace Barco
 {//jimmy
@@ -29,6 +27,7 @@ namespace Barco
         public List<String> ListPartsnumbers { get; set; }
         public List<String> ListPartNet { get; set; }
         public List<String> ListPartGross { get; set; }
+
 
         private ObservableCollection<Part> lstParts = new ObservableCollection<Part>(); // for partnumber+ net/gross weight
 
@@ -70,9 +69,16 @@ namespace Barco
             screen.Close();
            overview.ShowDialog();
         }
+        public class Part
+        {
+            public string partNo { get; set; }
+            public string NetWeight { get; set; }
+            public string GrossWeight { get; set; }
+        }
 
         public void SaveChanges()
         {
+            
            
         }
         /// <summary>
@@ -114,10 +120,10 @@ namespace Barco
                     Request.EutPartnumbers += txtPartNumber + " ; ";
                     Request.GrossWeight += txtPartNetWeight + " ; ";
                     Request.NetWeight += txtPartGrossWeight + " ; ";
+                    dao.saveChanges();
 
 
                     RefreshGUI();
-
                 }
             }
             catch (NullReferenceException)
@@ -223,12 +229,7 @@ namespace Barco
                 lstParts.Add(part);
             }
         }
-        public class Part
-        {
-            public string partNo { get; set; }
-            public string NetWeight { get; set; }
-            public string GrossWeight { get; set; }
-        }
+        
 
     }
 }

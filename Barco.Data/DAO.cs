@@ -223,7 +223,7 @@ namespace Barco.Data
         //Bianca
         // Add request/ detail / optional
 
-     public RqRequest AddRequest(RqRequest request, RqRequestDetail detail, RqOptionel optional)
+        public RqRequest AddRequest(RqRequest request, RqRequestDetail detail, RqOptionel optional)
         { 
             try
             {
@@ -242,6 +242,7 @@ namespace Barco.Data
           
 
         }
+
 
         public RqRequestDetail AddDetail(RqRequestDetail detail)
         {
