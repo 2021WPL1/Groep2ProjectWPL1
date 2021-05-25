@@ -26,11 +26,7 @@ namespace Barco
 { //bianca
     public class JobRequestViewModel : ViewModelBase
     {
-        private static AppSettingsService<AppSettings> _appSettingsService = AppSettingsService<AppSettings>.Instance;
-
         
-
-        private static SMTPMailCommunication smtpMailCommunication { get; set; }
             
 
 
@@ -170,11 +166,7 @@ namespace Barco
 
             txtReqInitials = GetInitialsFromReg();
 
-            var result = _appSettingsService.GetConfigurationSection<SMPTClientConfig>("SMPTClientConfig");
-            smtpMailCommunication = new SMTPMailCommunication(
-                result.QueryResult.Username,
-                result.QueryResult.SMTPPassword,
-                result.QueryResult.SMPTHost);
+           
 
 
 
@@ -414,7 +406,6 @@ namespace Barco
                     
                     dao.AddRequest(request, Detail, optional, eutList);
                     MessageBox.Show("Data has been inserted");
-                    SendMailWithSMTPRelay();
                 }
             }
             catch (FormatException ex)
@@ -874,26 +865,9 @@ namespace Barco
         }
 
 
-        static void SendMailWithSMTPRelay()
-        {
-            smtpMailCommunication.CreateMail();
-            var toAddress = _appSettingsService.GetConfigurationSection<EmailAdresses>("EmailAdresses");
-            MessageBox.Show(toAddress.QueryResult.Address1);
+      
 
-            //var msg = smtpMailCommunication.CreateMail(toAddress.QueryResult.Address1,"test email with SendGrid", "TestMail");
 
-            /*var result = smtpMailCommunication.SendMessage(msg);
-
-            if (result.Status == MailSendingStatus.Ok)
-            {
-                MessageBox.Show(toAddress.QueryResult.Address1);
-                return;
-            }
-            else
-            {
-                MessageBox.Show(result.Message);
-                return;
-            }*/
-        }
+      
     }
 }

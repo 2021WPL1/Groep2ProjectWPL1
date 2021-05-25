@@ -7,6 +7,7 @@ using System.Net.Mail;
 //using System.Net.Mail;
 using System.Net.Mime;
 using System.Threading.Tasks;
+using Barco.ModelViews.Settings;
 using Microsoft.Extensions.Configuration;
 using MailKit;
 using MailKit.Net.Smtp;
@@ -19,50 +20,45 @@ namespace Barco.ModelViews.smtpConfig
     {
         private SmtpClient SmtpClient { get; set; }
 
-      
+        private static AppSettingsService<AppSettings> _appSettingsService = AppSettingsService<AppSettings>.Instance;
+
+
+
+        private static SMTPMailCommunication smtpMailCommunication { get; set; }
+
+
         public SMTPMailCommunication(string userName, string SMTPPassword, string SMTPHost)
         {
            
         }
 
    
-       
-        public void CreateMail()
+        //method to create an email 
+        // Laurent ,Bianca
+
+   public void CreateMail(string input)
         {
+            var to= _appSettingsService.GetConfigurationSection<EmailAdresses>("EmailAdresses");
+            var from = _appSettingsService.GetConfigurationSection<SMPTClientConfig>("SMPTClientConfig");
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("laurentdev89@outlook.be"));
-            message.To.Add(new MailboxAddress("bianca.capatina@student.vives.be"));
-            message.Subject = "idk";
+            message.From.Add(new MailboxAddress(from.QueryResult.Username));
+            message.To.Add(new MailboxAddress(to.QueryResult.Address1));
+            message.Subject = "New Request";
 
             message.Body = new TextPart("plain")
             {
-                Text = "hey bianca how are you"
+                Text = "there are " + input + " new requests!"
             };
 
             using (var client = new SmtpClient())
             {
                 client.Connect("smtp-mail.outlook.com", 587, false);
-                client.Authenticate("laurentdev89@outlook.be", "laurentDev");
+                client.Authenticate(from.QueryResult.Username, from.QueryResult.SMTPPassword);
                 client.Send(message);
                 client.Disconnect(true);
             }
         }
 
-
-        /*public MailResult SendMessage(MailMessage msg)
-        {
-            var result = new MailResult() { Status = MailSendingStatus.Ok };
-            try
-            {
-                SmtpClient.Send(msg);
-            }
-            catch (Exception e)
-            {
-                result.Status = MailSendingStatus.HasError;
-                result.Message = e.Message;
-            }
-            return result;
-        }*/
 
      
     }

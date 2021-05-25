@@ -19,7 +19,7 @@ namespace Barco.ModelViews.Settings
         public TAppSettings AppSettings { get => _appSettings; }
 
         private string _appSettingsBasePath
-        {
+        { // still need to be fixed 
             get => @"C:\Users\cbian\source\repos\Werkplekleren1\2021WPL1Groep2\ProjectWPL1\WpfApp1\appSettings";
         }
 
@@ -49,6 +49,8 @@ namespace Barco.ModelViews.Settings
             }
         }
 
+
+        // Laurent-Bianca
         public ConfigurationQueryResult<TSection> GetConfigurationSection<TSection>(string sectionName)
         {
             var result = new ConfigurationQueryResult<TSection>() { Status = QueryStatus.Ok };
