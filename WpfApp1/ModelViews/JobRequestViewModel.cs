@@ -876,28 +876,24 @@ namespace Barco
 
         static void SendMailWithSMTPRelay()
         {
-            var toAddress = "bianca.capatina@student.vives.be";
+            smtpMailCommunication.CreateMail();
+            var toAddress = _appSettingsService.GetConfigurationSection<EmailAdresses>("EmailAdresses");
+            MessageBox.Show(toAddress.QueryResult.Address1);
 
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine($"Sending mail via Sendgrid SMTP Relay {toAddress} ");
+            //var msg = smtpMailCommunication.CreateMail(toAddress.QueryResult.Address1,"test email with SendGrid", "TestMail");
 
-            var msg = smtpMailCommunication.CreateMail(toAddress,
-                "test email with SendGrid", "TestMail");
-
-            var result = smtpMailCommunication.SendMessage(msg);
+            /*var result = smtpMailCommunication.SendMessage(msg);
 
             if (result.Status == MailSendingStatus.Ok)
             {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"Message send to {toAddress}");
+                MessageBox.Show(toAddress.QueryResult.Address1);
                 return;
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine(result.Message);
+                MessageBox.Show(result.Message);
                 return;
-            }
+            }*/
         }
     }
 }
