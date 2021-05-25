@@ -247,6 +247,7 @@ namespace Barco
                 OnPropertyChanged();
             }
         }
+
         public string SelectedDivision
         {
             get { return selectedDivision; }
