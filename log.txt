@@ -1,0 +1,1307 @@
+commit 9d4f0e2e08084f44d9f388ddbac196829c4312fc
+Merge: de3178b d274a6b
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Thu May 20 10:58:34 2021 +0200
+
+    Merge branch 'master' of https://github.com/2021WPL1Groep2/ProjectWPL1 into master
+
+commit de3178b18e68d1d561fa7b97a32d5ea1393bc65c
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Thu May 20 10:57:12 2021 +0200
+
+    Detail, optional and Eut database support, bug in Eut
+
+commit d274a6bc48983bb67605f6023a9de953f9232fe1
+Author: Jimmy Vilvörder <r0847354@student.vives.be>
+Date:   Thu May 20 09:55:32 2021 +0200
+
+    request
+
+commit e3d7c8fbe03018009caffee70335128e2a442dff
+Merge: 1a83cc2 5567da6
+Author: Jimmy Vilvörder <r0847354@student.vives.be>
+Date:   Thu May 20 09:51:11 2021 +0200
+
+    Merge branch 'master' of https://github.com/2021WPL1Groep2/ProjectWPL1
+
+commit 1a83cc25c1bdf1c98f00b1563c131e45a4bf2e30
+Author: Jimmy Vilvörder <r0847354@student.vives.be>
+Date:   Thu May 20 09:51:03 2021 +0200
+
+    battery fix
+
+commit 5567da67cc75ac463634611d636c39e573559f20
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Wed May 19 17:07:58 2021 +0200
+
+    logo fixed for all views
+
+commit febd90819c381a5b1cfdd73ee48f629259128133
+Merge: 9f24699 0d78bb2
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Wed May 19 16:24:42 2021 +0200
+
+    merge master
+
+commit 0d78bb20f9dec8887b759924e80751ec49b87098
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Wed May 19 16:11:32 2021 +0200
+
+    database bug fixed
+
+commit 9f24699dc53a86d5e6d3f3dcd6737ff8e182a001
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Wed May 19 15:29:47 2021 +0200
+
+    New method (checkInternal) added
+
+commit bdcff28ae6ea628c977f061b49bfec81ffee4b88
+Author: Jimmy Vilvörder <r0847354@student.vives.be>
+Date:   Wed May 19 13:43:39 2021 +0200
+
+    DAO naming convention
+
+commit 7db72d56d94ced82aa986b5db1aeabea9c31da81
+Merge: 0058ef5 f43b5bb
+Author: Jimmy Vilvörder <r0847354@student.vives.be>
+Date:   Wed May 19 12:37:31 2021 +0200
+
+    Merge branch 'master' into jimmy2.0
+
+commit f43b5bb44038561af20ee68d4252253f1d527d1c
+Merge: b43d2e9 11539ad
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Wed May 19 12:35:57 2021 +0200
+
+    Merge branch 'master' of https://github.com/2021WPL1Groep2/ProjectWPL1
+
+commit 11539ad4903db52b173087a5ebb4f2cdf3c02813
+Merge: 61e0941 4bd0a6d
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Wed May 19 12:33:38 2021 +0200
+
+    typo in jobrequest.xaml fixed
+
+commit b43d2e99ba5484b985fe3cb3316fc574beb29299
+Merge: 0f1c3fd 4bd0a6d
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Wed May 19 12:26:46 2021 +0200
+
+    jobnature en division fixed
+
+commit 0f1c3fd0b1585929a3482777abb7d0e1108ff2f4
+Merge: b091a70 2bd7b94
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Wed May 19 12:25:08 2021 +0200
+
+    Merge branch 'Thibaut2'
+
+commit 0058ef5ea917402fa7759a55421608cb5eae43a4
+Author: Jimmy Vilvörder <r0847354@student.vives.be>
+Date:   Wed May 19 12:23:57 2021 +0200
+
+    overview load added again
+
+commit 3b59c972e41e81635d26284ee57668a96f818239
+Merge: 7be3c7c 4bd0a6d
+Author: Jimmy Vilvörder <r0847354@student.vives.be>
+Date:   Wed May 19 12:20:07 2021 +0200
+
+    merge
+
+commit 7be3c7c2dd418b19a50155e8046feb65bc801dac
+Author: Jimmy Vilvörder <r0847354@student.vives.be>
+Date:   Wed May 19 12:17:12 2021 +0200
+
+    add, remove part
+
+commit 2bd7b948b058fdb7550c118ad3565d6c8d8c5a44
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Wed May 19 12:16:26 2021 +0200
+
+    listview outline
+
+commit 8fe3780a86591cdff797d59624fbb6c66460b604
+Author: Jimmy Vilvörder <r0847354@student.vives.be>
+Date:   Wed May 19 12:08:19 2021 +0200
+
+    fix parts details
+
+commit 7cd4e485a61fbf21da905e36bdcd56b1974d9883
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Wed May 19 11:53:35 2021 +0200
+
+    error messages update send button
+
+commit 4bd0a6dcf1012149fd5dca578bb3963e5acbcb77
+Merge: e23925c 4136171
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Wed May 19 11:45:46 2021 +0200
+
+    Merge branch 'master' into laurent
+
+commit e23925c692342dc0a9c47caa74a3ca68d883562e
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Wed May 19 11:45:23 2021 +0200
+
+    jobrequest.xaml error fix
+
+commit 4136171e871075dd20218811a600cccfc9a240b6
+Merge: 20cc8df b091a70
+Author: Stach Verkest <r0851119@student.vives.be>
+Date:   Wed May 19 11:44:18 2021 +0200
+
+    Fixes personal leave
+
+commit 20cc8dfd46c18ead754ddb578b7f337c136a7c1c
+Author: Stach Verkest <r0851119@student.vives.be>
+Date:   Wed May 19 11:37:58 2021 +0200
+
+    changes to personal leave
+
+commit 61e0941ae3d7e086080ad69c030e90d3c9317c58
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Wed May 19 11:20:41 2021 +0200
+
+    JobRequest bugs fixed
+
+commit b091a70c98b48d11baa01db43458d1dd501cfdc3
+Merge: dfbe085 5ab9a19
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Wed May 19 11:19:12 2021 +0200
+
+    merge checkboxes fixed
+
+commit dfbe085161e85229fa8ab49d3e024ea83d5bfb56
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Wed May 19 11:14:50 2021 +0200
+
+    check boxes input fixed
+
+commit 5ab9a1966fb65d5bf613be71f079fb717c968ceb
+Author: Jimmy Vilvörder <r0847354@student.vives.be>
+Date:   Wed May 19 09:57:59 2021 +0200
+
+    overview foutafhandeling, nullrefs
+
+commit fd9b5413f15b93b39eec3eb9ad0f423f06e831c9
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Wed May 19 09:50:00 2021 +0200
+
+    txtboxes allign
+
+commit 5544383d6e0b22ed3e4eef4933191402029051ae
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Wed May 19 09:49:19 2021 +0200
+
+    txtboxes alligned
+
+commit 360bcfeec38328c8e7d199f6a5cf57dd013d931f
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Wed May 19 09:46:54 2021 +0200
+
+    jobrequest parts clear after create
+
+commit 90a44059ebf2dc1a80d4108b2c1a176afab5341e
+Author: Jimmy Vilvörder <r0847354@student.vives.be>
+Date:   Wed May 19 09:35:16 2021 +0200
+
+    Add requester overview
+
+commit b9ae7ce6ec5e1af75d9a7a4864b5da862d5b9c5a
+Merge: 7958ec9 ddac062
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Wed May 19 09:32:03 2021 +0200
+
+    Merge branch 'master' into Thibaut2
+
+commit 7958ec94585b29629fc38d3448f5cc53a4eb916f
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Wed May 19 09:31:12 2021 +0200
+
+    bug in jobrequest
+
+commit ec45d1a4a4f95e4a590b04959681906739573963
+Merge: 932b63a ddac062
+Author: Jimmy Vilvörder <r0847354@student.vives.be>
+Date:   Wed May 19 09:29:27 2021 +0200
+
+    Overview fix, load details (parts)
+
+commit ddac0629d86e309a544efe4a2862c6d4ebcc3000
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Tue May 18 17:28:03 2021 +0200
+
+    bugs fixed for JobRequestViewModel
+
+commit 1518688c88f8b5a86f292b0d38f1cd2b8b83781e
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Tue May 18 17:23:35 2021 +0200
+
+    merge master into Bianca
+
+commit 932b63a588638ab16c047e76ce96e52f2bb9523c
+Author: Jimmy Vilvörder <r0847354@student.vives.be>
+Date:   Tue May 18 17:20:39 2021 +0200
+
+    overview jrnumber fix
+
+commit 0298de502cd8fb6655916753f7dc8e6b127c7bed
+Merge: 63b383c 75c301b
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Tue May 18 17:16:59 2021 +0200
+
+    merge Bianca
+
+commit 717cf0aa644cc198c3b1ce1464a11a44e9226770
+Author: Jimmy Vilvörder <r0847354@student.vives.be>
+Date:   Tue May 18 17:10:24 2021 +0200
+
+    merge master
+
+commit aa26d36dbf1f3a1a83ced043825ed69c07d3c46b
+Merge: bf2abb9 75c301b
+Author: Jimmy Vilvörder <r0847354@student.vives.be>
+Date:   Tue May 18 17:05:33 2021 +0200
+
+    Merge branch 'master' into jimmy2.0
+
+commit 75c301b0637c1e7ad9af5b45cfc9d98675b8fc9e
+Merge: c3236df dd60bf0
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Tue May 18 16:58:19 2021 +0200
+
+    Merge branch 'master' of https://github.com/2021WPL1Groep2/ProjectWPL1
+
+commit 63b383cec286bbba37daa750d2907975ac3e7b86
+Merge: 3a2c353 69d9170
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Tue May 18 16:50:58 2021 +0200
+
+    merge
+
+commit dd60bf005bc0bd35517530d53ea6b149920fd82f
+Merge: 3c03ccf db47207
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Tue May 18 16:40:15 2021 +0200
+
+    merged with laurent and fixes
+
+commit 3c03ccf189ac622fd0156985f97755eec0e6f372
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Tue May 18 16:29:31 2021 +0200
+
+    added unsaved changes
+
+commit 69d9170537255b8e460f34ec34b6bcec81e2756e
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Tue May 18 16:28:11 2021 +0200
+
+    Function via registry
+
+commit db472073a8968e1aeefe7d25802fbb48a985d8d6
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Tue May 18 16:20:05 2021 +0200
+
+    indent fixes
+
+commit ff9e2cd76b67605237e19b83154e5c6374ef1872
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Tue May 18 15:26:52 2021 +0200
+
+    support for initials from registry added
+
+commit 1233752b178563e8d3f95f147135abb852a52c94
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Tue May 18 14:55:57 2021 +0200
+
+    method added to get values from registry
+
+commit 32404ce33b5bc2a8818963ea230530acf7fde8c7
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Tue May 18 13:56:33 2021 +0200
+
+    try RegistryKey
+
+commit c3236df41931c8088c1f630287b4ee967010a032
+Merge: 0de9c3c 389dcce
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Tue May 18 10:14:10 2021 +0200
+
+    Merge branch 'master' of https://github.com/2021WPL1Groep2/ProjectWPL1
+
+commit 389dcce3223075742c6cadf5e469c558f8d0a56c
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Tue May 18 10:11:38 2021 +0200
+
+    DAO fixes in JobRequest.xaml.cs
+
+commit 0de9c3c8706069807be997d1c75044921dfb9c01
+Merge: 0385867 3a2c353
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Tue May 18 10:10:42 2021 +0200
+
+    start merge
+
+commit dfb25b837d66ac57240def065f7192350287e5b8
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Tue May 18 09:33:20 2021 +0200
+
+    Database fixed
+
+commit 3a2c353096b82ca414a3763a034c104a19b39806
+Merge: 5cbcbc1 de36f7f
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 18 18:15:07 2021 +0100
+
+    merge bianca
+
+commit 5cbcbc114b7da5c90a232cf52e6ee2a2e04a6bee
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 18 15:08:10 2021 +0100
+
+    update DAO + Send button in JobRequest met MVVM
+
+commit de36f7f89e305dba32f2cec9915bbd63f60f0ed3
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 18 14:17:06 2021 +0100
+
+    fixes loadparts
+
+commit 0385867360201969390729299fbd88b7f5fe2698
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Thu Mar 18 13:50:39 2021 +0100
+
+    jobrequest aanpasen mvvm
+
+commit af4edfdff18e64ba772e4201b6fd59ce2d75fd3e
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 18 12:46:41 2021 +0100
+
+    sending jobrequest
+
+commit bf2abb960252f8384acc10e581b457ba56ecd1dc
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 18 12:45:19 2021 +0100
+
+    fixes
+
+commit 7394e1d3d9ab7a0ae6f0370ef2ba806c9fcce251
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 18 12:05:37 2021 +0100
+
+    fixes
+
+commit d92d2cfb7fd442043c903c52a9c641c7da419e91
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 18 12:03:28 2021 +0100
+
+    buggs
+
+commit 024ccd3c32b385e42fcac4d0a1c23e977b7f8281
+Merge: 1c871b0 05bfca9
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 18 11:56:14 2021 +0100
+
+    merde jimmy
+
+commit a56f6470627acda50b8b4137176008abc819b2ac
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 18 11:49:09 2021 +0100
+
+    show parts in listbox
+
+commit 05bfca9bcbcabc9a0e83a9c3063db33e2d62f619
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 18 11:39:52 2021 +0100
+
+    Datails en aanpassen mvvm get request from server
+
+commit 8ce88ba523b213c7c16edbc9a1a3bc997e3dde15
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Mon Mar 15 17:33:59 2021 +0100
+
+    DataBinding failures- fixed
+
+commit 49728f00768f6857686449323fd44ba2dae43549
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Mon Mar 15 17:25:59 2021 +0100
+
+    update
+
+commit 4d685cba86fd0bd7083d3dc72722c6a7b65729e3
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Mon Mar 15 17:08:49 2021 +0100
+
+    Details loading
+
+commit aea4f2aa0d90d8c1f9c60433b8dbc2a1269ec0ec
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Mon Mar 15 16:29:43 2021 +0100
+
+    jobrequest aanpassen
+
+commit 5d6e5ab133d5ba00adeef0daa68e6ee1f92e87e9
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Mon Mar 15 16:12:52 2021 +0100
+
+    Details update
+
+commit b56c477b2718cbecdfa7732e76e37c31ff3d9ed4
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Mon Mar 15 15:46:50 2021 +0100
+
+    details
+
+commit 41fb34f64b067b536afd9d00e260b0d40d3f54b2
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Mon Mar 15 14:49:33 2021 +0100
+
+    update
+
+commit deea5bc67112eb7442d3587e9300304c9304b92b
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Mon Mar 15 14:16:50 2021 +0100
+
+    overview details link
+
+commit 4753cda3692eba2e92e2b1069670c9d9b5eab31f
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Mon Mar 15 14:13:37 2021 +0100
+
+    jobRequestDetail databinding ok
+
+commit baabfb491e6d87d911d0857e38155bc741aac556
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Mon Mar 15 14:00:11 2021 +0100
+
+    databinding is job request detail
+
+commit 1bd7e481e3ebdde039b7fcbf7f161fb93927d89a
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Mon Mar 15 13:37:37 2021 +0100
+
+    Jobrequest MVVM changes
+
+commit a54ac192074dde15db0ebecee7ddb481a7f3f511
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Mon Mar 15 12:29:08 2021 +0100
+
+    details MVVM
+
+commit 5687936226fe8083c6e0710f8708ce0787effb9a
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Mon Mar 15 12:24:44 2021 +0100
+
+    update
+
+commit f481b6e40ad086c50b00977ea89bd55e0c425d1c
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Mon Mar 15 12:21:29 2021 +0100
+
+    overview update
+
+commit 95395c2a61f214c4f4baf0e95d1804c358ac3aae
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Mon Mar 15 12:17:55 2021 +0100
+
+    overview changes
+
+commit 667b1644a8a4edd5a0821478f78e5b406f5587cb
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Mon Mar 15 12:14:33 2021 +0100
+
+    overview mvvm
+
+commit c56d5774aeecbaa047c0d82c2cde275f7fb2c22d
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Mon Mar 15 11:45:13 2021 +0100
+
+    error fixes for succesful build
+
+commit 160f81e81cddff4773b694af9055f07fe8459219
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Mon Mar 15 11:14:47 2021 +0100
+
+    changes
+
+commit e929a77ec36ec53e606e82ed942b88c6384f1a92
+Merge: 14a8b05 158f4db
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Mon Mar 15 09:31:52 2021 +0100
+
+    merge bianca
+
+commit 158f4db62e1c9cc9843a8cf57d5509f9ac5e1f94
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Mon Mar 15 09:30:43 2021 +0100
+
+    MVVM JobRequestViewModel - variables
+
+commit 14a8b05d8eb5d5b54e957fdf101c5e63f5004f1f
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Mon Mar 15 09:22:15 2021 +0100
+
+    jobrequest xaml changes
+
+commit 1c871b0b4d86afc7dcb350fc77cdeaa878d0a3d7
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Mon Mar 15 09:19:14 2021 +0100
+
+    jobrequest.xaml mvvm implement
+
+commit d298b88f07ef1c8bd8297021358d6901c3daad5e
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Mon Mar 15 08:49:08 2021 +0100
+
+    mvvm errors fixed
+
+commit 04d9208d86252e5a32123cc7464226eac68a59fb
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Mon Mar 15 08:44:21 2021 +0100
+
+    folder fixes
+
+commit 0c9e5d3298df6b28fc089d4a40b6ebda51b3c192
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Mon Mar 15 08:24:19 2021 +0100
+
+    base mvvm implementation
+
+commit 9f778811c611168c385ea508ef32260c60aed1c3
+Merge: 41b5aa3 563a7e6
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Fri Mar 12 16:40:38 2021 +0100
+
+    Merge branch 'master' of https://github.com/2021WPL1Groep2/ProjectWPL1 into laurent
+
+commit 41b5aa306774d2e05d74986c423a53864dc3b7a8
+Merge: f098a9e a781bbb
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Fri Mar 12 16:40:23 2021 +0100
+
+    merge master temporary
+
+commit 563a7e6dd195a5264c261df864a0601234937882
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 11 17:48:16 2021 +0100
+
+    Jimmy
+
+commit 14e792966c302c9eac789940b8592fb2d5fbe5f1
+Merge: a781bbb a8cb304
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 11 17:42:06 2021 +0100
+
+    Merge Jimmy
+
+commit a8cb304182e4ba6691b9217d825f9169fe1dde30
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 11 16:57:20 2021 +0100
+
+    Overview MVVM (ToList, OpenDetails, ApproveRequest, DeleteRequest, EditRequest, links between screens)
+
+commit f098a9eb87285e213d4d7a8eb65fd0263d3b8210
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Thu Mar 11 16:49:30 2021 +0100
+
+    jobrequest.xaml changed
+
+commit a781bbb0d918492e0ed7f92e1c9d70f9a25425f2
+Merge: 275b50a 5241ccd
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 11 16:45:29 2021 +0100
+
+    merge bianca
+
+commit 275b50ae9db392ccf94ad5d337893e41cf044002
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 11 16:39:57 2021 +0100
+
+    update
+
+commit 5241ccd33e968c185c2e78a33f52c43aaec5eaf2
+Merge: ccbc9dc 44d69c0
+Author: Stach Verkest <r0851119@student.vives.be>
+Date:   Thu Mar 11 16:37:42 2021 +0100
+
+    merge stach
+
+commit 44d69c0f880aa62bd45c86b15db7bcefda2c44f2
+Author: Stach Verkest <r0851119@student.vives.be>
+Date:   Thu Mar 11 16:32:44 2021 +0100
+
+    Button 'request goedkeuren' en 'request aanpassen'
+
+commit ccbc9dc1f337a7e54124901b03c8b9ecb9760dbc
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Thu Mar 11 16:28:17 2021 +0100
+
+    Viewmodel voor form en login, mapping
+
+commit fa5d92ebb8f36c631aabe40de7e5dd7a409d59cf
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 11 16:26:50 2021 +0100
+
+    MVVM work in progress
+
+commit 7a7ff7c3c3082721f74538c18bbe737b0ab68780
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Thu Mar 11 16:25:42 2021 +0100
+
+    job request ready for testing and debugging
+
+commit 8f2aa39a2c2cb5d25ab4789df17bab9bdbd08f57
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 11 15:41:08 2021 +0100
+
+    overview mvvm
+
+commit 663a072a65d1119189dc9c3f594420d097da7f8b
+Author: Stach Verkest <r0851119@student.vives.be>
+Date:   Thu Mar 11 14:31:35 2021 +0100
+
+    Aanvulling DAO
+
+commit 5584bc1e16233d45932d67b155db69544e8525d4
+Merge: 688c8b3 56699ef
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 11 14:30:17 2021 +0100
+
+    merge
+
+commit 56699effbb86e1c13a68e035480dad45a3678598
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 11 12:40:28 2021 +0100
+
+    update cancel-buttons for all the screens(JobRequest/ Overview/ PersonalLeave/ CollectiveLeave) - using MVVM
+
+commit 688c8b3c072a680a03b5dd31354628758dd15d8d
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 11 11:56:19 2021 +0100
+
+    Update overview backend
+
+commit f9dc47c2ae32c42fb61681db672582e6248de728
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 11 11:46:05 2021 +0100
+
+    Approve button backend
+
+commit d3e70a6bdac9f8d774e2ed4cd68606e16c4448f1
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 11 11:36:36 2021 +0100
+
+    Data binding, MVVM - HomeScreen
+
+commit d3f2b07c77ad4fff0e8774a2dbf593d0de4612dd
+Merge: f0ffda1 250f508
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 11 09:59:31 2021 +0100
+
+    link between overview & Jobrequest detail, JobRequest Aanpassen
+
+commit f0ffda15c03d54f181a8897787f3496fa738b4ac
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 11 09:00:12 2021 +0100
+
+    changes overview backend
+
+commit 250f5081ff226fa097a620ef462132936bc638fe
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 11 08:46:42 2021 +0100
+
+    update database
+
+commit c3126c8f4cb0b0bcbac705b0550fe52bc0b2f898
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Mon Mar 8 20:14:54 2021 +0100
+
+    indentation fixes
+
+commit c02cfb70e1f256d3da06d2c2edc0b4e989bfabab
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Mon Mar 8 20:13:48 2021 +0100
+
+    last fixes
+
+commit d30f3a2357165ab539e8508771b16ba12b7d7cfa
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Mon Mar 8 20:12:10 2021 +0100
+
+    bugfixes in faulty merging
+
+commit f032a6ac52ca478c5a364a709813536aed28a533
+Merge: 678ba84 d572b91
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Mon Mar 8 17:40:32 2021 +0100
+
+    merge thibaut
+
+commit 678ba842c9f057ef1217a5ecfcb7ced0bb7ec07b
+Merge: 00f288c 33de0ec
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Mon Mar 8 17:35:40 2021 +0100
+
+    merge laurent > master
+
+commit 33de0ec47d8de7c05447740f9fc7e54557758e2b
+Merge: 6bb9804 0ffb8a0
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Mon Mar 8 17:29:16 2021 +0100
+
+    merge
+
+commit 00f288cf8321bf0d44a169821749f50c4456e911
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Mon Mar 8 17:25:37 2021 +0100
+
+    jobrequest almost done
+
+commit d572b9168d5bdd11c5c8962eeaa37ea9fcd9e9fa
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Mon Mar 8 17:24:01 2021 +0100
+
+    detail window bijna af, eut nog veranderen
+
+commit 6bb98046dd9408499220b73ef14edc1821554267
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Mon Mar 8 17:22:23 2021 +0100
+
+    changes connections
+
+commit 0ffb8a0544524bfc7a5d2cd5bbb2e14ef83a93e4
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Mon Mar 8 17:10:14 2021 +0100
+
+    LoadJobRequest
+
+commit 172c17fc1df9e7dc7399b5b5a522e6a28a575e68
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Mon Mar 8 16:36:13 2021 +0100
+
+    jobrequest detail en parts af, EUT NOG NIET
+
+commit 58fbc71bbead9ff53a9ea69c5de5be2220b17534
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Mon Mar 8 16:32:45 2021 +0100
+
+    final screns
+
+commit e45778532548313cea1e90d276c8c11a507b408e
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Mon Mar 8 14:54:55 2021 +0100
+
+    List overview
+
+commit f17ae33f11b4ce1838b97bab46d23b6ddb55d096
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Mon Mar 8 14:54:07 2021 +0100
+
+    Form
+
+commit a369e5c4fe2eab1b2f31f39426b35864107de25c
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Mon Mar 8 14:31:29 2021 +0100
+
+    Login Screen + Login Form(Front End) + connections
+
+commit 92b9cc299c9f8f1c4aaeec1dcc47683f83a3e6c2
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Mon Mar 8 14:26:23 2021 +0100
+
+    Funtions
+
+commit e3f661b41712eb671998fba8604b36a3847d97e1
+Merge: 2eb716c c3ad512
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Mon Mar 8 14:19:23 2021 +0100
+
+    Dao
+
+commit fa3dd737a8d79623914e28037d98571d4d6fec06
+Merge: f551ce4 c3ad512
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Mon Mar 8 13:50:42 2021 +0100
+
+    dao import
+
+commit 86e19fc7671e9afd2aac66f2a921ef4abae087cd
+Merge: 5ffd705 c3ad512
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Mon Mar 8 13:37:50 2021 +0100
+
+    dao added from bianca branch
+
+commit 5ffd7058610181d4f64eb3bb6484b5ee3875a465
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Mon Mar 8 13:35:36 2021 +0100
+
+    updated jobrequest
+
+commit c3ad5121a7601dc10eb481d594504bd4591c9081
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Mon Mar 8 12:43:54 2021 +0100
+
+    CollectiveLeave(holidays added + department combobox items removed) , Dao(work in progress) ,
+
+commit 2eb716c8aef76b30f1c9f59a0bb1bcd80fbe679d
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Mon Mar 8 12:20:02 2021 +0100
+
+    Open JobRequestDetail, open JobRequest Aanpassen, delete JobRequest, Approve jobRequest
+
+commit f551ce4540adcc6f8719b71bb9c06437e3009af1
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Mon Mar 8 11:10:15 2021 +0100
+
+    foute tabel Testdevision verwijderd
+
+commit 9965c5a860a15d8facf8e85192ab6dc3c7d2179f
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Mon Mar 8 10:59:04 2021 +0100
+
+    test DAO
+
+commit 5fb6faf3d686c90a0dcac7058c3ba46e6586f531
+Merge: c0d814b 333a9f8
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Mon Mar 8 09:35:15 2021 +0100
+
+    Merge branch 'master' into jimmy
+
+commit c0d814b7c6872d36f2e0f48c56f7a1737bd64299
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Mon Mar 8 09:28:31 2021 +0100
+
+    Show JobRequest
+
+commit 333a9f8f85e176a27b95f43cd82c6d515df61e17
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Mon Mar 8 09:04:58 2021 +0100
+
+    jobrequest img photo set to comment
+
+commit 20cfdca5bf1b03ba407b5782c7336d566012dbc8
+Merge: 08be711 8fd5149
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Mon Mar 8 09:04:10 2021 +0100
+
+    database changed
+
+commit 08be7116512aae76b932dc3b488549f7f4129acb
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Mon Mar 8 08:58:27 2021 +0100
+
+    database updated
+
+commit e1b54a64393327eb2e6c124f53845639722ed8e2
+Merge: c104629 8fd5149
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Mon Mar 8 08:28:24 2021 +0100
+
+    Update database
+
+commit 8fd5149ef447699f520552b1fc8eb3a0141360f7
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 4 17:25:53 2021 +0100
+
+    Update Titels
+
+commit f03b2858cda9b0a9256ad7ff512ab17438415ede
+Merge: 68294e9 e90e40d
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 4 17:02:25 2021 +0100
+
+    Merge branch 'master' into jimmy
+
+commit c104629d327d1c9fdc2404e31c490db8baf4be5d
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 4 16:55:23 2021 +0100
+
+    new class- Dao Context (work in progress)
+
+commit 68294e973311eef49444a8b59e55d421c6c966d6
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 4 16:52:52 2021 +0100
+
+    Titels Update
+
+commit e90e40de5504cb3e53744858bf52c783f41fc4c7
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Thu Mar 4 16:52:17 2021 +0100
+
+    database scripts updated
+
+commit 2db3a843bf18d845faa0260d353a250d93cabf12
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 4 15:58:10 2021 +0100
+
+    Update overview jobrequest connection
+
+commit 4601aa93f6d8b843f10f89a7f80af455eabab262
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 4 15:31:41 2021 +0100
+
+    Titles aligned to the right(screens)
+
+commit 22b95a8ceb617bd979d302f2f145c6dd44b70c50
+Merge: a194446 dac0550
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 4 15:31:13 2021 +0100
+
+    Merge branch 'bianca' into jimmy
+
+commit a19444602bf7d83f82015dfdfbf5943302a72013
+Merge: cbbba78 ad6ddf2
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 4 15:27:59 2021 +0100
+
+    Merge branch 'bianca' into jimmy
+
+commit dac0550dc28e5d46f3a22d805bcd5d43c8ee6bb0
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 4 15:22:28 2021 +0100
+
+    Logo Barco screens
+
+commit cbbba781c9d4fe8b73998fbe674d93475e09774d
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Thu Mar 4 14:40:59 2021 +0100
+
+    mainwindow modified
+
+commit ad6ddf28318b12ceb693ec2982822cf3883a5688
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 4 14:39:26 2021 +0100
+
+    Update logo homeScreen using bitmapImage
+
+commit a0b73c2712e97fe54af6237ab5570a70ca093e70
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Thu Mar 4 14:06:46 2021 +0100
+
+    homescreen modified, connection between screens made
+
+commit 96d11555fe1d7ee30a709a6ff9d6be95afbe7828
+Merge: 236b4b1 f3858f8
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 4 13:59:38 2021 +0100
+
+    connection between homescreen and the other screens
+
+commit 236b4b1110652469fa641bae92569af1e5ecec71
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 4 13:53:40 2021 +0100
+
+    home screen connected with the other screens
+
+commit f3858f8ea3595ec16e999f006dbcd3bf0ec17f03
+Merge: 748c745 e2cdd8e
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 4 13:46:56 2021 +0100
+
+    Merge branch 'jimmy'
+
+commit e2cdd8e0cf282c4aa9fdfaae0c4a1530b832373d
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 4 13:46:05 2021 +0100
+
+    Update GUI
+
+commit 748c745932e1fc55dd104f640a7199173e090704
+Merge: adc1887 44b43f4
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 4 13:37:12 2021 +0100
+
+    Update
+
+commit adc18877c3d3ee89e0cd98624a8c7094927617ca
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 4 13:31:16 2021 +0100
+
+    Changes
+
+commit 1d81469ae9dcdcdafd2f069f6d8b4e4c3652ad28
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 4 12:43:27 2021 +0100
+
+    changed
+
+commit 44b43f4e649ecdd779259793618edfea1febef69
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 4 12:42:21 2021 +0100
+
+    CollectiveRequest Changes
+
+commit 4d2a571299e4790240fd3d3bb33551eb2493f9ce
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 4 12:34:27 2021 +0100
+
+    final
+
+commit c261a680e1b35e8db675c310d5baeb92cb9b49a6
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 4 12:31:20 2021 +0100
+
+    Home screen- final version + buttons screens off
+
+commit 9b8c71b655b6a18610f23f7c438efd30d1da6bbb
+Merge: b08f4ea 6bb1c0d
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 4 12:30:56 2021 +0100
+
+    Merge branch 'master' into jimmy
+
+commit b08f4eaebe87d58fd42e487b3ced8016380e0711
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 4 12:29:24 2021 +0100
+
+    Update
+
+commit 6bb1c0d44a5e971cdc09d7e40611598d2487c9b4
+Merge: e89d389 e61a318
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 4 12:26:21 2021 +0100
+
+    Changes GUI
+
+commit 774e34bcd9852780589a475a0e355a4510665595
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 4 12:23:36 2021 +0100
+
+    HomeScreen - modified
+
+commit e61a318e0ab0a3dd46cba67d86a005d2b4ec7a36
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 4 12:23:30 2021 +0100
+
+    Changes Gui
+
+commit e89d389c566a38a82a91941f941457cbf66f340e
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Thu Mar 4 12:20:54 2021 +0100
+
+    startup uri changed until home creation
+
+commit 9ad111ce33f653ec9d841b124a76c463dec79a2e
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 4 12:18:54 2021 +0100
+
+    HomeScreen
+
+commit 2ff97eac1f210391c7bc385aa401e7ed9a1c01ff
+Merge: 14e03aa 0aa2933
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Thu Mar 4 12:18:03 2021 +0100
+
+    window bugfixes
+
+commit 14e03aaeb23b1300118b4f4f6f6165c450f8f6d9
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Thu Mar 4 12:11:06 2021 +0100
+
+    further window fixes
+
+commit e85ed168c023d258934a460bc60560bdd370810c
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Thu Mar 4 12:05:20 2021 +0100
+
+    bugfixes for windows
+
+commit 0aa2933a1095f6a394b06c7ecee6af0e17e1bd21
+Merge: f55c0c2 0ad1eab
+Author: jimmy vilvorder <79831768+JimmyVilvorder@users.noreply.github.com>
+Date:   Thu Mar 4 12:02:09 2021 +0100
+
+    Merge pull request #3 from 2021WPL1Groep2/master
+    
+    Master
+
+commit 0ad1eab80fd6c0fc3960d4113aef06307d6bb14e
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 4 11:59:24 2021 +0100
+
+    Gui Changes
+
+commit 0110a1c6b2ee2c48f929823cc31ea966b25e71c6
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 4 11:55:34 2021 +0100
+
+    gui changes
+
+commit f55c0c2c7937f243fa6b002d50ce4705e5213608
+Merge: 2ac0862 37d50a7
+Author: jimmy vilvorder <79831768+JimmyVilvorder@users.noreply.github.com>
+Date:   Thu Mar 4 11:53:03 2021 +0100
+
+    Merge pull request #2 from 2021WPL1Groep2/master
+    
+    Small Changes Gui
+
+commit 37d50a78eb70f123503a14e6ad82dfea0b476ecb
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 4 11:50:04 2021 +0100
+
+    Small Changes Gui
+
+commit 2ac086221ad7afd3499c1f47e010ee3a480b201f
+Merge: 4fc6dd0 de7c1d2
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 4 11:35:47 2021 +0100
+
+    Merge branch 'jimmy'
+
+commit de7c1d2155c646be023dcfe77824bed1b213f839
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 4 11:34:46 2021 +0100
+
+    Added Datepickers
+
+commit 4fc6dd0dac67439f77f11ced2649243415d27da9
+Merge: 3a64f77 a8e8a46
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 4 11:32:11 2021 +0100
+
+    merge bianca
+
+commit 3a64f775249152a39a4fa1ea723b0dfb8d3819a5
+Merge: b914012 240ab55
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 4 11:27:50 2021 +0100
+
+    Merge branch 'bianca'
+
+commit a8e8a466ca2c13b67a8bb2a35f4f44a772705e44
+Merge: bba9464 9c27ff3
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Thu Mar 4 11:25:57 2021 +0100
+
+    Merge branch 'master' of https://github.com/2021WPL1Groep2/ProjectWPL1
+
+commit 9c27ff35818dcc8fb28c786e55119f9ab2073734
+Merge: 6720a15 5fb34cf
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 4 11:22:44 2021 +0100
+
+    Merge branch 'jimmy'
+
+commit bba9464ce4b7ad2607bb917e5b0ef498930bd88e
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Thu Mar 4 11:13:46 2021 +0100
+
+    JobRequestDetail scherm af
+
+commit 5fb34cfbe205b4256b865d5a21f31bf796dab8ea
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 4 11:12:24 2021 +0100
+
+    JobRequest Naming
+
+commit 6720a15e27b53f29119ca5653f51b6aff36a74bb
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Thu Mar 4 11:12:17 2021 +0100
+
+    readme.md added
+
+commit a28c5edcc62b048c71db6bd8b140f7bf14d90b1b
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Thu Mar 4 11:11:46 2021 +0100
+
+    readme.md added
+
+commit b70d8b50767d6c7272b9f409fb4c74a95875d9f1
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Thu Mar 4 11:06:42 2021 +0100
+
+    first home screen
+
+commit 240ab55251a13e61a0aee7907440ba77014cbda8
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 4 10:51:56 2021 +0100
+
+    Names  added for: CollectiveLeave+ OverviewJR + PersonalLeave
+
+commit 75d2348bf36de3c2d6f2035b0ef14d2e6cbdeef2
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 4 10:39:02 2021 +0100
+
+    Screen : Add Team + names/buttons
+
+commit b35f40d1f4ab2f07bf96579b20758a331815ce2b
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 4 10:22:52 2021 +0100
+
+    JobRequest Update Again
+
+commit 65b6de03204298e859219e688e20d5b01e135c22
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 4 10:10:56 2021 +0100
+
+    JobRequest Update
+
+commit 04ea818b16d170136dfd42aae5040ebffbf80ec6
+Author: jimmyVilvorder <r0847354@student.vives.be>
+Date:   Thu Mar 4 10:01:04 2021 +0100
+
+    JobRequest screen added
+
+commit 5a708fc8cda9633ad1e79d682ff1ba2265752a8d
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Thu Mar 4 10:00:49 2021 +0100
+
+    jobRequest aanpassen(2)
+
+commit 4992ccbd0745cee138174c05f337c08514176523
+Author: TinaBianca <bianca.capatina@student.vives.be>
+Date:   Thu Mar 4 10:00:07 2021 +0100
+
+    Screens : PersonalLeave,CollectiveLeave,OverviewJobRequest
+
+commit e6f0e60d7e37e6db44e9e3a85f3ba9c14561333e
+Author: Thibaut Deconinck <r0753869@student.vives.be>
+Date:   Thu Mar 4 09:23:15 2021 +0100
+
+    Jobrequest aanpassen scherm toegevoegd
+
+commit b914012ce940c5dded9f1eeec22a8b115c8b10d6
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Mon Mar 1 18:57:38 2021 +0100
+
+    update xaml.cs
+
+commit 033d422a86493af4cc11fa77a41e5833b2e8eca9
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Mon Mar 1 16:57:02 2021 +0100
+
+    entity context scripts added
+
+commit c2badf43427c99594db58038f3ede7282be7e98f
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Mon Mar 1 16:40:22 2021 +0100
+
+    barco
+
+commit 203b7612e0b2bca877dcbef03183d3f9f303c75a
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Mon Mar 1 15:51:09 2021 +0100
+
+    verion errors fixed
+
+commit 1543ca345f8420f67309006c07cd4cf975dc8f93
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Mon Mar 1 15:21:26 2021 +0100
+
+    initial local commit
+
+commit 08c4e137f5e2d53dcada358a15b7af46b68d8839
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Mon Mar 1 15:19:57 2021 +0100
+
+    Add project files.
+
+commit 764832634a9e82e2a3de7b0241e21a29bf93dfb9
+Author: Developer0108 <laurentduquesnoy5@gmail.com>
+Date:   Mon Mar 1 15:19:55 2021 +0100
+
+    Add .gitignore and .gitattributes.
