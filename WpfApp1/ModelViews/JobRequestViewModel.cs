@@ -9,6 +9,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
+using Barco.ModelViews;
+using Barco.ModelViews.Settings;
+using Barco.ModelViews.smtpConfig;
 using Microsoft.Win32;
 
 /// <summary>
@@ -23,6 +26,13 @@ namespace Barco
 { //bianca
     public class JobRequestViewModel : ViewModelBase
     {
+        private static AppSettingsService<AppSettings> _appSettingsService = AppSettingsService<AppSettings>.Instance;
+
+        
+
+        private static SMTPMailCommunication smtpMailCommunication { get; set; }
+            
+
 
         public JobRequest screen;
 
@@ -77,6 +87,7 @@ namespace Barco
         public List<Eut> eutList = new List<Eut>();
         public RqRequestDetail Detail = new RqRequestDetail();
         public List<Part> parts = new List<Part>();
+
         
         List<bool> emcBoxes = new List<bool>();
         List<bool> envBoxes = new List<bool>();
@@ -158,6 +169,13 @@ namespace Barco
 
 
             txtReqInitials = GetInitialsFromReg();
+
+            var result = _appSettingsService.GetConfigurationSection<SMPTClientConfig>("SMPTClientConfig");
+            smtpMailCommunication = new SMTPMailCommunication(
+                result.QueryResult.Username,
+                result.QueryResult.SMTPPassword,
+                result.QueryResult.SMPTHost);
+
 
 
         }
@@ -396,6 +414,7 @@ namespace Barco
                     
                     dao.AddRequest(request, Detail, optional, eutList);
                     MessageBox.Show("Data has been inserted");
+                    SendMailWithSMTPRelay();
                 }
             }
             catch (FormatException ex)
@@ -403,6 +422,8 @@ namespace Barco
                 MessageBox.Show(ex.Message.ToString());
                 //MessageBox.Show("Please fill in all fields"):
             }
+
+           
 
         }
 
@@ -852,5 +873,31 @@ namespace Barco
             }
         }
 
+
+        static void SendMailWithSMTPRelay()
+        {
+            var toAddress = "bianca.capatina@student.vives.be";
+
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"Sending mail via Sendgrid SMTP Relay {toAddress} ");
+
+            var msg = smtpMailCommunication.CreateMail(toAddress,
+                "test email with SendGrid", "TestMail");
+
+            var result = smtpMailCommunication.SendMessage(msg);
+
+            if (result.Status == MailSendingStatus.Ok)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"Message send to {toAddress}");
+                return;
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine(result.Message);
+                return;
+            }
+        }
     }
 }
