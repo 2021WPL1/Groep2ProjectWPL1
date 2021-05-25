@@ -1,5 +1,4 @@
 ﻿using System;
-using Barco.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -18,6 +17,11 @@ namespace Barco
 
         public virtual DbSet<Eut> Eut { get; set; }
         public virtual DbSet<Person> Person { get; set; }
+        public virtual DbSet<PlPlanning> PlPlanning { get; set; }
+        public virtual DbSet<PlPlanningsKalender> PlPlanningsKalender { get; set; }
+        public virtual DbSet<PlResources> PlResources { get; set; }
+        public virtual DbSet<PlResourcesDivision> PlResourcesDivision { get; set; }
+        public virtual DbSet<PlVerletdagen> PlVerletdagen { get; set; }
         public virtual DbSet<RqBarcoDivision> RqBarcoDivision { get; set; }
         public virtual DbSet<RqBarcoDivisionPerson> RqBarcoDivisionPerson { get; set; }
         public virtual DbSet<RqJobNature> RqJobNature { get; set; }
@@ -25,6 +29,7 @@ namespace Barco
         public virtual DbSet<RqRequest> RqRequest { get; set; }
         public virtual DbSet<RqRequestDetail> RqRequestDetail { get; set; }
         public virtual DbSet<RqTestDevision> RqTestDevision { get; set; }
+        public virtual DbSet<Statistiek> Statistiek { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -70,6 +75,158 @@ namespace Barco
                 entity.Property(e => e.Familienaam).HasMaxLength(50);
 
                 entity.Property(e => e.Voornaam).HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<PlPlanning>(entity =>
+            {
+                entity.HasKey(e => e.IdPlanning)
+                    .HasName("planning_PK");
+
+                entity.ToTable("Pl_planning");
+
+                entity.Property(e => e.IdPlanning)
+                    .HasColumnName("id_planning")
+                    .ValueGeneratedNever();
+
+                entity.Property(e => e.DueDate).HasColumnType("date");
+
+                entity.Property(e => e.IdRequest).HasColumnName("id_request");
+
+                entity.Property(e => e.JrNr)
+                    .HasColumnName("JR_Nr")
+                    .HasMaxLength(10);
+
+                entity.Property(e => e.Requestdate)
+                    .HasColumnName("requestdate")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.TestDiv)
+                    .HasColumnName("testDiv")
+                    .HasMaxLength(4);
+
+                entity.Property(e => e.TestDivPlanDate)
+                    .HasColumnName("testDiv_planDate")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.TestDivStatus)
+                    .HasColumnName("testDiv_status")
+                    .HasMaxLength(20);
+
+                entity.HasOne(d => d.IdRequestNavigation)
+                    .WithMany(p => p.PlPlanning)
+                    .HasForeignKey(d => d.IdRequest)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("planning_Rq_Request_FK");
+            });
+
+            modelBuilder.Entity<PlPlanningsKalender>(entity =>
+            {
+                entity.ToTable("Pl_planningsKalender");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.Einddatum)
+                    .HasColumnName("einddatum")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.IdRequest).HasColumnName("id_request");
+
+                entity.Property(e => e.JrNr)
+                    .HasColumnName("JR_nr")
+                    .HasMaxLength(10);
+
+                entity.Property(e => e.JrStatus)
+                    .HasColumnName("JR_status")
+                    .HasMaxLength(20);
+
+                entity.Property(e => e.Omschrijving)
+                    .HasColumnName("omschrijving")
+                    .HasMaxLength(150);
+
+                entity.Property(e => e.Reserve)
+                    .HasColumnName("reserve?")
+                    .HasMaxLength(100);
+
+                entity.Property(e => e.Resources).HasColumnName("resources");
+
+                entity.Property(e => e.Startdatum)
+                    .HasColumnName("startdatum")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.TestStatus)
+                    .HasColumnName("test_status")
+                    .HasMaxLength(20);
+
+                entity.Property(e => e.Testdiv)
+                    .HasColumnName("testdiv")
+                    .HasMaxLength(5);
+
+                entity.HasOne(d => d.IdRequestNavigation)
+                    .WithMany(p => p.PlPlanningsKalender)
+                    .HasForeignKey(d => d.IdRequest)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("planningsKalender_Rq_Request_FK");
+
+                entity.HasOne(d => d.ResourcesNavigation)
+                    .WithMany(p => p.PlPlanningsKalender)
+                    .HasForeignKey(d => d.Resources)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("planningsKalender_Resources_FK");
+            });
+
+            modelBuilder.Entity<PlResources>(entity =>
+            {
+                entity.ToTable("Pl_Resources");
+
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.KleurHex)
+                    .HasColumnName("kleur-hex")
+                    .HasMaxLength(8);
+
+                entity.Property(e => e.KleurRgb)
+                    .HasColumnName("kleur - rgb")
+                    .HasMaxLength(11);
+
+                entity.Property(e => e.Naam)
+                    .HasColumnName("naam")
+                    .HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<PlResourcesDivision>(entity =>
+            {
+                entity.ToTable("Pl_ResourcesDivision");
+
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.DivisionAfkorting)
+                    .IsRequired()
+                    .HasColumnName("Division_Afkorting")
+                    .HasMaxLength(4);
+
+                entity.Property(e => e.ResourcesId).HasColumnName("Resources_ID");
+
+                entity.HasOne(d => d.Resources)
+                    .WithMany(p => p.PlResourcesDivision)
+                    .HasForeignKey(d => d.ResourcesId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("ResourcesDivision_Resources_FK");
+            });
+
+            modelBuilder.Entity<PlVerletdagen>(entity =>
+            {
+                entity.HasKey(e => e.Datum)
+                    .HasName("Verletdagen_PK");
+
+                entity.ToTable("Pl_Verletdagen");
+
+                entity.Property(e => e.Datum)
+                    .HasColumnName("datum")
+                    .HasColumnType("date");
+
+                entity.Property(e => e.Omschrijving)
+                    .HasColumnName("omschrijving")
+                    .HasMaxLength(30);
             });
 
             modelBuilder.Entity<RqBarcoDivision>(entity =>
@@ -184,6 +341,7 @@ namespace Barco
                     .HasMaxLength(200);
 
                 entity.Property(e => e.HydraProjectNr)
+                    .IsRequired()
                     .HasColumnName("hydraProjectNr")
                     .HasMaxLength(15);
 
@@ -263,6 +421,19 @@ namespace Barco
                 entity.Property(e => e.Naam)
                     .HasColumnName("naam")
                     .HasMaxLength(50);
+            });
+
+            modelBuilder.Entity<Statistiek>(entity =>
+            {
+                entity.ToTable("statistiek");
+
+                entity.Property(e => e.Id).HasColumnName("id");
+
+                entity.Property(e => e.JrNr)
+                    .HasColumnName("JR_nr")
+                    .HasMaxLength(10);
+
+                entity.Property(e => e.Maand).HasColumnName("maand");
             });
 
             OnModelCreatingPartial(modelBuilder);
