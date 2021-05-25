@@ -332,13 +332,6 @@ namespace Barco
                     dateEut5 = e.AvailableDate.ToString();
                 }
             }
-            
-                
-
-            
-
         }
-
-
     }
 }

@@ -96,7 +96,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="306,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="JR number"/></TextBlock>
         <TextBox x:Name="txtPvgRes" Text="{Binding rqRequestDetail.Pvgresp, Mode=OneWay }" HorizontalAlignment="Left" Margin="438,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="112" IsReadOnly="True"/>
         <Label Content="PVG &#xA;Responsible" HorizontalAlignment="Left" Margin="438,196,0,0" VerticalAlignment="Top" Width="96" Height="47"/>
-        <Label x:Name="lblRequestDate" Content="{Binding Request.RequestDate, Mode=TwoWay}" HorizontalAlignment="Left" Margin="176,108,0,0" VerticalAlignment="Top" Width="83"/>
+        <Label x:Name="lblRequestDate" Content="{Binding Request.RequestDate, Mode=TwoWay}" HorizontalAlignment="Left" Margin="176,108,0,0" VerticalAlignment="Top" Width="72" Height="14"/>
         <Label x:Name="lblJobRequestNumber" Content="{Binding Request.JrNumber, Mode=TwoWay}" HorizontalAlignment="Left" Margin="300,108,0,0" VerticalAlignment="Top" Width="110"/>
         <Label x:Name="lblExpectedEndDate" Content="{Binding Request.ExpectedEnddate, Mode=TwoWay}" HorizontalAlignment="Left" Margin="289,140,0,0" VerticalAlignment="Top" Width="97" Height="13"/>
         <Label x:Name="lblDateEUT1" Content="{Binding dateEut1}" HorizontalAlignment="Left" Margin="195,367,0,0" VerticalAlignment="Top" Width="65" Height="22" Padding="5,0,5,0"/>
