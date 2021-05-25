@@ -60,6 +60,8 @@ namespace Barco
         public string dateEut3 { get; set; }
         public string dateEut4 { get; set; }
         public string dateEut5 { get; set; }
+        public bool rbtnBatNo { get; set; }
+        public bool rbtnBatYes { get; set; }
 
         public JobRequestDetailViewModel(JobRequestDetail screen, int selectedId)
         {
@@ -78,6 +80,7 @@ namespace Barco
             euts = dao.GetEutWithDetailId(rqRequestDetail.IdRqDetail);
             this.screen = screen;
             fillEuts();
+            SetBatteries();
 
         }
         //Biance
@@ -332,13 +335,20 @@ namespace Barco
                     dateEut5 = e.AvailableDate.ToString();
                 }
             }
-            
-                
-
-            
 
         }
 
-
+        //thibaut
+        private void SetBatteries()
+        {
+            if(Request.Battery)
+            {
+                rbtnBatYes = true;
+            }
+            else
+            {
+                rbtnBatNo = true;
+            }
+        }
     }
 }
