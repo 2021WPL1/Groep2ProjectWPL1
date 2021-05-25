@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace Barco.ModelViews.Settings
 {
+    //bianca
    
     public class AppSettingsService<TAppSettings>
     {
@@ -17,7 +18,10 @@ namespace Barco.ModelViews.Settings
 
         public TAppSettings AppSettings { get => _appSettings; }
 
-        private string _appSettingsBasePath { get => Path.Combine(Directory.GetCurrentDirectory(), "Settings", "appSettings"); }
+        private string _appSettingsBasePath
+        {
+            get => @"C:\Users\cbian\source\repos\Werkplekleren1\2021WPL1Groep2\ProjectWPL1\WpfApp1\appSettings";
+        }
 
         public AppSettingsService()
         {
@@ -48,18 +52,13 @@ namespace Barco.ModelViews.Settings
         public ConfigurationQueryResult<TSection> GetConfigurationSection<TSection>(string sectionName)
         {
             var result = new ConfigurationQueryResult<TSection>() { Status = QueryStatus.Ok };
-            // demo GetSection method
-            // controleer of de sectie bestaat in de appsettings file
-            // section name is de key name in het json bestand, dus als de key bestaat in het json bestand
             if (!_configRoot.GetSection(sectionName).Exists())
             {
                 result.Status = QueryStatus.HasError;
                 result.Error = new Exception("The sectionname is not found in the settingsfile");
-                //exit of method, function
                 return result;
             }
-            // demo GetSection method, let op de extra Get met Type Parameter
-            // Get<TSection>() verzorgt de effectieve binding, anders is het result null !!!
+  
             result.QueryResult = _configRoot.GetSection(sectionName).Get<TSection>();
             return result;
         }
