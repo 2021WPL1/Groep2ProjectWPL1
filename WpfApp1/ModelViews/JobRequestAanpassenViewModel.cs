@@ -41,7 +41,7 @@ namespace Barco
         public List<String> ListPartNet { get; set; }
         public List<String> ListPartGross { get; set; }
         public string selectedDivision { get; set; }
-        public string SelectedJobNature { get; set; }
+        public string selectedJobNature { get; set; }
 
 
 
@@ -256,6 +256,17 @@ namespace Barco
                 OnPropertyChanged();
             }
         }
+
+        public string SelectedJobNature
+        {
+            get { return selectedJobNature; }
+            set
+            {
+                selectedDivision = value;
+                OnPropertyChanged();
+
+            }
+        }
         /// <summary>
         /// jimmy
         /// </summary>
@@ -280,8 +291,8 @@ namespace Barco
             dateExpectedEnd = Request.ExpectedEnddate;
             txtRemark = RqOptionel.Remarks;
             txtLinkTestplan = RqOptionel.Link;
-            SelectedDivision = Request.BarcoDivision;
-            SelectedJobNature = Request.JobNature;
+            selectedDivision = Request.BarcoDivision;
+            selectedJobNature = Request.JobNature;
 
         }
 
