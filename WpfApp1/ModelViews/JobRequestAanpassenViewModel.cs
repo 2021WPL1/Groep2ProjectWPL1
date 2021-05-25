@@ -23,6 +23,7 @@ namespace Barco
         public string txtEutProjectname { get; set; } //EUT Project name
         public string txtRemark { get; set; } // special remarks
         public string txtFunction { get; set; } //function
+        public string txtPvgRes { get; set; }
         public RqRequest CurrentRequest { get; set; }
         public RqOptionel CurrentOptionel { get; set; }
         public RqRequestDetail CurrentRequestDetail { get; set; }
@@ -39,7 +40,7 @@ namespace Barco
         public List<String> ListPartsnumbers { get; set; }
         public List<String> ListPartNet { get; set; }
         public List<String> ListPartGross { get; set; }
-        public string SelectedDivision { get; set; }
+        public string selectedDivision { get; set; }
         public string SelectedJobNature { get; set; }
 
 
@@ -67,6 +68,7 @@ namespace Barco
             this.Request = dao.GetRequest(selectedId);
             this.RqOptionel = dao.GetOptionel(selectedId);
             this.RqRequestDetail = dao.GetRequestDetail(selectedId);
+            
 
             LoadPartGrossWeight();
             LoadPartNetWeight();
@@ -98,7 +100,14 @@ namespace Barco
 
         public void SaveChanges()
         {
-
+            Request.Requester = txtReqInitials;
+            RqRequestDetail.Pvgresp = txtPvgRes;
+            Request.EutProjectname = txtEutProjectname;
+            Request.ExpectedEnddate = dateExpectedEnd;
+            RqOptionel.Remarks = txtRemark;
+            RqOptionel.Link = txtLinkTestplan;
+            Request.BarcoDivision = selectedDivision;
+            Request.JobNature = SelectedJobNature;
             dao.saveChanges();
         }
         /// <summary>
@@ -235,6 +244,15 @@ namespace Barco
             set
             {
                 selectedPart = value;
+                OnPropertyChanged();
+            }
+        }
+        public string SelectedDivision
+        {
+            get { return selectedDivision; }
+            set
+            {
+                selectedDivision = value;
                 OnPropertyChanged();
             }
         }
