@@ -22,8 +22,8 @@ namespace Barco
         public ICommand AddCommand { get; set; }
         public ICommand RemoveCommand { get; set; }
         public RqRequest Request { get; set; }
-        public RqOptionel rqOptionel { get; set; }
-        public RqRequestDetail rqRequestDetail { get; set; }
+        public RqOptionel RqOptionel { get; set; }
+        public RqRequestDetail RqRequestDetail { get; set; }
         public List<String> ListPartsnumbers { get; set; }
         public List<String> ListPartNet { get; set; }
         public List<String> ListPartGross { get; set; }
@@ -50,8 +50,8 @@ namespace Barco
             AddCommand = new DelegateCommand(AddPart);
             RemoveCommand = new DelegateCommand(RemovePart);
             this.Request = dao.GetRequest(selectedId);
-            this.rqOptionel = dao.GetOptionel(selectedId);
-            this.rqRequestDetail = dao.GetRequestDetail(selectedId);
+            this.RqOptionel = dao.GetOptionel(selectedId);
+            this.RqRequestDetail = dao.GetRequestDetail(selectedId);
 
             LoadPartGrossWeight();
             LoadPartNetWeight();
