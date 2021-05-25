@@ -9,6 +9,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
+using Barco.ModelViews;
+using Barco.ModelViews.Settings;
+using Barco.ModelViews.smtpConfig;
 using Microsoft.Win32;
 
 /// <summary>
@@ -23,6 +26,9 @@ namespace Barco
 { //bianca
     public class JobRequestViewModel : ViewModelBase
     {
+        
+            
+
 
         public JobRequest screen;
 
@@ -77,7 +83,6 @@ namespace Barco
         public List<Eut> eutList = new List<Eut>();
         public RqRequestDetail Detail = new RqRequestDetail();//to do delete 
         public List<Part> parts = new List<Part>();
-        public List<RqRequestDetail> detailList = new List<RqRequestDetail>();
         
         List<bool> emcBoxes = new List<bool>();
         List<bool> envBoxes = new List<bool>();
@@ -159,6 +164,9 @@ namespace Barco
 
 
             txtReqInitials = GetInitialsFromReg();
+
+           
+
 
 
         }
@@ -403,6 +411,8 @@ namespace Barco
                 MessageBox.Show(ex.Message.ToString());
                 //MessageBox.Show("Please fill in all fields"):
             }
+
+           
 
         }
 
@@ -1060,5 +1070,9 @@ namespace Barco
         }
 
 
+      
+
+
+      
     }
 }
