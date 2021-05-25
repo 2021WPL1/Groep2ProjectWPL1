@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Barco.Data
+namespace Barco
 {
     public partial class RqRequestDetail
     {

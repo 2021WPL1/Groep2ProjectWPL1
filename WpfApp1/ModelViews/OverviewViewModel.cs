@@ -1,15 +1,15 @@
-﻿using Prism.Commands;
+﻿using Barco.Data;
+using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Windows;
 using System.Windows.Input;
-using Barco.Data;
-using System.Windows.Media.Imaging;
 
 namespace Barco
 {//bianca
-   public class OverviewViewModel: ViewModelBase
+    public class OverviewViewModel : ViewModelBase
     {
         private OverviewJobRequest overview;
         public ICommand CancelCommand { get; set; }
@@ -35,20 +35,24 @@ namespace Barco
             OpenDetailsCommand = new DelegateCommand(OpenDetails);
             DeleteRequestCommand = new DelegateCommand(DeleteRequest);
             EditRequestCommand = new DelegateCommand(EditRequest);
+            Load();
             this.overview = overview;
         }
-
+        //jimmy
+        // laad alle requests in een ObservableCollection om zo in de GUI weer te geven
         public void Load()
         {
-            var rqRequests = dao.getAllRqRequests();
+            var rqRequests = dao.GetAllRqRequests();
             RqRequests.Clear();
             foreach (var rqRequest in rqRequests)
             {
                 RqRequests.Add(rqRequest);
             }
 
-        }
 
+        }
+        //bianca
+        //Sluit de overview en opent home
         public void CancelButton()
         {
             HomeScreen home = new HomeScreen();
@@ -56,44 +60,84 @@ namespace Barco
             home.ShowDialog();
 
         }
+        //jimmy
+        //Verranderd de Jr status van het geselecteerde request
         public void Approve()
         {
-            
-                dao.approveRqRequest(_selectedRequest);
-            
-        }
 
+            if (_selectedRequest != null)
+            {
+                dao.ApproveRqRequest(_selectedRequest);
+            }
+            else
+            {
+
+                MessageBox.Show("Select a JobRequest");
+                
+            }
+
+        }
+        //jimmy
+        //opent de Details van de geselecteerde request en geeft het geselecteerde id mee
         public void OpenDetails()
         {
-            try
+            if (_selectedRequest != null)
             {
+                int SelectedId = _selectedRequest.IdRequest;
+                JobRequestDetail jobRequestDetail = new JobRequestDetail(SelectedId);
+                overview.Close();
+                jobRequestDetail.ShowDialog();
 
-            int SelectedId = _selectedRequest.IdRequest;
-            JobRequestDetail jobRequestDetail = new JobRequestDetail(SelectedId);
-            overview.Close();
-            jobRequestDetail.ShowDialog();
 
             }
-            catch (Exception)
+            else
             {
-
-                throw;
+                MessageBox.Show("Select a JobRequest");
             }
+            
+
+
         }
-
+        //jimmy
+        //verwijderd de geselecteerd request
         public void DeleteRequest()
         {
-            dao.deleteJobRequest(_selectedRequest.IdRequest);
-            Load();
-        }
+            if (_selectedRequest != null)
+            {
+                dao.DeleteJobRequest(_selectedRequest.IdRequest);
+                Load();
 
+            }
+            else
+            {
+                MessageBox.Show("Select a JobRequest");
+
+            }
+            
+        }
+        //jimmy
+        //opent de request aanpassen window en geeft de geselecteerde id mee
         public void EditRequest()
         {
-            
-           JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen();
 
-            jobRequestAanpassen.ShowDialog();
+            if (_selectedRequest != null)
+            {
+                int SelectedId = _selectedRequest.IdRequest;
+
+                JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen(SelectedId);
+                overview.Close();
+                jobRequestAanpassen.ShowDialog();
+                
+            }
+            else
+            {
+                MessageBox.Show("Select a JobRequest");
+
+            }
+            
         }
+        //jimmy
+        //geeft de geselecteerde request terug
         public RqRequest SelectedRqRequest
         {
             get { return _selectedRequest; }
@@ -102,15 +146,6 @@ namespace Barco
                 _selectedRequest = value;
                 OnPropertyChanged();
             }
-        }
-
-        public void ShowDetails()
-        {
-            int selectedRequestId = _selectedRequest.IdRequest;
-            JobRequestDetail jobRequestDetail = new JobRequestDetail(selectedRequestId);
-            overview.Close();
-            jobRequestDetail.ShowDialog();
-
         }
 
 

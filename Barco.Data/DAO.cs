@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace Barco.Data
 {
@@ -46,10 +47,10 @@ namespace Barco.Data
             return person;
         }
 
-        
+       
        
         // bianca- get a person with the abbreviation
-        public Person getPersonWithAbb(string abb)
+        public Person GetPersonWithAbb(string abb)
         {
             return context.Person.FirstOrDefault(a => a.Afkorting == abb);
         }
@@ -65,109 +66,113 @@ namespace Barco.Data
         }
         //bianca
         // delete a person from the database
-        public void removePerson(string abb)
+        public void RemovePerson(string abb)
         {
-            context.Person.Remove(getPersonWithAbb(abb));
+            context.Person.Remove(GetPersonWithAbb(abb));
             saveChanges();
         }
 
 
         
         //  bianca
-        public RqRequest getRequestDate()
+        public RqRequest GetRequestDate()
         {
             return context.RqRequest.FirstOrDefault(a => a.RequestDate == DateTime.Now);
-
+            
 
         }
         //Jimmy
         // get all the RqRequests 
-        public ICollection<RqRequest> getAllRqRequests()
+        public ICollection<RqRequest> GetAllRqRequests()
         {
             return context.RqRequest.ToList();
         }
         //Jimmy
         // Get RqRequest by Id
-        public RqRequest getRqRequestById(int id)
+        public RqRequest GetRqRequestById(int id)
         {
             return context.RqRequest.FirstOrDefault(r => r.IdRequest == id);
         }
 
         //jimmy
         // Get RqRequestDetails by Id
-        public RqRequestDetail getRqRequestDetailById(int id)
+        public RqRequestDetail GetRqRequestDetailById(int id)
         {
             return context.RqRequestDetail.FirstOrDefault(r => r.IdRqDetail == id);
         }
 
-       
 
-        //Jimmy
+
+        //Jimmy- delete job request
+        //Thibaut,Bianca - delete all the connections with the job request 
+
         // Delete Selected JobRequest
-        public void deleteJobRequest(int id)
+        public void DeleteJobRequest(int id)
         {
-            context.RqRequest.Remove(getRqRequestById(id));
+            context.Eut.Remove(GetEut(GetRqRequestDetailByRequestId(id).IdRqDetail));
+            context.RqRequestDetail.Remove(GetRqRequestDetailByRequestId(id));
+            context.RqOptionel.Remove(GetOptionel(GetOptionalByRequestId(id).IdRequest));
+            context.RqRequest.Remove(GetRqRequestById(id));
             saveChanges();
         }
-        //Jimmy
-        // Change JrStatus to Approved
-        public void approveRqRequest(RqRequest rqRequest)
+        //thibaut, bianca
+        //get an optional id from requestId
+        public RqOptionel GetOptionalByRequestId(int id)
+        {
+            return context.RqOptionel.FirstOrDefault(r => r.IdRequest == id);
+        }
+
+        //thibaut, bianca
+        // get a detail id from requestId
+        public RqRequestDetail GetRqRequestDetailByRequestId(int id)
+        {
+            return context.RqRequestDetail.FirstOrDefault(r => r.IdRequest == id);
+        }
+        // jimmy
+        public void ApproveRqRequest(RqRequest rqRequest)
         {
             rqRequest.JrStatus = "Approved";
             saveChanges();
         }
 
-        // bianca
-        public RqRequest addRequestDate()
-        { RqRequest rqRequest = new RqRequest
-           { 
-            RequestDate = DateTime.Now
-
-              };
-            context.RqRequest.Add(rqRequest);
-
-            saveChanges();
-
-            return rqRequest;
-        }
-
+       
 
      
 
         //bianca  
-        public List<RqBarcoDivision> getDepartment()
+        public List<RqBarcoDivision> GetDepartment()
         { 
             return context.RqBarcoDivision.ToList();
         }
 
         //bianca 
 
-        public List<RqBarcoDivision> getDivisions()
+        public List<RqBarcoDivision> GetDivisions()
         {
             return context.RqBarcoDivision.ToList();
         }
         
-        public List<RqJobNature> getJobNatures()
+        public List<RqJobNature> GetJobNatures()
         {
             return context.RqJobNature.ToList();
         }
 
         //request detail opvragen op basis van selected index
-        public RqRequest getRequest(int requestId)
+        public RqRequest GetRequest(int requestId)
         {
             return context.RqRequest.Where(rq => rq.IdRequest == requestId).FirstOrDefault() ;
         }
         //geeft een requestDetail object op basis van het juiste requestID veld
-        public RqRequestDetail getRequestDetail(int requestId)
+        public RqRequestDetail GetRequestDetail(int requestId)
         {
             return context.RqRequestDetail.Where(det => det.IdRequest == requestId).FirstOrDefault();
         }
         //geeft een eut object op basis van het id van RequestDetail tabel
-        public Eut getEut(int idReqDet)
+        public Eut GetEut(int idReqDet)
         {
             return context.Eut.Where(eut => eut.IdRqDetail == idReqDet).FirstOrDefault() ;
         }
-        public RqOptionel getOptionel(int idReq)
+        public RqOptionel GetOptionel(int idReq)
         {
             return context.RqOptionel.Where(opt => opt.IdRequest == idReq).FirstOrDefault();
         }
@@ -178,7 +183,7 @@ namespace Barco.Data
             return context.RqBarcoDivision.FirstOrDefault(a => a.Afkorting == abb);
         }
 
-        public bool ifDivisionExists(string abb)
+        public bool IfDivisionExists(string abb)
         {
             bool result = false;
             if (context.RqBarcoDivision.Any(a => a.Afkorting == abb))
@@ -195,7 +200,7 @@ namespace Barco.Data
         }
 
         // Geeft devision
-        public List<RqTestDevision> getTestDevisions()
+        public List<RqTestDevision> GetTestDevisions()
         {
             return context.RqTestDevision.ToList();
         }
@@ -233,10 +238,66 @@ namespace Barco.Data
             return rqBarcoDivisionPerson;
         }
 
-        //public RqRequest editRequestStatus( )
-        //{
+
+        //Bianca
+        // Add request/ detail
+
+     public RqRequest AddRequest(RqRequest request, RqRequestDetail detail, RqOptionel optional, List<Eut> eut)
+        { 
+            try
+            {
+                context.RqRequest.Add(request);
+                context.SaveChanges();
+                AddOptional(optional);
+                AddDetail(detail);
+                AddEut(eut);
+            }
             
-        //}
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+            return request;
+          
+
+        }
+
+
+        public RqRequestDetail AddDetail(RqRequestDetail detail)
+        {
+            detail.IdRequest = int.Parse(context.RqRequest.OrderByDescending(p => p.IdRequest).Select(p => p.IdRequest).First().ToString());
+            context.RqRequestDetail.Add(detail);
+            context.SaveChanges();
+            return detail;
+        }
+
+        //thibaut
+        public RqOptionel AddOptional(RqOptionel optional)
+        {
+            optional.IdRequest =
+              int.Parse(context.RqRequest.OrderByDescending(p => p.IdRequest).Select(p => p.IdRequest).First().ToString() );
+            context.RqOptionel.Add(optional);
+            context.SaveChanges();
+            return optional;
+        }
+
+        public void AddEut(List<Eut> eutlist)
+        {
+            foreach (Eut e in eutlist)
+            {
+                e.IdRqDetail =
+                    int.Parse(context.RqRequestDetail.OrderByDescending(p => p.IdRqDetail).First().IdRqDetail.ToString());
+                context.Eut.Add(e);
+            }
+            context.SaveChanges();
+        }
+        
+        //thibaut
+        public List<Eut> GetEutWithDetailId(int id)
+        {
+
+            return context.Eut.Where(e => e.IdRqDetail == id).ToList();
+        }
 
     }
 }

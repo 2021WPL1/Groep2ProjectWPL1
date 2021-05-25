@@ -33,10 +33,11 @@ namespace Barco
             DataContext = collectiveLeaveViewModel;
 
             cbxChooseDepartment.Items.Clear();
-            cbxChooseDepartment.ItemsSource = dao.getDepartment();
+            cbxChooseDepartment.ItemsSource = dao.GetDepartment();
             cbxChooseDepartment.DisplayMemberPath = "Afkorting";
             cbxChooseDepartment.SelectedValuePath = "Afkorting";
 
+            
 
         }
 
@@ -62,5 +63,7 @@ namespace Barco
                 + dateEndHoliday.SelectedDate);
 
         }
+
+        
     }
 }

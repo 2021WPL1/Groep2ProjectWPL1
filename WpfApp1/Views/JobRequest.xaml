@@ -5,35 +5,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Barco"
         mc:Ignorable="d"
-        Title="JobRequest" Height="600" Width="850">
-    <Grid>
+        Title="JobRequest" Height="800" Width="850">
+
+    <Grid >
+
+
+
         <TextBlock HorizontalAlignment="Left" Margin="43,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Text="Requester "/><Run Language="nl-be" Text="Initials"/></TextBlock>
-        <TextBox x:Name="txtReqInitials" HorizontalAlignment="Left" Margin="42,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
+
+        <TextBox x:Name="txtReqInitials" Text="{Binding txtReqInitials, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="42,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsEnabled="False" FontWeight="Bold"/>
+
         <TextBlock HorizontalAlignment="Left" Margin="43,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="EUT Projectname"/></TextBlock>
-        <TextBox x:Name="txtEutProjectname" HorizontalAlignment="Left" Margin="43,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
+        <TextBox x:Name="txtEutProjectname" Text="{Binding txtEutProjectname, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="43,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
         <TextBlock HorizontalAlignment="Left" Margin="168,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Division"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="298,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Job Nature"/></TextBlock>
-        <ComboBox x:Name="cmbDivision" HorizontalAlignment="Left" Margin="168,148,0,0" VerticalAlignment="Top" Width="94"/>
-        <ComboBox x:Name="cmbJobNature" HorizontalAlignment="Left" Margin="298,148,0,0" VerticalAlignment="Top" Width="94"/>
-        <TextBlock HorizontalAlignment="Left" Margin="454,289,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="15"><Run Language="nl-be" Text="Eut partnumber"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="562,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="15"><Run Language="nl-be" Text="Net weight (KG)"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="671,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" Height="15"><Run Language="nl-be" Text="Gross"/><Run Text=" weight (KG)"/></TextBlock>
-        <TextBox x:Name="txtPartNr" HorizontalAlignment="Left" Margin="461,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="14" Text="{Binding txtPartNr}"/>
-        <TextBox x:Name="txtNetWeight" HorizontalAlignment="Left" Margin="568,311,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="14" Text="{Binding txtNetWeight}"/>
-        <TextBox x:Name="txtGrossWeight" HorizontalAlignment="Left" Margin="680,310,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="14" Text="{Binding txtGrossWeight}"/>
+        <ComboBox x:Name="cmbDivision" HorizontalAlignment="Left" Margin="168,148,0,0" VerticalAlignment="Top" Width="94" SelectedValue="{Binding SelectedDivision}" SelectedIndex="0"/>
+        <ComboBox x:Name="cmbJobNature" HorizontalAlignment="Left" Margin="298,148,0,0" VerticalAlignment="Top" Width="94" SelectedValue="{Binding SelectedJobNature}" SelectedIndex="0"/>
+        <TextBlock HorizontalAlignment="Left" Margin="485,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="15"><Run Language="nl-be" Text="Eut partnumber"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="593,267,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="15"><Run Language="nl-be" Text="Net weight (KG)"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="702,265,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" Height="15"><Run Language="nl-be" Text="Gross"/><Run Text=" weight (KG)"/></TextBlock>
+        <TextBox x:Name="txtPartNr" HorizontalAlignment="Left" Margin="492,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="17" Text="{Binding txtPartNr , UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtNetWeight" HorizontalAlignment="Left" Margin="599,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="17" Text="{Binding txtNetWeight, UpdateSourceTrigger=PropertyChanged}"/>
+        <TextBox x:Name="txtGrossWeight" HorizontalAlignment="Left" Margin="711,287,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="78" Height="18" Text="{Binding txtGrossWeight, UpdateSourceTrigger=PropertyChanged}"/>
         <Button x:Name="btnAdd"
                 Command="{Binding AddCommand}"
-                Content="Add" HorizontalAlignment="Left" Margin="556,345,0,0" VerticalAlignment="Top"  Width="46" Height="17" />
+                Content="Add" HorizontalAlignment="Left" Margin="587,322,0,0" VerticalAlignment="Top"  Width="46" Height="17" />
         <Button x:Name="btnRemove" 
                 Command="{Binding RemoveCommand}"
-                Content="Remove" HorizontalAlignment="Left" Margin="628,345,0,0" VerticalAlignment="Top" Height="19" />
+                Content="Remove" HorizontalAlignment="Left" Margin="667,322,0,0" VerticalAlignment="Top" Height="17" />
         <TextBlock HorizontalAlignment="Left" Margin="43,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Batteries included:"/></TextBlock>
         <RadioButton x:Name="rbtnBatYes" Content="Yes" HorizontalAlignment="Left" Margin="43,258,0,0" VerticalAlignment="Top" IsChecked="{Binding rbtnBatYes}"/>
         <RadioButton x:Name="rbtnBatNo" Content="No" HorizontalAlignment="Left" Margin="43,278,0,0" VerticalAlignment="Top" IsChecked="{Binding rbtnBatNo}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="168,227,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Expected end date"/></TextBlock>
-        <DatePicker x:Name="dateExpectedEnd" HorizontalAlignment="Left" Margin="276,227,0,0" VerticalAlignment="Top" SelectedDate="{Binding dateExpectedEnd}"/>
-        <TextBlock HorizontalAlignment="Left" Margin="168,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Link to testplan"/></TextBlock>
-        <TextBox x:Name="txtLinkTestplan" HorizontalAlignment="Left" Margin="276,260,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" Text="{Binding txtLinkTestplan}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="189,240,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Expected end date"/></TextBlock>
+        <DatePicker x:Name="dateExpectedEnd" HorizontalAlignment="Left" Margin="297,240,0,0" VerticalAlignment="Top" SelectedDate="{Binding dateExpectedEnd}" IsTodayHighlighted="True"/>
+        <TextBlock HorizontalAlignment="Left" Margin="189,274,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Link to testplan"/></TextBlock>
+        <TextBox x:Name="txtLinkTestplan" HorizontalAlignment="Left" Margin="297,273,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102" Text="{Binding txtLinkTestplan}"/>
         <TextBlock HorizontalAlignment="Left" Margin="43,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Text="Nature of test"/><Run Language="en-be" Text=":"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="208,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32" Height="13"><Run Language="nl-be" Text="EUT1"/><LineBreak/><Run Language="nl-be"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="253,312,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32" Height="13"><Run Text="EUT"/><Run Language="nl-be" Text="2"/><LineBreak/><Run/></TextBlock>
@@ -51,11 +57,11 @@
         <CheckBox x:Name="cbEmcEut4" Content="" HorizontalAlignment="Left" Margin="349,330,0,0" VerticalAlignment="Top" IsChecked="{Binding cbEmcEut4}"/>
         <CheckBox x:Name="cbEmcEut5" Content="" HorizontalAlignment="Left" Margin="392,330,0,0" VerticalAlignment="Top"  IsChecked="{Binding cbEmcEut5}"/>
         <CheckBox x:Name="cbEmc" Content="" HorizontalAlignment="Left" Margin="168,330,0,0" VerticalAlignment="Top"  IsChecked="{Binding cbEmc}"/>
-        <CheckBox x:Name="cmEnvorimentalEut1" Content="" HorizontalAlignment="Left" Margin="212,355,0,0" VerticalAlignment="Top" IsChecked="{Binding cmEnvorimentalEut1}"/>
-        <CheckBox x:Name="cmEnvorimentalEut2" Content="" HorizontalAlignment="Left" Margin="255,355,0,0" VerticalAlignment="Top" IsChecked="{Binding cmEnvorimentalEut2}"/>
-        <CheckBox x:Name="cmEnvorimentalEut3" Content="" HorizontalAlignment="Left" Margin="302,355,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmEnvorimentalEut3}"/>
-        <CheckBox x:Name="cmEnvorimentalEut4" Content="" HorizontalAlignment="Left" Margin="349,355,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmEnvorimentalEut4}"/>
-        <CheckBox x:Name="cmEnvorimentalEut5" Content="" HorizontalAlignment="Left" Margin="392,355,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmEnvorimentalEut5}"/>
+        <CheckBox x:Name="cmEnvironmentalEut1" Content="" HorizontalAlignment="Left" Margin="212,355,0,0" VerticalAlignment="Top" IsChecked="{Binding cmEnvironmentalEut1}"/>
+        <CheckBox x:Name="cmEnvironmentalEut2" Content="" HorizontalAlignment="Left" Margin="255,355,0,0" VerticalAlignment="Top" IsChecked="{Binding cmEnvironmentalEut2}"/>
+        <CheckBox x:Name="cmEnvironmentalEut3" Content="" HorizontalAlignment="Left" Margin="302,355,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmEnvironmentalEut3}"/>
+        <CheckBox x:Name="cmEnvironmentalEut4" Content="" HorizontalAlignment="Left" Margin="349,355,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmEnvironmentalEut4}"/>
+        <CheckBox x:Name="cmEnvironmentalEut5" Content="" HorizontalAlignment="Left" Margin="392,355,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmEnvironmentalEut5}"/>
         <CheckBox x:Name="cmEnvironmental" Content="" HorizontalAlignment="Left" Margin="168,355,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmEnvironmental}"/>
         <CheckBox x:Name="cmRelEut1" Content="" HorizontalAlignment="Left" Margin="212,379,0,0" VerticalAlignment="Top" IsChecked="{Binding cmRelEut1}"/>
         <CheckBox x:Name="cmRelEut2" Content="" HorizontalAlignment="Left" Margin="255,379,0,0" VerticalAlignment="Top"  IsChecked="{Binding cmRelEut2}"/>
@@ -79,41 +85,43 @@
         <Button x:Name="btnSend"
                 Command="{Binding SendCommand}"
                 Content="Send" HorizontalAlignment="Left" Margin="579,44,0,0" VerticalAlignment="Top"  Height="19" Width="39" />
-        <TextBlock HorizontalAlignment="Left" Margin="596,388,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"><Run Text="Special remarks"/><Run Language="nl-be" Text=":"/></TextBlock>
-        <TextBox x:Name="txtRemark" HorizontalAlignment="Left" Margin="479,403,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="284" Height="91" Text="{Binding txtRemark}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="582,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"><Run Text="Special remarks"/><Run Language="nl-be" Text=":"/></TextBlock>
+        <TextBox x:Name="txtRemark" HorizontalAlignment="Left" Margin="525,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="284" Height="91" Text="{Binding txtRemark}"/>
         <Button x:Name="btnCancel" 
                  Command="{Binding CancelCommand}" 
-                Content="Cancel" HorizontalAlignment="Left" Margin="632,44,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.357,0.726" Height="19"  />
+                Content="Cancel" HorizontalAlignment="Left" Margin="632,44,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.357,0.726" Height="19"/>
         <TextBlock HorizontalAlignment="Left" Margin="196,472,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <DatePicker x:Name="DatePickerEUT1" HorizontalAlignment="Left" Margin="204,463,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04" SelectedDate="{Binding DatePickerEUT1}"/>
         <DatePicker x:Name="DatePickerEUT2" HorizontalAlignment="Left" Margin="250,463,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04" SelectedDate="{Binding DatePickerEUT2}"/>
         <DatePicker x:Name="DatePickerEUT3" HorizontalAlignment="Left" Margin="297,463,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04" SelectedDate="{Binding DatePickerEUT3}"/>
         <DatePicker x:Name="DatePickerEUT4" HorizontalAlignment="Left" Margin="344,463,0,0" VerticalAlignment="Top" Width="30" Height="25" DisplayDate="2021-03-04" SelectedDate="{Binding DatePickerEUT4}"/>
-        <DatePicker x:Name="DatePickerEUT5" HorizontalAlignment="Center" Margin="0,463,0,0" VerticalAlignment="Top" Width="30" Height="24" DisplayDate="2021-03-04" SelectedDate="{Binding DatePickerEUT5}"/>
-        <Image x:Name="imgJobRequest" HorizontalAlignment="Left" Height="71" Margin="10,18,0,0" VerticalAlignment="Top" Width="171" Source="/img/logo.png"/>
+        <DatePicker x:Name="DatePickerEUT5" HorizontalAlignment="Left" Margin="393,463,0,0" VerticalAlignment="Top" Width="30" Height="24" DisplayDate="2021-03-04" SelectedDate="{Binding DatePickerEUT5}" RenderTransformOrigin="-0.307,0.556"/>
+        <Image x:Name="imgJobRequest" HorizontalAlignment="Left" Height="71" Margin="10,18,0,0" VerticalAlignment="Top" Width="171" Source="/Views/logo.png"/>
         <Label Content="Job Request" HorizontalAlignment="Center" Margin="0,18,0,0" VerticalAlignment="Top"  Height="72" Width="256" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
-        <ListView x:Name="lstParts" Margin="418,147,22,313" Width="360" SelectedValuePath="{Binding PartNo}">
+        <ListView x:Name="lstParts"  Margin="470,358,0,102" Width="360"  SelectedValue="{Binding Path=selectedPart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding listParts}" HorizontalAlignment="Left">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Part number" Width="100" x:Name="lstPartNo" DisplayMemberBinding="{ Binding partNo}">
+                    <GridViewColumn Header="Part number" Width="117" x:Name="lstPartNo" DisplayMemberBinding="{ Binding partNo}">
+
 
                     </GridViewColumn>
-                    <GridViewColumn Header="Net Weight" Width="100" x:Name="lstNetWeight" DisplayMemberBinding="{ Binding NetWeight}">
+                    <GridViewColumn Header="Net Weight" Width="117" x:Name="lstNetWeight" DisplayMemberBinding="{ Binding NetWeight}">
 
                     </GridViewColumn>
-                    <GridViewColumn Header="Gross weight" Width="100" x:Name="lstGrossWeight" DisplayMemberBinding="{ Binding GrossWeight }">
+                    <GridViewColumn Header="Gross weight" Width="117" x:Name="lstGrossWeight" DisplayMemberBinding="{ Binding GrossWeight}">
 
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView Margin="227,499,224,0" BorderBrush="{x:Null}" Foreground="Red" Name="err_output" ItemsSource="{Binding err_output}">
+        <ListView Margin="47,501,404,-2" BorderBrush="{x:Null}" Foreground="Red" Name="err_output" ItemsSource="{Binding err_output}">
             <ListView.View>
                 <GridView>
                     <GridViewColumn/>
                 </GridView>
             </ListView.View>
         </ListView>
-
+        <TextBlock HorizontalAlignment="Left" Margin="168,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" Text="Function"/>
+        <TextBox x:Name="txtFunction" Text="{Binding txtFunction, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="168,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsEnabled="False"/>
     </Grid>
 </Window>
