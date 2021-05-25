@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace Barco.Data
 {
@@ -46,7 +47,7 @@ namespace Barco.Data
             return person;
         }
 
-        
+       
        
         // bianca- get a person with the abbreviation
         public Person GetPersonWithAbb(string abb)
@@ -100,14 +101,32 @@ namespace Barco.Data
             return context.RqRequestDetail.FirstOrDefault(r => r.IdRqDetail == id);
         }
 
-       
 
-        //Jimmy
+
+        //Jimmy- delete job request
+        //Thibaut,Bianca - delete all the connections with the job request 
+
         // Delete Selected JobRequest
         public void DeleteJobRequest(int id)
         {
+            context.Eut.Remove(GetEut(GetRqRequestDetailByRequestId(id).IdRqDetail));
+            context.RqRequestDetail.Remove(GetRqRequestDetailByRequestId(id));
+            context.RqOptionel.Remove(GetOptionel(GetOptionalByRequestId(id).IdRequest));
             context.RqRequest.Remove(GetRqRequestById(id));
             saveChanges();
+        }
+        //thibaut, bianca
+        //get an optional id from requestId
+        public RqOptionel GetOptionalByRequestId(int id)
+        {
+            return context.RqOptionel.FirstOrDefault(r => r.IdRequest == id);
+        }
+
+        //thibaut, bianca
+        // get a detail id from requestId
+        public RqRequestDetail GetRqRequestDetailByRequestId(int id)
+        {
+            return context.RqRequestDetail.FirstOrDefault(r => r.IdRequest == id);
         }
         // jimmy
         public void ApproveRqRequest(RqRequest rqRequest)
@@ -221,9 +240,9 @@ namespace Barco.Data
 
 
         //Bianca
-        // Add request/ detail / optional
+        // Add request/ detail
 
-        public RqRequest AddRequest(RqRequest request, RqRequestDetail detail, RqOptionel optional)
+     public RqRequest AddRequest(RqRequest request, RqRequestDetail detail, RqOptionel optional, List<Eut> eut)
         { 
             try
             {
@@ -231,7 +250,7 @@ namespace Barco.Data
                 context.SaveChanges();
                 AddOptional(optional);
                 AddDetail(detail);
-
+                AddEut(eut);
             }
             
             catch(Exception ex)
@@ -252,6 +271,7 @@ namespace Barco.Data
             return detail;
         }
 
+        //thibaut
         public RqOptionel AddOptional(RqOptionel optional)
         {
             optional.IdRequest =
@@ -259,6 +279,24 @@ namespace Barco.Data
             context.RqOptionel.Add(optional);
             context.SaveChanges();
             return optional;
+        }
+
+        public void AddEut(List<Eut> eutlist)
+        {
+            foreach (Eut e in eutlist)
+            {
+                e.IdRqDetail =
+                    int.Parse(context.RqRequestDetail.OrderByDescending(p => p.IdRqDetail).First().IdRqDetail.ToString());
+                context.Eut.Add(e);
+            }
+            context.SaveChanges();
+        }
+        
+        //thibaut
+        public List<Eut> GetEutWithDetailId(int id)
+        {
+
+            return context.Eut.Where(e => e.IdRqDetail == id).ToList();
         }
 
     }
