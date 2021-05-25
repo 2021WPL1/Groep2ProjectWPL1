@@ -270,7 +270,7 @@ namespace Barco
             LoadPartNetWeight();
             LoadPartsNumbers();
         }
-        
+
 
 
         private void FillData()
