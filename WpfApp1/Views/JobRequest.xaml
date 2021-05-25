@@ -98,7 +98,7 @@
         <DatePicker x:Name="DatePickerEUT5" HorizontalAlignment="Left" Margin="393,463,0,0" VerticalAlignment="Top" Width="30" Height="24" DisplayDate="2021-03-04" SelectedDate="{Binding DatePickerEUT5}" RenderTransformOrigin="-0.307,0.556"/>
         <Image x:Name="imgJobRequest" HorizontalAlignment="Left" Height="71" Margin="10,18,0,0" VerticalAlignment="Top" Width="171" Source="/Views/logo.png"/>
         <Label Content="Job Request" HorizontalAlignment="Center" Margin="0,18,0,0" VerticalAlignment="Top"  Height="72" Width="256" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
-        <ListView x:Name="lstParts"  Margin="470,358,0,102" Width="360"  SelectedValue="{Binding Path=selectedPart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding listParts}" HorizontalAlignment="Left">
+        <ListView x:Name="lstParts"  Margin="470,358,0,102" Width="360"  SelectedValue="{Binding Path=selectedPart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding listParts}" HorizontalAlignment="Center" VerticalAlignment="Stretch">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Part number" Width="117" x:Name="lstPartNo" DisplayMemberBinding="{ Binding partNo}">
@@ -117,7 +117,7 @@
         <ListView Margin="47,501,404,-2" BorderBrush="{x:Null}" Foreground="Red" Name="err_output" ItemsSource="{Binding err_output}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn />
                 </GridView>
             </ListView.View>
         </ListView>

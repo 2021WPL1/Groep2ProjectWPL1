@@ -120,11 +120,11 @@ namespace Barco
                     Request.EutPartnumbers += txtPartNumber + " ; ";
                     Request.GrossWeight += txtPartNetWeight + " ; ";
                     Request.NetWeight += txtPartGrossWeight + " ; ";
-                    dao.saveChanges();
-
-
+                    
 
                     RefreshGUI();
+
+
                 }
             }
             catch (NullReferenceException)
@@ -229,6 +229,9 @@ namespace Barco
             {
                 lstParts.Add(part);
             }
+            LoadPartGrossWeight();
+            LoadPartNetWeight();
+            LoadPartsNumbers();
         }
         
 
