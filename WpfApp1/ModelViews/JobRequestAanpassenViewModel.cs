@@ -98,8 +98,8 @@ namespace Barco
 
         public void SaveChanges()
         {
-            
-           
+
+            dao.saveChanges();
         }
         /// <summary>
         /// jimmy
@@ -140,7 +140,6 @@ namespace Barco
                     Request.EutPartnumbers += txtPartNumber + " ; ";
                     Request.GrossWeight += txtPartNetWeight + " ; ";
                     Request.NetWeight += txtPartGrossWeight + " ; ";
-                    
 
                     RefreshGUI();
 
@@ -258,13 +257,13 @@ namespace Barco
 
         private void FillData()
         {
-            txtReqInitials = CurrentRequest.Requester;
-            txtEutProjectname = CurrentRequest.EutProjectname;
-            dateExpectedEnd = CurrentRequest.ExpectedEnddate;
-            txtRemark = CurrentOptionel.Remarks;
-            txtLinkTestplan = CurrentOptionel.Link;
-            SelectedDivision = CurrentRequest.BarcoDivision;
-            SelectedJobNature = CurrentRequest.JobNature;
+            txtReqInitials = Request.Requester;
+            txtEutProjectname = Request.EutProjectname;
+            dateExpectedEnd = Request.ExpectedEnddate;
+            txtRemark = RqOptionel.Remarks;
+            txtLinkTestplan = RqOptionel.Link;
+            SelectedDivision = Request.BarcoDivision;
+            SelectedJobNature = Request.JobNature;
 
         }
 

@@ -129,8 +129,6 @@
         <DatePicker x:Name="DatePickerEUT3" HorizontalAlignment="Left" Margin="305,382,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04"/>
         <DatePicker x:Name="DatePickerEUT4" HorizontalAlignment="Left" Margin="352,383,0,0" VerticalAlignment="Top" Width="30" Height="25" DisplayDate="2021-03-04"/>
         <DatePicker x:Name="DatePickerEUT5" HorizontalAlignment="Left" Margin="394,384,0,0" VerticalAlignment="Top" Width="30" Height="24" DisplayDate="2021-03-04"/>
-        <TextBox HorizontalAlignment="Left"  Text="{Binding Request.BarcoDivision, Mode=TwoWay}" Margin="179,56,0,0"  TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
-        <TextBox HorizontalAlignment="Left" Margin="300,56,0,0" Text="{Binding Request.JobNature, Mode=TwoWay}" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
 
     </Grid>
 </Window>
