@@ -18,21 +18,37 @@ namespace Barco
     /// </summary>
     public partial class JobRequestAanpassen : Window
     {
+
+        private static DAO dao;
+
         private JobRequestAanpassenViewModel jobRequestAanpassenViewModel;
+
 
 
         public JobRequestAanpassen(int selectedId)
         {
             InitializeComponent();
+            dao = DAO.Instance();
+
+            showDivision(selectedId);
             jobRequestAanpassenViewModel = new JobRequestAanpassenViewModel(this, selectedId);
             DataContext = jobRequestAanpassenViewModel;
+           
 
+
+        }
+
+        public void showDivision(int id)
+        {
+            comboBoxDivision.ItemsSource = dao.GetDepartment();
+            comboBoxDivision.DisplayMemberPath = "Afkorting";
+            comboBoxDivision.SelectedValue = dao.GetRqRequestById(id).BarcoDivision;
 
         }
 
         //private void btnSaveChanges_Click(object sender, RoutedEventArgs e)
         //{
-             
+
         //}
 
         //private void btnRemovePart_Click(object sender, RoutedEventArgs e)
@@ -42,7 +58,7 @@ namespace Barco
 
         //private void btnAddPart_Click(object sender, RoutedEventArgs e)
         //{
-             
+
         //}
 
         ////bianca
@@ -83,6 +99,7 @@ namespace Barco
                 MessageBox.Show(ex.ToString());
             }
            */
-        }
     }
+
+}
 

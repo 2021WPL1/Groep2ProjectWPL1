@@ -3,16 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Barco"
+        xmlns:local="clr-namespace:Barco" d:DataContext="{d:DesignInstance Type=local:JobRequestAanpassenViewModel}"
         mc:Ignorable="d"
         Title="JobRequestAanpassen" Height="450" Width="800">
     <Grid Margin="0,0,0,-35" Cursor="">
         <TextBlock HorizontalAlignment="Left" Margin="51,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Text="Requ"/><Run Language="nl-be" Text="e"/><Run Text="ster "/><Run Text="Initials"/></TextBlock>
-        <TextBox x:Name="txtRequisterInitials" Text="{Binding Request.Requester, Mode=OneWay}" HorizontalAlignment="Left" Margin="51,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
+        <TextBox x:Name="txtRequisterInitials" Text="{Binding txtReqInitials, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="51,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
         <TextBlock HorizontalAlignment="Left" Margin="51,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="EUT Projectname"/></TextBlock>
-        <TextBox x:Name="txtProjectName" Text="{Binding Request.EutProjectname, Mode=OneWay}" HorizontalAlignment="Left" Margin="51,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
-        <TextBlock HorizontalAlignment="Left" Margin="185,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Division"/></TextBlock>
+        <TextBox x:Name="txtProjectName" Text="{Binding txtEutProjectname, UpdateSourceTrigger=PropertyChanged}"  HorizontalAlignment="Left" Margin="51,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
+        <TextBlock HorizontalAlignment="Left" Margin="176,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Division"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="306,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Job Nature"/></TextBlock>
+        <ComboBox x:Name="comboBoxDivision" SelectedValue="{Binding SelectedDivision , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  SelectedIndex="0" HorizontalAlignment="Left" Margin="176,58,0,0" VerticalAlignment="Top" Width="94"/>
+        <ComboBox x:Name="comboBoxJobNature" SelectedValue="{Binding SelectedJobNature , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }" SelectedIndex="0" HorizontalAlignment="Left" Margin="306,58,0,0" VerticalAlignment="Top" Width="94"/>
         <ListBox x:Name="ListBoxPartNumber" ItemsSource="{Binding ListPartsnumbers}" Margin="483,62,224,307" RenderTransformOrigin="0.5,0.5">
             <ListBox.RenderTransform>
                 <TransformGroup>
@@ -62,9 +64,9 @@
         <RadioButton x:Name="RBBatteriesYes" Content="Yes" HorizontalAlignment="Left" Margin="51,168,0,0" VerticalAlignment="Top"/>
         <RadioButton x:Name="RBBatteriesNo" Content="No" HorizontalAlignment="Left" Margin="51,188,0,0" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="176,137,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Expected end date"/></TextBlock>
-        <DatePicker x:Name="DatePickerExpectedEndDate" SelectedDate="{Binding Request.ExpectedEnddate }" HorizontalAlignment="Left" Margin="284,137,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="DatePickerExpectedEndDate" SelectedDate="{Binding dateExpectedEnd}" HorizontalAlignment="Left" Margin="284,137,0,0" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="176,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103" Text="Link to testplan"/>
-        <TextBox x:Name="txtLinkToTestPlan" Text="{Binding RqOptionel.Link, Mode=TwoWay}" HorizontalAlignment="Left" Margin="284,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102"/>
+        <TextBox x:Name="txtLinkToTestPlan"  Text="{Binding txtLinkTestplan}" HorizontalAlignment="Left" Margin="284,170,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="102"/>
         <TextBlock HorizontalAlignment="Left" Margin="51,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Language="nl-be" Text="Nature of test"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="216,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32" Height="13"><Run Language="nl-be" Text="EUT1"/><LineBreak/><Run Language="nl-be"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="261,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="32" Height="13"><Run Text="EUT"/><Run Language="nl-be" Text="2"/><LineBreak/><Run/></TextBlock>
@@ -109,7 +111,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="50,373,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="103"><Run Text="EUT foreseen"/><LineBreak/><Run Text="ava"/><Run Language="nl-be" Text="ilability date:"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="204,389,0,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="585,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"><Run Text="Special remarks"/><Run Language="nl-be" Text=":"/></TextBlock>
-        <TextBox x:Name="txtSpecialRemarks" Text="{Binding RqOptionel.Remarks, Mode=TwoWay}" HorizontalAlignment="Left" Margin="535,274,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" Height="91"/>
+        <TextBox x:Name="txtSpecialRemarks" Text="{Binding txtRemark}" HorizontalAlignment="Left" Margin="535,274,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" Height="91"/>
         <Button x:Name="btnCancelRequest"
                       Command="{Binding CancelCommand}" 
                 Content="Cancel" HorizontalAlignment="Left" Margin="741,382,0,0" VerticalAlignment="Top"  Height="20" Width="45"/>

@@ -34,11 +34,12 @@ namespace Barco
             dao = DAO.Instance();
 
             InitializeComponent();
+            showDivision();
+            getJobNatures();
             jobRequestViewModel = new JobRequestViewModel(this);
             DataContext = jobRequestViewModel;
             
-            showDivision();
-            getJobNatures();
+          
         }
 
 
