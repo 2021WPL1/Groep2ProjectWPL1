@@ -324,7 +324,10 @@ namespace Barco.Data
             context.SaveChanges();
         }
 
-        
+        public List<RqRequestDetail> GetRqDetailsWithRequestId(int requestId)
+        {
+            return context.RqRequestDetail.Where(rq => rq.IdRequest == requestId).ToList();
+        }
 
         //thibaut
         public List<Eut> GetEutWithDetailId(int id)
