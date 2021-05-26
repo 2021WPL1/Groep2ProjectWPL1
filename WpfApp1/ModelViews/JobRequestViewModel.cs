@@ -67,7 +67,7 @@ namespace Barco
         }
 
         private ObservableCollection<string> _err_output { get; set; } // listview for errors
-        
+
         //remove this line if working with DAO static class
         //private static Barco2021Context DAO = new Barco2021Context();
 
@@ -77,7 +77,7 @@ namespace Barco
         public List<Eut> eutList = new List<Eut>();
         public RqRequestDetail Detail = new RqRequestDetail();
         public List<Part> parts = new List<Part>();
-        
+
         List<bool> emcBoxes = new List<bool>();
         List<bool> envBoxes = new List<bool>();
         List<bool> relBoxes = new List<bool>();
@@ -152,8 +152,8 @@ namespace Barco
             DatePickerEUT5 = DateTime.Now;
 
             _err_output = new ObservableCollection<string>();
-            
-            
+
+
             txtFunction = GetValues("FUNCTION");
 
 
@@ -207,7 +207,7 @@ namespace Barco
         {
             try
             {
-                if (txtPartNr == "" || txtNetWeight == "" || txtGrossWeight == "")
+                if (txtPartNr.Length == 0 || txtNetWeight.Length == 0 || txtGrossWeight.Length == 0)
                 {
                     MessageBox.Show("please fill in all values");
                 }
@@ -224,9 +224,9 @@ namespace Barco
                     request.EutPartnumbers += txtPartNr + " ; ";
                     request.GrossWeight += txtNetWeight + " ; ";
                     request.NetWeight += txtGrossWeight + " ; ";
-                    
-                    RefreshGUI();
 
+                   
+                    RefreshGUI();
                 }
             }
             catch (NullReferenceException)
@@ -253,7 +253,7 @@ namespace Barco
                 OnPropertyChanged();
             }
         }
-        
+
         public void SendButton()
         {
             try
@@ -304,11 +304,11 @@ namespace Barco
 
                 //check if radio buttons are checked
 
-                if ((bool)rbtnBatNo)
+                if ((bool)rbtnBatNo==true)
                 {
                     input_Battery = false;
                 }
-                else if ((bool)rbtnBatNo && (bool)rbtnBatYes)
+                else if ((bool)rbtnBatNo==false && (bool)rbtnBatYes==false)
                 {
                     errors.Add("please check if batteries are needed");
                 }
@@ -353,7 +353,7 @@ namespace Barco
 
                 //check if other fields are empty
 
-                if (txtEutProjectname is null)
+                if (txtEutProjectname==null)
                 {
                     errors.Add("please fill in a project name");
                 }
@@ -390,14 +390,15 @@ namespace Barco
 
                     //eut objects
                     eutList = getEutData();
-                    
+
                     //detail object
                     Detail.Testdivisie = "ECO";
-                    
-                    
-                    
+
+
+
                     dao.AddRequest(request, Detail, optional, eutList);
                     MessageBox.Show("Data has been inserted");
+                    
                 }
             }
             catch (FormatException ex)
@@ -405,8 +406,8 @@ namespace Barco
                 MessageBox.Show(ex.Message.ToString());
                 //MessageBox.Show("Please fill in all fields"):
             }
-
         }
+        
 
         // to show in the listview
         public class Part

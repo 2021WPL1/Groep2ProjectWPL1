@@ -70,9 +70,7 @@ namespace Barco.Data
         {
             context.Person.Remove(GetPersonWithAbb(abb));
             saveChanges();
-        }
-
-
+        } 
 
         //  bianca
         public RqRequest GetRequestDate()
@@ -110,9 +108,10 @@ namespace Barco.Data
         public void DeleteJobRequest(int id)
         {
             context.Eut.Remove(GetEut(GetRqRequestDetailByRequestId(id).IdRqDetail));
-            context.RqRequestDetail.Remove(GetRqRequestDetailByRequestId(id));
             context.RqOptionel.Remove(GetOptionel(GetOptionalByRequestId(id).IdRequest));
+            context.RqRequestDetail.Remove(GetRqRequestDetailByRequestId(id));
             context.RqRequest.Remove(GetRqRequestById(id));
+
             saveChanges();
         }
         //thibaut, bianca
@@ -298,6 +297,8 @@ namespace Barco.Data
 
             return context.Eut.Where(e => e.IdRqDetail == id).ToList();
         }
+
+        
 
     }
 }

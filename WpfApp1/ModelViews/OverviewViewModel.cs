@@ -67,7 +67,9 @@ namespace Barco
 
             if (_selectedRequest != null)
             {
+                
                 dao.ApproveRqRequest(_selectedRequest);
+                MessageBox.Show("The request is approved", "Approved", MessageBoxButton.OK);
             }
             else
             {
