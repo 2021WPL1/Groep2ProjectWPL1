@@ -21,12 +21,7 @@ namespace Barco
 { //bianca
     public class JobRequestViewModel : ViewModelBase
     {
-        
-            
-
-
         public JobRequest screen;
-
 
         public RqRequest request = new RqRequest();
 
@@ -48,7 +43,7 @@ namespace Barco
         public string txtRemark { get; set; } // special remarks
         public string txtFunction { get; set; } //function
         public DateTime dateExpectedEnd { get; set; }
-        public string SelectedDivision { get; set; }
+        public string selectedDivision { get; set; }
         public string SelectedJobNature { get; set; }
 
 
@@ -91,7 +86,6 @@ namespace Barco
         public bool cbEmcEut4 { get; set; }
         public bool cbEmcEut5 { get; set; }
 
-
         public bool cmEnvironmentalEut1 { get; set; }
         public bool cmEnvironmentalEut2 { get; set; }
         public bool cmEnvironmentalEut3 { get; set; }
@@ -127,11 +121,6 @@ namespace Barco
         public ComboBox cmbDivision { get; set; }
         public ComboBox cmbJobNature { get; set; }
 
-
-
-
-
-        //bianca
         //radio button
         public bool rbtnBatNo { get; set; }
         public bool rbtnBatYes { get; set; }
@@ -333,7 +322,7 @@ namespace Barco
                     errors.Add("select a jobnature");
                 }
 
-                if (SelectedDivision == null)
+                if (selectedDivision == null)
                 {
                     errors.Add("select a division");
                 }
@@ -374,7 +363,7 @@ namespace Barco
                 {
                     //request object 
                     request.Requester = input_Abbreviation;
-                    request.BarcoDivision = SelectedDivision;
+                    request.BarcoDivision = selectedDivision;
                     request.JobNature = SelectedJobNature;
                     request.RequestDate = DateTime.Now;
                     request.EutProjectname = txtEutProjectname;
@@ -395,7 +384,8 @@ namespace Barco
 
                     //detail object
                     //Detail.Testdivisie = "eco";  
-                 //   detailList = GetRqRequestDetails();
+                    List<RqRequestDetail>detailList = GetRqRequestDetails();
+
                     
                  //   dao.AddRequest(request, detailList, optional, eutList);
                     MessageBox.Show("Data has been inserted");
@@ -630,10 +620,20 @@ namespace Barco
             return result;
         }
 
+        //public string SelectedDivision
+        //{
+        //    get { return selectedDivision; }
+        //    set
+        //    {
+        //        selectedDivision = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
+
         //private List<Eut> getEutData()
         //{
         //    List<Eut> result = new List<Eut>();
-            
+
         //    //get first eut and date
         //    if (DatePickerEUT1.Date != DateTime.Now)
         //    {
@@ -743,7 +743,7 @@ namespace Barco
         //            result.Add(createEut(description, date));
         //        }
 
-                
+
         //    }
 
         //    //get fourth eut and date
@@ -795,7 +795,7 @@ namespace Barco
 
         //        if ((bool)cmEnvironmentalEut5)
         //        {
-                
+
         //            description = "Environmental - EUT 5";
         //            result.Add(createEut(description, date));
         //        }
@@ -818,7 +818,7 @@ namespace Barco
         //            result.Add(createEut(description, date));
         //        }
 
-                
+
         //    }
 
         //    return result;

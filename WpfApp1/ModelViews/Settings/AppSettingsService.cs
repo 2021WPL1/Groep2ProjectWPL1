@@ -2,6 +2,9 @@
 using System.IO;
 using Barco.ModelViews.smtpConfig;
 using Microsoft.Extensions.Configuration;
+using System.Text;
+using System.IO;
+using System.Reflection;
 
 namespace Barco.ModelViews.Settings
 {
@@ -18,10 +21,13 @@ namespace Barco.ModelViews.Settings
 
         public TAppSettings AppSettings { get => _appSettings; }
 
-        private string _appSettingsBasePath
-        { // still need to be fixed 
-            get => @"C:\Users\cbian\source\repos\Werkplekleren1\2021WPL1Groep2\ProjectWPL1\WpfApp1\appSettings";
-        }
+        private string _appSettingsBasePath =>
+            // still need to be fixed 
+            //Path.Combine(Directory.GetCurrentDirectory(), "Barco");
+            //Directory.GetCurrentDirectory();
+            //@"C:\Users\laure\Documents\Documents\vives\werkplekleren\Barco\WpfApp1\appSettings";
+            Path.Combine(System.IO.Directory.GetCurrentDirectory().Replace("\\bin\\Debug\\netcoreapp3.1", ""), "appSettings");
+            
 
        
         public AppSettingsService()

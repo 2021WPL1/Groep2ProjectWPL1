@@ -21,6 +21,7 @@ namespace Barco
         public RqRequest Request { get; set; }
         public RqOptionel rqOptionel { get; set; }
         public RqRequestDetail rqRequestDetail { get; set; }
+        public List<RqRequestDetail> rqRequestDetails { get; set; }
         public List<String> ListPartsnumbers { get; set; }
         public List<String> ListPartNet { get; set; }
         public List<String> ListPartGross { get; set; }
@@ -68,6 +69,13 @@ namespace Barco
         public string dateEut5 { get; set; }
         public bool rbtnBatNo { get; set; }
         public bool rbtnBatYes { get; set; }
+        public string pvgEmc { get; set; }
+        public string pvgEnv { get; set; }
+        public string pvgRel { get; set; }
+        public string pvgSaf { get; set; }
+        public string pvgEco { get; set; }
+
+
 
         public JobRequestDetailViewModel(JobRequestDetail screen, int selectedId)
         {
@@ -81,6 +89,7 @@ namespace Barco
             this.Request = dao.GetRequest(selectedId);
             this.rqOptionel = dao.GetOptionel(selectedId);
             this.rqRequestDetail = dao.GetRequestDetail(selectedId);
+            this.rqRequestDetails = dao.GetRqDetailsWithRequestId(selectedId);
             LoadPartsNumbers();
             LoadPartGrossWeight();
             LoadPartNetWeight();
@@ -88,7 +97,7 @@ namespace Barco
             this.screen = screen;
             fillEuts();
             SetBatteries();
-            
+            fillPvgResp();
         }
         
         //bianca
@@ -352,6 +361,34 @@ namespace Barco
                 }
             }
 
+        }
+
+        private void fillPvgResp()
+        {
+            foreach(RqRequestDetail rq in rqRequestDetails)
+            {
+                if (rq.Testdivisie.Equals("EMC"))
+                {
+                    pvgEmc = rq.Pvgresp;
+                }
+                if (rq.Testdivisie.Equals("ENV"))
+                {
+                    pvgEnv = rq.Pvgresp;
+                }
+                if (rq.Testdivisie.Equals("REL"))
+                {
+                    pvgRel = rq.Pvgresp;
+                }
+                if (rq.Testdivisie.Equals("SAF"))
+                {
+                    pvgSaf = rq.Pvgresp;
+                }
+                if (rq.Testdivisie.Equals("ECO"))
+                {
+                    pvgEco = rq.Pvgresp;
+                }
+
+            }
         }
 
         //thibaut

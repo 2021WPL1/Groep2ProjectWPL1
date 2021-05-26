@@ -38,6 +38,7 @@ namespace Barco.ModelViews.smtpConfig
 
    public void CreateMail(string input)
         {
+            
             var to= _appSettingsService.GetConfigurationSection<EmailAdresses>("EmailAdresses");
             var from = _appSettingsService.GetConfigurationSection<SMPTClientConfig>("SMPTClientConfig");
             var message = new MimeMessage();
