@@ -400,7 +400,7 @@ namespace Barco
 
                     //detail object
                     //Detail.Testdivisie = "eco";  
-                    detailList = GetRqRequestDetails();
+                   var detailList = GetRqRequestDetails();
                     
                     dao.AddRequest(request, detailList, optional, eutList);
                     MessageBox.Show("Data has been inserted");
