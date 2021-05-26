@@ -17,7 +17,7 @@ namespace Barco
         public string txtPartNumber { get; set; } // EUT Partnumber
         public string txtPartNetWeight { get; set; } //net weight
         public string txtPartGrossWeight { get; set; } //gross weight
-        public string lblRequestDate { get; set; }
+        public string lblRequestDate { get; set; } //request date
         public string txtLinkTestplan { get; set; } // link to testplan
         public string txtReqInitials { get; set; } // requester initials 
         public string txtEutProjectname { get; set; } //EUT Project name
@@ -117,16 +117,12 @@ namespace Barco
             RemoveCommand = new DelegateCommand(RemovePart);
             this.Request = dao.GetRequest(selectedId);
             this.RqOptionel = dao.GetOptionel(selectedId);
-            this.RqRequestDetail = dao.GetRequestDetail(selectedId);
+            this.rqRequestDetails = dao.GetRqDetailsWithRequestId(selectedId);
 
             euts = dao.GetEutWithDetailId(Request.IdRequest);
 
 
-            LoadPartGrossWeight();
-            LoadPartNetWeight();
-            LoadPartsNumbers();
-            fillEuts();
-            SetBatteries();
+            
 
 
             this.screen = screen;
@@ -546,15 +542,13 @@ namespace Barco
 
         private void FillData()
         {
-            txtReqInitials = Request.Requester;
-            txtEutProjectname = Request.EutProjectname;
-            dateExpectedEnd = Request.ExpectedEnddate;
-            txtRemark = RqOptionel.Remarks;
-            txtLinkTestplan = RqOptionel.Link;
-            lblRequestDate = Request.RequestDate.ToString();
             selectedDivision = Request.BarcoDivision;
-            selectedJobNature = Request.JobNature;
-
+            LoadPartGrossWeight();
+            LoadPartNetWeight();
+            LoadPartsNumbers();
+            fillEuts();
+            fillPvgResp();
+            SetBatteries();
         }
 
 
