@@ -111,13 +111,15 @@ namespace Barco
             this.Request = dao.GetRequest(selectedId);
             this.RqOptionel = dao.GetOptionel(selectedId);
             this.RqRequestDetail = dao.GetRequestDetail(selectedId);
-            
+
+            euts = dao.GetEutWithDetailId(Request.IdRequest);
+
 
             LoadPartGrossWeight();
             LoadPartNetWeight();
             LoadPartsNumbers();
-            SetBatteries();
             fillEuts();
+            SetBatteries();
 
 
             this.screen = screen;
