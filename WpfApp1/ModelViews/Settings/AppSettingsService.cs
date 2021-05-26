@@ -20,7 +20,7 @@ namespace Barco.ModelViews.Settings
 
         private string _appSettingsBasePath
         { // still need to be fixed 
-            get => @"C:\Users\cbian\source\repos\Werkplekleren1\2021WPL1Groep2\ProjectWPL1\WpfApp1\appSettings";
+            get => @"C:\Users\laure\Documents\Documents\vives\werkplekleren\Barco\WpfApp1\appSettings";
         }
 
         public AppSettingsService()

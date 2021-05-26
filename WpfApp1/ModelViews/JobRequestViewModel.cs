@@ -389,7 +389,8 @@ namespace Barco
 
                     //detail object
                     //Detail.Testdivisie = "eco";  
-                    List<RqRequestDetail> detailList = GetRqRequestDetails();
+                    List<RqRequestDetail>detailList = GetRqRequestDetails();
+
                     
                     dao.AddRequest(request, detailList, optional, eutList);
                     MessageBox.Show("Data has been inserted");

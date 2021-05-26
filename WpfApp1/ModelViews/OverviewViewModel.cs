@@ -4,10 +4,12 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using Barco.ModelViews.Settings;
 using Barco.ModelViews.smtpConfig;
+
 
 namespace Barco
 {//bianca
@@ -19,6 +21,8 @@ namespace Barco
 
 
         private static SMTPMailCommunication smtpMailCommunication { get; set; }
+
+        public bool mailScheduled = false;
 
         private OverviewJobRequest overview;
         public ICommand CancelCommand { get; set; }
@@ -62,8 +66,8 @@ namespace Barco
             foreach (var rqRequest in rqRequests)
             {
                 RqRequests.Add(rqRequest);
-            }
         }
+            }
         //bianca
       
         public void CancelButton()
@@ -164,6 +168,7 @@ namespace Barco
 
         //bianca- method to count the request that were sent today 
         //thibaut
+        //laurent - schedule the mailing task
        private int CountJobRequestsToday()
        {
            var datenow = DateTime.Today;
@@ -179,6 +184,7 @@ namespace Barco
                     count++;
                 }
             }
+            scheduleMail(count);
             return count;
        }
 
@@ -190,6 +196,21 @@ namespace Barco
            MessageBox.Show(toAddress.QueryResult.Address1);
 
 
+       }
+       
+       public void scheduleMail(int count)
+       {
+           DateTime datenow = DateTime.Now;
+           DateTime date = new DateTime(datenow.Year, datenow.Month, datenow.Day, 17, 00, 0);
+           TimeSpan span = datenow - date;
+
+           if (!mailScheduled)
+           {
+               Task.Delay(span).ContinueWith((x) =>
+               {
+                   smtpMailCommunication.CreateMail(count.ToString());
+               });
+           }
        }
     }
 }
