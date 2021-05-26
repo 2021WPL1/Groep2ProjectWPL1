@@ -17,7 +17,7 @@ namespace Barco
         public string txtPartNumber { get; set; } // EUT Partnumber
         public string txtPartNetWeight { get; set; } //net weight
         public string txtPartGrossWeight { get; set; } //gross weight
-
+        public string lblRequestDate { get; set; }
         public string txtLinkTestplan { get; set; } // link to testplan
         public string txtReqInitials { get; set; } // requester initials 
         public string txtEutProjectname { get; set; } //EUT Project name
@@ -40,6 +40,7 @@ namespace Barco
         public List<String> ListPartsnumbers { get; set; }
         public List<String> ListPartNet { get; set; }
         public List<String> ListPartGross { get; set; }
+        public List<RqRequestDetail> rqRequestDetails { get; set; }
         public string selectedDivision { get; set; }
         public string selectedJobNature { get; set; }
 
@@ -79,11 +80,17 @@ namespace Barco
         public bool cmRel { get; set; }
         public bool cmProdSafety { get; set; }
         public bool cmGrnComp { get; set; }
-        public string dateEut1 { get; set; }
-        public string dateEut2 { get; set; }
-        public string dateEut3 { get; set; }
-        public string dateEut4 { get; set; }
-        public string dateEut5 { get; set; }
+        public DateTime dateEut1 { get; set; }
+        public DateTime dateEut2 { get; set; }
+        public DateTime dateEut3 { get; set; }
+        public DateTime dateEut4 { get; set; }
+        public DateTime dateEut5 { get; set; }
+        public string pvgEmc { get; set; }
+        public string pvgEnv { get; set; }
+        public string pvgRel { get; set; }
+        public string pvgSaf { get; set; }
+        public string pvgEco { get; set; }
+
         public bool rbtnBatYes { get; set; }
         public bool rbtnBatNo { get; set; }
 
@@ -293,159 +300,189 @@ namespace Barco
                 {
                     cbEmcEut1 = true;
                     cbEmc = true;
-                    dateEut1 = e.AvailableDate.ToString();
+                    dateEut1 = e.AvailableDate;
 
                 }
                 if (e.OmschrijvingEut.Equals("EMC - EUT 2"))
                 {
                     cbEmcEut2 = true;
                     cbEmc = true;
-                    dateEut2 = e.AvailableDate.ToString();
+                    dateEut2 = e.AvailableDate;
                 }
                 if (e.OmschrijvingEut.Equals("EMC - EUT 3"))
                 {
                     cbEmcEut3 = true;
                     cbEmc = true;
-                    dateEut3 = e.AvailableDate.ToString();
+                    dateEut3 = e.AvailableDate;
                 }
                 if (e.OmschrijvingEut.Equals("EMC - EUT 4"))
                 {
                     cbEmcEut4 = true;
                     cbEmc = true;
-                    dateEut4 = e.AvailableDate.ToString();
+                    dateEut4 = e.AvailableDate;
                 }
                 if (e.OmschrijvingEut.Equals("EMC - EUT 5"))
                 {
                     cbEmcEut5 = true;
                     cbEmc = true;
-                    dateEut5 = e.AvailableDate.ToString();
+                    dateEut5 = e.AvailableDate;
                 }
                 if (e.OmschrijvingEut.Equals("ENV - EUT 1"))
                 {
                     cmEnvironmental = true;
                     cmEnvironmentalEut1 = true;
-                    dateEut1 = e.AvailableDate.ToString();
+                    dateEut1 = e.AvailableDate;
 
                 }
                 if (e.OmschrijvingEut.Equals("ENV - EUT 2"))
                 {
                     cmEnvironmentalEut2 = true;
                     cmEnvironmental = true;
-                    dateEut2 = e.AvailableDate.ToString();
+                    dateEut2 = e.AvailableDate;
                 }
                 if (e.OmschrijvingEut.Equals("ENV - EUT 3"))
                 {
                     cmEnvironmentalEut3 = true;
                     cmEnvironmental = true;
-                    dateEut3 = e.AvailableDate.ToString();
+                    dateEut3 = e.AvailableDate;
                 }
                 if (e.OmschrijvingEut.Equals("ENV - EUT 4"))
                 {
                     cmEnvironmentalEut4 = true;
                     cmEnvironmental = true;
-                    dateEut4 = e.AvailableDate.ToString();
+                    dateEut4 = e.AvailableDate;
                 }
                 if (e.OmschrijvingEut.Equals("ENV - EUT 5"))
                 {
                     cmEnvironmentalEut5 = true;
                     cmEnvironmental = true;
-                    dateEut5 = e.AvailableDate.ToString();
+                    dateEut5 = e.AvailableDate;
                 }
                 if (e.OmschrijvingEut.Equals("ECO - EUT 1"))
                 {
                     cmGrnCompEut1 = true;
                     cmGrnComp = true;
-                    dateEut1 = e.AvailableDate.ToString();
+                    dateEut1 = e.AvailableDate;
 
                 }
                 if (e.OmschrijvingEut.Equals("ECO - EUT 2"))
                 {
                     cmGrnCompEut2 = true;
                     cmGrnComp = true;
-                    dateEut2 = e.AvailableDate.ToString();
+                    dateEut2 = e.AvailableDate;
                 }
                 if (e.OmschrijvingEut.Equals("ECO - EUT 3"))
                 {
                     cmGrnCompEut3 = true;
                     cmGrnComp = true;
-                    dateEut3 = e.AvailableDate.ToString();
+                    dateEut3 = e.AvailableDate;
                 }
                 if (e.OmschrijvingEut.Equals("ECO - EUT 4"))
                 {
                     cmGrnCompEut4 = true;
                     cmGrnComp = true;
-                    dateEut4 = e.AvailableDate.ToString();
+                    dateEut4 = e.AvailableDate;
                 }
                 if (e.OmschrijvingEut.Equals("ECO - EUT 5"))
                 {
                     cmGrnCompEut5 = true;
                     cmGrnComp = true;
-                    dateEut5 = e.AvailableDate.ToString();
+                    dateEut5 = e.AvailableDate;
                 }
                 if (e.OmschrijvingEut.Equals("REL - EUT 1"))
                 {
                     cmRelEut1 = true;
                     cmRel = true;
-                    dateEut1 = e.AvailableDate.ToString();
+                    dateEut1 = e.AvailableDate;
 
                 }
                 if (e.OmschrijvingEut.Equals("REL - EUT 2"))
                 {
                     cmRelEut2 = true;
                     cmRel = true;
-                    dateEut2 = e.AvailableDate.ToString();
+                    dateEut2 = e.AvailableDate;
                 }
                 if (e.OmschrijvingEut.Equals("REL - EUT 3"))
                 {
                     cmRelEut3 = true;
                     cmRel = true;
-                    dateEut3 = e.AvailableDate.ToString();
+                    dateEut3 = e.AvailableDate;
                 }
                 if (e.OmschrijvingEut.Equals("REL - EUT 4"))
                 {
                     cmRelEut4 = true;
                     cmRel = true;
-                    dateEut4 = e.AvailableDate.ToString();
+                    dateEut4 = e.AvailableDate;
                 }
                 if (e.OmschrijvingEut.Equals("REL - EUT 5"))
                 {
                     cmRelEut5 = true;
                     cmRel = true;
-                    dateEut5 = e.AvailableDate.ToString();
+                    dateEut5 = e.AvailableDate;
                 }
                 if (e.OmschrijvingEut.Equals("SAF - EUT 1"))
                 {
                     cmProdSafetyEut1 = true;
                     cmProdSafety = true;
-                    dateEut1 = e.AvailableDate.ToString();
+                    dateEut1 = e.AvailableDate;
 
                 }
                 if (e.OmschrijvingEut.Equals("SAF - EUT 2"))
                 {
                     cmProdSafetyEut2 = true;
                     cmProdSafety = true;
-                    dateEut2 = e.AvailableDate.ToString();
+                    dateEut2 = e.AvailableDate;
                 }
                 if (e.OmschrijvingEut.Equals("SAF - EUT 3"))
                 {
                     cmProdSafetyEut3 = true;
                     cmProdSafety = true;
-                    dateEut3 = e.AvailableDate.ToString();
+                    dateEut3 = e.AvailableDate;
                 }
                 if (e.OmschrijvingEut.Equals("SAF - EUT 4"))
                 {
                     cmProdSafetyEut4 = true;
                     cmProdSafety = true;
-                    dateEut4 = e.AvailableDate.ToString();
+                    dateEut4 = e.AvailableDate;
                 }
                 if (e.OmschrijvingEut.Equals("SAF - EUT 5"))
                 {
                     cmProdSafetyEut5 = true;
                     cmProdSafety = true;
-                    dateEut5 = e.AvailableDate.ToString();
+                    dateEut5 = e.AvailableDate;
                 }
             }
 
+        }
+        /// <summary>
+        /// jimmy
+        /// </summary>
+        private void fillPvgResp()
+        {
+            foreach (RqRequestDetail rq in rqRequestDetails)
+            {
+                if (rq.Testdivisie.Equals("EMC"))
+                {
+                    pvgEmc = rq.Pvgresp;
+                }
+                if (rq.Testdivisie.Equals("ENV"))
+                {
+                    pvgEnv = rq.Pvgresp;
+                }
+                if (rq.Testdivisie.Equals("REL"))
+                {
+                    pvgRel = rq.Pvgresp;
+                }
+                if (rq.Testdivisie.Equals("SAF"))
+                {
+                    pvgSaf = rq.Pvgresp;
+                }
+                if (rq.Testdivisie.Equals("ECO"))
+                {
+                    pvgEco = rq.Pvgresp;
+                }
+
+            }
         }
         /// <summary>
         /// jimmy
@@ -514,6 +551,7 @@ namespace Barco
             dateExpectedEnd = Request.ExpectedEnddate;
             txtRemark = RqOptionel.Remarks;
             txtLinkTestplan = RqOptionel.Link;
+            lblRequestDate = Request.RequestDate.ToString();
             selectedDivision = Request.BarcoDivision;
             selectedJobNature = Request.JobNature;
 
