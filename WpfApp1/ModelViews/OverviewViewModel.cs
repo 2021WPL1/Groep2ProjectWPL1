@@ -66,8 +66,8 @@ namespace Barco
             foreach (var rqRequest in rqRequests)
             {
                 RqRequests.Add(rqRequest);
-        }
             }
+        }
         //bianca
       
         public void CancelButton()
@@ -202,11 +202,16 @@ namespace Barco
        {
            DateTime datenow = DateTime.Now;
            DateTime date = new DateTime(datenow.Year, datenow.Month, datenow.Day, 17, 00, 0);
-           TimeSpan span = datenow - date;
+           if (datenow <= date)
+           {
+               date = new DateTime(date.Year, date.Month, (date.Day + 1), date.Hour, date.Minute, date.Second);
+               
+           }
+           TimeSpan span = date - datenow;
 
            if (!mailScheduled)
            {
-               Task.Delay(span).ContinueWith((x) =>
+               Task.Delay(span.Milliseconds).ContinueWith((x) =>
                {
                    smtpMailCommunication.CreateMail(count.ToString());
                });
