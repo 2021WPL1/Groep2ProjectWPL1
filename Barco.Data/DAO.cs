@@ -64,6 +64,8 @@ namespace Barco.Data
             }
             return result;
         }
+
+
         //bianca
         // delete a person from the database
         public void RemovePerson(string abb)
@@ -84,6 +86,7 @@ namespace Barco.Data
         public ICollection<RqRequest> GetAllRqRequests()
         {
             return context.RqRequest.ToList();
+            
         }
         //Jimmy
         // Get RqRequest by Id
@@ -121,6 +124,8 @@ namespace Barco.Data
             return context.RqOptionel.FirstOrDefault(r => r.IdRequest == id);
         }
 
+        
+
         //thibaut, bianca
         // get a detail id from requestId
         public RqRequestDetail GetRqRequestDetailByRequestId(int id)
@@ -133,7 +138,6 @@ namespace Barco.Data
             rqRequest.JrStatus = "Approved";
             saveChanges();
         }
-
 
 
 
@@ -191,6 +195,8 @@ namespace Barco.Data
             }
             return result;
         }
+
+       
         // remove division
         public void RemoveDivisionByAbb(string abb)
         {

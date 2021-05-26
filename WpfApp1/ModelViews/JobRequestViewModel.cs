@@ -207,6 +207,8 @@ namespace Barco
         {
             try
             {
+
+                
                 if (txtPartNr.Length == 0 || txtNetWeight.Length == 0 || txtGrossWeight.Length == 0)
                 {
                     MessageBox.Show("please fill in all values");
@@ -271,9 +273,17 @@ namespace Barco
 
                 DateTime input_EndDate = DateTime.Now;
 
-                if (dateExpectedEnd.Date != null)
+                if (dateExpectedEnd.Date != null )
                 {
-                    input_EndDate = dateExpectedEnd.Date;
+                    if (dateExpectedEnd.Date < DateTime.Today)
+                    {
+                        errors.Add("The end date has to be in the future");
+                    }
+                    else
+                    {
+                        input_EndDate = dateExpectedEnd.Date;
+                    }
+                    
                 }
                 else
                 {
@@ -584,45 +594,46 @@ namespace Barco
             if ((bool)cbEmcEut1 || (bool)cmEnvironmentalEut1 || (bool)cmGrnCompEut1 || (bool)cmProdSafetyEut1 ||
                 (bool)cmGrnCompEut1)
             {
-                if (DatePickerEUT1.Date == null)
+                if (DatePickerEUT1.Date == null || DatePickerEUT1.Date<DateTime.Today)
                 {
-                    result.Add("please provide a date for EUT 1");
+                    result.Add("please provide a  valid date for EUT 1");
                 }
+                
             }
 
             if ((bool)cbEmcEut2 || (bool)cmEnvironmentalEut2 || (bool)cmGrnCompEut2 || (bool)cmProdSafetyEut2 ||
                 (bool)cmGrnCompEut2)
             {
-                if (DatePickerEUT2.Date == null)
+                if (DatePickerEUT2.Date == null || DatePickerEUT2.Date < DateTime.Today)
                 {
-                    result.Add("please provide a date for EUT 2");
+                    result.Add("please provide a valid date for EUT 2");
                 }
             }
 
             if ((bool)cbEmcEut3 || (bool)cmEnvironmentalEut3 || (bool)cmGrnCompEut3 || (bool)cmProdSafetyEut3 ||
                 (bool)cmGrnCompEut3)
             {
-                if (DatePickerEUT3.Date == null)
+                if (DatePickerEUT3.Date == null || DatePickerEUT3.Date < DateTime.Today)
                 {
-                    result.Add("please provide a date for EUT 3");
+                    result.Add("please provide a valid date for EUT 3");
                 }
             }
 
             if ((bool)cbEmcEut4 || (bool)cmEnvironmentalEut4 || (bool)cmGrnCompEut4 || (bool)cmProdSafetyEut4 ||
                 (bool)cmGrnCompEut4)
             {
-                if (DatePickerEUT4.Date == null)
+                if (DatePickerEUT4.Date == null || DatePickerEUT4.Date < DateTime.Today)
                 {
-                    result.Add("please provide a date for EUT 4");
+                    result.Add("please provide a valid date for EUT 4");
                 }
             }
 
             if ((bool)cbEmcEut5 || (bool)cmEnvironmentalEut5 || (bool)cmGrnCompEut5 || (bool)cmProdSafetyEut5 ||
                 (bool)cmGrnCompEut5)
             {
-                if (DatePickerEUT5.Date == null)
+                if (DatePickerEUT5.Date == null || DatePickerEUT5.Date < DateTime.Today)
                 {
-                    result.Add("please provide a date for EUT 5");
+                    result.Add("please provide a valid date for EUT 5");
                 }
             }
             return result;
@@ -857,3 +868,4 @@ namespace Barco
 
     }
 }
+  
