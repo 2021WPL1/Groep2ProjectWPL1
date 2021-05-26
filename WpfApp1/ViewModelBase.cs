@@ -6,6 +6,9 @@ using System.Text;
 
 namespace Barco
 {//bianca
+  // Notifies clients that a property value has changed.
+
+
     public class ViewModelBase: INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;

@@ -2,6 +2,9 @@
 using System.IO;
 using Barco.ModelViews.smtpConfig;
 using Microsoft.Extensions.Configuration;
+using System.Text;
+using System.IO;
+using System.Reflection;
 
 namespace Barco.ModelViews.Settings
 {
@@ -18,11 +21,15 @@ namespace Barco.ModelViews.Settings
 
         public TAppSettings AppSettings { get => _appSettings; }
 
-        private string _appSettingsBasePath
-        { // still need to be fixed 
-            get => @"C:\Users\cbian\source\repos\Werkplekleren1\2021WPL1Groep2\ProjectWPL1\WpfApp1\appSettings";
-        }
+        private string _appSettingsBasePath =>
+            // still need to be fixed 
+            //Path.Combine(Directory.GetCurrentDirectory(), "Barco");
+            //Directory.GetCurrentDirectory();
+            //@"C:\Users\laure\Documents\Documents\vives\werkplekleren\Barco\WpfApp1\appSettings";
+            Path.Combine(System.IO.Directory.GetCurrentDirectory().Replace("\\bin\\Debug\\netcoreapp3.1", ""), "appSettings");
+            
 
+       
         public AppSettingsService()
         {
             BuildConfigurationRoot();
@@ -30,6 +37,7 @@ namespace Barco.ModelViews.Settings
             _appSettings = _configRoot.Get<TAppSettings>();
         }
 
+        //bianca ->  building the configuration root based of the json file
         private void BuildConfigurationRoot()
         {
          
@@ -39,8 +47,8 @@ namespace Barco.ModelViews.Settings
             _configRoot = configBuilder.Build();
         }
 
-   
-        private void AddJSONSettingsFileToBuilder(ref ConfigurationBuilder builder, string filename)
+   //bianca 
+   private void AddJSONSettingsFileToBuilder(ref ConfigurationBuilder builder, string filename)
         {
             var fullFilePath = Path.Combine(_appSettingsBasePath, filename);
             if (File.Exists(fullFilePath))

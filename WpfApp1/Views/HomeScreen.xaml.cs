@@ -31,17 +31,21 @@ namespace Barco
             //  dao = DAO.Instance();
         }
 
+      
+
+
+
 
         //private void CreateJobRequest_Click(object sender, RoutedEventArgs e)
         //{
 
-            //    JobRequest createJobRequest = new JobRequest();
-            //    Close();
-            //    createJobRequest.ShowDialog();
+        //    JobRequest createJobRequest = new JobRequest();
+        //    Close();
+        //    createJobRequest.ShowDialog();
 
 
-            //this.Hide();
-            // homeScreenViewModel.CreateRequest();
+        //this.Hide();
+        // homeScreenViewModel.CreateRequest();
 
 
         //}
@@ -53,7 +57,7 @@ namespace Barco
         //    //overviewJobRequest.ShowDialog();
         //   this.Hide();
         //    homeScreenViewModel.Overview();
-           
+
         //}
 
         //private void PersonalLeave_Click(object sender, RoutedEventArgs e)
@@ -63,7 +67,7 @@ namespace Barco
         //    //    Close();
         //    //    personalLeave.ShowDialog();
         //    homeScreenViewModel.PersonalLeave();
-            
+
         //}
         //private void CollectiveLeave_Click(object sender, RoutedEventArgs e)
         //{
@@ -72,10 +76,10 @@ namespace Barco
         //    //Close();
         //    //collectiveLeave.ShowDialog();
         //    homeScreenViewModel.CollectiveLeave();
-           
+
         //}
 
-   
+
 
     }
 }

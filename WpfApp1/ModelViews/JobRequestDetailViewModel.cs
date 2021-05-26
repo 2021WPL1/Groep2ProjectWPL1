@@ -2,19 +2,26 @@
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows.Input;
+using Barco.ModelViews;
+using Barco.Views;
 
 namespace Barco
 {//jimmy
     public class JobRequestDetailViewModel : ViewModelBase
     {
         private JobRequestDetail screen;
+        
         public ICommand CancelCommand { get; set; }
+        public ICommand ScheduleCommand { get; set; }
+
         private DAO dao;
         public RqRequest Request { get; set; }
         public RqOptionel rqOptionel { get; set; }
         public RqRequestDetail rqRequestDetail { get; set; }
+        public List<RqRequestDetail> rqRequestDetails { get; set; }
         public List<String> ListPartsnumbers { get; set; }
         public List<String> ListPartNet { get; set; }
         public List<String> ListPartGross { get; set; }
@@ -62,10 +69,18 @@ namespace Barco
         public string dateEut5 { get; set; }
         public bool rbtnBatNo { get; set; }
         public bool rbtnBatYes { get; set; }
+        public string pvgEmc { get; set; }
+        public string pvgEnv { get; set; }
+        public string pvgRel { get; set; }
+        public string pvgSaf { get; set; }
+        public string pvgEco { get; set; }
+
+
 
         public JobRequestDetailViewModel(JobRequestDetail screen, int selectedId)
         {
             CancelCommand = new DelegateCommand(CloseButton);
+            ScheduleCommand = new DelegateCommand(ScheduleButton);
             dao = DAO.Instance();
 
             this.ListPartsnumbers = new List<string>();
@@ -74,25 +89,35 @@ namespace Barco
             this.Request = dao.GetRequest(selectedId);
             this.rqOptionel = dao.GetOptionel(selectedId);
             this.rqRequestDetail = dao.GetRequestDetail(selectedId);
+            this.rqRequestDetails = dao.GetRqDetailsWithRequestId(selectedId);
             LoadPartsNumbers();
             LoadPartGrossWeight();
             LoadPartNetWeight();
-            euts = dao.GetEutWithDetailId(rqRequestDetail.IdRqDetail);
+            euts = dao.GetEutWithDetailId(Request.IdRequest);
             this.screen = screen;
             fillEuts();
             SetBatteries();
-
+            fillPvgResp();
         }
-        //Biance
-        //Sluit Details en open de overview
+        
+        //bianca
+        //closes Details and opens the Overview
         public void CloseButton()
         {
             OverviewJobRequest overview = new OverviewJobRequest();
             screen.Close();
             overview.ShowDialog();
-
-
         }
+
+        // bianca
+        //opens Schedule 
+        public void ScheduleButton()
+        {
+            InplannenJobRequest inplannenJr = new InplannenJobRequest(Request.IdRequest);
+            screen.Close();
+            inplannenJr.ShowDialog();
+        }
+
         //Jimmy
         //Laden van Jobrequest Partnumbers in een list
         public void LoadPartsNumbers()
@@ -210,125 +235,125 @@ namespace Barco
                     cbEmc = true;
                     dateEut5 = e.AvailableDate.ToString();
                 }
-                if (e.OmschrijvingEut.Equals("Environmental - EUT 1"))
+                if (e.OmschrijvingEut.Equals("ENV - EUT 1"))
                 {
                     cmEnvironmental = true;
                     cmEnvironmentalEut1 = true;
                     dateEut1 = e.AvailableDate.ToString();
 
                 }
-                if (e.OmschrijvingEut.Equals("Environmental - EUT 2"))
+                if (e.OmschrijvingEut.Equals("ENV - EUT 2"))
                 {
                     cmEnvironmentalEut2 = true;
                     cmEnvironmental = true;
                     dateEut2 = e.AvailableDate.ToString();
                 }
-                if (e.OmschrijvingEut.Equals("Environmental - EUT 3"))
+                if (e.OmschrijvingEut.Equals("ENV - EUT 3"))
                 {
                     cmEnvironmentalEut3 = true;
                     cmEnvironmental = true;
                     dateEut3 = e.AvailableDate.ToString();
                 }
-                if (e.OmschrijvingEut.Equals("Environmental - EUT 4"))
+                if (e.OmschrijvingEut.Equals("ENV - EUT 4"))
                 {
                     cmEnvironmentalEut4 = true;
                     cmEnvironmental = true;
                     dateEut4 = e.AvailableDate.ToString();
                 }
-                if (e.OmschrijvingEut.Equals("Environmental - EUT 5"))
+                if (e.OmschrijvingEut.Equals("ENV - EUT 5"))
                 {
                     cmEnvironmentalEut5 = true;
                     cmEnvironmental = true;
                     dateEut5 = e.AvailableDate.ToString();
                 }
-                if (e.OmschrijvingEut.Equals("Green Compliance - EUT 1"))
+                if (e.OmschrijvingEut.Equals("ECO - EUT 1"))
                 {
                     cmGrnCompEut1 = true;
                     cmGrnComp = true;
                     dateEut1 = e.AvailableDate.ToString();
 
                 }
-                if (e.OmschrijvingEut.Equals("Green Compliance - EUT 2"))
+                if (e.OmschrijvingEut.Equals("ECO - EUT 2"))
                 {
                     cmGrnCompEut2 = true;
                     cmGrnComp = true;
                     dateEut2 = e.AvailableDate.ToString();
                 }
-                if (e.OmschrijvingEut.Equals("Green Compliance - EUT 3"))
+                if (e.OmschrijvingEut.Equals("ECO - EUT 3"))
                 {
                     cmGrnCompEut3 = true;
                     cmGrnComp = true;
                     dateEut3 = e.AvailableDate.ToString();
                 }
-                if (e.OmschrijvingEut.Equals("Green Compliance - EUT 4"))
+                if (e.OmschrijvingEut.Equals("ECO - EUT 4"))
                 {
                     cmGrnCompEut4 = true;
                     cmGrnComp = true;
                     dateEut4 = e.AvailableDate.ToString();
                 }
-                if (e.OmschrijvingEut.Equals("Green Compliance - EUT 5"))
+                if (e.OmschrijvingEut.Equals("ECO - EUT 5"))
                 {
                     cmGrnCompEut5 = true;
                     cmGrnComp = true;
                     dateEut5 = e.AvailableDate.ToString();
                 }
-                if (e.OmschrijvingEut.Equals("Reliability - EUT 1"))
+                if (e.OmschrijvingEut.Equals("REL - EUT 1"))
                 {
                     cmRelEut1 = true;
                     cmRel = true;
                     dateEut1 = e.AvailableDate.ToString();
 
                 }
-                if (e.OmschrijvingEut.Equals("Reliability - EUT 2"))
+                if (e.OmschrijvingEut.Equals("REL - EUT 2"))
                 {
                     cmRelEut2 = true;
                     cmRel = true;
                     dateEut2 = e.AvailableDate.ToString();
                 }
-                if (e.OmschrijvingEut.Equals("Reliability - EUT 3"))
+                if (e.OmschrijvingEut.Equals("REL - EUT 3"))
                 {
                     cmRelEut3 = true;
                     cmRel = true;
                     dateEut3 = e.AvailableDate.ToString();
                 }
-                if (e.OmschrijvingEut.Equals("Reliability - EUT 4"))
+                if (e.OmschrijvingEut.Equals("REL - EUT 4"))
                 {
                     cmRelEut4 = true;
                     cmRel = true;
                     dateEut4 = e.AvailableDate.ToString();
                 }
-                if (e.OmschrijvingEut.Equals("Reliability - EUT 5"))
+                if (e.OmschrijvingEut.Equals("REL - EUT 5"))
                 {
                     cmRelEut5 = true;
                     cmRel = true;
                     dateEut5 = e.AvailableDate.ToString();
                 }
-                if (e.OmschrijvingEut.Equals("Product Safety - EUT 1"))
+                if (e.OmschrijvingEut.Equals("SAF - EUT 1"))
                 {
                     cmProdSafetyEut1 = true;
                     cmProdSafety = true;
                     dateEut1 = e.AvailableDate.ToString();
 
                 }
-                if (e.OmschrijvingEut.Equals("Product Safety - EUT 2"))
+                if (e.OmschrijvingEut.Equals("SAF - EUT 2"))
                 {
                     cmProdSafetyEut2 = true;
                     cmProdSafety = true;
                     dateEut2 = e.AvailableDate.ToString();
                 }
-                if (e.OmschrijvingEut.Equals("Product Safety - EUT 3"))
+                if (e.OmschrijvingEut.Equals("SAF - EUT 3"))
                 {
                     cmProdSafetyEut3 = true;
                     cmProdSafety = true;
                     dateEut3 = e.AvailableDate.ToString();
                 }
-                if (e.OmschrijvingEut.Equals("Product Safety - EUT 4"))
+                if (e.OmschrijvingEut.Equals("SAF - EUT 4"))
                 {
                     cmProdSafetyEut4 = true;
                     cmProdSafety = true;
                     dateEut4 = e.AvailableDate.ToString();
                 }
-                if (e.OmschrijvingEut.Equals("Product Safety - EUT 5"))
+                if (e.OmschrijvingEut.Equals("SAF - EUT 5"))
                 {
                     cmProdSafetyEut5 = true;
                     cmProdSafety = true;
@@ -336,6 +361,34 @@ namespace Barco
                 }
             }
 
+        }
+
+        private void fillPvgResp()
+        {
+            foreach(RqRequestDetail rq in rqRequestDetails)
+            {
+                if (rq.Testdivisie.Equals("EMC"))
+                {
+                    pvgEmc = rq.Pvgresp;
+                }
+                if (rq.Testdivisie.Equals("ENV"))
+                {
+                    pvgEnv = rq.Pvgresp;
+                }
+                if (rq.Testdivisie.Equals("REL"))
+                {
+                    pvgRel = rq.Pvgresp;
+                }
+                if (rq.Testdivisie.Equals("SAF"))
+                {
+                    pvgSaf = rq.Pvgresp;
+                }
+                if (rq.Testdivisie.Equals("ECO"))
+                {
+                    pvgEco = rq.Pvgresp;
+                }
+
+            }
         }
 
         //thibaut

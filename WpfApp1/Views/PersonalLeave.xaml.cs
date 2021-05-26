@@ -41,6 +41,7 @@ namespace Barco
 
         }
 
+        //bianca
         public void showDivision()
         {
             Department.Items.Add(getValues("DIVISION"));
@@ -48,10 +49,9 @@ namespace Barco
 
         }
 
-        public void showName()
-        {
-            
-        }
+
+
+    //get the name out of registry
 
         static string getValues(string Name)
         {
