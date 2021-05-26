@@ -201,7 +201,7 @@ namespace Barco
        public void scheduleMail(int count)
        {
            DateTime datenow = DateTime.Now;
-           DateTime date = new DateTime(datenow.Year, datenow.Month, datenow.Day, 10, 22, 0);
+           DateTime date = new DateTime(datenow.Year, datenow.Month, datenow.Day, 17, 00, 0);
            TimeSpan span = datenow - date;
 
            if (!mailScheduled)
