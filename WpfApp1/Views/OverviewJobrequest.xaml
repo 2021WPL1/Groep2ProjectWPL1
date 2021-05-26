@@ -18,7 +18,7 @@
                 Content="Delete" HorizontalAlignment="Left" Margin="717,190,0,0" VerticalAlignment="Top" Height="34" Width="50" />
         <Button x:Name="CancelButton"
                 Command="{Binding CancelCommand}" 
-                Content="Cancel" HorizontalAlignment="Left" Margin="722,246,0,0" VerticalAlignment="Top" Height="33" Width="45" />
+                Content="Cancel" HorizontalAlignment="Left" Margin="720,246,0,0" VerticalAlignment="Top" Height="33" Width="45" />
         <Image x:Name="imgOverview" HorizontalAlignment="Left" Height="80" Margin="21,14,0,0" VerticalAlignment="Top" Width="215" Source="/Views/logo.png"/>
         <Label Content="Overview Jobrequest" HorizontalAlignment="Left" Margin="294,14,0,0" VerticalAlignment="Top"  Height="72" Width="256" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
         <Button x:Name="OpenButton"

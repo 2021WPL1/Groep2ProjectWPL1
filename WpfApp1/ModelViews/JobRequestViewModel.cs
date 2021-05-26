@@ -14,13 +14,8 @@ using Barco.ModelViews.Settings;
 using Barco.ModelViews.smtpConfig;
 using Microsoft.Win32;
 
-/// <summary>
-/// 
-///     (╭ ゜-゜)╮ ┬─┬
-///     
-///     (╯°□°)╯︵ ┻━┻
-///     
-/// </summary>
+
+
 
 namespace Barco
 { //bianca
@@ -136,7 +131,7 @@ namespace Barco
 
 
 
-
+        //bianca
         //radio button
         public bool rbtnBatNo { get; set; }
         public bool rbtnBatYes { get; set; }
@@ -400,9 +395,9 @@ namespace Barco
 
                     //detail object
                     //Detail.Testdivisie = "eco";  
-                    detailList = GetRqRequestDetails();
+                 //   detailList = GetRqRequestDetails();
                     
-                    dao.AddRequest(request, detailList, optional, eutList);
+                 //   dao.AddRequest(request, detailList, optional, eutList);
                     MessageBox.Show("Data has been inserted");
                 }
             }

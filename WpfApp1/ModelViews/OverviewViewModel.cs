@@ -182,7 +182,7 @@ namespace Barco
             return count;
        }
 
-       //bianca- method to send an email to the responsible once a day s
+       //bianca- method to send an email to the responsible once a day 
        public void SendMailWithSMTPRelay()
        {
            smtpMailCommunication.CreateMail(CountJobRequestsToday().ToString());

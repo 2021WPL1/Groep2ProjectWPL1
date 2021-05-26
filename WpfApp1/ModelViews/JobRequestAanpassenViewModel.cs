@@ -83,7 +83,7 @@ namespace Barco
 
 
         }
-        //biance
+        
         // Sluit aanpassen en opent overview
         public void CancelButton()
         {

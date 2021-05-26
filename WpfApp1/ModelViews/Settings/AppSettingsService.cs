@@ -23,6 +23,7 @@ namespace Barco.ModelViews.Settings
             get => @"C:\Users\cbian\source\repos\Werkplekleren1\2021WPL1Groep2\ProjectWPL1\WpfApp1\appSettings";
         }
 
+       
         public AppSettingsService()
         {
             BuildConfigurationRoot();
@@ -30,6 +31,7 @@ namespace Barco.ModelViews.Settings
             _appSettings = _configRoot.Get<TAppSettings>();
         }
 
+        //bianca ->  building the configuration root based of the json file
         private void BuildConfigurationRoot()
         {
          
@@ -39,8 +41,8 @@ namespace Barco.ModelViews.Settings
             _configRoot = configBuilder.Build();
         }
 
-   
-        private void AddJSONSettingsFileToBuilder(ref ConfigurationBuilder builder, string filename)
+   //bianca 
+   private void AddJSONSettingsFileToBuilder(ref ConfigurationBuilder builder, string filename)
         {
             var fullFilePath = Path.Combine(_appSettingsBasePath, filename);
             if (File.Exists(fullFilePath))
