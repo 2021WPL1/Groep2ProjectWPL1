@@ -175,6 +175,7 @@ namespace Barco
             }
 
         }
+
         /// <summary>
         /// jimmy
         /// </summary>
@@ -211,6 +212,7 @@ namespace Barco
             }
 
         }
+
         //Jimmy
         //Laden van Jobrequest Partnumbers in een list
         public void LoadPartsNumbers()
@@ -224,6 +226,7 @@ namespace Barco
                 int splitIndex = Partnumbers.IndexOf(";");
                 Partnumber = Partnumbers.Substring(0, splitIndex);
                 ListPartsnumbers.Add(Partnumber);
+                
                 int length = Partnumbers.Length;
 
 
