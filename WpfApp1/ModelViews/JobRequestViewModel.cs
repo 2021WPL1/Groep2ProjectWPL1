@@ -9,6 +9,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
+using Barco.ModelViews;
+using Barco.ModelViews.Settings;
+using Barco.ModelViews.smtpConfig;
 using Microsoft.Win32;
 
 /// <summary>
@@ -23,9 +26,7 @@ namespace Barco
 { //bianca
     public class JobRequestViewModel : ViewModelBase
     {
-
         public JobRequest screen;
-
 
         public RqRequest request = new RqRequest();
 
@@ -75,7 +76,7 @@ namespace Barco
         public JobRequestViewModel jobRequestViewModel;
         public RqOptionel optional = new RqOptionel();
         public List<Eut> eutList = new List<Eut>();
-        public RqRequestDetail Detail = new RqRequestDetail();
+        public RqRequestDetail Detail = new RqRequestDetail();//to do delete 
         public List<Part> parts = new List<Part>();
 
         List<bool> emcBoxes = new List<bool>();
@@ -89,7 +90,6 @@ namespace Barco
         public bool cbEmcEut3 { get; set; }
         public bool cbEmcEut4 { get; set; }
         public bool cbEmcEut5 { get; set; }
-
 
         public bool cmEnvironmentalEut1 { get; set; }
         public bool cmEnvironmentalEut2 { get; set; }
@@ -126,11 +126,6 @@ namespace Barco
         public ComboBox cmbDivision { get; set; }
         public ComboBox cmbJobNature { get; set; }
 
-
-
-
-
-
         //radio button
         public bool rbtnBatNo { get; set; }
         public bool rbtnBatYes { get; set; }
@@ -158,6 +153,9 @@ namespace Barco
 
 
             txtReqInitials = GetInitialsFromReg();
+
+           
+
 
 
         }
@@ -399,14 +397,14 @@ namespace Barco
                     optional.Remarks = specialRemarks;
 
                     //eut objects
-                    eutList = getEutData();
+                    eutList = CreateEutList();
 
                     //detail object
-                    Detail.Testdivisie = "ECO";
+                    //Detail.Testdivisie = "eco";  
+                    List<RqRequestDetail>detailList = GetRqRequestDetails();
 
-
-
-                    dao.AddRequest(request, Detail, optional, eutList);
+                    
+                    dao.AddRequest(request, detailList, optional, eutList);
                     MessageBox.Show("Data has been inserted");
                     
                 }
@@ -460,8 +458,8 @@ namespace Barco
             greenBoxes.Add(cmGrnCompEut4);
             greenBoxes.Add(cmGrnCompEut5);
 
-            selectionBoxes.Add(cmEnvironmental);
             selectionBoxes.Add(cbEmc);
+            selectionBoxes.Add(cmEnvironmental);
             selectionBoxes.Add(cmRel);
             selectionBoxes.Add(cmProdSafety);
             selectionBoxes.Add(cmGrnComp);
@@ -639,205 +637,207 @@ namespace Barco
             return result;
         }
 
-        private List<Eut> getEutData()
-        {
-            List<Eut> result = new List<Eut>();
+        //private List<Eut> getEutData()
+        //{
+        //    List<Eut> result = new List<Eut>();
+            
+        //    //get first eut and date
+        //    if (DatePickerEUT1.Date != DateTime.Now)
+        //    {
+        //        DateTime date = (DateTime) DatePickerEUT1.Date;
+        //        string description = "";
+        //        if ((bool)cbEmcEut1)
+        //        {
+        //            description = "EMC - EUT 1";
+        //            result.Add(createEut(description, date));
+        //        }
 
-            //get first eut and date
-            if (DatePickerEUT1.Date != DateTime.Now)
-            {
-                DateTime date = (DateTime) DatePickerEUT1.Date;
-                string description = "";
-                if ((bool)cbEmcEut1)
-                {
-                    description = "EMC - EUT 1";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmEnvironmentalEut1)
+        //        {
+        //            description = "Environmental - EUT 1";
+        //            result.Add(createEut(description, date));
+        //        }
 
-                if ((bool)cmEnvironmentalEut1)
-                {
-                    description = "Environmental - EUT 1";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmGrnCompEut1)
+        //        {
+        //            description = "Green Compliance - EUT 1";
+        //            result.Add(createEut(description, date));
+        //        }
 
-                if ((bool)cmGrnCompEut1)
-                {
-                    description = "Green Compliance - EUT 1";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmRelEut1)
+        //        {
+        //            description = "Reliability - EUT 1";
+        //            result.Add(createEut(description, date));
+        //        }
 
-                if ((bool)cmRelEut1)
-                {
-                    description = "Reliability - EUT 1";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmProdSafetyEut1)
+        //        {
+        //            description = "Product Safety - EUT 1";
+        //            result.Add(createEut(description, date));
+        //        }
 
-                if ((bool)cmProdSafetyEut1)
-                {
-                    description = "Product Safety - EUT 1";
-                    result.Add(createEut(description, date));
-                }
+        //    }
 
-            }
+        //    //get second eut and date
+        //    if (DatePickerEUT2.Date != DateTime.Now)
+        //    {
+        //        DateTime date = (DateTime) DatePickerEUT2.Date;
+        //        string description = "";
+        //        if ((bool)cbEmcEut2)
+        //        {
+        //            description = "EMC - EUT 2";
+        //            result.Add(createEut(description, date));
+        //        }
 
-            //get second eut and date
-            if (DatePickerEUT2.Date != DateTime.Now)
-            {
-                DateTime date = (DateTime) DatePickerEUT2.Date;
-                string description = "";
-                if ((bool)cbEmcEut2)
-                {
-                    description = "EMC - EUT 2";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmEnvironmentalEut2)
+        //        {
+        //            description = "Environmental - EUT 2";
+        //            result.Add(createEut(description, date));
+        //        }
 
-                if ((bool)cmEnvironmentalEut2)
-                {
-                    description = "Environmental - EUT 2";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmGrnCompEut2)
+        //        {
+        //            description = "Green Compliance - EUT 2";
+        //            result.Add(createEut(description, date));
+        //        }
 
-                if ((bool)cmGrnCompEut2)
-                {
-                    description = "Green Compliance - EUT 2";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmRelEut2)
+        //        {
+        //            description = "Reliability - EUT 2";
+        //            result.Add(createEut(description, date));
+        //        }
 
-                if ((bool)cmRelEut2)
-                {
-                    description = "Reliability - EUT 2";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmProdSafetyEut2)
+        //        {
+        //            description = "Product Safety - EUT 2";
+        //            result.Add(createEut(description, date));
+        //        }
 
-                if ((bool)cmProdSafetyEut2)
-                {
-                    description = "Product Safety - EUT 2";
-                    result.Add(createEut(description, date));
-                }
+        //    }
 
-            }
+        //    //get third eut and date
+        //    if (DatePickerEUT3.Date != DateTime.Now)
+        //    {
+        //        DateTime date = (DateTime) DatePickerEUT3.Date;
+        //        string description = "";
+        //        if ((bool)cbEmcEut3)
+        //        {
+        //            description = "EMC - EUT 3";
+        //            result.Add(createEut(description, date));
+        //        }
 
-            //get third eut and date
-            if (DatePickerEUT3.Date != DateTime.Now)
-            {
-                DateTime date = (DateTime) DatePickerEUT3.Date;
-                string description = "";
-                if ((bool)cbEmcEut3)
-                {
-                    description = "EMC - EUT 3";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmEnvironmentalEut3)
+        //        {
+        //            description = "Environmental - EUT 3";
+        //            result.Add(createEut(description, date));
+        //        }
 
-                if ((bool)cmEnvironmentalEut3)
-                {
-                    description = "Environmental - EUT 3";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmGrnCompEut3)
+        //        {
+        //            description = "Green Compliance - EUT 3";
+        //            result.Add(createEut(description, date));
+        //        }
 
-                if ((bool)cmGrnCompEut3)
-                {
-                    description = "Green Compliance - EUT 3";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmRelEut3)
+        //        {
+        //            description = "Reliability - EUT 3";
+        //            result.Add(createEut(description, date));
+        //        }
 
-                if ((bool)cmRelEut3)
-                {
-                    description = "Reliability - EUT 3";
-                    result.Add(createEut(description, date));
-                }
-
-                if ((bool)cmProdSafetyEut3)
-                {
-                    description = "Product Safety - EUT 3";
-                    result.Add(createEut(description, date));
-                }
-
-                
-            }
-
-            //get fourth eut and date
-            if (DatePickerEUT4.Date != DateTime.Now)
-            {
-                DateTime date = (DateTime) DatePickerEUT4.Date;
-                string description = "";
-                if ((bool)cbEmcEut4)
-                {
-                    description = "EMC - EUT 4";
-                    result.Add(createEut(description, date));
-                }
-
-                if ((bool)cmEnvironmentalEut4)
-                {
-                    description = "Environmental - EUT 4";
-                    result.Add(createEut(description, date));
-                }
-
-                if ((bool)cmGrnCompEut4)
-                {
-                    description = "Green Compliance - EUT 4";
-                    result.Add(createEut(description, date));
-                }
-
-                if ((bool)cmRelEut4)
-                {
-                    description = "Reliability - EUT 4";
-                    result.Add(createEut(description, date));
-                }
-
-                if ((bool)cmProdSafetyEut4)
-                {
-                    description = "Product Safety - EUT 4";
-                    result.Add(createEut(description, date));
-                }
-            }
-
-            //get fifth eut and date
-            if (DatePickerEUT5.Date != DateTime.Now)
-            {
-                DateTime date = (DateTime) DatePickerEUT5.Date;
-                string description = "";
-                if ((bool)cbEmcEut5)
-                {
-                    description = "EMC - EUT 5";
-                    result.Add(createEut(description, date));
-                }
-
-                if ((bool)cmEnvironmentalEut5)
-                {
-                
-                    description = "Environmental - EUT 5";
-                    result.Add(createEut(description, date));
-                }
-
-                if ((bool) cmGrnCompEut5)
-                {
-                    description = "Green Compliance - EUT 5";
-                    result.Add(createEut(description, date));
-                }
-
-                if ((bool)cmRelEut5)
-                {
-                    description = "Reliability - EUT 5";
-                    result.Add(createEut(description, date));
-                }
-
-                if ((bool)cmProdSafetyEut5)
-                {
-                    description = "Product Safety - EUT 5";
-                    result.Add(createEut(description, date));
-                }
+        //        if ((bool)cmProdSafetyEut3)
+        //        {
+        //            description = "Product Safety - EUT 3";
+        //            result.Add(createEut(description, date));
+        //        }
 
                 
-            }
+        //    }
 
-            return result;
-        }
+        //    //get fourth eut and date
+        //    if (DatePickerEUT4.Date != DateTime.Now)
+        //    {
+        //        DateTime date = (DateTime) DatePickerEUT4.Date;
+        //        string description = "";
+        //        if ((bool)cbEmcEut4)
+        //        {
+        //            description = "EMC - EUT 4";
+        //            result.Add(createEut(description, date));
+        //        }
+
+        //        if ((bool)cmEnvironmentalEut4)
+        //        {
+        //            description = "Environmental - EUT 4";
+        //            result.Add(createEut(description, date));
+        //        }
+
+        //        if ((bool)cmGrnCompEut4)
+        //        {
+        //            description = "Green Compliance - EUT 4";
+        //            result.Add(createEut(description, date));
+        //        }
+
+        //        if ((bool)cmRelEut4)
+        //        {
+        //            description = "Reliability - EUT 4";
+        //            result.Add(createEut(description, date));
+        //        }
+
+        //        if ((bool)cmProdSafetyEut4)
+        //        {
+        //            description = "Product Safety - EUT 4";
+        //            result.Add(createEut(description, date));
+        //        }
+        //    }
+
+        //    //get fifth eut and date
+        //    if (DatePickerEUT5.Date != DateTime.Now)
+        //    {
+        //        DateTime date = (DateTime) DatePickerEUT5.Date;
+        //        string description = "";
+        //        if ((bool)cbEmcEut5)
+        //        {
+        //            description = "EMC - EUT 5";
+        //            result.Add(createEut(description, date));
+        //        }
+
+        //        if ((bool)cmEnvironmentalEut5)
+        //        {
+                
+        //            description = "Environmental - EUT 5";
+        //            result.Add(createEut(description, date));
+        //        }
+
+        //        if ((bool) cmGrnCompEut5)
+        //        {
+        //            description = "Green Compliance - EUT 5";
+        //            result.Add(createEut(description, date));
+        //        }
+
+        //        if ((bool)cmRelEut5)
+        //        {
+        //            description = "Reliability - EUT 5";
+        //            result.Add(createEut(description, date));
+        //        }
+
+        //        if ((bool)cmProdSafetyEut5)
+        //        {
+        //            description = "Product Safety - EUT 5";
+        //            result.Add(createEut(description, date));
+        //        }
+
+                
+        //    }
+
+        //    return result;
+        //}
+
+
         //thibaut
-        private Eut createEut(string description, DateTime date)
+        private Eut createEut(int detailId, string description, DateTime date)
         {
             return new Eut()
             {
-                IdRqDetail = Detail.IdRqDetail,
+                IdRqDetail = detailId,
                 AvailableDate = date,
                 OmschrijvingEut = description
             };
@@ -854,7 +854,7 @@ namespace Barco
         //later find a solution for the hard-code
         private bool checkInternal(string Name)
         {
-            if (Name == "BIC")
+            if (Name == "BIC")//to do change hard code (need a list of people that are responsible)
             {
                 return true;
             }
@@ -866,6 +866,216 @@ namespace Barco
             }
         }
 
+        //thibaut
+        private List<Eut> CreateEutList()
+        {
+            List<Eut> eutList = new List<Eut>();
+            List<RqRequestDetail> details = GetRqRequestDetails();
+            DateTime date;
+            string description = "";
+
+            foreach (RqRequestDetail d in details)
+            {
+                if ((bool)cbEmcEut1 && d.Testdivisie.Equals("EMC"))
+                {
+                    date = (DateTime)DatePickerEUT1.Date;
+                    description = "EMC - EUT 1";
+                    eutList.Add(createEut(d.IdRequest,description, date));                  
+                }
+                if ((bool)cbEmcEut2 && d.Testdivisie.Equals("EMC"))
+                {
+                    date = (DateTime)DatePickerEUT2.Date;
+                    description = "EMC - EUT 2";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+                if ((bool)cbEmcEut3 && d.Testdivisie.Equals("EMC"))
+                {
+                    date = (DateTime)DatePickerEUT3.Date;
+                    description = "EMC - EUT 3";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+                if ((bool)cbEmcEut4 && d.Testdivisie.Equals("EMC"))
+                {
+                    date = (DateTime)DatePickerEUT4.Date;
+                    description = "EMC - EUT 4";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+                if ((bool)cbEmcEut5 && d.Testdivisie.Equals("EMC"))
+                {
+                    date = (DateTime)DatePickerEUT5.Date;
+                    description = "EMC - EUT 5";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+                if ((bool)cmEnvironmentalEut1 && d.Testdivisie.Equals("ENV"))
+                {
+                    date = (DateTime)DatePickerEUT1.Date;
+                    description = "ENV - EUT 1";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+                if ((bool)cmEnvironmentalEut2 && d.Testdivisie.Equals("ENV"))
+                {
+                    date = (DateTime)DatePickerEUT2.Date;
+                    description = "ENV - EUT 2";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+                if ((bool)cmEnvironmentalEut3 && d.Testdivisie.Equals("ENV"))
+                {
+                    date = (DateTime)DatePickerEUT3.Date;
+                    description = "ENV - EUT 3";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+                if ((bool)cmEnvironmentalEut4 && d.Testdivisie.Equals("ENV"))
+                {
+                    date = (DateTime)DatePickerEUT4.Date;
+                    description = "ENV - EUT 4";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+                if ((bool)cmEnvironmentalEut5 && d.Testdivisie.Equals("ENV"))
+                {
+                    date = (DateTime)DatePickerEUT5.Date;
+                    description = "ENV - EUT 5";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+                if ((bool)cmRelEut1 && d.Testdivisie.Equals("REL"))
+                {
+                    date = (DateTime)DatePickerEUT1.Date;
+                    description = "REL - EUT 1";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+                if ((bool)cmRelEut2 && d.Testdivisie.Equals("REL"))
+                {
+                    date = (DateTime)DatePickerEUT2.Date;
+                    description = "REL - EUT 2";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+                if ((bool)cmRelEut3 && d.Testdivisie.Equals("REL"))
+                {
+                    date = (DateTime)DatePickerEUT3.Date;
+                    description = "REL - EUT 3";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+                if ((bool)cmRelEut4 && d.Testdivisie.Equals("REL"))
+                {
+                    date = (DateTime)DatePickerEUT4.Date;
+                    description = "REL - EUT 4";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+                if ((bool)cmRelEut5 && d.Testdivisie.Equals("REL"))
+                {
+                    date = (DateTime)DatePickerEUT5.Date;
+                    description = "REL - EUT 5";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+                if ((bool)cmProdSafetyEut1 && d.Testdivisie.Equals("SAF"))
+                {
+                    date = (DateTime)DatePickerEUT1.Date;
+                    description = "SAF - EUT 1";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+                if ((bool)cmProdSafetyEut2 && d.Testdivisie.Equals("SAF"))
+                {
+                    date = (DateTime)DatePickerEUT2.Date;
+                    description = "SAF - EUT 2";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+                if ((bool)cmProdSafetyEut3 && d.Testdivisie.Equals("SAF"))
+                {
+                    date = (DateTime)DatePickerEUT3.Date;
+                    description = "SAF - EUT 3";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+                if ((bool)cmProdSafetyEut4 && d.Testdivisie.Equals("SAF"))
+                {
+                    date = (DateTime)DatePickerEUT4.Date;
+                    description = "SAF - EUT 4";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+                if ((bool)cmProdSafetyEut5 && d.Testdivisie.Equals("SAF"))
+                {
+                    date = (DateTime)DatePickerEUT5.Date;
+                    description = "SAF - EUT 5";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+                if ((bool)cmGrnCompEut1 && d.Testdivisie.Equals("ECO"))
+                {
+                    date = (DateTime)DatePickerEUT1.Date;
+                    description = "ECO - EUT 1";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+                if ((bool)cmGrnCompEut2 && d.Testdivisie.Equals("ECO"))
+                {
+                    date = (DateTime)DatePickerEUT2.Date;
+                    description = "ECO - EUT 2";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+                if ((bool)cmGrnCompEut3 && d.Testdivisie.Equals("ECO"))
+                {
+                    date = (DateTime)DatePickerEUT3.Date;
+                    description = "ECO - EUT 3";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+                if ((bool)cmGrnCompEut4 && d.Testdivisie.Equals("ECO"))
+                {
+                    date = (DateTime)DatePickerEUT4.Date;
+                    description = "ECO - EUT 4";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+                if ((bool)cmGrnCompEut5 && d.Testdivisie.Equals("ECO"))
+                {
+                    date = (DateTime)DatePickerEUT5.Date;
+                    description = "ECO - EUT 5";
+                    eutList.Add(createEut(d.IdRequest, description, date));
+                }
+            }
+
+            return eutList;
+        }
+
+        //thibaut
+        private List<RqRequestDetail> GetRqRequestDetails()
+        {
+            List<RqRequestDetail> requestDetails = new List<RqRequestDetail>();
+
+            for(int i = 0; i< selectionBoxes.Count; i++)
+            {
+                if (selectionBoxes[i])
+                {
+                    RqRequestDetail rqRequest = new RqRequestDetail();
+                    rqRequest.IdRequest = request.IdRequest;
+                    if(i == 0)
+                    {
+                        rqRequest.Testdivisie = "EMC";
+                    }
+                    else if (i == 1)
+                    {
+                        rqRequest.Testdivisie = "ENV";
+                    }
+                    else if (i == 2)
+                    {
+                        rqRequest.Testdivisie = "REL";
+                    }
+                    else if (i == 3)
+                    {
+                        rqRequest.Testdivisie = "SAF";
+                    }
+                    else if (i == 4)
+                    {
+                        rqRequest.Testdivisie = "ECO";
+                    }
+                    requestDetails.Add(rqRequest);
+
+                }
+            }
+
+            return requestDetails;
+
+        }
+
+
+      
+
+
+      
     }
 }
   

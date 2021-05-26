@@ -4,13 +4,26 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using Barco.ModelViews.Settings;
+using Barco.ModelViews.smtpConfig;
+
 
 namespace Barco
 {//bianca
     public class OverviewViewModel : ViewModelBase
     {
+
+        private static AppSettingsService<AppSettings> _appSettingsService = AppSettingsService<AppSettings>.Instance;
+
+
+
+        private static SMTPMailCommunication smtpMailCommunication { get; set; }
+
+        public bool mailScheduled = false;
+
         private OverviewJobRequest overview;
         public ICommand CancelCommand { get; set; }
         public ICommand ApproveCommand { get; set; }
@@ -37,6 +50,12 @@ namespace Barco
             EditRequestCommand = new DelegateCommand(EditRequest);
             Load();
             this.overview = overview;
+            CountJobRequestsToday();
+            var result = _appSettingsService.GetConfigurationSection<SMPTClientConfig>("SMPTClientConfig");
+            smtpMailCommunication = new SMTPMailCommunication(
+                result.QueryResult.Username,
+                result.QueryResult.SMTPPassword,
+                result.QueryResult.SMPTHost);
         }
         //jimmy
         // laad alle requests in een ObservableCollection om zo in de GUI weer te geven
@@ -48,16 +67,15 @@ namespace Barco
             {
                 RqRequests.Add(rqRequest);
             }
-
-
         }
         //bianca
-        //Sluit de overview en opent home
+      
         public void CancelButton()
         {
-            HomeScreen home = new HomeScreen();
-            overview.Close();
-            home.ShowDialog();
+            SendMailWithSMTPRelay();
+            //    HomeScreen home = new HomeScreen();
+            //    overview.Close();
+            //    home.ShowDialog();
 
         }
         //jimmy
@@ -150,6 +168,56 @@ namespace Barco
             }
         }
 
-      
+        //bianca- method to count the request that were sent today 
+        //thibaut
+        //laurent - schedule the mailing task
+       private int CountJobRequestsToday()
+       {
+           var datenow = DateTime.Today;
+           var count = 0;
+
+            var rqRequests = dao.GetAllRqRequests();
+
+            foreach (var rqRequest in rqRequests)
+            {
+                TimeSpan span = (TimeSpan) (datenow - rqRequest.RequestDate);
+                if (span.Days < 1)
+                {
+                    count++;
+                }
+            }
+            scheduleMail(count);
+            return count;
+       }
+
+       //bianca- method to send an email to the responsible once a day s
+       public void SendMailWithSMTPRelay()
+       {
+           smtpMailCommunication.CreateMail(CountJobRequestsToday().ToString());
+           var toAddress = _appSettingsService.GetConfigurationSection<EmailAdresses>("EmailAdresses");
+           MessageBox.Show(toAddress.QueryResult.Address1);
+
+
+       }
+       
+       public void scheduleMail(int count)
+       {
+           DateTime datenow = DateTime.Now;
+           DateTime date = new DateTime(datenow.Year, datenow.Month, datenow.Day, 17, 00, 0);
+           if (datenow <= date)
+           {
+               date = new DateTime(date.Year, date.Month, (date.Day + 1), date.Hour, date.Minute, date.Second);
+               
+           }
+           TimeSpan span = date - datenow;
+
+           if (!mailScheduled)
+           {
+               Task.Delay(span.Milliseconds).ContinueWith((x) =>
+               {
+                   smtpMailCommunication.CreateMail(count.ToString());
+               });
+           }
+       }
     }
 }

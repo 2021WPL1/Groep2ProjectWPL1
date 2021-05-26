@@ -110,7 +110,8 @@ namespace Barco.Data
         // Delete Selected JobRequest
         public void DeleteJobRequest(int id)
         {
-            context.Eut.Remove(GetEut(GetRqRequestDetailByRequestId(id).IdRqDetail));
+            DeleteEuts(context.RqRequestDetail.Where(a => a.IdRequest == id).ToList()) ;
+            DeleteDetails(id);
             context.RqOptionel.Remove(GetOptionel(GetOptionalByRequestId(id).IdRequest));
             context.RqRequestDetail.Remove(GetRqRequestDetailByRequestId(id));
             context.RqRequest.Remove(GetRqRequestById(id));
@@ -123,8 +124,6 @@ namespace Barco.Data
         {
             return context.RqOptionel.FirstOrDefault(r => r.IdRequest == id);
         }
-
-        
 
         //thibaut, bianca
         // get a detail id from requestId
@@ -247,14 +246,15 @@ namespace Barco.Data
         //Bianca
         // Add request/ detail
 
-        public RqRequest AddRequest(RqRequest request, RqRequestDetail detail, RqOptionel optional, List<Eut> eut)
+        public RqRequest AddRequest(RqRequest request, List<RqRequestDetail> details, RqOptionel optional, List<Eut> eut)
         {
             try
             {
                 context.RqRequest.Add(request);
                 context.SaveChanges();
                 AddOptional(optional);
-                AddDetail(detail);
+                AddDetails(details);
+                //AddDetail(detail); old way single detail
                 AddEut(eut);
             }
 
@@ -267,13 +267,26 @@ namespace Barco.Data
 
         }
 
-
+        /*
+        *  oude interpretatie van de opdracht
         public RqRequestDetail AddDetail(RqRequestDetail detail)
         {
             detail.IdRequest = int.Parse(context.RqRequest.OrderByDescending(p => p.IdRequest).Select(p => p.IdRequest).First().ToString());
             context.RqRequestDetail.Add(detail);
             context.SaveChanges();
             return detail;
+        }
+        */
+
+        //thibaut 
+        public void AddDetails(List<RqRequestDetail> listDetails)
+        {
+            foreach(RqRequestDetail d in listDetails)
+            {
+                d.IdRequest = int.Parse(context.RqRequest.OrderByDescending(p => p.IdRequest).Select(p => p.IdRequest).First().ToString());
+                context.RqRequestDetail.Add(d);
+            }
+            context.SaveChanges();
         }
 
         //thibaut
@@ -285,7 +298,7 @@ namespace Barco.Data
             context.SaveChanges();
             return optional;
         }
-
+        //thibaut
         public void AddEut(List<Eut> eutlist)
         {
             foreach (Eut e in eutlist)
@@ -297,11 +310,22 @@ namespace Barco.Data
             context.SaveChanges();
         }
 
+        public List<RqRequestDetail> GetRqDetailsWithRequestId(int requestId)
+        {
+            return context.RqRequestDetail.Where(rq => rq.IdRequest == requestId).ToList();
+        }
+
         //thibaut
         public List<Eut> GetEutWithDetailId(int id)
         {
+            List<RqRequestDetail> rqRequestDetails= context.RqRequestDetail.Where(d => d.IdRequest == id).ToList();
+            List<Eut> lijst = new List<Eut>();
+            foreach(RqRequestDetail r  in rqRequestDetails)
+            {
+                lijst.AddRange(context.Eut.Where(eut => eut.IdRqDetail == r.IdRqDetail));
+            }
 
-            return context.Eut.Where(e => e.IdRqDetail == id).ToList();
+            return lijst;
         }
 
         

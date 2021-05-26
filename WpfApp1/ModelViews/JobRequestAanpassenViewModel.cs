@@ -23,6 +23,7 @@ namespace Barco
         public string txtEutProjectname { get; set; } //EUT Project name
         public string txtRemark { get; set; } // special remarks
         public string txtFunction { get; set; } //function
+        public string txtPvgRes { get; set; }
         public RqRequest CurrentRequest { get; set; }
         public RqOptionel CurrentOptionel { get; set; }
         public RqRequestDetail CurrentRequestDetail { get; set; }
@@ -34,13 +35,13 @@ namespace Barco
         public ICommand AddCommand { get; set; }
         public ICommand RemoveCommand { get; set; }
         public RqRequest Request { get; set; }
-        public RqOptionel rqOptionel { get; set; }
-        public RqRequestDetail rqRequestDetail { get; set; }
+        public RqOptionel RqOptionel { get; set; }
+        public RqRequestDetail RqRequestDetail { get; set; }
         public List<String> ListPartsnumbers { get; set; }
         public List<String> ListPartNet { get; set; }
         public List<String> ListPartGross { get; set; }
-        public string SelectedDivision { get; set; }
-        public string SelectedJobNature { get; set; }
+        public string selectedDivision { get; set; }
+        public string selectedJobNature { get; set; }
 
 
 
@@ -65,8 +66,9 @@ namespace Barco
             AddCommand = new DelegateCommand(AddPart);
             RemoveCommand = new DelegateCommand(RemovePart);
             this.Request = dao.GetRequest(selectedId);
-            this.rqOptionel = dao.GetOptionel(selectedId);
-            this.rqRequestDetail = dao.GetRequestDetail(selectedId);
+            this.RqOptionel = dao.GetOptionel(selectedId);
+            this.RqRequestDetail = dao.GetRequestDetail(selectedId);
+            
 
             LoadPartGrossWeight();
             LoadPartNetWeight();
@@ -98,8 +100,15 @@ namespace Barco
 
         public void SaveChanges()
         {
-            
-           
+            Request.Requester = txtReqInitials;
+            RqRequestDetail.Pvgresp = txtPvgRes;
+            Request.EutProjectname = txtEutProjectname;
+            Request.ExpectedEnddate = dateExpectedEnd;
+            RqOptionel.Remarks = txtRemark;
+            RqOptionel.Link = txtLinkTestplan;
+            Request.BarcoDivision = selectedDivision;
+            Request.JobNature = SelectedJobNature;
+            dao.saveChanges();
         }
         /// <summary>
         /// jimmy
@@ -140,11 +149,10 @@ namespace Barco
                     Request.EutPartnumbers += txtPartNumber + " ; ";
                     Request.GrossWeight += txtPartNetWeight + " ; ";
                     Request.NetWeight += txtPartGrossWeight + " ; ";
-                    dao.saveChanges();
-
-
 
                     RefreshGUI();
+
+
                 }
             }
             catch (NullReferenceException)
@@ -239,6 +247,27 @@ namespace Barco
                 OnPropertyChanged();
             }
         }
+
+        public string SelectedDivision
+        {
+            get { return selectedDivision; }
+            set
+            {
+                selectedDivision = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public string SelectedJobNature
+        {
+            get { return selectedJobNature; }
+            set
+            {
+                selectedDivision = value;
+                OnPropertyChanged();
+
+            }
+        }
         /// <summary>
         /// jimmy
         /// </summary>
@@ -249,19 +278,22 @@ namespace Barco
             {
                 lstParts.Add(part);
             }
+            LoadPartGrossWeight();
+            LoadPartNetWeight();
+            LoadPartsNumbers();
         }
-        
+
 
 
         private void FillData()
         {
-            txtReqInitials = CurrentRequest.Requester;
-            txtEutProjectname = CurrentRequest.EutProjectname;
-            dateExpectedEnd = CurrentRequest.ExpectedEnddate;
-            txtRemark = CurrentOptionel.Remarks;
-            txtLinkTestplan = CurrentOptionel.Link;
-            SelectedDivision = CurrentRequest.BarcoDivision;
-            SelectedJobNature = CurrentRequest.JobNature;
+            txtReqInitials = Request.Requester;
+            txtEutProjectname = Request.EutProjectname;
+            dateExpectedEnd = Request.ExpectedEnddate;
+            txtRemark = RqOptionel.Remarks;
+            txtLinkTestplan = RqOptionel.Link;
+            selectedDivision = Request.BarcoDivision;
+            selectedJobNature = Request.JobNature;
 
         }
 

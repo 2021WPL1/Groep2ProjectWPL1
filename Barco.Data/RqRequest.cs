@@ -1,5 +1,4 @@
-﻿using Barco.Data;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace Barco
@@ -8,6 +7,8 @@ namespace Barco
     {
         public RqRequest()
         {
+            PlPlanning = new HashSet<PlPlanning>();
+            PlPlanningsKalender = new HashSet<PlPlanningsKalender>();
             RqOptionel = new HashSet<RqOptionel>();
             RqRequestDetail = new HashSet<RqRequestDetail>();
         }
@@ -28,6 +29,8 @@ namespace Barco
         public string NetWeight { get; set; }
         public bool Battery { get; set; }
 
+        public virtual ICollection<PlPlanning> PlPlanning { get; set; }
+        public virtual ICollection<PlPlanningsKalender> PlPlanningsKalender { get; set; }
         public virtual ICollection<RqOptionel> RqOptionel { get; set; }
         public virtual ICollection<RqRequestDetail> RqRequestDetail { get; set; }
     }

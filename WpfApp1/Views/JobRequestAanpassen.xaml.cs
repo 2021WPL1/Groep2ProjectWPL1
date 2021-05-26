@@ -31,6 +31,7 @@ namespace Barco
             dao = DAO.Instance();
 
             showDivision(selectedId);
+            getJobNatures();
             jobRequestAanpassenViewModel = new JobRequestAanpassenViewModel(this, selectedId);
             DataContext = jobRequestAanpassenViewModel;
            
@@ -40,10 +41,17 @@ namespace Barco
 
         public void showDivision(int id)
         {
+
             comboBoxDivision.ItemsSource = dao.GetDepartment();
             comboBoxDivision.DisplayMemberPath = "Afkorting";
             comboBoxDivision.SelectedValue = dao.GetRqRequestById(id).BarcoDivision;
 
+        }
+        public void getJobNatures()
+        {
+            comboBoxJobNature.ItemsSource = dao.GetJobNatures();
+            comboBoxJobNature.DisplayMemberPath = "Nature";
+            comboBoxJobNature.SelectedValuePath = "Nature";
         }
 
         //private void btnSaveChanges_Click(object sender, RoutedEventArgs e)
