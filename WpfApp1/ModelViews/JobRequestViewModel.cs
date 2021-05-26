@@ -258,10 +258,11 @@ namespace Barco
         {
             try
             {
-
+                
                 //create error sequence
                 CreateBoxLists();
                 List<string> errors = new List<string>();
+                _err_output.Clear();
                 //declare var for object
                 string input_Abbreviation = txtReqInitials;
                 string input_ProjectName = txtEutProjectname;
@@ -360,6 +361,7 @@ namespace Barco
                 //error handling
                 if (errors.Count > 0)
                 {
+                    
                     foreach (string s in errors)
                     {
                         _err_output.Add(s);
