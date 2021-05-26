@@ -26,12 +26,7 @@ namespace Barco
 { //bianca
     public class JobRequestViewModel : ViewModelBase
     {
-        
-            
-
-
         public JobRequest screen;
-
 
         public RqRequest request = new RqRequest();
 
@@ -96,7 +91,6 @@ namespace Barco
         public bool cbEmcEut4 { get; set; }
         public bool cbEmcEut5 { get; set; }
 
-
         public bool cmEnvironmentalEut1 { get; set; }
         public bool cmEnvironmentalEut2 { get; set; }
         public bool cmEnvironmentalEut3 { get; set; }
@@ -131,11 +125,6 @@ namespace Barco
 
         public ComboBox cmbDivision { get; set; }
         public ComboBox cmbJobNature { get; set; }
-
-
-
-
-
 
         //radio button
         public bool rbtnBatNo { get; set; }
@@ -400,7 +389,7 @@ namespace Barco
 
                     //detail object
                     //Detail.Testdivisie = "eco";  
-                   var detailList = GetRqRequestDetails();
+                    List<RqRequestDetail> detailList = GetRqRequestDetails();
                     
                     dao.AddRequest(request, detailList, optional, eutList);
                     MessageBox.Show("Data has been inserted");
