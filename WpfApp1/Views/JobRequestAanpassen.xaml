@@ -121,13 +121,13 @@
         <TextBlock HorizontalAlignment="Left" Margin="176,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Request date"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="306,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="JR number"/></TextBlock>
         <Label Content="PVG &#xA;Responsible" HorizontalAlignment="Left" Margin="438,202,0,0" VerticalAlignment="Top" Width="96" Height="47"/>
-        <Label x:Name="lblRequestDate" Content="{Binding Request.RequestDate, Mode=TwoWay}" HorizontalAlignment="Left" Margin="176,108,0,0" VerticalAlignment="Top" Width="83" Height="14"/>
+        <Label x:Name="lblRequestDate" Content="{Binding Request.RequestDate, Mode=TwoWay}" HorizontalAlignment="Left" Margin="176,108,0,0" VerticalAlignment="Top" Width="66" Height="24"/>
         <Label x:Name="lblJobRequestNumber" Content="{Binding Request.JrNumber, Mode=TwoWay}" HorizontalAlignment="Left" Margin="300,104,0,0" VerticalAlignment="Top" Width="110" Height="18"/>
-        <DatePicker x:Name="DatePickerEUT1" HorizontalAlignment="Left" SelectedDate="{Binding dateEut1}" Margin="212,382,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04"/>
-        <DatePicker x:Name="DatePickerEUT2" HorizontalAlignment="Left" SelectedDate="{Binding dateEut2}" Margin="258,382,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04"/>
-        <DatePicker x:Name="DatePickerEUT3" HorizontalAlignment="Left" SelectedDate="{Binding dateEut3}" Margin="305,382,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04"/>
-        <DatePicker x:Name="DatePickerEUT4" HorizontalAlignment="Left" SelectedDate="{Binding dateEut4}" Margin="352,383,0,0" VerticalAlignment="Top" Width="30" Height="25" DisplayDate="2021-03-04"/>
-        <DatePicker x:Name="DatePickerEUT5" HorizontalAlignment="Left" SelectedDate="{Binding dateEut5}" Margin="394,384,0,0" VerticalAlignment="Top" Width="30" Height="24" DisplayDate="2021-03-04"/>
+        <DatePicker x:Name="DatePickerEUT1" HorizontalAlignment="Left" SelectedDate="{Binding dateEut1}" Margin="212,382,0,0" VerticalAlignment="Top" Width="30" Height="26"/>
+        <DatePicker x:Name="DatePickerEUT2" HorizontalAlignment="Left" SelectedDate="{Binding dateEut2}" Margin="258,382,0,0" VerticalAlignment="Top" Width="30" Height="26"/>
+        <DatePicker x:Name="DatePickerEUT3" HorizontalAlignment="Left" SelectedDate="{Binding dateEut3}" Margin="305,382,0,0" VerticalAlignment="Top" Width="30" Height="26"/>
+        <DatePicker x:Name="DatePickerEUT4" HorizontalAlignment="Left" SelectedDate="{Binding dateEut4}" Margin="352,383,0,0" VerticalAlignment="Top" Width="30" Height="25"/>
+        <DatePicker x:Name="DatePickerEUT5" HorizontalAlignment="Left" SelectedDate="{Binding dateEut5}" Margin="394,384,0,0" VerticalAlignment="Top" Width="30" Height="24"/>
         <TextBox x:Name="txtPvgEmc" Text="{Binding pvgEmc, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="438,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="19" IsReadOnly="True"/>
         <TextBox x:Name="txtPvgEnv" Text="{Binding pvgEnv, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="438,261,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="19" IsReadOnly="True"/>
         <TextBox x:Name="txtPvgRel" Text="{Binding pvgRel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="438,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="19" IsReadOnly="True"/>
