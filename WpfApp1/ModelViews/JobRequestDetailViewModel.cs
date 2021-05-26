@@ -15,7 +15,6 @@ namespace Barco
         private JobRequestDetail screen;
         
         public ICommand CancelCommand { get; set; }
-        public ICommand ScheduleCommand { get; set; }
 
         private DAO dao;
         public RqRequest Request { get; set; }
@@ -80,7 +79,6 @@ namespace Barco
         public JobRequestDetailViewModel(JobRequestDetail screen, int selectedId)
         {
             CancelCommand = new DelegateCommand(CloseButton);
-            ScheduleCommand = new DelegateCommand(ScheduleButton);
             dao = DAO.Instance();
 
             this.ListPartsnumbers = new List<string>();
@@ -109,14 +107,7 @@ namespace Barco
             overview.ShowDialog();
         }
 
-        // bianca
-        //opens Schedule 
-        public void ScheduleButton()
-        {
-            InplannenJobRequest inplannenJr = new InplannenJobRequest(Request.IdRequest);
-            screen.Close();
-            inplannenJr.ShowDialog();
-        }
+  
 
         //Jimmy
         //Laden van Jobrequest Partnumbers in een list

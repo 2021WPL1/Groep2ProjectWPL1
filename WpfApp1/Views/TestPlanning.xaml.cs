@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Barco.ModelViews;
 
 namespace Barco.Views
 {
@@ -17,9 +18,14 @@ namespace Barco.Views
     /// </summary>
     public partial class TestPlanning : Window
     {
+        private TestPlanningViewModel testPlanningJrModel;
+
         public TestPlanning()
         {
             InitializeComponent();
+            testPlanningJrModel = new TestPlanningViewModel(this);
+            DataContext = testPlanningJrModel;
         }
-    }
+
+        }
 }
