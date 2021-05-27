@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -33,11 +34,11 @@ namespace Barco.ModelViews
         public ICommand PlanTestCommand { get; set; }
 
 
-       public List<RqTestDevision> EMC { get; set; }
-       public List<RqTestDevision> ECO { get; set; }
-       public List<RqTestDevision> ENV { get; set; }
-       public List<RqTestDevision> REL { get; set; }
-       public List<RqTestDevision> SAF { get; set; }
+       public List<ComboObject> EMC { get; set; }
+       public List<ComboObject> ECO { get; set; }
+       public List<ComboObject> ENV { get; set; }
+       public List<ComboObject> REL { get; set; }
+       public List<ComboObject> SAF { get; set; }
 
      
 
@@ -50,11 +51,11 @@ namespace Barco.ModelViews
             Load();
             TestDevisions = dao.GetTestNature();
             ComboObjects = dao.combinedObjects();
-            EMC = new List<RqTestDevision>();
-            ECO = new List<RqTestDevision>();
-            ENV = new List<RqTestDevision>();
-            REL = new List<RqTestDevision>();
-            SAF = new List<RqTestDevision>();
+            EMC = new List<ComboObject>();
+            ECO = new List<ComboObject>();
+            ENV = new List<ComboObject>();
+            REL = new List<ComboObject>();
+            SAF = new List<ComboObject>();
         }
 
 
@@ -129,14 +130,41 @@ namespace Barco.ModelViews
             {
                 _selectedTestNature = value;
                 OnPropertyChanged();
+                RqApprovedRequests = new ObservableCollection<RqRequest>();
+              
             }
         }
 
 
-        public void fillList()
+        public void fillList(int id)
         {
+            var initialList = ComboObjects;
 
+            foreach (var request in initialList)
+            {
+                if (request.TestDivisie.Contains("ECO"))
+                {
+                    ECO.Add(request);
+                }
 
+                else if (request.TestDivisie.Contains("ENV"))
+                {
+                    ENV.Add(request);
+                }
+                else if (request.TestDivisie.Contains("REL"))
+                {
+                    REL.Add(request);
+                }
+                else if (request.TestDivisie.Contains("EMC"))
+                {
+                    EMC.Add(request);
+                }
+                else
+                {
+                    SAF.Add(request);
+                }
+
+            }
         }
 
         public ComboObject SelectedRqRequest
