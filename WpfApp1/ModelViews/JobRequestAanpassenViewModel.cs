@@ -8,7 +8,7 @@ using Barco.Data;
 
 namespace Barco
 {//jimmy
-   public class JobRequestAanpassenViewModel : ViewModelBase
+    public class JobRequestAanpassenViewModel : ViewModelBase
     {
         private JobRequestAanpassen screen;
         private DAO dao;
@@ -122,7 +122,7 @@ namespace Barco
             euts = dao.GetEutWithDetailId(Request.IdRequest);
 
 
-            
+
 
 
             this.screen = screen;
@@ -133,13 +133,13 @@ namespace Barco
 
 
         }
-        
+
         // Sluit aanpassen en opent overview
         public void CancelButton()
         {
             OverviewJobRequest overview = new OverviewJobRequest();
             screen.Close();
-           overview.ShowDialog();
+            overview.ShowDialog();
         }
         public class Part
         {
@@ -151,7 +151,7 @@ namespace Barco
         public void SaveChanges()
         {
             Request.Requester = txtReqInitials;
-            RqRequestDetail.Pvgresp = txtPvgRes;
+            //RqRequestDetail.Pvgresp = txtPvgRes;
             Request.EutProjectname = txtEutProjectname;
             Request.ExpectedEnddate = dateExpectedEnd;
             RqOptionel.Remarks = txtRemark;
@@ -213,75 +213,56 @@ namespace Barco
 
         }
 
-        //Jimmy
-        //Laden van Jobrequest Partnumbers in een list
-        public void LoadPartsNumbers()
-        {
-            string Partnumbers = Request.EutPartnumbers.Replace(" ", String.Empty);
-            string Partnumber;
-
-            do
-            {
-
-                int splitIndex = Partnumbers.IndexOf(";");
-                Partnumber = Partnumbers.Substring(0, splitIndex);
-                ListPartsnumbers.Add(Partnumber);
-                
-                int length = Partnumbers.Length;
-
-
-                if (splitIndex != length)
-                {
-                    Partnumbers = Partnumbers.Substring((splitIndex + 1), (Partnumbers.Length - 1 - splitIndex));
-
-                }
-            } while (Partnumbers.Contains(";"));
-
-
-
-        }
-        //Jimmy
-        //Laden van Jobrequest Net Weight in een list
-        public void LoadPartNetWeight()
-        {
-            string Partnets = Request.NetWeight.Replace(" ", String.Empty);
-            string Partnet;
-
-            do
-            {
-                int splitIndex = Partnets.IndexOf(";");
-                Partnet = Partnets.Substring(0, splitIndex);
-                ListPartNet.Add(Partnet);
-                int length = Partnets.Length;
-
-
-                if (splitIndex != length)
-                {
-                    Partnets = Partnets.Substring((splitIndex + 1), (Partnets.Length - 1 - splitIndex));
-
-                }
-
-            } while (Partnets.Contains(";"));
-
-        }
-        //Jimmy
-        //Laden van Jobrequest Gross Weight in een list
-        public void LoadPartGrossWeight()
+        public void LoadParts()
         {
             string PartGross = Request.GrossWeight.Replace(" ", String.Empty);
-            string GetPartGross;
+            string Partnets = Request.NetWeight.Replace(" ", String.Empty);
+            string Partnumbers = Request.EutPartnumbers.Replace(" ", String.Empty);
+            string getPartGross;
+            string getPartnet;
+            string getPartnumber;
 
             do
             {
-                int splitIndex = PartGross.IndexOf(";");
-                GetPartGross = PartGross.Substring(0, splitIndex);
-                ListPartGross.Add(GetPartGross);
-                int length = PartGross.Length;
+                int splitIndexGross = PartGross.IndexOf(";");
+                int splitIndexNet = Partnets.IndexOf(";");
+                int splitIndexNumbers = Partnumbers.IndexOf(";");
+
+                getPartGross = PartGross.Substring(0, splitIndexGross);
+                getPartnet = Partnets.Substring(0, splitIndexNet);
+                getPartnumber = Partnumbers.Substring(0, splitIndexNumbers);
 
 
-                if (splitIndex != length)
+                ListPartGross.Add(getPartGross);
+                ListPartNet.Add(getPartnet);
+                ListPartsnumbers.Add(getPartnumber);
+
+                parts.Add(new Part()
                 {
-                    PartGross = PartGross.Substring((splitIndex + 1), (PartGross.Length - 1 - splitIndex));
+                    NetWeight = getPartnet,
+                    GrossWeight = getPartGross,
+                    partNo = getPartnumber
+
+                });
+
+                int grossLength = PartGross.Length;
+                int netLenght = Partnets.Length;
+                int numberLenght = Partnumbers.Length;
+
+
+                if (splitIndexGross != grossLength)
+                {
+                    PartGross = PartGross.Substring((splitIndexGross + 1), (PartGross.Length - 1 - splitIndexGross));
+
+                }
+                if (splitIndexNet != netLenght)
+                {
+                    Partnets = Partnets.Substring((splitIndexNet + 1), (Partnets.Length - 1 - splitIndexNet));
+
+                }
+                if (splitIndexNumbers != numberLenght)
+                {
+                    Partnumbers = Partnumbers.Substring((splitIndexNumbers + 1), (Partnumbers.Length - 1 - splitIndexNumbers));
 
                 }
 
@@ -522,13 +503,18 @@ namespace Barco
         private void RefreshGUI()
         {
             lstParts.Clear();
+            ListPartGross.Clear();
+            ListPartNet.Clear();
+            ListPartsnumbers.Clear();
             foreach (Part part in parts)
             {
                 lstParts.Add(part);
+                ListPartGross.Add(part.GrossWeight);
+                ListPartNet.Add(part.NetWeight);
+                ListPartsnumbers.Add(part.partNo);
             }
-            LoadPartGrossWeight();
-            LoadPartNetWeight();
-            LoadPartsNumbers();
+            LoadParts();
+
         }
         private void SetBatteries()
         {
@@ -546,9 +532,8 @@ namespace Barco
         private void FillData()
         {
             selectedDivision = Request.BarcoDivision;
-            LoadPartGrossWeight();
-            LoadPartNetWeight();
-            LoadPartsNumbers();
+
+            LoadParts();
             fillEuts();
             fillPvgResp();
             SetBatteries();
