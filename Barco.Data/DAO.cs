@@ -64,15 +64,15 @@ namespace Barco.Data
             }
             return result;
         }
+
+
         //bianca
         // delete a person from the database
         public void RemovePerson(string abb)
         {
             context.Person.Remove(GetPersonWithAbb(abb));
             saveChanges();
-        }
-
-
+        } 
 
         //  bianca
         public RqRequest GetRequestDate()
@@ -86,6 +86,7 @@ namespace Barco.Data
         public ICollection<RqRequest> GetAllRqRequests()
         {
             return context.RqRequest.ToList();
+            
         }
         //Jimmy
         // Get RqRequest by Id
@@ -112,7 +113,29 @@ namespace Barco.Data
             DeleteEuts(context.RqRequestDetail.Where(a => a.IdRequest == id).ToList()) ;
             DeleteDetails(id);
             context.RqOptionel.Remove(GetOptionel(GetOptionalByRequestId(id).IdRequest));
+            //context.RqRequestDetail.Remove(GetRqRequestDetailByRequestId(id));
             context.RqRequest.Remove(GetRqRequestById(id));
+
+            saveChanges();
+        }
+
+        //thibaut
+        //delete al euts linked to a given request detail
+        private void DeleteEuts(List<RqRequestDetail> details)
+        {
+            foreach (RqRequestDetail d in details)
+            {
+                context.Eut.RemoveRange(context.Eut.Where(e => e.IdRqDetail == d.IdRqDetail));
+            }
+
+            saveChanges();
+        }
+
+        //thibaut
+        //delete al details linked to given request
+        private void DeleteDetails(int requestId)
+        {
+            context.RqRequestDetail.RemoveRange(context.RqRequestDetail.Where(e => e.IdRequest == requestId).ToList());
             saveChanges();
         }
         //thibaut, bianca
@@ -120,24 +143,6 @@ namespace Barco.Data
         public RqOptionel GetOptionalByRequestId(int id)
         {
             return context.RqOptionel.FirstOrDefault(r => r.IdRequest == id);
-        }
-        //thibaut
-        //delete al euts linked to a given request detail
-        private void DeleteEuts(List<RqRequestDetail> details)
-        {
-            foreach(RqRequestDetail d in details)
-            {
-                context.Eut.RemoveRange(context.Eut.Where(e=>e.IdRqDetail == d.IdRqDetail));
-            }
-            
-            saveChanges();
-        }
-        //thibaut
-        //delete al details linked to given request
-        private void DeleteDetails(int requestId)
-        {
-            context.RqRequestDetail.RemoveRange(context.RqRequestDetail.Where(e => e.IdRequest == requestId).ToList());
-            saveChanges();
         }
 
         //thibaut, bianca
@@ -152,7 +157,6 @@ namespace Barco.Data
             rqRequest.JrStatus = "Approved";
             saveChanges();
         }
-
 
 
 
@@ -269,7 +273,7 @@ namespace Barco.Data
                 AddOptional(optional);
                 AddDetails(details);
                 //AddDetail(detail); old way single detail
-                AddEut(eut);
+                AddEut(eut, int.Parse(context.RqRequest.OrderByDescending(p => p.IdRequest).Select(p => p.IdRequest).First().ToString()));
             }
 
             catch (Exception ex)
@@ -313,15 +317,22 @@ namespace Barco.Data
             return optional;
         }
         //thibaut
-        public void AddEut(List<Eut> eutlist)
+        public void AddEut(List<Eut> eutlist, int requestId)
         {
-            foreach (Eut e in eutlist)
+            List<RqRequestDetail> list = GetRqDetailsWithRequestId(requestId);
+            foreach (RqRequestDetail d in list)
             {
-                e.IdRqDetail =
-                    int.Parse(context.RqRequestDetail.OrderByDescending(p => p.IdRqDetail).First().IdRqDetail.ToString());
-                context.Eut.Add(e);
+                foreach (Eut e in eutlist)
+                {
+                    if (d.Testdivisie.Equals(e.OmschrijvingEut.Substring(0, 3)))
+                    {
+                        e.IdRqDetail = d.IdRqDetail;
+
+                        context.Eut.Add(e);
+                    }
+                }
+                context.SaveChanges();
             }
-            context.SaveChanges();
         }
 
         public List<RqRequestDetail> GetRqDetailsWithRequestId(int requestId)
