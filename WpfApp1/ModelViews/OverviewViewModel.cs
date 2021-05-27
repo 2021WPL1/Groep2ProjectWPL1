@@ -211,6 +211,7 @@ namespace Barco
 
            if (!mailScheduled)
            {
+               mailScheduled = true;
                Task.Delay(span.Milliseconds).ContinueWith((x) =>
                {
                    smtpMailCommunication.CreateMail(count.ToString());
