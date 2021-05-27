@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Barco" d:DataContext="{d:DesignInstance Type=local:JobRequestAanpassenViewModel}"
         mc:Ignorable="d"
         Title="JobRequestAanpassen" Height="450" Width="800">
-    <Grid Margin="0,0,0,-35" Cursor="">
+    <Grid Margin="0,0,0,-35" >
         <TextBlock HorizontalAlignment="Left" Margin="51,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Text="Requ"/><Run Language="nl-be" Text="e"/><Run Text="ster "/><Run Text="Initials"/></TextBlock>
         <TextBox x:Name="txtRequisterInitials" Text="{Binding Request.Requester, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="51,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
         <TextBlock HorizontalAlignment="Left" Margin="51,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="EUT Projectname"/></TextBlock>
