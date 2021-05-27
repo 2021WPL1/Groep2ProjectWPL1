@@ -213,81 +213,6 @@ namespace Barco
 
         }
 
-        //Jimmy
-        //Laden van Jobrequest Partnumbers in een list
-        //public void LoadPartsNumbers()
-        //{
-        //    string Partnumbers = Request.EutPartnumbers.Replace(" ", String.Empty);
-        //    string Partnumber;
-
-        //    do
-        //    {
-
-        //        int splitIndex = Partnumbers.IndexOf(";");
-        //        Partnumber = Partnumbers.Substring(0, splitIndex);
-        //        ListPartsnumbers.Add(Partnumber);
-                
-        //        int length = Partnumbers.Length;
-
-
-        //        if (splitIndex != length)
-        //        {
-        //            Partnumbers = Partnumbers.Substring((splitIndex + 1), (Partnumbers.Length - 1 - splitIndex));
-
-        //        }
-        //    } while (Partnumbers.Contains(";"));
-
-
-
-        //}
-        ////Jimmy
-        ////Laden van Jobrequest Net Weight in een list
-        //public void LoadPartNetWeight()
-        //{
-        //    string Partnets = Request.NetWeight.Replace(" ", String.Empty);
-        //    string Partnet;
-
-        //    do
-        //    {
-        //        int splitIndex = Partnets.IndexOf(";");
-        //        Partnet = Partnets.Substring(0, splitIndex);
-        //        ListPartNet.Add(Partnet);
-        //        int length = Partnets.Length;
-
-
-        //        if (splitIndex != length)
-        //        {
-        //            Partnets = Partnets.Substring((splitIndex + 1), (Partnets.Length - 1 - splitIndex));
-
-        //        }
-
-        //    } while (Partnets.Contains(";"));
-
-        //}
-        ////Jimmy
-        ////Laden van Jobrequest Gross Weight in een list
-        //public void LoadPartGrossWeight()
-        //{
-        //    string PartGross = Request.GrossWeight.Replace(" ", String.Empty);
-        //    string GetPartGross;
-
-        //    do
-        //    {
-        //        int splitIndex = PartGross.IndexOf(";");
-        //        GetPartGross = PartGross.Substring(0, splitIndex);
-        //        ListPartGross.Add(GetPartGross);
-        //        int length = PartGross.Length;
-
-
-        //        if (splitIndex != length)
-        //        {
-        //            PartGross = PartGross.Substring((splitIndex + 1), (PartGross.Length - 1 - splitIndex));
-
-        //        }
-
-        //    } while (PartGross.Contains(";"));
-
-        //}
         public void LoadParts()
         {
             string PartGross = Request.GrossWeight.Replace(" ", String.Empty);
@@ -578,13 +503,18 @@ namespace Barco
         private void RefreshGUI()
         {
             lstParts.Clear();
+            ListPartGross.Clear();
+            ListPartNet.Clear();
+            ListPartsnumbers.Clear();
             foreach (Part part in parts)
             {
                 lstParts.Add(part);
+                ListPartGross.Add(part.GrossWeight);
+                ListPartNet.Add(part.NetWeight);
+                ListPartsnumbers.Add(part.partNo);
             }
-            //LoadPartGrossWeight();
-            //LoadPartNetWeight();
-            //LoadPartsNumbers();
+            LoadParts();
+
         }
         private void SetBatteries()
         {
@@ -602,9 +532,7 @@ namespace Barco
         private void FillData()
         {
             selectedDivision = Request.BarcoDivision;
-            //LoadPartGrossWeight();
-            //LoadPartNetWeight();
-            //LoadPartsNumbers();
+
             LoadParts();
             fillEuts();
             fillPvgResp();
