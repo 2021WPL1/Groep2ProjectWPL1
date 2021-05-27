@@ -353,7 +353,17 @@ namespace Barco.Data
             return lijst;
         }
 
-        
+        //thibaut
+        public List<Person> GetAllPerson()
+        {
+            return context.Person.ToList();
+        }
+
+        //thibaut
+        public string GetJobNumber(bool internRq)
+        {
+            return context.RqRequest.OrderByDescending(p => p.IdRequest).Where(q => q.InternRequest == internRq).Select(p => p.JrNumber).First().ToString();
+        }
 
     }
 }
