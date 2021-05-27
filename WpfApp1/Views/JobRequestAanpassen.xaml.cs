@@ -30,7 +30,7 @@ namespace Barco
             InitializeComponent();
             dao = DAO.Instance();
 
-            showDivision(selectedId);
+            //showDivision(selectedId);
             getJobNatures();
             jobRequestAanpassenViewModel = new JobRequestAanpassenViewModel(this, selectedId);
             DataContext = jobRequestAanpassenViewModel;
