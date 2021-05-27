@@ -36,7 +36,7 @@ namespace Barco.ModelViews.smtpConfig
         //method to create an email 
         // Laurent ,Bianca
 
-   public void CreateMail(string input)
+        public void CreateMail(string input)
         {
             
             var to= _appSettingsService.GetConfigurationSection<EmailAdresses>("EmailAdresses");
