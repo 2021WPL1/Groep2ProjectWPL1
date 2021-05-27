@@ -269,7 +269,7 @@ namespace Barco.Data
                 AddOptional(optional);
                 AddDetails(details);
                 //AddDetail(detail); old way single detail
-                AddEut(eut);
+                AddEut(eut, int.Parse(context.RqRequest.OrderByDescending(p => p.IdRequest).Select(p => p.IdRequest).First().ToString()));
             }
 
             catch (Exception ex)
@@ -313,15 +313,22 @@ namespace Barco.Data
             return optional;
         }
         //thibaut
-        public void AddEut(List<Eut> eutlist)
+        public void AddEut(List<Eut> eutlist, int requestId)
         {
-            foreach (Eut e in eutlist)
+            List<RqRequestDetail> list = GetRqDetailsWithRequestId(requestId);
+            foreach (RqRequestDetail d in list)
             {
-                e.IdRqDetail =
-                    int.Parse(context.RqRequestDetail.OrderByDescending(p => p.IdRqDetail).First().IdRqDetail.ToString());
-                context.Eut.Add(e);
+                foreach (Eut e in eutlist)
+                {
+                    if (d.Testdivisie.Equals(e.OmschrijvingEut.Substring(0, 3)))
+                    {
+                        e.IdRqDetail = d.IdRqDetail;
+
+                        context.Eut.Add(e);
+                    }
+                }
+                context.SaveChanges();
             }
-            context.SaveChanges();
         }
 
         public List<RqRequestDetail> GetRqDetailsWithRequestId(int requestId)
