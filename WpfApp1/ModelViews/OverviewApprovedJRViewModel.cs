@@ -21,7 +21,7 @@ namespace Barco.ModelViews
 
         private DAO dao;
         public ObservableCollection<RqRequest> RqApprovedRequests { get; set; }
-        private RqRequest _selectedApprovedRequest;
+        private int _selectedApprovedRequest;
         private string _selectedTestNature;
 
         public List<RqTestDevision> TestDevisions { get; set; }
@@ -65,7 +65,7 @@ namespace Barco.ModelViews
 
       // Bianca-- used to select a request for a further test planning
         //jimmy-geeft de geselecteerde request terugd
-        public RqRequest SelectedApprovedRqRequest
+        public int SelectedApprovedRqRequest
         {
             get { return _selectedApprovedRequest; }
             set
@@ -95,9 +95,9 @@ namespace Barco.ModelViews
         {
 
             if (_selectedApprovedRequest != null)
-            {
-                int SelectedId = _selectedApprovedRequest.IdRequest;
-               TestPlanning testPlanning = new TestPlanning();
+            { 
+                int SelectedId = _selectedApprovedRequest;
+                TestPlanning testPlanning = new TestPlanning();
                 screen.Close();
                 testPlanning.ShowDialog();
             }

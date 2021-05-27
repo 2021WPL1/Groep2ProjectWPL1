@@ -8,7 +8,7 @@
         Title="OverviewApprovedRequests" Height="450" Width="1000">
     <Grid>
         <ListView x:Name="listOverview" ItemsSource="{Binding ComboObjects}"
-            SelectedItem="{Binding SelectedRqRequest, Mode=TwoWay}" Margin="13,105,0,33" HorizontalAlignment="Left" Width="925">
+             Margin="13,105,0,33" HorizontalAlignment="Left" Width="925" SelectedValuePath="{Binding}">
 
             <ListView.View  >
                 <GridView>
