@@ -7,8 +7,12 @@
         mc:Ignorable="d"
         Title="OverviewApprovedRequests" Height="450" Width="1000">
     <Grid>
-        <ListView x:Name="listOverview" ItemsSource="{Binding ComboObjects}"
-             Margin="13,105,0,33" HorizontalAlignment="Left" Width="925" SelectedValuePath="{Binding}">
+        <ListView x:Name="listOverview" 
+                  ItemsSource="{Binding ComboObjects}"
+                  SelectedItem="{Binding SelectedRqRequest, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                  
+                  Margin="13,105,0,33" HorizontalAlignment="Left" Width="925" 
+             >
 
             <ListView.View  >
                 <GridView>
