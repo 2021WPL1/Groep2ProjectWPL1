@@ -474,6 +474,8 @@ namespace Barco
             {
                 targets = emcBoxes;
             }
+            
+            
             else if (cmEnvironmental)
             {
                 targets = envBoxes;
