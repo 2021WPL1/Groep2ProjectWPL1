@@ -36,10 +36,10 @@ namespace Barco.ModelViews
 
         public void CancelButton()
         {
-           PlanningJR planningJr = new PlanningJR();
+           TestPlanning testPlanning= new TestPlanning();
             screen.Close();
 
-           planningJr.ShowDialog();
+           testPlanning.ShowDialog();
         }
 
     }
