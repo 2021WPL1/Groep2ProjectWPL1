@@ -33,6 +33,14 @@ namespace Barco.ModelViews
         public ICommand PlanTestCommand { get; set; }
 
 
+       public List<RqTestDevision> EMC { get; set; }
+       public List<RqTestDevision> ECO { get; set; }
+       public List<RqTestDevision> ENV { get; set; }
+       public List<RqTestDevision> REL { get; set; }
+       public List<RqTestDevision> SAF { get; set; }
+
+     
+
         public OverviewApprovedJRViewModel(OverviewApprovedRequests screen)
         {
            BackCommand = new DelegateCommand(BackButton);
@@ -42,6 +50,11 @@ namespace Barco.ModelViews
             Load();
             TestDevisions = dao.GetTestNature();
             ComboObjects = dao.combinedObjects();
+            EMC = new List<RqTestDevision>();
+            ECO = new List<RqTestDevision>();
+            ENV = new List<RqTestDevision>();
+            REL = new List<RqTestDevision>();
+            SAF = new List<RqTestDevision>();
         }
 
 
@@ -117,6 +130,13 @@ namespace Barco.ModelViews
                 _selectedTestNature = value;
                 OnPropertyChanged();
             }
+        }
+
+
+        public void fillList()
+        {
+
+
         }
 
     }
