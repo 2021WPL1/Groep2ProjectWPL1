@@ -22,19 +22,25 @@ namespace Barco.ModelViews
         private DAO dao;
         public ObservableCollection<RqRequest> RqApprovedRequests { get; set; }
         private RqRequest _selectedApprovedRequest;
+        private RqTestDevision _selectedTestNature;
 
+        public List<RqTestDevision> TestDevisions { get; set; }
+        public List<ComboObject> ComboObjects { get; set; }
         private OverviewApprovedRequests screen;
 
-        public ICommand CancelJRCommand { get; set; }
-        public ICommand OpenDetailsCommand { get; set; }
+        public ICommand BackCommand { get; set; }
+        public ICommand PlanTestCommand { get; set; }
+
 
         public OverviewApprovedJRViewModel(OverviewApprovedRequests screen)
         {
-            CancelJRCommand = new DelegateCommand(CancelJRButton);
-            OpenDetailsCommand = new DelegateCommand(OpenDetails);
+           BackCommand = new DelegateCommand(BackButton);
+           PlanTestCommand = new DelegateCommand(PlanTestButton);
             dao = DAO.Instance();
             this.screen = screen;
             Load();
+            TestDevisions = dao.GetTestNature();
+            ComboObjects = dao.combinedObjects();
         }
 
 
@@ -56,7 +62,7 @@ namespace Barco.ModelViews
         }
 
 
-      // Bianca-- used later to select a request and to show its details in the next screen(PlanningJR)
+      // Bianca-- used to select a request for a further test planning
         //jimmy-geeft de geselecteerde request terugd
         public RqRequest SelectedApprovedRqRequest
         {
@@ -71,7 +77,7 @@ namespace Barco.ModelViews
 
 
         //bianca- cancel the overview screen and open the home screen
-        public void CancelJRButton()
+        public void BackButton()
         {
             HomeScreen home = new HomeScreen();
             screen.Close();
@@ -83,26 +89,34 @@ namespace Barco.ModelViews
 
         
 
-        //bianca- when one request is selected, the overview screen is closed and a new window is opened with the details of the request
-        public void OpenDetails()
+        //bianca- when one request is selected, the overview screen is closed and the test planning page is opened
+        public void PlanTestButton()
         {
-            
-
-
 
             if (_selectedApprovedRequest != null)
             {
                 int SelectedId = _selectedApprovedRequest.IdRequest;
-                PlanningJR planningJr = new PlanningJR();
+               TestPlanning testPlanning = new TestPlanning();
                 screen.Close();
-                planningJr.ShowDialog();
-
-
+                testPlanning.ShowDialog();
             }
             else
             {
                 MessageBox.Show("Select a JobRequest");
             }
         }
+
+        // Bianca-- used to select a request for a further test planning
+        //jimmy-geeft de geselecteerde request terugd
+        public RqTestDevision SelectedTestNature
+        {
+            get { return _selectedTestNature;}
+            set
+            {
+                _selectedTestNature = value;
+                OnPropertyChanged();
+            }
+        }
+
     }
 }

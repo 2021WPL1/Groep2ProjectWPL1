@@ -349,6 +349,35 @@ namespace Barco.Data
             return context.RqRequest.Where(s=>s.JrStatus== "Approved").ToList();
         }
 
+
+        //bianca- a list of the test nature to be linked in the combobox-OVerviewApprovedRequests
+        public List<RqTestDevision> GetTestNature()
+        {
+            return context.RqTestDevision.ToList();
+        }
+
+
+        public List<ComboObject> combinedObjects()
+        {
+
+            List<ComboObject> returnValue = new List<ComboObject>();
+
+            var listRqRequests = GetAllApprovedRqRequests();
+
+            foreach (RqRequest request in listRqRequests)
+            {
+                returnValue.Add(new ComboObject
+                {
+                    Request=request,
+                    RqOptionel = GetOptionel(request.IdRequest),
+                    RqRequestDetail = GetRqDetailsWithRequestId(request.IdRequest)
+                    
+
+                });
+            }
+
+            return returnValue;
+        }
     }
 }
 

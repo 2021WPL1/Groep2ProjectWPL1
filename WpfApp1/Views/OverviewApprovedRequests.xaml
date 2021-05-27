@@ -5,35 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Barco.Views"
         mc:Ignorable="d"
-        Title="OverviewApprovedRequests" Height="450" Width="800">
+        Title="OverviewApprovedRequests" Height="450" Width="1000">
     <Grid>
-        <Button x:Name="CancelButton"
-            Command="{Binding CancelJRCommand}" 
-            Content="Cancel" HorizontalAlignment="Left" Margin="638,150,0,0" VerticalAlignment="Top" Height="33" Width="45" />
-        <Image x:Name="imgOverview" HorizontalAlignment="Left" Height="80" Margin="21,14,0,0" VerticalAlignment="Top" Width="215" Source="/Views/logo.png"/>
-        <Label Content="Overview Approved Jobrequests" HorizontalAlignment="Left" Margin="294,14,0,0" VerticalAlignment="Top"  Height="72" Width="301" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
-        <Button x:Name="OpenButton"
-            Command="{Binding OpenDetailsCommand}"
-            Content="Open" HorizontalAlignment="Left" Margin="718,149,0,0" VerticalAlignment="Top" Height="34" Width="50" />
-
-
-        <ListView x:Name="listOverview" ItemsSource="{Binding RqApprovedRequests }"
-            SelectedItem="{Binding SelectedApprovedRqRequest, Mode=TwoWay}" Margin="34,140,0,25" HorizontalAlignment="Left" Width="516">
+        <ListView x:Name="listOverview" ItemsSource="{Binding ComboObjects}"
+            SelectedItem="{Binding SelectedRqRequest, Mode=TwoWay}" Margin="13,105,0,33" HorizontalAlignment="Left" Width="925">
 
             <ListView.View  >
                 <GridView>
-                    <GridViewColumn  Header="Requester" 
-                        Width="100" DisplayMemberBinding="{Binding Requester}" />
+                    <GridViewColumn  Header="JR n°" 
+                        Width="50" DisplayMemberBinding="{Binding Request.JrNumber}" />
 
                     <GridViewColumn Header="Division" 
-                        Width="100"  DisplayMemberBinding="{Binding BarcoDivision}" />
+                        Width="100"  DisplayMemberBinding="{Binding Request.BarcoDivision}" />
                     <GridViewColumn Header="Project name" 
-                        Width="150" DisplayMemberBinding="{Binding EutProjectname}"/>
-                    <GridViewColumn Header="Date" 
-                        Width="150" DisplayMemberBinding="{Binding RequestDate}"/>
+                        Width="150" DisplayMemberBinding="{Binding Request.EutProjectname}"/>
+                    <GridViewColumn Header="Status" 
+                        Width="150" DisplayMemberBinding="{Binding Request.JrStatus}"/>
+                    <GridViewColumn Header="Test Description" 
+                                    Width="250" DisplayMemberBinding="{Binding RqOptionel.Remarks}" />
+                    <GridViewColumn Header="Responsible" 
+                                    Width="100" DisplayMemberBinding="{Binding RqRequestDetail.Pvgresp}"/>
+                    <GridViewColumn Header="Nature of test" 
+                                    Width="100" DisplayMemberBinding="{Binding ReqDetail.Testdivisie}"/>
                 </GridView>
             </ListView.View>
         </ListView>
+        <Image x:Name="imgOverview" HorizontalAlignment="Left" Height="80" Margin="21,14,0,0" VerticalAlignment="Top" Width="215" Source="/Views/logo.png"/>
+        <Label Content="Details " HorizontalAlignment="Left" Margin="323,14,0,0" VerticalAlignment="Top"  Height="72" Width="120" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
+        <ComboBox x:Name="cmbTest" SelectedValue="{Binding SelectedTestNature}" HorizontalAlignment="Left" Margin="552,40,0,0" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="PlanTest" Content="Plan test" 
+                Command="{Binding PlanTestCommand}"
+                HorizontalAlignment="Left" Margin="838,31,0,0" VerticalAlignment="Top" Height="30" Width="69"/>
+        <Label Content="Nature of test" HorizontalAlignment="Left" Margin="561,9,0,0" VerticalAlignment="Top" Width="102" />
+        <Button x:Name="Cancel" Content="Back" 
+            Command="{Binding BackCommand}"
+            HorizontalAlignment="Left" Margin="746,30,0,0" VerticalAlignment="Top" Height="30" Width="69"/>
+
 
     </Grid>
 </Window>
