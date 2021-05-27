@@ -27,7 +27,7 @@ namespace Barco.ModelViews
         public List<RqTestDevision> TestDevisions { get; set; }
         public List<ComboObject> ComboObjects { get; set; }
         private OverviewApprovedRequests screen;
-        public ComboObject SelectedRqRequest { get; set; }
+        public ComboObject _SelectedRqRequest { get; set; }
 
         public ICommand BackCommand { get; set; }
         public ICommand PlanTestCommand { get; set; }
@@ -115,6 +115,16 @@ namespace Barco.ModelViews
             set
             {
                 _selectedTestNature = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ComboObject SelectedRqRequest
+        {
+            get { return _SelectedRqRequest;}
+            set
+            {
+                _SelectedRqRequest = value;
                 OnPropertyChanged();
             }
         }
