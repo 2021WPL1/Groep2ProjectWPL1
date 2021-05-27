@@ -8,7 +8,7 @@ using Barco.Data;
 
 namespace Barco
 {//jimmy
-   public class JobRequestAanpassenViewModel : ViewModelBase
+    public class JobRequestAanpassenViewModel : ViewModelBase
     {
         private JobRequestAanpassen screen;
         private DAO dao;
@@ -122,7 +122,7 @@ namespace Barco
             euts = dao.GetEutWithDetailId(Request.IdRequest);
 
 
-            
+
 
 
             this.screen = screen;
@@ -133,13 +133,13 @@ namespace Barco
 
 
         }
-        
+
         // Sluit aanpassen en opent overview
         public void CancelButton()
         {
             OverviewJobRequest overview = new OverviewJobRequest();
             screen.Close();
-           overview.ShowDialog();
+            overview.ShowDialog();
         }
         public class Part
         {
@@ -236,7 +236,7 @@ namespace Barco
                 ListPartGross.Add(getPartGross);
                 ListPartNet.Add(getPartnet);
                 ListPartsnumbers.Add(getPartnumber);
-                
+
                 parts.Add(new Part()
                 {
                     NetWeight = getPartnet,
