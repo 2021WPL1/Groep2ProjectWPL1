@@ -91,7 +91,7 @@
         <TextBox x:Name="txtSpecialRemarks" Text="{Binding rqOptionel.Remarks, Mode=OneWay }" HorizontalAlignment="Left" Margin="533,210,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" Height="91" IsReadOnly="True"/>
         <Button x:Name="BtnClose" 
                 Command="{Binding CancelCommand}"
-                Content="Close" HorizontalAlignment="Left" Margin="695,335,0,0" VerticalAlignment="Top"  Height="19" Width="39"/>
+                Content="Close" HorizontalAlignment="Left" Margin="694,334,0,0" VerticalAlignment="Top"  Height="29" Width="46"/>
         <TextBlock HorizontalAlignment="Left" Margin="176,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Request date"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="306,86,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="JR number"/></TextBlock>
         <TextBox x:Name="txtPvgRes" Text="{Binding pvgEmc, Mode=OneWay }" HorizontalAlignment="Left" Margin="438,238,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="19" IsReadOnly="True"/>

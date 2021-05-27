@@ -12,7 +12,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
 namespace Barco
-{
+{  //Bianca
     /// <summary>
     /// Interaction logic for CollectiveLeave.xaml
     /// </summary>

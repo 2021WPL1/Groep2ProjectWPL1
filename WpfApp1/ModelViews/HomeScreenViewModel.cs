@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Windows.Input;
+using Barco.Views;
 
 namespace Barco
 {//bianca
@@ -16,6 +17,7 @@ namespace Barco
         public ICommand OverviewCommand { get; set; }
         public ICommand PersonalLeaveCommand { get; set; }
         public ICommand CollectiveLeaveCommand { get; set; }
+        public ICommand ApprovedJobRequestsCommand { get; set; }
 
         public HomeScreenViewModel(HomeScreen home)
         {
@@ -24,6 +26,7 @@ namespace Barco
             PersonalLeaveCommand = new DelegateCommand(PersonalLeave);
             CollectiveLeaveCommand = new DelegateCommand(CollectiveLeave);
             HomeScreenCommand = new DelegateCommand(HomeScreen);
+            ApprovedJobRequestsCommand = new DelegateCommand(ApprovedJobRequests);
             this.home = home;
 
 
@@ -42,6 +45,22 @@ namespace Barco
             home.Close();
             createJobRequest.ShowDialog();
      
+        }
+
+
+        public void ApprovedJobRequests()
+        {
+            OverviewApprovedRequests overviewApproved = new OverviewApprovedRequests();
+            home.Close();
+            overviewApproved.ShowDialog();
+        }
+
+        public void Approved()
+        {
+            JobRequest createJobRequest = new JobRequest();
+            home.Close();
+            createJobRequest.ShowDialog();
+
         }
 
         public void Overview()

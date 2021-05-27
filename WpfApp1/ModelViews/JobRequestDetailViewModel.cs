@@ -2,15 +2,20 @@
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows.Input;
+using Barco.ModelViews;
+using Barco.Views;
 
 namespace Barco
 {//jimmy
     public class JobRequestDetailViewModel : ViewModelBase
     {
         private JobRequestDetail screen;
+        
         public ICommand CancelCommand { get; set; }
+
         private DAO dao;
         public RqRequest Request { get; set; }
         public RqOptionel rqOptionel { get; set; }
@@ -92,16 +97,18 @@ namespace Barco
             SetBatteries();
             fillPvgResp();
         }
-        //Biance
-        //Sluit Details en open de overview
+        
+        //bianca
+        //closes Details and opens the Overview
         public void CloseButton()
         {
             OverviewJobRequest overview = new OverviewJobRequest();
             screen.Close();
             overview.ShowDialog();
-
-
         }
+
+  
+
         //Jimmy
         //Laden van Jobrequest Partnumbers in een list
         public void LoadPartsNumbers()

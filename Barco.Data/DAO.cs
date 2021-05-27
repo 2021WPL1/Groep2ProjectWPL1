@@ -214,9 +214,7 @@ namespace Barco.Data
             }
             return result;
         }
-
-       
-        // remove division
+        // bianca-remove division
         public void RemoveDivisionByAbb(string abb)
         {
             context.RqBarcoDivision.Remove(GetDivisionByAbb(abb));

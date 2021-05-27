@@ -4,7 +4,9 @@ namespace Barco.ModelViews.Settings
 {
     public class AppSettings
     {
-        public SMPTClientConfig SmptClientConfig { get; set; }
+        //bianca
+       // mapping the configuration to a POCO class.
+       public SMPTClientConfig SmptClientConfig { get; set; }
         public EmailAdresses EmailAdresses { get; set; }
     }
 }

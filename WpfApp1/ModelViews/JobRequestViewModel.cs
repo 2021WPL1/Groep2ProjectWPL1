@@ -14,13 +14,8 @@ using Barco.ModelViews.Settings;
 using Barco.ModelViews.smtpConfig;
 using Microsoft.Win32;
 
-/// <summary>
-/// 
-///     (╭ ゜-゜)╮ ┬─┬
-///     
-///     (╯°□°)╯︵ ┻━┻
-///     
-/// </summary>
+
+
 
 namespace Barco
 { //bianca
@@ -404,7 +399,7 @@ namespace Barco
                     List<RqRequestDetail>detailList = GetRqRequestDetails();
 
                     
-                    dao.AddRequest(request, detailList, optional, eutList);
+                 //   dao.AddRequest(request, detailList, optional, eutList);
                     MessageBox.Show("Data has been inserted");
                     
                 }
@@ -644,10 +639,20 @@ namespace Barco
             return result;
         }
 
+        //public string SelectedDivision
+        //{
+        //    get { return selectedDivision; }
+        //    set
+        //    {
+        //        selectedDivision = value;
+        //        OnPropertyChanged();
+        //    }
+        //}
+
         //private List<Eut> getEutData()
         //{
         //    List<Eut> result = new List<Eut>();
-            
+
         //    //get first eut and date
         //    if (DatePickerEUT1.Date != DateTime.Now)
         //    {
@@ -757,7 +762,7 @@ namespace Barco
         //            result.Add(createEut(description, date));
         //        }
 
-                
+
         //    }
 
         //    //get fourth eut and date
@@ -809,7 +814,7 @@ namespace Barco
 
         //        if ((bool)cmEnvironmentalEut5)
         //        {
-                
+
         //            description = "Environmental - EUT 5";
         //            result.Add(createEut(description, date));
         //        }
@@ -832,7 +837,7 @@ namespace Barco
         //            result.Add(createEut(description, date));
         //        }
 
-                
+
         //    }
 
         //    return result;
