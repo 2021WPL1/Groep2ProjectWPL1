@@ -33,7 +33,9 @@
         <Image x:Name="imgOverview" HorizontalAlignment="Left" Height="80" Margin="21,14,0,0" VerticalAlignment="Top" Width="215" Source="/Views/logo.png"/>
         <Label Content="Planning JobRequest" HorizontalAlignment="Left" Margin="294,14,0,0" VerticalAlignment="Top"  Height="72" Width="199" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
         <ComboBox HorizontalAlignment="Left" Margin="552,40,0,0" VerticalAlignment="Top" Width="120"/>
-        <Button Content="Plan test" HorizontalAlignment="Left" Margin="772,43,0,0" VerticalAlignment="Top" Height="30" Width="69"/>
+        <Button x:Name="PlanTest" Content="Plan test" 
+                Command="{Binding PlanTestCommand}"
+                HorizontalAlignment="Left" Margin="772,43,0,0" VerticalAlignment="Top" Height="30" Width="69"/>
         <Label Content="Nature of test" HorizontalAlignment="Left" Margin="561,9,0,0" VerticalAlignment="Top" Width="102"/>
 
     </Grid>

@@ -8,27 +8,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Media.TextFormatting;
 using System.Windows.Shapes;
-using Barco.ModelViews;
 
 namespace Barco.Views
 {
     /// <summary>
-    /// Interaction logic for InplannenJobRequest.xaml
+    /// Interaction logic for OverviewPlannedTests.xaml
     /// </summary>
-    public partial class InplannenJobRequest : Window
+    public partial class OverviewPlannedTests : Window
     {
-        private InplannenViewModel ScheduleviewModel;
-
-        public InplannenJobRequest(int id)
+        public OverviewPlannedTests()
         {
             InitializeComponent();
-            ScheduleviewModel = new InplannenViewModel(this,id);
-            DataContext = ScheduleviewModel;
-
         }
-
-    
-}
+    }
 }
