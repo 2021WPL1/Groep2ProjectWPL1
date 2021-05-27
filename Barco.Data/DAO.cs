@@ -113,9 +113,29 @@ namespace Barco.Data
             DeleteEuts(context.RqRequestDetail.Where(a => a.IdRequest == id).ToList()) ;
             DeleteDetails(id);
             context.RqOptionel.Remove(GetOptionel(GetOptionalByRequestId(id).IdRequest));
-            context.RqRequestDetail.Remove(GetRqRequestDetailByRequestId(id));
+            //context.RqRequestDetail.Remove(GetRqRequestDetailByRequestId(id));
             context.RqRequest.Remove(GetRqRequestById(id));
 
+            saveChanges();
+        }
+
+        //thibaut
+        //delete al euts linked to a given request detail
+        private void DeleteEuts(List<RqRequestDetail> details)
+        {
+            foreach (RqRequestDetail d in details)
+            {
+                context.Eut.RemoveRange(context.Eut.Where(e => e.IdRqDetail == d.IdRqDetail));
+            }
+
+            saveChanges();
+        }
+
+        //thibaut
+        //delete al details linked to given request
+        private void DeleteDetails(int requestId)
+        {
+            context.RqRequestDetail.RemoveRange(context.RqRequestDetail.Where(e => e.IdRequest == requestId).ToList());
             saveChanges();
         }
         //thibaut, bianca

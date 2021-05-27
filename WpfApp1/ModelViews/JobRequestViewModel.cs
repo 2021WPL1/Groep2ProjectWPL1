@@ -48,7 +48,7 @@ namespace Barco
         public string txtRemark { get; set; } // special remarks
         public string txtFunction { get; set; } //function
         public DateTime dateExpectedEnd { get; set; }
-        public string SelectedDivision { get; set; }
+        public string selectedDivision { get; set; }
         public string SelectedJobNature { get; set; }
 
 
@@ -338,7 +338,7 @@ namespace Barco
                     errors.Add("select a jobnature");
                 }
 
-                if (SelectedDivision == null)
+                if (selectedDivision == null)
                 {
                     errors.Add("select a division");
                 }
@@ -380,7 +380,7 @@ namespace Barco
                 {
                     //request object 
                     request.Requester = input_Abbreviation;
-                    request.BarcoDivision = SelectedDivision;
+                    request.BarcoDivision = selectedDivision;
                     request.JobNature = SelectedJobNature;
                     request.RequestDate = DateTime.Now;
                     request.EutProjectname = txtEutProjectname;
@@ -428,36 +428,43 @@ namespace Barco
         public void CreateBoxLists()
         {
 
+            emcBoxes.Clear();
             emcBoxes.Add(cbEmcEut1);
             emcBoxes.Add(cbEmcEut2);
             emcBoxes.Add(cbEmcEut3);
             emcBoxes.Add(cbEmcEut4);
             emcBoxes.Add(cbEmcEut5);
 
+            envBoxes.Clear();
             envBoxes.Add(cmEnvironmentalEut1);
             envBoxes.Add(cmEnvironmentalEut2);
             envBoxes.Add(cmEnvironmentalEut3);
             envBoxes.Add(cmEnvironmentalEut4);
             envBoxes.Add(cmEnvironmentalEut5);
 
+            relBoxes.Clear();
             relBoxes.Add(cmRelEut1);
             relBoxes.Add(cmRelEut2);
             relBoxes.Add(cmRelEut3);
             relBoxes.Add(cmRelEut4);
             relBoxes.Add(cmRelEut5);
 
+            prodBoxes.Clear();
             prodBoxes.Add(cmProdSafetyEut1);
             prodBoxes.Add(cmProdSafetyEut2);
             prodBoxes.Add(cmProdSafetyEut3);
             prodBoxes.Add(cmProdSafetyEut4);
             prodBoxes.Add(cmProdSafetyEut5);
 
+            greenBoxes.Clear();
             greenBoxes.Add(cmGrnCompEut1);
             greenBoxes.Add(cmGrnCompEut2);
             greenBoxes.Add(cmGrnCompEut3);
             greenBoxes.Add(cmGrnCompEut4);
             greenBoxes.Add(cmGrnCompEut5);
 
+
+            selectionBoxes.Clear();
             selectionBoxes.Add(cbEmc);
             selectionBoxes.Add(cmEnvironmental);
             selectionBoxes.Add(cmRel);
