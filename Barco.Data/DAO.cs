@@ -342,6 +342,13 @@ namespace Barco.Data
             return lijst;
         }
 
+
+        //bianca
+        public ICollection<RqRequest> GetAllApprovedRqRequests()
+        {
+            return context.RqRequest.Where(s=>s.JrStatus== "Approved").ToList();
+        }
+
     }
 }
 

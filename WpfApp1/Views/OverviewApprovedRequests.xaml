@@ -17,8 +17,8 @@
             Content="Open" HorizontalAlignment="Left" Margin="718,149,0,0" VerticalAlignment="Top" Height="34" Width="50" />
 
 
-        <ListView x:Name="listOverview" ItemsSource="{Binding RqRequests}"
-            SelectedItem="{Binding SelectedRqRequest, Mode=TwoWay}" Margin="34,140,0,25" HorizontalAlignment="Left" Width="516">
+        <ListView x:Name="listOverview" ItemsSource="{Binding RqApprovedRequests }"
+            SelectedItem="{Binding SelectedApprovedRqRequest, Mode=TwoWay}" Margin="34,140,0,25" HorizontalAlignment="Left" Width="516">
 
             <ListView.View  >
                 <GridView>

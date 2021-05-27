@@ -25,5 +25,9 @@ namespace Barco.Views
             planningJrModel = new PlanningJrViewModel(this);
             DataContext = planningJrModel;
         }
+
+
+    
+
+        }
     }
-}
