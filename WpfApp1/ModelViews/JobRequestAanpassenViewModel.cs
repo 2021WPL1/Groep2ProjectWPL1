@@ -1,14 +1,14 @@
-﻿using Prism.Commands;
+﻿using Barco.Data;
+using Prism.Commands;
 using System;
 using System.Collections.Generic;
-using System.Windows.Input;
 using System.Collections.ObjectModel;
 using System.Windows;
-using Barco.Data;
+using System.Windows.Input;
 
 namespace Barco
 {//jimmy
-   public class JobRequestAanpassenViewModel : ViewModelBase
+    public class JobRequestAanpassenViewModel : ViewModelBase
     {
         private JobRequestAanpassen screen;
         private DAO dao;
@@ -151,14 +151,30 @@ namespace Barco
         public void SaveChanges()
         {
             Request.Requester = txtReqInitials;
-            RqRequestDetail.Pvgresp = txtPvgRes;
+            if(txtPvgRes!=null)
+            {
+                RqRequestDetail.Pvgresp = txtPvgRes;
+            }
+            if(txtRemark!=null)
+            {
+                RqOptionel.Remarks = txtRemark;
+            }
+            
             Request.EutProjectname = txtEutProjectname;
-            Request.ExpectedEnddate = dateExpectedEnd;
-            RqOptionel.Remarks = txtRemark;
+            Request.ExpectedEnddate = dateExpectedEnd.Date;
             RqOptionel.Link = txtLinkTestplan;
-            Request.BarcoDivision = selectedDivision;
-            Request.JobNature = SelectedJobNature;
+            if(rbtnBatYes==true)
+            {
+                Request.Battery = true;
+            }
+            else
+            {
+                Request.Battery=false;
+            }
+            //Request.BarcoDivision = selectedDivision;
+            //Request.JobNature = SelectedJobNature;
             dao.saveChanges();
+            MessageBox.Show("The jobrequest is changed");
         }
         /// <summary>
         /// jimmy
@@ -202,15 +218,12 @@ namespace Barco
                     Request.NetWeight += txtPartGrossWeight + " ; ";
 
                     RefreshGUI();
-
-
                 }
             }
             catch (NullReferenceException)
             {
                 MessageBox.Show("please fill in all fields");
             }
-
         }
 
         //Jimmy
@@ -451,7 +464,6 @@ namespace Barco
                     dateEut5 = e.AvailableDate;
                 }
             }
-
         }
         /// <summary>
         /// jimmy
@@ -511,7 +523,7 @@ namespace Barco
             get { return selectedJobNature; }
             set
             {
-                selectedDivision = value;
+                selectedJobNature = value;
                 OnPropertyChanged();
 
             }
@@ -543,6 +555,36 @@ namespace Barco
         }
 
 
+        //Stach
+        private void SetExpectedEndDate()
+        {
+            dateExpectedEnd = Request.ExpectedEnddate;
+        }
+
+        //Stach
+        private void SetRequesterInitials()
+        {
+            txtReqInitials = Request.Requester;
+        }
+
+        //Stach
+        private void SettxtEutProjectname()
+        {
+            txtEutProjectname = Request.EutProjectname;
+        }
+
+        //Stach
+        private void SetTxtRemark()
+        {
+            txtRemark = RqOptionel.Remarks;
+        }
+
+        //Stach
+        private void SetLinkToPlan()
+        {
+            txtLinkTestplan = RqOptionel.Link;
+        }
+
         private void FillData()
         {
             selectedDivision = Request.BarcoDivision;
@@ -552,6 +594,12 @@ namespace Barco
             fillEuts();
             fillPvgResp();
             SetBatteries();
+            SetExpectedEndDate();
+            SetRequesterInitials();
+            SettxtEutProjectname();
+            SetTxtRemark();
+            SetLinkToPlan();
+
         }
 
 

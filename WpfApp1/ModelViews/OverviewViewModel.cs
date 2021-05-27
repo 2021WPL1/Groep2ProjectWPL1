@@ -72,10 +72,10 @@ namespace Barco
       
         public void CancelButton()
         {
-            SendMailWithSMTPRelay();
-            //    HomeScreen home = new HomeScreen();
-            //    overview.Close();
-            //    home.ShowDialog();
+            //SendMailWithSMTPRelay();
+                HomeScreen home = new HomeScreen();
+                overview.Close();
+                home.ShowDialog();
 
         }
         //jimmy
