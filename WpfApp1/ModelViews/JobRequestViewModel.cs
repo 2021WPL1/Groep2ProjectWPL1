@@ -63,7 +63,7 @@ namespace Barco
         }
 
         private ObservableCollection<string> _err_output { get; set; } // listview for errors
-        
+
         //remove this line if working with DAO static class
         //private static Barco2021Context DAO = new Barco2021Context();
 
@@ -73,7 +73,7 @@ namespace Barco
         public List<Eut> eutList = new List<Eut>();
         public RqRequestDetail Detail = new RqRequestDetail();//to do delete 
         public List<Part> parts = new List<Part>();
-        
+
         List<bool> emcBoxes = new List<bool>();
         List<bool> envBoxes = new List<bool>();
         List<bool> relBoxes = new List<bool>();
@@ -142,8 +142,8 @@ namespace Barco
             DatePickerEUT5 = DateTime.Now;
 
             _err_output = new ObservableCollection<string>();
-            
-            
+
+
             txtFunction = GetValues("FUNCTION");
 
 
@@ -200,7 +200,9 @@ namespace Barco
         {
             try
             {
-                if (txtPartNr == "" || txtNetWeight == "" || txtGrossWeight == "")
+
+                
+                if (txtPartNr.Length == 0 || txtNetWeight.Length == 0 || txtGrossWeight.Length == 0)
                 {
                     MessageBox.Show("please fill in all values");
                 }
@@ -217,9 +219,9 @@ namespace Barco
                     request.EutPartnumbers += txtPartNr + " ; ";
                     request.GrossWeight += txtNetWeight + " ; ";
                     request.NetWeight += txtGrossWeight + " ; ";
-                    
-                    RefreshGUI();
 
+                   
+                    RefreshGUI();
                 }
             }
             catch (NullReferenceException)
@@ -246,15 +248,16 @@ namespace Barco
                 OnPropertyChanged();
             }
         }
-        
+
         public void SendButton()
         {
             try
             {
-
+                
                 //create error sequence
                 CreateBoxLists();
                 List<string> errors = new List<string>();
+                _err_output.Clear();
                 //declare var for object
                 string input_Abbreviation = txtReqInitials;
                 string input_ProjectName = txtEutProjectname;
@@ -263,9 +266,17 @@ namespace Barco
 
                 DateTime input_EndDate = DateTime.Now;
 
-                if (dateExpectedEnd.Date != null)
+                if (dateExpectedEnd.Date != null )
                 {
-                    input_EndDate = dateExpectedEnd.Date;
+                    if (dateExpectedEnd.Date < DateTime.Today)
+                    {
+                        errors.Add("The end date has to be in the future");
+                    }
+                    else
+                    {
+                        input_EndDate = dateExpectedEnd.Date;
+                    }
+                    
                 }
                 else
                 {
@@ -296,11 +307,11 @@ namespace Barco
 
                 //check if radio buttons are checked
 
-                if ((bool)rbtnBatNo)
+                if ((bool)rbtnBatNo==true)
                 {
                     input_Battery = false;
                 }
-                else if ((bool)rbtnBatNo && (bool)rbtnBatYes)
+                else if ((bool)rbtnBatNo==false && (bool)rbtnBatYes==false)
                 {
                     errors.Add("please check if batteries are needed");
                 }
@@ -345,7 +356,7 @@ namespace Barco
 
                 //check if other fields are empty
 
-                if (txtEutProjectname is null)
+                if (txtEutProjectname==null)
                 {
                     errors.Add("please fill in a project name");
                 }
@@ -353,6 +364,7 @@ namespace Barco
                 //error handling
                 if (errors.Count > 0)
                 {
+                    
                     foreach (string s in errors)
                     {
                         _err_output.Add(s);
@@ -389,6 +401,7 @@ namespace Barco
                     
                  //   dao.AddRequest(request, detailList, optional, eutList);
                     MessageBox.Show("Data has been inserted");
+                    
                 }
             }
             catch (FormatException ex)
@@ -396,10 +409,8 @@ namespace Barco
                 MessageBox.Show(ex.Message.ToString());
                 //MessageBox.Show("Please fill in all fields"):
             }
-
-           
-
         }
+        
 
         // to show in the listview
         public class Part
@@ -412,36 +423,43 @@ namespace Barco
         public void CreateBoxLists()
         {
 
+            emcBoxes.Clear();
             emcBoxes.Add(cbEmcEut1);
             emcBoxes.Add(cbEmcEut2);
             emcBoxes.Add(cbEmcEut3);
             emcBoxes.Add(cbEmcEut4);
             emcBoxes.Add(cbEmcEut5);
 
+            envBoxes.Clear();
             envBoxes.Add(cmEnvironmentalEut1);
             envBoxes.Add(cmEnvironmentalEut2);
             envBoxes.Add(cmEnvironmentalEut3);
             envBoxes.Add(cmEnvironmentalEut4);
             envBoxes.Add(cmEnvironmentalEut5);
 
+            relBoxes.Clear();
             relBoxes.Add(cmRelEut1);
             relBoxes.Add(cmRelEut2);
             relBoxes.Add(cmRelEut3);
             relBoxes.Add(cmRelEut4);
             relBoxes.Add(cmRelEut5);
 
+            prodBoxes.Clear();
             prodBoxes.Add(cmProdSafetyEut1);
             prodBoxes.Add(cmProdSafetyEut2);
             prodBoxes.Add(cmProdSafetyEut3);
             prodBoxes.Add(cmProdSafetyEut4);
             prodBoxes.Add(cmProdSafetyEut5);
 
+            greenBoxes.Clear();
             greenBoxes.Add(cmGrnCompEut1);
             greenBoxes.Add(cmGrnCompEut2);
             greenBoxes.Add(cmGrnCompEut3);
             greenBoxes.Add(cmGrnCompEut4);
             greenBoxes.Add(cmGrnCompEut5);
 
+
+            selectionBoxes.Clear();
             selectionBoxes.Add(cbEmc);
             selectionBoxes.Add(cmEnvironmental);
             selectionBoxes.Add(cmRel);
@@ -456,6 +474,8 @@ namespace Barco
             {
                 targets = emcBoxes;
             }
+            
+            
             else if (cmEnvironmental)
             {
                 targets = envBoxes;
@@ -576,45 +596,46 @@ namespace Barco
             if ((bool)cbEmcEut1 || (bool)cmEnvironmentalEut1 || (bool)cmGrnCompEut1 || (bool)cmProdSafetyEut1 ||
                 (bool)cmGrnCompEut1)
             {
-                if (DatePickerEUT1.Date == null)
+                if (DatePickerEUT1.Date == null || DatePickerEUT1.Date<DateTime.Today)
                 {
-                    result.Add("please provide a date for EUT 1");
+                    result.Add("please provide a  valid date for EUT 1");
                 }
+                
             }
 
             if ((bool)cbEmcEut2 || (bool)cmEnvironmentalEut2 || (bool)cmGrnCompEut2 || (bool)cmProdSafetyEut2 ||
                 (bool)cmGrnCompEut2)
             {
-                if (DatePickerEUT2.Date == null)
+                if (DatePickerEUT2.Date == null || DatePickerEUT2.Date < DateTime.Today)
                 {
-                    result.Add("please provide a date for EUT 2");
+                    result.Add("please provide a valid date for EUT 2");
                 }
             }
 
             if ((bool)cbEmcEut3 || (bool)cmEnvironmentalEut3 || (bool)cmGrnCompEut3 || (bool)cmProdSafetyEut3 ||
                 (bool)cmGrnCompEut3)
             {
-                if (DatePickerEUT3.Date == null)
+                if (DatePickerEUT3.Date == null || DatePickerEUT3.Date < DateTime.Today)
                 {
-                    result.Add("please provide a date for EUT 3");
+                    result.Add("please provide a valid date for EUT 3");
                 }
             }
 
             if ((bool)cbEmcEut4 || (bool)cmEnvironmentalEut4 || (bool)cmGrnCompEut4 || (bool)cmProdSafetyEut4 ||
                 (bool)cmGrnCompEut4)
             {
-                if (DatePickerEUT4.Date == null)
+                if (DatePickerEUT4.Date == null || DatePickerEUT4.Date < DateTime.Today)
                 {
-                    result.Add("please provide a date for EUT 4");
+                    result.Add("please provide a valid date for EUT 4");
                 }
             }
 
             if ((bool)cbEmcEut5 || (bool)cmEnvironmentalEut5 || (bool)cmGrnCompEut5 || (bool)cmProdSafetyEut5 ||
                 (bool)cmGrnCompEut5)
             {
-                if (DatePickerEUT5.Date == null)
+                if (DatePickerEUT5.Date == null || DatePickerEUT5.Date < DateTime.Today)
                 {
-                    result.Add("please provide a date for EUT 5");
+                    result.Add("please provide a valid date for EUT 5");
                 }
             }
             return result;
@@ -1071,3 +1092,4 @@ namespace Barco
       
     }
 }
+  

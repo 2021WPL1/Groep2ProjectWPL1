@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>7c8d6e52-effc-4810-b72d-beb293755d51.SCHEMA:Barco2021.dbo</OriginalElement>
+  <nodes>
+    <node x="780.1446495457875" y="433.6635003898774">7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Pl_planningsKalender</node>
+    <node x="977.808706550381" y="587.6635003898774">7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Pl_Resources</node>
+    <node x="239.33029498062086" y="8.913846733905189">7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Rq_TestDevision</node>
+    <node x="12.487818343526186" y="587.6635003898774">7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.EUT</node>
+    <node x="733.9907390840483" y="161.17195076463997">7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.sysdiagrams</node>
+    <node x="565.9148826823562" y="139.17195076463997">7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.statistiek</node>
+    <node x="943.8087065503809" y="183.17195076463997">7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Rq_BarcoDivisionPerson</node>
+    <node x="967.808706550381" y="8.913846733905189">7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Person</node>
+    <node x="314.608118542081" y="493.87772028071174">7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Pl_planning</node>
+    <node x="341.608118542081" y="240.39578350730847">7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Rq_BarcoDivision</node>
+    <node x="999.808706550381" y="118.54289874927258">7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Rq_JobNature</node>
+    <node x="734.3617946163686" y="8.913846733905189">7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Pl_Verletdagen</node>
+    <node x="-259.63248185502863" y="205.6468093128475">7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Rq_Request</node>
+    <node x="33.487818343526186" y="8.913846733905189">7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Rq_RequestDetail</node>
+    <node x="551.9148826823562" y="587.6635003898774">7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Rq_Optionel</node>
+    <node x="440.1727716177155" y="8.913846733905189">7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Pl_ResourcesDivision</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Rq_RequestDetail" target="7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Rq_Request" relationship="REFERENCES">
+      <point x="38.25" y="-60.5" />
+      <point x="148.2378183435262" y="124.35785288270378" />
+      <point x="43.59254711376187" y="124.35785288270378" />
+      <point x="43.59254711376187" y="346.92649050842937" />
+      <point x="-156.13248185502863" y="346.92649050842937" />
+      <point x="0.0" y="181.5" />
+    </edge>
+    <edge source="7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.EUT" target="7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Rq_RequestDetail" relationship="REFERENCES">
+      <point x="0.0" y="-60.5" />
+      <point x="0.0" y="60.5" />
+    </edge>
+    <edge source="7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Rq_RequestDetail" target="7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Rq_TestDevision" relationship="REFERENCES">
+      <point x="-38.25" y="-60.5" />
+      <point x="71.73781834352619" y="124.35785288270378" />
+      <point x="171.74690667070595" y="124.35785288270378" />
+      <point x="171.74690667070595" y="232.32063137601142" />
+      <point x="313.33029498062086" y="232.32063137601142" />
+      <point x="0.0" y="38.5" />
+    </edge>
+    <edge source="7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Pl_planning" target="7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Rq_Request" relationship="REFERENCES">
+      <point x="0.0" y="-104.5" />
+      <point x="453.04743944659646" y="493.87772028071174" />
+      <point x="453.04743944659646" y="435.2329949754566" />
+      <point x="-156.13248185502863" y="435.2329949754566" />
+      <point x="0.0" y="181.5" />
+    </edge>
+    <edge source="7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Pl_planningsKalender" target="7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Rq_Request" relationship="REFERENCES">
+      <point x="-44.75" y="-137.5" />
+      <point x="824.8946495457875" y="407.8280008020518" />
+      <point x="-156.13248185502863" y="407.8280008020518" />
+      <point x="0.0" y="181.5" />
+    </edge>
+    <edge source="7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Rq_Optionel" target="7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Rq_Request" relationship="REFERENCES">
+      <point x="0.0" y="-60.5" />
+      <point x="631.9148826823562" y="377.0584737544521" />
+      <point x="-156.13248185502863" y="377.0584737544521" />
+      <point x="0.0" y="181.5" />
+    </edge>
+    <edge source="7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Pl_ResourcesDivision" target="7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Pl_Resources" relationship="REFERENCES">
+      <point x="0.0" y="-49.5" />
+      <point x="539.6727716177155" y="363.74791365546184" />
+      <point x="1058.308706550381" y="363.74791365546184" />
+      <point x="1058.308706550381" y="559.4868610739463" />
+      <point x="1058.308706550381" y="559.4868610739463" />
+      <point x="0.0" y="60.5" />
+    </edge>
+    <edge source="7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Pl_planningsKalender" target="7c8d6e52-effc-4810-b72d-beb293755d51.TABLE:Barco2021.dbo.Pl_Resources" relationship="REFERENCES">
+      <point x="44.75" y="-137.5" />
+      <point x="914.3946495457875" y="407.8280008020518" />
+      <point x="1006.23668556789" y="407.8280008020518" />
+      <point x="1006.23668556789" y="590.6940244625156" />
+      <point x="1041.4707930198367" y="590.6940244625156" />
+      <point x="1041.4707930198367" y="648.1480430143288" />
+      <point x="1058.308706550381" y="648.1480430143288" />
+      <point x="0.0" y="60.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.9999999999999999" showDependencies="false" x="493.0000000000001" y="351.6086956521739" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+

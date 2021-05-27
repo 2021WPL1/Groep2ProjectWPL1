@@ -85,7 +85,9 @@ namespace Barco
 
             if (_selectedRequest != null)
             {
+                
                 dao.ApproveRqRequest(_selectedRequest);
+                MessageBox.Show("The request is approved", "Approved", MessageBoxButton.OK);
             }
             else
             {
@@ -211,6 +213,7 @@ namespace Barco
 
            if (!mailScheduled)
            {
+               mailScheduled = true;
                Task.Delay(span.Milliseconds).ContinueWith((x) =>
                {
                    smtpMailCommunication.CreateMail(count.ToString());
