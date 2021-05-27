@@ -36,8 +36,8 @@ namespace Barco.Views
         public void showTestNature()
         {
            cmbTest.ItemsSource = dao.GetTestNature();
-            cmbTest.DisplayMemberPath = "Naam";
-          cmbTest.SelectedValuePath = "Naam";
+           cmbTest.DisplayMemberPath = "Afkorting";
+          cmbTest.SelectedValuePath = "Afkorting";
         }
 
     }

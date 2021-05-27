@@ -22,11 +22,12 @@ namespace Barco.ModelViews
         private DAO dao;
         public ObservableCollection<RqRequest> RqApprovedRequests { get; set; }
         private RqRequest _selectedApprovedRequest;
-        private RqTestDevision _selectedTestNature;
+        private string _selectedTestNature;
 
         public List<RqTestDevision> TestDevisions { get; set; }
         public List<ComboObject> ComboObjects { get; set; }
         private OverviewApprovedRequests screen;
+        public ComboObject SelectedRqRequest { get; set; }
 
         public ICommand BackCommand { get; set; }
         public ICommand PlanTestCommand { get; set; }
@@ -108,7 +109,7 @@ namespace Barco.ModelViews
 
         // Bianca-- used to select a request for a further test planning
         //jimmy-geeft de geselecteerde request terugd
-        public RqTestDevision SelectedTestNature
+        public string SelectedTestNature
         {
             get { return _selectedTestNature;}
             set

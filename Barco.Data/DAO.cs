@@ -377,14 +377,21 @@ namespace Barco.Data
 
             foreach (RqRequest request in listRqRequests)
             {
-                returnValue.Add(new ComboObject
+                ComboObject o = new ComboObject
                 {
-                    Request=request,
+                    Request = request,
                     RqOptionel = GetOptionel(request.IdRequest),
                     RqRequestDetail = GetRqDetailsWithRequestId(request.IdRequest)
-                    
 
-                });
+                };
+                foreach (var detail in GetRqDetailsWithRequestId(request.IdRequest))
+                {
+                    o.PvgResp += detail.Pvgresp;
+                    o.TestDivisie += detail.Testdivisie.ToString();
+
+                }
+                returnValue.Add(o);
+
             }
 
             return returnValue;

@@ -13,7 +13,9 @@ namespace Barco.Data
 
        public RqRequest Request { get; set; }
 
-       public RqTestDevision TestDevision { get; set; }       
+       public string PvgResp { get; set; }
+       public string TestDivisie { get; set; }
+
 
    }
 }
