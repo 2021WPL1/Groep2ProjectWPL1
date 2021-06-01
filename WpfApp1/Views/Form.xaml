@@ -14,6 +14,5 @@
         <Button x:Name="LoginForm" Command="{Binding LoginCommand}" Content="Login" HorizontalAlignment="Left" Margin="288,226,0,0" VerticalAlignment="Top" Height="39" Width="64" BorderBrush="#FFE70707" Background="White" Foreground="#FFE70707" FontWeight="Bold"/>
         <Image x:Name="imgLoginForm" HorizontalAlignment="Left" Height="68" Margin="13,7,0,0" VerticalAlignment="Top" Width="185"/>
         <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="259,169,0,0" VerticalAlignment="Top" Width="219" Height="32" BorderBrush="#FFE70707"/>
-
     </Grid>
 </Window>

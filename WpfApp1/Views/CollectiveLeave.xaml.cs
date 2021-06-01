@@ -10,7 +10,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 namespace Barco
 {  //Bianca
     /// <summary>
@@ -19,9 +18,7 @@ namespace Barco
     public partial class CollectiveLeave : Window
     {
         private CollectiveLeaveViewModel collectiveLeaveViewModel;
-
         private DAO dao;
-
         Barco2021Context context = new Barco2021Context();
         public CollectiveLeave()
         {
@@ -31,39 +28,26 @@ namespace Barco
             dao = DAO.Instance();
             collectiveLeaveViewModel = new CollectiveLeaveViewModel(this);
             DataContext = collectiveLeaveViewModel;
-
             cbxChooseDepartment.Items.Clear();
             cbxChooseDepartment.ItemsSource = dao.GetDepartment();
             cbxChooseDepartment.DisplayMemberPath = "Afkorting";
             cbxChooseDepartment.SelectedValuePath = "Afkorting";
-
-            
-
         }
-
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
         //private void CancelButton_Click(object sender, RoutedEventArgs e)
         //{
         //    HomeScreen homeScreen = new HomeScreen();
         //   Close();
         //   // homeScreen.Show();
-          
-
         //}
-
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(cbxChooseDepartment.SelectedValue.ToString() + " " 
                 + NationalHoliday.SelectionBoxItem.ToString() + " " 
                 + dateStartHoliday.SelectedDate + " " 
                 + dateEndHoliday.SelectedDate);
-
         }
-
-        
     }
 }

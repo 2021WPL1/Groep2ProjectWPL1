@@ -11,14 +11,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Barco.Data;
 using Barco.ModelViews;
-
 namespace Barco.Views
 {
     /// <summary>
     /// Interaction logic for OverviewApprovedRequests.xaml
     /// </summary>
     ///
-    
     public partial class OverviewApprovedRequests : Window
     {
         private OverviewApprovedJRViewModel overviewApprovedModel;
@@ -26,19 +24,16 @@ namespace Barco.Views
         public OverviewApprovedRequests()
         {
             InitializeComponent();
-           
             overviewApprovedModel = new OverviewApprovedJRViewModel(this);
             DataContext = overviewApprovedModel;
             dao=DAO.Instance();
             showTestNature();
         }
-
         public void showTestNature()
         {
            cmbTest.ItemsSource = dao.GetTestNature();
            cmbTest.DisplayMemberPath = "Afkorting";
           cmbTest.SelectedValuePath = "Afkorting";
         }
-
     }
 }

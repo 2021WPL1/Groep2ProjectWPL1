@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="TestPlanning" Height="450" Width="800">
     <Grid>
-
         <DatePicker x:Name="dateExpectedStart" HorizontalAlignment="Left" Margin="120,143,0,0" VerticalAlignment="Top" IsTodayHighlighted="True" SelectedDate="{Binding dateExpectedStart}" Width="120"/>
         <DatePicker x:Name="dateExpectedEnd" HorizontalAlignment="Left" Margin="120,172,0,0" VerticalAlignment="Top"  IsTodayHighlighted="True" SelectedDate="{Binding dateExpectedEnd}" Width="120"/>
         <ComboBox x:Name="comboboxResources" HorizontalAlignment="Left" Margin="119,207,0,0" VerticalAlignment="Top" Width="121" Height="25" SelectedValue="{Binding selectedResource}"  SelectedIndex="0" ItemsSource="{Binding  Resources, Mode=TwoWay}" DisplayMemberPath="Naam"
@@ -36,12 +35,10 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Current Resources:" DisplayMemberBinding="{Binding Naam}" Width="auto">
-                        
                     </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
         <Button x:Name="btnAddResources" Content="+" HorizontalAlignment="Left" Margin="254,210,0,0" VerticalAlignment="Top" Width="25" Command="{Binding AddResourceCommand}"/>
-
     </Grid>
 </Window>

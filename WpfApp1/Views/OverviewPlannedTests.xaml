@@ -9,12 +9,10 @@
     <Grid>
         <ListView x:Name="listOverview" 
   Margin="34,140,0,25" HorizontalAlignment="Left" Width="516">
-
             <ListView.View  >
                 <GridView>
                     <GridViewColumn  Header="Requester" 
                         Width="100" />
-
                     <GridViewColumn Header="Division" 
                         Width="100"  />
                     <GridViewColumn Header="Project name" 
@@ -28,6 +26,5 @@
         <Label Content="Overview Planned Tests" HorizontalAlignment="Left" Margin="311,10,0,0" VerticalAlignment="Top" Height="72" Width="256" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
         <Button Content="Cancel" HorizontalAlignment="Left" Margin="677,84,0,0" VerticalAlignment="Top" Height="24" Width="65"/>
         <Button Content="Open" HorizontalAlignment="Left" Margin="685,132,0,0" VerticalAlignment="Top" Height="26" Width="56"/>
-
     </Grid>
 </Window>
