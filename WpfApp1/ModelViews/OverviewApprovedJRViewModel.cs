@@ -95,10 +95,12 @@ namespace Barco.ModelViews
 
         public void replaceInitialList()
         {
-            requests.Clear();
 
             if (SelectedTestNature != null)
-            { if (SelectedTestNature.Afkorting == "EMC")
+            {
+                requests.Clear();
+
+                if (SelectedTestNature.Afkorting == "EMC")
                 {
 
                     requests = EMC;
@@ -123,8 +125,7 @@ namespace Barco.ModelViews
 
                     requests = SAF;
                 }
-
-                    Refresh();
+                Refresh();
             }
       
         }
