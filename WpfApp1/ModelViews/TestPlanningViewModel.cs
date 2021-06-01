@@ -9,7 +9,6 @@ using System.Windows.Input;
 using Barco.Data;
 using Barco.Views;
 using Prism.Commands;
-
 namespace Barco.ModelViews
 {
     public class TestPlanningViewModel : ViewModelBase
@@ -18,7 +17,6 @@ namespace Barco.ModelViews
         private TestPlanning screen;
         public ICommand SaveTestCommand { get; set; }
         public ICommand CancelTestCommand { get; set; }
-
         //for editing inside vModel
         public ObservableCollection<PlResources> lstResources = new ObservableCollection<PlResources>();
         //for iterating and adding
@@ -31,18 +29,11 @@ namespace Barco.ModelViews
                 return lstResources;
             }
         }
-
-        
-        
         private PlResources _selectedResouce { get; set; }
         public List<PlResources> Resources { get; set; }
-        
         public ICommand AddResourceCommand { get; set; }
-
         public DateTime dateExpectedStart { get; set; }
         public DateTime dateExpectedEnd { get; set; }
-
-
         public TestPlanningViewModel(TestPlanning screen, int selectedId)
         {
             this.screen = screen;
@@ -55,10 +46,7 @@ namespace Barco.ModelViews
             Resources = new List<PlResources>();
             populateResources();
             _selectedResouce = new PlResources();
-
         }
-
-
         public void SaveButton()
         {
             MessageBox.Show("Congratulations, you have submitted a new test planning.");
@@ -66,19 +54,16 @@ namespace Barco.ModelViews
             screen.Close();
             overviewPlannedTests.ShowDialog();
         }
-
         public void CancelButton()
         {
             OverviewApprovedRequests overview = new OverviewApprovedRequests();
             screen.Close();
             overview.ShowDialog();
         }
-
         public void populateResources()
         {
             Resources = dao.GetResource();
         }
-
         public void AddResourceButton()
         {
             if (!String.IsNullOrEmpty(_selectedResouce.Naam) )
@@ -87,7 +72,6 @@ namespace Barco.ModelViews
                 refresh();
             }
         }
-
         public void refresh()
         {
             lstResources.Clear();
@@ -108,11 +92,5 @@ namespace Barco.ModelViews
                 OnPropertyChanged();
             }
         }
-        
-        
-
     }
-
-
 }
-

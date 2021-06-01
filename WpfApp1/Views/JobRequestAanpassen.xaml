@@ -133,6 +133,5 @@
         <TextBox x:Name="txtPvgRel" Text="{Binding pvgRel, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="438,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="19" IsReadOnly="True"/>
         <TextBox x:Name="txtPvgSaf" Text="{Binding pvgSaf, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="438,309,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="19" IsReadOnly="True"/>
         <TextBox x:Name="txtPvgEco" Text="{Binding pvgEco, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="438,331,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="19" IsReadOnly="True"/>
-
     </Grid>
 </Window>

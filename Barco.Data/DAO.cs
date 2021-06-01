@@ -4,35 +4,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
-
 namespace Barco.Data
 {
     public class DAO
     {
         private static readonly DAO instance = new DAO();
-
         public static DAO Instance()
         {
             return instance;
         }
-
         // Private constructor!
         private DAO()
-
         {
             this.context = new Barco2021Context();
         }
-
-
         // DBContext
         private Barco2021Context context;
-
-
         public void saveChanges()
         {
             context.SaveChanges();
         }
-
         // bianca- add a new person in the database
         public Person AddPerson(string abb, string firstname, string lastname)
         {
@@ -46,15 +37,11 @@ namespace Barco.Data
             saveChanges();
             return person;
         }
-
-
-
         // bianca- get a person with the abbreviation
         public Person GetPersonWithAbb(string abb)
         {
             return context.Person.FirstOrDefault(a => a.Afkorting == abb);
         }
-
         public bool IfPersonExists(string abb)
         {
             bool result = false;
@@ -64,8 +51,6 @@ namespace Barco.Data
             }
             return result;
         }
-
-
         //bianca
         // delete a person from the database
         public void RemovePerson(string abb)
@@ -73,20 +58,16 @@ namespace Barco.Data
             context.Person.Remove(GetPersonWithAbb(abb));
             saveChanges();
         } 
-
         //  bianca
         public RqRequest GetRequestDate()
         {
             return context.RqRequest.FirstOrDefault(a => a.RequestDate == DateTime.Now);
-
-
         }
         //Jimmy
         // get all the RqRequests 
         public ICollection<RqRequest> GetAllRqRequests()
         {
             return context.RqRequest.ToList();
-            
         }
         //Jimmy
         // Get RqRequest by Id
@@ -94,19 +75,14 @@ namespace Barco.Data
         {
             return context.RqRequest.FirstOrDefault(r => r.IdRequest == id);
         }
-
         //jimmy
         // Get RqRequestDetails by Id
         public RqRequestDetail GetRqRequestDetailById(int id)
         {
             return context.RqRequestDetail.FirstOrDefault(r => r.IdRqDetail == id);
         }
-
-
-
         //Jimmy- delete job request
         //Thibaut,Bianca - delete all the connections with the job request 
-
         // Delete Selected JobRequest
         public void DeleteJobRequest(int id)
         {
@@ -115,10 +91,8 @@ namespace Barco.Data
             context.RqOptionel.Remove(GetOptionel(GetOptionalByRequestId(id).IdRequest));
             //context.RqRequestDetail.Remove(GetRqRequestDetailByRequestId(id));
             context.RqRequest.Remove(GetRqRequestById(id));
-
             saveChanges();
         }
-
         //thibaut
         //delete al euts linked to a given request detail
         private void DeleteEuts(List<RqRequestDetail> details)
@@ -127,10 +101,8 @@ namespace Barco.Data
             {
                 context.Eut.RemoveRange(context.Eut.Where(e => e.IdRqDetail == d.IdRqDetail));
             }
-
             saveChanges();
         }
-
         //thibaut
         //delete al details linked to given request
         private void DeleteDetails(int requestId)
@@ -144,7 +116,6 @@ namespace Barco.Data
         {
             return context.RqOptionel.FirstOrDefault(r => r.IdRequest == id);
         }
-
         //thibaut, bianca
         // get a detail id from requestId
         public RqRequestDetail GetRqRequestDetailByRequestId(int id)
@@ -158,28 +129,20 @@ namespace Barco.Data
             rqRequest.JrNumber = jrNumber;
             saveChanges();
         }
-
-
-
-
         //bianca  
         public List<RqBarcoDivision> GetDepartment()
         {
             return context.RqBarcoDivision.ToList();
         }
-
         //bianca 
-
         public List<RqBarcoDivision> GetDivisions()
         {
             return context.RqBarcoDivision.ToList();
         }
-
         public List<RqJobNature> GetJobNatures()
         {
             return context.RqJobNature.ToList();
         }
-
         //request detail opvragen op basis van selected index
         public RqRequest GetRequest(int requestId)
         {
@@ -199,13 +162,11 @@ namespace Barco.Data
         {
             return context.RqOptionel.Where(opt => opt.IdRequest == idReq).FirstOrDefault();
         }
-
         //Stach - geeft division op basis van de afkotring
         public RqBarcoDivision GetDivisionByAbb(string abb)
         {
             return context.RqBarcoDivision.FirstOrDefault(a => a.Afkorting == abb);
         }
-
         public bool IfDivisionExists(string abb)
         {
             bool result = false;
@@ -221,7 +182,6 @@ namespace Barco.Data
             context.RqBarcoDivision.Remove(GetDivisionByAbb(abb));
             saveChanges();
         }
-
         // Geeft devision
         public List<RqTestDevision> GetTestDevisions()
         {
@@ -232,7 +192,6 @@ namespace Barco.Data
         {
             return context.RqTestDevision.FirstOrDefault(a => a.Afkorting == abb);
         }
-
         //voegt een division toe aan de database(?)
         public RqBarcoDivision AddDivision(string abb, string alias, bool active)
         {
@@ -246,7 +205,6 @@ namespace Barco.Data
             saveChanges();
             return rqBarcoDivision;
         }
-
         //voegt een persoon toe aan een division(?)
         public RqBarcoDivisionPerson AddDivPer(string AbbDevision, string AbbPerson, string PvgGroup)
         {
@@ -260,11 +218,8 @@ namespace Barco.Data
             saveChanges();
             return rqBarcoDivisionPerson;
         }
-
-
         //Bianca
         // Add request/ detail
-
         public RqRequest AddRequest(RqRequest request, List<RqRequestDetail> details, RqOptionel optional, List<Eut> eut)
         {
             try
@@ -276,16 +231,12 @@ namespace Barco.Data
                 //AddDetail(detail); old way single detail
                 AddEut(eut, int.Parse(context.RqRequest.OrderByDescending(p => p.IdRequest).Select(p => p.IdRequest).First().ToString()));
             }
-
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
             return request;
-
-
         }
-
         /*
         *  oude interpretatie van de opdracht
         public RqRequestDetail AddDetail(RqRequestDetail detail)
@@ -296,7 +247,6 @@ namespace Barco.Data
             return detail;
         }
         */
-
         //thibaut 
         public void AddDetails(List<RqRequestDetail> listDetails)
         {
@@ -307,7 +257,6 @@ namespace Barco.Data
             }
             context.SaveChanges();
         }
-
         //thibaut
         public RqOptionel AddOptional(RqOptionel optional)
         {
@@ -328,19 +277,16 @@ namespace Barco.Data
                     if (d.Testdivisie.Equals(e.OmschrijvingEut.Substring(0, 3)))
                     {
                         e.IdRqDetail = d.IdRqDetail;
-
                         context.Eut.Add(e);
                     }
                 }
                 context.SaveChanges();
             }
         }
-
         public List<RqRequestDetail> GetRqDetailsWithRequestId(int requestId)
         {
             return context.RqRequestDetail.Where(rq => rq.IdRequest == requestId).ToList();
         }
-
         //thibaut
         public List<Eut> GetEutWithDetailId(int id)
         {
@@ -350,21 +296,17 @@ namespace Barco.Data
             {
                 lijst.AddRange(context.Eut.Where(eut => eut.IdRqDetail == r.IdRqDetail));
             }
-
             return lijst;
         }
-
         //thibaut
         public List<Person> GetAllPerson()
         {
             return context.Person.ToList();
         }
-
         //thibaut
         public string GetJobNumber(bool internRq)
         {
             string result = "";
-
             foreach(RqRequest rq in context.RqRequest)
             {
                 if(rq.JrNumber != null)
@@ -374,34 +316,23 @@ namespace Barco.Data
                         result = rq.JrNumber;
                     }
                 }
-                
             }
-
             return result;
-
         }
-
         //bianca
         public ICollection<RqRequest> GetAllApprovedRqRequests()
         {
             return context.RqRequest.Where(s=>s.JrStatus== "Approved").ToList();
         }
-
-
         //bianca- a list of the test nature to be linked in the combobox-OVerviewApprovedRequests
         public List<RqTestDevision> GetTestNature()
         {
             return context.RqTestDevision.ToList();
         }
-
-
         public List<ComboObject> combinedObjects()
         {
-
             List<ComboObject> returnValue = new List<ComboObject>();
-
             var listRqRequests = GetAllApprovedRqRequests();
-
             foreach (RqRequest request in listRqRequests)
             {
                 ComboObject o = new ComboObject
@@ -409,22 +340,16 @@ namespace Barco.Data
                     Request = request,
                     RqOptionel = GetOptionel(request.IdRequest),
                     RqRequestDetail = GetRqDetailsWithRequestId(request.IdRequest)
-
                 };
                 foreach (var detail in GetRqDetailsWithRequestId(request.IdRequest))
                 {
                     o.PvgResp += detail.Pvgresp;
                     o.TestDivisie += detail.Testdivisie;
-
                 }
                 returnValue.Add(o);
-
             }
-
             return returnValue;
         }
-
-
         //Bianca- method to get the resources from the database
         public List<PlResources> GetResource()
         {
@@ -432,4 +357,3 @@ namespace Barco.Data
         }
     }
 }
-
