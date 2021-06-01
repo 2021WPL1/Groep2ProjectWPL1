@@ -398,7 +398,11 @@ namespace Barco.Data
         }
 
 
-
+        //Bianca- method to get the resources from the database
+        public List<PlResources> GetResource()
+        {
+            return context.PlResources.ToList();
+        }
     }
 }
 
