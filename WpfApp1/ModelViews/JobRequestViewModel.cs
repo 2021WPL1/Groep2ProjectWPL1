@@ -389,8 +389,8 @@ namespace Barco
 
                     if (CheckInternal(input_Abbreviation))
                     {
-                        dao.ApproveRqRequest(request);
-                        request.JrNumber = CreateJRNumberForInternal();
+                        dao.ApproveRqRequest(request, CreateJRNumberForInternal());
+                        
                     }
 
                     //optional object
@@ -880,6 +880,7 @@ namespace Barco
             {
                 list.Add(p.Afkorting);
             }
+            //list.Add("THD");//testen of code werkt
 
             return list.Contains(Name);
             
@@ -1094,15 +1095,20 @@ namespace Barco
         {
             string result = dao.GetJobNumber(true);
 
-            if (result != null)
+            if (result != null && result != "")
             {
                 int value = Convert.ToInt32( result.Substring(2));
                 value++;
                 result = "IN" + value;
+                while(result.Length < 6)
+                {
+                    result = result.Insert(2, "0");
+                }
+               
             }
             else//bij nieuwe DB wordt gereset
             {
-                result = "IN001";
+                result = "IN0001";
             }
            
 

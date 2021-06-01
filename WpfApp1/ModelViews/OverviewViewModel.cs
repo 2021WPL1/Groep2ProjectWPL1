@@ -72,10 +72,10 @@ namespace Barco
       
         public void CancelButton()
         {
-            SendMailWithSMTPRelay();
-            //    HomeScreen home = new HomeScreen();
-            //    overview.Close();
-            //    home.ShowDialog();
+            //SendMailWithSMTPRelay(); // to test mail function
+            HomeScreen home = new HomeScreen();
+            overview.Close();
+            home.ShowDialog();
 
         }
         //jimmy - thibaut jrnumber toewijzen
@@ -85,10 +85,9 @@ namespace Barco
 
             if (_selectedRequest != null)
             {
-                if(_selectedRequest.JrNumber == null)
+                if(_selectedRequest.JrNumber == null && !(bool)_selectedRequest.InternRequest )
                 {
-                    dao.ApproveRqRequest(_selectedRequest);
-                    SelectedRqRequest.JrNumber = CreateJRNumberForExternal();
+                    dao.ApproveRqRequest(_selectedRequest, CreateJRNumberForExternal());
                     MessageBox.Show("The request is approved", "Approved", MessageBoxButton.OK);
                 }
                 else
@@ -233,15 +232,19 @@ namespace Barco
         {
             string result = dao.GetJobNumber(false);
 
-            if (result != null)
+            if (result != null && result != "")
             {
                 int value = Convert.ToInt32(result.Substring(2));
                 value++;
                 result = "EX" + value;
+                while (result.Length < 6)
+                {
+                    result = result.Insert(2, "0");
+                }
             }
             else//bij nieuwe DB wordt gereset
             {
-                result = "EX001";
+                result = "EX0001";
             }
 
 
