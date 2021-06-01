@@ -362,7 +362,19 @@ namespace Barco.Data
         //thibaut
         public string GetJobNumber(bool internRq)
         {
-            return context.RqRequest.OrderByDescending(p => p.IdRequest).Where(q => q.InternRequest == internRq).Select(p => p.JrNumber).First().ToString();
+            string result = "";
+            try
+            {
+                //string list = context.RqRequest.OrderByDescending(p => p.IdRequest).Where(q => q.InternRequest == internRq).Select(r => r.JrNumber);
+                //result = context.RqRequest.OrderByDescending(p => p.IdRequest).Where(q => q.InternRequest == internRq).Select(r => r.JrNumber).FirstOrDefault().ToString();
+
+            }
+            catch(NullReferenceException)
+            {
+                
+            }
+            return result;
+
         }
 
         //bianca
