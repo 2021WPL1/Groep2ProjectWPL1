@@ -55,6 +55,11 @@ namespace Barco
             comboBoxJobNature.SelectedValuePath = "Nature";
         }
 
+        private void txtRequisterInitials_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
+
         //private void btnSaveChanges_Click(object sender, RoutedEventArgs e)
         //{
 

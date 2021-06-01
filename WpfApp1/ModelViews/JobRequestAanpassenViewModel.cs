@@ -19,7 +19,7 @@ namespace Barco
         public string txtPartGrossWeight { get; set; } //gross weight
         public string lblRequestDate { get; set; } //request date
         public string txtLinkTestplan { get; set; } // link to testplan
-        public string txtReqInitials { get; set; } // requester initials 
+        public string txtRequisterInitials { get; set; } // requester initials 
         public string txtEutProjectname { get; set; } //EUT Project name
         public string txtRemark { get; set; } // special remarks
         public string txtFunction { get; set; } //function
@@ -43,6 +43,7 @@ namespace Barco
         public List<RqRequestDetail> rqRequestDetails { get; set; }
         public string selectedDivision { get; set; }
         public string selectedJobNature { get; set; }
+      
 
         private List<Eut> euts;
         public bool cbEmcEut1 { get; set; }
@@ -147,15 +148,30 @@ namespace Barco
 
         public void SaveChanges()
         {
-            //Request.Requester = txtReqInitials;
+            Request.EutPartnumbers = string.Empty;
+            Request.GrossWeight = string.Empty;
+            Request.NetWeight = string.Empty;
+
+            foreach (var part in parts)
+            {
+                Request.EutPartnumbers += part.partNo + " ; ";
+                Request.GrossWeight += part.GrossWeight + " ; ";
+                Request.NetWeight += part.NetWeight + " ; ";
+
+            }
+            Request.Requester = txtRequisterInitials;
             ////RqRequestDetail.Pvgresp = txtPvgRes;
-            //Request.EutProjectname = txtEutProjectname;
-            //Request.ExpectedEnddate = dateExpectedEnd;
-            //RqOptionel.Remarks = txtRemark;
-            //RqOptionel.Link = txtLinkTestplan;
-            //Request.BarcoDivision = selectedDivision;
-            //Request.JobNature = SelectedJobNature;
+            Request.EutProjectname = txtEutProjectname;
+            Request.ExpectedEnddate = dateExpectedEnd;
+            RqOptionel.Remarks = txtRemark;
+            Request.JobNature = SelectedJobNature;
+            RqOptionel.Link = txtLinkTestplan;
+            Request.BarcoDivision = selectedDivision;
             dao.saveChanges();
+            MessageBox.Show("Changes saved.");
+            OverviewJobRequest overview = new OverviewJobRequest();
+            screen.Close();
+            overview.ShowDialog();
         }
         /// <summary>
         /// jimmy
@@ -166,9 +182,9 @@ namespace Barco
             if (parts.Contains(selectedPart))
             {
                 parts.Remove(selectedPart);
-                lstParts.Remove(selectedPart);
+               
                 RefreshGUI();
-                OnPropertyChanged();
+
             }
 
         }
@@ -522,7 +538,11 @@ namespace Barco
         private void FillData()
         {
             selectedDivision = Request.BarcoDivision;
-
+            txtRequisterInitials = Request.Requester;
+            txtEutProjectname = Request.EutProjectname;
+            dateExpectedEnd = Request.ExpectedEnddate;
+            txtRemark  = RqOptionel.Remarks;
+            txtLinkTestplan =  RqOptionel.Link;
             LoadParts();
             fillEuts();
             fillPvgResp();
