@@ -15,6 +15,7 @@ using Barco.ModelViews.Settings;
 using Barco.ModelViews.smtpConfig;
 using Barco.Views;
 using Prism.Commands;
+
 namespace Barco.ModelViews
 { // bianca- show a viewlist with an overview of the approved requests
     public class OverviewApprovedJRViewModel : ViewModelBase
@@ -24,22 +25,20 @@ namespace Barco.ModelViews
         //public ObservableCollection<RqRequest> RqApprovedRequests { get; set; }
         private RqTestDevision _selectedTestNature;
         private RqRequest _selectedApprovedRequest;
-<<<<<<< HEAD
         public ComboObject _selectedRqRequest { get; set; }
 
-=======
-       public ComboObject _selectedRqRequest { get; set; }
->>>>>>> 2309501dd7c5fb02d8774754189a85362e07d773
         public List<RqTestDevision> TestDevisions { get; set; }
         public List<ComboObject> ComboObjects { get; set; }
+
         public ICommand BackCommand { get; set; }
         public ICommand PlanTestCommand { get; set; }
+
+
         public List<ComboObject> EMC { get; set; }
         public List<ComboObject> ECO { get; set; }
         public List<ComboObject> ENV { get; set; }
         public List<ComboObject> REL { get; set; }
         public List<ComboObject> SAF { get; set; }
-<<<<<<< HEAD
 
         //for editing inside vModel
         public ObservableCollection<ComboObject> lstRequests = new ObservableCollection<ComboObject>();
@@ -56,8 +55,6 @@ namespace Barco.ModelViews
 
 
 
-=======
->>>>>>> 2309501dd7c5fb02d8774754189a85362e07d773
         public OverviewApprovedJRViewModel(OverviewApprovedRequests screen)
         {
             BackCommand = new DelegateCommand(BackButton);
@@ -74,6 +71,9 @@ namespace Barco.ModelViews
             SAF = new List<ComboObject>();
             fillList();
         }
+
+
+
         //jimmy laad alle requests in een ObservableCollection om zo in de GUI weer te geven
         //Bianca --> but only the approved ones
         /*public void Load()
@@ -88,7 +88,6 @@ namespace Barco.ModelViews
                     RqApprovedRequests.Add(rqRequest);
                 }
             }
-<<<<<<< HEAD
             
         }*/
 
@@ -96,18 +95,10 @@ namespace Barco.ModelViews
 
         public void replaceInitialList()
         {
-=======
-            fillList();
-        }
-        public void replaceInitialList()
-        {
-            RqApprovedRequests.Clear();
->>>>>>> 2309501dd7c5fb02d8774754189a85362e07d773
             if (SelectedTestNature != null)
             { 
                 if (SelectedTestNature.Afkorting == "EMC")
                 {
-<<<<<<< HEAD
                     requests = EMC;
                 }
                 if (SelectedTestNature.Afkorting == "ECO")
@@ -128,26 +119,6 @@ namespace Barco.ModelViews
                 }
 
                 
-=======
-                    ComboObjects = EMC;
-                }
-                if (SelectedTestNature.Afkorting == "ECO")
-                {
-                    ComboObjects = ECO;
-                }
-                if (SelectedTestNature.Afkorting == "ENV")
-                {
-                    ComboObjects = ENV;
-                }
-                if (SelectedTestNature.Afkorting == "REL")
-                {
-                    ComboObjects = REL;
-                }
-                if (SelectedTestNature.Afkorting == "SAF")
-                {
-                    ComboObjects = SAF;
-                }
->>>>>>> 2309501dd7c5fb02d8774754189a85362e07d773
             }
             else if (SelectedTestNature is null)
             {
@@ -155,15 +126,13 @@ namespace Barco.ModelViews
             }
             Refresh();
         }
-<<<<<<< HEAD
 
    
     
 
-=======
->>>>>>> 2309501dd7c5fb02d8774754189a85362e07d773
     // Bianca- used to select a request for a further test planning
         //jimmy-geeft de geselecteerde request terug
+
         public RqRequest SelectedApprovedRqRequest
         {
             get { return _selectedApprovedRequest; }
@@ -173,7 +142,6 @@ namespace Barco.ModelViews
                 OnPropertyChanged();
             }
         }
-<<<<<<< HEAD
 
         public void Refresh()
         {
@@ -184,20 +152,26 @@ namespace Barco.ModelViews
             }
         }
 
-=======
->>>>>>> 2309501dd7c5fb02d8774754189a85362e07d773
         //bianca- cancel the overview screen and open the home screen
         public void BackButton()
         {
             HomeScreen home = new HomeScreen();
             screen.Close();
+
             home.ShowDialog();
+
+
         }
+
+
+
         //bianca- when one request is selected, the overview screen is closed and the test planning page is opened
         public void PlanTestButton()
         {
+
             if (_selectedRqRequest != null)
             {
+
                 var SelectedId = _selectedRqRequest.Request.IdRequest;
                 TestPlanning testPlanning = new TestPlanning(SelectedId);
                 screen.Close();
@@ -205,11 +179,18 @@ namespace Barco.ModelViews
             }
             else
             {
+
                 MessageBox.Show("Select a JobRequest");
+
             }
+
+
+           
         }
+
         // Bianca-- used to select a request for a further test planning
         //jimmy-geeft de geselecteerde request terugd
+
         public RqTestDevision SelectedTestNature
         {
             get { return _selectedTestNature; }
@@ -217,29 +198,26 @@ namespace Barco.ModelViews
             {
                 _selectedTestNature = value;
                 OnPropertyChanged();
-<<<<<<< HEAD
                 replaceInitialList();
-=======
-               replaceInitialList();
->>>>>>> 2309501dd7c5fb02d8774754189a85362e07d773
             }
         }
+
+      
+
 //bianca-method used to fill in different lists based on the test nature
+
         public void fillList()
         {
             var initialList = ComboObjects;
+
             foreach (var request in initialList)
             {
                 if (request.TestDivisie.Contains("ECO"))
                 {
                     ECO.Add(request);
                 }
-<<<<<<< HEAD
 
                 if (request.TestDivisie.Contains("ENV"))
-=======
-                else if (request.TestDivisie.Contains("ENV"))
->>>>>>> 2309501dd7c5fb02d8774754189a85362e07d773
                 {
                     ENV.Add(request);
                 }
@@ -255,16 +233,10 @@ namespace Barco.ModelViews
                 {
                     SAF.Add(request);
                 }
-<<<<<<< HEAD
 
-=======
-                else
-                {
-                    MessageBox.Show("Please select a test nature");
-                }
->>>>>>> 2309501dd7c5fb02d8774754189a85362e07d773
             }
         }
+
         public ComboObject SelectedRqRequest
         {
             get { return _selectedRqRequest; }
@@ -274,12 +246,9 @@ namespace Barco.ModelViews
                 OnPropertyChanged();
             }
         }
-<<<<<<< HEAD
 
 
         
 
-=======
->>>>>>> 2309501dd7c5fb02d8774754189a85362e07d773
     }
 }
