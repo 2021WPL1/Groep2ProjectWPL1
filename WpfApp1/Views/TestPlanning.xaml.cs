@@ -31,7 +31,7 @@ namespace Barco.Views
             DataContext = testPlanningJrModel;
             dao = DAO.Instance();
             InitializeComponent();
-            showResources();
+            //showResources();
         }
 
         //bianca-display resources in the combobox-TestPlanning
