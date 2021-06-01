@@ -32,14 +32,14 @@ namespace Barco.ModelViews.smtpConfig
            
         }
 
-   
+
         //method to create an email 
         // Laurent ,Bianca
 
         public void CreateMail(string input)
         {
-            
-            var to= _appSettingsService.GetConfigurationSection<EmailAdresses>("EmailAdresses");
+
+            var to = _appSettingsService.GetConfigurationSection<EmailAdresses>("EmailAdresses");
             var from = _appSettingsService.GetConfigurationSection<SMPTClientConfig>("SMPTClientConfig");
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(from.QueryResult.Username));
@@ -55,12 +55,12 @@ namespace Barco.ModelViews.smtpConfig
             {
                 client.Connect("smtp-mail.outlook.com", 587, false);
                 client.Authenticate(from.QueryResult.Username, from.QueryResult.SMTPPassword);
-                client.Send(message);
+                //client.Send(message);
                 client.Disconnect(true);
             }
         }
 
 
-     
+
     }
 }

@@ -365,6 +365,48 @@ namespace Barco.Data
             return context.RqRequest.OrderByDescending(p => p.IdRequest).Where(q => q.InternRequest == internRq).Select(p => p.JrNumber).First().ToString();
         }
 
+        //bianca
+        public ICollection<RqRequest> GetAllApprovedRqRequests()
+        {
+            return context.RqRequest.Where(s=>s.JrStatus== "Approved").ToList();
+        }
+
+
+        //bianca- a list of the test nature to be linked in the combobox-OVerviewApprovedRequests
+        public List<RqTestDevision> GetTestNature()
+        {
+            return context.RqTestDevision.ToList();
+        }
+
+
+        public List<ComboObject> combinedObjects()
+        {
+
+            List<ComboObject> returnValue = new List<ComboObject>();
+
+            var listRqRequests = GetAllApprovedRqRequests();
+
+            foreach (RqRequest request in listRqRequests)
+            {
+                ComboObject o = new ComboObject
+                {
+                    Request = request,
+                    RqOptionel = GetOptionel(request.IdRequest),
+                    RqRequestDetail = GetRqDetailsWithRequestId(request.IdRequest)
+
+                };
+                foreach (var detail in GetRqDetailsWithRequestId(request.IdRequest))
+                {
+                    o.PvgResp += detail.Pvgresp;
+                    o.TestDivisie += detail.Testdivisie.ToString();
+
+                }
+                returnValue.Add(o);
+
+            }
+
+            return returnValue;
+        }
     }
 }
 

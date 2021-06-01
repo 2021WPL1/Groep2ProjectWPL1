@@ -44,6 +44,7 @@ namespace Barco
 
             comboBoxDivision.ItemsSource = dao.GetDepartment();
             comboBoxDivision.DisplayMemberPath = "Afkorting";
+            comboBoxDivision.SelectedValuePath = "Afkorting";
             comboBoxDivision.SelectedValue = dao.GetRqRequestById(id).BarcoDivision;
 
         }
