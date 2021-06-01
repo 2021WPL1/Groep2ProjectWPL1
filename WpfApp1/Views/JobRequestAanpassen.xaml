@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Barco" d:DataContext="{d:DesignInstance Type=local:JobRequestAanpassenViewModel}"
         mc:Ignorable="d"
         Title="JobRequestAanpassen" Height="450" Width="800">
-    <Grid Margin="0,0,0,-35" Cursor="">
+    <Grid Margin="0,0,0,-35" >
         <TextBlock HorizontalAlignment="Left" Margin="51,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Text="Requ"/><Run Language="nl-be" Text="e"/><Run Text="ster "/><Run Text="Initials"/></TextBlock>
         <TextBox x:Name="txtRequisterInitials" Text="{Binding txtReqInitials}" HorizontalAlignment="Left" Margin="51,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
         <TextBlock HorizontalAlignment="Left" Margin="51,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="EUT Projectname"/></TextBlock>
@@ -14,7 +14,7 @@
         <TextBlock HorizontalAlignment="Left" Margin="176,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Division"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="306,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Job Nature"/></TextBlock>
         <ComboBox x:Name="comboBoxDivision" SelectedItem="{Binding selectedDivision, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" SelectedValue="{Binding  Request.BarcoDivision}"  HorizontalAlignment="Left" Margin="176,58,0,0" VerticalAlignment="Top" Width="94"/>
-        <ComboBox x:Name="comboBoxJobNature" SelectedValue="{Binding SelectedJobNature , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }" SelectedIndex="0" HorizontalAlignment="Left" Margin="306,58,0,0" VerticalAlignment="Top" Width="94"/>
+        <ComboBox x:Name="comboBoxJobNature" SelectedItem="{Binding SelectedJobNature , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }" SelectedValue="{Binding Request.JobNature}" SelectedIndex="0" HorizontalAlignment="Left" Margin="306,58,0,0" VerticalAlignment="Top" Width="94"/>
         <ListBox x:Name="ListBoxPartNumber" ItemsSource="{Binding ListPartsnumbers}" Margin="483,62,224,307" RenderTransformOrigin="0.5,0.5">
             <ListBox.RenderTransform>
                 <TransformGroup>

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Barco"
         mc:Ignorable="d"
         Title="JobRequestDetail" Height="450" Width="800">
-    <Grid x:Name="Grid" Margin="0,0,0,-35" Cursor="">
+    <Grid x:Name="Grid" Margin="0,0,0,-35" >
         <TextBlock HorizontalAlignment="Left" Margin="51,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Text="Requ"/><Run Language="nl-be" Text="e"/><Run Text="ster "/><Run Text="Initials"/></TextBlock>
         <TextBox x:Name="txtRequisterInitials" Text="{Binding Request.Requester, Mode=OneWay}" HorizontalAlignment="Left" Margin="51,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsReadOnly="True"/>
         <TextBlock HorizontalAlignment="Left"  Margin="51,83,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="EUT Projectname"/></TextBlock>

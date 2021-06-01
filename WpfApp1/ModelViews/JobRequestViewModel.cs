@@ -399,7 +399,7 @@ namespace Barco
                     List<RqRequestDetail>detailList = GetRqRequestDetails();
 
                     
-                     dao.AddRequest(request, detailList, optional, eutList);
+                    dao.AddRequest(request, detailList, optional, eutList);
                     MessageBox.Show("Data has been inserted");
                     
                 }
@@ -474,6 +474,8 @@ namespace Barco
             {
                 targets = emcBoxes;
             }
+            
+            
             else if (cmEnvironmental)
             {
                 targets = envBoxes;

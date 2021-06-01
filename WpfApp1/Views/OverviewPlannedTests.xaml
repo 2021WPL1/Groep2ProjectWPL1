@@ -7,20 +7,20 @@
         mc:Ignorable="d"
         Title="OverviewPlannedTests" Height="450" Width="800">
     <Grid>
-        <ListView x:Name="listOverview" ItemsSource="{Binding RqRequests}"
-            SelectedItem="{Binding SelectedRqRequest, Mode=TwoWay}" Margin="34,140,0,25" HorizontalAlignment="Left" Width="516">
+        <ListView x:Name="listOverview" 
+  Margin="34,140,0,25" HorizontalAlignment="Left" Width="516">
 
             <ListView.View  >
                 <GridView>
                     <GridViewColumn  Header="Requester" 
-                        Width="100" DisplayMemberBinding="{Binding Requester}" />
+                        Width="100" />
 
                     <GridViewColumn Header="Division" 
-                        Width="100"  DisplayMemberBinding="{Binding BarcoDivision}" />
+                        Width="100"  />
                     <GridViewColumn Header="Project name" 
-                        Width="150" DisplayMemberBinding="{Binding EutProjectname}"/>
+                        Width="150"/>
                     <GridViewColumn Header="Date" 
-                        Width="150" DisplayMemberBinding="{Binding RequestDate}"/>
+                        Width="150" />
                 </GridView>
             </ListView.View>
         </ListView>
