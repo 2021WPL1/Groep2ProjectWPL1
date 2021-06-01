@@ -203,9 +203,9 @@ namespace Barco
         {
             try
             {
-                if (txtPartNumber == "" || txtPartNetWeight == "" || txtPartGrossWeight == "")
+                if (txtPartNumber.Length == null || txtPartNetWeight.Length == null || txtPartGrossWeight.Length == null)
                 {
-                    MessageBox.Show("please fill in all values");
+                    MessageBox.Show("please fill in all part values");
                 }
                 else
                 {
