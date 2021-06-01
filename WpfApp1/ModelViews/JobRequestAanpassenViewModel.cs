@@ -164,7 +164,7 @@ namespace Barco
             Request.EutProjectname = txtEutProjectname;
             Request.ExpectedEnddate = dateExpectedEnd;
             RqOptionel.Remarks = txtRemark;
-            Request.JobNature = SelectedJobNature;
+            //Request.JobNature = SelectedJobNature;
             RqOptionel.Link = txtLinkTestplan;
             Request.BarcoDivision = selectedDivision;
             dao.saveChanges();
@@ -538,6 +538,7 @@ namespace Barco
         private void FillData()
         {
             selectedDivision = Request.BarcoDivision;
+            selectedJobNature = Request.JobNature;
             txtRequisterInitials = Request.Requester;
             txtEutProjectname = Request.EutProjectname;
             dateExpectedEnd = Request.ExpectedEnddate;
