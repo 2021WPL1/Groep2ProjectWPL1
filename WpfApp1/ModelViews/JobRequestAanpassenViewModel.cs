@@ -506,7 +506,7 @@ namespace Barco
             get { return selectedJobNature; }
             set
             {
-                selectedDivision = value;
+                selectedJobNature = value;
                 OnPropertyChanged();
 
             }
