@@ -201,7 +201,7 @@ namespace Barco
                     Request.GrossWeight += txtPartNetWeight + " ; ";
                     Request.NetWeight += txtPartGrossWeight + " ; ";
 
-                    RefreshGUI();
+                    //RefreshGUI();
 
 
                 }
@@ -218,6 +218,7 @@ namespace Barco
             string PartGross = Request.GrossWeight.Replace(" ", String.Empty);
             string Partnets = Request.NetWeight.Replace(" ", String.Empty);
             string Partnumbers = Request.EutPartnumbers.Replace(" ", String.Empty);
+
             string getPartGross;
             string getPartnet;
             string getPartnumber;
