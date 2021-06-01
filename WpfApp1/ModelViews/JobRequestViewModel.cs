@@ -385,6 +385,13 @@ namespace Barco
                     request.GrossWeight = grossWeights;
                     request.EutPartnumbers = partNums;
                     request.HydraProjectNr = "0";
+                    request.InternRequest = CheckInternal(input_Abbreviation);//naam moet in lijst zitten om intern rq te maken
+
+                    if (CheckInternal(input_Abbreviation))
+                    {
+                        dao.ApproveRqRequest(request, CreateJRNumberForInternal());
+                        
+                    }
 
                     //optional object
                     optional.Link = txtLinkTestplan;
@@ -863,21 +870,20 @@ namespace Barco
             set { _err_output = value; }
         }
 
-        //Bianca
+        //Bianca - thibaut
         //check if the person is an internal of external based on the initials
-        //later find a solution for the hard-code
-        private bool checkInternal(string Name)
+        //requester in DB table person --> internal ATM
+        private bool CheckInternal(string Name)
         {
-            if (Name == "BIC")//to do change hard code (need a list of people that are responsible)
+            List<string> list = new List<string>();
+            foreach(Person p in dao.GetAllPerson())
             {
-                return true;
+                list.Add(p.Afkorting);
             }
+            //list.Add("THD");//testen of code werkt
 
-            else
-            {
-                return false;
-
-            }
+            return list.Contains(Name);
+            
         }
 
         //thibaut
@@ -1085,6 +1091,29 @@ namespace Barco
 
         }
 
+        private string CreateJRNumberForInternal()
+        {
+            string result = dao.GetJobNumber(true);
+
+            if (result != null && result != "")
+            {
+                int value = Convert.ToInt32( result.Substring(2));
+                value++;
+                result = "IN" + value;
+                while(result.Length < 6)
+                {
+                    result = result.Insert(2, "0");
+                }
+               
+            }
+            else//bij nieuwe DB wordt gereset
+            {
+                result = "IN0001";
+            }
+           
+
+            return result;
+        }
 
       
 

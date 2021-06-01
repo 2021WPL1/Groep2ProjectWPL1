@@ -152,9 +152,10 @@ namespace Barco.Data
             return context.RqRequestDetail.FirstOrDefault(r => r.IdRequest == id);
         }
         // jimmy
-        public void ApproveRqRequest(RqRequest rqRequest)
+        public void ApproveRqRequest(RqRequest rqRequest, string jrNumber)
         {
             rqRequest.JrStatus = "Approved";
+            rqRequest.JrNumber = jrNumber;
             saveChanges();
         }
 
@@ -353,6 +354,32 @@ namespace Barco.Data
             return lijst;
         }
 
+        //thibaut
+        public List<Person> GetAllPerson()
+        {
+            return context.Person.ToList();
+        }
+
+        //thibaut
+        public string GetJobNumber(bool internRq)
+        {
+            string result = "";
+
+            foreach(RqRequest rq in context.RqRequest)
+            {
+                if(rq.JrNumber != null)
+                {
+                    if (rq.InternRequest == internRq)
+                    {
+                        result = rq.JrNumber;
+                    }
+                }
+                
+            }
+
+            return result;
+
+        }
 
         //bianca
         public ICollection<RqRequest> GetAllApprovedRqRequests()

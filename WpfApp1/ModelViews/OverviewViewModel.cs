@@ -72,22 +72,29 @@ namespace Barco
       
         public void CancelButton()
         {
-            SendMailWithSMTPRelay();
-            //    HomeScreen home = new HomeScreen();
-            //    overview.Close();
-            //    home.ShowDialog();
+            //SendMailWithSMTPRelay(); // to test mail function
+            HomeScreen home = new HomeScreen();
+            overview.Close();
+            home.ShowDialog();
 
         }
-        //jimmy
+        //jimmy - thibaut jrnumber toewijzen
         //Verranderd de Jr status van het geselecteerde request
         public void Approve()
         {
 
             if (_selectedRequest != null)
             {
+                if(_selectedRequest.JrNumber == null && !(bool)_selectedRequest.InternRequest )
+                {
+                    dao.ApproveRqRequest(_selectedRequest, CreateJRNumberForExternal());
+                    MessageBox.Show("The request is approved", "Approved", MessageBoxButton.OK);
+                }
+                else
+                {
+                    MessageBox.Show("The request was already approved", "Approved", MessageBoxButton.OK);
+                }
                 
-                dao.ApproveRqRequest(_selectedRequest);
-                MessageBox.Show("The request is approved", "Approved", MessageBoxButton.OK);
             }
             else
             {
@@ -220,5 +227,28 @@ namespace Barco
                });
            }
        }
+
+        private string CreateJRNumberForExternal()
+        {
+            string result = dao.GetJobNumber(false);
+
+            if (result != null && result != "")
+            {
+                int value = Convert.ToInt32(result.Substring(2));
+                value++;
+                result = "EX" + value;
+                while (result.Length < 6)
+                {
+                    result = result.Insert(2, "0");
+                }
+            }
+            else//bij nieuwe DB wordt gereset
+            {
+                result = "EX0001";
+            }
+
+
+            return result;
+        }
     }
 }
