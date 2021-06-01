@@ -107,9 +107,6 @@ namespace Barco
         {
             dao = DAO.Instance();
 
-            this.ListPartsnumbers = new List<string>();
-            this.ListPartGross = new List<string>();
-            this.ListPartNet = new List<string>();
 
             CancelCommand = new DelegateCommand(CancelButton);
             SaveChangesCommand = new DelegateCommand(SaveChanges);
@@ -150,14 +147,14 @@ namespace Barco
 
         public void SaveChanges()
         {
-            Request.Requester = txtReqInitials;
-            //RqRequestDetail.Pvgresp = txtPvgRes;
-            Request.EutProjectname = txtEutProjectname;
-            Request.ExpectedEnddate = dateExpectedEnd;
-            RqOptionel.Remarks = txtRemark;
-            RqOptionel.Link = txtLinkTestplan;
-            Request.BarcoDivision = selectedDivision;
-            Request.JobNature = SelectedJobNature;
+            //Request.Requester = txtReqInitials;
+            ////RqRequestDetail.Pvgresp = txtPvgRes;
+            //Request.EutProjectname = txtEutProjectname;
+            //Request.ExpectedEnddate = dateExpectedEnd;
+            //RqOptionel.Remarks = txtRemark;
+            //RqOptionel.Link = txtLinkTestplan;
+            //Request.BarcoDivision = selectedDivision;
+            //Request.JobNature = SelectedJobNature;
             dao.saveChanges();
         }
         /// <summary>
@@ -197,15 +194,14 @@ namespace Barco
                         
 
                     });
-                    ListPartsnumbers.Add(txtPartNetWeight);
-                    ListPartGross.Add(txtPartGrossWeight);
-                    ListPartNet.Add(txtPartNetWeight);
+
 
                     Request.EutPartnumbers += txtPartNumber + " ; ";
                     Request.GrossWeight += txtPartNetWeight + " ; ";
                     Request.NetWeight += txtPartGrossWeight + " ; ";
 
-                    //RefreshGUI();
+                    RefreshGUI();
+
 
 
                 }
@@ -238,9 +234,6 @@ namespace Barco
                 getPartnumber = Partnumbers.Substring(0, splitIndexNumbers);
 
 
-                ListPartGross.Add(getPartGross);
-                ListPartNet.Add(getPartnet);
-                ListPartsnumbers.Add(getPartnumber);
 
                 parts.Add(new Part()
                 {
@@ -508,18 +501,10 @@ namespace Barco
         private void RefreshGUI()
         {
             lstParts.Clear();
-            ListPartGross.Clear();
-            ListPartNet.Clear();
-            ListPartsnumbers.Clear();
             foreach (Part part in parts)
             {
                 lstParts.Add(part);
-                ListPartGross.Add(part.GrossWeight);
-                ListPartNet.Add(part.NetWeight);
-                ListPartsnumbers.Add(part.partNo);
             }
-            LoadParts();
-
         }
         private void SetBatteries()
         {
@@ -542,6 +527,7 @@ namespace Barco
             fillEuts();
             fillPvgResp();
             SetBatteries();
+            RefreshGUI();
         }
 
 

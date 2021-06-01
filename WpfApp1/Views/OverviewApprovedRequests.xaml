@@ -15,7 +15,7 @@
              >
 
             <ListView.View  >
-                <GridView>
+                <GridView AllowsColumnReorder="False">
                     <GridViewColumn  Header="JR n°" 
                         Width="50" DisplayMemberBinding="{Binding Request.JrNumber}" />
 

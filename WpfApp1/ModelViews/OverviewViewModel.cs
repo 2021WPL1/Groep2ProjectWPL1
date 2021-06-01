@@ -50,7 +50,7 @@ namespace Barco
             EditRequestCommand = new DelegateCommand(EditRequest);
             Load();
             this.overview = overview;
-            CountJobRequestsToday();
+           // CountJobRequestsToday();
             var result = _appSettingsService.GetConfigurationSection<SMPTClientConfig>("SMPTClientConfig");
             smtpMailCommunication = new SMTPMailCommunication(
                 result.QueryResult.Username,
@@ -72,14 +72,13 @@ namespace Barco
       
         public void CancelButton()
         {
-           // SendMailWithSMTPRelay();
-            //    HomeScreen home = new HomeScreen();
-            //    overview.Close();
-            //    home.ShowDialog();
+               HomeScreen home = new HomeScreen();
+               overview.Close();
+               home.ShowDialog();
 
         }
         //jimmy
-        //Verranderd de Jr status van het geselecteerde request
+        //Verranderd de Jr status van het geselecteerde request naar "Approved"
         public void Approve()
         {
 
