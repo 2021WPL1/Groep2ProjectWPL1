@@ -76,7 +76,6 @@ namespace Barco
             HomeScreen home = new HomeScreen();
             overview.Close();
             home.ShowDialog();
-
         }
         //jimmy - thibaut jrnumber toewijzen
         //Verranderd de Jr status van het geselecteerde request
@@ -193,7 +192,7 @@ namespace Barco
                     count++;
                 }
             }
-            scheduleMail(count);
+            //scheduleMail(count);
             return count;
        }
 
