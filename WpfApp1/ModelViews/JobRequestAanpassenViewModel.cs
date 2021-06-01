@@ -194,8 +194,12 @@ namespace Barco
                         NetWeight = txtPartNetWeight,
                         GrossWeight = txtPartGrossWeight,
                         partNo = txtPartNumber
+                        
 
                     });
+                    ListPartsnumbers.Add(txtPartNetWeight);
+                    ListPartGross.Add(txtPartGrossWeight);
+                    ListPartNet.Add(txtPartNetWeight);
 
                     Request.EutPartnumbers += txtPartNumber + " ; ";
                     Request.GrossWeight += txtPartNetWeight + " ; ";
