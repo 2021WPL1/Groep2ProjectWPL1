@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Barco;
 using Barco.Data;
@@ -18,37 +19,35 @@ namespace Barco.ModelViews
 { // bianca- show a viewlist with an overview of the approved requests
     public class OverviewApprovedJRViewModel : ViewModelBase
     {
-        private static AppSettingsService<AppSettings> _appSettingsService = AppSettingsService<AppSettings>.Instance;
-
+        private OverviewApprovedRequests screen;
         private DAO dao;
         public ObservableCollection<RqRequest> RqApprovedRequests { get; set; }
-        private int _selectedApprovedRequest;
-        private string _selectedTestNature;
+        private RqTestDevision _selectedTestNature;
+        private RqRequest _selectedApprovedRequest;
+       public ComboObject _selectedRqRequest { get; set; }
 
         public List<RqTestDevision> TestDevisions { get; set; }
         public List<ComboObject> ComboObjects { get; set; }
-        private OverviewApprovedRequests screen;
-        public ComboObject _SelectedRqRequest { get; set; }
 
         public ICommand BackCommand { get; set; }
         public ICommand PlanTestCommand { get; set; }
 
 
-       public List<ComboObject> EMC { get; set; }
-       public List<ComboObject> ECO { get; set; }
-       public List<ComboObject> ENV { get; set; }
-       public List<ComboObject> REL { get; set; }
-       public List<ComboObject> SAF { get; set; }
+        public List<ComboObject> EMC { get; set; }
+        public List<ComboObject> ECO { get; set; }
+        public List<ComboObject> ENV { get; set; }
+        public List<ComboObject> REL { get; set; }
+        public List<ComboObject> SAF { get; set; }
 
-     
+
+
 
         public OverviewApprovedJRViewModel(OverviewApprovedRequests screen)
         {
-           BackCommand = new DelegateCommand(BackButton);
-           PlanTestCommand = new DelegateCommand(PlanTestButton);
+            BackCommand = new DelegateCommand(BackButton);
+            PlanTestCommand = new DelegateCommand(PlanTestButton);
             dao = DAO.Instance();
             this.screen = screen;
-            Load();
             TestDevisions = dao.GetTestNature();
             ComboObjects = dao.combinedObjects();
             EMC = new List<ComboObject>();
@@ -56,6 +55,7 @@ namespace Barco.ModelViews
             ENV = new List<ComboObject>();
             REL = new List<ComboObject>();
             SAF = new List<ComboObject>();
+            Load();
         }
 
 
@@ -74,12 +74,53 @@ namespace Barco.ModelViews
                     RqApprovedRequests.Add(rqRequest);
                 }
             }
+            fillList();
         }
 
+        
 
-      // Bianca-- used to select a request for a further test planning
-        //jimmy-geeft de geselecteerde request terugd
-        public int SelectedApprovedRqRequest
+        public void replaceInitialList()
+        {
+            RqApprovedRequests.Clear();
+
+            if (SelectedTestNature != null)
+            {
+                if (SelectedTestNature.Afkorting == "EMC")
+                {
+
+                    ComboObjects = EMC;
+                }
+                if (SelectedTestNature.Afkorting == "ECO")
+                {
+
+                    ComboObjects = ECO;
+                }
+                if (SelectedTestNature.Afkorting == "ENV")
+                {
+
+                    ComboObjects = ENV;
+                }
+                if (SelectedTestNature.Afkorting == "REL")
+                {
+
+                    ComboObjects = REL;
+                }
+                if (SelectedTestNature.Afkorting == "SAF")
+                {
+
+                    ComboObjects = SAF;
+                }
+
+            }
+        }
+   
+    
+
+
+    // Bianca- used to select a request for a further test planning
+        //jimmy-geeft de geselecteerde request terug
+
+        public RqRequest SelectedApprovedRqRequest
         {
             get { return _selectedApprovedRequest; }
             set
@@ -102,41 +143,51 @@ namespace Barco.ModelViews
 
         }
 
-        
+
 
         //bianca- when one request is selected, the overview screen is closed and the test planning page is opened
         public void PlanTestButton()
         {
 
-            if (_selectedApprovedRequest != null)
-            { 
-                int SelectedId = _selectedApprovedRequest;
-                TestPlanning testPlanning = new TestPlanning();
+            if (_selectedRqRequest != null)
+            {
+
+                var SelectedId = _selectedRqRequest.Request.IdRequest;
+                TestPlanning testPlanning = new TestPlanning(SelectedId);
                 screen.Close();
                 testPlanning.ShowDialog();
             }
             else
             {
+
                 MessageBox.Show("Select a JobRequest");
+
             }
+
+
+           
         }
 
         // Bianca-- used to select a request for a further test planning
         //jimmy-geeft de geselecteerde request terugd
-        public string SelectedTestNature
+
+        public RqTestDevision SelectedTestNature
         {
-            get { return _selectedTestNature;}
+            get { return _selectedTestNature; }
             set
             {
                 _selectedTestNature = value;
                 OnPropertyChanged();
-                RqApprovedRequests = new ObservableCollection<RqRequest>();
-              
+               replaceInitialList();
+
             }
         }
 
+      
 
-        public void fillList(int id)
+//bianca-method used to fill in different lists based on the test nature
+
+        public void fillList()
         {
             var initialList = ComboObjects;
 
@@ -159,9 +210,14 @@ namespace Barco.ModelViews
                 {
                     EMC.Add(request);
                 }
-                else
+                else if (request.TestDivisie.Contains("SAF"))
                 {
                     SAF.Add(request);
+                }
+                else
+                {
+
+                    MessageBox.Show("Please select a test nature");
                 }
 
             }
@@ -169,13 +225,16 @@ namespace Barco.ModelViews
 
         public ComboObject SelectedRqRequest
         {
-            get { return _SelectedRqRequest;}
+            get { return _selectedRqRequest; }
             set
             {
-                _SelectedRqRequest = value;
+                _selectedRqRequest = value;
                 OnPropertyChanged();
             }
         }
+
+
+
 
     }
 }

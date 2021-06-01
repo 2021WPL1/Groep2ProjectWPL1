@@ -20,7 +20,7 @@ namespace Barco.ModelViews
         public DateTime dateExpectedEnd { get; set; }
 
 
-        public TestPlanningViewModel(TestPlanning screen)
+        public TestPlanningViewModel(TestPlanning screen, int selectedId)
         {
             this.screen = screen;
             SaveTestCommand = new DelegateCommand(SaveButton);
