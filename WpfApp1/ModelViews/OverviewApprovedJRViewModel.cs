@@ -22,7 +22,7 @@ namespace Barco.ModelViews
     {
         private OverviewApprovedRequests screen;
         private DAO dao;
-        public ObservableCollection<RqRequest> RqApprovedRequests { get; set; }
+        //public ObservableCollection<RqRequest> RqApprovedRequests { get; set; }
         private RqTestDevision _selectedTestNature;
         private RqRequest _selectedApprovedRequest;
         public ComboObject _selectedRqRequest { get; set; }
@@ -69,14 +69,14 @@ namespace Barco.ModelViews
             ENV = new List<ComboObject>();
             REL = new List<ComboObject>();
             SAF = new List<ComboObject>();
-            Load();
+            fillList();
         }
 
 
 
         //jimmy laad alle requests in een ObservableCollection om zo in de GUI weer te geven
         //Bianca --> but only the approved ones
-        public void Load()
+        /*public void Load()
         {
             var rqApprovedRequests = dao.GetAllApprovedRqRequests();
             RqApprovedRequests = new ObservableCollection<RqRequest>();
@@ -88,45 +88,43 @@ namespace Barco.ModelViews
                     RqApprovedRequests.Add(rqRequest);
                 }
             }
-            fillList();
-        }
+            
+        }*/
 
         
 
         public void replaceInitialList()
         {
-            requests.Clear();
-
             if (SelectedTestNature != null)
-            { if (SelectedTestNature.Afkorting == "EMC")
+            { 
+                if (SelectedTestNature.Afkorting == "EMC")
                 {
-
                     requests = EMC;
                 }
                 if (SelectedTestNature.Afkorting == "ECO")
                 {
-
                     requests = ECO;
                 }
                 if (SelectedTestNature.Afkorting == "ENV")
                 {
-
                     requests = ENV;
                 }
                 if (SelectedTestNature.Afkorting == "REL")
                 {
-
                     requests = REL;
                 }
                 if (SelectedTestNature.Afkorting == "SAF")
                 {
-
                     requests = SAF;
                 }
 
-                    Refresh();
+                
             }
-      
+            else if (SelectedTestNature is null)
+            {
+                requests = dao.combinedObjects();
+            }
+            Refresh();
         }
 
    
@@ -219,26 +217,21 @@ namespace Barco.ModelViews
                     ECO.Add(request);
                 }
 
-                else if (request.TestDivisie.Contains("ENV"))
+                if (request.TestDivisie.Contains("ENV"))
                 {
                     ENV.Add(request);
                 }
-                else if (request.TestDivisie.Contains("REL"))
+                if (request.TestDivisie.Contains("REL"))
                 {
                     REL.Add(request);
                 }
-                else if (request.TestDivisie.Contains("EMC"))
+                if (request.TestDivisie.Contains("EMC"))
                 {
                     EMC.Add(request);
                 }
-                else if (request.TestDivisie.Contains("SAF"))
+                if (request.TestDivisie.Contains("SAF"))
                 {
                     SAF.Add(request);
-                }
-                else
-                {
-
-                    MessageBox.Show("Please select a test nature");
                 }
 
             }
