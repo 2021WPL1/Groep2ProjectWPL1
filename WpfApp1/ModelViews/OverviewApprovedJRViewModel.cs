@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -24,7 +25,7 @@ namespace Barco.ModelViews
         public ObservableCollection<RqRequest> RqApprovedRequests { get; set; }
         private RqTestDevision _selectedTestNature;
         private RqRequest _selectedApprovedRequest;
-       public ComboObject _selectedRqRequest { get; set; }
+        public ComboObject _selectedRqRequest { get; set; }
 
         public List<RqTestDevision> TestDevisions { get; set; }
         public List<ComboObject> ComboObjects { get; set; }
@@ -39,6 +40,18 @@ namespace Barco.ModelViews
         public List<ComboObject> REL { get; set; }
         public List<ComboObject> SAF { get; set; }
 
+        //for editing inside vModel
+        public ObservableCollection<ComboObject> lstRequests = new ObservableCollection<ComboObject>();
+        //for iterating and adding
+        public List<ComboObject> requests = new List<ComboObject>();
+        //for binding
+        public ObservableCollection<ComboObject> currentRequests
+        {
+            get
+            {
+                return lstRequests;
+            }
+        }
 
 
 
@@ -50,6 +63,7 @@ namespace Barco.ModelViews
             this.screen = screen;
             TestDevisions = dao.GetTestNature();
             ComboObjects = dao.combinedObjects();
+            _selectedRqRequest = new ComboObject();
             EMC = new List<ComboObject>();
             ECO = new List<ComboObject>();
             ENV = new List<ComboObject>();
@@ -81,41 +95,42 @@ namespace Barco.ModelViews
 
         public void replaceInitialList()
         {
-            RqApprovedRequests.Clear();
+            requests.Clear();
 
             if (SelectedTestNature != null)
-            {
-                if (SelectedTestNature.Afkorting == "EMC")
+            { if (SelectedTestNature.Afkorting == "EMC")
                 {
 
-                    ComboObjects = EMC;
+                    requests = EMC;
                 }
                 if (SelectedTestNature.Afkorting == "ECO")
                 {
 
-                    ComboObjects = ECO;
+                    requests = ECO;
                 }
                 if (SelectedTestNature.Afkorting == "ENV")
                 {
 
-                    ComboObjects = ENV;
+                    requests = ENV;
                 }
                 if (SelectedTestNature.Afkorting == "REL")
                 {
 
-                    ComboObjects = REL;
+                    requests = REL;
                 }
                 if (SelectedTestNature.Afkorting == "SAF")
                 {
 
-                    ComboObjects = SAF;
+                    requests = SAF;
                 }
 
+                    Refresh();
             }
+      
         }
+
    
     
-
 
     // Bianca- used to select a request for a further test planning
         //jimmy-geeft de geselecteerde request terug
@@ -130,7 +145,14 @@ namespace Barco.ModelViews
             }
         }
 
-
+        public void Refresh()
+        {
+            lstRequests.Clear();
+            foreach (ComboObject c in requests)
+            {
+                lstRequests.Add(c);
+            }
+        }
 
         //bianca- cancel the overview screen and open the home screen
         public void BackButton()
@@ -178,8 +200,7 @@ namespace Barco.ModelViews
             {
                 _selectedTestNature = value;
                 OnPropertyChanged();
-               replaceInitialList();
-
+                replaceInitialList();
             }
         }
 
@@ -234,7 +255,7 @@ namespace Barco.ModelViews
         }
 
 
-
+        
 
     }
 }
