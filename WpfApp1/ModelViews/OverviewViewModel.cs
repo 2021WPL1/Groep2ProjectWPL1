@@ -36,7 +36,7 @@ namespace Barco
             EditRequestCommand = new DelegateCommand(EditRequest);
             Load();
             this.overview = overview;
-            CountJobRequestsToday();
+           // CountJobRequestsToday();
             var result = _appSettingsService.GetConfigurationSection<SMPTClientConfig>("SMPTClientConfig");
             smtpMailCommunication = new SMTPMailCommunication(
                 result.QueryResult.Username,
@@ -57,10 +57,10 @@ namespace Barco
         //bianca
         public void CancelButton()
         {
-            //SendMailWithSMTPRelay(); // to test mail function
-            HomeScreen home = new HomeScreen();
-            overview.Close();
-            home.ShowDialog();
+               HomeScreen home = new HomeScreen();
+               overview.Close();
+               home.ShowDialog();
+
         }
         //jimmy - thibaut jrnumber toewijzen
         //Verranderd de Jr status van het geselecteerde request

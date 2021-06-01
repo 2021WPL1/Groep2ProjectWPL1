@@ -18,7 +18,7 @@ namespace Barco
         public string txtPartGrossWeight { get; set; } //gross weight
         public string lblRequestDate { get; set; } //request date
         public string txtLinkTestplan { get; set; } // link to testplan
-        public string txtReqInitials { get; set; } // requester initials 
+        public string txtRequisterInitials { get; set; } // requester initials 
         public string txtEutProjectname { get; set; } //EUT Project name
         public string txtRemark { get; set; } // special remarks
         public string txtFunction { get; set; } //function
@@ -91,9 +91,8 @@ namespace Barco
         public JobRequestAanpassenViewModel(JobRequestAanpassen screen, int selectedId)
         {
             dao = DAO.Instance();
-            this.ListPartsnumbers = new List<string>();
-            this.ListPartGross = new List<string>();
-            this.ListPartNet = new List<string>();
+
+
             CancelCommand = new DelegateCommand(CancelButton);
             SaveChangesCommand = new DelegateCommand(SaveChanges);
             AddCommand = new DelegateCommand(AddPart);
@@ -123,15 +122,30 @@ namespace Barco
         }
         public void SaveChanges()
         {
-            Request.Requester = txtReqInitials;
-            //RqRequestDetail.Pvgresp = txtPvgRes;
+            Request.EutPartnumbers = string.Empty;
+            Request.GrossWeight = string.Empty;
+            Request.NetWeight = string.Empty;
+
+            foreach (var part in parts)
+            {
+                Request.EutPartnumbers += part.partNo + " ; ";
+                Request.GrossWeight += part.GrossWeight + " ; ";
+                Request.NetWeight += part.NetWeight + " ; ";
+
+            }
+            Request.Requester = txtRequisterInitials;
+            ////RqRequestDetail.Pvgresp = txtPvgRes;
             Request.EutProjectname = txtEutProjectname;
             Request.ExpectedEnddate = dateExpectedEnd;
             RqOptionel.Remarks = txtRemark;
+            //Request.JobNature = SelectedJobNature;
             RqOptionel.Link = txtLinkTestplan;
             Request.BarcoDivision = selectedDivision;
-            Request.JobNature = SelectedJobNature;
             dao.saveChanges();
+            MessageBox.Show("Changes saved.");
+            OverviewJobRequest overview = new OverviewJobRequest();
+            screen.Close();
+            overview.ShowDialog();
         }
         /// <summary>
         /// jimmy
@@ -141,9 +155,9 @@ namespace Barco
             if (parts.Contains(selectedPart))
             {
                 parts.Remove(selectedPart);
-                lstParts.Remove(selectedPart);
+               
                 RefreshGUI();
-                OnPropertyChanged();
+
             }
         }
         /// <summary>
@@ -181,6 +195,7 @@ namespace Barco
             string PartGross = Request.GrossWeight.Replace(" ", String.Empty);
             string Partnets = Request.NetWeight.Replace(" ", String.Empty);
             string Partnumbers = Request.EutPartnumbers.Replace(" ", String.Empty);
+
             string getPartGross;
             string getPartnet;
             string getPartnumber;
@@ -192,9 +207,9 @@ namespace Barco
                 getPartGross = PartGross.Substring(0, splitIndexGross);
                 getPartnet = Partnets.Substring(0, splitIndexNet);
                 getPartnumber = Partnumbers.Substring(0, splitIndexNumbers);
-                ListPartGross.Add(getPartGross);
-                ListPartNet.Add(getPartnet);
-                ListPartsnumbers.Add(getPartnumber);
+
+
+
                 parts.Add(new Part()
                 {
                     NetWeight = getPartnet,
@@ -432,7 +447,7 @@ namespace Barco
             get { return selectedJobNature; }
             set
             {
-                selectedDivision = value;
+                selectedJobNature = value;
                 OnPropertyChanged();
             }
         }
@@ -442,17 +457,10 @@ namespace Barco
         private void RefreshGUI()
         {
             lstParts.Clear();
-            ListPartGross.Clear();
-            ListPartNet.Clear();
-            ListPartsnumbers.Clear();
             foreach (Part part in parts)
             {
                 lstParts.Add(part);
-                ListPartGross.Add(part.GrossWeight);
-                ListPartNet.Add(part.NetWeight);
-                ListPartsnumbers.Add(part.partNo);
             }
-            LoadParts();
         }
         private void SetBatteries()
         {
@@ -468,10 +476,17 @@ namespace Barco
         private void FillData()
         {
             selectedDivision = Request.BarcoDivision;
+            selectedJobNature = Request.JobNature;
+            txtRequisterInitials = Request.Requester;
+            txtEutProjectname = Request.EutProjectname;
+            dateExpectedEnd = Request.ExpectedEnddate;
+            txtRemark  = RqOptionel.Remarks;
+            txtLinkTestplan =  RqOptionel.Link;
             LoadParts();
             fillEuts();
             fillPvgResp();
             SetBatteries();
+            RefreshGUI();
         }
     }
 }
