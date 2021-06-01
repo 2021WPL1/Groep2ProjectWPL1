@@ -8,18 +8,37 @@
         Title="TestPlanning" Height="450" Width="800">
     <Grid>
 
-        <DatePicker x:Name="dateExpectedEnd" HorizontalAlignment="Left" Margin="43,143,0,0" VerticalAlignment="Top" SelectedDate="{Binding dateExpectedEnd}" IsTodayHighlighted="True"/>
-        <DatePicker x:Name="dateExpectedEnd_Copy" HorizontalAlignment="Left" Margin="194,143,0,0" VerticalAlignment="Top" SelectedDate="{Binding dateExpectedEnd}" IsTodayHighlighted="True"/>
-        <ComboBox HorizontalAlignment="Left" Margin="112,246,0,0" VerticalAlignment="Top" Width="132" Height="29"/>
-        <Image x:Name="PLBarco" HorizontalAlignment="Left" Height="65" Margin="15,10,0,0" VerticalAlignment="Top" Width="198" Source="/Views/logo.png"/>
-        <Label Content="Start date" HorizontalAlignment="Left" Margin="54,111,0,0" VerticalAlignment="Top" Height="32" Width="88"/>
-        <Label Content="End date" HorizontalAlignment="Left" Margin="204,108,0,0" VerticalAlignment="Top" Width="64"/>
-        <Image x:Name="PLBarco_Copy" HorizontalAlignment="Left" Height="65" Margin="15,10,0,0" VerticalAlignment="Top" Width="198" Source="/Views/logo.png"/>
-        <Label Content="Create a test planning" HorizontalAlignment="Left" Margin="302,13,0,0" VerticalAlignment="Top" Height="72" Width="270" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
-        <Label Content="Resource" HorizontalAlignment="Left" Margin="137,210,0,0" VerticalAlignment="Top" Width="102" Height="25"/>
-        <Button Content="Save" HorizontalAlignment="Left" Margin="417,194,0,0" VerticalAlignment="Top" Height="25" Width="44"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="490,193,0,0" VerticalAlignment="Top" Height="26" Width="49"/>
-
+        <DatePicker x:Name="dateExpectedStart" HorizontalAlignment="Left" Margin="120,143,0,0" VerticalAlignment="Top" IsTodayHighlighted="True" SelectedDate="{Binding dateExpectedStart}" Width="120"/>
+        <DatePicker x:Name="dateExpectedEnd" HorizontalAlignment="Left" Margin="120,172,0,0" VerticalAlignment="Top"  IsTodayHighlighted="True" SelectedDate="{Binding dateExpectedEnd}" Width="120"/>
+        <ComboBox x:Name="comboboxResources" HorizontalAlignment="Left" Margin="119,207,0,0" VerticalAlignment="Top" Width="121" Height="25" SelectedValue="{Binding selectedResource}"  SelectedIndex="0"/>
+        <Image x:Name="PLBarco" HorizontalAlignment="Left" Height="53" Margin="20,11,0,0" VerticalAlignment="Top" Width="198" Source="/Views/logo.png"/>
+        <Label Content="Start date" HorizontalAlignment="Left" Margin="44,140,0,0" VerticalAlignment="Top" Height="25" Width="88"/>
+        <Label Content="End date" HorizontalAlignment="Left" Margin="45,170,0,0" VerticalAlignment="Top" Width="64"/>
+        <Label Content="Create a test planning" HorizontalAlignment="Left" Margin="241,17,0,0" VerticalAlignment="Top" Height="41" Width="270" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.258"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.162"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="Resource" HorizontalAlignment="Left" Margin="44,207,0,0" VerticalAlignment="Top" Width="66" Height="25"/>
+        <Button Content="Save"
+                Command="{Binding SaveTestCommand }"
+                HorizontalAlignment="Left" Margin="595,37,0,0" VerticalAlignment="Top" Height="24" Width="65"/>
+        <Button Content="Cancel" 
+                Command="{Binding CancelTestCommand}"
+                HorizontalAlignment="Left" Margin="687,38,0,0" VerticalAlignment="Top" Height="24" Width="66"/>
+        <ListView x:Name="listResources" Margin="364,143,157,67">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="btnAddResources" Content="+" HorizontalAlignment="Left" Margin="254,210,0,0" VerticalAlignment="Top" Width="25"/>
 
     </Grid>
 </Window>

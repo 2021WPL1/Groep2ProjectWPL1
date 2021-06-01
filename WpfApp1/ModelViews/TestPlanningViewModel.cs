@@ -13,15 +13,21 @@ namespace Barco.ModelViews
     {
         private DAO dao;
         private TestPlanning screen;
-        public ICommand SaveCommand { get; set; }
-        public ICommand CancelCommand { get; set; }
+        public ICommand SaveTestCommand { get; set; }
+        public ICommand CancelTestCommand { get; set; }
+
+        public DateTime dateExpectedStart { get; set; }
+        public DateTime dateExpectedEnd { get; set; }
+
 
         public TestPlanningViewModel(TestPlanning screen)
         {
             this.screen = screen;
-            SaveCommand = new DelegateCommand(SaveButton);
-            CancelCommand = new DelegateCommand(CancelButton);
+            SaveTestCommand = new DelegateCommand(SaveButton);
+            CancelTestCommand = new DelegateCommand(CancelButton);
             dao= DAO.Instance();
+            dateExpectedStart = DateTime.Now;
+            dateExpectedEnd = DateTime.Now;
 
         }
 
@@ -36,10 +42,9 @@ namespace Barco.ModelViews
 
         public void CancelButton()
         {
-           TestPlanning testPlanning= new TestPlanning();
+            OverviewApprovedRequests overview = new OverviewApprovedRequests();
             screen.Close();
-
-           testPlanning.ShowDialog();
+            overview.ShowDialog();
         }
 
     }
