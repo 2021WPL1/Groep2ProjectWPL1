@@ -43,7 +43,7 @@ namespace Barco.ModelViews.smtpConfig
             var from = _appSettingsService.GetConfigurationSection<SMPTClientConfig>("SMPTClientConfig");
             var message = new MimeMessage();
             message.From.Add(new MailboxAddress(from.QueryResult.Username));
-            message.To.Add(new MailboxAddress(to.QueryResult.Address1));
+            message.To.Add(new MailboxAddress(to.QueryResult.Address2));
             message.Subject = "New Request";
 
             message.Body = new TextPart("plain")
@@ -55,7 +55,7 @@ namespace Barco.ModelViews.smtpConfig
             {
                 client.Connect("smtp-mail.outlook.com", 587, false);
                 client.Authenticate(from.QueryResult.Username, from.QueryResult.SMTPPassword);
-                //client.Send(message);
+                client.Send(message);
                 client.Disconnect(true);
             }
         }

@@ -203,8 +203,8 @@ namespace Barco
        public void scheduleMail(int count)
        {
            DateTime datenow = DateTime.Now;
-           DateTime date = new DateTime(datenow.Year, datenow.Month, datenow.Day, 17, 00, 0);
-           if (datenow <= date)
+           DateTime date = new DateTime(datenow.Year, datenow.Month, datenow.Day, 9, 12, 0);
+           if (datenow >= date)
            {
                date = new DateTime(date.Year, date.Month, (date.Day + 1), date.Hour, date.Minute, date.Second);
                
