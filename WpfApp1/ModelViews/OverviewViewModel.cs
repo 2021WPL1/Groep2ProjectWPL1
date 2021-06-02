@@ -1,9 +1,7 @@
 ﻿using Barco.Data;
 using Prism.Commands;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
@@ -36,7 +34,7 @@ namespace Barco
             EditRequestCommand = new DelegateCommand(EditRequest);
             Load();
             this.overview = overview;
-           // CountJobRequestsToday();
+            //CountJobRequestsToday();
             var result = _appSettingsService.GetConfigurationSection<SMPTClientConfig>("SMPTClientConfig");
             smtpMailCommunication = new SMTPMailCommunication(
                 result.QueryResult.Username,
@@ -156,7 +154,7 @@ namespace Barco
                     count++;
                 }
             }
-            //scheduleMail(count);
+            scheduleMail(count);
             return count;
        }
        //bianca- method to send an email to the responsible once a day 

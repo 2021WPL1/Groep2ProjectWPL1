@@ -2,11 +2,7 @@
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Windows.Input;
-using Barco.ModelViews;
-using Barco.Views;
 namespace Barco
 {//jimmy
     public class JobRequestDetailViewModel : ViewModelBase

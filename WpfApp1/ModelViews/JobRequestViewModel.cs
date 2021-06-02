@@ -3,16 +3,9 @@ using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Resources;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Media.Animation;
-using Barco.ModelViews;
-using Barco.ModelViews.Settings;
-using Barco.ModelViews.smtpConfig;
-using Microsoft.Win32;
 namespace Barco
 { //bianca
     public class JobRequestViewModel : ViewModelBase
