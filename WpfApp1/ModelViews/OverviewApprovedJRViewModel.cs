@@ -212,28 +212,27 @@ namespace Barco.ModelViews
 
             foreach (var request in initialList)
             {
-                if (request.TestDivisie.Contains("ECO"))
+                if (request.RqRequestDetail.Testdivisie.Contains("ECO"))
                 {
                     ECO.Add(request);
                 }
 
-                if (request.TestDivisie.Contains("ENV"))
+                if (request.RqRequestDetail.Testdivisie.Contains("ENV"))
                 {
                     ENV.Add(request);
                 }
-                if (request.TestDivisie.Contains("REL"))
+                if (request.RqRequestDetail.Testdivisie.Contains("REL"))
                 {
                     REL.Add(request);
                 }
-                if (request.TestDivisie.Contains("EMC"))
+                if (request.RqRequestDetail.Testdivisie.Contains("EMC"))
                 {
                     EMC.Add(request);
                 }
-                if (request.TestDivisie.Contains("SAF"))
+                if (request.RqRequestDetail.Testdivisie.Contains("SAF"))
                 {
                     SAF.Add(request);
                 }
-
             }
         }
 
