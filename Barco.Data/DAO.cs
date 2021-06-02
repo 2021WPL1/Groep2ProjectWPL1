@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 namespace Barco.Data
 {
@@ -257,16 +258,6 @@ namespace Barco.Data
             }
             return request;
         }
-        /*
-        *  oude interpretatie van de opdracht
-        public RqRequestDetail AddDetail(RqRequestDetail detail)
-        {
-            detail.IdRequest = int.Parse(context.RqRequest.OrderByDescending(p => p.IdRequest).Select(p => p.IdRequest).First().ToString());
-            context.RqRequestDetail.Add(detail);
-            context.SaveChanges();
-            return detail;
-        }
-        */
         //thibaut 
         public void AddDetails(List<RqRequestDetail> listDetails)
         {
@@ -352,20 +343,19 @@ namespace Barco.Data
         public List<ComboObject> combinedObjects()
         {
             List<ComboObject> returnValue = new List<ComboObject>();
-            var listRqRequests = GetAllApprovedRqRequests();
-            foreach (RqRequest request in listRqRequests)
+            List<Eut> approvedEut = getApprovedEuts();
+
+            foreach (Eut eut in approvedEut)
             {
-                ComboObject o = new ComboObject
+                RqRequestDetail detail = GetRqRequestDetailById(eut.IdRqDetail);
+
+                ComboObject o = new ComboObject()
                 {
-                    Request = request,
-                    RqOptionel = GetOptionel(request.IdRequest),
-                    RqRequestDetail = GetRqDetailsWithRequestId(request.IdRequest)
+                    Eut = eut,
+                    RqRequestDetail = detail,
+                    Request = GetRequest(detail.IdRequest),
+                    RqOptionel = GetOptionel(detail.IdRequest)
                 };
-                foreach (var detail in GetRqDetailsWithRequestId(request.IdRequest))
-                {
-                    o.PvgResp += detail.Pvgresp;
-                    o.TestDivisie += detail.Testdivisie + "; ";
-                }
                 returnValue.Add(o);
             }
             return returnValue;
@@ -374,6 +364,68 @@ namespace Barco.Data
         public List<PlResources> GetResource()
         {
             return context.PlResources.ToList();
+            
+        }
+
+        //thibaut - methode om resources op te halen per test nature
+        public List<PlResources> GetResourcesForTestDiv(string testDiv)
+        {
+            List<PlResources> list = new List<PlResources>();
+            List<PlResourcesDivision> plrd = context.PlResourcesDivision.ToList();
+
+            foreach(PlResourcesDivision pl in plrd)
+            {
+                if (pl.DivisionAfkorting.Equals(testDiv))
+                {
+                    try
+                    {
+                        list.Add(context.PlResources.Where(e => e.Id == pl.ResourcesId).First());
+                    }
+                    catch (NullReferenceException) { }
+                }
+            }
+            return list;
+        }
+        
+        public List<Eut> getApprovedEuts()
+        {
+            var listRqRequests = GetAllApprovedRqRequests();
+            
+            List<RqRequestDetail> approvedRequestDetails = new List<RqRequestDetail>();
+            List<int> approvedRequestIds = new List<int>();
+            var eutList = context.Eut.ToList();
+            List<Eut> approvedEut = new List<Eut>();
+            
+            foreach (RqRequest r in listRqRequests)
+            {
+                approvedRequestIds.Add(r.IdRequest);
+            }
+            
+            foreach (RqRequestDetail r in context.RqRequestDetail.ToList())
+            {
+                if (approvedRequestIds.Contains(r.IdRequest))
+                {
+                    approvedRequestDetails.Add(r);
+                }
+                
+            }
+            
+            foreach (Eut e in eutList)
+            {
+                if (approvedRequestDetails.Contains(GetRqRequestDetailById(e.IdRqDetail)))
+                {
+                    approvedEut.Add(e);
+                }
+            }
+
+            return approvedEut;
+        }
+
+        public RqRequest getRequestByDetailId(int detailId)
+        {
+            int requestId = context.RqRequestDetail.FirstOrDefault(a => a.IdRqDetail == detailId).IdRequest;
+            RqRequest returnValue = context.RqRequest.FirstOrDefault(a => a.IdRequest == requestId);
+            return returnValue;
         }
     }
 }
