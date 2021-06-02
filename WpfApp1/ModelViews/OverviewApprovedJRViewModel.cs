@@ -150,7 +150,10 @@ namespace Barco.ModelViews
             else
             {
                 MessageBox.Show("Select a JobRequest");
-            }           
+            }
+
+
+           
         }
 
         //  used to select a request for a further test planning
