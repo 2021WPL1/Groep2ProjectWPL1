@@ -169,12 +169,12 @@ namespace Barco.Data
         }
 
         //bianca 
-
         public List<RqBarcoDivision> GetDivisions()
         {
             return context.RqBarcoDivision.ToList();
         }
 
+        //bianca
         public List<RqJobNature> GetJobNatures()
         {
             return context.RqJobNature.ToList();
@@ -200,7 +200,7 @@ namespace Barco.Data
             return context.RqOptionel.Where(opt => opt.IdRequest == idReq).FirstOrDefault();
         }
 
-        //Stach - geeft division op basis van de afkotring
+        //Stach - geeft division op basis van de afkorting
         public RqBarcoDivision GetDivisionByAbb(string abb)
         {
             return context.RqBarcoDivision.FirstOrDefault(a => a.Afkorting == abb);
@@ -286,16 +286,7 @@ namespace Barco.Data
 
         }
 
-        /*
-        *  oude interpretatie van de opdracht
-        public RqRequestDetail AddDetail(RqRequestDetail detail)
-        {
-            detail.IdRequest = int.Parse(context.RqRequest.OrderByDescending(p => p.IdRequest).Select(p => p.IdRequest).First().ToString());
-            context.RqRequestDetail.Add(detail);
-            context.SaveChanges();
-            return detail;
-        }
-        */
+        
 
         //thibaut 
         public void AddDetails(List<RqRequestDetail> listDetails)
@@ -394,7 +385,8 @@ namespace Barco.Data
             return context.RqTestDevision.ToList();
         }
 
-
+        //Method used for the overviewApprovedRequests
+        //Laurent,Bianca
         public List<ComboObject> combinedObjects()
         {
 
@@ -430,6 +422,18 @@ namespace Barco.Data
         {
             return context.PlResources.ToList();
         }
+
+
+        /*
+        *  oude interpretatie van de opdracht
+        public RqRequestDetail AddDetail(RqRequestDetail detail)
+        {
+            detail.IdRequest = int.Parse(context.RqRequest.OrderByDescending(p => p.IdRequest).Select(p => p.IdRequest).First().ToString());
+            context.RqRequestDetail.Add(detail);
+            context.SaveChanges();
+            return detail;
+        }
+        */
     }
 }
 

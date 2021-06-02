@@ -7,27 +7,30 @@
         mc:Ignorable="d"
         Title="OverviewPlannedTests" Height="450" Width="800">
     <Grid>
-        <ListView x:Name="listOverview" 
-  Margin="34,140,0,25" HorizontalAlignment="Left" Width="516">
+        <ListView x:Name="listOverviewTests" 
+  Margin="34,140,0,25" HorizontalAlignment="Left" Width="550">
 
             <ListView.View  >
                 <GridView>
-                    <GridViewColumn  Header="Requester" 
+                    <GridViewColumn  Header="JrNumber" 
                         Width="100" />
 
-                    <GridViewColumn Header="Division" 
-                        Width="100"  />
-                    <GridViewColumn Header="Project name" 
-                        Width="150"/>
-                    <GridViewColumn Header="Date" 
-                        Width="150" />
+                    <GridViewColumn Header="Hydra project name" 
+                        Width="150"  />
+                    <GridViewColumn Header="Status" 
+                        Width="100"/>
+                    <GridViewColumn Header="Start date" 
+                        Width="70" />
+                    <GridViewColumn Header="End Date" 
+                                    Width="70" />
                 </GridView>
             </ListView.View>
         </ListView>
         <Image x:Name="PLBarco" HorizontalAlignment="Left" Height="65" Margin="15,10,0,0" VerticalAlignment="Top" Width="198" Source="/Views/logo.png"/>
-        <Label Content="Overview Planned Tests" HorizontalAlignment="Left" Margin="311,10,0,0" VerticalAlignment="Top" Height="72" Width="256" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
-        <Button Content="Cancel" HorizontalAlignment="Left" Margin="677,84,0,0" VerticalAlignment="Top" Height="24" Width="65"/>
-        <Button Content="Open" HorizontalAlignment="Left" Margin="685,132,0,0" VerticalAlignment="Top" Height="26" Width="56"/>
+        <Label Content="Overview Planned Tests" HorizontalAlignment="Left" Margin="244,19,0,0" VerticalAlignment="Top" Height="47" Width="226" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
+        <Button Content="Cancel" 
+                Command="{Binding CancelOverviewCommand}"
+                HorizontalAlignment="Left" Margin="650,20,0,0" VerticalAlignment="Top" Height="36" Width="71"/>
 
     </Grid>
 </Window>

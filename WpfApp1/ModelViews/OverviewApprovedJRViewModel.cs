@@ -179,9 +179,7 @@ namespace Barco.ModelViews
             }
             else
             {
-
                 MessageBox.Show("Select a JobRequest");
-
             }
 
 

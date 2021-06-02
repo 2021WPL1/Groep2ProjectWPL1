@@ -18,6 +18,8 @@ namespace Barco
         public ICommand PersonalLeaveCommand { get; set; }
         public ICommand CollectiveLeaveCommand { get; set; }
         public ICommand ApprovedJobRequestsCommand { get; set; }
+        public ICommand PlannedTestsCommand { get; set; }
+
 
         public HomeScreenViewModel(HomeScreen home)
         {
@@ -27,9 +29,18 @@ namespace Barco
             CollectiveLeaveCommand = new DelegateCommand(CollectiveLeave);
             HomeScreenCommand = new DelegateCommand(HomeScreen);
             ApprovedJobRequestsCommand = new DelegateCommand(ApprovedJobRequests);
+            PlannedTestsCommand = new DelegateCommand(PlannedTests);
+
             this.home = home;
 
 
+        }
+
+        public void PlannedTests()
+        {
+            OverviewPlannedTests overviewPlannedTests = new OverviewPlannedTests();
+            home.Close();
+            overviewPlannedTests.ShowDialog();
         }
 
         public void HomeScreen()
@@ -55,13 +66,7 @@ namespace Barco
             overviewApproved.ShowDialog();
         }
 
-        public void Approved()
-        {
-            JobRequest createJobRequest = new JobRequest();
-            home.Close();
-            createJobRequest.ShowDialog();
-
-        }
+ 
 
         public void Overview()
         {

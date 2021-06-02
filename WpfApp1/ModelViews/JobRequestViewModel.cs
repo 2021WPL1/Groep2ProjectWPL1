@@ -1091,6 +1091,7 @@ namespace Barco
 
         }
 
+       
         private string CreateJRNumberForInternal()
         {
             string result = dao.GetJobNumber(true);

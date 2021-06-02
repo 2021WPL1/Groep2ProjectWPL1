@@ -37,8 +37,8 @@
         <Button x:Name="ApprovedRequests" 
             Command="{Binding ApprovedJobRequestsCommand}"              
             Content="Approved JobRequests" HorizontalAlignment="Left" Margin="20,284,0,0" VerticalAlignment="Top" Width="180" Height="40" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" SnapsToDevicePixels="True" Foreground="#FFED0303" FontWeight="Normal" FontSize="12" Background="White" />
-        <Button x:Name="SeeAllRequests_Copy"
-            Command="{Binding OverviewCommand}" 
+        <Button x:Name="OverviewTests"
+            Command="{Binding PlannedTestsCommand}" 
             Content="Overview planned tests" HorizontalAlignment="Left" Margin="20,344,0,0" VerticalAlignment="Top" Width="180" Height="40" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" Background="White" />
 
     </Grid>
