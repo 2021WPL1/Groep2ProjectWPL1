@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Data;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using Barco.Data;
 using Barco.Views;
@@ -69,8 +66,9 @@ namespace Barco.ModelViews
       
 
         }
-
-        //Bianca
+        /// <summary>
+        /// Bianca
+        /// </summary>
         public void SaveButton()
         {
             //check if a start date is selected
@@ -163,19 +161,36 @@ namespace Barco.ModelViews
             screen.Close();
             overview.ShowDialog();
         }
+        /// <summary>
+        /// Thibaut
+        /// </summary>
+        /// <param name="testDiv"></param>
         public void populateResources(string testDiv)
         {
             //Resources = dao.GetResource(); //alle resources
             Resources = dao.GetResourcesForTestDiv(testDiv);//resources per testDivision
         }
+        /// <summary>
+        /// Laurent
+        /// </summary>
         public void AddResourceButton()
         {
             if (!String.IsNullOrEmpty(_selectedResouce.Naam) )
             {
-                resources.Add(_selectedResouce);
-                refresh();
+                if (!resources.Contains(_selectedResouce))
+                {
+                    resources.Add(_selectedResouce);
+                    refresh();
+                }
+                else
+                {
+                    MessageBox.Show("resource already selected","Alert",MessageBoxButton.OK);
+                }     
             }
         }
+        /// <summary>
+        /// Laurent
+        /// </summary>
         public void refresh()
         {
             lstResources.Clear();
@@ -184,14 +199,15 @@ namespace Barco.ModelViews
                 lstResources.Add(resource);
             }
         }
+        /// <summary>
+        /// Laurent
+        /// </summary>
+        public PlResources SelectedResource
 
 
         public PlResources selectedResource
         {
-            get
-            {
-                return _selectedResouce;
-            }
+            get => _selectedResouce;
             set
             {
                 _selectedResouce = value;

@@ -1,8 +1,6 @@
 ﻿using Prism.Commands;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
+
 namespace Barco
 {
     class FormViewModel : ViewModelBase
