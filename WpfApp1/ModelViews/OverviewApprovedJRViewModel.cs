@@ -169,9 +169,8 @@ namespace Barco.ModelViews
         public void PlanTestButton()
         {
 
-            if (_selectedRqRequest != null)
+            if (_selectedRqRequest.Request != null)
             {
-
                 var SelectedId = _selectedRqRequest.Request.IdRequest;
                 TestPlanning testPlanning = new TestPlanning(SelectedId, SelectedTestNature.Afkorting);
                 screen.Close();
@@ -179,13 +178,8 @@ namespace Barco.ModelViews
             }
             else
             {
-
                 MessageBox.Show("Select a JobRequest");
-
-            }
-
-
-           
+            }           
         }
 
         // Bianca-- used to select a request for a further test planning
