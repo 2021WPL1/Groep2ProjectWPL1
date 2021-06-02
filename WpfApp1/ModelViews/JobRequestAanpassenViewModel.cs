@@ -219,16 +219,20 @@ namespace Barco
             }
             else
             {
-                if (parts.Contains(selectedPart))
+                if (MessageBox.Show("Are you sure you want to delete part " + selectedPart.partNo + "?", "Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
                 {
-                    parts.Remove(selectedPart);
+                    if (parts.Contains(selectedPart))
+                    {
+                        parts.Remove(selectedPart);
                
-                    RefreshGUI();
+                        RefreshGUI();
 
-                }
-                else
-                {
-                    MessageBox.Show("Pleas select a part.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Pleas select a part.");
+                    }
+
                 }
                     
             }
