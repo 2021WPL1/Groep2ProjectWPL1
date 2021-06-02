@@ -468,6 +468,14 @@ namespace Barco.Data
             return returnValue;
         }
 
+        //thibaut
+        public PlPlanning GetPlanning(int planningsId)
+        {
+            return context.PlPlanning.FirstOrDefault(p => p.IdPlanning == planningsId);
+        }
+
+
+
 
         /*
         *  oude interpretatie van de opdracht
