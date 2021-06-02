@@ -7,8 +7,11 @@
         mc:Ignorable="d"
         Title="OverviewPlannedTests" Height="500" Width="1000">
     <Grid>
-        <ListView x:Name="listOverview" 
-  Margin="18,108,0,14" HorizontalAlignment="Left" Width="925">
+        <ListView x:Name="listOverview"  
+                  ItemsSource="{Binding currentTests, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding SelectedRqRequest, UpdateSourceTrigger=PropertyChanged, 
+                   Mode=TwoWay}"
+  Margin="15,108,0,14" HorizontalAlignment="Left" Width="945">
             <ListView.View  >
                 <GridView>
                     <GridViewColumn  Header="JrNumber" 
@@ -20,14 +23,14 @@
                     <GridViewColumn Header="Date" 
                         Width="150" />
 
-                    <GridViewColumn Header="Hydra project name" 
-                        Width="150"  />
-                    <GridViewColumn Header="Status" 
-                        Width="100"/>
+
                     <GridViewColumn Header="Start date" 
-                        Width="70" />
+                        Width="100" />
                     <GridViewColumn Header="End Date" 
-                                    Width="70" />
+                                    Width="100" />
+
+                    <GridViewColumn Header="Status" 
+                                    Width="250"/>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -35,9 +38,9 @@
         <Label Content="Overview Planned Tests" HorizontalAlignment="Left" Margin="244,19,0,0" VerticalAlignment="Top" Height="47" Width="226" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
         <Button Content="Cancel" 
                 Command="{Binding CancelOverviewCommand}"
-                HorizontalAlignment="Left" Margin="886,21,0,0" VerticalAlignment="Top" Height="36" Width="71"/>
-        <Label Content="Status" HorizontalAlignment="Left" Margin="619,23,0,0" VerticalAlignment="Top" Width="51"/>
-        <ComboBox x:Name="comboboxStatus" HorizontalAlignment="Left" Margin="676,23,0,0" VerticalAlignment="Top" Width="121" Height="25" SelectedValue="{Binding selectedStatus}">
+                HorizontalAlignment="Left" Margin="569,27,0,0" VerticalAlignment="Top" Height="36" Width="71"/>
+        <Label Content="Status" HorizontalAlignment="Left" Margin="778,26,0,0" VerticalAlignment="Top" Width="51"/>
+        <ComboBox x:Name="comboboxStatus" HorizontalAlignment="Left" Margin="839,26,0,0" VerticalAlignment="Top" Width="121" Height="25" SelectedValue="{Binding selectedStatus}">
             <ComboBoxItem Background="#FFFF0030" Content="Finished and failed"/>
             <ComboBoxItem Background="#FF2BFF00" Content="Finished and passed"/>
             <ComboBoxItem Background="#FFFDFB7B" Content="Tested"/>
@@ -47,7 +50,7 @@
             <ComboBoxItem Background="#FF45A48A" Content="Reported"/>
         </ComboBox>
         <Button Content="Change status
-                " HorizontalAlignment="Left" Margin="696,64,0,0" VerticalAlignment="Top" Width="83"/>
+                " HorizontalAlignment="Left" Margin="877,69,0,0" VerticalAlignment="Top" Width="83"/>
 
     </Grid>
 </Window>

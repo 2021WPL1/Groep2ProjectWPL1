@@ -68,8 +68,7 @@ namespace Barco
                     .HasName("planning_PK");
                 entity.ToTable("Pl_planning");
                 entity.Property(e => e.IdPlanning)
-                    .HasColumnName("id_planning")
-                    .ValueGeneratedNever();
+                    .HasColumnName("id_planning");
                 entity.Property(e => e.DueDate).HasColumnType("date");
                 entity.Property(e => e.IdRequest).HasColumnName("id_request");
                 entity.Property(e => e.JrNr)

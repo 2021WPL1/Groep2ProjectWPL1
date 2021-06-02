@@ -451,6 +451,11 @@ namespace Barco.Data
         }
 
 
+        //Bianca
+        public List<PlPlanning> listPlannings()
+        {
+            return context.PlPlanning.ToList();
+        }
         /*
         *  oude interpretatie van de opdracht
         public RqRequestDetail AddDetail(RqRequestDetail detail)
