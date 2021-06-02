@@ -110,6 +110,10 @@ namespace Barco
             txtFunction = GetValues("FUNCTION");
             txtReqInitials = GetInitialsFromReg();
         }
+        /// <summary>
+        /// Thibaut, jimmy
+        /// </summary>
+        /// <returns></returns>
         public string GetInitialsFromReg()
         {
             string fullName = GetValues("NAME");
@@ -117,6 +121,11 @@ namespace Barco
             string LastName = fullName.Split(" ")[1];
             return (FirstName.Substring(0, 2) + LastName.Substring(0, 1)).ToUpper();
         }
+        /// <summary>
+        /// Thibaut, Jimmy
+        /// </summary>
+        /// <param name="Name"></param>
+        /// <returns></returns>
         static string GetValues(string Name)
         {
             string userRoot = "HKEY_CURRENT_USER";
@@ -124,6 +133,9 @@ namespace Barco
             string keyName = userRoot + "\\" + subkey;
             return Microsoft.Win32.Registry.GetValue(keyName, Name, "default").ToString();
         }
+        /// <summary>
+        /// Bianca
+        /// </summary>
         //working internally with the binding 
         public Part SelectedPart
         {
@@ -134,12 +146,16 @@ namespace Barco
                 OnPropertyChanged();
             }
         }
+        /// <summary>
+        /// Bianca Laurent
+        /// </summary>
         public void CancelButton()
         {
             HomeScreen home = new HomeScreen();
             screen.Close();
             home.ShowDialog();
         }
+        //Thiabaut
         public void AddButton()
         {
             try
@@ -167,6 +183,9 @@ namespace Barco
                 MessageBox.Show("please fill in all fields");
             }
         }
+        /// <summary>
+        /// Jimmy
+        /// </summary>
         private void RefreshGUI()
         {
             lstParts.Clear();
@@ -175,6 +194,9 @@ namespace Barco
                 lstParts.Add(part);
             }
         }
+        /// <summary>
+        /// Jimmy, Thibaut, Bianca, Laurent
+        /// </summary>
         public void RemoveButton()
         {
             if (parts.Contains(selectedPart))
@@ -185,6 +207,9 @@ namespace Barco
                 OnPropertyChanged();
             }
         }
+        /// <summary>
+        /// Thibaut, Bianca, Laurent, Stach, Jimmy
+        /// </summary>
         public void SendButton()
         {
             try
@@ -324,12 +349,18 @@ namespace Barco
             }
         }
         // to show in the listview
+        /// <summary>
+        /// Bianca, Laurent
+        /// </summary>
         public class Part
         {
             public string partNo { get; set; }
             public string NetWeight { get; set; }
             public string GrossWeight { get; set; }
         }
+        /// <summary>
+        /// Thibaut, Jimmy, Stach
+        /// </summary>
         public void CreateBoxLists()
         {
             emcBoxes.Clear();
@@ -369,6 +400,10 @@ namespace Barco
             selectionBoxes.Add(cmProdSafety);
             selectionBoxes.Add(cmGrnComp);
         }
+        /// <summary>
+        /// Thibaut, Laurent
+        /// </summary>
+        /// <param name="selected"></param>
         private void EnableBoxes(bool selected)
         {
             List<bool> targets = new List<bool>();
@@ -478,6 +513,10 @@ namespace Barco
             }
             return outcome;
         }
+        /// <summary>
+        /// Thibaut, Stach, Jimmy
+        /// </summary>
+        /// <returns></returns>
         private List<string> CheckDates()
         {
             List<string> result = new List<string>();
@@ -533,6 +572,9 @@ namespace Barco
                 OmschrijvingEut = description
             };
         }
+        /// <summary>
+        /// Bianca
+        /// </summary>
         public ObservableCollection<string> err_output
         {
             get { return _err_output; }
@@ -748,6 +790,10 @@ namespace Barco
             }
             return requestDetails;
         }
+        /// <summary>
+        /// Thibaut
+        /// </summary>
+
         private string CreateJRNumberForInternal()
         {
             string result = dao.GetJobNumber(true);

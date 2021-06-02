@@ -61,28 +61,9 @@ namespace Barco.ModelViews
             SAF = new List<ComboObject>();
             fillList();
         }
-
-
-
-        //jimmy laad alle requests in een ObservableCollection om zo in de GUI weer te geven
-        //Bianca --> but only the approved ones
-        /*public void Load()
-        {
-            var rqApprovedRequests = dao.GetAllApprovedRqRequests();
-            RqApprovedRequests = new ObservableCollection<RqRequest>();
-            if (rqApprovedRequests.Count > 0)
-            {
-                RqApprovedRequests.Clear();
-                foreach (var rqRequest in rqApprovedRequests)
-                {
-                    RqApprovedRequests.Add(rqRequest);
-                }
-            }
-            
-        }*/
-
-        
-
+        /// <summary>
+        /// Laurent, Bianca, Thibaut
+        /// </summary>
         public void replaceInitialList()
         {
             if (SelectedTestNature != null)
@@ -117,12 +98,10 @@ namespace Barco.ModelViews
             Refresh();
         }
 
-   
-    
-
-    // Bianca- used to select a request for a further test planning
-        //jimmy-geeft de geselecteerde request terug
-
+    //  used to select a request for a further test planning
+    /// <summary>
+    /// Laurent, Bianca
+    /// </summary>
         public RqRequest SelectedApprovedRqRequest
         {
             get { return _selectedApprovedRequest; }
@@ -132,7 +111,9 @@ namespace Barco.ModelViews
                 OnPropertyChanged();
             }
         }
-
+        /// <summary>
+        /// Laurent, Bianca
+        /// </summary>
         public void Refresh()
         {
             lstRequests.Clear();
@@ -155,7 +136,7 @@ namespace Barco.ModelViews
 
 
 
-        //bianca- when one request is selected, the overview screen is closed and the test planning page is opened
+        //bianca, Laurent, Thibaut- when one request is selected, the overview screen is closed and the test planning page is opened
         public void PlanTestButton()
         {
 
@@ -178,9 +159,10 @@ namespace Barco.ModelViews
            
         }
 
-        // Bianca-- used to select a request for a further test planning
-        //jimmy-geeft de geselecteerde request terugd
-
+        //  used to select a request for a further test planning
+        /// <summary>
+        /// Bianca,Laurent, Thibaut, Jimmy
+        /// </summary>
         public RqTestDevision SelectedTestNature
         {
             get { return _selectedTestNature; }
@@ -194,8 +176,10 @@ namespace Barco.ModelViews
 
       
 
-//bianca-method used to fill in different lists based on the test nature
-
+        //method used to fill in different lists based on the test nature
+        /// <summary>
+        /// Laurent, Bianca, Thiabaut
+        /// </summary>
         public void fillList()
         {
             var initialList = ComboObjects;
@@ -225,7 +209,9 @@ namespace Barco.ModelViews
                 }
             }
         }
-
+        /// <summary>
+        /// Bianca, Laurent, Jimmy
+        /// </summary>
         public ComboObject SelectedRqRequest
         {
             get { return _selectedRqRequest; }

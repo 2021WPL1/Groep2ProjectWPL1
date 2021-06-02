@@ -136,7 +136,9 @@ namespace Barco
 
 
         }
-
+        /// <summary>
+        /// Laurent
+        /// </summary>
         // Sluit aanpassen en opent overview
         public void CancelButton()
         {
@@ -144,6 +146,9 @@ namespace Barco
             screen.Close();
             overview.ShowDialog();
         }
+        /// <summary>
+        /// jimmy
+        /// </summary>
         public class Part
         {
             public string partNo { get; set; }
@@ -152,7 +157,7 @@ namespace Barco
         }
         //aanpassingen saven
         /// <summary>
-        /// jimmy
+        /// Laurent, Bianca, Jimmy
         /// </summary>
         public void SaveChanges()
         {
@@ -195,7 +200,7 @@ namespace Barco
             }
         }
         /// <summary>
-        /// jimmy
+        /// jimmy, Thibaut, Laurent
         /// </summary>
         public void RemovePart()
         {
@@ -215,7 +220,7 @@ namespace Barco
         }
 
         /// <summary>
-        /// jimmy
+        /// jimmy, Thibaut, Laurent
         /// </summary>
         public void AddPart()
         {
@@ -247,7 +252,7 @@ namespace Barco
 
         }
         /// <summary>
-        /// jimmy
+        /// jimmy, thibaut
         /// </summary>
         public void LoadParts()
         {
@@ -304,202 +309,13 @@ namespace Barco
             } while (PartGross.Contains(";"));
 
         }
-        //private List<Eut> CreateEutList()
-        //{
-        //    List<Eut> eutList = new List<Eut>();
-        //    List<RqRequestDetail> details = GetRqRequestDetails();
-        //    DateTime date;
-        //    string description = "";
-        //    foreach (RqRequestDetail d in details)
-        //    {
-        //        if ((bool)cbEmcEut1 && d.Testdivisie.Equals("EMC"))
-        //        {
-        //            date = (DateTime)dateEut1.Date;
-        //            description = "EMC - EUT 1";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cbEmcEut2 && d.Testdivisie.Equals("EMC"))
-        //        {
-        //            date = (DateTime)dateEut2.Date;
-        //            description = "EMC - EUT 2";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cbEmcEut3 && d.Testdivisie.Equals("EMC"))
-        //        {
-        //            date = (DateTime)dateEut3.Date;
-        //            description = "EMC - EUT 3";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cbEmcEut4 && d.Testdivisie.Equals("EMC"))
-        //        {
-        //            date = (DateTime)dateEut4.Date;
-        //            description = "EMC - EUT 4";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cbEmcEut5 && d.Testdivisie.Equals("EMC"))
-        //        {
-        //            date = (DateTime)dateEut5.Date;
-        //            description = "EMC - EUT 5";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cmEnvironmentalEut1 && d.Testdivisie.Equals("ENV"))
-        //        {
-        //            date = (DateTime)dateEut1.Date;
-        //            description = "ENV - EUT 1";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cmEnvironmentalEut2 && d.Testdivisie.Equals("ENV"))
-        //        {
-        //            date = (DateTime)dateEut2.Date;
-        //            description = "ENV - EUT 2";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cmEnvironmentalEut3 && d.Testdivisie.Equals("ENV"))
-        //        {
-        //            date = (DateTime)dateEut3.Date;
-        //            description = "ENV - EUT 3";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cmEnvironmentalEut4 && d.Testdivisie.Equals("ENV"))
-        //        {
-        //            date = (DateTime)dateEut4.Date;
-        //            description = "ENV - EUT 4";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cmEnvironmentalEut5 && d.Testdivisie.Equals("ENV"))
-        //        {
-        //            date = (DateTime)dateEut5.Date;
-        //            description = "ENV - EUT 5";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cmRelEut1 && d.Testdivisie.Equals("REL"))
-        //        {
-        //            date = (DateTime)dateEut1.Date;
-        //            description = "REL - EUT 1";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cmRelEut2 && d.Testdivisie.Equals("REL"))
-        //        {
-        //            date = (DateTime)dateEut2.Date;
-        //            description = "REL - EUT 2";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cmRelEut3 && d.Testdivisie.Equals("REL"))
-        //        {
-        //            date = (DateTime)dateEut3.Date;
-        //            description = "REL - EUT 3";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cmRelEut4 && d.Testdivisie.Equals("REL"))
-        //        {
-        //            date = (DateTime)dateEut4.Date;
-        //            description = "REL - EUT 4";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cmRelEut5 && d.Testdivisie.Equals("REL"))
-        //        {
-        //            date = (DateTime)dateEut5.Date;
-        //            description = "REL - EUT 5";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cmProdSafetyEut1 && d.Testdivisie.Equals("SAF"))
-        //        {
-        //            date = (DateTime)dateEut1.Date;
-        //            description = "SAF - EUT 1";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cmProdSafetyEut2 && d.Testdivisie.Equals("SAF"))
-        //        {
-        //            date = (DateTime)dateEut2.Date;
-        //            description = "SAF - EUT 2";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cmProdSafetyEut3 && d.Testdivisie.Equals("SAF"))
-        //        {
-        //            date = (DateTime)dateEut3.Date;
-        //            description = "SAF - EUT 3";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cmProdSafetyEut4 && d.Testdivisie.Equals("SAF"))
-        //        {
-        //            date = (DateTime)dateEut4.Date;
-        //            description = "SAF - EUT 4";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cmProdSafetyEut5 && d.Testdivisie.Equals("SAF"))
-        //        {
-        //            date = (DateTime)dateEut5.Date;
-        //            description = "SAF - EUT 5";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cmGrnCompEut1 && d.Testdivisie.Equals("ECO"))
-        //        {
-        //            date = (DateTime)dateEut1.Date;
-        //            description = "ECO - EUT 1";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cmGrnCompEut2 && d.Testdivisie.Equals("ECO"))
-        //        {
-        //            date = (DateTime)dateEut2.Date;
-        //            description = "ECO - EUT 2";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cmGrnCompEut3 && d.Testdivisie.Equals("ECO"))
-        //        {
-        //            date = (DateTime)dateEut3.Date;
-        //            description = "ECO - EUT 3";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cmGrnCompEut4 && d.Testdivisie.Equals("ECO"))
-        //        {
-        //            date = (DateTime)dateEut4.Date;
-        //            description = "ECO - EUT 4";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //        if ((bool)cmGrnCompEut5 && d.Testdivisie.Equals("ECO"))
-        //        {
-        //            date = (DateTime)dateEut5.Date;
-        //            description = "ECO - EUT 5";
-        //            eutList.Add(createEut(d.IdRequest, description, date));
-        //        }
-        //    }
-        //    return eutList;
-        //}
-        //thibaut
-        //private List<RqRequestDetail> GetRqRequestDetails()
-        //{
-        //    List<RqRequestDetail> requestDetails = new List<RqRequestDetail>();
-        //    for (int i = 0; i < selectionBoxes.Count; i++)
-        //    {
-        //        if (selectionBoxes[i])
-        //        {
-        //            RqRequestDetail rqRequest = new RqRequestDetail();
-        //            rqRequest.IdRequest = Request.IdRequest;
-        //            if (i == 0)
-        //            {
-        //                rqRequest.Testdivisie = "EMC";
-        //            }
-        //            else if (i == 1)
-        //            {
-        //                rqRequest.Testdivisie = "ENV";
-        //            }
-        //            else if (i == 2)
-        //            {
-        //                rqRequest.Testdivisie = "REL";
-        //            }
-        //            else if (i == 3)
-        //            {
-        //                rqRequest.Testdivisie = "SAF";
-        //            }
-        //            else if (i == 4)
-        //            {
-        //                rqRequest.Testdivisie = "ECO";
-        //            }
-        //            requestDetails.Add(rqRequest);
-        //        }
-        //    }
-        //    return requestDetails;
-        //}
+        /// <summary>
+        /// jimmy
+        /// </summary>
+        /// <param name="detailId"></param>
+        /// <param name="description"></param>
+        /// <param name="date"></param>
+        /// <returns></returns>
         private Eut createEut(int detailId, string description, DateTime date)
         {
             return new Eut()
@@ -510,7 +326,7 @@ namespace Barco
             };
         }
         /// <summary>
-        /// jimmy
+        /// jimmy, thibaut
         /// </summary>
         private void fillEuts()
         {
@@ -676,7 +492,7 @@ namespace Barco
 
         }
         /// <summary>
-        /// jimmy
+        /// jimmy, thibaut
         /// </summary>
         private void fillPvgResp()
         {//voor iedere request in deltails kijken of de testdivisie matched en zo dan worden de pvg's ingevuld
@@ -769,7 +585,7 @@ namespace Barco
         }
 
         /// <summary>
-        /// jimmy
+        /// jimmy, bianca, thibaut
         /// </summary>
         private void FillData()
         {

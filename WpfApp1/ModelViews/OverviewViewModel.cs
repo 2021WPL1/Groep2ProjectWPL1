@@ -41,7 +41,9 @@ namespace Barco
                 result.QueryResult.SMTPPassword,
                 result.QueryResult.SMPTHost);
         }
-        //jimmy
+        /// <summary>
+        /// Laurent, Jimmy, Bianca
+        /// </summary>
         // laad alle requests in een ObservableCollection om zo in de GUI weer te geven
         public void Load()
         {
@@ -157,13 +159,20 @@ namespace Barco
             scheduleMail(count);
             return count;
        }
-       //bianca- method to send an email to the responsible once a day 
-       public void SendMailWithSMTPRelay()
+        //bianca- method to send an email to the responsible once a day 
+        /// <summary>
+        /// Thibaut, Bianca
+        /// </summary>
+        public void SendMailWithSMTPRelay()
        {
            smtpMailCommunication.CreateMail(CountJobRequestsToday().ToString());
            var toAddress = _appSettingsService.GetConfigurationSection<EmailAdresses>("EmailAdresses");
            MessageBox.Show(toAddress.QueryResult.Address1);
        }
+        /// <summary>
+        /// Laurent, Thibaut
+        /// </summary>
+        /// <param name="count"></param>
        public void scheduleMail(int count)
        {
            DateTime datenow = DateTime.Now;
@@ -182,6 +191,10 @@ namespace Barco
                });
            }
        }
+        /// <summary>
+        /// Thibaut
+        /// </summary>
+        /// <returns></returns>
         private string CreateJRNumberForExternal()
         {
             string result = dao.GetJobNumber(false);
