@@ -205,19 +205,24 @@ namespace Barco
         public void RemovePart()
         {
             //als de selecte part bestaat dan verwijder je deze, als deze niet bestaat geef dan een foutmelding
-            if (parts.Contains(selectedPart))
+            if (parts.Count == 1)
             {
-                if (MessageBox.Show("Are you sure you want to delete part " + selectedPart.partNo + "?", "Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
-                {
-                    parts.Remove(selectedPart);
-                    RefreshGUI();
-                }
-               
-
+                MessageBox.Show("You cannot have a request without parts, add a new part first");
             }
             else
             {
-                MessageBox.Show("Pleas select a part.");
+                if (parts.Contains(selectedPart))
+                {
+                    parts.Remove(selectedPart);
+               
+                    RefreshGUI();
+
+                }
+                else
+                {
+                    MessageBox.Show("Pleas select a part.");
+                }
+                    
             }
 
         }
