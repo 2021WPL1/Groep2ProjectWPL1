@@ -9,7 +9,7 @@
     <Grid>
         <DatePicker x:Name="dateExpectedStart" HorizontalAlignment="Left" Margin="120,143,0,0" VerticalAlignment="Top" IsTodayHighlighted="True" SelectedDate="{Binding dateExpectedStart}" Width="120"/>
         <DatePicker x:Name="dateExpectedEnd" HorizontalAlignment="Left" Margin="120,172,0,0" VerticalAlignment="Top"  IsTodayHighlighted="True" SelectedDate="{Binding dateExpectedEnd}" Width="120"/>
-        <ComboBox x:Name="comboboxResources" HorizontalAlignment="Left" Margin="119,207,0,0" VerticalAlignment="Top" Width="121" Height="25" SelectedValue="{Binding selectedResource}"  SelectedIndex="0" ItemsSource="{Binding  Resources, Mode=TwoWay}" DisplayMemberPath="Naam"
+        <ComboBox x:Name="comboboxResources" HorizontalAlignment="Left" Margin="119,207,0,0" VerticalAlignment="Top" Width="121" Height="25" SelectedValue="{Binding SelectedResource}"  SelectedIndex="0" ItemsSource="{Binding  Resources, Mode=TwoWay}" DisplayMemberPath="Naam"
                   SelectedItem="{Binding SelectedResource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <Image x:Name="PLBarco" HorizontalAlignment="Left" Height="53" Margin="20,11,0,0" VerticalAlignment="Top" Width="198" Source="/Views/logo.png"/>
         <Label Content="Start date" HorizontalAlignment="Left" Margin="44,140,0,0" VerticalAlignment="Top" Height="25" Width="88"/>
