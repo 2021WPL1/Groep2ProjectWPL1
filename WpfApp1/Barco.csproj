@@ -1,16 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
-
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-
   <ItemGroup>
     <None Remove="logo.png" />
     <None Remove="Views\logo.png" />
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="MailKit" Version="2.12.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.0" />
@@ -23,15 +20,12 @@
     <PackageReference Include="Prism.Core" Version="8.0.0.1909" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
   </ItemGroup>
-
   <ItemGroup>
     <ProjectReference Include="..\Barco.Data\Barco.Data.csproj" />
     <ProjectReference Include="..\Barco.Domain\Barco.Domain.csproj" />
   </ItemGroup>
-
   <ItemGroup>
     <Resource Include="logo.png" />
     <Resource Include="Views\logo.png" />
   </ItemGroup>
-
 </Project>

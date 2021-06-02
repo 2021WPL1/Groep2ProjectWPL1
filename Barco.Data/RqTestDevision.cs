@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 namespace Barco
 {
     public partial class RqTestDevision
@@ -9,10 +8,8 @@ namespace Barco
         {
             RqRequestDetail = new HashSet<RqRequestDetail>();
         }
-
         public string Afkorting { get; set; }
         public string Naam { get; set; }
-
         public virtual ICollection<RqRequestDetail> RqRequestDetail { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 namespace Barco.ModelViews
 {
-    class AddTeamViewModel
+   public class OverviewPlannedTestsViewModel
     {
     }
 }

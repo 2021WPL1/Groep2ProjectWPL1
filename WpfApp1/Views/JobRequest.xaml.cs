@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using Barco.Data;
-
 namespace Barco
 {
     /// <summary>
@@ -9,35 +8,23 @@ namespace Barco
     public partial class JobRequest : Window
     {
         private JobRequestViewModel jobRequestViewModel;
-
         //remove this line if working with DAO static class
         //private static Barco2021Context DAO = new Barco2021Context();
-
         private static DAO dao;
-
-
         public JobRequest()
         {
             dao = DAO.Instance();
-
             InitializeComponent();
             showDivision();
             getJobNatures();
             jobRequestViewModel = new JobRequestViewModel(this);
             DataContext = jobRequestViewModel;
-            
-          
         }
-
-
-       
-
         public void showDivision()
         {
             //cmbDivision.ItemsSource = dao.GetDivisions();
             cmbDivision.Items.Add(getValues("DIVISION"));
            //cmbDivision.SelectedIndex = 0;
-
         }
         public void getJobNatures()
         {
@@ -45,29 +32,19 @@ namespace Barco
             cmbJobNature.DisplayMemberPath = "Nature";
             cmbJobNature.SelectedValuePath = "Nature";
         }
-
-
         static string getValues(string Name)
         {
             string userRoot = "HKEY_CURRENT_USER";
             string subkey = "Barco2021";
             string keyName = userRoot + "\\" + subkey;
-
-
             return Microsoft.Win32.Registry.GetValue(keyName, Name, "default").ToString();
         }
-
-
         //private static Barco2021Context context = new Barco2021Context();
-
             /*private RqRequest request = new RqRequest();
             private RqOptionel optional = new RqOptionel();
             private List<Eut> eutList = new List<Eut>();
             private RqRequestDetail Detail = new RqRequestDetail();
-    
-    
             private List<Part> parts = new List<Part>();
-    
             List<CheckBox> emcBoxes = new List<CheckBox>();
             List<CheckBox> envBoxes = new List<CheckBox>();
             List<CheckBox> relBoxes = new List<CheckBox>();
@@ -75,26 +52,19 @@ namespace Barco
             List<CheckBox> greenBoxes = new List<CheckBox>();
             List<CheckBox> selectionBoxes = new List<CheckBox>();
             */
-
             /*
-    
             public JobRequest()
             {
                 InitializeComponent();
                 dao = DAO.Instance();
-    
-    
                 cmbDivision.ItemsSource = dao.GetDivisions();
                 cmbDivision.DisplayMemberPath = "Afkorting";
                 cmbDivision.SelectedValuePath = "Afkorting";
-    
                 cmbJobNature.ItemsSource = dao.GetJobNatures();
                 cmbJobNature.DisplayMemberPath = "Nature";
                 cmbJobNature.SelectedValuePath = "Nature";
-    
                 CreateBoxLists();
             }
-    
             private void btnAdd_Click(object sender, RoutedEventArgs e)
             {
                 try
@@ -102,7 +72,6 @@ namespace Barco
                     string sPartNo = txtPartNr.Text;
                     string sNetWeight = txtNetWeight.Text;
                     string sGrossWeight = txtGrossWeight.Text;
-    
                     if (sPartNo == "" || sNetWeight == "" || sGrossWeight == "")
                     {
                         MessageBox.Show("please fill in all values");
@@ -116,27 +85,21 @@ namespace Barco
                             partNo = txtPartNr.Text
                         });
                         RefreshGUI();
-    
                         //lstbNetWeight.Items.Add(sNetWeight);
                         //lstbGrossWeight.Items.Add(sGrossWeight);
-    
                         request.EutPartnumbers += sPartNo + " ; ";
                         request.GrossWeight += sGrossWeight + " ; ";
                         request.NetWeight += sNetWeight + " ; ";
                     }
-    
                 }
                 catch (NullReferenceException)
                 {
                     MessageBox.Show("please fill in all fields");
                 }
-    
             }
-    
             private void btnRemove_Click(object sender, RoutedEventArgs e)
             {
                 var selectedPart = (Part)lstParts.SelectedItem;
-    
                 if (parts.Contains(selectedPart)) 
                 {
                     parts.Remove(selectedPart);
@@ -144,36 +107,28 @@ namespace Barco
                     RefreshGUI();
                 }
             }
-    
             private void btnSend_Click(object sender, RoutedEventArgs e)
             {
                 try
                 {
                     //create error sequence
                     List<string> errors = new List<string>();
-    
                     //declare vars for object
                     string input_Abbreviation = txtReqInitials.Text.ToString();
                     string input_ProjectName = txtEutProjectname.Text.ToString();
-    
                     bool input_Battery = false;
-    
                     if (dateExpectedEnd.SelectedDate != null)
                     {
                         DateTime input_EndDate = (DateTime)dateExpectedEnd.SelectedDate;
-    
                     }
                     else
                     {
                         errors.Add("please specify a end date");
                     }
-    
                     string specialRemarks = txtRemark.Text.ToString();
-    
                     string netWeights = "";
                     string grossWeights = "";
                     string partNums = "";
-    
                     //parts section
                     if (parts.Count > 0)
                     {
@@ -188,10 +143,7 @@ namespace Barco
                     {
                         errors.Add("Please add parts to test");
                     }
-    
-    
                     //check if radio buttons are checked
-    
                     if ((bool)rbtnBatNo.IsChecked)
                     {
                         input_Battery = true;
@@ -204,14 +156,11 @@ namespace Barco
                     {
                         input_Battery = false;
                     }
-    
                     //check if requester exists
-    
                     if (!dao.IfPersonExists(input_Abbreviation))
                     {
                         errors.Add("the requester inititals do not match any employee");
                     }
-    
                     //check if the job nature is selected
                     //checkbox area
                     if (!(bool)cbEmc.IsChecked && !(bool)cmEnvorimental.IsChecked && !(bool)cmRel.IsChecked && !(bool)cmProdSafety.IsChecked && !(bool)cmGrnComp.IsChecked)
@@ -223,13 +172,10 @@ namespace Barco
                         List<string> validation = ValidateCheckboxes();
                         errors.AddRange(validation);
                     }
-    
                     //check if the dates are set
                     List<string> valiDate = CheckDates();
                     errors.AddRange(valiDate);
-    
                     //check if other fields are empty
-    
                     if (txtEutProjectname.Text is null)
                     {
                         errors.Add("please fill in a project name");
@@ -252,42 +198,25 @@ namespace Barco
                         request.NetWeight = netWeights;
                         request.GrossWeight = grossWeights;
                         request.EutPartnumbers = partNums;
-    
                         //optional object
                         optional.Link = txtLinkTestplan.Text;
                         optional.IdRequest = request.IdRequest;
-    
                         //eut objects
                         eutList = GetEutData();
-    
-    
                     }
-    
-    
                 }
                 catch (FormatException ex)
                 {
                     MessageBox.Show(ex.Message.ToString());
                     //MessageBox.Show("Please fill in all fields"):
                 }
-    
-    
-    
-    
-    
-    
-    
             }
-    
-    
-    
             private void btnCancel_Click(object sender, RoutedEventArgs e)
             {
                 HomeScreen homeScreen = new HomeScreen();
                 Close();
                 homeScreen.ShowDialog();
             }
-    
             private void RefreshGUI()
             {
                 lstParts.Items.Clear();
@@ -296,17 +225,12 @@ namespace Barco
                     lstParts.Items.Add(part);
                 }
             }
-    
-    
-    
-    
             public class Part
             {
                 public string partNo { get; set; }
                 public string NetWeight { get; set; }
                 public string GrossWeight { get; set; }
             }
-    
             public void CreateBoxLists()
             {
                 emcBoxes.Add(cbEmcEut1);
@@ -314,67 +238,52 @@ namespace Barco
                 emcBoxes.Add(cbEmcEut3);
                 emcBoxes.Add(cbEmcEut4);
                 emcBoxes.Add(cbEmcEut5);
-    
                 envBoxes.Add(cmEnvorimentalEut1);
                 envBoxes.Add(cmEnvorimentalEut2);
                 envBoxes.Add(cmEnvorimentalEut3);
                 envBoxes.Add(cmEnvorimentalEut4);
                 envBoxes.Add(cmEnvorimentalEut5);
-    
                 relBoxes.Add(cmRelEut1);
                 relBoxes.Add(cmRelEut2);
                 relBoxes.Add(cmRelEut3);
                 relBoxes.Add(cmRelEut4);
                 relBoxes.Add(cmRelEut5);
-    
                 prodBoxes.Add(cmProdSafetyEut1);
                 prodBoxes.Add(cmProdSafetyEut2);
                 prodBoxes.Add(cmProdSafetyEut3);
                 prodBoxes.Add(cmProdSafetyEut4);
                 prodBoxes.Add(cmProdSafetyEut5);
-    
                 greenBoxes.Add(cmGrnCompEut1);
                 greenBoxes.Add(cmGrnCompEut2);
                 greenBoxes.Add(cmGrnCompEut3);
                 greenBoxes.Add(cmGrnCompEut4);
                 greenBoxes.Add(cmGrnCompEut5);
-    
                 selectionBoxes.Add(cmEnvorimental);
                 selectionBoxes.Add(cbEmc);
                 selectionBoxes.Add(cmRel);
                 selectionBoxes.Add(cmProdSafety);
                 selectionBoxes.Add(cmGrnComp);
             }
-    
             private void cbEmc_Checked(object sender, RoutedEventArgs e)
             {
                 EnableBoxes(cbEmc);
             }
-    
             private void cmEnvorimental_Checked(object sender, RoutedEventArgs e)
             {
                 EnableBoxes(cmEnvorimental);
-    
             }
-    
             private void cmRel_Checked(object sender, RoutedEventArgs e)
             {
                 EnableBoxes(cmRel);
-    
             }
-    
             private void cmProdSafety_Checked(object sender, RoutedEventArgs e)
             {
                 EnableBoxes(cmProdSafety);
-    
             }
-    
             private void cmGrnComp_Checked(object sender, RoutedEventArgs e)
             {
                 EnableBoxes(cmGrnComp);
-    
             }
-    
             private void EnableBoxes(CheckBox selected)
             {
                 List<CheckBox> targets = new List<CheckBox>();
@@ -398,7 +307,6 @@ namespace Barco
                 {
                     targets = greenBoxes;
                 }
-    
                 foreach (CheckBox box in targets)
                 {
                     box.IsEnabled = true;
@@ -484,7 +392,6 @@ namespace Barco
                 }
                 return outcome;
             }
-    
             private List<string> CheckDates()
             {
                 List<string> result = new List<string>();
@@ -525,11 +432,9 @@ namespace Barco
                 }
                 return result;
             }
-    
             private List<Eut> GetEutData()
             {
                 List<Eut> result = new List<Eut>();
-    
                 //get first eut and date
                 if (DatePickerEUT1.SelectedDate != null)
                 {
@@ -562,7 +467,6 @@ namespace Barco
                         OmschrijvingEut = description
                     });
                 }
-    
                 //get second eut and date
                 if (DatePickerEUT2.SelectedDate != null)
                 {
@@ -595,7 +499,6 @@ namespace Barco
                         OmschrijvingEut = description
                     });
                 }
-    
                 //get third eut and date
                 if (DatePickerEUT3.SelectedDate != null)
                 {
@@ -660,7 +563,6 @@ namespace Barco
                         OmschrijvingEut = description
                     });
                 }
-    
                 //get fifth eut and date
                 if (DatePickerEUT5.SelectedDate != null)
                 {
@@ -694,12 +596,7 @@ namespace Barco
                     });
                 }
                 return result;
-    
             }
-    
             */
-
-
-       
     }
 }

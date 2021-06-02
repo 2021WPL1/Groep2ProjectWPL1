@@ -9,7 +9,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 namespace Barco
 {
     /// <summary>
@@ -23,21 +22,16 @@ namespace Barco
             //BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
             //imgLoginForm.Source = photo;
         }
-
-
         //bianca
         private void LoginForm_Click(object sender, RoutedEventArgs e)
         {
             string email = EmailTextBox.Text;
             string password = passwordBox.Password;
             MessageBox.Show("You have successfully logged in!");
-
             HomeScreen homeScreen = new HomeScreen();
             Close();
             homeScreen.ShowDialog();
-
         }
-
         //bianca
         private void CancelForm_Click(object sender, RoutedEventArgs e)
         {
@@ -47,17 +41,12 @@ namespace Barco
             var result = MessageBox.Show(message, caption,
                                          MessageBoxButton.YesNo,
                                          MessageBoxImage.Question);
-
             if (result == System.Windows.MessageBoxResult.Yes)
             {
-
                 LoginScreen login = new LoginScreen();
                 Close();
                 login.ShowDialog();
             }
-
-
-
         }
     }
 }

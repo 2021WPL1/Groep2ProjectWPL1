@@ -6,15 +6,9 @@
         xmlns:local="clr-namespace:Barco"
         mc:Ignorable="d"
         Title="JobRequest" Height="800" Width="850">
-
     <Grid >
-
-
-
         <TextBlock HorizontalAlignment="Left" Margin="43,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Text="Requester "/><Run Language="nl-be" Text="Initials"/></TextBlock>
-
         <TextBox x:Name="txtReqInitials" Text="{Binding txtReqInitials, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="42,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsEnabled="False" FontWeight="Bold"/>
-
         <TextBlock HorizontalAlignment="Left" Margin="43,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="EUT Projectname"/></TextBlock>
         <TextBox x:Name="txtEutProjectname" Text="{Binding txtEutProjectname, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="43,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"/>
         <TextBlock HorizontalAlignment="Left" Margin="168,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Division"/></TextBlock>
@@ -102,14 +96,10 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Part number" Width="117" x:Name="lstPartNo" DisplayMemberBinding="{ Binding partNo}">
-
-
                     </GridViewColumn>
                     <GridViewColumn Header="Net Weight" Width="117" x:Name="lstNetWeight" DisplayMemberBinding="{ Binding NetWeight}">
-
                     </GridViewColumn>
                     <GridViewColumn Header="Gross weight" Width="117" x:Name="lstGrossWeight" DisplayMemberBinding="{ Binding GrossWeight}">
-
                     </GridViewColumn>
                 </GridView>
             </ListView.View>

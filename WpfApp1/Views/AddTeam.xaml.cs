@@ -9,7 +9,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 namespace Barco
 {
     /// <summary>
@@ -23,37 +22,23 @@ namespace Barco
             /*BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "img/logo.png"));
             imgCollectiveLeave.Source = photo;*/
         }
-
         private void AddEquip_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
-     
-
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
         private void ConfirmButton_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
         private void AddMember_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-
         }
-
         private void NotificationOverbooking_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
         }
     }
 }

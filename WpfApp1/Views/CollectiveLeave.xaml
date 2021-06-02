@@ -16,12 +16,9 @@
                Command="{Binding CancelCommand}" 
                 Content="Cancel" HorizontalAlignment="Left" Margin="633,237,0,0" VerticalAlignment="Top" Height="39" Width="74" />
         <ComboBox x:Name="cbxChooseDepartment" HorizontalAlignment="Left" Margin="174,141,0,0" VerticalAlignment="Top" Width="165" SelectedIndex="0"/>
-
-
         <Label Content="Name of the holiday:" HorizontalAlignment="Left" Margin="18,177,0,0" VerticalAlignment="Top" Width="133"/>
         <Image x:Name="imgCollectiveLeave" HorizontalAlignment="Left" Height="83" Margin="10,10,0,0" VerticalAlignment="Top" Width="193"/>
         <Label Content="Collective leave form" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Height="72" Width="256" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
-
         <ComboBox x:Name="NationalHoliday" HorizontalAlignment="Left" Margin="174,180,0,0" VerticalAlignment="Top" Width="120">
             <ComboBoxItem Content="Nieuwjaar"/>
             <ComboBoxItem Content="Paasmaandag"/>
@@ -35,6 +32,5 @@
             <ComboBoxItem Content="Kerstmis"/>
         </ComboBox>
         <Label Content="Choose your department" HorizontalAlignment="Left" Margin="12,140,0,0" VerticalAlignment="Top" Width="201"/>
-
     </Grid>
 </Window>

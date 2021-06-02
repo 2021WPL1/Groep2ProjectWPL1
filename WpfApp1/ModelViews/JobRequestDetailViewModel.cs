@@ -2,9 +2,11 @@
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Windows.Input;
-
+using Barco.ModelViews;
+using Barco.Views;
 namespace Barco
 {//jimmy
     public class JobRequestDetailViewModel : ViewModelBase
@@ -19,38 +21,32 @@ namespace Barco
         public List<String> ListPartsnumbers { get; set; }
         public List<String> ListPartNet { get; set; }
         public List<String> ListPartGross { get; set; }
-
         private List<Eut> euts;
         public bool cbEmcEut1 { get; set; }
         public bool cbEmcEut2 { get; set; }
         public bool cbEmcEut3 { get; set; }
         public bool cbEmcEut4 { get; set; }
         public bool cbEmcEut5 { get; set; }
-
         public bool cmEnvironmentalEut1 { get; set; }
         public bool cmEnvironmentalEut2 { get; set; }
         public bool cmEnvironmentalEut3 { get; set; }
         public bool cmEnvironmentalEut4 { get; set; }
         public bool cmEnvironmentalEut5 { get; set; }
-
         public bool cmGrnCompEut1 { get; set; }
         public bool cmGrnCompEut2 { get; set; }
         public bool cmGrnCompEut3 { get; set; }
         public bool cmGrnCompEut4 { get; set; }
         public bool cmGrnCompEut5 { get; set; }
-
         public bool cmProdSafetyEut1 { get; set; }
         public bool cmProdSafetyEut2 { get; set; }
         public bool cmProdSafetyEut3 { get; set; }
         public bool cmProdSafetyEut4 { get; set; }
         public bool cmProdSafetyEut5 { get; set; }
-
         public bool cmRelEut1 { get; set; }
         public bool cmRelEut2 { get; set; }
         public bool cmRelEut3 { get; set; }
         public bool cmRelEut4 { get; set; }
         public bool cmRelEut5 { get; set; }
-
         public bool cbEmc { get; set; }
         public bool cmEnvironmental { get; set; }
         public bool cmRel { get; set; }
@@ -68,14 +64,10 @@ namespace Barco
         public string pvgRel { get; set; }
         public string pvgSaf { get; set; }
         public string pvgEco { get; set; }
-
-
-
         public JobRequestDetailViewModel(JobRequestDetail screen, int selectedId)
         {
             CancelCommand = new DelegateCommand(CloseButton);
             dao = DAO.Instance();
-
             this.ListPartsnumbers = new List<string>();
             this.ListPartGross = new List<string>();
             this.ListPartNet = new List<string>();
@@ -92,15 +84,13 @@ namespace Barco
             SetBatteries();
             fillPvgResp();
         }
-        //Biance
-        //Sluit Details en open de overview
+        //bianca
+        //closes Details and opens the Overview
         public void CloseButton()
         {
             OverviewJobRequest overview = new OverviewJobRequest();
             screen.Close();
             overview.ShowDialog();
-
-
         }
         //Jimmy
         //Laden van Jobrequest Partnumbers in een list
@@ -108,27 +98,17 @@ namespace Barco
         {
             string Partnumbers = Request.EutPartnumbers.Replace(" ", String.Empty);
             string Partnumber;
-
             do
             {
                 int splitIndex = Partnumbers.IndexOf(";");
                 Partnumber = Partnumbers.Substring(0, splitIndex);
                 ListPartsnumbers.Add(Partnumber);
                 int length = Partnumbers.Length;
-
-
                 if (splitIndex != length)
                 {
                     Partnumbers = Partnumbers.Substring((splitIndex + 1), (Partnumbers.Length - 1 - splitIndex));
-
                 }
-
             } while (Partnumbers.Contains(";"));
-
-
-
-
-
         }
         //Jimmy
         //Laden van Jobrequest net weights in een list
@@ -136,24 +116,17 @@ namespace Barco
         {
             string Partnets = Request.NetWeight.Replace(" ", String.Empty);
             string Partnet;
-
             do
             {
                 int splitIndex = Partnets.IndexOf(";");
                 Partnet = Partnets.Substring(0, splitIndex);
                 ListPartNet.Add(Partnet);
                 int length = Partnets.Length;
-
-
                 if (splitIndex != length)
                 {
                     Partnets = Partnets.Substring((splitIndex + 1), (Partnets.Length - 1 - splitIndex));
-
                 }
-
             } while (Partnets.Contains(";"));
-
-
         }
         //Jimmy
         //Laden van Jobrequest Grossweight in een list
@@ -161,27 +134,19 @@ namespace Barco
         {
             string partGross = Request.GrossWeight.Replace(" ", String.Empty);
             string getPartGross;
-
             do
             {
-
                 int splitIndex = partGross.IndexOf(";");
                 getPartGross = partGross.Substring(0, splitIndex);
                 ListPartGross.Add(getPartGross);
                 int length = partGross.Length;
-
-
                 if (splitIndex != length)
                 {
                     partGross = partGross.Substring((splitIndex + 1), (partGross.Length - 1 - splitIndex));
-
                 }
-
             }
             while (partGross.Contains(";"));
-
         }
-
         //thibaut 
         //transfers the data from the database to the eut checkboxes
         private void fillEuts()
@@ -193,7 +158,6 @@ namespace Barco
                     cbEmcEut1 = true;
                     cbEmc = true;
                     dateEut1 = e.AvailableDate.ToString();
-                    
                 }
                 if (e.OmschrijvingEut.Equals("EMC - EUT 2"))
                 {
@@ -224,7 +188,6 @@ namespace Barco
                     cmEnvironmental = true;
                     cmEnvironmentalEut1 = true;
                     dateEut1 = e.AvailableDate.ToString();
-
                 }
                 if (e.OmschrijvingEut.Equals("ENV - EUT 2"))
                 {
@@ -255,7 +218,6 @@ namespace Barco
                     cmGrnCompEut1 = true;
                     cmGrnComp = true;
                     dateEut1 = e.AvailableDate.ToString();
-
                 }
                 if (e.OmschrijvingEut.Equals("ECO - EUT 2"))
                 {
@@ -286,7 +248,6 @@ namespace Barco
                     cmRelEut1 = true;
                     cmRel = true;
                     dateEut1 = e.AvailableDate.ToString();
-
                 }
                 if (e.OmschrijvingEut.Equals("REL - EUT 2"))
                 {
@@ -317,7 +278,6 @@ namespace Barco
                     cmProdSafetyEut1 = true;
                     cmProdSafety = true;
                     dateEut1 = e.AvailableDate.ToString();
-
                 }
                 if (e.OmschrijvingEut.Equals("SAF - EUT 2"))
                 {
@@ -344,9 +304,7 @@ namespace Barco
                     dateEut5 = e.AvailableDate.ToString();
                 }
             }
-
         }
-
         private void fillPvgResp()
         {
             foreach(RqRequestDetail rq in rqRequestDetails)
@@ -371,10 +329,8 @@ namespace Barco
                 {
                     pvgEco = rq.Pvgresp;
                 }
-
             }
         }
-
         //thibaut
         private void SetBatteries()
         {

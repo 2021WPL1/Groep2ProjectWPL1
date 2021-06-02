@@ -10,7 +10,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Barco.Data;
-
 namespace Barco
 {
     /// <summary>
@@ -19,7 +18,6 @@ namespace Barco
     public partial class HomeScreen : Window
     {
         private HomeScreenViewModel homeScreenViewModel;
-
         //bianca
         public HomeScreen()
         {
@@ -30,22 +28,14 @@ namespace Barco
             //imgBarco.Source = photo;
             //  dao = DAO.Instance();
         }
-
-
         //private void CreateJobRequest_Click(object sender, RoutedEventArgs e)
         //{
-
-            //    JobRequest createJobRequest = new JobRequest();
-            //    Close();
-            //    createJobRequest.ShowDialog();
-
-
-            //this.Hide();
-            // homeScreenViewModel.CreateRequest();
-
-
+        //    JobRequest createJobRequest = new JobRequest();
+        //    Close();
+        //    createJobRequest.ShowDialog();
+        //this.Hide();
+        // homeScreenViewModel.CreateRequest();
         //}
-
         //private void SeeAllRequests_Click(object sender, RoutedEventArgs e)
         //{
         //    //OverviewJobRequest overviewJobRequest = new OverviewJobRequest();
@@ -53,9 +43,7 @@ namespace Barco
         //    //overviewJobRequest.ShowDialog();
         //   this.Hide();
         //    homeScreenViewModel.Overview();
-           
         //}
-
         //private void PersonalLeave_Click(object sender, RoutedEventArgs e)
         //{
         //    this.Hide();
@@ -63,7 +51,6 @@ namespace Barco
         //    //    Close();
         //    //    personalLeave.ShowDialog();
         //    homeScreenViewModel.PersonalLeave();
-            
         //}
         //private void CollectiveLeave_Click(object sender, RoutedEventArgs e)
         //{
@@ -72,10 +59,6 @@ namespace Barco
         //    //Close();
         //    //collectiveLeave.ShowDialog();
         //    homeScreenViewModel.CollectiveLeave();
-           
         //}
-
-   
-
     }
 }
