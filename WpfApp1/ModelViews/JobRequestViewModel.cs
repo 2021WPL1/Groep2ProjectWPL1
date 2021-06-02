@@ -147,7 +147,7 @@ namespace Barco
             }
         }
         /// <summary>
-        /// Bianca Laurent
+        /// Bianca 
         /// </summary>
         public void CancelButton()
         {
@@ -159,7 +159,7 @@ namespace Barco
                 home.ShowDialog();
             }
         }
-        //Thiabaut
+        //Thibaut
         public void AddButton()
         {
             try

@@ -57,9 +57,9 @@ namespace Barco
         //bianca
         public void CancelButton()
         {
-               HomeScreen home = new HomeScreen();
-               overview.Close();
-               home.ShowDialog();
+            HomeScreen home = new HomeScreen();
+            overview.Close();
+            home.ShowDialog();
 
         }
         //jimmy - thibaut jrnumber toewijzen
