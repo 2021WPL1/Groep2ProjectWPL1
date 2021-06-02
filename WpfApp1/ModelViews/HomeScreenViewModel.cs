@@ -26,41 +26,62 @@ namespace Barco
             ApprovedJobRequestsCommand = new DelegateCommand(ApprovedJobRequests);
             this.home = home;
         }
+        /// <summary>
+        /// Laurent 
+        /// </summary>
         public void HomeScreen()
         {
             HomeScreen homeScreen = new HomeScreen();
             homeScreen.Close();
         }
+        /// <summary>
+        /// thibaut, Laurent
+        /// </summary>
         public void CreateRequest()
         {
             JobRequest createJobRequest = new JobRequest();
             home.Close();
             createJobRequest.ShowDialog();
         }
+        /// <summary>
+        /// Bianca
+        /// </summary>
         public void ApprovedJobRequests()
         {
             OverviewApprovedRequests overviewApproved = new OverviewApprovedRequests();
             home.Close();
             overviewApproved.ShowDialog();
         }
+        /// <summary>
+        /// thibaut, bianca
+        /// </summary>
         public void Approved()
         {
             JobRequest createJobRequest = new JobRequest();
             home.Close();
             createJobRequest.ShowDialog();
         }
+        /// <summary>
+        /// Laurent
+        /// </summary>
         public void Overview()
         {
             OverviewJobRequest overviewJobRequest = new OverviewJobRequest();
             home.Close();
             overviewJobRequest.ShowDialog();
         }
+        /// <summary>
+        /// Laurent
+        /// </summary>
         public void PersonalLeave()
         {
             PersonalLeave personalLeave = new PersonalLeave();
             home.Close();
             personalLeave.ShowDialog();
         }
+        /// <summary>
+        /// Laurent
+        /// </summary>
         public void CollectiveLeave()
         {
             CollectiveLeave collectiveLeave = new CollectiveLeave();
