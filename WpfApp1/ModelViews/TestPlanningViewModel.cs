@@ -51,10 +51,20 @@ namespace Barco.ModelViews
         /// </summary>
         public void SaveButton()
         {
-            MessageBox.Show("Congratulations, you have submitted a new test planning.");
-            OverviewPlannedTests overviewPlannedTests = new OverviewPlannedTests();
-            screen.Close();
-            overviewPlannedTests.ShowDialog();
+            if(dateExpectedStart>dateExpectedEnd)
+            {
+                MessageBox.Show("The start date has to be before the expected end date");
+            }
+            else if(dateExpectedEnd < DateTime.Today || dateExpectedStart < DateTime.Today){
+                MessageBox.Show("Fill in a valid date; date is already passed");
+            }
+            else
+            {
+                MessageBox.Show("Congratulations, you have submitted a new test planning.");
+                OverviewPlannedTests overviewPlannedTests = new OverviewPlannedTests();
+                screen.Close();
+                overviewPlannedTests.ShowDialog();
+            }
         }
         /// <summary>
         /// Bianca
