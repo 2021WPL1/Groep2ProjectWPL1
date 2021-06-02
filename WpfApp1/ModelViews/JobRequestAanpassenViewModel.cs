@@ -43,6 +43,7 @@ namespace Barco
         public List<RqRequestDetail> rqRequestDetails { get; set; }
         public string selectedDivision { get; set; }
         public string selectedJobNature { get; set; }
+        public string HydraProjectNr { get; set; }
       
 
         private List<Eut> euts;

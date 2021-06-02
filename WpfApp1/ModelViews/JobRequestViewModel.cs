@@ -30,12 +30,11 @@ namespace Barco
         public DateTime dateExpectedEnd { get; set; }
         public string selectedDivision { get; set; }
         public string SelectedJobNature { get; set; }
-        // EUT foreseen availability date
-        public DateTime DatePickerEUT1 { get; set; }
-        public DateTime DatePickerEUT2 { get; set; }
-        public DateTime DatePickerEUT3 { get; set; }
-        public DateTime DatePickerEUT4 { get; set; }
-        public DateTime DatePickerEUT5 { get; set; }
+        public DateTime DatePickerEUT1 { get; set; }//foreseen availability date eut1
+        public DateTime DatePickerEUT2 { get; set; }//foreseen availability date eut2
+        public DateTime DatePickerEUT3 { get; set; }//foreseen availability date eut3
+        public DateTime DatePickerEUT4 { get; set; }//foreseen availability date eut4
+        public DateTime DatePickerEUT5 { get; set; }//foreseen availability date eut5
         private ObservableCollection<Part>
             lstParts = new ObservableCollection<Part>(); // for partnumber+ net/gross weight
         public ObservableCollection<Part> listParts
@@ -92,6 +91,7 @@ namespace Barco
         //radio button
         public bool rbtnBatNo { get; set; }
         public bool rbtnBatYes { get; set; }
+        public string HydraProjectNr { get; set; }
         public JobRequestViewModel(JobRequest screen)
         {
             CancelCommand = new DelegateCommand(CancelButton);
@@ -155,7 +155,7 @@ namespace Barco
             screen.Close();
             home.ShowDialog();
         }
-        //Thibaut
+        //Laurent
         public void AddButton()
         {
             try
@@ -323,7 +323,7 @@ namespace Barco
                     request.NetWeight = netWeights;
                     request.GrossWeight = grossWeights;
                     request.EutPartnumbers = partNums;
-                    request.HydraProjectNr = "0";
+                    request.HydraProjectNr = HydraProjectNr;
                     request.InternRequest = CheckInternal(input_Abbreviation);//naam moet in lijst zitten om intern rq te maken
                     if (CheckInternal(input_Abbreviation))
                     {
