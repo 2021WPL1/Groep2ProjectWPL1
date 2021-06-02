@@ -181,23 +181,31 @@ namespace Barco
             RqOptionel.Remarks = txtRemark;
             //Request.JobNature = SelectedJobNature;
             RqOptionel.Link = txtLinkTestplan;
-            Request.BarcoDivision = selectedDivision;
-
-            try
+            //Request.BarcoDivision = selectedDivision;
+            if (txtRequisterInitials == "" || txtEutProjectname == ""  )
             {
-                //save de changes & geef een messagebox die aantoont dat de gegevens opgeslagen zijn.
-                dao.saveChanges();
-                MessageBox.Show("Changes saved.");
-                OverviewJobRequest overview = new OverviewJobRequest();
-                screen.Close();
-                overview.ShowDialog();
-
+                MessageBox.Show("Make sure there are no empty fields.");
             }
-            catch (Exception e)
+            else
             {
 
-                MessageBox.Show(e.Message);
+                try
+                {
+                    //save de changes & geef een messagebox die aantoont dat de gegevens opgeslagen zijn.
+                    dao.saveChanges();
+                    MessageBox.Show("Changes saved.");
+                    OverviewJobRequest overview = new OverviewJobRequest();
+                    screen.Close();
+                    overview.ShowDialog();
+
+                }
+                catch (Exception e)
+                {
+
+                    MessageBox.Show(e.Message);
+                }
             }
+
         }
         /// <summary>
         /// jimmy, Thibaut, Laurent
