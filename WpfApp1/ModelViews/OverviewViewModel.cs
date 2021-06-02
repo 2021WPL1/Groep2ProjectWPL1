@@ -105,9 +105,13 @@ namespace Barco
         {
             if (_selectedRequest != null)
             {
-                dao.DeleteJobRequest(_selectedRequest.IdRequest);
-                Load();
+                if (MessageBox.Show("Are you sure you want to delete the request?", "Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    dao.DeleteJobRequest(_selectedRequest.IdRequest);
+                    Load();
+                }
             }
+                
             else
             {
                 MessageBox.Show("Select a JobRequest");
