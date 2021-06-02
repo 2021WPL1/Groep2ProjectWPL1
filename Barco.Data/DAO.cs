@@ -439,5 +439,13 @@ namespace Barco.Data
             RqRequest returnValue = context.RqRequest.FirstOrDefault(a => a.IdRequest == requestId);
             return returnValue;
         }
+
+        //thibaut
+        public PlPlanning GetPlanning(int planningsId)
+        {
+            return context.PlPlanning.FirstOrDefault(p => p.IdPlanning == planningsId);
+        }
+
+
     }
 }
