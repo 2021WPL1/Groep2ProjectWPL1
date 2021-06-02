@@ -85,10 +85,7 @@ namespace Barco.ModelViews
         }
         public PlResources SelectedResource
         {
-            get
-            {
-                return _selectedResouce;
-            }
+            get => _selectedResouce;
             set
             {
                 _selectedResouce = value;
