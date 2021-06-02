@@ -237,16 +237,6 @@ namespace Barco.Data
             }
             return request;
         }
-        /*
-        *  oude interpretatie van de opdracht
-        public RqRequestDetail AddDetail(RqRequestDetail detail)
-        {
-            detail.IdRequest = int.Parse(context.RqRequest.OrderByDescending(p => p.IdRequest).Select(p => p.IdRequest).First().ToString());
-            context.RqRequestDetail.Add(detail);
-            context.SaveChanges();
-            return detail;
-        }
-        */
         //thibaut 
         public void AddDetails(List<RqRequestDetail> listDetails)
         {
@@ -354,6 +344,29 @@ namespace Barco.Data
         public List<PlResources> GetResource()
         {
             return context.PlResources.ToList();
+            
         }
+
+        //thibaut - methode om resources op te halen per test nature
+        public List<PlResources> GetResourcesForTestDiv(string testDiv)
+        {
+            List<PlResources> list = new List<PlResources>();
+            List<PlResourcesDivision> plrd = context.PlResourcesDivision.ToList();
+
+            foreach(PlResourcesDivision pl in plrd)
+            {
+                if (pl.DivisionAfkorting.Equals(testDiv))
+                {
+                    try
+                    {
+                        list.Add(context.PlResources.Where(e => e.Id == pl.ResourcesId).First());
+                    }
+                    catch (NullReferenceException) { }
+                }
+            }
+            return list;
+        }
+
+        
     }
 }
