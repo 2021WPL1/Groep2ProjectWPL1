@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Barco.ModelViews;
 
 namespace Barco.Views
 {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using Barco.Data;
 using Barco.Views;
@@ -47,10 +48,9 @@ namespace Barco.ModelViews
        // public string Omschrijving { get; set; }
      //   public TestPlanningViewModel(TestPlanning screen, int selectedId, string testDiv);
 
+       public ComboBoxItem selectedStatus { get; set; }
 
-
-     //   private List<string> errors { get; set; }
-
+     //Bianca
         public TestPlanningViewModel(TestPlanning screen, int selectedId,string testDiv)
         {
             this.screen = screen;
@@ -63,7 +63,10 @@ namespace Barco.ModelViews
             Resources = new List<PlResources>();
             populateResources(testDiv);
             _selectedResouce = new PlResources();
-      
+            planning = new PlPlanningsKalender();
+            request = dao.GetRqRequestById(selectedId);
+            requestDetail = dao.GetRqRequestDetailByRequestId(selectedId);
+
 
         }
         /// <summary>
@@ -76,84 +79,60 @@ namespace Barco.ModelViews
             {
                 if (dateExpectedStart.Date >= DateTime.Today)
                 {
-                    planning.Startdatum = dateExpectedStart.Date;
+                    planning.Startdatum = dateExpectedStart;
                 }
                 else
                 {
                         
                     MessageBox.Show("The start date has to be in the future");
                 }
-
             }
-            else
-            {
-                MessageBox.Show("please specify a start date");
-            }
-       
+          
 
             //check if an end date is selected
             if (dateExpectedEnd.Date != null)
             {
                 if (dateExpectedEnd.Date >= DateTime.Today)
                 {
-                    planning.Einddatum = dateExpectedEnd.Date;
+                    planning.Einddatum = dateExpectedEnd;
                 }
                 else
                 {
-
                     MessageBox.Show("The end date has to be in the future");
                 }
             }
-
-            
-            else
-            {
-                MessageBox.Show("please specify an end date");
-            }
-
-
+        
             //check if the resources are selected
-            if (selectedResource == null)
+            if (SelectedResource == null)
             {
                 MessageBox.Show("select a resource");
             }
             else
             {
-               // foreach (PlResources  resource in currentResources)
-              //  {
-                   planning.Resources = selectedResource.Id;
-              //  } 
-              //still unclear how to put the resources in the database 
+                planning.Resources = SelectedResource.Id;
             }
 
-            if (Omschrijving == null)
-            {
-                MessageBox.Show("Please give a description of the test");
-            }
-            else
-            {
-                planning.Omschrijving = Omschrijving;
-            }
-
+         
+            planning.Omschrijving = Omschrijving;
             planning.IdRequest = request.IdRequest;
             planning.JrNr = request.JrNumber;
             planning.JrStatus = request.JrStatus;
             planning.Testdiv = requestDetail.Testdivisie;
+            planning.TestStatus = selectedStatus.Content.ToString();
             dao.AddPlanToCalendar(planning);
+            
+
+
             MessageBox.Show("Congratulations, you have submitted a new test planning.");
             OverviewPlannedTests overviewPlannedTests = new OverviewPlannedTests();
             screen.Close();
             overviewPlannedTests.ShowDialog();
+       
         }
 
-
-
-
-
-
-
-
-
+        /// <summary>
+        /// Bianca
+        /// </summary>
 
         public void CancelButton()
         {
@@ -199,13 +178,12 @@ namespace Barco.ModelViews
                 lstResources.Add(resource);
             }
         }
+
         /// <summary>
         /// Laurent
         /// </summary>
+
         public PlResources SelectedResource
-
-
-        public PlResources selectedResource
         {
             get => _selectedResouce;
             set
