@@ -244,6 +244,26 @@ namespace Barco.Data
 
         
 
+
+        //Bianca
+        public PlPlanningsKalender AddPlanToCalendar(PlPlanningsKalender planning)
+        {
+            try
+            {
+                context.PlPlanningsKalender.Add(planning);
+                context.SaveChanges();
+
+                
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            return planning;
+        }
+
         //thibaut 
         public void AddDetails(List<RqRequestDetail> listDetails)
         {

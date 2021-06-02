@@ -13,7 +13,9 @@ namespace Barco.ModelViews
             private OverviewPlannedTests screen;
             private DAO dao;
 
-            public ICommand CancelOverviewCommand{ get; set; }
+
+
+public ICommand CancelOverviewCommand{ get; set; }
 
 
 

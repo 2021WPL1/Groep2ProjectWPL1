@@ -18,6 +18,10 @@ namespace Barco.ModelViews
         private TestPlanning screen;
         public ICommand SaveTestCommand { get; set; }
         public ICommand CancelTestCommand { get; set; }
+        public PlPlanningsKalender planning { get; set; }
+        public RqRequest request;
+        public RqRequestDetail requestDetail;
+
 
         public string Omschrijving { get; set; }
 
@@ -26,6 +30,7 @@ namespace Barco.ModelViews
 
         //for iterating and adding
         public List<PlResources> resources = new List<PlResources>();
+        public PlResources resource;
 
         //for binding
         public ObservableCollection<PlResources> currentResources
@@ -42,14 +47,14 @@ namespace Barco.ModelViews
         public DateTime dateExpectedStart { get; set; }
         public DateTime dateExpectedEnd { get; set; }
         public string DueDate { get; set; }
-        public string Omschrijving { get; set; }
-        public TestPlanningViewModel(TestPlanning screen, int selectedId, string testDiv)
+       // public string Omschrijving { get; set; }
+     //   public TestPlanningViewModel(TestPlanning screen, int selectedId, string testDiv);
 
 
 
      //   private List<string> errors { get; set; }
 
-        public TestPlanningViewModel(TestPlanning screen, int selectedId)
+        public TestPlanningViewModel(TestPlanning screen, int selectedId,string testDiv)
         {
             this.screen = screen;
             SaveTestCommand = new DelegateCommand(SaveButton);
@@ -61,6 +66,7 @@ namespace Barco.ModelViews
             Resources = new List<PlResources>();
             populateResources(testDiv);
             _selectedResouce = new PlResources();
+      
 
         }
 
@@ -72,7 +78,7 @@ namespace Barco.ModelViews
             {
                 if (dateExpectedStart.Date >= DateTime.Today)
                 {
-                   //add to the request
+                    planning.Startdatum = dateExpectedStart.Date;
                 }
                 else
                 {
@@ -92,7 +98,7 @@ namespace Barco.ModelViews
             {
                 if (dateExpectedEnd.Date >= DateTime.Today)
                 {
-                    //add to the request
+                    planning.Einddatum = dateExpectedEnd.Date;
                 }
                 else
                 {
@@ -109,26 +115,37 @@ namespace Barco.ModelViews
 
 
             //check if the resources are selected
-            if (SelectedResource == null)
+            if (selectedResource == null)
             {
                 MessageBox.Show("select a resource");
             }
-
+            else
+            {
+               // foreach (PlResources  resource in currentResources)
+              //  {
+                   planning.Resources = selectedResource.Id;
+              //  } 
+              //still unclear how to put the resources in the database 
+            }
 
             if (Omschrijving == null)
             {
                 MessageBox.Show("Please give a description of the test");
             }
+            else
+            {
+                planning.Omschrijving = Omschrijving;
+            }
 
-
-
-            // opening the overview planned tests
+            planning.IdRequest = request.IdRequest;
+            planning.JrNr = request.JrNumber;
+            planning.JrStatus = request.JrStatus;
+            planning.Testdiv = requestDetail.Testdivisie;
+            dao.AddPlanToCalendar(planning);
             MessageBox.Show("Congratulations, you have submitted a new test planning.");
             OverviewPlannedTests overviewPlannedTests = new OverviewPlannedTests();
             screen.Close();
             overviewPlannedTests.ShowDialog();
-
-
         }
 
 
@@ -169,7 +186,7 @@ namespace Barco.ModelViews
         }
 
 
-        public PlResources SelectedResource
+        public PlResources selectedResource
         {
             get
             {
@@ -183,3 +200,5 @@ namespace Barco.ModelViews
         }
     }
 }
+
+
