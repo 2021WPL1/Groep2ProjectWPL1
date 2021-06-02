@@ -78,8 +78,15 @@ namespace Barco.ModelViews
         {
             if (!String.IsNullOrEmpty(_selectedResouce.Naam) )
             {
-                resources.Add(_selectedResouce);
-                refresh();
+                if (!resources.Contains(_selectedResouce))
+                {
+                    resources.Add(_selectedResouce);
+                    refresh();
+                }
+                else
+                {
+                    MessageBox.Show("resource already selected","Alert",MessageBoxButton.OK);
+                }     
             }
         }
         /// <summary>
@@ -98,10 +105,7 @@ namespace Barco.ModelViews
         /// </summary>
         public PlResources SelectedResource
         {
-            get
-            {
-                return _selectedResouce;
-            }
+            get => _selectedResouce;
             set
             {
                 _selectedResouce = value;

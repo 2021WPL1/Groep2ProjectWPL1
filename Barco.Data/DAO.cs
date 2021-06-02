@@ -345,6 +345,7 @@ namespace Barco.Data
 
                 ComboObject o = new ComboObject()
                 {
+                    EutNr = eut.OmschrijvingEut.Substring(5, 6),
                     Eut = eut,
                     RqRequestDetail = detail,
                     Request = GetRequest(detail.IdRequest),

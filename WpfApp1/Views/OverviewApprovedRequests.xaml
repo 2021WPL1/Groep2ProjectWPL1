@@ -9,18 +9,20 @@
     <Grid>
         <ListView x:Name="listOverview" 
                   ItemsSource="{Binding currentRequests, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding SelectedRqRequest, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"                  Margin="13,105,0,33" HorizontalAlignment="Left" Width="925" 
+                  SelectedItem="{Binding SelectedRqRequest, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"                  Margin="13,105,0,33" HorizontalAlignment="Left" Width="940" 
              >
             <ListView.View  >
                 <GridView AllowsColumnReorder="False">
                     <GridViewColumn  Header="JR n°" 
                         Width="50" DisplayMemberBinding="{Binding Request.JrNumber}" />
+                    <GridViewColumn  Header="EUT" 
+                        Width="50" DisplayMemberBinding="{Binding EutNr}" />
                     <GridViewColumn Header="Division" 
                         Width="100"  DisplayMemberBinding="{Binding Request.BarcoDivision}" />
                     <GridViewColumn Header="Project name" 
                         Width="150" DisplayMemberBinding="{Binding Request.EutProjectname}"/>
                     <GridViewColumn Header="Status" 
-                        Width="150" DisplayMemberBinding="{Binding Request.JrStatus}"/>
+                        Width="130" DisplayMemberBinding="{Binding Request.JrStatus}"/>
                     <GridViewColumn Header="Test Description" 
                                     Width="250" DisplayMemberBinding="{Binding RqOptionel.Remarks}" />
                     <GridViewColumn Header="Responsible" 
