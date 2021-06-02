@@ -1,5 +1,4 @@
 ﻿using Barco.ModelViews.smtpConfig;
-
 namespace Barco.ModelViews.Settings
 {
     public class AppSettings

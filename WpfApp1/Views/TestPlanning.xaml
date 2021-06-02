@@ -7,10 +7,10 @@
         mc:Ignorable="d"
         Title="TestPlanning" Height="450" Width="800">
     <Grid>
-
         <DatePicker x:Name="dateExpectedStart" HorizontalAlignment="Left" Margin="120,143,0,0" VerticalAlignment="Top" IsTodayHighlighted="True" SelectedDate="{Binding dateExpectedStart}" Width="120"/>
         <DatePicker x:Name="dateExpectedEnd" HorizontalAlignment="Left" Margin="120,172,0,0" VerticalAlignment="Top"  IsTodayHighlighted="True" SelectedDate="{Binding dateExpectedEnd}" Width="120"/>
-        <ComboBox x:Name="comboboxResources" HorizontalAlignment="Left" Margin="119,207,0,0" VerticalAlignment="Top" Width="121" Height="25" SelectedValue="{Binding selectedResource}"  SelectedIndex="0"/>
+        <ComboBox x:Name="comboboxResources" HorizontalAlignment="Left" Margin="119,207,0,0" VerticalAlignment="Top" Width="121" Height="25" SelectedValue="{Binding selectedResource}"  SelectedIndex="0" ItemsSource="{Binding  Resources, Mode=TwoWay}" DisplayMemberPath="Naam"
+                  SelectedItem="{Binding SelectedResource, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <Image x:Name="PLBarco" HorizontalAlignment="Left" Height="53" Margin="20,11,0,0" VerticalAlignment="Top" Width="198" Source="/Views/logo.png"/>
         <Label Content="Start date" HorizontalAlignment="Left" Margin="44,140,0,0" VerticalAlignment="Top" Height="25" Width="88"/>
         <Label Content="End date" HorizontalAlignment="Left" Margin="45,170,0,0" VerticalAlignment="Top" Width="64"/>
@@ -31,14 +31,14 @@
         <Button Content="Cancel" 
                 Command="{Binding CancelTestCommand}"
                 HorizontalAlignment="Left" Margin="687,38,0,0" VerticalAlignment="Top" Height="24" Width="66"/>
-        <ListView x:Name="listResources" Margin="364,143,157,67">
+        <ListView x:Name="listResources" Margin="364,143,157,67" ItemsSource="{Binding Path = currentResources}" Width="auto" >
             <ListView.View>
                 <GridView>
-                    <GridViewColumn/>
+                    <GridViewColumn Header="Current Resources:" DisplayMemberBinding="{Binding Naam}" Width="auto">
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-        <Button x:Name="btnAddResources" Content="+" HorizontalAlignment="Left" Margin="254,210,0,0" VerticalAlignment="Top" Width="25"/>
-
+        <Button x:Name="btnAddResources" Content="+" HorizontalAlignment="Left" Margin="254,210,0,0" VerticalAlignment="Top" Width="25" Command="{Binding AddResourceCommand}"/>
     </Grid>
 </Window>

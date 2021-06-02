@@ -14,7 +14,6 @@ using System.Windows.Shapes;
 using System.Data;
 using Barco.Data;
 using System.Collections;
-
 namespace Barco
 {
     /// <summary>
@@ -23,16 +22,12 @@ namespace Barco
     public partial class OverviewJobRequest : Window
     {
         private OverviewViewModel overviewModel;
-
         public OverviewJobRequest()
         {
-
             InitializeComponent();
-
             overviewModel = new OverviewViewModel(this);
             DataContext = overviewModel;
             //overviewModel.Load();
-
             //BitmapImage photo = new BitmapImage(new Uri(AppDomain.CurrentDomain.BaseDirectory + "photo/logo.png"));
             //imgOverview.Source = photo;
         }
