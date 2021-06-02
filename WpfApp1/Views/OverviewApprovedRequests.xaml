@@ -8,11 +8,11 @@
         Title="OverviewApprovedRequests" Height="450" Width="1000">
     <Grid>
         <ListView x:Name="listOverview" 
-                  ItemsSource="{Binding ComboObjects, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                  ItemsSource="{Binding currentRequests, UpdateSourceTrigger=PropertyChanged}"
                   SelectedItem="{Binding SelectedRqRequest, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"                  Margin="13,105,0,33" HorizontalAlignment="Left" Width="925" 
              >
             <ListView.View  >
-                <GridView>
+                <GridView AllowsColumnReorder="False">
                     <GridViewColumn  Header="JR n°" 
                         Width="50" DisplayMemberBinding="{Binding Request.JrNumber}" />
                     <GridViewColumn Header="Division" 

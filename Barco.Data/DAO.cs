@@ -334,7 +334,7 @@ namespace Barco.Data
                 foreach (var detail in GetRqDetailsWithRequestId(request.IdRequest))
                 {
                     o.PvgResp += detail.Pvgresp;
-                    o.TestDivisie += detail.Testdivisie;
+                    o.TestDivisie += detail.Testdivisie + "; ";
                 }
                 returnValue.Add(o);
             }
