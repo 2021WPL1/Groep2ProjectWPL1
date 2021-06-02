@@ -10,7 +10,6 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 namespace Barco
 {
     /// <summary>
@@ -18,35 +17,23 @@ namespace Barco
     /// </summary>
     public partial class JobRequestAanpassen : Window
     {
-
         private static DAO dao;
-
         private JobRequestAanpassenViewModel jobRequestAanpassenViewModel;
-
-
-
         public JobRequestAanpassen(int selectedId)
         {
             InitializeComponent();
             dao = DAO.Instance();
-
             showDivision(selectedId);
             getJobNatures();
             jobRequestAanpassenViewModel = new JobRequestAanpassenViewModel(this, selectedId);
             DataContext = jobRequestAanpassenViewModel;
-           
-
-
         }
-
         public void showDivision(int id)
         {
-
             comboBoxDivision.ItemsSource = dao.GetDepartment();
             comboBoxDivision.DisplayMemberPath = "Afkorting";
             comboBoxDivision.SelectedValuePath = "Afkorting";
             comboBoxDivision.SelectedValue = dao.GetRqRequestById(id).BarcoDivision;
-
         }
         public void getJobNatures()
         {
@@ -54,22 +41,15 @@ namespace Barco
             comboBoxJobNature.DisplayMemberPath = "Nature";
             comboBoxJobNature.SelectedValuePath = "Nature";
         }
-
         //private void btnSaveChanges_Click(object sender, RoutedEventArgs e)
         //{
-
         //}
-
         //private void btnRemovePart_Click(object sender, RoutedEventArgs e)
         //{
-
         //}
-
         //private void btnAddPart_Click(object sender, RoutedEventArgs e)
         //{
-
         //}
-
         ////bianca
         //private void btnCancelRequest_Click(object sender, RoutedEventArgs e)
         //{
@@ -77,7 +57,6 @@ namespace Barco
         //    Close();
         //    homeScreen.ShowDialog();
         //}
-
         /*
         public void ShowDialog(ref int IdJr)
         { 
@@ -109,6 +88,4 @@ namespace Barco
             }
            */
     }
-
 }
-

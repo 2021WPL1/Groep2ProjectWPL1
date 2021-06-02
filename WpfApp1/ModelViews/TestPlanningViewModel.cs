@@ -10,7 +10,6 @@ using Barco.Data;
 using Barco.Views;
 using Org.BouncyCastle.Operators;
 using Prism.Commands;
-
 namespace Barco.ModelViews
 {
     public class TestPlanningViewModel : ViewModelBase
@@ -40,9 +39,11 @@ namespace Barco.ModelViews
         public List<PlResources> Resources { get; set; }
 
         public ICommand AddResourceCommand { get; set; }
-
         public DateTime dateExpectedStart { get; set; }
         public DateTime dateExpectedEnd { get; set; }
+        public string DueDate { get; set; }
+        public string Omschrijving { get; set; }
+        public TestPlanningViewModel(TestPlanning screen, int selectedId, string testDiv)
 
 
 
@@ -58,7 +59,7 @@ namespace Barco.ModelViews
             dateExpectedStart = DateTime.Now;
             dateExpectedEnd = DateTime.Now;
             Resources = new List<PlResources>();
-            populateResources();
+            populateResources(testDiv);
             _selectedResouce = new PlResources();
 
         }
@@ -145,12 +146,11 @@ namespace Barco.ModelViews
             screen.Close();
             overview.ShowDialog();
         }
-
-        public void populateResources()
+        public void populateResources(string testDiv)
         {
-            Resources = dao.GetResource();
+            //Resources = dao.GetResource(); //alle resources
+            Resources = dao.GetResourcesForTestDiv(testDiv);//resources per testDivision
         }
-
         public void AddResourceButton()
         {
             if (!String.IsNullOrEmpty(_selectedResouce.Naam) )
@@ -159,7 +159,6 @@ namespace Barco.ModelViews
                 refresh();
             }
         }
-
         public void refresh()
         {
             lstResources.Clear();
@@ -182,11 +181,5 @@ namespace Barco.ModelViews
                 OnPropertyChanged();
             }
         }
-        
-        
-
     }
-
-
 }
-

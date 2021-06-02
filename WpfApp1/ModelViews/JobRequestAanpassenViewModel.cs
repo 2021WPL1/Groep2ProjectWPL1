@@ -19,7 +19,7 @@ namespace Barco
         public string txtPartGrossWeight { get; set; } //gross weight
         public string lblRequestDate { get; set; } //request date
         public string txtLinkTestplan { get; set; } // link to testplan
-        public string txtReqInitials { get; set; } // requester initials 
+        public string txtRequisterInitials { get; set; } // requester initials 
         public string txtEutProjectname { get; set; } //EUT Project name
         public string txtRemark { get; set; } // special remarks
         public string txtFunction { get; set; } //function
@@ -43,6 +43,7 @@ namespace Barco
         public List<RqRequestDetail> rqRequestDetails { get; set; }
         public string selectedDivision { get; set; }
         public string selectedJobNature { get; set; }
+      
 
         private List<Eut> euts;
         public bool cbEmcEut1 { get; set; }
@@ -107,9 +108,6 @@ namespace Barco
         {
             dao = DAO.Instance();
 
-            this.ListPartsnumbers = new List<string>();
-            this.ListPartGross = new List<string>();
-            this.ListPartNet = new List<string>();
 
             CancelCommand = new DelegateCommand(CancelButton);
             SaveChangesCommand = new DelegateCommand(SaveChanges);
@@ -147,31 +145,66 @@ namespace Barco
             public string NetWeight { get; set; }
             public string GrossWeight { get; set; }
         }
-
+        //aanpassingen saven
+        /// <summary>
+        /// jimmy
+        /// </summary>
         public void SaveChanges()
         {
-            Request.Requester = txtReqInitials;
-            //RqRequestDetail.Pvgresp = txtPvgRes;
+            //eerst alle parts uit de database halen zodat ze niet dubbel staan.
+            Request.EutPartnumbers = string.Empty;
+            Request.GrossWeight = string.Empty;
+            Request.NetWeight = string.Empty;
+            //voor iedere part de data adden in de database
+            foreach (var part in parts)
+            {
+                Request.EutPartnumbers += part.partNo + " ; ";
+                Request.GrossWeight += part.GrossWeight + " ; ";
+                Request.NetWeight += part.NetWeight + " ; ";
+
+            }
+            //Save andere data
+            Request.Requester = txtRequisterInitials;
+            ////RqRequestDetail.Pvgresp = txtPvgRes;
             Request.EutProjectname = txtEutProjectname;
             Request.ExpectedEnddate = dateExpectedEnd;
             RqOptionel.Remarks = txtRemark;
+            //Request.JobNature = SelectedJobNature;
             RqOptionel.Link = txtLinkTestplan;
             Request.BarcoDivision = selectedDivision;
-            Request.JobNature = SelectedJobNature;
-            dao.saveChanges();
+
+            try
+            {
+                //save de changes & geef een messagebox die aantoont dat de gegevens opgeslagen zijn.
+                dao.saveChanges();
+                MessageBox.Show("Changes saved.");
+                OverviewJobRequest overview = new OverviewJobRequest();
+                screen.Close();
+                overview.ShowDialog();
+
+            }
+            catch (Exception e)
+            {
+
+                MessageBox.Show(e.Message);
+            }
         }
         /// <summary>
         /// jimmy
         /// </summary>
         public void RemovePart()
         {
-
+            //als de selecte part bestaat dan verwijder je deze, als deze niet bestaat geef dan een foutmelding
             if (parts.Contains(selectedPart))
             {
                 parts.Remove(selectedPart);
-                lstParts.Remove(selectedPart);
+               
                 RefreshGUI();
-                OnPropertyChanged();
+
+            }
+            else
+            {
+                MessageBox.Show("Pleas select a part.");
             }
 
         }
@@ -181,6 +214,7 @@ namespace Barco
         /// </summary>
         public void AddPart()
         {
+            //als de textboxes leeg zijn geef dan een foutmelding, anders add de content aan parts
             try
             {
                 if (txtPartNumber == "" || txtPartNetWeight == "" || txtPartGrossWeight == "")
@@ -194,30 +228,29 @@ namespace Barco
                         NetWeight = txtPartNetWeight,
                         GrossWeight = txtPartGrossWeight,
                         partNo = txtPartNumber
+                        
 
                     });
 
-                    Request.EutPartnumbers += txtPartNumber + " ; ";
-                    Request.GrossWeight += txtPartNetWeight + " ; ";
-                    Request.NetWeight += txtPartGrossWeight + " ; ";
-
                     RefreshGUI();
-
-
                 }
             }
             catch (NullReferenceException)
             {
-                MessageBox.Show("please fill in all fields");
+                MessageBox.Show("please fill in all part fields");
             }
 
         }
-
+        /// <summary>
+        /// jimmy
+        /// </summary>
         public void LoadParts()
         {
+            //de string met partnumber, netweight & grossweight verdelen en adden in de parts voor zolang dat de string een ";" bevat.
             string PartGross = Request.GrossWeight.Replace(" ", String.Empty);
             string Partnets = Request.NetWeight.Replace(" ", String.Empty);
             string Partnumbers = Request.EutPartnumbers.Replace(" ", String.Empty);
+
             string getPartGross;
             string getPartnet;
             string getPartnumber;
@@ -233,9 +266,6 @@ namespace Barco
                 getPartnumber = Partnumbers.Substring(0, splitIndexNumbers);
 
 
-                ListPartGross.Add(getPartGross);
-                ListPartNet.Add(getPartnet);
-                ListPartsnumbers.Add(getPartnumber);
 
                 parts.Add(new Part()
                 {
@@ -274,6 +304,7 @@ namespace Barco
         /// </summary>
         private void fillEuts()
         {
+            //haalt een lijst van alle eut's in de database en kijk voor elke eut naar de naam en checkt corosponderende checkboxes aan en de dates worden ingevult op basis van eut Available Date.
             foreach (Eut e in euts)
             {
                 if (e.OmschrijvingEut.Equals("EMC - EUT 1"))
@@ -438,7 +469,7 @@ namespace Barco
         /// jimmy
         /// </summary>
         private void fillPvgResp()
-        {
+        {//voor iedere request in deltails kijken of de testdivisie matched en zo dan worden de pvg's ingevuld
             foreach (RqRequestDetail rq in rqRequestDetails)
             {
                 if (rq.Testdivisie.Equals("EMC"))
@@ -476,7 +507,9 @@ namespace Barco
                 OnPropertyChanged();
             }
         }
-
+        /// <summary>
+        /// jimmy
+        /// </summary>
         public string SelectedDivision
         {
             get { return selectedDivision; }
@@ -486,13 +519,15 @@ namespace Barco
                 OnPropertyChanged();
             }
         }
-
+        /// <summary>
+        /// jimmy
+        /// </summary>
         public string SelectedJobNature
         {
             get { return selectedJobNature; }
             set
             {
-                selectedDivision = value;
+                selectedJobNature = value;
                 OnPropertyChanged();
 
             }
@@ -501,21 +536,16 @@ namespace Barco
         /// jimmy
         /// </summary>
         private void RefreshGUI()
-        {
+        {//clear de lijst zodat ze geen 2x geadd worden, en add iedere part aan de lijst
             lstParts.Clear();
-            ListPartGross.Clear();
-            ListPartNet.Clear();
-            ListPartsnumbers.Clear();
             foreach (Part part in parts)
             {
                 lstParts.Add(part);
-                ListPartGross.Add(part.GrossWeight);
-                ListPartNet.Add(part.NetWeight);
-                ListPartsnumbers.Add(part.partNo);
             }
-            LoadParts();
-
         }
+        /// <summary>
+        /// jimmy
+        /// </summary>
         private void SetBatteries()
         {
             if (Request.Battery)
@@ -528,19 +558,27 @@ namespace Barco
             }
         }
 
-
+        /// <summary>
+        /// jimmy
+        /// </summary>
         private void FillData()
         {
+            //laad alle data in.
             selectedDivision = Request.BarcoDivision;
-
+            selectedJobNature = Request.JobNature;
+            txtRequisterInitials = Request.Requester;
+            txtEutProjectname = Request.EutProjectname;
+            dateExpectedEnd = Request.ExpectedEnddate;
+            txtRemark  = RqOptionel.Remarks;
+            txtLinkTestplan =  RqOptionel.Link;
             LoadParts();
             fillEuts();
             fillPvgResp();
             SetBatteries();
+            RefreshGUI();
         }
 
 
 
     }
 }
-

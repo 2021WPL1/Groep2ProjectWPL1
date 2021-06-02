@@ -13,27 +13,19 @@ using Barco.ModelViews;
 using Barco.ModelViews.Settings;
 using Barco.ModelViews.smtpConfig;
 using Microsoft.Win32;
-
-
-
-
 namespace Barco
 { //bianca
     public class JobRequestViewModel : ViewModelBase
     {
         public JobRequest screen;
-
         public RqRequest request = new RqRequest();
-
         //binding value
         public Part selectedPart { get; set; }
-
         // buttons : Add/Remove, Send/Cancel
         public ICommand CancelCommand { get; set; }
         public ICommand SendCommand { get; set; }
         public ICommand AddCommand { get; set; }
         public ICommand RemoveCommand { get; set; }
-
         public string txtPartNr { get; set; } // EUT Partnumber
         public string txtNetWeight { get; set; } //net weight
         public string txtGrossWeight { get; set; } //gross weight
@@ -45,35 +37,27 @@ namespace Barco
         public DateTime dateExpectedEnd { get; set; }
         public string selectedDivision { get; set; }
         public string SelectedJobNature { get; set; }
-
-
         // EUT foreseen availability date
         public DateTime DatePickerEUT1 { get; set; }
         public DateTime DatePickerEUT2 { get; set; }
         public DateTime DatePickerEUT3 { get; set; }
         public DateTime DatePickerEUT4 { get; set; }
         public DateTime DatePickerEUT5 { get; set; }
-
         private ObservableCollection<Part>
             lstParts = new ObservableCollection<Part>(); // for partnumber+ net/gross weight
-
         public ObservableCollection<Part> listParts
         {
             get { return lstParts; }
         }
-
         private ObservableCollection<string> _err_output { get; set; } // listview for errors
-
         //remove this line if working with DAO static class
         //private static Barco2021Context DAO = new Barco2021Context();
-
         private DAO dao;
         public JobRequestViewModel jobRequestViewModel;
         public RqOptionel optional = new RqOptionel();
         public List<Eut> eutList = new List<Eut>();
         public RqRequestDetail Detail = new RqRequestDetail();//to do delete 
         public List<Part> parts = new List<Part>();
-
         List<bool> emcBoxes = new List<bool>();
         List<bool> envBoxes = new List<bool>();
         List<bool> relBoxes = new List<bool>();
@@ -85,53 +69,42 @@ namespace Barco
         public bool cbEmcEut3 { get; set; }
         public bool cbEmcEut4 { get; set; }
         public bool cbEmcEut5 { get; set; }
-
         public bool cmEnvironmentalEut1 { get; set; }
         public bool cmEnvironmentalEut2 { get; set; }
         public bool cmEnvironmentalEut3 { get; set; }
         public bool cmEnvironmentalEut4 { get; set; }
         public bool cmEnvironmentalEut5 { get; set; }
-
         public bool cmGrnCompEut1 { get; set; }
         public bool cmGrnCompEut2 { get; set; }
         public bool cmGrnCompEut3 { get; set; }
         public bool cmGrnCompEut4 { get; set; }
         public bool cmGrnCompEut5 { get; set; }
-
         public bool cmProdSafetyEut1 { get; set; }
         public bool cmProdSafetyEut2 { get; set; }
         public bool cmProdSafetyEut3 { get; set; }
         public bool cmProdSafetyEut4 { get; set; }
         public bool cmProdSafetyEut5 { get; set; }
-
-
         public bool cmRelEut1 { get; set; }
         public bool cmRelEut2 { get; set; }
         public bool cmRelEut3 { get; set; }
         public bool cmRelEut4 { get; set; }
         public bool cmRelEut5 { get; set; }
-
-
         public bool cbEmc { get; set; }
         public bool cmEnvironmental { get; set; }
         public bool cmRel { get; set; }
         public bool cmProdSafety { get; set; }
         public bool cmGrnComp { get; set; }
-
         public ComboBox cmbDivision { get; set; }
         public ComboBox cmbJobNature { get; set; }
-
         //radio button
         public bool rbtnBatNo { get; set; }
         public bool rbtnBatYes { get; set; }
-
         public JobRequestViewModel(JobRequest screen)
         {
             CancelCommand = new DelegateCommand(CancelButton);
             SendCommand = new DelegateCommand(SendButton);
             AddCommand = new DelegateCommand(AddButton);
             RemoveCommand = new DelegateCommand(RemoveButton);
-
             dao = DAO.Instance();
             this.screen = screen;
             dateExpectedEnd = DateTime.Now;
@@ -140,42 +113,24 @@ namespace Barco
             DatePickerEUT3 = DateTime.Now;
             DatePickerEUT4 = DateTime.Now;
             DatePickerEUT5 = DateTime.Now;
-
             _err_output = new ObservableCollection<string>();
-
-
             txtFunction = GetValues("FUNCTION");
-
-
             txtReqInitials = GetInitialsFromReg();
-
-           
-
-
-
         }
         public string GetInitialsFromReg()
         {
             string fullName = GetValues("NAME");
             string FirstName = fullName.Split(" ")[0];
             string LastName = fullName.Split(" ")[1];
-
             return (FirstName.Substring(0, 2) + LastName.Substring(0, 1)).ToUpper();
-
         }
-
-
-
         static string GetValues(string Name)
         {
             string userRoot = "HKEY_CURRENT_USER";
             string subkey = "Barco2021";
             string keyName = userRoot + "\\" + subkey;
-
-
             return Microsoft.Win32.Registry.GetValue(keyName, Name, "default").ToString();
         }
-
         //working internally with the binding 
         public Part SelectedPart
         {
@@ -186,22 +141,16 @@ namespace Barco
                 OnPropertyChanged();
             }
         }
-
         public void CancelButton()
         {
             HomeScreen home = new HomeScreen();
             screen.Close();
             home.ShowDialog();
         }
-
-
-
         public void AddButton()
         {
             try
             {
-
-                
                 if (txtPartNr.Length == 0 || txtNetWeight.Length == 0 || txtGrossWeight.Length == 0)
                 {
                     MessageBox.Show("please fill in all values");
@@ -213,14 +162,10 @@ namespace Barco
                         NetWeight = txtNetWeight,
                         GrossWeight = txtGrossWeight,
                         partNo = txtPartNr
-
                     });
-
                     request.EutPartnumbers += txtPartNr + " ; ";
                     request.GrossWeight += txtNetWeight + " ; ";
                     request.NetWeight += txtGrossWeight + " ; ";
-
-                   
                     RefreshGUI();
                 }
             }
@@ -237,7 +182,6 @@ namespace Barco
                 lstParts.Add(part);
             }
         }
-
         public void RemoveButton()
         {
             if (parts.Contains(selectedPart))
@@ -248,12 +192,10 @@ namespace Barco
                 OnPropertyChanged();
             }
         }
-
         public void SendButton()
         {
             try
             {
-                
                 //create error sequence
                 CreateBoxLists();
                 List<string> errors = new List<string>();
@@ -261,11 +203,8 @@ namespace Barco
                 //declare var for object
                 string input_Abbreviation = txtReqInitials;
                 string input_ProjectName = txtEutProjectname;
-
                 bool input_Battery = false;
-
                 DateTime input_EndDate = DateTime.Now;
-
                 if (dateExpectedEnd.Date != null )
                 {
                     if (dateExpectedEnd.Date < DateTime.Today)
@@ -276,19 +215,15 @@ namespace Barco
                     {
                         input_EndDate = dateExpectedEnd.Date;
                     }
-                    
                 }
                 else
                 {
                     errors.Add("please specify a end date");
                 }
-
                 string specialRemarks = txtRemark;
-
                 string netWeights = "";
                 string grossWeights = "";
                 string partNums = "";
-
                 //parts section
                 if (parts.Count > 0)
                 {
@@ -303,10 +238,7 @@ namespace Barco
                 {
                     errors.Add("Please add parts to test");
                 }
-
-
                 //check if radio buttons are checked
-
                 if ((bool)rbtnBatNo==true)
                 {
                     input_Battery = false;
@@ -319,25 +251,20 @@ namespace Barco
                 {
                     input_Battery = true;
                 }
-
                 //check if requester exists
-
                 if (dao.IfPersonExists(input_Abbreviation))
                 {
                     errors.Add("the requester initials do not match any employee");
                 }
-
                 //check if the job nature is selected
                 if (SelectedJobNature == null)
                 {
                     errors.Add("select a jobnature");
                 }
-
                 if (selectedDivision == null)
                 {
                     errors.Add("select a division");
                 }
-
                 //checkbox area
                 if (!(bool)cbEmc && !(bool)cmEnvironmental && !(bool)cmRel &&
                     !(bool)cmProdSafety && !(bool)cmGrnComp)
@@ -349,27 +276,21 @@ namespace Barco
                     List<string> validation = ValidateCheckboxes();
                     errors.AddRange(validation);
                 }
-
                 //check if the dates are set
                 List<string> valiDate = CheckDates();
                 errors.AddRange(valiDate);
-
                 //check if other fields are empty
-
                 if (txtEutProjectname==null)
                 {
                     errors.Add("please fill in a project name");
                 }
-
                 //error handling
                 if (errors.Count > 0)
                 {
-                    
                     foreach (string s in errors)
                     {
                         _err_output.Add(s);
                     }
-
                 }
                 else
                 {
@@ -386,29 +307,21 @@ namespace Barco
                     request.EutPartnumbers = partNums;
                     request.HydraProjectNr = "0";
                     request.InternRequest = CheckInternal(input_Abbreviation);//naam moet in lijst zitten om intern rq te maken
-
                     if (CheckInternal(input_Abbreviation))
                     {
                         dao.ApproveRqRequest(request, CreateJRNumberForInternal());
-                        
                     }
-
                     //optional object
                     optional.Link = txtLinkTestplan;
                     optional.IdRequest = request.IdRequest;
                     optional.Remarks = specialRemarks;
-
                     //eut objects
                     eutList = CreateEutList();
-
                     //detail object
                     //Detail.Testdivisie = "eco";  
                     List<RqRequestDetail>detailList = GetRqRequestDetails();
-
-                    
                     dao.AddRequest(request, detailList, optional, eutList);
                     MessageBox.Show("Data has been inserted");
-                    
                 }
             }
             catch (FormatException ex)
@@ -417,8 +330,6 @@ namespace Barco
                 //MessageBox.Show("Please fill in all fields"):
             }
         }
-        
-
         // to show in the listview
         public class Part
         {
@@ -426,46 +337,38 @@ namespace Barco
             public string NetWeight { get; set; }
             public string GrossWeight { get; set; }
         }
-
         public void CreateBoxLists()
         {
-
             emcBoxes.Clear();
             emcBoxes.Add(cbEmcEut1);
             emcBoxes.Add(cbEmcEut2);
             emcBoxes.Add(cbEmcEut3);
             emcBoxes.Add(cbEmcEut4);
             emcBoxes.Add(cbEmcEut5);
-
             envBoxes.Clear();
             envBoxes.Add(cmEnvironmentalEut1);
             envBoxes.Add(cmEnvironmentalEut2);
             envBoxes.Add(cmEnvironmentalEut3);
             envBoxes.Add(cmEnvironmentalEut4);
             envBoxes.Add(cmEnvironmentalEut5);
-
             relBoxes.Clear();
             relBoxes.Add(cmRelEut1);
             relBoxes.Add(cmRelEut2);
             relBoxes.Add(cmRelEut3);
             relBoxes.Add(cmRelEut4);
             relBoxes.Add(cmRelEut5);
-
             prodBoxes.Clear();
             prodBoxes.Add(cmProdSafetyEut1);
             prodBoxes.Add(cmProdSafetyEut2);
             prodBoxes.Add(cmProdSafetyEut3);
             prodBoxes.Add(cmProdSafetyEut4);
             prodBoxes.Add(cmProdSafetyEut5);
-
             greenBoxes.Clear();
             greenBoxes.Add(cmGrnCompEut1);
             greenBoxes.Add(cmGrnCompEut2);
             greenBoxes.Add(cmGrnCompEut3);
             greenBoxes.Add(cmGrnCompEut4);
             greenBoxes.Add(cmGrnCompEut5);
-
-
             selectionBoxes.Clear();
             selectionBoxes.Add(cbEmc);
             selectionBoxes.Add(cmEnvironmental);
@@ -473,7 +376,6 @@ namespace Barco
             selectionBoxes.Add(cmProdSafety);
             selectionBoxes.Add(cmGrnComp);
         }
-
         private void EnableBoxes(bool selected)
         {
             List<bool> targets = new List<bool>();
@@ -481,8 +383,6 @@ namespace Barco
             {
                 targets = emcBoxes;
             }
-            
-            
             else if (cmEnvironmental)
             {
                 targets = envBoxes;
@@ -499,7 +399,6 @@ namespace Barco
             {
                 targets = greenBoxes;
             }
-
             //foreach (bool b in targets)
             //{
             //    b = true;
@@ -519,13 +418,11 @@ namespace Barco
                         counter++;
                     }
                 }
-
                 if (counter < 1)
                 {
                     outcome.Add("please check emc data");
                 }
             }
-
             if ((bool)cmEnvironmental)
             {
                 int counter = 0;
@@ -536,13 +433,11 @@ namespace Barco
                         counter++;
                     }
                 }
-
                 if (counter < 1)
                 {
                     outcome.Add("please check environmental data");
                 }
             }
-
             if ((bool)cmRel)
             {
                 int counter = 0;
@@ -553,13 +448,11 @@ namespace Barco
                         counter++;
                     }
                 }
-
                 if (counter < 1)
                 {
                     outcome.Add("please check reliability data");
                 }
             }
-
             if ((bool)cmProdSafety)
             {
                 int counter = 0;
@@ -570,13 +463,11 @@ namespace Barco
                         counter++;
                     }
                 }
-
                 if (counter < 1)
                 {
                     outcome.Add("please check product safety data");
                 }
             }
-
             if ((bool)cmGrnComp)
             {
                 int counter = 0;
@@ -587,16 +478,13 @@ namespace Barco
                         counter++;
                     }
                 }
-
                 if (counter < 1)
                 {
                     outcome.Add("please check green compliance data");
                 }
             }
-
             return outcome;
         }
-
         private List<string> CheckDates()
         {
             List<string> result = new List<string>();
@@ -607,9 +495,7 @@ namespace Barco
                 {
                     result.Add("please provide a  valid date for EUT 1");
                 }
-                
             }
-
             if ((bool)cbEmcEut2 || (bool)cmEnvironmentalEut2 || (bool)cmGrnCompEut2 || (bool)cmProdSafetyEut2 ||
                 (bool)cmGrnCompEut2)
             {
@@ -618,7 +504,6 @@ namespace Barco
                     result.Add("please provide a valid date for EUT 2");
                 }
             }
-
             if ((bool)cbEmcEut3 || (bool)cmEnvironmentalEut3 || (bool)cmGrnCompEut3 || (bool)cmProdSafetyEut3 ||
                 (bool)cmGrnCompEut3)
             {
@@ -627,7 +512,6 @@ namespace Barco
                     result.Add("please provide a valid date for EUT 3");
                 }
             }
-
             if ((bool)cbEmcEut4 || (bool)cmEnvironmentalEut4 || (bool)cmGrnCompEut4 || (bool)cmProdSafetyEut4 ||
                 (bool)cmGrnCompEut4)
             {
@@ -636,7 +520,6 @@ namespace Barco
                     result.Add("please provide a valid date for EUT 4");
                 }
             }
-
             if ((bool)cbEmcEut5 || (bool)cmEnvironmentalEut5 || (bool)cmGrnCompEut5 || (bool)cmProdSafetyEut5 ||
                 (bool)cmGrnCompEut5)
             {
@@ -647,212 +530,6 @@ namespace Barco
             }
             return result;
         }
-
-        //public string SelectedDivision
-        //{
-        //    get { return selectedDivision; }
-        //    set
-        //    {
-        //        selectedDivision = value;
-        //        OnPropertyChanged();
-        //    }
-        //}
-
-        //private List<Eut> getEutData()
-        //{
-        //    List<Eut> result = new List<Eut>();
-
-        //    //get first eut and date
-        //    if (DatePickerEUT1.Date != DateTime.Now)
-        //    {
-        //        DateTime date = (DateTime) DatePickerEUT1.Date;
-        //        string description = "";
-        //        if ((bool)cbEmcEut1)
-        //        {
-        //            description = "EMC - EUT 1";
-        //            result.Add(createEut(description, date));
-        //        }
-
-        //        if ((bool)cmEnvironmentalEut1)
-        //        {
-        //            description = "Environmental - EUT 1";
-        //            result.Add(createEut(description, date));
-        //        }
-
-        //        if ((bool)cmGrnCompEut1)
-        //        {
-        //            description = "Green Compliance - EUT 1";
-        //            result.Add(createEut(description, date));
-        //        }
-
-        //        if ((bool)cmRelEut1)
-        //        {
-        //            description = "Reliability - EUT 1";
-        //            result.Add(createEut(description, date));
-        //        }
-
-        //        if ((bool)cmProdSafetyEut1)
-        //        {
-        //            description = "Product Safety - EUT 1";
-        //            result.Add(createEut(description, date));
-        //        }
-
-        //    }
-
-        //    //get second eut and date
-        //    if (DatePickerEUT2.Date != DateTime.Now)
-        //    {
-        //        DateTime date = (DateTime) DatePickerEUT2.Date;
-        //        string description = "";
-        //        if ((bool)cbEmcEut2)
-        //        {
-        //            description = "EMC - EUT 2";
-        //            result.Add(createEut(description, date));
-        //        }
-
-        //        if ((bool)cmEnvironmentalEut2)
-        //        {
-        //            description = "Environmental - EUT 2";
-        //            result.Add(createEut(description, date));
-        //        }
-
-        //        if ((bool)cmGrnCompEut2)
-        //        {
-        //            description = "Green Compliance - EUT 2";
-        //            result.Add(createEut(description, date));
-        //        }
-
-        //        if ((bool)cmRelEut2)
-        //        {
-        //            description = "Reliability - EUT 2";
-        //            result.Add(createEut(description, date));
-        //        }
-
-        //        if ((bool)cmProdSafetyEut2)
-        //        {
-        //            description = "Product Safety - EUT 2";
-        //            result.Add(createEut(description, date));
-        //        }
-
-        //    }
-
-        //    //get third eut and date
-        //    if (DatePickerEUT3.Date != DateTime.Now)
-        //    {
-        //        DateTime date = (DateTime) DatePickerEUT3.Date;
-        //        string description = "";
-        //        if ((bool)cbEmcEut3)
-        //        {
-        //            description = "EMC - EUT 3";
-        //            result.Add(createEut(description, date));
-        //        }
-
-        //        if ((bool)cmEnvironmentalEut3)
-        //        {
-        //            description = "Environmental - EUT 3";
-        //            result.Add(createEut(description, date));
-        //        }
-
-        //        if ((bool)cmGrnCompEut3)
-        //        {
-        //            description = "Green Compliance - EUT 3";
-        //            result.Add(createEut(description, date));
-        //        }
-
-        //        if ((bool)cmRelEut3)
-        //        {
-        //            description = "Reliability - EUT 3";
-        //            result.Add(createEut(description, date));
-        //        }
-
-        //        if ((bool)cmProdSafetyEut3)
-        //        {
-        //            description = "Product Safety - EUT 3";
-        //            result.Add(createEut(description, date));
-        //        }
-
-
-        //    }
-
-        //    //get fourth eut and date
-        //    if (DatePickerEUT4.Date != DateTime.Now)
-        //    {
-        //        DateTime date = (DateTime) DatePickerEUT4.Date;
-        //        string description = "";
-        //        if ((bool)cbEmcEut4)
-        //        {
-        //            description = "EMC - EUT 4";
-        //            result.Add(createEut(description, date));
-        //        }
-
-        //        if ((bool)cmEnvironmentalEut4)
-        //        {
-        //            description = "Environmental - EUT 4";
-        //            result.Add(createEut(description, date));
-        //        }
-
-        //        if ((bool)cmGrnCompEut4)
-        //        {
-        //            description = "Green Compliance - EUT 4";
-        //            result.Add(createEut(description, date));
-        //        }
-
-        //        if ((bool)cmRelEut4)
-        //        {
-        //            description = "Reliability - EUT 4";
-        //            result.Add(createEut(description, date));
-        //        }
-
-        //        if ((bool)cmProdSafetyEut4)
-        //        {
-        //            description = "Product Safety - EUT 4";
-        //            result.Add(createEut(description, date));
-        //        }
-        //    }
-
-        //    //get fifth eut and date
-        //    if (DatePickerEUT5.Date != DateTime.Now)
-        //    {
-        //        DateTime date = (DateTime) DatePickerEUT5.Date;
-        //        string description = "";
-        //        if ((bool)cbEmcEut5)
-        //        {
-        //            description = "EMC - EUT 5";
-        //            result.Add(createEut(description, date));
-        //        }
-
-        //        if ((bool)cmEnvironmentalEut5)
-        //        {
-
-        //            description = "Environmental - EUT 5";
-        //            result.Add(createEut(description, date));
-        //        }
-
-        //        if ((bool) cmGrnCompEut5)
-        //        {
-        //            description = "Green Compliance - EUT 5";
-        //            result.Add(createEut(description, date));
-        //        }
-
-        //        if ((bool)cmRelEut5)
-        //        {
-        //            description = "Reliability - EUT 5";
-        //            result.Add(createEut(description, date));
-        //        }
-
-        //        if ((bool)cmProdSafetyEut5)
-        //        {
-        //            description = "Product Safety - EUT 5";
-        //            result.Add(createEut(description, date));
-        //        }
-
-
-        //    }
-
-        //    return result;
-        //}
-
-
         //thibaut
         private Eut createEut(int detailId, string description, DateTime date)
         {
@@ -863,13 +540,11 @@ namespace Barco
                 OmschrijvingEut = description
             };
         }
-
         public ObservableCollection<string> err_output
         {
             get { return _err_output; }
             set { _err_output = value; }
         }
-
         //Bianca - thibaut
         //check if the person is an internal of external based on the initials
         //requester in DB table person --> internal ATM
@@ -880,12 +555,9 @@ namespace Barco
             {
                 list.Add(p.Afkorting);
             }
-            //list.Add("THD");//testen of code werkt
-
+            //list.Add("THD");//testen of code werkt 
             return list.Contains(Name);
-            
         }
-
         //thibaut
         private List<Eut> CreateEutList()
         {
@@ -893,7 +565,6 @@ namespace Barco
             List<RqRequestDetail> details = GetRqRequestDetails();
             DateTime date;
             string description = "";
-
             foreach (RqRequestDetail d in details)
             {
                 if ((bool)cbEmcEut1 && d.Testdivisie.Equals("EMC"))
@@ -1047,15 +718,12 @@ namespace Barco
                     eutList.Add(createEut(d.IdRequest, description, date));
                 }
             }
-
             return eutList;
         }
-
         //thibaut
         private List<RqRequestDetail> GetRqRequestDetails()
         {
             List<RqRequestDetail> requestDetails = new List<RqRequestDetail>();
-
             for(int i = 0; i< selectionBoxes.Count; i++)
             {
                 if (selectionBoxes[i])
@@ -1083,19 +751,13 @@ namespace Barco
                         rqRequest.Testdivisie = "ECO";
                     }
                     requestDetails.Add(rqRequest);
-
                 }
             }
-
             return requestDetails;
-
         }
-
-       
         private string CreateJRNumberForInternal()
         {
             string result = dao.GetJobNumber(true);
-
             if (result != null && result != "")
             {
                 int value = Convert.ToInt32( result.Substring(2));
@@ -1105,21 +767,13 @@ namespace Barco
                 {
                     result = result.Insert(2, "0");
                 }
-               
             }
             else//bij nieuwe DB wordt gereset
             {
                 result = "IN0001";
             }
-           
-
             return result;
         }
-
-      
-
-
-      
     }
 }
   

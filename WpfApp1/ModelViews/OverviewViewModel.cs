@@ -9,40 +9,26 @@ using System.Windows;
 using System.Windows.Input;
 using Barco.ModelViews.Settings;
 using Barco.ModelViews.smtpConfig;
-
-
 namespace Barco
 {//bianca
     public class OverviewViewModel : ViewModelBase
     {
-
         private static AppSettingsService<AppSettings> _appSettingsService = AppSettingsService<AppSettings>.Instance;
-
-
-
         private static SMTPMailCommunication smtpMailCommunication { get; set; }
-
         public bool mailScheduled = false;
-
         private OverviewJobRequest overview;
         public ICommand CancelCommand { get; set; }
         public ICommand ApproveCommand { get; set; }
         public ICommand OpenDetailsCommand { get; set; }
         public ICommand DeleteRequestCommand { get; set; }
-
         public ICommand EditRequestCommand { get; set; }
-
         public ObservableCollection<RqRequest> RqRequests { get; set; }
         private DAO dao;
         private RqRequest _selectedRequest;
-
-
         public OverviewViewModel(OverviewJobRequest overview)
         {
             dao = DAO.Instance();
-
             this.RqRequests = new ObservableCollection<RqRequest>();
-
             CancelCommand = new DelegateCommand(CancelButton);
             ApproveCommand = new DelegateCommand(Approve);
             OpenDetailsCommand = new DelegateCommand(OpenDetails);
@@ -50,7 +36,7 @@ namespace Barco
             EditRequestCommand = new DelegateCommand(EditRequest);
             Load();
             this.overview = overview;
-            CountJobRequestsToday();
+           // CountJobRequestsToday();
             var result = _appSettingsService.GetConfigurationSection<SMPTClientConfig>("SMPTClientConfig");
             smtpMailCommunication = new SMTPMailCommunication(
                 result.QueryResult.Username,
@@ -69,19 +55,17 @@ namespace Barco
             }
         }
         //bianca
-      
         public void CancelButton()
         {
-            //SendMailWithSMTPRelay(); // to test mail function
-            HomeScreen home = new HomeScreen();
-            overview.Close();
-            home.ShowDialog();
+               HomeScreen home = new HomeScreen();
+               overview.Close();
+               home.ShowDialog();
+
         }
         //jimmy - thibaut jrnumber toewijzen
         //Verranderd de Jr status van het geselecteerde request
         public void Approve()
         {
-
             if (_selectedRequest != null)
             {
                 if(_selectedRequest.JrNumber == null && !(bool)_selectedRequest.InternRequest )
@@ -93,15 +77,11 @@ namespace Barco
                 {
                     MessageBox.Show("The request was already approved", "Approved", MessageBoxButton.OK);
                 }
-                
             }
             else
             {
-
                 MessageBox.Show("Select a JobRequest");
-                
             }
-
         }
         //jimmy
         //opent de Details van de geselecteerde request en geeft het geselecteerde id mee
@@ -113,16 +93,11 @@ namespace Barco
                 JobRequestDetail jobRequestDetail = new JobRequestDetail(SelectedId);
                 overview.Close();
                 jobRequestDetail.ShowDialog();
-
-
             }
             else
             {
                 MessageBox.Show("Select a JobRequest");
             }
-            
-
-
         }
         //jimmy
         //verwijderd de geselecteerd request
@@ -132,35 +107,27 @@ namespace Barco
             {
                 dao.DeleteJobRequest(_selectedRequest.IdRequest);
                 Load();
-
             }
             else
             {
                 MessageBox.Show("Select a JobRequest");
-
             }
-            
         }
         //jimmy
         //opent de request aanpassen window en geeft de geselecteerde id mee
         public void EditRequest()
         {
-
             if (_selectedRequest != null)
             {
                 int SelectedId = _selectedRequest.IdRequest;
-
                 JobRequestAanpassen jobRequestAanpassen = new JobRequestAanpassen(SelectedId);
                 overview.Close();
                 jobRequestAanpassen.ShowDialog();
-                
             }
             else
             {
                 MessageBox.Show("Select a JobRequest");
-
             }
-            
         }
         //jimmy
         //geeft de geselecteerde request terug
@@ -173,7 +140,6 @@ namespace Barco
                 OnPropertyChanged();
             }
         }
-
         //bianca- method to count the request that were sent today 
         //thibaut
         //laurent - schedule the mailing task
@@ -181,9 +147,7 @@ namespace Barco
        {
            var datenow = DateTime.Today;
            var count = 0;
-
             var rqRequests = dao.GetAllRqRequests();
-
             foreach (var rqRequest in rqRequests)
             {
                 TimeSpan span = (TimeSpan) (datenow - rqRequest.RequestDate);
@@ -195,17 +159,13 @@ namespace Barco
             //scheduleMail(count);
             return count;
        }
-
        //bianca- method to send an email to the responsible once a day 
        public void SendMailWithSMTPRelay()
        {
            smtpMailCommunication.CreateMail(CountJobRequestsToday().ToString());
            var toAddress = _appSettingsService.GetConfigurationSection<EmailAdresses>("EmailAdresses");
            MessageBox.Show(toAddress.QueryResult.Address1);
-
-
        }
-       
        public void scheduleMail(int count)
        {
            DateTime datenow = DateTime.Now;
@@ -213,10 +173,8 @@ namespace Barco
            if (datenow >= date)
            {
                date = new DateTime(date.Year, date.Month, (date.Day + 1), date.Hour, date.Minute, date.Second);
-               
            }
            TimeSpan span = date - datenow;
-
            if (!mailScheduled)
            {
                mailScheduled = true;
@@ -226,11 +184,9 @@ namespace Barco
                });
            }
        }
-
         private string CreateJRNumberForExternal()
         {
             string result = dao.GetJobNumber(false);
-
             if (result != null && result != "")
             {
                 int value = Convert.ToInt32(result.Substring(2));
@@ -245,8 +201,6 @@ namespace Barco
             {
                 result = "EX0001";
             }
-
-
             return result;
         }
     }

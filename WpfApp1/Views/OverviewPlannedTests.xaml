@@ -7,13 +7,18 @@
         mc:Ignorable="d"
         Title="OverviewPlannedTests" Height="450" Width="800">
     <Grid>
-        <ListView x:Name="listOverviewTests" 
-  Margin="34,140,0,25" HorizontalAlignment="Left" Width="550">
-
+        <ListView x:Name="listOverview" 
+  Margin="34,140,0,25" HorizontalAlignment="Left" Width="516">
             <ListView.View  >
                 <GridView>
                     <GridViewColumn  Header="JrNumber" 
                         Width="100" />
+                    <GridViewColumn Header="Division" 
+                        Width="100"  />
+                    <GridViewColumn Header="Project name" 
+                        Width="150"/>
+                    <GridViewColumn Header="Date" 
+                        Width="150" />
 
                     <GridViewColumn Header="Hydra project name" 
                         Width="150"  />

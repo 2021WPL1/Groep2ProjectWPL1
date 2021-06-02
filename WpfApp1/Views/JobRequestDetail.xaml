@@ -14,7 +14,6 @@
         <TextBlock HorizontalAlignment="Left" Margin="176,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Division"/></TextBlock>
         <TextBlock HorizontalAlignment="Left" Margin="306,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Job Nature"/></TextBlock>
         <ListBox x:Name="ListBoxPartNumber" ItemsSource="{Binding ListPartsnumbers}"  Margin="483,63,224,306" RenderTransformOrigin="0.5,0.5">
-
         </ListBox>
         <TextBlock HorizontalAlignment="Left" Margin="483,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="18"><Run Language="nl-be" Text="Eut partnumber"/></TextBlock>
         <ListBox x:Name="ListBoxPartNetWeight" ItemsSource="{Binding ListPartNet}" Margin="575,63,133,306" RenderTransformOrigin="0.5,0.5">
@@ -110,6 +109,5 @@
         <TextBox x:Name="txtPvgRes_Copy1" Text="{Binding pvgRel, Mode=OneWay}" HorizontalAlignment="Left" Margin="438,285,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="19" IsReadOnly="True"/>
         <TextBox x:Name="txtPvgRes_Copy2" Text="{Binding pvgSaf, Mode=OneWay}" HorizontalAlignment="Left" Margin="438,309,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="19" IsReadOnly="True"/>
         <TextBox x:Name="txtPvgRes_Copy3" Text="{Binding pvgEco, Mode=OneWay}" HorizontalAlignment="Left" Margin="438,331,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="19" IsReadOnly="True"/>
-
     </Grid>
 </Window>

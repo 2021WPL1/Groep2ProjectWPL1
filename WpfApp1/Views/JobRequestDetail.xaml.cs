@@ -10,28 +10,20 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
 namespace Barco
 {
     /// <summary>
     /// Interaction logic for JobRequestDetail.xaml
     /// </summary>
     ///         private DAO dao;
-
     public partial class JobRequestDetail : Window
     {
         private JobRequestDetailViewModel DetailsviewModel;
-
         public JobRequestDetail(int selectedId) 
         {
             InitializeComponent();
             DetailsviewModel = new JobRequestDetailViewModel(this, selectedId);
             DataContext = DetailsviewModel;
-
-
         }
-
- 
-
     }
 }
