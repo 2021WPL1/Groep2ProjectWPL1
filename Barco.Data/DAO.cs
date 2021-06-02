@@ -266,8 +266,9 @@ namespace Barco.Data
             context.SaveChanges();
             return optional;
         }
-        //thibaut
-        public void AddEut(List<Eut> eutlist, int requestId)
+
+            //thibaut
+            public void AddEut(List<Eut> eutlist, int requestId)
         {
             List<RqRequestDetail> list = GetRqDetailsWithRequestId(requestId);
             foreach (RqRequestDetail d in list)
@@ -278,6 +279,7 @@ namespace Barco.Data
                     {
                         e.IdRqDetail = d.IdRqDetail;
                         context.Eut.Add(e);
+                        
                     }
                 }
                 context.SaveChanges();
