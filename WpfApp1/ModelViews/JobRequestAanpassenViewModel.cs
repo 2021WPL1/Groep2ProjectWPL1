@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using Barco.Data;
+using System.Windows.Input;
 
 namespace Barco
 {//jimmy
@@ -176,12 +177,15 @@ namespace Barco
             //Save andere data
             Request.Requester = txtRequisterInitials;
             ////RqRequestDetail.Pvgresp = txtPvgRes;
+            RqOptionel.Remarks = txtRemark;
+            RqOptionel.Link = txtLinkTestplan;
             Request.EutProjectname = txtEutProjectname;
             Request.ExpectedEnddate = dateExpectedEnd;
             RqOptionel.Remarks = txtRemark;
             //Request.JobNature = SelectedJobNature;
             RqOptionel.Link = txtLinkTestplan;
             Request.BarcoDivision = selectedDivision;
+
 
             try
             {
