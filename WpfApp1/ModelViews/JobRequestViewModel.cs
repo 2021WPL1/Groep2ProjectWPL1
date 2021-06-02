@@ -151,7 +151,7 @@ namespace Barco
         /// </summary>
         public void CancelButton()
         {
-            if (MessageBox.Show("Are you sure you want to leave this screen?", "Leave", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Are you sure you want to leave this screen without saving?", "Leave", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
               
                 HomeScreen home = new HomeScreen();

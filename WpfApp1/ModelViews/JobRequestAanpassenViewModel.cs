@@ -142,9 +142,13 @@ namespace Barco
         // Sluit aanpassen en opent overview
         public void CancelButton()
         {
-            OverviewJobRequest overview = new OverviewJobRequest();
-            screen.Close();
-            overview.ShowDialog();
+            if (MessageBox.Show("Are you sure you want to leave this screen without saving?", "Leave", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                OverviewJobRequest overview = new OverviewJobRequest();
+                screen.Close();
+                overview.ShowDialog();
+
+            }
         }
         /// <summary>
         /// jimmy
