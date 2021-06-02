@@ -61,9 +61,13 @@ namespace Barco.ModelViews
         /// </summary>
         public void CancelButton()
         {
-            OverviewApprovedRequests overview = new OverviewApprovedRequests();
-            screen.Close();
-            overview.ShowDialog();
+            if (MessageBox.Show("Are you sure you want to leave this screen?", "Leave", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                
+                OverviewApprovedRequests overview = new OverviewApprovedRequests();
+                screen.Close();
+                overview.ShowDialog();
+            }
         }
         /// <summary>
         /// Thibaut

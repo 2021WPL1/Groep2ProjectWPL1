@@ -207,9 +207,12 @@ namespace Barco
             //als de selecte part bestaat dan verwijder je deze, als deze niet bestaat geef dan een foutmelding
             if (parts.Contains(selectedPart))
             {
-                parts.Remove(selectedPart);
+                if (MessageBox.Show("Are you sure you want to delete part " + selectedPart.partNo + "?", "Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    parts.Remove(selectedPart);
+                    RefreshGUI();
+                }
                
-                RefreshGUI();
 
             }
             else

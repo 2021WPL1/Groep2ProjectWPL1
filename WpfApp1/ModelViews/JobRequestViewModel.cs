@@ -151,9 +151,13 @@ namespace Barco
         /// </summary>
         public void CancelButton()
         {
-            HomeScreen home = new HomeScreen();
-            screen.Close();
-            home.ShowDialog();
+            if (MessageBox.Show("Are you sure you want to leave this screen?", "Leave", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+              
+                HomeScreen home = new HomeScreen();
+                screen.Close();
+                home.ShowDialog();
+            }
         }
         //Thiabaut
         public void AddButton()
@@ -201,10 +205,14 @@ namespace Barco
         {
             if (parts.Contains(selectedPart))
             {
-                parts.Remove(selectedPart);
-                lstParts.Remove(selectedPart);
-                RefreshGUI();
-                OnPropertyChanged();
+                if (MessageBox.Show("Are you sure you want to delete part " + selectedPart.partNo + "?", "Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    parts.Remove(selectedPart);
+                    lstParts.Remove(selectedPart);
+                    RefreshGUI();
+                    OnPropertyChanged();
+                }
+                
             }
         }
         /// <summary>
