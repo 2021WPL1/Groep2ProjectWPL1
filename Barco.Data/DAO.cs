@@ -150,7 +150,25 @@ namespace Barco.Data
         {
             rqRequest.JrStatus = "Approved";
             rqRequest.JrNumber = jrNumber;
-            saveChanges();
+            TimeSpan s = new TimeSpan(5, 0, 0, 0, 0);
+            DateTime DueDate = new DateTime();
+            DueDate= (DateTime)rqRequest.RequestDate + s;
+
+            List<RqRequestDetail> DetailList = this.GetRqDetailsWithRequestId(rqRequest.IdRequest);
+            foreach (RqRequestDetail detail in DetailList)
+            {
+                PlPlanning planning = new PlPlanning()
+                {
+                    IdRequest = rqRequest.IdRequest,
+                    JrNr = rqRequest.JrNumber,
+                    Requestdate = rqRequest.RequestDate,
+                    DueDate = DueDate,
+                    TestDiv = detail.Testdivisie
+                };
+                context.PlPlanning.Add(planning);
+                saveChanges();
+            }
+            
         }
         //bianca & jimmy
         public List<RqBarcoDivision> GetDepartment()
@@ -365,6 +383,7 @@ namespace Barco.Data
 
                 ComboObject o = new ComboObject()
                 {
+                    EutNr = eut.OmschrijvingEut.Substring(5, 6),
                     Eut = eut,
                     RqRequestDetail = detail,
                     Request = GetRequest(detail.IdRequest),
