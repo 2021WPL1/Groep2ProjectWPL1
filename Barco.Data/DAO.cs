@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 namespace Barco.Data
 {
@@ -332,20 +333,19 @@ namespace Barco.Data
         public List<ComboObject> combinedObjects()
         {
             List<ComboObject> returnValue = new List<ComboObject>();
-            var listRqRequests = GetAllApprovedRqRequests();
-            foreach (RqRequest request in listRqRequests)
+            List<Eut> approvedEut = getApprovedEuts();
+
+            foreach (Eut eut in approvedEut)
             {
-                ComboObject o = new ComboObject
+                RqRequestDetail detail = GetRqRequestDetailById(eut.IdRqDetail);
+
+                ComboObject o = new ComboObject()
                 {
-                    Request = request,
-                    RqOptionel = GetOptionel(request.IdRequest),
-                    RqRequestDetail = GetRqDetailsWithRequestId(request.IdRequest)
+                    Eut = eut,
+                    RqRequestDetail = detail,
+                    Request = GetRequest(detail.IdRequest),
+                    RqOptionel = GetOptionel(detail.IdRequest)
                 };
-                foreach (var detail in GetRqDetailsWithRequestId(request.IdRequest))
-                {
-                    o.PvgResp += detail.Pvgresp;
-                    o.TestDivisie += detail.Testdivisie + "; ";
-                }
                 returnValue.Add(o);
             }
             return returnValue;
@@ -354,6 +354,47 @@ namespace Barco.Data
         public List<PlResources> GetResource()
         {
             return context.PlResources.ToList();
+        }
+
+        public List<Eut> getApprovedEuts()
+        {
+            var listRqRequests = GetAllApprovedRqRequests();
+            
+            List<RqRequestDetail> approvedRequestDetails = new List<RqRequestDetail>();
+            List<int> approvedRequestIds = new List<int>();
+            var eutList = context.Eut.ToList();
+            List<Eut> approvedEut = new List<Eut>();
+            
+            foreach (RqRequest r in listRqRequests)
+            {
+                approvedRequestIds.Add(r.IdRequest);
+            }
+            
+            foreach (RqRequestDetail r in context.RqRequestDetail.ToList())
+            {
+                if (approvedRequestIds.Contains(r.IdRequest))
+                {
+                    approvedRequestDetails.Add(r);
+                }
+                
+            }
+            
+            foreach (Eut e in eutList)
+            {
+                if (approvedRequestDetails.Contains(GetRqRequestDetailById(e.IdRqDetail)))
+                {
+                    approvedEut.Add(e);
+                }
+            }
+
+            return approvedEut;
+        }
+
+        public RqRequest getRequestByDetailId(int detailId)
+        {
+            int requestId = context.RqRequestDetail.FirstOrDefault(a => a.IdRqDetail == detailId).IdRequest;
+            RqRequest returnValue = context.RqRequest.FirstOrDefault(a => a.IdRequest == requestId);
+            return returnValue;
         }
     }
 }
