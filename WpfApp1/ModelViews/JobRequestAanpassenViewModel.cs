@@ -46,6 +46,8 @@ namespace Barco
       
 
         private List<Eut> euts;
+        public List<Eut> eutList = new List<Eut>();
+
         public bool cbEmcEut1 { get; set; }
         public bool cbEmcEut2 { get; set; }
         public bool cbEmcEut3 { get; set; }
@@ -81,6 +83,8 @@ namespace Barco
         public bool cmRel { get; set; }
         public bool cmProdSafety { get; set; }
         public bool cmGrnComp { get; set; }
+        // EUT foreseen availability date
+
         public DateTime dateEut1 { get; set; }
         public DateTime dateEut2 { get; set; }
         public DateTime dateEut3 { get; set; }
@@ -117,7 +121,8 @@ namespace Barco
             this.RqOptionel = dao.GetOptionel(selectedId);
             this.rqRequestDetails = dao.GetRqDetailsWithRequestId(selectedId);
 
-            euts = dao.GetEutWithDetailId(Request.IdRequest);
+            euts = dao.GetEutWithDetailId(Request.IdRequest); 
+            //eutList = CreateEutList();
 
 
 
@@ -131,7 +136,9 @@ namespace Barco
 
 
         }
-
+        /// <summary>
+        /// Laurent
+        /// </summary>
         // Sluit aanpassen en opent overview
         public void CancelButton()
         {
@@ -139,6 +146,9 @@ namespace Barco
             screen.Close();
             overview.ShowDialog();
         }
+        /// <summary>
+        /// jimmy
+        /// </summary>
         public class Part
         {
             public string partNo { get; set; }
@@ -147,7 +157,7 @@ namespace Barco
         }
         //aanpassingen saven
         /// <summary>
-        /// jimmy
+        /// Laurent, Bianca, Jimmy
         /// </summary>
         public void SaveChanges()
         {
@@ -190,7 +200,7 @@ namespace Barco
             }
         }
         /// <summary>
-        /// jimmy
+        /// jimmy, Thibaut, Laurent
         /// </summary>
         public void RemovePart()
         {
@@ -210,7 +220,7 @@ namespace Barco
         }
 
         /// <summary>
-        /// jimmy
+        /// jimmy, Thibaut, Laurent
         /// </summary>
         public void AddPart()
         {
@@ -242,7 +252,7 @@ namespace Barco
 
         }
         /// <summary>
-        /// jimmy
+        /// jimmy, thibaut
         /// </summary>
         public void LoadParts()
         {
@@ -301,6 +311,22 @@ namespace Barco
         }
         /// <summary>
         /// jimmy
+        /// </summary>
+        /// <param name="detailId"></param>
+        /// <param name="description"></param>
+        /// <param name="date"></param>
+        /// <returns></returns>
+        private Eut createEut(int detailId, string description, DateTime date)
+        {
+            return new Eut()
+            {
+                IdRqDetail = detailId,
+                AvailableDate = date,
+                OmschrijvingEut = description
+            };
+        }
+        /// <summary>
+        /// jimmy, thibaut
         /// </summary>
         private void fillEuts()
         {
@@ -466,7 +492,7 @@ namespace Barco
 
         }
         /// <summary>
-        /// jimmy
+        /// jimmy, thibaut
         /// </summary>
         private void fillPvgResp()
         {//voor iedere request in deltails kijken of de testdivisie matched en zo dan worden de pvg's ingevuld
@@ -558,30 +584,9 @@ namespace Barco
             }
         }
 
-
-        //Stach
-        private void SetExpectedEndDate()
-        {
-            dateExpectedEnd = Request.ExpectedEnddate;
-        }
-
-        //Stach
-        private void SetRequesterInitials()
-        {
-            txtReqInitials = Request.Requester;
-        }
-
-        //Stach
-        private void SettxtEutProjectname()
-        {
-            txtEutProjectname = Request.EutProjectname;
-        }
-
-        //Stach
-        private void SetTxtRemark()
-        {
-            txtRemark = RqOptionel.Remarks;
-        }
+        /// <summary>
+        /// jimmy, bianca, thibaut
+        /// </summary>
         private void FillData()
         {
             //laad alle data in.

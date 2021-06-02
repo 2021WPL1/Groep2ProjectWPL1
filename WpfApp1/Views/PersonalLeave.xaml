@@ -27,7 +27,7 @@
                 </TransformGroup>
             </DatePicker.RenderTransform>
         </DatePicker>
-        <Button x:Name="SendButton" Content="Send" HorizontalAlignment="Left" Margin="564,312,0,0" VerticalAlignment="Top" Height="46" Width="85" Background="#FFEAE8E8" Foreground="Black" Click="SendButton_Click"/>
+        <Button x:Name="SendButton" Content="Send" HorizontalAlignment="Left" Margin="564,312,0,0" VerticalAlignment="Top" Height="46" Width="85" Background="#FFEAE8E8" Foreground="Black" />
         <Label Content="Manager/ leader" HorizontalAlignment="Left" Margin="228,336,0,0" VerticalAlignment="Top"/>
         <CheckBox x:Name="Agree" Content="Agree" HorizontalAlignment="Left" Margin="223,368,0,0" VerticalAlignment="Top" IsChecked="False"/>
         <CheckBox x:Name="NotAgree" Content="Not agree" HorizontalAlignment="Left" Margin="290,368,0,0" VerticalAlignment="Top" IsChecked="False"/>

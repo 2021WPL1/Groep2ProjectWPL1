@@ -1,10 +1,6 @@
 ﻿using System;
 using System.IO;
-using Barco.ModelViews.smtpConfig;
 using Microsoft.Extensions.Configuration;
-using System.Text;
-using System.IO;
-using System.Reflection;
 namespace Barco.ModelViews.Settings
 {
     //bianca

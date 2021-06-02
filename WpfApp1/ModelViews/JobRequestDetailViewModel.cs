@@ -2,11 +2,7 @@
 using Prism.Commands;
 using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
 using System.Windows.Input;
-using Barco.ModelViews;
-using Barco.Views;
 namespace Barco
 {//jimmy
     public class JobRequestDetailViewModel : ViewModelBase
@@ -84,7 +80,7 @@ namespace Barco
             SetBatteries();
             fillPvgResp();
         }
-        //bianca
+        //bianca, Laurent, Jimmy
         //closes Details and opens the Overview
         public void CloseButton()
         {
@@ -92,7 +88,7 @@ namespace Barco
             screen.Close();
             overview.ShowDialog();
         }
-        //Jimmy
+        //Jimmy, Thibaut, Bianca
         //Laden van Jobrequest Partnumbers in een list
         public void LoadPartsNumbers()
         {
@@ -110,7 +106,7 @@ namespace Barco
                 }
             } while (Partnumbers.Contains(";"));
         }
-        //Jimmy
+        //Jimmy, Thibaut
         //Laden van Jobrequest net weights in een list
         public void LoadPartNetWeight()
         {
@@ -128,7 +124,7 @@ namespace Barco
                 }
             } while (Partnets.Contains(";"));
         }
-        //Jimmy
+        //Jimmy, Thibaut
         //Laden van Jobrequest Grossweight in een list
         public void LoadPartGrossWeight()
         {
@@ -147,7 +143,7 @@ namespace Barco
             }
             while (partGross.Contains(";"));
         }
-        //thibaut 
+        //thibaut, Bianca
         //transfers the data from the database to the eut checkboxes
         private void fillEuts()
         {
@@ -305,6 +301,9 @@ namespace Barco
                 }
             }
         }
+        /// <summary>
+        /// Thibaut
+        /// </summary>
         private void fillPvgResp()
         {
             foreach(RqRequestDetail rq in rqRequestDetails)
@@ -331,7 +330,9 @@ namespace Barco
                 }
             }
         }
-        //thibaut
+        /// <summary>
+        /// thibaut
+        /// </summary>
         private void SetBatteries()
         {
             if(Request.Battery)
