@@ -34,7 +34,9 @@ namespace Barco.ModelViews
         public ICommand AddResourceCommand { get; set; }
         public DateTime dateExpectedStart { get; set; }
         public DateTime dateExpectedEnd { get; set; }
-        public TestPlanningViewModel(TestPlanning screen, int selectedId)
+        public string DueDate { get; set; }
+        public string Omschrijving { get; set; }
+        public TestPlanningViewModel(TestPlanning screen, int selectedId, string testDiv)
         {
             this.screen = screen;
             SaveTestCommand = new DelegateCommand(SaveButton);
@@ -44,7 +46,7 @@ namespace Barco.ModelViews
             dateExpectedStart = DateTime.Now;
             dateExpectedEnd = DateTime.Now;
             Resources = new List<PlResources>();
-            populateResources();
+            populateResources(testDiv);
             _selectedResouce = new PlResources();
         }
         public void SaveButton()
@@ -60,9 +62,10 @@ namespace Barco.ModelViews
             screen.Close();
             overview.ShowDialog();
         }
-        public void populateResources()
+        public void populateResources(string testDiv)
         {
-            Resources = dao.GetResource();
+            //Resources = dao.GetResource(); //alle resources
+            Resources = dao.GetResourcesForTestDiv(testDiv);//resources per testDivision
         }
         public void AddResourceButton()
         {

@@ -40,5 +40,9 @@
             </ListView.View>
         </ListView>
         <Button x:Name="btnAddResources" Content="+" HorizontalAlignment="Left" Margin="254,210,0,0" VerticalAlignment="Top" Width="25" Command="{Binding AddResourceCommand}"/>
+        <Label Content="Due date" HorizontalAlignment="Left" Margin="45,114,0,0" VerticalAlignment="Top" Width="60"/>
+        <Label Content="{Binding DueDateLabel}" HorizontalAlignment="Left" Margin="120,108,0,0" VerticalAlignment="Top" Width="120" Height="30"/>
+        <TextBox HorizontalAlignment="Left" Margin="45,286,0,0" Text="{Binding Omschrijving}" TextWrapping="Wrap" VerticalAlignment="Top" Height="82" Width="195"/>
+        <Label Content="Omschrijving" HorizontalAlignment="Left" Margin="44,255,0,0" VerticalAlignment="Top" Width="88"/>
     </Grid>
 </Window>

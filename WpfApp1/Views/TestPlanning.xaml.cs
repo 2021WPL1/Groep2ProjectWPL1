@@ -20,9 +20,9 @@ namespace Barco.Views
     {
         private static DAO dao;
         private TestPlanningViewModel testPlanningJrModel;
-        public TestPlanning(int selectedId)
+        public TestPlanning(int selectedId, string testDiv)
         {
-            testPlanningJrModel = new TestPlanningViewModel(this, selectedId);
+            testPlanningJrModel = new TestPlanningViewModel(this, selectedId, testDiv);
             DataContext = testPlanningJrModel;
             dao = DAO.Instance();
             InitializeComponent();
