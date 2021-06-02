@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Data;
-using System.Text;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
 using Barco.Data;
 using Barco.Views;
@@ -49,6 +46,9 @@ namespace Barco.ModelViews
             populateResources(testDiv);
             _selectedResouce = new PlResources();
         }
+        /// <summary>
+        /// Bianca
+        /// </summary>
         public void SaveButton()
         {
             MessageBox.Show("Congratulations, you have submitted a new test planning.");
@@ -56,21 +56,24 @@ namespace Barco.ModelViews
             screen.Close();
             overviewPlannedTests.ShowDialog();
         }
-
-
-
-
         public void CancelButton()
         {
             OverviewApprovedRequests overview = new OverviewApprovedRequests();
             screen.Close();
             overview.ShowDialog();
         }
+        /// <summary>
+        /// Thibaut
+        /// </summary>
+        /// <param name="testDiv"></param>
         public void populateResources(string testDiv)
         {
             //Resources = dao.GetResource(); //alle resources
             Resources = dao.GetResourcesForTestDiv(testDiv);//resources per testDivision
         }
+        /// <summary>
+        /// Laurent
+        /// </summary>
         public void AddResourceButton()
         {
             if (!String.IsNullOrEmpty(_selectedResouce.Naam) )
@@ -79,6 +82,9 @@ namespace Barco.ModelViews
                 refresh();
             }
         }
+        /// <summary>
+        /// Laurent
+        /// </summary>
         public void refresh()
         {
             lstResources.Clear();
@@ -87,6 +93,9 @@ namespace Barco.ModelViews
                 lstResources.Add(resource);
             }
         }
+        /// <summary>
+        /// Laurent
+        /// </summary>
         public PlResources SelectedResource
         {
             get
