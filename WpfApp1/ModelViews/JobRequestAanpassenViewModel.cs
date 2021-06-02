@@ -251,7 +251,7 @@ namespace Barco
             //als de textboxes leeg zijn geef dan een foutmelding, anders add de content aan parts
             try
             {
-                if (txtPartNumber == null || txtPartNetWeight == null || txtPartGrossWeight == null)
+                if (txtPartNumber == null || txtPartNetWeight == null || txtPartGrossWeight == null || txtPartNumber == " " || txtPartNetWeight == " " || txtPartGrossWeight == " " || txtPartNumber == string.Empty || txtPartNetWeight == string.Empty || txtPartGrossWeight == string.Empty)
                 {
                     MessageBox.Show("please fill in all part values");
                 }
