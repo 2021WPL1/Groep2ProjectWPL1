@@ -30,12 +30,11 @@ namespace Barco
         public DateTime dateExpectedEnd { get; set; }
         public string selectedDivision { get; set; }
         public string SelectedJobNature { get; set; }
-        // EUT foreseen availability date
-        public DateTime DatePickerEUT1 { get; set; }
-        public DateTime DatePickerEUT2 { get; set; }
-        public DateTime DatePickerEUT3 { get; set; }
-        public DateTime DatePickerEUT4 { get; set; }
-        public DateTime DatePickerEUT5 { get; set; }
+        public DateTime DatePickerEUT1 { get; set; }//foreseen availability date eut1
+        public DateTime DatePickerEUT2 { get; set; }//foreseen availability date eut2
+        public DateTime DatePickerEUT3 { get; set; }//foreseen availability date eut3
+        public DateTime DatePickerEUT4 { get; set; }//foreseen availability date eut4
+        public DateTime DatePickerEUT5 { get; set; }//foreseen availability date eut5
         private ObservableCollection<Part>
             lstParts = new ObservableCollection<Part>(); // for partnumber+ net/gross weight
         public ObservableCollection<Part> listParts
@@ -92,6 +91,7 @@ namespace Barco
         //radio button
         public bool rbtnBatNo { get; set; }
         public bool rbtnBatYes { get; set; }
+        public string HydraProjectNr { get; set; }
         public JobRequestViewModel(JobRequest screen)
         {
             CancelCommand = new DelegateCommand(CancelButton);
@@ -159,7 +159,7 @@ namespace Barco
                 home.ShowDialog();
             }
         }
-        //Thibaut
+        //Laurent
         public void AddButton()
         {
             try
@@ -287,11 +287,11 @@ namespace Barco
                     errors.Add("the requester initials do not match any employee");
                 }
                 //check if the job nature is selected
-                if (SelectedJobNature == null)
+                if (string.IsNullOrEmpty(SelectedJobNature))
                 {
                     errors.Add("select a jobnature");
                 }
-                if (selectedDivision == null)
+                if (string.IsNullOrEmpty( selectedDivision))
                 {
                     errors.Add("select a division");
                 }
@@ -310,9 +310,13 @@ namespace Barco
                 List<string> valiDate = CheckDates();
                 errors.AddRange(valiDate);
                 //check if other fields are empty
-                if (txtEutProjectname==null)
+                if (string.IsNullOrEmpty( txtEutProjectname))
                 {
                     errors.Add("please fill in a project name");
+                }
+                if (string.IsNullOrEmpty(HydraProjectNr))
+                {
+                    errors.Add("please fill in a Hydra project number");
                 }
                 //error handling
                 if (errors.Count > 0)
@@ -335,7 +339,7 @@ namespace Barco
                     request.NetWeight = netWeights;
                     request.GrossWeight = grossWeights;
                     request.EutPartnumbers = partNums;
-                    request.HydraProjectNr = "0";
+                    request.HydraProjectNr = HydraProjectNr;
                     request.InternRequest = CheckInternal(input_Abbreviation);//naam moet in lijst zitten om intern rq te maken
                     if (CheckInternal(input_Abbreviation))
                     {
@@ -809,6 +813,20 @@ namespace Barco
                     {
                         rqRequest.Testdivisie = "ECO";
                     }
+                    List<string> pvgstrings = dao.PvgRespForTestnatureByDiv(rqRequest.Testdivisie, selectedDivision);
+                    for(int j = pvgstrings.Count-1; j>=0;j--)//their can be multiple pvgResp for 1 testnatur/division
+                    {
+                        if (j>0) 
+                        { 
+                            rqRequest.Pvgresp += pvgstrings[j] + "; ";
+                        }
+                        else
+                        {
+                             rqRequest.Pvgresp += pvgstrings[j];
+                        }
+                       
+                    }
+                    
                     requestDetails.Add(rqRequest);
                 }
             }
