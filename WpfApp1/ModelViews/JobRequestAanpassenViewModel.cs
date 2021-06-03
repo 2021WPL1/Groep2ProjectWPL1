@@ -185,7 +185,16 @@ namespace Barco
             RqOptionel.Remarks = txtRemark;
             //Request.JobNature = SelectedJobNature;
             RqOptionel.Link = txtLinkTestplan;
+            if (rbtnBatYes)
+            {
+                Request.Battery = true;
+            }
+            else if (rbtnBatNo)
+            {
+                Request.Battery = false;
+            }
             //Request.BarcoDivision = selectedDivision;
+        
             if (txtRequisterInitials == "" || txtEutProjectname == ""  )
             {
                 MessageBox.Show("Make sure there are no empty fields.");
@@ -248,9 +257,9 @@ namespace Barco
             //als de textboxes leeg zijn geef dan een foutmelding, anders add de content aan parts
             try
             {
-                if (txtPartNumber == "" || txtPartNetWeight == "" || txtPartGrossWeight == "")
+                if (String.IsNullOrEmpty(txtPartNumber) || String.IsNullOrEmpty(txtPartNetWeight) || String.IsNullOrEmpty(txtPartGrossWeight) || txtPartNumber == " " || txtPartNetWeight == " " || txtPartGrossWeight == " " )
                 {
-                    MessageBox.Show("please fill in all values");
+                    MessageBox.Show("please fill in all part values");
                 }
                 else
                 {

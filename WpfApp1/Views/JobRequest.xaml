@@ -104,10 +104,10 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView Margin="42,501,404,-2" BorderBrush="{x:Null}" Foreground="Red" Name="err_output" ItemsSource="{Binding err_output}">
+        <ListView Margin="42,501,404,-2" BorderBrush="{x:Null}" Foreground="Red" Width="400" Name="err_output" ItemsSource="{Binding err_output}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn />
+                    <GridViewColumn Width="400" />
                 </GridView>
             </ListView.View>
         </ListView>
