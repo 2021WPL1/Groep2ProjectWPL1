@@ -34,7 +34,7 @@ namespace Barco
             EditRequestCommand = new DelegateCommand(EditRequest);
             Load();
             this.overview = overview;
-            CountJobRequestsToday();
+            //CountJobRequestsToday();
             var result = _appSettingsService.GetConfigurationSection<SMPTClientConfig>("SMPTClientConfig");
             smtpMailCommunication = new SMTPMailCommunication(
                 result.QueryResult.Username,

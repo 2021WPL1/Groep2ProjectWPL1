@@ -64,13 +64,26 @@ namespace Barco.ModelViews
             //Jimmy- confirmation changing status
             public void ChangeStatusButton()
             {
-                if (MessageBox.Show("Are you sure you want to change the status of the test?", "Change status",
-                    MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (selectedStatus != null)
                 {
-                    dao.ChangeStatus(selectedStatus.Content.ToString(), SelectedTest.Id);
-                    Refresh();
-                }
+                    if (SelectedTest != null)
+                    {
+                        if (MessageBox.Show("Are you sure you want to change the status of the test?", "Change status", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                        {
+                            dao.ChangeStatus(selectedStatus.Content.ToString(), SelectedTest.Id);
+                            Refresh();
+                        }
 
+                    }
+                    else
+                    {
+                        MessageBox.Show("Pleas select a test first.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Pleas select a status first.");
+                }
             }
 
 

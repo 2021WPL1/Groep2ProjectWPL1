@@ -27,7 +27,7 @@
                     <GridViewColumn Header="Test Description" 
                                     Width="250" DisplayMemberBinding="{Binding RqOptionel.Remarks}" />
                     <GridViewColumn Header="Responsible" 
-                                    Width="100" DisplayMemberBinding="{Binding RqOptionel.PvgResp}" />
+                                    Width="100" DisplayMemberBinding="{Binding RqRequestDetail.Pvgresp}" />
                     <GridViewColumn Header="Nature of test" 
                                     Width="100" DisplayMemberBinding="{Binding RqRequestDetail.Testdivisie}"/>
                 </GridView>
