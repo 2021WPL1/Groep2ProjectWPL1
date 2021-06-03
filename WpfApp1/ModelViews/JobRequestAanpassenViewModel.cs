@@ -185,7 +185,16 @@ namespace Barco
             RqOptionel.Remarks = txtRemark;
             //Request.JobNature = SelectedJobNature;
             RqOptionel.Link = txtLinkTestplan;
+            if (rbtnBatYes)
+            {
+                Request.Battery = true;
+            }
+            else if (rbtnBatNo)
+            {
+                Request.Battery = false;
+            }
             //Request.BarcoDivision = selectedDivision;
+        
             if (txtRequisterInitials == "" || txtEutProjectname == ""  )
             {
                 MessageBox.Show("Make sure there are no empty fields.");
