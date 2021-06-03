@@ -135,7 +135,16 @@ namespace Barco.ModelViews
             if (_selectedRqRequest.Request != null)
             {
                 var SelectedId = _selectedRqRequest.Request.IdRequest;
-                TestPlanning testPlanning = new TestPlanning(SelectedId, SelectedTestNature.Afkorting);
+                string nature;
+                if (_selectedTestNature is null)
+                {
+                    nature = _selectedRqRequest.RqRequestDetail.Testdivisie;
+                }
+                else
+                {
+                    nature = _selectedTestNature.Afkorting;
+                }
+                TestPlanning testPlanning = new TestPlanning(SelectedId, nature);
                 screen.Close();
                 testPlanning.ShowDialog();
             }

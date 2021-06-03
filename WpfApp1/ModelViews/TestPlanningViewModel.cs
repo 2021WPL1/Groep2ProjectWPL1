@@ -153,8 +153,15 @@ namespace Barco.ModelViews
         /// <param name="testDiv"></param>
         public void populateResources(string testDiv)
         {
-            //Resources = dao.GetResource(); //alle resources
-            Resources = dao.GetResourcesForTestDiv(testDiv);//resources per testDivision
+            if (testDiv == "all")
+            {
+                Resources = dao.GetResource(); //alle resources
+            }
+            else
+            {
+                Resources = dao.GetResourcesForTestDiv(testDiv); //resources per testDivision
+            }
+
         }
         /// <summary>
         /// Laurent - add the selected combobox value to the resource list
