@@ -372,7 +372,7 @@ namespace Barco.Data
         //Method used for the overviewApprovedRequests
         //Laurent,Bianca
                 ComboObject o = new ComboObject()
-                {
+                {  
                     EutNr = eut.OmschrijvingEut.Substring(5, 6),
                     Eut = eut,
                     RqRequestDetail = detail,
@@ -451,20 +451,28 @@ namespace Barco.Data
         }
 
 
-        //Bianca
-        public List<PlPlanning> listPlannings()
+        //Bianca- to get the list of the planning calendar
+        public List<PlPlanningsKalender> listPlannings()
         {
-            return context.PlPlanning.ToList();
+            return context.PlPlanningsKalender.ToList();
         }
-        /*
-        *  oude interpretatie van de opdracht
-        public RqRequestDetail AddDetail(RqRequestDetail detail)
+
+
+        //Jimmy-Bianca
+        //method to get the test planning calendar by id
+        public PlPlanningsKalender GetPlanningCalendarById(int id)
         {
-            detail.IdRequest = int.Parse(context.RqRequest.OrderByDescending(p => p.IdRequest).Select(p => p.IdRequest).First().ToString());
-            context.RqRequestDetail.Add(detail);
+            return context.PlPlanningsKalender.FirstOrDefault(i => i.Id == id);
+        }
+
+        //Jimmy-Bianca
+        //method to change the status
+        public void ChangeStatus(string status,int testId)
+        {
+            var value = GetPlanningCalendarById(testId);
+
+            value.TestStatus = status;
             context.SaveChanges();
-            return detail;
         }
-        */
     }
 }

@@ -45,10 +45,7 @@ namespace Barco.ModelViews
         public DateTime dateExpectedStart { get; set; }
         public DateTime dateExpectedEnd { get; set; }
         public string DueDate { get; set; }
-       // public string Omschrijving { get; set; }
-     //   public TestPlanningViewModel(TestPlanning screen, int selectedId, string testDiv);
-
-       public ComboBoxItem selectedStatus { get; set; }
+   
 
      //Bianca
         public TestPlanningViewModel(TestPlanning screen, int selectedId,string testDiv)
@@ -118,7 +115,7 @@ namespace Barco.ModelViews
             planning.JrNr = request.JrNumber;
             planning.JrStatus = request.JrStatus;
             planning.Testdiv = requestDetail.Testdivisie;
-            planning.TestStatus = selectedStatus.Content.ToString();
+            planning.TestStatus = "Planned";
             dao.AddPlanToCalendar(planning);
             
 

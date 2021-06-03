@@ -9,7 +9,7 @@
     <Grid>
         <ListView x:Name="listOverview" 
                   ItemsSource="{Binding currentRequests, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding SelectedTest, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  Margin="13,105,0,33" HorizontalAlignment="Left" Width="940" 
+                  SelectedItem="{Binding SelectedRqRequest, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"  Margin="13,105,0,33" HorizontalAlignment="Left" Width="940" 
              >
             <ListView.View  >
                 <GridView AllowsColumnReorder="False">

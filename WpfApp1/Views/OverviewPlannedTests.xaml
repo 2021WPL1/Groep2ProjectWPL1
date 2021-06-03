@@ -7,30 +7,29 @@
         mc:Ignorable="d"
         Title="OverviewPlannedTests" Height="500" Width="1000">
     <Grid>
-        <ListView x:Name="listOverview"  
+        <ListView x:Name="listOverviewPlannedTest"  
                   ItemsSource="{Binding currentTests, UpdateSourceTrigger=PropertyChanged}"
-                  SelectedItem="{Binding SelectedRqRequest, UpdateSourceTrigger=PropertyChanged, 
+                  SelectedItem="{Binding SelectedTest, UpdateSourceTrigger=PropertyChanged, 
                    Mode=TwoWay}"
-  Margin="15,108,0,14" HorizontalAlignment="Left" Width="945">
+  Margin="55,108,0,14" HorizontalAlignment="Left" Width="800">
             <ListView.View  >
                 <GridView>
                     <GridViewColumn  Header="JrNumber" 
-                        Width="100" />
-                    <GridViewColumn Header="Division" 
-                        Width="100"  />
-                    <GridViewColumn Header="Project name" 
-                        Width="150"/>
-                    <GridViewColumn Header="Date" 
-                        Width="150" />
+                        Width="100"  DisplayMemberBinding="{Binding JrNr}"/>
+
+                    <GridViewColumn Header="Test nature" 
+                                    Width="150" DisplayMemberBinding="{Binding Testdiv}" />
 
 
                     <GridViewColumn Header="Start date" 
-                        Width="100" />
+                        Width="150" DisplayMemberBinding="{Binding Startdatum}" />
                     <GridViewColumn Header="End Date" 
-                                    Width="100" />
+                                    Width="150" DisplayMemberBinding="{Binding Einddatum}"/>
+                    <GridViewColumn Header="Resources" 
+                                    Width="100" DisplayMemberBinding="{Binding Resources}"/>
 
-                    <GridViewColumn Header="Status" 
-                                    Width="250"/>
+                    <GridViewColumn Header="Test status" 
+                                    Width="200"  DisplayMemberBinding="{Binding TestStatus}"/>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -49,8 +48,9 @@
             <ComboBoxItem Background="#FF908E8E" Content="Delay due to PVG"/>
             <ComboBoxItem Background="#FF45A48A" Content="Reported"/>
         </ComboBox>
-        <Button Content="Change status
-                " HorizontalAlignment="Left" Margin="877,69,0,0" VerticalAlignment="Top" Width="83"/>
+        <Button Content="Change status" 
+                Command="{Binding ChangeStatusCommand}"
+                HorizontalAlignment="Left" Margin="877,69,0,0" VerticalAlignment="Top" Width="83"/>
 
     </Grid>
 </Window>
