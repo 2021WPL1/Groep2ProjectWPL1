@@ -121,7 +121,7 @@ namespace Barco.ModelViews
             planning.JrNr = request.JrNumber;
             planning.JrStatus = request.JrStatus;
             planning.Testdiv = requestDetail.Testdivisie;
-            planning.TestStatus = selectedStatus.Content.ToString();
+            planning.TestStatus = "Planned";
             dao.AddPlanToCalendar(planning);
             
 

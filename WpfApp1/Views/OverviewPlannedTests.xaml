@@ -5,29 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Barco.Views"
         mc:Ignorable="d"
-        Title="OverviewPlannedTests" Height="450" Width="800">
+        Title="OverviewPlannedTests" Height="500" Width="1000">
     <Grid>
-        <ListView x:Name="listOverview" 
-  Margin="34,140,0,25" HorizontalAlignment="Left" Width="516">
+        <ListView x:Name="listOverviewPlannedTest"  
+                  ItemsSource="{Binding currentTests, UpdateSourceTrigger=PropertyChanged}"
+                  SelectedItem="{Binding SelectedTest, UpdateSourceTrigger=PropertyChanged, 
+                   Mode=TwoWay}"
+  Margin="55,108,0,14" HorizontalAlignment="Left" Width="800">
             <ListView.View  >
                 <GridView>
                     <GridViewColumn  Header="JrNumber" 
-                        Width="100" />
-                    <GridViewColumn Header="Division" 
-                        Width="100"  />
-                    <GridViewColumn Header="Project name" 
-                        Width="150"/>
-                    <GridViewColumn Header="Date" 
-                        Width="150" />
+                        Width="100"  DisplayMemberBinding="{Binding JrNr}"/>
 
-                    <GridViewColumn Header="Hydra project name" 
-                        Width="150"  />
-                    <GridViewColumn Header="Status" 
-                        Width="100"/>
+                    <GridViewColumn Header="Test nature" 
+                                    Width="150" DisplayMemberBinding="{Binding Testdiv}" />
+
+
                     <GridViewColumn Header="Start date" 
-                        Width="70" />
+                        Width="150" DisplayMemberBinding="{Binding Startdatum}" />
                     <GridViewColumn Header="End Date" 
-                                    Width="70" />
+                                    Width="150" DisplayMemberBinding="{Binding Einddatum}"/>
+                    <GridViewColumn Header="Resources" 
+                                    Width="100" DisplayMemberBinding="{Binding Resources}"/>
+
+                    <GridViewColumn Header="Test status" 
+                                    Width="200"  DisplayMemberBinding="{Binding TestStatus}"/>
                 </GridView>
             </ListView.View>
         </ListView>
@@ -35,7 +37,20 @@
         <Label Content="Overview Planned Tests" HorizontalAlignment="Left" Margin="244,19,0,0" VerticalAlignment="Top" Height="47" Width="226" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
         <Button Content="Cancel" 
                 Command="{Binding CancelOverviewCommand}"
-                HorizontalAlignment="Left" Margin="650,20,0,0" VerticalAlignment="Top" Height="36" Width="71"/>
+                HorizontalAlignment="Left" Margin="569,27,0,0" VerticalAlignment="Top" Height="36" Width="71"/>
+        <Label Content="Status" HorizontalAlignment="Left" Margin="778,26,0,0" VerticalAlignment="Top" Width="51"/>
+        <ComboBox x:Name="comboboxStatus" HorizontalAlignment="Left" Margin="839,26,0,0" VerticalAlignment="Top" Width="121" Height="25" SelectedValue="{Binding selectedStatus}">
+            <ComboBoxItem Background="#FFFF0030" Content="Finished and failed"/>
+            <ComboBoxItem Background="#FF2BFF00" Content="Finished and passed"/>
+            <ComboBoxItem Background="#FFFDFB7B" Content="Tested"/>
+            <ComboBoxItem Background="#FFFDFB7B" Content="Tested but failed"/>
+            <ComboBoxItem Background="#FF908E8E" Content="Delay due to requester"/>
+            <ComboBoxItem Background="#FF908E8E" Content="Delay due to PVG"/>
+            <ComboBoxItem Background="#FF45A48A" Content="Reported"/>
+        </ComboBox>
+        <Button Content="Change status" 
+                Command="{Binding ChangeStatusCommand}"
+                HorizontalAlignment="Left" Margin="877,69,0,0" VerticalAlignment="Top" Width="83"/>
 
     </Grid>
 </Window>

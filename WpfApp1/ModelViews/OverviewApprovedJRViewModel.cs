@@ -132,7 +132,7 @@ namespace Barco.ModelViews
         public void PlanTestButton()
         {
 
-            if (_selectedRqRequest.Request != null)
+            /*if (_selectedRqRequest.Request != null)
             {
                 var SelectedId = _selectedRqRequest.Request.IdRequest;
                 string nature;
@@ -151,8 +151,18 @@ namespace Barco.ModelViews
             else
             {
                 MessageBox.Show("Select a JobRequest");
+            }*/
+            try
+            {
+                var SelectedId = SelectedRqRequest.Request.IdRequest;
+                TestPlanning testPlanning = new TestPlanning(SelectedId, SelectedTestNature.Afkorting);
+                screen.Close();
+                testPlanning.ShowDialog();
             }
-
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
 
            
         }
@@ -176,7 +186,7 @@ namespace Barco.ModelViews
 
         //method used to fill in different lists based on the test nature
         /// <summary>
-        /// Laurent, Bianca, Thiabaut
+        /// Laurent, Bianca, Thibaut
         /// </summary>
         public void fillList()
         {
