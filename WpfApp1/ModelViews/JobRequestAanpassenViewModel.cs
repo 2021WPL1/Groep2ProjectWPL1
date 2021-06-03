@@ -143,9 +143,13 @@ namespace Barco
         // Sluit aanpassen en opent overview
         public void CancelButton()
         {
-            OverviewJobRequest overview = new OverviewJobRequest();
-            screen.Close();
-            overview.ShowDialog();
+            if (MessageBox.Show("Are you sure you want to leave this screen without saving?", "Leave", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                OverviewJobRequest overview = new OverviewJobRequest();
+                screen.Close();
+                overview.ShowDialog();
+
+            }
         }
         /// <summary>
         /// jimmy
@@ -184,7 +188,13 @@ namespace Barco
             RqOptionel.Remarks = txtRemark;
             //Request.JobNature = SelectedJobNature;
             RqOptionel.Link = txtLinkTestplan;
-            Request.BarcoDivision = selectedDivision;
+            //Request.BarcoDivision = selectedDivision;
+            if (txtRequisterInitials == "" || txtEutProjectname == ""  )
+            {
+                MessageBox.Show("Make sure there are no empty fields.");
+            }
+            else
+            {
 
 
             try
@@ -196,12 +206,14 @@ namespace Barco
                 screen.Close();
                 overview.ShowDialog();
 
-            }
-            catch (Exception e)
-            {
+                }
+                catch (Exception e)
+                {
 
-                MessageBox.Show(e.Message);
+                    MessageBox.Show(e.Message);
+                }
             }
+
         }
         /// <summary>
         /// jimmy, Thibaut, Laurent
@@ -209,16 +221,28 @@ namespace Barco
         public void RemovePart()
         {
             //als de selecte part bestaat dan verwijder je deze, als deze niet bestaat geef dan een foutmelding
-            if (parts.Contains(selectedPart))
+            if (parts.Count == 1)
             {
-                parts.Remove(selectedPart);
-               
-                RefreshGUI();
-
+                MessageBox.Show("You cannot have a request without parts, add a new part first");
             }
             else
             {
-                MessageBox.Show("Pleas select a part.");
+                if (MessageBox.Show("Are you sure you want to delete part " + selectedPart.partNo + "?", "Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    if (parts.Contains(selectedPart))
+                    {
+                        parts.Remove(selectedPart);
+               
+                        RefreshGUI();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("Pleas select a part.");
+                    }
+
+                }
+                    
             }
 
         }

@@ -57,9 +57,9 @@ namespace Barco
         //bianca
         public void CancelButton()
         {
-               HomeScreen home = new HomeScreen();
-               overview.Close();
-               home.ShowDialog();
+            HomeScreen home = new HomeScreen();
+            overview.Close();
+            home.ShowDialog();
 
         }
         //jimmy - thibaut jrnumber toewijzen
@@ -105,9 +105,13 @@ namespace Barco
         {
             if (_selectedRequest != null)
             {
-                dao.DeleteJobRequest(_selectedRequest.IdRequest);
-                Load();
+                if (MessageBox.Show("Are you sure you want to delete " + _selectedRequest.EutProjectname +"?", "Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    dao.DeleteJobRequest(_selectedRequest.IdRequest);
+                    Load();
+                }
             }
+                
             else
             {
                 MessageBox.Show("Select a JobRequest");

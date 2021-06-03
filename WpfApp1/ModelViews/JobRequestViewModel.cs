@@ -147,15 +147,19 @@ namespace Barco
             }
         }
         /// <summary>
-        /// Bianca Laurent
+        /// Bianca 
         /// </summary>
         public void CancelButton()
         {
-            HomeScreen home = new HomeScreen();
-            screen.Close();
-            home.ShowDialog();
+            if (MessageBox.Show("Are you sure you want to leave this screen without saving?", "Leave", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+              
+                HomeScreen home = new HomeScreen();
+                screen.Close();
+                home.ShowDialog();
+            }
         }
-        //Thiabaut
+        //Thibaut
         public void AddButton()
         {
             try
@@ -201,10 +205,14 @@ namespace Barco
         {
             if (parts.Contains(selectedPart))
             {
-                parts.Remove(selectedPart);
-                lstParts.Remove(selectedPart);
-                RefreshGUI();
-                OnPropertyChanged();
+                if (MessageBox.Show("Are you sure you want to delete part " + selectedPart.partNo + "?", "Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                {
+                    parts.Remove(selectedPart);
+                    lstParts.Remove(selectedPart);
+                    RefreshGUI();
+                    OnPropertyChanged();
+                }
+                
             }
         }
         /// <summary>
@@ -338,8 +346,20 @@ namespace Barco
                     //detail object
                     //Detail.Testdivisie = "eco";  
                     List<RqRequestDetail>detailList = GetRqRequestDetails();
-                    dao.AddRequest(request, detailList, optional, eutList);
-                    MessageBox.Show("Data has been inserted");
+                    try
+                    {
+                        dao.AddRequest(request, detailList, optional, eutList);
+                        MessageBox.Show("Data has been inserted");
+                        HomeScreen home = new HomeScreen();
+                        screen.Close();
+                        home.ShowDialog();
+
+                    }
+                    catch (Exception ex)
+                    {
+
+                        MessageBox.Show(ex.Message);
+                    }
                 }
             }
             catch (FormatException ex)

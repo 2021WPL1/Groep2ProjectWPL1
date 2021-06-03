@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Input;
@@ -60,6 +61,8 @@ namespace Barco.ModelViews
             REL = new List<ComboObject>();
             SAF = new List<ComboObject>();
             fillList();
+            requests = dao.combinedObjects();
+            Refresh();
         }
         /// <summary>
         /// Laurent, Bianca, Thibaut
@@ -90,11 +93,10 @@ namespace Barco.ModelViews
                 }
 
                 
+
+                
             }
-            else if (SelectedTestNature is null)
-            {
-                requests = dao.combinedObjects();
-            }
+            
             Refresh();
         }
 
@@ -150,7 +152,10 @@ namespace Barco.ModelViews
             else
             {
                 MessageBox.Show("Select a JobRequest");
-            }           
+            }
+
+
+           
         }
 
         //  used to select a request for a further test planning

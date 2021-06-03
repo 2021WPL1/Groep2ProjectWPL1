@@ -15,7 +15,7 @@ namespace Barco
             dao = DAO.Instance();
             InitializeComponent();
             showDivision();
-            getJobNatures();
+            showJobNatures();
             jobRequestViewModel = new JobRequestViewModel(this);
             DataContext = jobRequestViewModel;
         }
@@ -23,7 +23,7 @@ namespace Barco
         {
             cmbDivision.Items.Add(getValues("DIVISION"));
         }
-        public void getJobNatures()
+        public void showJobNatures()
         {
             cmbJobNature.ItemsSource = dao.GetJobNatures();
             cmbJobNature.DisplayMemberPath = "Nature";

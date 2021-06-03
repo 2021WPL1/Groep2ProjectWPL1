@@ -163,6 +163,8 @@ namespace Barco.Data
             return context.RqBarcoDivision.ToList();
         }
         //jimmmy
+
+        //bianca
         public List<RqJobNature> GetJobNatures()
         {
             return context.RqJobNature.ToList();
@@ -190,7 +192,8 @@ namespace Barco.Data
         {
             return context.RqOptionel.Where(opt => opt.IdRequest == idReq).FirstOrDefault();
         }
-        //Stach - geeft division op basis van de afkotring
+
+        //Stach - geeft division op basis van de afkorting
         public RqBarcoDivision GetDivisionByAbb(string abb)
         {
             return context.RqBarcoDivision.FirstOrDefault(a => a.Afkorting == abb);
@@ -270,6 +273,29 @@ namespace Barco.Data
             }
             return request;
         }
+
+        
+
+
+        //Bianca
+        public PlPlanningsKalender AddPlanToCalendar(PlPlanningsKalender planning)
+        {
+            try
+            {
+                context.PlPlanningsKalender.Add(planning);
+                context.SaveChanges();
+
+                
+            }
+
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+
+            return planning;
+        }
+
         //thibaut 
         public void AddDetails(List<RqRequestDetail> listDetails)
         {
@@ -363,6 +389,8 @@ namespace Barco.Data
             {
                 RqRequestDetail detail = GetRqRequestDetailById(eut.IdRqDetail);
 
+        //Method used for the overviewApprovedRequests
+        //Laurent,Bianca
                 ComboObject o = new ComboObject()
                 {
                     EutNr = eut.OmschrijvingEut.Substring(5, 6),
@@ -441,5 +469,25 @@ namespace Barco.Data
             RqRequest returnValue = context.RqRequest.FirstOrDefault(a => a.IdRequest == requestId);
             return returnValue;
         }
+
+        //thibaut
+        public PlPlanning GetPlanning(int planningsId)
+        {
+            return context.PlPlanning.FirstOrDefault(p => p.IdPlanning == planningsId);
+        }
+
+
+
+
+        /*
+        *  oude interpretatie van de opdracht
+        public RqRequestDetail AddDetail(RqRequestDetail detail)
+        {
+            detail.IdRequest = int.Parse(context.RqRequest.OrderByDescending(p => p.IdRequest).Select(p => p.IdRequest).First().ToString());
+            context.RqRequestDetail.Add(detail);
+            context.SaveChanges();
+            return detail;
+        }
+        */
     }
 }
