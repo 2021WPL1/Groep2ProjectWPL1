@@ -109,7 +109,7 @@ namespace Barco.Data
         }
         //thibaut & stach
         //delete al details linked to given request
-        private void DeleteDetails(int requestId)
+        public void DeleteDetails(int requestId)
         {
             context.RqRequestDetail.RemoveRange(context.RqRequestDetail.Where(e => e.IdRequest == requestId).ToList());
             saveChanges();
