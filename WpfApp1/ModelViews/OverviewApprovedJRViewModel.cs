@@ -131,27 +131,6 @@ namespace Barco.ModelViews
         //bianca, Laurent, Thibaut- when one request is selected, the overview screen is closed and the test planning page is opened
         public void PlanTestButton()
         {
-
-            /*if (_selectedRqRequest.Request != null)
-            {
-                var SelectedId = _selectedRqRequest.Request.IdRequest;
-                string nature;
-                if (_selectedTestNature is null)
-                {
-                    nature = _selectedRqRequest.RqRequestDetail.Testdivisie;
-                }
-                else
-                {
-                    nature = _selectedTestNature.Afkorting;
-                }
-                TestPlanning testPlanning = new TestPlanning(SelectedId, nature);
-                screen.Close();
-                testPlanning.ShowDialog();
-            }
-            else
-            {
-                MessageBox.Show("Select a JobRequest");
-            }*/
             if (_selectedRqRequest.Request == null)
             {
 
