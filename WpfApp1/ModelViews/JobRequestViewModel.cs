@@ -203,6 +203,10 @@ namespace Barco
         /// </summary>
         public void RemoveButton()
         {
+            if (selectedPart == null)
+            {
+                MessageBox.Show("Pleas select a part to remove");
+            }
             if (parts.Contains(selectedPart))
             {
                 if (MessageBox.Show("Are you sure you want to delete part " + selectedPart.partNo + "?", "Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)

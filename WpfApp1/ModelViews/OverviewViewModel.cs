@@ -71,11 +71,11 @@ namespace Barco
                 if(_selectedRequest.JrNumber == null && !(bool)_selectedRequest.InternRequest )
                 {
                     dao.ApproveRqRequest(_selectedRequest, CreateJRNumberForExternal());
-                    MessageBox.Show("The request is approved", "Approved", MessageBoxButton.OK);
+                    MessageBox.Show("The request "+ _selectedRequest.EutProjectname + " is approved", "Approved", MessageBoxButton.OK);
                 }
                 else
                 {
-                    MessageBox.Show("The request was already approved", "Approved", MessageBoxButton.OK);
+                    MessageBox.Show("The request " + _selectedRequest.EutProjectname + " is already approved", "Approved", MessageBoxButton.OK);
                 }
             }
             else
