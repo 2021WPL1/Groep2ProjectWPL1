@@ -369,7 +369,6 @@ namespace Barco
             catch (FormatException ex)
             {
                 MessageBox.Show(ex.Message.ToString());
-                //MessageBox.Show("Please fill in all fields"):
             }
         }
         // to show in the listview
