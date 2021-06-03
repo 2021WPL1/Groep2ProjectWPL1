@@ -275,11 +275,11 @@ namespace Barco
                     errors.Add("the requester initials do not match any employee");
                 }
                 //check if the job nature is selected
-                if (SelectedJobNature == null)
+                if (string.IsNullOrEmpty(SelectedJobNature))
                 {
                     errors.Add("select a jobnature");
                 }
-                if (selectedDivision == null)
+                if (string.IsNullOrEmpty( selectedDivision))
                 {
                     errors.Add("select a division");
                 }
@@ -298,9 +298,13 @@ namespace Barco
                 List<string> valiDate = CheckDates();
                 errors.AddRange(valiDate);
                 //check if other fields are empty
-                if (txtEutProjectname==null)
+                if (string.IsNullOrEmpty( txtEutProjectname))
                 {
                     errors.Add("please fill in a project name");
+                }
+                if (string.IsNullOrEmpty(HydraProjectNr))
+                {
+                    errors.Add("please fill in a Hydra project number");
                 }
                 //error handling
                 if (errors.Count > 0)
@@ -785,6 +789,20 @@ namespace Barco
                     {
                         rqRequest.Testdivisie = "ECO";
                     }
+                    List<string> pvgstrings = dao.PvgRespForTestnatureByDiv(rqRequest.Testdivisie, selectedDivision);
+                    for(int j = pvgstrings.Count-1; j>=0;j--)//their can be multiple pvgResp for 1 testnatur/division
+                    {
+                        if (j>0) 
+                        { 
+                            rqRequest.Pvgresp += pvgstrings[j] + "; ";
+                        }
+                        else
+                        {
+                             rqRequest.Pvgresp += pvgstrings[j];
+                        }
+                       
+                    }
+                    
                     requestDetails.Add(rqRequest);
                 }
             }
