@@ -11,7 +11,8 @@ namespace Barco.Data
        public Eut Eut { get; set; }
        public string PvgResp { get; set; }
        public string TestDivisie { get; set; }
-        public string EutNr { get; set; }
+       public string EutNr { get; set; }
+        
    }
 
 

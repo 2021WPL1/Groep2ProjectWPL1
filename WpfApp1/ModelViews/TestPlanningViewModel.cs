@@ -19,6 +19,7 @@ namespace Barco.ModelViews
         public PlPlanningsKalender planning { get; set; }
         public RqRequest request;
         public RqRequestDetail requestDetail;
+        public DateTime dueDate { get; set; }
 
 
         public string Omschrijving { get; set; }
@@ -44,7 +45,6 @@ namespace Barco.ModelViews
         public ICommand AddResourceCommand { get; set; }
         public DateTime dateExpectedStart { get; set; }
         public DateTime dateExpectedEnd { get; set; }
-        public string DueDate { get; set; }
         //public string Omschrijving { get; set; }
         //public TestPlanningViewModel(TestPlanning screen, int selectedId, string testDiv);
 
@@ -65,8 +65,8 @@ namespace Barco.ModelViews
             _selectedResouce = new PlResources();
             planning = new PlPlanningsKalender();
             request = dao.GetRqRequestById(selectedId);
-            requestDetail = dao.GetRqRequestDetailByRequestId(selectedId);
-
+            requestDetail = dao.GetRqRequestDetailByRequestId(dao.GetPlanning(selectedId).IdRequest);
+            dueDate =(DateTime)dao.GetPlanning(selectedId).DueDate.Value;
 
         }
         /// <summary>

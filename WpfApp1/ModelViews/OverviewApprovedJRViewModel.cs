@@ -45,7 +45,6 @@ namespace Barco.ModelViews
         }
 
 
-
         public OverviewApprovedJRViewModel(OverviewApprovedRequests screen)
         {
             BackCommand = new DelegateCommand(BackButton);
@@ -155,7 +154,7 @@ namespace Barco.ModelViews
             if (_selectedRqRequest.Request == null)
             {
 
-                MessageBox.Show("Pleas select a Request.");
+                MessageBox.Show("Please select a Request.");
             }
             else
             {
