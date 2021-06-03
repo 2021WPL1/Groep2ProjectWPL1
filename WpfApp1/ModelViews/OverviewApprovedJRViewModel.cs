@@ -155,7 +155,7 @@ namespace Barco.ModelViews
             try
             {
                 var SelectedId = SelectedRqRequest.Request.IdRequest;
-                TestPlanning testPlanning = new TestPlanning(SelectedId, SelectedTestNature.Afkorting);
+                TestPlanning testPlanning = new TestPlanning(SelectedId, SelectedRqRequest.RqRequestDetail.Testdivisie);
                 screen.Close();
                 testPlanning.ShowDialog();
             }
