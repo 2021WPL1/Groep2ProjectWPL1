@@ -17,7 +17,7 @@
         <ListBox x:Name="ListBoxPartNumber" ItemsSource="{Binding ListPartsnumbers}"  Margin="483,63,224,386" RenderTransformOrigin="0.5,0.5">
         </ListBox>
         <TextBlock HorizontalAlignment="Left" Margin="483,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="18"><Run Language="nl-be" Text="Eut partnumber"/></TextBlock>
-        <ListBox x:Name="ListBoxPartNetWeight" ItemsSource="{Binding ListPartNet}" Margin="575,63,133,386" RenderTransformOrigin="0.5,0.5">
+        <ListBox x:Name="ListBoxPartNetWeight" ItemsSource="{Binding ListPartNet}" Margin="575,63,133,386" RenderTransformOrigin="0.5,0.5" >
             <ListBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -27,7 +27,7 @@
                 </TransformGroup>
             </ListBox.RenderTransform>
         </ListBox>
-        <ListBox x:Name="ListBoxPartNetWeight1" ItemsSource="{Binding ListPartGross}" Margin="666,62,41,386" RenderTransformOrigin="0.5,0.5">
+        <ListBox x:Name="ListBoxPartNetWeight1" ItemsSource="{Binding ListPartGross}" Margin="666,62,41,386.5" RenderTransformOrigin="0.5,0.5">
             <ListBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
