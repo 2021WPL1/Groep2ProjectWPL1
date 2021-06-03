@@ -257,7 +257,7 @@ namespace Barco
                     }
                     else
                     {
-                        MessageBox.Show("Pleas select a part.");
+                        MessageBox.Show("Select a part.");
                     }
                 }
             }

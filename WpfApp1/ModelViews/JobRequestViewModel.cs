@@ -184,7 +184,7 @@ namespace Barco
             }
             catch (NullReferenceException)
             {
-                MessageBox.Show("please fill in all fields");
+                MessageBox.Show("Fill in all fields");
             }
         }
         /// <summary>
@@ -205,7 +205,7 @@ namespace Barco
         {
             if (selectedPart == null)
             {
-                MessageBox.Show("Pleas select a part to remove");
+                MessageBox.Show("Select a part to remove");
             }
             if (parts.Contains(selectedPart))
             {

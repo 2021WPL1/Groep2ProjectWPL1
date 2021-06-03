@@ -134,7 +134,7 @@ namespace Barco.ModelViews
             if (_selectedRqRequest.Request == null)
             {
 
-                MessageBox.Show("Pleas select a Request.");
+                MessageBox.Show("Select a Request.");
             }
             else
             {

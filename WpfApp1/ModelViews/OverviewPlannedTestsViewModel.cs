@@ -77,12 +77,12 @@ namespace Barco.ModelViews
                     }
                     else
                     {
-                        MessageBox.Show("Pleas select a test first.");
+                        MessageBox.Show("Select a test first.");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Pleas select a status first.");
+                    MessageBox.Show("Select a status first.");
                 }
             }
 
