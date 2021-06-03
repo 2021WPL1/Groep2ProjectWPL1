@@ -179,6 +179,15 @@ namespace Barco
 
             }
             //Save andere data
+
+            if(rbtnBatYes==true)
+            {
+                Request.Battery = true;
+            }
+            else
+            {
+                Request.Battery = false;
+            }
             Request.Requester = txtRequisterInitials;
             ////RqRequestDetail.Pvgresp = txtPvgRes;
             RqOptionel.Remarks = txtRemark;
