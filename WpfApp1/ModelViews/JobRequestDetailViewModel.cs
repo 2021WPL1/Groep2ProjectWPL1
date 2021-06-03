@@ -302,7 +302,7 @@ namespace Barco
             }
         }
         /// <summary>
-        /// Thibaut
+        /// Thibaut - fill responsible values
         /// </summary>
         private void fillPvgResp()
         {

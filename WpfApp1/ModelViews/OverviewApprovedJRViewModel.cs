@@ -65,7 +65,7 @@ namespace Barco.ModelViews
             Refresh();
         }
         /// <summary>
-        /// Laurent, Bianca, Thibaut
+        /// Laurent, Bianca, Thibaut - called when the selected job nature value is changed
         /// </summary>
         public void replaceInitialList()
         {
@@ -91,12 +91,7 @@ namespace Barco.ModelViews
                 {
                     requests = SAF;
                 }
-
-                
-
-                
             }
-            
             Refresh();
         }
 
@@ -114,7 +109,7 @@ namespace Barco.ModelViews
             }
         }
         /// <summary>
-        /// Laurent, Bianca
+        /// Laurent, Bianca - iterate request list and add it to iobservable collections for binding
         /// </summary>
         public void Refresh()
         {
@@ -130,30 +125,44 @@ namespace Barco.ModelViews
         {
             HomeScreen home = new HomeScreen();
             screen.Close();
-
             home.ShowDialog();
-
-
         }
-
-
-
+        
         //bianca, Laurent, Thibaut- when one request is selected, the overview screen is closed and the test planning page is opened
         public void PlanTestButton()
         {
 
-            if (_selectedRqRequest.Request != null)
+            /*if (_selectedRqRequest.Request != null)
             {
                 var SelectedId = _selectedRqRequest.Request.IdRequest;
-                TestPlanning testPlanning = new TestPlanning(SelectedId, SelectedTestNature.Afkorting);
+                string nature;
+                if (_selectedTestNature is null)
+                {
+                    nature = _selectedRqRequest.RqRequestDetail.Testdivisie;
+                }
+                else
+                {
+                    nature = _selectedTestNature.Afkorting;
+                }
+                TestPlanning testPlanning = new TestPlanning(SelectedId, nature);
                 screen.Close();
                 testPlanning.ShowDialog();
             }
             else
             {
                 MessageBox.Show("Select a JobRequest");
+            }*/
+            try
+            {
+                var SelectedId = SelectedRqRequest.Request.IdRequest;
+                TestPlanning testPlanning = new TestPlanning(SelectedId, SelectedTestNature.Afkorting);
+                screen.Close();
+                testPlanning.ShowDialog();
             }
-
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+            }
 
            
         }
@@ -177,7 +186,7 @@ namespace Barco.ModelViews
 
         //method used to fill in different lists based on the test nature
         /// <summary>
-        /// Laurent, Bianca, Thiabaut
+        /// Laurent, Bianca, Thibaut
         /// </summary>
         public void fillList()
         {

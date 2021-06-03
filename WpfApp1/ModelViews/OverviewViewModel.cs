@@ -71,11 +71,11 @@ namespace Barco
                 if(_selectedRequest.JrNumber == null && !(bool)_selectedRequest.InternRequest )
                 {
                     dao.ApproveRqRequest(_selectedRequest, CreateJRNumberForExternal());
-                    MessageBox.Show("The request is approved", "Approved", MessageBoxButton.OK);
+                    MessageBox.Show("The request "+ _selectedRequest.EutProjectname + " is approved", "Approved", MessageBoxButton.OK);
                 }
                 else
                 {
-                    MessageBox.Show("The request was already approved", "Approved", MessageBoxButton.OK);
+                    MessageBox.Show("The request " + _selectedRequest.EutProjectname + " is already approved", "Approved", MessageBoxButton.OK);
                 }
             }
             else
@@ -174,13 +174,13 @@ namespace Barco
            MessageBox.Show(toAddress.QueryResult.Address1);
        }
         /// <summary>
-        /// Laurent, Thibaut
+        /// Laurent, Thibaut - this method is called when overview opens, and delays it to a certain point in time
         /// </summary>
         /// <param name="count"></param>
        public void scheduleMail(int count)
        {
            DateTime datenow = DateTime.Now;
-           DateTime date = new DateTime(datenow.Year, datenow.Month, datenow.Day, 9, 12, 0);
+           DateTime date = new DateTime(datenow.Year, datenow.Month, datenow.Day, 17, 0, 0);
            if (datenow >= date)
            {
                date = new DateTime(date.Year, date.Month, (date.Day + 1), date.Hour, date.Minute, date.Second);
@@ -196,7 +196,7 @@ namespace Barco
            }
        }
         /// <summary>
-        /// Thibaut
+        /// Thibaut - generate jr number for an external request
         /// </summary>
         /// <returns></returns>
         private string CreateJRNumberForExternal()

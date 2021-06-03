@@ -45,12 +45,12 @@ namespace Barco.ModelViews
         public DateTime dateExpectedStart { get; set; }
         public DateTime dateExpectedEnd { get; set; }
         public string DueDate { get; set; }
-       // public string Omschrijving { get; set; }
-     //   public TestPlanningViewModel(TestPlanning screen, int selectedId, string testDiv);
+        //public string Omschrijving { get; set; }
+        //public TestPlanningViewModel(TestPlanning screen, int selectedId, string testDiv);
 
-       public ComboBoxItem selectedStatus { get; set; }
+        public ComboBoxItem selectedStatus { get; set; }
 
-     //Bianca
+        //Bianca
         public TestPlanningViewModel(TestPlanning screen, int selectedId,string testDiv)
         {
             this.screen = screen;
@@ -111,18 +111,21 @@ namespace Barco.ModelViews
             {
                 planning.Resources = SelectedResource.Id;
             }
-
+            
+            //bind values to planning object
+            
+            //add extra if structures to check if all input requirements have been met
          
             planning.Omschrijving = Omschrijving;
             planning.IdRequest = request.IdRequest;
             planning.JrNr = request.JrNumber;
             planning.JrStatus = request.JrStatus;
             planning.Testdiv = requestDetail.Testdivisie;
-            planning.TestStatus = selectedStatus.Content.ToString();
+            planning.TestStatus = "Planned";
             dao.AddPlanToCalendar(planning);
             
 
-
+            //show success message
             MessageBox.Show("Congratulations, you have submitted a new test planning.");
             OverviewPlannedTests overviewPlannedTests = new OverviewPlannedTests();
             screen.Close();
@@ -145,16 +148,23 @@ namespace Barco.ModelViews
             }
         }
         /// <summary>
-        /// Thibaut
+        /// Thibaut - get the resources from database based on the test division
         /// </summary>
         /// <param name="testDiv"></param>
         public void populateResources(string testDiv)
         {
-            //Resources = dao.GetResource(); //alle resources
-            Resources = dao.GetResourcesForTestDiv(testDiv);//resources per testDivision
+            if (testDiv == "all")
+            {
+                Resources = dao.GetResource(); //alle resources
+            }
+            else
+            {
+                Resources = dao.GetResourcesForTestDiv(testDiv); //resources per testDivision
+            }
+
         }
         /// <summary>
-        /// Laurent
+        /// Laurent - add the selected combobox value to the resource list
         /// </summary>
         public void AddResourceButton()
         {
@@ -172,7 +182,7 @@ namespace Barco.ModelViews
             }
         }
         /// <summary>
-        /// Laurent
+        /// Laurent - iterate resource list and add it to iobservable collections for binding
         /// </summary>
         public void refresh()
         {
@@ -184,7 +194,7 @@ namespace Barco.ModelViews
         }
 
         /// <summary>
-        /// Laurent
+        /// Laurent - selected object - for binding
         /// </summary>
 
         public PlResources SelectedResource

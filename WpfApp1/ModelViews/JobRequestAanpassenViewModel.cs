@@ -152,7 +152,7 @@ namespace Barco
             }
         }
         /// <summary>
-        /// jimmy
+        /// jimmy - object for handling the listview with partnumbers
         /// </summary>
         public class Part
         {
@@ -197,7 +197,16 @@ namespace Barco
             RqOptionel.Remarks = txtRemark;
             //Request.JobNature = SelectedJobNature;
             RqOptionel.Link = txtLinkTestplan;
+            if (rbtnBatYes)
+            {
+                Request.Battery = true;
+            }
+            else if (rbtnBatNo)
+            {
+                Request.Battery = false;
+            }
             //Request.BarcoDivision = selectedDivision;
+        
             if (txtRequisterInitials == "" || txtEutProjectname == ""  )
             {
                 MessageBox.Show("Make sure there are no empty fields.");
@@ -249,22 +258,19 @@ namespace Barco
                     {
                         MessageBox.Show("Pleas select a part.");
                     }
-
                 }
-                    
             }
-
         }
 
         /// <summary>
-        /// jimmy, Thibaut, Laurent
+        /// jimmy, Thibaut, Laurent - make a new part object with field values
         /// </summary>
         public void AddPart()
         {
             //als de textboxes leeg zijn geef dan een foutmelding, anders add de content aan parts
             try
             {
-                if (txtPartNumber.Length == null || txtPartNetWeight.Length == null || txtPartGrossWeight.Length == null)
+                if (String.IsNullOrEmpty(txtPartNumber) || String.IsNullOrEmpty(txtPartNetWeight) || String.IsNullOrEmpty(txtPartGrossWeight) || txtPartNumber == " " || txtPartNetWeight == " " || txtPartGrossWeight == " " )
                 {
                     MessageBox.Show("please fill in all part values");
                 }
@@ -289,7 +295,7 @@ namespace Barco
 
         }
         /// <summary>
-        /// jimmy, thibaut
+        /// jimmy, thibaut - get parts from database and put them in the view
         /// </summary>
         public void LoadParts()
         {
@@ -532,7 +538,7 @@ namespace Barco
         /// jimmy, thibaut
         /// </summary>
         private void fillPvgResp()
-        {//voor iedere request in deltails kijken of de testdivisie matched en zo dan worden de pvg's ingevuld
+        {//voor iedere request in deltails kijken of de testdivisie matchet en zo dan worden de pvg's ingevuld
             foreach (RqRequestDetail rq in rqRequestDetails)
             {
                 if (rq.Testdivisie.Equals("EMC"))
@@ -622,7 +628,7 @@ namespace Barco
         }
 
         /// <summary>
-        /// jimmy, bianca, thibaut
+        /// jimmy, bianca, thibaut - get the data to the view
         /// </summary>
         private void FillData()
         {

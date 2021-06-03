@@ -164,10 +164,10 @@ namespace Barco
         {
             try
             {
-                if (txtPartNr.Length == 0 || txtNetWeight.Length == 0 || txtGrossWeight.Length == 0)
-                {
-                    MessageBox.Show("please fill in all values");
-                }
+                if (String.IsNullOrEmpty(txtPartNr) || String.IsNullOrEmpty(txtNetWeight) || String.IsNullOrEmpty(txtGrossWeight) || txtPartNr == " " || txtNetWeight == " " || txtGrossWeight == " ")
+                {                    
+                    MessageBox.Show("please fill in all part values");
+                }              
                 else
                 {
                     parts.Add(new Part()
@@ -203,6 +203,10 @@ namespace Barco
         /// </summary>
         public void RemoveButton()
         {
+            if (selectedPart == null)
+            {
+                MessageBox.Show("Pleas select a part to remove");
+            }
             if (parts.Contains(selectedPart))
             {
                 if (MessageBox.Show("Are you sure you want to delete part " + selectedPart.partNo + "?", "Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)

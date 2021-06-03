@@ -16,6 +16,7 @@ namespace Barco.Views
             InitializeComponent();
             overviewTestModel = new OverviewPlannedTestsViewModel(this);
             DataContext = overviewTestModel;
+            
         }
 
     }
