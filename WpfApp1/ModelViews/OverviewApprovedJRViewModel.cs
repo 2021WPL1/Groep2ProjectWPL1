@@ -65,7 +65,7 @@ namespace Barco.ModelViews
             Refresh();
         }
         /// <summary>
-        /// Laurent, Bianca, Thibaut
+        /// Laurent, Bianca, Thibaut - called when the selected job nature value is changed
         /// </summary>
         public void replaceInitialList()
         {
@@ -91,12 +91,7 @@ namespace Barco.ModelViews
                 {
                     requests = SAF;
                 }
-
-                
-
-                
             }
-            
             Refresh();
         }
 
@@ -114,7 +109,7 @@ namespace Barco.ModelViews
             }
         }
         /// <summary>
-        /// Laurent, Bianca
+        /// Laurent, Bianca - iterate request list and add it to iobservable collections for binding
         /// </summary>
         public void Refresh()
         {
@@ -130,14 +125,9 @@ namespace Barco.ModelViews
         {
             HomeScreen home = new HomeScreen();
             screen.Close();
-
             home.ShowDialog();
-
-
         }
-
-
-
+        
         //bianca, Laurent, Thibaut- when one request is selected, the overview screen is closed and the test planning page is opened
         public void PlanTestButton()
         {
