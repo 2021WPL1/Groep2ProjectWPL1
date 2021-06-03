@@ -144,8 +144,7 @@ namespace Barco.ModelViews
                 screen.Close();
                 testPlanning.ShowDialog();
             }
-
-
+            
         }
 
         //  used to select a request for a further test planning

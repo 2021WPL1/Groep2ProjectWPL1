@@ -64,13 +64,13 @@ namespace Barco
         {
             CancelCommand = new DelegateCommand(CloseButton);
             dao = DAO.Instance();
-            this.ListPartsnumbers = new List<string>();
-            this.ListPartGross = new List<string>();
-            this.ListPartNet = new List<string>();
-            this.Request = dao.GetRequest(selectedId);
-            this.rqOptionel = dao.GetOptionel(selectedId);
-            this.rqRequestDetail = dao.GetRequestDetail(selectedId);
-            this.rqRequestDetails = dao.GetRqDetailsWithRequestId(selectedId);
+            ListPartsnumbers = new List<string>();
+            ListPartGross = new List<string>();
+            ListPartNet = new List<string>();
+            Request = dao.GetRequest(selectedId);
+            rqOptionel = dao.GetOptionel(selectedId);
+            rqRequestDetail = dao.GetRequestDetail(selectedId);
+            rqRequestDetails = dao.GetRqDetailsWithRequestId(selectedId);
             LoadPartsNumbers();
             LoadPartGrossWeight();
             LoadPartNetWeight();
@@ -143,6 +143,7 @@ namespace Barco
             }
             while (partGross.Contains(";"));
         }
+        
         //thibaut, Bianca
         //transfers the data from the database to the eut checkboxes
         private void fillEuts()

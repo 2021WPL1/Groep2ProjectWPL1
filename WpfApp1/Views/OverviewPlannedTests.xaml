@@ -51,6 +51,5 @@
         <Button Content="Change status" 
                 Command="{Binding ChangeStatusCommand}"
                 HorizontalAlignment="Left" Margin="877,69,0,0" VerticalAlignment="Top" Width="83"/>
-
     </Grid>
 </Window>

@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Barco" 
         mc:Ignorable="d"
-        Title="JobRequestAanpassen" Height="450" Width="800">
+        Title="JobRequestAanpassen" Height="550" Width="800">
     <Grid Margin="0,0,0,-35" >
-        <ListView x:Name="lstParts"  Margin="426,27,0,308"  SelectedValue="{Binding Path=selectedPart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding listParts}" HorizontalAlignment="Left" Width="341">
+        <ListView x:Name="lstParts"  Margin="426,27,0,410"  SelectedValue="{Binding Path=selectedPart, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemsSource="{Binding listParts}" HorizontalAlignment="Left" Width="341">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Part number" Width="117" x:Name="lstPartNo" DisplayMemberBinding="{ Binding partNo}">
@@ -31,15 +31,15 @@
         <TextBlock HorizontalAlignment="Left" Margin="306,35,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Job Nature"/></TextBlock>
         <ComboBox x:Name="comboBoxDivision" SelectedItem="{Binding selectedDivision, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" SelectedValue="{Binding  Request.BarcoDivision}"  HorizontalAlignment="Left" Margin="176,58,0,0" VerticalAlignment="Top" Width="94" IsEnabled="False"/>
         <ComboBox x:Name="comboBoxJobNature" SelectedItem="{Binding selectedJobNature , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }" SelectedValue="{Binding Request.JobNature}" SelectedIndex="0" HorizontalAlignment="Left" Margin="306,58,0,0" VerticalAlignment="Top" Width="94"/>
-        <TextBlock HorizontalAlignment="Left" Margin="453,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="15"><Run Language="nl-be" Text="Eut partnumber"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="548,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="15"><Run Language="nl-be" Text="Net weight (KG)"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="639,169,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" Height="15"><Run Language="nl-be" Text="Gross"/><Run Text=" weight (KG)"/></TextBlock>
-        <TextBox x:Name="txtPartNumber" HorizontalAlignment="Left" Margin="456,188,0,0" TextWrapping="Wrap" Text="{Binding txtPartNumber , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Width="78" Height="17" />
-        <TextBox x:Name="txtPartNetWeight" HorizontalAlignment="Left" Margin="552,188,0,0" TextWrapping="Wrap" Text="{Binding txtPartNetWeight , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Width="78" Height="17"/>
-        <TextBox x:Name="txtPartGrossWeight" HorizontalAlignment="Left" Margin="649,188,0,0" TextWrapping="Wrap" Text="{Binding txtPartGrossWeight , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Width="78" Height="17"/>
+        <TextBlock HorizontalAlignment="Left" Margin="453,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="15"><Run Language="nl-be" Text="Eut partnumber"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="548,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="15"><Run Language="nl-be" Text="Net weight (KG)"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="639,168,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="98" Height="15"><Run Language="nl-be" Text="Gross"/><Run Text=" weight (KG)"/></TextBlock>
+        <TextBox x:Name="txtPartNumber" HorizontalAlignment="Left" Margin="456,187,0,0" TextWrapping="Wrap" Text="{Binding txtPartNumber , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Width="78" Height="17" />
+        <TextBox x:Name="txtPartNetWeight" HorizontalAlignment="Left" Margin="552,187,0,0" TextWrapping="Wrap" Text="{Binding txtPartNetWeight , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Width="78" Height="17"/>
+        <TextBox x:Name="txtPartGrossWeight" HorizontalAlignment="Left" Margin="649,187,0,0" TextWrapping="Wrap" Text="{Binding txtPartGrossWeight , UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Width="78" Height="17"/>
         <Button x:Name="btnAddPart" 
                 Command="{Binding AddCommand}"
-                Content="Add" HorizontalAlignment="Left" Margin="566,222,0,0" VerticalAlignment="Top"  Width="48" Height="21"/>
+                Content="Add" HorizontalAlignment="Left" Margin="566,221,0,0" VerticalAlignment="Top"  Width="48" Height="21"/>
         <Button x:Name="btnRemovePart"
                 Command="{Binding RemoveCommand}"
                 Content="Remove" HorizontalAlignment="Left" Margin="629,222,0,0" VerticalAlignment="Top" Height="21"/>
@@ -97,15 +97,15 @@
         <TextBox x:Name="txtSpecialRemarks" Text="{Binding txtRemark, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay }" HorizontalAlignment="Left" Margin="535,274,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="237" Height="91"/>
         <Button x:Name="btnCancelRequest"
                       Command="{Binding CancelCommand}" 
-                Content="Cancel" HorizontalAlignment="Left" Margin="741,382,0,0" VerticalAlignment="Top"  Height="20" Width="45"/>
+                Content="Cancel" HorizontalAlignment="Left" Margin="741,426,0,0" VerticalAlignment="Top"  Height="20" Width="45"/>
         <Button x:Name="btnSaveChanges" 
                  Command="{Binding SaveChangesCommand}"
-                Content="Save changes" Margin="650,382,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.289,0.634" Height="22" HorizontalAlignment="Left" Width="77" />
+                Content="Save changes" Margin="650,426,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.289,0.634" Height="22" HorizontalAlignment="Left" Width="77" />
         <TextBlock HorizontalAlignment="Left" Margin="176,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="Request date"/></TextBlock>
-        <TextBlock HorizontalAlignment="Left" Margin="306,92,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="JR number"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Margin="306,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94"><Run Language="nl-be" Text="JR number"/></TextBlock>
         <Label Content="PVG &#xA;Responsible" HorizontalAlignment="Left" Margin="438,202,0,0" VerticalAlignment="Top" Width="96" Height="47"/>
-        <Label x:Name="lblRequestDate" Content="{Binding Request.RequestDate, Mode=TwoWay}" HorizontalAlignment="Left" Margin="176,108,0,0" VerticalAlignment="Top" Width="83" Height="24"/>
-        <Label x:Name="lblJobRequestNumber" Content="{Binding Request.JrNumber, Mode=TwoWay}" HorizontalAlignment="Left" Margin="300,104,0,0" VerticalAlignment="Top" Width="110" Height="28"/>
+        <Label x:Name="lblRequestDate" Content="{Binding Request.RequestDate, Mode=TwoWay}" HorizontalAlignment="Left" Margin="176,108,0,0" VerticalAlignment="Top" Width="60" Height="24"/>
+        <Label x:Name="lblJobRequestNumber" Content="{Binding Request.JrNumber, Mode=TwoWay}" HorizontalAlignment="Left" Margin="300,105,0,0" VerticalAlignment="Top" Width="110" Height="28"/>
         <DatePicker x:Name="DatePickerEUT1" HorizontalAlignment="Left" SelectedDate="{Binding dateEut1}" Margin="212,382,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04"/>
         <DatePicker x:Name="DatePickerEUT2" HorizontalAlignment="Left" SelectedDate="{Binding dateEut2}" Margin="258,382,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04"/>
         <DatePicker x:Name="DatePickerEUT3" HorizontalAlignment="Left" SelectedDate="{Binding dateEut3}" Margin="305,382,0,0" VerticalAlignment="Top" Width="30" Height="26" DisplayDate="2021-03-04"/>
