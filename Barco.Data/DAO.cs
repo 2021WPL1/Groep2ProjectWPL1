@@ -114,6 +114,8 @@ namespace Barco.Data
             context.RqRequestDetail.RemoveRange(context.RqRequestDetail.Where(e => e.IdRequest == requestId).ToList());
             saveChanges();
         }
+
+        
         //thibaut, bianca
         //get an optional id from requestId
         public RqOptionel GetOptionalByRequestId(int id)

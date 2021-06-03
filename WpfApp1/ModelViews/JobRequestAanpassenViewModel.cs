@@ -1,10 +1,11 @@
-﻿using Prism.Commands;
+﻿using Barco.Data;
+using Prism.Commands;
 using System;
 using System.Collections.Generic;
-using System.Windows.Input;
 using System.Collections.ObjectModel;
 using System.Windows;
 using Barco.Data;
+using System.Windows.Input;
 
 namespace Barco
 {//jimmy
@@ -179,8 +180,19 @@ namespace Barco
 
             }
             //Save andere data
+
+            if(rbtnBatYes==true)
+            {
+                Request.Battery = true;
+            }
+            else
+            {
+                Request.Battery = false;
+            }
             Request.Requester = txtRequisterInitials;
             ////RqRequestDetail.Pvgresp = txtPvgRes;
+            RqOptionel.Remarks = txtRemark;
+            RqOptionel.Link = txtLinkTestplan;
             Request.EutProjectname = txtEutProjectname;
             Request.ExpectedEnddate = dateExpectedEnd;
             RqOptionel.Remarks = txtRemark;
@@ -203,14 +215,15 @@ namespace Barco
             else
             {
 
-                try
-                {
-                    //save de changes & geef een messagebox die aantoont dat de gegevens opgeslagen zijn.
-                    dao.saveChanges();
-                    MessageBox.Show("Changes saved.");
-                    OverviewJobRequest overview = new OverviewJobRequest();
-                    screen.Close();
-                    overview.ShowDialog();
+
+            try
+            {
+                //save de changes & geef een messagebox die aantoont dat de gegevens opgeslagen zijn.
+                dao.saveChanges();
+                MessageBox.Show("Changes saved.");
+                OverviewJobRequest overview = new OverviewJobRequest();
+                screen.Close();
+                overview.ShowDialog();
 
                 }
                 catch (Exception e)
@@ -632,7 +645,6 @@ namespace Barco
             fillEuts();
             fillPvgResp();
             SetBatteries();
-            RefreshGUI();
         }
 
 
