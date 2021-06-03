@@ -2,7 +2,6 @@
 using System;
 using System.Windows;
 using System.Windows.Media.Imaging;
-
 namespace Barco
 {  //Bianca
     /// <summary>
@@ -26,8 +25,6 @@ namespace Barco
             cbxChooseDepartment.DisplayMemberPath = "Afkorting";
             cbxChooseDepartment.SelectedValuePath = "Afkorting";
         }
-
-
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
             MessageBox.Show(cbxChooseDepartment.SelectedValue.ToString() + " " 

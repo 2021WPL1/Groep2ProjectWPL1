@@ -143,7 +143,6 @@ namespace Barco
             }
             while (partGross.Contains(";"));
         }
-        
         //thibaut, Bianca
         //transfers the data from the database to the eut checkboxes
         private void fillEuts()

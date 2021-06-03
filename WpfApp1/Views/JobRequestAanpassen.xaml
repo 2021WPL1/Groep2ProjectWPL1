@@ -11,14 +11,10 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Part number" Width="117" x:Name="lstPartNo" DisplayMemberBinding="{ Binding partNo}">
-
-
                     </GridViewColumn>
                     <GridViewColumn Header="Net Weight" Width="117" x:Name="lstNetWeight" DisplayMemberBinding="{ Binding NetWeight}">
-
                     </GridViewColumn>
                     <GridViewColumn Header="Gross weight" Width="117" x:Name="lstGrossWeight" DisplayMemberBinding="{ Binding GrossWeight}">
-
                     </GridViewColumn>
                 </GridView>
             </ListView.View>

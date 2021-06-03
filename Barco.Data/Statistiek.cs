@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 namespace Barco
 {
     public partial class Statistiek

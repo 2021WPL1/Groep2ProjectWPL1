@@ -16,18 +16,14 @@
                 <GridView>
                     <GridViewColumn  Header="JrNumber" 
                         Width="100"  DisplayMemberBinding="{Binding JrNr}"/>
-
                     <GridViewColumn Header="Test nature" 
                                     Width="150" DisplayMemberBinding="{Binding Testdiv}" />
-
-
                     <GridViewColumn Header="Start date" 
                         Width="150" DisplayMemberBinding="{Binding Startdatum}" />
                     <GridViewColumn Header="End Date" 
                                     Width="150" DisplayMemberBinding="{Binding Einddatum}"/>
                     <GridViewColumn Header="Resources" 
                                     Width="100" DisplayMemberBinding="{Binding Resources}"/>
-
                     <GridViewColumn Header="Test status" 
                                     Width="200"  DisplayMemberBinding="{Binding TestStatus}"/>
                 </GridView>
@@ -51,6 +47,5 @@
         <Button Content="Change status" 
                 Command="{Binding ChangeStatusCommand}"
                 HorizontalAlignment="Left" Margin="877,69,0,0" VerticalAlignment="Top" Width="83"/>
-
     </Grid>
 </Window>

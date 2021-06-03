@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-
 namespace Barco
 {
     /// <summary>
@@ -13,7 +12,6 @@ namespace Barco
             InitializeComponent();
             overviewModel = new OverviewViewModel(this);
             DataContext = overviewModel;
-
         }
     }
 }

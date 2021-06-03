@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 namespace Barco
 {
     public partial class PlPlanning
@@ -13,7 +12,6 @@ namespace Barco
         public string TestDiv { get; set; }
         public string TestDivStatus { get; set; }
         public DateTime? TestDivPlanDate { get; set; }
-
         public virtual RqRequest IdRequestNavigation { get; set; }
     }
 }

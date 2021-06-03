@@ -6,7 +6,6 @@ using System.Windows.Input;
 using Barco.Data;
 using Barco.Views;
 using Prism.Commands;
-
 namespace Barco.ModelViews
 { // bianca- show a viewlist with an overview of the approved requests
     public class OverviewApprovedJRViewModel : ViewModelBase
@@ -17,20 +16,15 @@ namespace Barco.ModelViews
         private RqTestDevision _selectedTestNature;
         private RqRequest _selectedApprovedRequest;
         public ComboObject _selectedRqRequest { get; set; }
-
         public List<RqTestDevision> TestDevisions { get; set; }
         public List<ComboObject> ComboObjects { get; set; }
-
         public ICommand BackCommand { get; set; }
         public ICommand PlanTestCommand { get; set; }
-
-
         public List<ComboObject> EMC { get; set; }
         public List<ComboObject> ECO { get; set; }
         public List<ComboObject> ENV { get; set; }
         public List<ComboObject> REL { get; set; }
         public List<ComboObject> SAF { get; set; }
-
         //for editing inside vModel
         public ObservableCollection<ComboObject> lstRequests = new ObservableCollection<ComboObject>();
         //for iterating and adding
@@ -43,9 +37,6 @@ namespace Barco.ModelViews
                 return lstRequests;
             }
         }
-
-
-
         public OverviewApprovedJRViewModel(OverviewApprovedRequests screen)
         {
             BackCommand = new DelegateCommand(BackButton);
@@ -94,7 +85,6 @@ namespace Barco.ModelViews
             }
             Refresh();
         }
-
     //  used to select a request for a further test planning
     /// <summary>
     /// Laurent, Bianca
@@ -119,7 +109,6 @@ namespace Barco.ModelViews
                 lstRequests.Add(c);
             }
         }
-
         //bianca- cancel the overview screen and open the home screen
         public void BackButton()
         {
@@ -127,11 +116,9 @@ namespace Barco.ModelViews
             screen.Close();
             home.ShowDialog();
         }
-        
         //bianca, Laurent, Thibaut- when one request is selected, the overview screen is closed and the test planning page is opened
         public void PlanTestButton()
         {
-
             /*if (_selectedRqRequest.Request != null)
             {
                 var SelectedId = _selectedRqRequest.Request.IdRequest;
@@ -163,10 +150,7 @@ namespace Barco.ModelViews
             {
                 MessageBox.Show(e.Message);
             }
-
-           
         }
-
         //  used to select a request for a further test planning
         /// <summary>
         /// Bianca,Laurent, Thibaut, Jimmy
@@ -181,9 +165,6 @@ namespace Barco.ModelViews
                 replaceInitialList();
             }
         }
-
-      
-
         //method used to fill in different lists based on the test nature
         /// <summary>
         /// Laurent, Bianca, Thibaut
@@ -191,14 +172,12 @@ namespace Barco.ModelViews
         public void fillList()
         {
             var initialList = ComboObjects;
-
             foreach (var request in initialList)
             {
                 if (request.RqRequestDetail.Testdivisie.Contains("ECO"))
                 {
                     ECO.Add(request);
                 }
-
                 if (request.RqRequestDetail.Testdivisie.Contains("ENV"))
                 {
                     ENV.Add(request);
@@ -229,9 +208,5 @@ namespace Barco.ModelViews
                 OnPropertyChanged();
             }
         }
-
-
-        
-
     }
 }

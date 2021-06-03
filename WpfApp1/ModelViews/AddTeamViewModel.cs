@@ -1,5 +1,4 @@
-﻿
-namespace Barco.ModelViews
+﻿namespace Barco.ModelViews
 {
     class AddTeamViewModel
     {

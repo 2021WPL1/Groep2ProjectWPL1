@@ -8,7 +8,6 @@ using System.Windows.Input;
 using Barco.Data;
 using Barco.Views;
 using Prism.Commands;
-
 namespace Barco.ModelViews
 {
   public class OverviewPlannedTestsViewModel: ViewModelBase
@@ -16,8 +15,6 @@ namespace Barco.ModelViews
             private OverviewPlannedTests screen;
             private DAO dao;
             public ComboBoxItem selectedStatus { get; set; }
-
-
         private PlPlanningsKalender _selectedTest { get; set; }
             //for editing inside vModel
             public ObservableCollection<PlPlanningsKalender> lstPlannedTests = new ObservableCollection<PlPlanningsKalender>();
@@ -31,15 +28,8 @@ namespace Barco.ModelViews
                     return lstPlannedTests;
                 }
             }
-
-
             public ICommand CancelOverviewCommand{ get; set; }
             public ICommand ChangeStatusCommand { get; set; }
-
-
-
-        
-
             public OverviewPlannedTestsViewModel(OverviewPlannedTests screen)
             {
                 CancelOverviewCommand = new DelegateCommand(CancelOverviewButton);
@@ -48,18 +38,13 @@ namespace Barco.ModelViews
                 tests = dao.listPlannings();
                 this.screen = screen;
                 Refresh();
-               
             }
-
-
             public void CancelOverviewButton()
             {
                 HomeScreen home = new HomeScreen(); 
                 screen.Close();
                 home.ShowDialog();
             }
-
-
             // Bianca-to change the default status of the test
             //Jimmy- confirmation changing status
             public void ChangeStatusButton()
@@ -70,10 +55,7 @@ namespace Barco.ModelViews
                     dao.ChangeStatus(selectedStatus.Content.ToString(), SelectedTest.Id);
                     Refresh();
                 }
-
             }
-
-
             public PlPlanningsKalender SelectedTest
             {
                 get { return _selectedTest; }
@@ -83,7 +65,6 @@ namespace Barco.ModelViews
                     OnPropertyChanged();
                 }
             }
-
         // Bianca- to load all the planned tests in the listview
         public void Refresh()
         {
@@ -93,6 +74,5 @@ namespace Barco.ModelViews
                 lstPlannedTests.Add(c);
             }
         }
-
     }
 }

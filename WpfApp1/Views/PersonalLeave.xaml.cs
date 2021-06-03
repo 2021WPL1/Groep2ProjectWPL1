@@ -1,7 +1,6 @@
 ﻿using Barco.Data;
 using System;
 using System.Windows;
-
 namespace Barco
 {
     /// <summary>

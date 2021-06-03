@@ -13,6 +13,4 @@ namespace Barco.Data
        public string TestDivisie { get; set; }
         public string EutNr { get; set; }
    }
-
-
 }

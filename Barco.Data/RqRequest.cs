@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 namespace Barco
 {
     public partial class RqRequest
@@ -12,7 +11,6 @@ namespace Barco
             RqOptionel = new HashSet<RqOptionel>();
             RqRequestDetail = new HashSet<RqRequestDetail>();
         }
-
         public int IdRequest { get; set; }
         public string JrNumber { get; set; }
         public DateTime? RequestDate { get; set; }
@@ -28,7 +26,6 @@ namespace Barco
         public string GrossWeight { get; set; }
         public string NetWeight { get; set; }
         public bool Battery { get; set; }
-
         public virtual ICollection<PlPlanning> PlPlanning { get; set; }
         public virtual ICollection<PlPlanningsKalender> PlPlanningsKalender { get; set; }
         public virtual ICollection<RqOptionel> RqOptionel { get; set; }

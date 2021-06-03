@@ -60,7 +60,6 @@ namespace Barco
             HomeScreen home = new HomeScreen();
             overview.Close();
             home.ShowDialog();
-
         }
         //jimmy - thibaut jrnumber toewijzen
         //Verranderd de Jr status van het geselecteerde request
@@ -105,13 +104,20 @@ namespace Barco
         {
             if (_selectedRequest != null)
             {
-                if (MessageBox.Show("Are you sure you want to delete " + _selectedRequest.EutProjectname +"?", "Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                if (!_selectedRequest.JrStatus.Equals("Approved"))
                 {
-                    dao.DeleteJobRequest(_selectedRequest.IdRequest);
-                    Load();
+                    if (MessageBox.Show("Are you sure you want to delete " + _selectedRequest.EutProjectname + "?", "Delete", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+                    {
+                        dao.DeleteJobRequest(_selectedRequest.IdRequest);
+                        Load();
+                    }
                 }
-            }
+                else
+                {
+                    MessageBox.Show("U can't delete an approved job request!");
+                }
                 
+            }
             else
             {
                 MessageBox.Show("Select a JobRequest");

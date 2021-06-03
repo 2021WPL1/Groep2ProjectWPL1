@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-
 namespace Barco
 {
     /// <summary>
@@ -14,6 +13,5 @@ namespace Barco
             loginVM = new LoginScreenViewModel();
             DataContext = loginVM;
         }
-
     }
 }

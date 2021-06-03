@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 namespace Barco
 {
     public partial class PlPlanningsKalender
@@ -16,7 +15,6 @@ namespace Barco
         public int Resources { get; set; }
         public string TestStatus { get; set; }
         public string Reserve { get; set; }
-
         public virtual RqRequest IdRequestNavigation { get; set; }
         public virtual PlResources ResourcesNavigation { get; set; }
     }

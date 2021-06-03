@@ -19,37 +19,26 @@ namespace Barco.ModelViews
         public PlPlanningsKalender planning { get; set; }
         public RqRequest request;
         public RqRequestDetail requestDetail;
-
-
         public string Omschrijving { get; set; }
-
         //for editing inside vModel
         public ObservableCollection<PlResources> lstResources = new ObservableCollection<PlResources>();
-
         //for iterating and adding
         public List<PlResources> resources = new List<PlResources>();
         public PlResources resource;
-
         //for binding
         public ObservableCollection<PlResources> currentResources
         {
             get { return lstResources; }
         }
-
-
-
         private PlResources _selectedResouce { get; set; }
         public List<PlResources> Resources { get; set; }
-
         public ICommand AddResourceCommand { get; set; }
         public DateTime dateExpectedStart { get; set; }
         public DateTime dateExpectedEnd { get; set; }
         public string DueDate { get; set; }
         //public string Omschrijving { get; set; }
         //public TestPlanningViewModel(TestPlanning screen, int selectedId, string testDiv);
-
         public ComboBoxItem selectedStatus { get; set; }
-
         //Bianca
         public TestPlanningViewModel(TestPlanning screen, int selectedId,string testDiv)
         {
@@ -66,8 +55,6 @@ namespace Barco.ModelViews
             planning = new PlPlanningsKalender();
             request = dao.GetRqRequestById(selectedId);
             requestDetail = dao.GetRqRequestDetailByRequestId(selectedId);
-
-
         }
         /// <summary>
         /// Bianca
@@ -83,12 +70,9 @@ namespace Barco.ModelViews
                 }
                 else
                 {
-                        
                     MessageBox.Show("The start date has to be in the future");
                 }
             }
-          
-
             //check if an end date is selected
             if (dateExpectedEnd.Date != null)
             {
@@ -101,7 +85,6 @@ namespace Barco.ModelViews
                     MessageBox.Show("The end date has to be in the future");
                 }
             }
-        
             //check if the resources are selected
             if (SelectedResource == null)
             {
@@ -111,11 +94,8 @@ namespace Barco.ModelViews
             {
                 planning.Resources = SelectedResource.Id;
             }
-            
             //bind values to planning object
-            
             //add extra if structures to check if all input requirements have been met
-         
             planning.Omschrijving = Omschrijving;
             planning.IdRequest = request.IdRequest;
             planning.JrNr = request.JrNumber;
@@ -123,25 +103,19 @@ namespace Barco.ModelViews
             planning.Testdiv = requestDetail.Testdivisie;
             planning.TestStatus = "Planned";
             dao.AddPlanToCalendar(planning);
-            
-
             //show success message
             MessageBox.Show("Congratulations, you have submitted a new test planning.");
             OverviewPlannedTests overviewPlannedTests = new OverviewPlannedTests();
             screen.Close();
             overviewPlannedTests.ShowDialog();
-       
         }
-
         /// <summary>
         /// Bianca
         /// </summary>
-
         public void CancelButton()
         {
             if (MessageBox.Show("Are you sure you want to leave this screen?", "Leave", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-                
                 OverviewApprovedRequests overview = new OverviewApprovedRequests();
                 screen.Close();
                 overview.ShowDialog();
@@ -161,7 +135,6 @@ namespace Barco.ModelViews
             {
                 Resources = dao.GetResourcesForTestDiv(testDiv); //resources per testDivision
             }
-
         }
         /// <summary>
         /// Laurent - add the selected combobox value to the resource list
@@ -192,11 +165,9 @@ namespace Barco.ModelViews
                 lstResources.Add(resource);
             }
         }
-
         /// <summary>
         /// Laurent - selected object - for binding
         /// </summary>
-
         public PlResources SelectedResource
         {
             get => _selectedResouce;
@@ -208,5 +179,3 @@ namespace Barco.ModelViews
         }
     }
 }
-
-

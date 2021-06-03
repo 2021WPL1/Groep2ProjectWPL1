@@ -17,8 +17,6 @@ namespace Barco
         public ICommand CollectiveLeaveCommand { get; set; }
         public ICommand ApprovedJobRequestsCommand { get; set; }
         public ICommand PlannedTestsCommand { get; set; }
-
-
         public HomeScreenViewModel(HomeScreen home)
         {
             JobRequestCommand = new DelegateCommand(CreateRequest);
@@ -27,7 +25,6 @@ namespace Barco
             CollectiveLeaveCommand = new DelegateCommand(CollectiveLeave);
             ApprovedJobRequestsCommand = new DelegateCommand(ApprovedJobRequests);
             PlannedTestsCommand = new DelegateCommand(PlannedTests);
-
             this.home = home;
         }
         /// <summary>

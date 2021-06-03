@@ -153,7 +153,6 @@ namespace Barco
         {
             if (MessageBox.Show("Are you sure you want to leave this screen without saving?", "Leave", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
-              
                 HomeScreen home = new HomeScreen();
                 screen.Close();
                 home.ShowDialog();
@@ -216,7 +215,6 @@ namespace Barco
                     RefreshGUI();
                     OnPropertyChanged();
                 }
-                
             }
         }
         /// <summary>
@@ -361,11 +359,9 @@ namespace Barco
                         HomeScreen home = new HomeScreen();
                         screen.Close();
                         home.ShowDialog();
-
                     }
                     catch (Exception ex)
                     {
-
                         MessageBox.Show(ex.Message);
                     }
                 }
@@ -824,9 +820,7 @@ namespace Barco
                         {
                              rqRequest.Pvgresp += pvgstrings[j];
                         }
-                       
                     }
-                    
                     requestDetails.Add(rqRequest);
                 }
             }
@@ -835,7 +829,6 @@ namespace Barco
         /// <summary>
         /// Thibaut
         /// </summary>
-
         private string CreateJRNumberForInternal()
         {
             string result = dao.GetJobNumber(true);

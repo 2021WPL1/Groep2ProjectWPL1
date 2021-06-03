@@ -8,7 +8,6 @@ namespace Barco
     public partial class JobRequest : Window
     {
         private JobRequestViewModel jobRequestViewModel;
-
         private static DAO dao;
         public JobRequest()
         {

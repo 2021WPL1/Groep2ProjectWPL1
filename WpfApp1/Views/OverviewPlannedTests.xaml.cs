@@ -1,6 +1,5 @@
 ﻿using System.Windows;
 using Barco.ModelViews;
-
 namespace Barco.Views
 {
     /// <summary>
@@ -8,16 +7,12 @@ namespace Barco.Views
     /// </summary>
     public partial class OverviewPlannedTests : Window
     {
-
         private OverviewPlannedTestsViewModel overviewTestModel;
-
         public OverviewPlannedTests()
         {
             InitializeComponent();
             overviewTestModel = new OverviewPlannedTestsViewModel(this);
             DataContext = overviewTestModel;
-            
         }
-
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-
 namespace Barco
 {
     /// <summary>
@@ -14,8 +13,6 @@ namespace Barco
             InitializeComponent();
             homeScreenViewModel = new HomeScreenViewModel(this);
             DataContext = homeScreenViewModel;
-
         }
-
     }
 }

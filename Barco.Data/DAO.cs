@@ -135,7 +135,6 @@ namespace Barco.Data
             TimeSpan s = new TimeSpan(5, 0, 0, 0, 0);
             DateTime DueDate = new DateTime();
             DueDate= (DateTime)rqRequest.RequestDate + s;
-
             List<RqRequestDetail> DetailList = this.GetRqDetailsWithRequestId(rqRequest.IdRequest);
             foreach (RqRequestDetail detail in DetailList)
             {
@@ -150,7 +149,6 @@ namespace Barco.Data
                 context.PlPlanning.Add(planning);
                 saveChanges();
             }
-            
         }
         //bianca & jimmy
         //get all the barcoDivisions
@@ -188,7 +186,6 @@ namespace Barco.Data
         {
             return context.RqOptionel.Where(opt => opt.IdRequest == idReq).FirstOrDefault();
         }
-
         //Stach - geeft division op basis van de afkorting
         public RqBarcoDivision GetDivisionByAbb(string abb)
         {
@@ -270,10 +267,6 @@ namespace Barco.Data
             }
             return request;
         }
-
-        
-
-
         //Bianca
         //add a planning object to planningskalender column
         public PlPlanningsKalender AddPlanToCalendar(PlPlanningsKalender planning)
@@ -282,18 +275,13 @@ namespace Barco.Data
             {
                 context.PlPlanningsKalender.Add(planning);
                 context.SaveChanges();
-
-                
             }
-
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
             }
-
             return planning;
         }
-
         //thibaut - laurent
         //add the given details to the database and give them a primary key
         public void AddDetails(List<RqRequestDetail> listDetails)
@@ -328,7 +316,6 @@ namespace Barco.Data
                     {
                         e.IdRqDetail = d.IdRqDetail;
                         context.Eut.Add(e);
-                        
                     }
                 }
                 context.SaveChanges();
@@ -392,13 +379,11 @@ namespace Barco.Data
         {
             List<ComboObject> returnValue = new List<ComboObject>();
             List<Eut> approvedEut = getApprovedEuts();
-
             foreach (Eut eut in approvedEut)
             {
                 RqRequestDetail detail = GetRqRequestDetailById(eut.IdRqDetail);
-
-        //Method used for the overviewApprovedRequests
-        //Laurent,Bianca
+                //Method used for the overviewApprovedRequests
+                //Laurent,Bianca
                 ComboObject o = new ComboObject()
                 {  
                     EutNr = eut.OmschrijvingEut.Substring(5, 6),
@@ -415,14 +400,12 @@ namespace Barco.Data
         public List<PlResources> GetResource()
         {
             return context.PlResources.ToList();
-            
         }
         //thibaut - methode om resources op te halen per test nature
         public List<PlResources> GetResourcesForTestDiv(string testDiv)
         {
             List<PlResources> list = new List<PlResources>();
             List<PlResourcesDivision> plrd = context.PlResourcesDivision.ToList();
-
             foreach(PlResourcesDivision pl in plrd)
             {
                 if (pl.DivisionAfkorting.Equals(testDiv))
@@ -441,26 +424,21 @@ namespace Barco.Data
         public List<Eut> getApprovedEuts()
         {
             var listRqRequests = GetAllApprovedRqRequests();
-            
             List<RqRequestDetail> approvedRequestDetails = new List<RqRequestDetail>();
             List<int> approvedRequestIds = new List<int>();
             var eutList = context.Eut.ToList();
             List<Eut> approvedEut = new List<Eut>();
-            
             foreach (RqRequest r in listRqRequests)
             {
                 approvedRequestIds.Add(r.IdRequest);
             }
-            
             foreach (RqRequestDetail r in context.RqRequestDetail.ToList())
             {
                 if (approvedRequestIds.Contains(r.IdRequest))
                 {
                     approvedRequestDetails.Add(r);
                 }
-                
             }
-            
             foreach (Eut e in eutList)
             {
                 if (approvedRequestDetails.Contains(GetRqRequestDetailById(e.IdRqDetail)))
@@ -468,7 +446,6 @@ namespace Barco.Data
                     approvedEut.Add(e);
                 }
             }
-
             return approvedEut;
         }
         //Laurent
@@ -479,44 +456,34 @@ namespace Barco.Data
             RqRequest returnValue = context.RqRequest.FirstOrDefault(a => a.IdRequest == requestId);
             return returnValue;
         }
-
         //thibaut
         //returns a planning object based on the id of it
         public PlPlanning GetPlanning(int planningsId)
         {
             return context.PlPlanning.FirstOrDefault(p => p.IdPlanning == planningsId);
         }
-
         public List<string> PvgRespForTestnatureByDiv(string testNature, string division)
         {
             List<string> result = new List<string>();
-
             result = context.RqBarcoDivisionPerson.Where(e => e.AfkDevision.Equals(division) && e.Pvggroup.Equals(testNature)).Select(s => s.AfkPerson).ToList();
-
             return result;
         }
-
-
         //Bianca- to get the list of the planning calendar
         public List<PlPlanningsKalender> listPlannings()
         {
             return context.PlPlanningsKalender.ToList();
         }
-
-
         //Jimmy-Bianca
         //method to get the test planning calendar by id
         public PlPlanningsKalender GetPlanningCalendarById(int id)
         {
             return context.PlPlanningsKalender.FirstOrDefault(i => i.Id == id);
         }
-
         //Jimmy-Bianca
         //method to change the status
         public void ChangeStatus(string status,int testId)
         {
             var value = GetPlanningCalendarById(testId);
-
             value.TestStatus = status;
             context.SaveChanges();
         }
