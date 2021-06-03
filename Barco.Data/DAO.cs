@@ -487,7 +487,14 @@ namespace Barco.Data
             return context.PlPlanning.FirstOrDefault(p => p.IdPlanning == planningsId);
         }
 
+        public List<string> PvgRespForTestnatureByDiv(string testNature, string division)
+        {
+            List<string> result = new List<string>();
 
+            result = context.RqBarcoDivisionPerson.Where(e => e.AfkDevision.Equals(division) && e.Pvggroup.Equals(testNature)).Select(s => s.AfkPerson).ToList();
+
+            return result;
+        }
 
 
         //Bianca- to get the list of the planning calendar
