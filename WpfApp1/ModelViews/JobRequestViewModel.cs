@@ -373,7 +373,6 @@ namespace Barco
             catch (FormatException ex)
             {
                 MessageBox.Show(ex.Message.ToString());
-                //MessageBox.Show("Please fill in all fields"):
             }
         }
         // to show in the listview
@@ -555,6 +554,11 @@ namespace Barco
                 {
                     result.Add("please provide a  valid date for EUT 1");
                 }
+                else if (DatePickerEUT1.Date > dateExpectedEnd.Date)
+                {
+                    result.Add("The end date is earlier than the EUT 1 test date");
+                }
+                
             }
             if ((bool)cbEmcEut2 || (bool)cmEnvironmentalEut2 || (bool)cmGrnCompEut2 || (bool)cmProdSafetyEut2 ||
                 (bool)cmGrnCompEut2)
@@ -562,6 +566,10 @@ namespace Barco
                 if (DatePickerEUT2.Date == null || DatePickerEUT2.Date < DateTime.Today)
                 {
                     result.Add("please provide a valid date for EUT 2");
+                }
+                else if (DatePickerEUT2.Date > dateExpectedEnd.Date)
+                {
+                    result.Add("The end date is earlier than the EUT 2 test date");
                 }
             }
             if ((bool)cbEmcEut3 || (bool)cmEnvironmentalEut3 || (bool)cmGrnCompEut3 || (bool)cmProdSafetyEut3 ||
@@ -571,6 +579,10 @@ namespace Barco
                 {
                     result.Add("please provide a valid date for EUT 3");
                 }
+                else if (DatePickerEUT3.Date > dateExpectedEnd.Date)
+                {
+                    result.Add("The end date is earlier than the EUT 3 test date");
+                }
             }
             if ((bool)cbEmcEut4 || (bool)cmEnvironmentalEut4 || (bool)cmGrnCompEut4 || (bool)cmProdSafetyEut4 ||
                 (bool)cmGrnCompEut4)
@@ -579,6 +591,10 @@ namespace Barco
                 {
                     result.Add("please provide a valid date for EUT 4");
                 }
+                else if (DatePickerEUT4.Date > dateExpectedEnd.Date)
+                {
+                    result.Add("The end date is earlier than the EUT 4 test date");
+                }
             }
             if ((bool)cbEmcEut5 || (bool)cmEnvironmentalEut5 || (bool)cmGrnCompEut5 || (bool)cmProdSafetyEut5 ||
                 (bool)cmGrnCompEut5)
@@ -586,6 +602,10 @@ namespace Barco
                 if (DatePickerEUT5.Date == null || DatePickerEUT5.Date < DateTime.Today)
                 {
                     result.Add("please provide a valid date for EUT 5");
+                }
+                else if (DatePickerEUT5.Date > dateExpectedEnd.Date)
+                {
+                    result.Add("The end date is earlier than the EUT 5 test date");
                 }
             }
             return result;

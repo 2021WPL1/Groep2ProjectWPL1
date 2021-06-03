@@ -5,6 +5,10 @@ namespace Barco.Data
 {
    public class ComboObject
    {
+        /// <summary>
+        /// Laurent, Bianca
+        /// </summary>
+        /// object die meerdere classes combineerd om deze in 1 view te binden
        public RqRequestDetail  RqRequestDetail { get; set; }
        public RqOptionel RqOptionel { get; set; }
        public RqRequest Request { get; set; }

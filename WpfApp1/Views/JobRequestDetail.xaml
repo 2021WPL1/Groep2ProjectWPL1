@@ -17,7 +17,7 @@
         <ListBox x:Name="ListBoxPartNumber" ItemsSource="{Binding ListPartsnumbers}"  Margin="483,63,224,386" RenderTransformOrigin="0.5,0.5">
         </ListBox>
         <TextBlock HorizontalAlignment="Left" Margin="483,37,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="101" Height="18"><Run Language="nl-be" Text="Eut partnumber"/></TextBlock>
-        <ListBox x:Name="ListBoxPartNetWeight" ItemsSource="{Binding ListPartNet}" Margin="575,63,133,386" RenderTransformOrigin="0.5,0.5">
+        <ListBox x:Name="ListBoxPartNetWeight" ItemsSource="{Binding ListPartNet}" Margin="575,63,133,386" RenderTransformOrigin="0.5,0.5" >
             <ListBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -27,7 +27,7 @@
                 </TransformGroup>
             </ListBox.RenderTransform>
         </ListBox>
-        <ListBox x:Name="ListBoxPartNetWeight1" ItemsSource="{Binding ListPartGross}" Margin="666,62,41,386" RenderTransformOrigin="0.5,0.5">
+        <ListBox x:Name="ListBoxPartNetWeight1" ItemsSource="{Binding ListPartGross}" Margin="666,62,41,386.5" RenderTransformOrigin="0.5,0.5">
             <ListBox.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -98,12 +98,12 @@
         <Label Content="PVG &#xA;Responsible" HorizontalAlignment="Left" Margin="434,241,0,0" VerticalAlignment="Top" Width="96" Height="47"/>
         <Label x:Name="lblRequestDate" Content="{Binding Request.RequestDate, Mode=TwoWay}" HorizontalAlignment="Left" Margin="171,99,0,0" VerticalAlignment="Top" Width="64" Height="23"/>
         <Label x:Name="lblJobRequestNumber" Content="{Binding Request.JrNumber, Mode=TwoWay}" HorizontalAlignment="Left" Margin="300,104,0,0" VerticalAlignment="Top" Width="110" Height="23"/>
-        <Label x:Name="lblExpectedEndDate" Content="{Binding Request.ExpectedEnddate, Mode=TwoWay}" HorizontalAlignment="Left" Margin="289,132,0,0" VerticalAlignment="Top" Width="98" Height="25"/>
-        <Label x:Name="lblDateEUT1" Content="{Binding dateEut1}" HorizontalAlignment="Left" Margin="182,413,0,0" VerticalAlignment="Top" Width="70" Height="22" Padding="5,0,5,0"/>
-        <Label x:Name="lblDateEUT4" Content="{Binding dateEut4}" HorizontalAlignment="Left" Margin="331,436,0,0" VerticalAlignment="Top" Width="70" Height="22" Padding="5,0,5,0"/>
-        <Label x:Name="lblDateEUT2" Content="{Binding dateEut2}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Height="22" Padding="5,0,5,0" Margin="237,438,0,0"/>
-        <Label x:Name="lblDateEUT3" Content="{Binding dateEut3}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="70" Height="22" Padding="5,0,5,0" Margin="285,413,0,0"/>
-        <Label x:Name="lblDateEUT5" Content="{Binding dateEut5}" HorizontalAlignment="Left" Margin="373,413,0,0" VerticalAlignment="Top" Width="70" Height="22" Padding="5,0,5,0"/>
+        <Label x:Name="lblExpectedEndDate" Content="{Binding Request.ExpectedEnddate, Mode=TwoWay}" HorizontalAlignment="Left" Margin="286,132,0,0" VerticalAlignment="Top" Width="98" Height="25"/>
+        <Label x:Name="lblDateEUT1" Content="{Binding dateEut1}" HorizontalAlignment="Left" Margin="198,413,0,0" VerticalAlignment="Top" Width="65" Height="22" Padding="5,0,5,0"/>
+        <Label x:Name="lblDateEUT4" Content="{Binding dateEut4}" HorizontalAlignment="Left" Margin="335,436,0,0" VerticalAlignment="Top" Width="65" Height="22" Padding="5,0,5,0"/>
+        <Label x:Name="lblDateEUT2" Content="{Binding dateEut2}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="65" Height="22" Padding="5,0,5,0" Margin="241,438,0,0"/>
+        <Label x:Name="lblDateEUT3" Content="{Binding dateEut3}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="65" Height="22" Padding="5,0,5,0" Margin="288,413,0,0"/>
+        <Label x:Name="lblDateEUT5" Content="{Binding dateEut5}" HorizontalAlignment="Left" Margin="378,413,0,0" VerticalAlignment="Top" Width="65" Height="22" Padding="5,0,5,0"/>
         <TextBox x:Name="txtDevision" Text="{Binding Request.BarcoDivision, Mode=TwoWay}" HorizontalAlignment="Left" Margin="166,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127" IsReadOnly="True"/>
         <TextBox x:Name="txtJobNature" Text="{Binding Request.JobNature, Mode=TwoWay}" HorizontalAlignment="Left" Margin="306,56,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" IsReadOnly="True"/>
         <TextBox x:Name="txtPvgRes_Copy" Text="{Binding pvgEnv, Mode=OneWay}" HorizontalAlignment="Left" Margin="434,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74" Height="19" IsReadOnly="True"/>
