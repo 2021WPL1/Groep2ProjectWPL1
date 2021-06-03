@@ -16,40 +16,32 @@ namespace Barco
         public ICommand PersonalLeaveCommand { get; set; }
         public ICommand CollectiveLeaveCommand { get; set; }
         public ICommand ApprovedJobRequestsCommand { get; set; }
-        public ICommand PlannedTestsCommand { get; set; }
-
-
+        public ICommand PlannedTestCommand { get; set; }
         public HomeScreenViewModel(HomeScreen home)
         {
+            PlannedTestCommand = new DelegateCommand(PlannedTest);
             JobRequestCommand = new DelegateCommand(CreateRequest);
             OverviewCommand = new DelegateCommand(Overview);
             PersonalLeaveCommand = new DelegateCommand(PersonalLeave);
             CollectiveLeaveCommand = new DelegateCommand(CollectiveLeave);
-            HomeScreenCommand = new DelegateCommand(HomeScreen);
             ApprovedJobRequestsCommand = new DelegateCommand(ApprovedJobRequests);
-            PlannedTestsCommand = new DelegateCommand(PlannedTests);
 
             this.home = home;
         }
-
+        /// <summary>
+        /// Bianca
+        /// </summary>
+        /// link to planned test
         public void PlannedTests()
         {
             OverviewPlannedTests overviewPlannedTests = new OverviewPlannedTests();
             home.Close();
             overviewPlannedTests.ShowDialog();
         }
-
-        /// <summary>
-        /// Laurent 
-        /// </summary>
-        public void HomeScreen()
-        {
-            HomeScreen homeScreen = new HomeScreen();
-            homeScreen.Close();
-        }
         /// <summary>
         /// thibaut, Laurent
         /// </summary>
+        /// link to create request
         public void CreateRequest()
         {
             JobRequest createJobRequest = new JobRequest();
@@ -59,6 +51,7 @@ namespace Barco
         /// <summary>
         /// Bianca
         /// </summary>
+        /// link to overview approved request
         public void ApprovedJobRequests()
         {
             OverviewApprovedRequests overviewApproved = new OverviewApprovedRequests();
@@ -66,26 +59,26 @@ namespace Barco
             overviewApproved.ShowDialog();
         }
         /// <summary>
-        /// thibaut, bianca
-        /// </summary>
-        public void Approved()
-        {
-            JobRequest createJobRequest = new JobRequest();
-            home.Close();
-            createJobRequest.ShowDialog();
-        }
-        /// <summary>
         /// Laurent
         /// </summary>
+        /// link to overview request
         public void Overview()
         {
             OverviewJobRequest overviewJobRequest = new OverviewJobRequest();
             home.Close();
             overviewJobRequest.ShowDialog();
         }
+
+        public void PlannedTest()
+        {
+            OverviewPlannedTests plannedtest = new OverviewPlannedTests();
+            home.Close();
+            plannedtest.ShowDialog();
+        }
         /// <summary>
         /// Laurent
         /// </summary>
+        /// link to personal leave
         public void PersonalLeave()
         {
             PersonalLeave personalLeave = new PersonalLeave();
@@ -95,6 +88,7 @@ namespace Barco
         /// <summary>
         /// Laurent
         /// </summary>
+        /// link to collective leave
         public void CollectiveLeave()
         {
             CollectiveLeave collectiveLeave = new CollectiveLeave();

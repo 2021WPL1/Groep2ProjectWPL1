@@ -114,6 +114,8 @@ namespace Barco.Data
             context.RqRequestDetail.RemoveRange(context.RqRequestDetail.Where(e => e.IdRequest == requestId).ToList());
             saveChanges();
         }
+
+        
         //thibaut, bianca
         //get an optional id from requestId
         public RqOptionel GetOptionalByRequestId(int id)
@@ -487,7 +489,14 @@ namespace Barco.Data
             return context.PlPlanning.FirstOrDefault(p => p.IdPlanning == planningsId);
         }
 
+        public List<string> PvgRespForTestnatureByDiv(string testNature, string division)
+        {
+            List<string> result = new List<string>();
 
+            result = context.RqBarcoDivisionPerson.Where(e => e.AfkDevision.Equals(division) && e.Pvggroup.Equals(testNature)).Select(s => s.AfkPerson).ToList();
+
+            return result;
+        }
 
 
         //Bianca- to get the list of the planning calendar
@@ -513,7 +522,6 @@ namespace Barco.Data
             value.TestStatus = status;
             context.SaveChanges();
         }
-
 
 
         public void DeleteEut(int idRequest)

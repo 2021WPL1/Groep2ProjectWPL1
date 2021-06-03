@@ -152,19 +152,21 @@ namespace Barco.ModelViews
             {
                 MessageBox.Show("Select a JobRequest");
             }*/
-            try
+            if (_selectedRqRequest.Request == null)
+            {
+
+                MessageBox.Show("Pleas select a Request.");
+            }
+            else
             {
                 var SelectedId = SelectedRqRequest.Request.IdRequest;
-                TestPlanning testPlanning = new TestPlanning(SelectedId, SelectedTestNature.Afkorting);
+                
+                TestPlanning testPlanning = new TestPlanning(SelectedId, SelectedRqRequest.RqRequestDetail.Testdivisie);
                 screen.Close();
                 testPlanning.ShowDialog();
             }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
 
-           
+
         }
 
         //  used to select a request for a further test planning
