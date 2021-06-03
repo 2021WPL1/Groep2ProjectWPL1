@@ -351,6 +351,7 @@ namespace Barco
                 }
 
             } while (PartGross.Contains(";"));
+            RefreshGUI();
 
         }
         /// <summary>
