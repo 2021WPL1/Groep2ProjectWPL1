@@ -164,8 +164,8 @@ namespace Barco
         {
             try
             {
-                if (txtPartNr == null || txtNetWeight == null || txtGrossWeight == null || txtPartNr == " " || txtNetWeight == " " || txtGrossWeight == " " || txtPartNr == string.Empty || txtNetWeight == string.Empty || txtGrossWeight == string.Empty)
-                {
+                if (String.IsNullOrEmpty(txtPartNr) || String.IsNullOrEmpty(txtNetWeight) || String.IsNullOrEmpty(txtGrossWeight) || txtPartNr == " " || txtNetWeight == " " || txtGrossWeight == " ")
+                {                    
                     MessageBox.Show("please fill in all part values");
                 }              
                 else
