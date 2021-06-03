@@ -21,7 +21,7 @@ namespace Barco.Data
         }
         // DBContext
         private Barco2021Context context;
-        //bianca
+        //bianca - save and send changes to the database
         public void saveChanges()
         {
             context.SaveChanges();
@@ -62,6 +62,7 @@ namespace Barco.Data
             saveChanges();
         } 
         //  bianca
+        // get the date when the request is made
         public RqRequest GetRequestDate()
         {
             return context.RqRequest.FirstOrDefault(a => a.RequestDate == DateTime.Now);
@@ -120,12 +121,13 @@ namespace Barco.Data
             return context.RqOptionel.FirstOrDefault(r => r.IdRequest == id);
         }
         //thibaut, bianca
-        // get a detail id from requestId
+        //get a detail id from requestId
         public RqRequestDetail GetRqRequestDetailByRequestId(int id)
         {
             return context.RqRequestDetail.FirstOrDefault(r => r.IdRequest == id);
         }
-        // jimmy
+        // jimmy, laurent
+        //when a request is approved, the status will change and a planning object will be made for each request detail 
         public void ApproveRqRequest(RqRequest rqRequest, string jrNumber)
         {
             rqRequest.JrStatus = "Approved";
@@ -151,18 +153,13 @@ namespace Barco.Data
             
         }
         //bianca & jimmy
+        //get all the barcoDivisions
         public List<RqBarcoDivision> GetDepartment()
         {
             return context.RqBarcoDivision.ToList();
         }
-        //bianca & thibaut
-        public List<RqBarcoDivision> GetDivisions()
-        {
-            return context.RqBarcoDivision.ToList();
-        }
-        //jimmmy
-
         //bianca
+        //get all the natures of a job
         public List<RqJobNature> GetJobNatures()
         {
             return context.RqJobNature.ToList();
@@ -186,6 +183,7 @@ namespace Barco.Data
             return context.Eut.Where(eut => eut.IdRqDetail == idReqDet).FirstOrDefault();
         }
         //jimmy
+        //get the optionals by their request id
         public RqOptionel GetOptionel(int idReq)
         {
             return context.RqOptionel.Where(opt => opt.IdRequest == idReq).FirstOrDefault();
@@ -197,6 +195,7 @@ namespace Barco.Data
             return context.RqBarcoDivision.FirstOrDefault(a => a.Afkorting == abb);
         }
         //jimmy
+        //returns true if the division exists
         public bool IfDivisionExists(string abb)
         {
             bool result = false;
@@ -206,13 +205,13 @@ namespace Barco.Data
             }
             return result;
         }
-        // bianca-remove division
+        // bianca-remove division by abbreviation
         public void RemoveDivisionByAbb(string abb)
         {
             context.RqBarcoDivision.Remove(GetDivisionByAbb(abb));
             saveChanges();
         }
-        // Geeft devision
+        // Geeft divisies
         //jimmy
         public List<RqTestDevision> GetTestDevisions()
         {
@@ -253,7 +252,7 @@ namespace Barco.Data
             return rqBarcoDivisionPerson;
         }
         //Bianca
-        // Add request/ detail
+        //Add request/ detail
         public RqRequest AddRequest(RqRequest request, List<RqRequestDetail> details, RqOptionel optional, List<Eut> eut)
         {
             try
@@ -276,6 +275,7 @@ namespace Barco.Data
 
 
         //Bianca
+        //add a planning object to planningskalender column
         public PlPlanningsKalender AddPlanToCalendar(PlPlanningsKalender planning)
         {
             try
@@ -294,7 +294,8 @@ namespace Barco.Data
             return planning;
         }
 
-        //thibaut 
+        //thibaut - laurent
+        //add the given details to the database and give them a primary key
         public void AddDetails(List<RqRequestDetail> listDetails)
         {
             foreach(RqRequestDetail d in listDetails)
@@ -304,7 +305,8 @@ namespace Barco.Data
             }
             context.SaveChanges();
         }
-        //thibaut
+        //thibaut - laurent
+        //add the optional details from the request to the database
         public RqOptionel AddOptional(RqOptionel optional)
         {
             optional.IdRequest =
@@ -313,7 +315,8 @@ namespace Barco.Data
             context.SaveChanges();
             return optional;
         }
-        //thibaut
+        //thibaut - laurent
+        //insert the given eut list into the database after some checks
         public void AddEut(List<Eut> eutlist, int requestId)
         {
             List<RqRequestDetail> list = GetRqDetailsWithRequestId(requestId);
@@ -331,11 +334,13 @@ namespace Barco.Data
                 context.SaveChanges();
             }
         }
+        //retrieve a list of request details based on the request id
         public List<RqRequestDetail> GetRqDetailsWithRequestId(int requestId)
         {
             return context.RqRequestDetail.Where(rq => rq.IdRequest == requestId).ToList();
         }
         //thibaut
+        //get a list with eut objects based on a detail id
         public List<Eut> GetEutWithDetailId(int id)
         {
             List<RqRequestDetail> rqRequestDetails= context.RqRequestDetail.Where(d => d.IdRequest == id).ToList();
@@ -347,11 +352,13 @@ namespace Barco.Data
             return lijst;
         }
         //thibaut
+        //returns all persons in the database
         public List<Person> GetAllPerson()
         {
             return context.Person.ToList();
         }
         //thibaut
+        //returns the job number
         public string GetJobNumber(bool internRq)
         {
             string result = "";
@@ -368,6 +375,7 @@ namespace Barco.Data
             return result;
         }
         //bianca
+        //gets all the requests that are approved
         public ICollection<RqRequest> GetAllApprovedRqRequests()
         {
             return context.RqRequest.Where(s=>s.JrStatus== "Approved").ToList();
@@ -378,6 +386,8 @@ namespace Barco.Data
             return context.RqTestDevision.ToList();
         }
         //Laurent
+        //get request, details, the optional and eut data and combine them into
+        //a combo object for easier databinding
         public List<ComboObject> combinedObjects()
         {
             List<ComboObject> returnValue = new List<ComboObject>();
@@ -427,6 +437,7 @@ namespace Barco.Data
             return list;
         }
         //Laurent
+        //get a eut list of all eut objects in approved requests
         public List<Eut> getApprovedEuts()
         {
             var listRqRequests = GetAllApprovedRqRequests();
@@ -461,6 +472,7 @@ namespace Barco.Data
             return approvedEut;
         }
         //Laurent
+        //returns a request based on the detail id
         public RqRequest getRequestByDetailId(int detailId)
         {
             int requestId = context.RqRequestDetail.FirstOrDefault(a => a.IdRqDetail == detailId).IdRequest;
@@ -469,6 +481,7 @@ namespace Barco.Data
         }
 
         //thibaut
+        //returns a planning object based on the id of it
         public PlPlanning GetPlanning(int planningsId)
         {
             return context.PlPlanning.FirstOrDefault(p => p.IdPlanning == planningsId);
