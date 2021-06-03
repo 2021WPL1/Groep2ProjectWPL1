@@ -132,9 +132,8 @@ namespace Barco.ModelViews
         public void PlanTestButton()
         {
 
-            /*if (_selectedRqRequest.Request != null)
+            if (_selectedRqRequest.Request != null)
             {
-                var SelectedId = _selectedRqRequest.Request.IdRequest;
                 string nature;
                 if (_selectedTestNature is null)
                 {
@@ -144,25 +143,23 @@ namespace Barco.ModelViews
                 {
                     nature = _selectedTestNature.Afkorting;
                 }
-                TestPlanning testPlanning = new TestPlanning(SelectedId, nature);
-                screen.Close();
-                testPlanning.ShowDialog();
+                try
+                {
+                    var SelectedId = SelectedRqRequest.Request.IdRequest;
+                    TestPlanning testPlanning = new TestPlanning(SelectedId, nature);
+                    screen.Close();
+                    testPlanning.ShowDialog();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
             }
             else
             {
                 MessageBox.Show("Select a JobRequest");
-            }*/
-            try
-            {
-                var SelectedId = SelectedRqRequest.Request.IdRequest;
-                TestPlanning testPlanning = new TestPlanning(SelectedId, SelectedTestNature.Afkorting);
-                screen.Close();
-                testPlanning.ShowDialog();
             }
-            catch (Exception e)
-            {
-                MessageBox.Show(e.Message);
-            }
+            
 
            
         }
