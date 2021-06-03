@@ -109,7 +109,7 @@ namespace Barco.Data
         }
         //thibaut & stach
         //delete al details linked to given request
-        private void DeleteDetails(int requestId)
+        public void DeleteDetails(int requestId)
         {
             context.RqRequestDetail.RemoveRange(context.RqRequestDetail.Where(e => e.IdRequest == requestId).ToList());
             saveChanges();
@@ -134,7 +134,7 @@ namespace Barco.Data
         {
             rqRequest.JrStatus = "Approved";
             rqRequest.JrNumber = jrNumber;
-            TimeSpan s = new TimeSpan(5, 0, 0, 0, 0);
+            TimeSpan s = new TimeSpan(7, 0, 0, 0, 0);
             DateTime DueDate = new DateTime();
             DueDate= (DateTime)rqRequest.RequestDate + s;
 
@@ -484,9 +484,9 @@ namespace Barco.Data
 
         //thibaut
         //returns a planning object based on the id of it
-        public PlPlanning GetPlanning(int planningsId)
+        public PlPlanning GetPlanning(int id)
         {
-            return context.PlPlanning.FirstOrDefault(p => p.IdPlanning == planningsId);
+            return context.PlPlanning.FirstOrDefault(p => p.IdRequest == id);
         }
 
         public List<string> PvgRespForTestnatureByDiv(string testNature, string division)
@@ -524,6 +524,9 @@ namespace Barco.Data
         }
 
 
+
+        //Bianca- Laurent
+        //method used in the Edit-button(JR Aanpassen)
         public void DeleteEut(int idRequest)
         {
             List<int> detailsId = new List<int>();

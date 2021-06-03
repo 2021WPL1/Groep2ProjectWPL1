@@ -24,11 +24,7 @@
         <Button x:Name="OpenButton"
                 Command="{Binding OpenDetailsCommand}"
                 Content="Open" HorizontalAlignment="Left" Margin="654,245,0,0" VerticalAlignment="Top" Height="34" Width="50" />
-        <!--  <ListBox  x:Name="listOverview" ItemsSource="{Binding RqRequests}"
-                 SelectedItem="{Binding SelectedRqRequest, Mode=TwoWay}" Margin="26,212,299,33"/> 
-        <Label Content="Project Name" HorizontalAlignment="Left" Margin="279,180,0,0" VerticalAlignment="Top" Height="30" Width="120"/>
-        <Label Content="Date" HorizontalAlignment="Left" Margin="443,179,0,0" VerticalAlignment="Top" Height="30" Width="59"/>
-        -->
+     
         <ListView x:Name="listOverview" ItemsSource="{Binding RqRequests}"
                   SelectedItem="{Binding SelectedRqRequest, Mode=TwoWay}" Margin="34,140,0,25" HorizontalAlignment="Left" Width="516">
             <ListView.View  >
