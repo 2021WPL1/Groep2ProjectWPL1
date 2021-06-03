@@ -513,5 +513,32 @@ namespace Barco.Data
             value.TestStatus = status;
             context.SaveChanges();
         }
+
+
+
+        public void DeleteEut(int idRequest)
+        {
+            List<int> detailsId = new List<int>();
+            foreach (RqRequestDetail r in GetRqDetailsWithRequestId(idRequest))
+            {
+                detailsId.Add(r.IdRqDetail);
+            }
+
+            List<Eut> listEuts = new List<Eut>();
+            foreach (Eut eut in context.Eut.ToList())
+            {
+                if (detailsId.Contains(eut.IdRqDetail))
+                {
+                    listEuts.Add(eut);
+                }
+            }
+
+            foreach (Eut e in listEuts)
+
+            {
+                context.Eut.Remove(e);
+                context.SaveChanges();
+            }
+        }
     }
 }

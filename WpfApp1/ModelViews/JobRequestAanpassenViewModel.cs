@@ -48,41 +48,6 @@ namespace Barco
         private List<Eut> euts;
         public List<Eut> eutList = new List<Eut>();
 
-        public bool cbEmcEut1 { get; set; }
-        public bool cbEmcEut2 { get; set; }
-        public bool cbEmcEut3 { get; set; }
-        public bool cbEmcEut4 { get; set; }
-        public bool cbEmcEut5 { get; set; }
-
-        public bool cmEnvironmentalEut1 { get; set; }
-        public bool cmEnvironmentalEut2 { get; set; }
-        public bool cmEnvironmentalEut3 { get; set; }
-        public bool cmEnvironmentalEut4 { get; set; }
-        public bool cmEnvironmentalEut5 { get; set; }
-
-        public bool cmGrnCompEut1 { get; set; }
-        public bool cmGrnCompEut2 { get; set; }
-        public bool cmGrnCompEut3 { get; set; }
-        public bool cmGrnCompEut4 { get; set; }
-        public bool cmGrnCompEut5 { get; set; }
-
-        public bool cmProdSafetyEut1 { get; set; }
-        public bool cmProdSafetyEut2 { get; set; }
-        public bool cmProdSafetyEut3 { get; set; }
-        public bool cmProdSafetyEut4 { get; set; }
-        public bool cmProdSafetyEut5 { get; set; }
-
-        public bool cmRelEut1 { get; set; }
-        public bool cmRelEut2 { get; set; }
-        public bool cmRelEut3 { get; set; }
-        public bool cmRelEut4 { get; set; }
-        public bool cmRelEut5 { get; set; }
-
-        public bool cbEmc { get; set; }
-        public bool cmEnvironmental { get; set; }
-        public bool cmRel { get; set; }
-        public bool cmProdSafety { get; set; }
-        public bool cmGrnComp { get; set; }
         // EUT foreseen availability date
 
         public DateTime dateEut1 { get; set; }
@@ -100,6 +65,44 @@ namespace Barco
         public bool rbtnBatNo { get; set; }
 
 
+        List<bool> emcBoxes = new List<bool>();
+        List<bool> envBoxes = new List<bool>();
+        List<bool> relBoxes = new List<bool>();
+        List<bool> prodBoxes = new List<bool>();
+        List<bool> greenBoxes = new List<bool>();
+        List<bool> selectionBoxes = new List<bool>();
+        public bool cbEmcEut1 { get; set; }
+        public bool cbEmcEut2 { get; set; }
+        public bool cbEmcEut3 { get; set; }
+        public bool cbEmcEut4 { get; set; }
+        public bool cbEmcEut5 { get; set; }
+        public bool cmEnvironmentalEut1 { get; set; }
+        public bool cmEnvironmentalEut2 { get; set; }
+        public bool cmEnvironmentalEut3 { get; set; }
+        public bool cmEnvironmentalEut4 { get; set; }
+        public bool cmEnvironmentalEut5 { get; set; }
+        public bool cmGrnCompEut1 { get; set; }
+        public bool cmGrnCompEut2 { get; set; }
+        public bool cmGrnCompEut3 { get; set; }
+        public bool cmGrnCompEut4 { get; set; }
+        public bool cmGrnCompEut5 { get; set; }
+        public bool cmProdSafetyEut1 { get; set; }
+        public bool cmProdSafetyEut2 { get; set; }
+        public bool cmProdSafetyEut3 { get; set; }
+        public bool cmProdSafetyEut4 { get; set; }
+        public bool cmProdSafetyEut5 { get; set; }
+        public bool cmRelEut1 { get; set; }
+        public bool cmRelEut2 { get; set; }
+        public bool cmRelEut3 { get; set; }
+        public bool cmRelEut4 { get; set; }
+        public bool cmRelEut5 { get; set; }
+        public bool cbEmc { get; set; }
+        public bool cmEnvironmental { get; set; }
+        public bool cmRel { get; set; }
+        public bool cmProdSafety { get; set; }
+        public bool cmGrnComp { get; set; }
+
+
         private ObservableCollection<Part> lstParts = new ObservableCollection<Part>(); // for partnumber+ net/gross weight
 
         public ObservableCollection<Part> listParts
@@ -111,8 +114,6 @@ namespace Barco
         public JobRequestAanpassenViewModel(JobRequestAanpassen screen, int selectedId)
         {
             dao = DAO.Instance();
-
-
             CancelCommand = new DelegateCommand(CancelButton);
             SaveChangesCommand = new DelegateCommand(SaveChanges);
             AddCommand = new DelegateCommand(AddPart);
@@ -121,8 +122,9 @@ namespace Barco
             this.RqOptionel = dao.GetOptionel(selectedId);
             this.rqRequestDetails = dao.GetRqDetailsWithRequestId(selectedId);
 
-            euts = dao.GetEutWithDetailId(Request.IdRequest); 
+            euts = dao.GetEutWithDetailId(Request.IdRequest);
             //eutList = CreateEutList();
+           
 
 
 
@@ -133,8 +135,7 @@ namespace Barco
             CurrentOptionel = dao.GetOptionel(selectedId);
             CurrentRequestDetail = dao.GetRequestDetail(selectedId);
             FillData();
-
-
+            dao.DeleteEut(Request.IdRequest);
         }
         /// <summary>
         /// Laurent
@@ -511,6 +512,7 @@ namespace Barco
                 }
             }
 
+
         }
         /// <summary>
         /// jimmy, thibaut
@@ -623,6 +625,128 @@ namespace Barco
             fillPvgResp();
             SetBatteries();
             RefreshGUI();
+        }
+
+
+        private List<string> ValidateCheckboxes()
+        {
+            List<string> outcome = new List<string>();
+            if ((bool)cbEmc)
+            {
+                int counter = 0;
+                foreach (bool b in emcBoxes)
+                {
+                    if ((bool)b)
+                    {
+                        counter++;
+                    }
+                }
+                if (counter < 1)
+                {
+                    outcome.Add("please check emc data");
+                }
+            }
+            if ((bool)cmEnvironmental)
+            {
+                int counter = 0;
+                foreach (bool b in envBoxes)
+                {
+                    if ((bool)b)
+                    {
+                        counter++;
+                    }
+                }
+                if (counter < 1)
+                {
+                    outcome.Add("please check environmental data");
+                }
+            }
+            if ((bool)cmRel)
+            {
+                int counter = 0;
+                foreach (bool b in relBoxes)
+                {
+                    if ((bool)b)
+                    {
+                        counter++;
+                    }
+                }
+                if (counter < 1)
+                {
+                    outcome.Add("please check reliability data");
+                }
+            }
+            if ((bool)cmProdSafety)
+            {
+                int counter = 0;
+                foreach (bool b in prodBoxes)
+                {
+                    if ((bool)b)
+                    {
+                        counter++;
+                    }
+                }
+                if (counter < 1)
+                {
+                    outcome.Add("please check product safety data");
+                }
+            }
+            if ((bool)cmGrnComp)
+            {
+                int counter = 0;
+                foreach (bool b in greenBoxes)
+                {
+                    if ((bool)b)
+                    {
+                        counter++;
+                    }
+                }
+                if (counter < 1)
+                {
+                    outcome.Add("please check green compliance data");
+                }
+            }
+            return outcome;
+        }
+
+        public void CreateBoxLists()
+        {
+            emcBoxes.Clear();
+            emcBoxes.Add(cbEmcEut1);
+            emcBoxes.Add(cbEmcEut2);
+            emcBoxes.Add(cbEmcEut3);
+            emcBoxes.Add(cbEmcEut4);
+            emcBoxes.Add(cbEmcEut5);
+            envBoxes.Clear();
+            envBoxes.Add(cmEnvironmentalEut1);
+            envBoxes.Add(cmEnvironmentalEut2);
+            envBoxes.Add(cmEnvironmentalEut3);
+            envBoxes.Add(cmEnvironmentalEut4);
+            envBoxes.Add(cmEnvironmentalEut5);
+            relBoxes.Clear();
+            relBoxes.Add(cmRelEut1);
+            relBoxes.Add(cmRelEut2);
+            relBoxes.Add(cmRelEut3);
+            relBoxes.Add(cmRelEut4);
+            relBoxes.Add(cmRelEut5);
+            prodBoxes.Clear();
+            prodBoxes.Add(cmProdSafetyEut1);
+            prodBoxes.Add(cmProdSafetyEut2);
+            prodBoxes.Add(cmProdSafetyEut3);
+            prodBoxes.Add(cmProdSafetyEut4);
+            prodBoxes.Add(cmProdSafetyEut5);
+            greenBoxes.Clear();
+            greenBoxes.Add(cmGrnCompEut1);
+            greenBoxes.Add(cmGrnCompEut2);
+            greenBoxes.Add(cmGrnCompEut3);
+            greenBoxes.Add(cmGrnCompEut4);
+            greenBoxes.Add(cmGrnCompEut5);
+            selectionBoxes.Clear();
+            selectionBoxes.Add(cbEmc);
+            selectionBoxes.Add(cmEnvironmental);
+            selectionBoxes.Add(cmRel);
+            selectionBoxes.Add(cmProdSafety);
+            selectionBoxes.Add(cmGrnComp);
         }
 
 
