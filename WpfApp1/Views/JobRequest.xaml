@@ -79,8 +79,8 @@
         <Button x:Name="btnSend"
                 Command="{Binding SendCommand}"
                 Content="Send" HorizontalAlignment="Left" Margin="579,44,0,0" VerticalAlignment="Top"  Height="19" Width="39" />
-        <TextBlock HorizontalAlignment="Left" Margin="582,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"><Run Text="Special remarks"/><Run Language="nl-be" Text=":"/></TextBlock>
-        <TextBox x:Name="txtRemark" HorizontalAlignment="Left" Margin="525,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="284" Height="91" Text="{Binding txtRemark}"/>
+        <TextBlock HorizontalAlignment="Left" Margin="528,120,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="90"><Run Text="Special remarks"/><Run Language="nl-be" Text=":"/></TextBlock>
+        <TextBox x:Name="txtRemark" HorizontalAlignment="Left" Margin="525,141,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="284" Height="40" Text="{Binding txtRemark}"/>
         <Button x:Name="btnCancel" 
                  Command="{Binding CancelCommand}" 
                 Content="Cancel" HorizontalAlignment="Left" Margin="632,44,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.357,0.726" Height="19"/>
@@ -104,14 +104,16 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <ListView Margin="42,501,404,-2" BorderBrush="{x:Null}" Foreground="Red" Name="err_output" ItemsSource="{Binding err_output}">
+        <ListView Margin="42,501,404,-2" BorderBrush="{x:Null}" Foreground="Red" Width="400" Name="err_output" ItemsSource="{Binding err_output}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn />
+                    <GridViewColumn Width="400" />
                 </GridView>
             </ListView.View>
         </ListView>
         <TextBlock HorizontalAlignment="Left" Margin="168,173,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" Text="Function"/>
         <TextBox x:Name="txtFunction" Text="{Binding txtFunction, UpdateSourceTrigger=PropertyChanged}" HorizontalAlignment="Left" Margin="168,194,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="94" IsEnabled="False"/>
+        <Label Content="Hydra Project nr" HorizontalAlignment="Left" Margin="525,181,0,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="528,212,0,0" Text="{Binding HydraProjectNr}" TextWrapping="Wrap" VerticalAlignment="Top" Width="281"/>
     </Grid>
 </Window>

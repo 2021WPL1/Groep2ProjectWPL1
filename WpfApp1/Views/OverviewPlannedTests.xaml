@@ -35,7 +35,7 @@
         </ListView>
         <Image x:Name="PLBarco" HorizontalAlignment="Left" Height="65" Margin="15,10,0,0" VerticalAlignment="Top" Width="198" Source="/Views/logo.png"/>
         <Label Content="Overview Planned Tests" HorizontalAlignment="Left" Margin="244,19,0,0" VerticalAlignment="Top" Height="47" Width="226" FontSize="18" BorderBrush="#FFED0303" BorderThickness="4,1,1,1" Foreground="#FFED0303" FontWeight="Normal" OpacityMask="#FFFFFDFD" Background="White" RenderTransformOrigin="1.194,0.501"/>
-        <Button Content="Cancel" 
+        <Button Content="Back" 
                 Command="{Binding CancelOverviewCommand}"
                 HorizontalAlignment="Left" Margin="569,27,0,0" VerticalAlignment="Top" Height="36" Width="71"/>
         <Label Content="Status" HorizontalAlignment="Left" Margin="778,26,0,0" VerticalAlignment="Top" Width="51"/>
